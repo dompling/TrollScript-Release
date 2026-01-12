@@ -1,0 +1,30 @@
+{
+    "version": "1.0",
+    "lastUpdated": "2026-01-12T00:00:00Z",
+    "categories": [
+        "工具",
+        "自动化",
+        "实用"
+    ],
+    "authors": [
+        {
+            "name": "dompling",
+            "avatar": "https://github.com/dompling.png",
+            "scripts": [
+                {
+                    "id": "uuid-string",
+                    "name": "脚本名称",
+                    "description": "脚本描述",
+                    "icon": "doc.text.fill",
+                    "category": "工具",
+                    "version": "1.0.0",
+                    "downloadUrl": "https://raw.githubusercontent.com/.../script.js",
+                    "size": 1024,
+                    "downloads": 100,
+                    "createdAt": "2026-01-01T00:00:00Z",
+                    "updatedAt": "2026-01-10T00:00:00Z"
+                }
+            ]
+        }
+    ]
+}

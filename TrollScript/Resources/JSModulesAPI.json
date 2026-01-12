@@ -1,0 +1,3340 @@
+{
+  "version": "1.0.0",
+  "modules": [
+    {
+      "name": "console",
+      "description": "控制台输出",
+      "icon": "terminal",
+      "color": "gray",
+      "methods": [
+        {
+          "name": "log",
+          "signature": "log(...args)",
+          "description": "输出日志信息",
+          "parameters": [
+            {
+              "name": "...args",
+              "type": "any[]",
+              "description": "要输出的内容"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "error",
+          "signature": "error(...args)",
+          "description": "输出错误信息",
+          "parameters": [
+            {
+              "name": "...args",
+              "type": "any[]",
+              "description": "要输出的内容"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "warn",
+          "signature": "warn(...args)",
+          "description": "输出警告信息",
+          "parameters": [
+            {
+              "name": "...args",
+              "type": "any[]",
+              "description": "要输出的内容"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "info",
+          "signature": "info(...args)",
+          "description": "输出提示信息",
+          "parameters": [
+            {
+              "name": "...args",
+              "type": "any[]",
+              "description": "要输出的内容"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "debug",
+          "signature": "debug(...args)",
+          "description": "输出调试信息",
+          "parameters": [
+            {
+              "name": "...args",
+              "type": "any[]",
+              "description": "要输出的内容"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "table",
+          "signature": "table(data)",
+          "description": "以表格形式输出",
+          "parameters": [
+            {
+              "name": "data",
+              "type": "object | array",
+              "description": "要显示的表格数据"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "clear",
+          "signature": "clear()",
+          "description": "清空控制台",
+          "returns": "void"
+        }
+      ]
+    },
+    {
+      "name": "device",
+      "description": "设备信息",
+      "icon": "iphone",
+      "color": "blue",
+      "methods": [
+        {
+          "name": "info",
+          "signature": "info()",
+          "description": "获取设备信息",
+          "returns": "{ name: string, model: string, systemName: string, systemVersion: string, identifier: string }"
+        },
+        {
+          "name": "battery",
+          "signature": "battery()",
+          "description": "获取电池信息",
+          "returns": "{ level: number, state: string, lowPowerMode: boolean }"
+        },
+        {
+          "name": "screen",
+          "signature": "screen()",
+          "description": "获取屏幕信息",
+          "returns": "{ width: number, height: number, scale: number, brightness: number }"
+        }
+      ]
+    },
+    {
+      "name": "clipboard",
+      "description": "剪贴板操作",
+      "icon": "doc.on.clipboard",
+      "color": "orange",
+      "methods": [
+        {
+          "name": "getText",
+          "signature": "getText()",
+          "description": "获取剪贴板文本",
+          "returns": "string"
+        },
+        {
+          "name": "setText",
+          "signature": "setText(text)",
+          "description": "设置剪贴板文本",
+          "parameters": [
+            {
+              "name": "text",
+              "type": "string",
+              "description": "要设置的文本内容"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "clear",
+          "signature": "clear()",
+          "description": "清空剪贴板",
+          "returns": "void"
+        }
+      ]
+    },
+    {
+      "name": "storage",
+      "description": "本地存储",
+      "icon": "externaldrive",
+      "color": "indigo",
+      "methods": [
+        {
+          "name": "get",
+          "signature": "get(key)",
+          "description": "获取存储值",
+          "parameters": [
+            {
+              "name": "key",
+              "type": "string",
+              "description": "键名"
+            }
+          ],
+          "returns": "any"
+        },
+        {
+          "name": "set",
+          "signature": "set(key, value)",
+          "description": "设置存储值",
+          "parameters": [
+            {
+              "name": "key",
+              "type": "string",
+              "description": "键名"
+            },
+            {
+              "name": "value",
+              "type": "any",
+              "description": "要存储的值"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "remove",
+          "signature": "remove(key)",
+          "description": "删除存储值",
+          "parameters": [
+            {
+              "name": "key",
+              "type": "string",
+              "description": "键名"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "clear",
+          "signature": "clear()",
+          "description": "清空所有存储",
+          "returns": "void"
+        },
+        {
+          "name": "has",
+          "signature": "has(key)",
+          "description": "检查键是否存在",
+          "parameters": [
+            {
+              "name": "key",
+              "type": "string",
+              "description": "键名"
+            }
+          ],
+          "returns": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "icloud",
+      "description": "iCloud 文件操作",
+      "icon": "icloud",
+      "color": "blue",
+      "methods": [
+        {
+          "name": "isAvailable",
+          "signature": "isAvailable()",
+          "description": "检查 iCloud 是否可用",
+          "returns": "boolean"
+        },
+        {
+          "name": "containerPath",
+          "signature": "containerPath()",
+          "description": "获取 iCloud 容器路径",
+          "returns": "string | null"
+        },
+        {
+          "name": "read",
+          "signature": "read(path)",
+          "description": "读取 iCloud 文件",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "文件路径（相对于 iCloud 容器）"
+            }
+          ],
+          "returns": "string"
+        },
+        {
+          "name": "write",
+          "signature": "write(path, content)",
+          "description": "写入 iCloud 文件",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "文件路径"
+            },
+            {
+              "name": "content",
+              "type": "string",
+              "description": "要写入的内容"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "delete",
+          "signature": "delete(path)",
+          "description": "删除 iCloud 文件",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "文件路径"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "list",
+          "signature": "list(path?)",
+          "description": "列出 iCloud 目录",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "optional": true,
+              "description": "目录路径，默认为根目录"
+            }
+          ],
+          "returns": "[string]"
+        }
+      ]
+    },
+    {
+      "name": "file",
+      "description": "文件操作",
+      "icon": "folder",
+      "color": "cyan",
+      "methods": [
+        {
+          "name": "read",
+          "signature": "read(path)",
+          "description": "读取文件内容",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "文件绝对路径"
+            }
+          ],
+          "returns": "string"
+        },
+        {
+          "name": "write",
+          "signature": "write(path, content)",
+          "description": "写入文件内容",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "文件绝对路径"
+            },
+            {
+              "name": "content",
+              "type": "string",
+              "description": "要写入的内容"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "append",
+          "signature": "append(path, content)",
+          "description": "追加文件内容",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "文件绝对路径"
+            },
+            {
+              "name": "content",
+              "type": "string",
+              "description": "要追加的内容"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "exists",
+          "signature": "exists(path)",
+          "description": "检查文件是否存在",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "文件绝对路径"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "delete",
+          "signature": "delete(path)",
+          "description": "删除文件",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "文件绝对路径"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "move",
+          "signature": "move(from, to)",
+          "description": "移动文件",
+          "parameters": [
+            {
+              "name": "from",
+              "type": "string",
+              "description": "源路径"
+            },
+            {
+              "name": "to",
+              "type": "string",
+              "description": "目标路径"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "copy",
+          "signature": "copy(from, to)",
+          "description": "复制文件",
+          "parameters": [
+            {
+              "name": "from",
+              "type": "string",
+              "description": "源路径"
+            },
+            {
+              "name": "to",
+              "type": "string",
+              "description": "目标路径"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "list",
+          "signature": "list(path)",
+          "description": "列出目录内容",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "目录路径"
+            }
+          ],
+          "returns": "[string]"
+        },
+        {
+          "name": "mkdir",
+          "signature": "mkdir(path)",
+          "description": "创建目录",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "目录路径"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "stat",
+          "signature": "stat(path)",
+          "description": "获取文件信息",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "文件路径"
+            }
+          ],
+          "returns": "{ size: number, modificationDate: number, creationDate: number, type: string }"
+        },
+        {
+          "name": "isDirectory",
+          "signature": "isDirectory(path)",
+          "description": "判断是否是目录",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "文件路径"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "documentsPath",
+          "signature": "documentsPath()",
+          "description": "获取文档目录路径",
+          "returns": "string"
+        },
+        {
+          "name": "cachePath",
+          "signature": "cachePath()",
+          "description": "获取缓存目录路径",
+          "returns": "string"
+        },
+        {
+          "name": "tempPath",
+          "signature": "tempPath()",
+          "description": "获取临时目录路径",
+          "returns": "string"
+        },
+        {
+          "name": "debug",
+          "signature": "debug(path)",
+          "description": "调试路径访问权限详情",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "文件路径"
+            }
+          ],
+          "returns": "string"
+        },
+        {
+          "name": "rootRead",
+          "signature": "rootRead(path)",
+          "description": "使用 Root 权限读取受保护文件（需要 TrollStore）",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "文件绝对路径"
+            }
+          ],
+          "returns": "string | null"
+        },
+        {
+          "name": "rootList",
+          "signature": "rootList(path)",
+          "description": "使用 Root 权限列出受保护目录（需要 TrollStore）",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "目录绝对路径"
+            }
+          ],
+          "returns": "[string] | null"
+        },
+        {
+          "name": "rootCopy",
+          "signature": "rootCopy(src, dest)",
+          "description": "使用 Root 权限复制受保护文件（需要 TrollStore）",
+          "parameters": [
+            {
+              "name": "src",
+              "type": "string",
+              "description": "源文件路径"
+            },
+            {
+              "name": "dest",
+              "type": "string",
+              "description": "目标文件路径"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "rootCheck",
+          "signature": "rootCheck(path)",
+          "description": "使用 Root 权限检查路径信息（需要 TrollStore）",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "文件或目录路径"
+            }
+          ],
+          "returns": "{ exists: boolean, isDirectory: boolean, size: number }"
+        },
+        {
+          "name": "rootExists",
+          "signature": "rootExists(path)",
+          "description": "使用 Root 权限检查文件是否存在（需要 TrollStore）",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "文件路径"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "rootAvailable",
+          "signature": "rootAvailable()",
+          "description": "检查 Root Helper 是否可用",
+          "returns": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "http",
+      "description": "网络请求",
+      "icon": "network",
+      "color": "purple",
+      "methods": [
+        {
+          "name": "get",
+          "signature": "get(url, options?)",
+          "description": "发送 GET 请求",
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "description": "请求地址"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "optional": true,
+              "description": "请求选项 { headers, timeout }"
+            }
+          ],
+          "returns": "Promise<{ status: number, data: string, headers: object }>"
+        },
+        {
+          "name": "post",
+          "signature": "post(url, options?)",
+          "description": "发送 POST 请求",
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "description": "请求地址"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "optional": true,
+              "description": "请求选项 { body, headers, timeout }"
+            }
+          ],
+          "returns": "Promise<{ status: number, data: string, headers: object }>"
+        },
+        {
+          "name": "put",
+          "signature": "put(url, options?)",
+          "description": "发送 PUT 请求",
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "description": "请求地址"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "optional": true,
+              "description": "请求选项 { body, headers, timeout }"
+            }
+          ],
+          "returns": "Promise<{ status: number, data: string, headers: object }>"
+        },
+        {
+          "name": "delete",
+          "signature": "delete(url, options?)",
+          "description": "发送 DELETE 请求",
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "description": "请求地址"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "optional": true,
+              "description": "请求选项 { headers, timeout }"
+            }
+          ],
+          "returns": "Promise<{ status: number, data: string, headers: object }>"
+        },
+        {
+          "name": "patch",
+          "signature": "patch(url, options?)",
+          "description": "发送 PATCH 请求",
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "description": "请求地址"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "optional": true,
+              "description": "请求选项 { body, headers, timeout }"
+            }
+          ],
+          "returns": "Promise<{ status: number, data: string, headers: object }>"
+        },
+        {
+          "name": "head",
+          "signature": "head(url, options?)",
+          "description": "发送 HEAD 请求",
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "description": "请求地址"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "optional": true,
+              "description": "请求选项 { headers, timeout }"
+            }
+          ],
+          "returns": "Promise<{ status: number, data: string, headers: object }>"
+        },
+        {
+          "name": "request",
+          "signature": "request(url, options)",
+          "description": "发送自定义请求",
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "description": "请求地址"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "description": "请求选项 { method, body, headers, timeout }"
+            }
+          ],
+          "returns": "Promise<{ status: number, data: string, headers: object }>"
+        },
+        {
+          "name": "download",
+          "signature": "download(url, path)",
+          "description": "下载文件",
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "description": "下载地址"
+            },
+            {
+              "name": "path",
+              "type": "string",
+              "description": "保存路径"
+            }
+          ],
+          "returns": "Promise<{ path: string }>"
+        }
+      ]
+    },
+    {
+      "name": "network",
+      "description": "网络操作",
+      "icon": "wifi",
+      "color": "mint",
+      "methods": [
+        {
+          "name": "isReachable",
+          "signature": "isReachable()",
+          "description": "检查网络是否可用",
+          "returns": "boolean"
+        },
+        {
+          "name": "getConnectionType",
+          "signature": "getConnectionType()",
+          "description": "获取连接类型",
+          "returns": "'wifi' | 'cellular' | 'none'"
+        },
+        {
+          "name": "getIPAddress",
+          "signature": "getIPAddress()",
+          "description": "获取设备 IP 地址",
+          "returns": "string | null"
+        },
+        {
+          "name": "getWiFiInfo",
+          "signature": "getWiFiInfo()",
+          "description": "获取 WiFi 信息",
+          "returns": "{ ssid: string, bssid: string } | null"
+        },
+        {
+          "name": "encodeURL",
+          "signature": "encodeURL(string)",
+          "description": "URL 编码",
+          "parameters": [
+            {
+              "name": "string",
+              "type": "string",
+              "description": "要编码的字符串"
+            }
+          ],
+          "returns": "string"
+        },
+        {
+          "name": "decodeURL",
+          "signature": "decodeURL(string)",
+          "description": "URL 解码",
+          "parameters": [
+            {
+              "name": "string",
+              "type": "string",
+              "description": "要解码的字符串"
+            }
+          ],
+          "returns": "string"
+        },
+        {
+          "name": "parseURL",
+          "signature": "parseURL(url)",
+          "description": "解析 URL 组件",
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "description": "要解析的 URL"
+            }
+          ],
+          "returns": "{ scheme: string, host: string, path: string, query: string, params: object }"
+        },
+        {
+          "name": "buildURL",
+          "signature": "buildURL(baseURL, params?)",
+          "description": "构建带参数的 URL",
+          "parameters": [
+            {
+              "name": "baseURL",
+              "type": "string",
+              "description": "基础 URL"
+            },
+            {
+              "name": "params",
+              "type": "object",
+              "optional": true,
+              "description": "查询参数"
+            }
+          ],
+          "returns": "string"
+        },
+        {
+          "name": "ping",
+          "signature": "ping(host)",
+          "description": "Ping 主机",
+          "parameters": [
+            {
+              "name": "host",
+              "type": "string",
+              "description": "主机名或 IP"
+            }
+          ],
+          "returns": "Promise<{ latency: number, success: boolean }>"
+        },
+        {
+          "name": "download",
+          "signature": "download(url, filename?)",
+          "description": "下载文件",
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "description": "下载地址"
+            },
+            {
+              "name": "filename",
+              "type": "string",
+              "optional": true,
+              "description": "保存文件名"
+            }
+          ],
+          "returns": "Promise<{ path: string }>"
+        },
+        {
+          "name": "getAirplaneMode",
+          "signature": "getAirplaneMode()",
+          "description": "获取飞行模式状态",
+          "returns": "boolean"
+        },
+        {
+          "name": "setAirplaneMode",
+          "signature": "setAirplaneMode(enabled)",
+          "description": "设置飞行模式",
+          "parameters": [
+            {
+              "name": "enabled",
+              "type": "boolean",
+              "description": "是否开启"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "listVPNs",
+          "signature": "listVPNs()",
+          "description": "列出 VPN 配置",
+          "returns": "[{ name: string, active: boolean }]"
+        },
+        {
+          "name": "connectVPN",
+          "signature": "connectVPN(name?)",
+          "description": "连接 VPN",
+          "parameters": [
+            {
+              "name": "name",
+              "type": "string",
+              "optional": true,
+              "description": "VPN 名称，默认第一个"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "disconnectVPN",
+          "signature": "disconnectVPN()",
+          "description": "断开 VPN",
+          "returns": "boolean"
+        },
+        {
+          "name": "getVPNStatus",
+          "signature": "getVPNStatus()",
+          "description": "获取 VPN 状态",
+          "returns": "{ connected: boolean, name?: string }"
+        },
+        {
+          "name": "getWiFiEnabled",
+          "signature": "getWiFiEnabled()",
+          "description": "获取 WiFi 开关状态",
+          "returns": "boolean"
+        },
+        {
+          "name": "setWiFi",
+          "signature": "setWiFi(enabled)",
+          "description": "设置 WiFi 开关",
+          "parameters": [
+            {
+              "name": "enabled",
+              "type": "boolean",
+              "description": "是否开启"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "openSettings",
+          "signature": "openSettings(section?)",
+          "description": "打开系统设置",
+          "parameters": [
+            {
+              "name": "section",
+              "type": "string",
+              "optional": true,
+              "description": "设置页面（如 'WIFI'）"
+            }
+          ],
+          "returns": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "app",
+      "description": "应用操作",
+      "icon": "app",
+      "color": "blue",
+      "methods": [
+        {
+          "name": "version",
+          "signature": "version()",
+          "description": "获取应用版本",
+          "returns": "string"
+        },
+        {
+          "name": "open",
+          "signature": "open(url)",
+          "description": "打开 URL/Scheme",
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "description": "要打开的 URL"
+            }
+          ],
+          "returns": "Promise<boolean>"
+        },
+        {
+          "name": "canOpen",
+          "signature": "canOpen(url)",
+          "description": "检查是否能打开",
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "description": "要检查的 URL"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "vibrate",
+          "signature": "vibrate()",
+          "description": "震动反馈",
+          "returns": "void"
+        },
+        {
+          "name": "getLogs",
+          "signature": "getLogs(limit?)",
+          "description": "获取应用日志",
+          "parameters": [
+            {
+              "name": "limit",
+              "type": "number",
+              "optional": true,
+              "description": "返回的日志条数"
+            }
+          ],
+          "returns": "[LogMessage]"
+        },
+        {
+          "name": "exportLogs",
+          "signature": "exportLogs()",
+          "description": "导出日志为字符串",
+          "returns": "string"
+        },
+        {
+          "name": "getCrashReports",
+          "signature": "getCrashReports()",
+          "description": "获取所有崩溃报告",
+          "returns": "[CrashReport]"
+        },
+        {
+          "name": "getLastCrash",
+          "signature": "getLastCrash()",
+          "description": "获取最近一次崩溃报告",
+          "returns": "CrashReport | null"
+        },
+        {
+          "name": "clearLogs",
+          "signature": "clearLogs()",
+          "description": "清除所有日志",
+          "returns": "void"
+        }
+      ]
+    },
+    {
+      "name": "ui",
+      "description": "UI 交互",
+      "icon": "rectangle.3.group",
+      "color": "teal",
+      "methods": [
+        {
+          "name": "alert",
+          "signature": "alert(title, message?, buttonTitle?)",
+          "description": "显示提示框",
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "description": "标题"
+            },
+            {
+              "name": "message",
+              "type": "string",
+              "optional": true,
+              "description": "内容"
+            },
+            {
+              "name": "buttonTitle",
+              "type": "string",
+              "optional": true,
+              "description": "按钮文字"
+            }
+          ],
+          "returns": "Promise<void>"
+        },
+        {
+          "name": "toast",
+          "signature": "toast(message, duration?)",
+          "description": "显示 Toast 提示",
+          "parameters": [
+            {
+              "name": "message",
+              "type": "string",
+              "description": "提示内容"
+            },
+            {
+              "name": "duration",
+              "type": "number",
+              "optional": true,
+              "description": "持续时间(秒)"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "confirm",
+          "signature": "confirm(title, message?, confirmTitle?, cancelTitle?)",
+          "description": "显示确认对话框",
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "description": "标题"
+            },
+            {
+              "name": "message",
+              "type": "string",
+              "optional": true,
+              "description": "内容"
+            },
+            {
+              "name": "confirmTitle",
+              "type": "string",
+              "optional": true,
+              "description": "确认按钮文字"
+            },
+            {
+              "name": "cancelTitle",
+              "type": "string",
+              "optional": true,
+              "description": "取消按钮文字"
+            }
+          ],
+          "returns": "Promise<boolean>"
+        },
+        {
+          "name": "prompt",
+          "signature": "prompt(title, message?, defaultValue?, placeholder?)",
+          "description": "显示输入对话框",
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "description": "标题"
+            },
+            {
+              "name": "message",
+              "type": "string",
+              "optional": true,
+              "description": "内容"
+            },
+            {
+              "name": "defaultValue",
+              "type": "string",
+              "optional": true,
+              "description": "默认值"
+            },
+            {
+              "name": "placeholder",
+              "type": "string",
+              "optional": true,
+              "description": "占位符"
+            }
+          ],
+          "returns": "Promise<string | null>"
+        },
+        {
+          "name": "actionSheet",
+          "signature": "actionSheet(title, message?, actions)",
+          "description": "显示操作表单",
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "description": "标题"
+            },
+            {
+              "name": "message",
+              "type": "string",
+              "optional": true,
+              "description": "内容"
+            },
+            {
+              "name": "actions",
+              "type": "string[]",
+              "description": "选项列表"
+            }
+          ],
+          "returns": "Promise<number>"
+        },
+        {
+          "name": "showLoading",
+          "signature": "showLoading(message?)",
+          "description": "显示加载指示器",
+          "parameters": [
+            {
+              "name": "message",
+              "type": "string",
+              "optional": true,
+              "description": "加载提示"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "hideLoading",
+          "signature": "hideLoading()",
+          "description": "隐藏加载指示器",
+          "returns": "void"
+        }
+      ]
+    },
+    {
+      "name": "haptic",
+      "description": "触觉反馈",
+      "icon": "waveform.path",
+      "color": "purple",
+      "methods": [
+        {
+          "name": "impact",
+          "signature": "impact(style?)",
+          "description": "触觉冲击反馈",
+          "parameters": [
+            {
+              "name": "style",
+              "type": "string",
+              "optional": true,
+              "description": "'light' | 'medium' | 'heavy' | 'soft' | 'rigid'"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "notification",
+          "signature": "notification(type)",
+          "description": "通知触觉反馈",
+          "parameters": [
+            {
+              "name": "type",
+              "type": "string",
+              "description": "'success' | 'warning' | 'error'"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "selection",
+          "signature": "selection()",
+          "description": "选择触觉反馈",
+          "returns": "void"
+        },
+        {
+          "name": "vibrate",
+          "signature": "vibrate()",
+          "description": "设备振动",
+          "returns": "void"
+        },
+        {
+          "name": "light",
+          "signature": "light()",
+          "description": "轻度冲击",
+          "returns": "void"
+        },
+        {
+          "name": "medium",
+          "signature": "medium()",
+          "description": "中度冲击",
+          "returns": "void"
+        },
+        {
+          "name": "heavy",
+          "signature": "heavy()",
+          "description": "重度冲击",
+          "returns": "void"
+        },
+        {
+          "name": "success",
+          "signature": "success()",
+          "description": "成功反馈",
+          "returns": "void"
+        },
+        {
+          "name": "warning",
+          "signature": "warning()",
+          "description": "警告反馈",
+          "returns": "void"
+        },
+        {
+          "name": "error",
+          "signature": "error()",
+          "description": "错误反馈",
+          "returns": "void"
+        }
+      ]
+    },
+    {
+      "name": "display",
+      "description": "显示控制",
+      "icon": "sun.max",
+      "color": "yellow",
+      "methods": [
+        {
+          "name": "getBrightness",
+          "signature": "getBrightness()",
+          "description": "获取屏幕亮度",
+          "returns": "number"
+        },
+        {
+          "name": "setBrightness",
+          "signature": "setBrightness(value)",
+          "description": "设置屏幕亮度",
+          "parameters": [
+            {
+              "name": "value",
+              "type": "number",
+              "description": "亮度值 (0.0 - 1.0)"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "increaseBrightness",
+          "signature": "increaseBrightness(amount?)",
+          "description": "增加亮度",
+          "parameters": [
+            {
+              "name": "amount",
+              "type": "number",
+              "optional": true,
+              "description": "增加量 (默认 0.1)"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "decreaseBrightness",
+          "signature": "decreaseBrightness(amount?)",
+          "description": "降低亮度",
+          "parameters": [
+            {
+              "name": "amount",
+              "type": "number",
+              "optional": true,
+              "description": "减少量 (默认 0.1)"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "getScreenInfo",
+          "signature": "getScreenInfo()",
+          "description": "获取屏幕信息",
+          "returns": "{ width: number, height: number, scale: number }"
+        },
+        {
+          "name": "getOrientation",
+          "signature": "getOrientation()",
+          "description": "获取屏幕方向",
+          "returns": "'portrait' | 'landscape'"
+        },
+        {
+          "name": "isLowPowerModeEnabled",
+          "signature": "isLowPowerModeEnabled()",
+          "description": "低电量模式是否开启",
+          "returns": "boolean"
+        },
+        {
+          "name": "setLowPowerMode",
+          "signature": "setLowPowerMode(enabled)",
+          "description": "设置低电量模式",
+          "parameters": [
+            {
+              "name": "enabled",
+              "type": "boolean",
+              "description": "是否开启"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "getNightShiftStatus",
+          "signature": "getNightShiftStatus()",
+          "description": "获取夜览状态",
+          "returns": "boolean"
+        },
+        {
+          "name": "setNightShift",
+          "signature": "setNightShift(enabled)",
+          "description": "设置夜览",
+          "parameters": [
+            {
+              "name": "enabled",
+              "type": "boolean",
+              "description": "是否开启"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "getTrueToneStatus",
+          "signature": "getTrueToneStatus()",
+          "description": "获取原彩显示状态",
+          "returns": "boolean"
+        },
+        {
+          "name": "setTrueTone",
+          "signature": "setTrueTone(enabled)",
+          "description": "设置原彩显示",
+          "parameters": [
+            {
+              "name": "enabled",
+              "type": "boolean",
+              "description": "是否开启"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "isAutoBrightnessEnabled",
+          "signature": "isAutoBrightnessEnabled()",
+          "description": "自动亮度是否开启",
+          "returns": "boolean"
+        },
+        {
+          "name": "setAutoBrightness",
+          "signature": "setAutoBrightness(enabled)",
+          "description": "设置自动亮度",
+          "parameters": [
+            {
+              "name": "enabled",
+              "type": "boolean",
+              "description": "是否开启"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "openSettings",
+          "signature": "openSettings()",
+          "description": "打开显示设置",
+          "returns": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "util",
+      "description": "工具函数",
+      "icon": "wrench.and.screwdriver",
+      "color": "gray",
+      "methods": [
+        {
+          "name": "uuid",
+          "signature": "uuid()",
+          "description": "生成 UUID",
+          "returns": "string"
+        },
+        {
+          "name": "md5",
+          "signature": "md5(string)",
+          "description": "计算 MD5",
+          "parameters": [
+            {
+              "name": "string",
+              "type": "string",
+              "description": "要计算的字符串"
+            }
+          ],
+          "returns": "string"
+        },
+        {
+          "name": "base64Encode",
+          "signature": "base64Encode(string)",
+          "description": "Base64 编码",
+          "parameters": [
+            {
+              "name": "string",
+              "type": "string",
+              "description": "要编码的字符串"
+            }
+          ],
+          "returns": "string"
+        },
+        {
+          "name": "base64Decode",
+          "signature": "base64Decode(string)",
+          "description": "Base64 解码",
+          "parameters": [
+            {
+              "name": "string",
+              "type": "string",
+              "description": "要解码的字符串"
+            }
+          ],
+          "returns": "string"
+        },
+        {
+          "name": "formatDate",
+          "signature": "formatDate(date, format)",
+          "description": "格式化日期",
+          "parameters": [
+            {
+              "name": "date",
+              "type": "Date",
+              "description": "日期对象"
+            },
+            {
+              "name": "format",
+              "type": "string",
+              "description": "格式字符串 (如 'yyyy-MM-dd')"
+            }
+          ],
+          "returns": "string"
+        }
+      ]
+    },
+    {
+      "name": "location",
+      "description": "定位服务",
+      "icon": "location",
+      "color": "red",
+      "methods": [
+        {
+          "name": "requestAccess",
+          "signature": "requestAccess()",
+          "description": "请求定位权限",
+          "returns": "void"
+        },
+        {
+          "name": "getAccessStatus",
+          "signature": "getAccessStatus()",
+          "description": "获取权限状态",
+          "returns": "'authorized' | 'denied' | 'restricted' | 'notDetermined' | 'unknown'"
+        },
+        {
+          "name": "isAuthorized",
+          "signature": "isAuthorized()",
+          "description": "检查是否已授权",
+          "returns": "boolean"
+        },
+        {
+          "name": "getCurrent",
+          "signature": "getCurrent()",
+          "description": "获取当前位置",
+          "returns": "Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, timestamp: number }>"
+        },
+        {
+          "name": "current",
+          "signature": "current()",
+          "description": "获取当前位置(别名)",
+          "returns": "Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, timestamp: number }>"
+        },
+        {
+          "name": "distance",
+          "signature": "distance(lat1, lng1, lat2, lng2)",
+          "description": "计算两点距离",
+          "parameters": [
+            {
+              "name": "lat1",
+              "type": "number",
+              "description": "点1纬度"
+            },
+            {
+              "name": "lng1",
+              "type": "number",
+              "description": "点1经度"
+            },
+            {
+              "name": "lat2",
+              "type": "number",
+              "description": "点2纬度"
+            },
+            {
+              "name": "lng2",
+              "type": "number",
+              "description": "点2经度"
+            }
+          ],
+          "returns": "number"
+        },
+        {
+          "name": "geocode",
+          "signature": "geocode(address)",
+          "description": "地址转坐标",
+          "parameters": [
+            {
+              "name": "address",
+              "type": "string",
+              "description": "地址字符串"
+            }
+          ],
+          "returns": "Promise<[{ lat: number, lng: number, name: string }]>"
+        },
+        {
+          "name": "reverseGeocode",
+          "signature": "reverseGeocode(lat, lng)",
+          "description": "坐标转地址",
+          "parameters": [
+            {
+              "name": "lat",
+              "type": "number",
+              "description": "纬度"
+            },
+            {
+              "name": "lng",
+              "type": "number",
+              "description": "经度"
+            }
+          ],
+          "returns": "Promise<[{ name: string, country: string, locality: string, administrativeArea: string }]>"
+        },
+        {
+          "name": "isLocationServicesEnabled",
+          "signature": "isLocationServicesEnabled()",
+          "description": "定位服务是否开启",
+          "returns": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "weather",
+      "description": "天气查询",
+      "icon": "cloud.sun",
+      "color": "teal",
+      "methods": [
+        {
+          "name": "current",
+          "signature": "current(city)",
+          "description": "获取当前天气",
+          "parameters": [
+            {
+              "name": "city",
+              "type": "string",
+              "description": "城市名"
+            }
+          ],
+          "returns": "Promise<{ temp: number, condition: string, text: string }>"
+        },
+        {
+          "name": "forecast",
+          "signature": "forecast(city, days)",
+          "description": "获取天气预报",
+          "parameters": [
+            {
+              "name": "city",
+              "type": "string",
+              "description": "城市名"
+            },
+            {
+              "name": "days",
+              "type": "number",
+              "description": "天数"
+            }
+          ],
+          "returns": "Promise<[{ date: string, high: number, low: number, condition: string }]>"
+        },
+        {
+          "name": "byLocation",
+          "signature": "byLocation(lat, lng)",
+          "description": "根据经纬度获取天气",
+          "parameters": [
+            {
+              "name": "lat",
+              "type": "number",
+              "description": "纬度"
+            },
+            {
+              "name": "lng",
+              "type": "number",
+              "description": "经度"
+            }
+          ],
+          "returns": "Promise<{ temp: number, condition: string, text: string }>"
+        }
+      ]
+    },
+    {
+      "name": "health",
+      "description": "健康数据(HealthKit)",
+      "icon": "heart.fill",
+      "color": "red",
+      "methods": [
+        {
+          "name": "isAvailable",
+          "signature": "isAvailable()",
+          "description": "检查 HealthKit 是否可用",
+          "returns": "boolean"
+        },
+        {
+          "name": "requestAccess",
+          "signature": "requestAccess(types)",
+          "description": "请求健康数据权限",
+          "parameters": [
+            {
+              "name": "types",
+              "type": "string[]",
+              "description": "权限类型列表 ('stepCount', 'heartRate', 'sleepAnalysis', 'activeEnergyBurned', 'distanceWalkingRunning', 'bodyMass', 'height')"
+            }
+          ],
+          "returns": "Promise<boolean>"
+        },
+        {
+          "name": "getAuthorizationStatus",
+          "signature": "getAuthorizationStatus(type)",
+          "description": "获取授权状态",
+          "parameters": [
+            {
+              "name": "type",
+              "type": "string",
+              "description": "权限类型"
+            }
+          ],
+          "returns": "'authorized' | 'denied' | 'notDetermined'"
+        },
+        {
+          "name": "getTodaySteps",
+          "signature": "getTodaySteps()",
+          "description": "获取今日步数",
+          "returns": "Promise<number>"
+        },
+        {
+          "name": "getSteps",
+          "signature": "getSteps(startTimestamp, endTimestamp)",
+          "description": "获取指定日期步数",
+          "parameters": [
+            {
+              "name": "startTimestamp",
+              "type": "number",
+              "description": "开始时间戳"
+            },
+            {
+              "name": "endTimestamp",
+              "type": "number",
+              "description": "结束时间戳"
+            }
+          ],
+          "returns": "Promise<number>"
+        },
+        {
+          "name": "getLatestHeartRate",
+          "signature": "getLatestHeartRate()",
+          "description": "获取最新心率",
+          "returns": "Promise<{ value: number, date: number }>"
+        },
+        {
+          "name": "getHeartRateHistory",
+          "signature": "getHeartRateHistory(startTimestamp, endTimestamp, limit)",
+          "description": "获取心率历史",
+          "parameters": [
+            {
+              "name": "startTimestamp",
+              "type": "number",
+              "description": "开始时间戳"
+            },
+            {
+              "name": "endTimestamp",
+              "type": "number",
+              "description": "结束时间戳"
+            },
+            {
+              "name": "limit",
+              "type": "number",
+              "optional": true,
+              "description": "限制条数"
+            }
+          ],
+          "returns": "Promise<[{ value: number, date: number }]>"
+        },
+        {
+          "name": "getLatestSleep",
+          "signature": "getLatestSleep()",
+          "description": "获取最近睡眠",
+          "returns": "Promise<{ startDate: number, endDate: number, value: string }>"
+        },
+        {
+          "name": "getSleepHistory",
+          "signature": "getSleepHistory(days)",
+          "description": "获取睡眠历史",
+          "parameters": [
+            {
+              "name": "days",
+              "type": "number",
+              "description": "天数"
+            }
+          ],
+          "returns": "Promise<[{ startDate: number, endDate: number, value: string }]>"
+        },
+        {
+          "name": "getTodayActiveEnergy",
+          "signature": "getTodayActiveEnergy()",
+          "description": "获取今日活动能量",
+          "returns": "Promise<number>"
+        },
+        {
+          "name": "getTodayDistance",
+          "signature": "getTodayDistance()",
+          "description": "获取今日行走距离",
+          "returns": "Promise<number>"
+        },
+        {
+          "name": "getLatestWeight",
+          "signature": "getLatestWeight()",
+          "description": "获取最新体重",
+          "returns": "Promise<{ value: number, date: number }>"
+        },
+        {
+          "name": "getHeight",
+          "signature": "getHeight()",
+          "description": "获取身高",
+          "returns": "Promise<{ value: number, date: number }>"
+        },
+        {
+          "name": "getTodaySummary",
+          "signature": "getTodaySummary()",
+          "description": "获取今日健康摘要",
+          "returns": "Promise<{ steps: number, activeEnergy: number, distance: number }>"
+        },
+        {
+          "name": "getSupportedTypes",
+          "signature": "getSupportedTypes()",
+          "description": "获取支持的数据类型",
+          "returns": "string[]"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "description": "系统日历",
+      "icon": "calendar",
+      "color": "red",
+      "methods": [
+        {
+          "name": "isAuthorized",
+          "signature": "isAuthorized()",
+          "description": "检查权限状态",
+          "returns": "boolean"
+        },
+        {
+          "name": "requestAccess",
+          "signature": "requestAccess()",
+          "description": "请求日历权限",
+          "returns": "Promise<boolean>"
+        },
+        {
+          "name": "getCalendars",
+          "signature": "getCalendars()",
+          "description": "获取所有日历",
+          "returns": "Promise<[{ id: string, title: string, color: string }]>"
+        },
+        {
+          "name": "getToday",
+          "signature": "getToday()",
+          "description": "获取今日事件",
+          "returns": "Promise<[{ id: string, title: string, startDate: number, endDate: number, calendar: string }]>"
+        },
+        {
+          "name": "getEvents",
+          "signature": "getEvents(start, end, calendarId?)",
+          "description": "获取日历事件",
+          "parameters": [
+            {
+              "name": "start",
+              "type": "number",
+              "description": "开始时间戳"
+            },
+            {
+              "name": "end",
+              "type": "number",
+              "description": "结束时间戳"
+            },
+            {
+              "name": "calendarId",
+              "type": "string",
+              "optional": true,
+              "description": "日历 ID"
+            }
+          ],
+          "returns": "Promise<[{ id: string, title: string, startDate: number, endDate: number, calendar: string }]>"
+        },
+        {
+          "name": "create",
+          "signature": "create(title, start, end, options?)",
+          "description": "创建日历事件",
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "description": "标题"
+            },
+            {
+              "name": "start",
+              "type": "number",
+              "description": "开始时间戳"
+            },
+            {
+              "name": "end",
+              "type": "number",
+              "description": "结束时间戳"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "optional": true,
+              "description": "选项 { calendarId, notes, location, url, allDay }"
+            }
+          ],
+          "returns": "Promise<string>"
+        },
+        {
+          "name": "delete",
+          "signature": "delete(id)",
+          "description": "删除日历事件",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "description": "事件 ID"
+            }
+          ],
+          "returns": "Promise<boolean>"
+        }
+      ]
+    },
+    {
+      "name": "reminder",
+      "description": "提醒事项",
+      "icon": "checklist",
+      "color": "orange",
+      "methods": [
+        {
+          "name": "isAuthorized",
+          "signature": "isAuthorized()",
+          "description": "检查权限状态",
+          "returns": "boolean"
+        },
+        {
+          "name": "requestAccess",
+          "signature": "requestAccess()",
+          "description": "请求提醒事项权限",
+          "returns": "Promise<boolean>"
+        },
+        {
+          "name": "getLists",
+          "signature": "getLists()",
+          "description": "获取所有提醒列表",
+          "returns": "Promise<[{ id: string, title: string, color: string }]>"
+        },
+        {
+          "name": "getAll",
+          "signature": "getAll(listId?)",
+          "description": "获取所有提醒事项",
+          "parameters": [
+            {
+              "name": "listId",
+              "type": "string",
+              "optional": true,
+              "description": "列表 ID"
+            }
+          ],
+          "returns": "Promise<[{ id: string, title: string, isCompleted: boolean, listId: string, dueDate?: number }]>"
+        },
+        {
+          "name": "create",
+          "signature": "create(title, options?)",
+          "description": "创建提醒事项",
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "description": "标题"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "optional": true,
+              "description": "选项 { listId, notes, dueDate, priority }"
+            }
+          ],
+          "returns": "Promise<string>"
+        },
+        {
+          "name": "complete",
+          "signature": "complete(id)",
+          "description": "标记为已完成",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "description": "提醒事项 ID"
+            }
+          ],
+          "returns": "Promise<boolean>"
+        },
+        {
+          "name": "delete",
+          "signature": "delete(id)",
+          "description": "删除提醒事项",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "description": "提醒事项 ID"
+            }
+          ],
+          "returns": "Promise<boolean>"
+        }
+      ]
+    },
+    {
+      "name": "contacts",
+      "description": "通讯录操作",
+      "icon": "person.crop.circle",
+      "color": "blue",
+      "methods": [
+        {
+          "name": "requestAccess",
+          "signature": "requestAccess()",
+          "description": "请求通讯录权限",
+          "returns": "{ granted: boolean, error?: string }"
+        },
+        {
+          "name": "getAccessStatus",
+          "signature": "getAccessStatus()",
+          "description": "获取权限状态",
+          "returns": "'authorized' | 'denied' | 'restricted' | 'notDetermined'"
+        },
+        {
+          "name": "isAuthorized",
+          "signature": "isAuthorized()",
+          "description": "检查是否已授权",
+          "returns": "boolean"
+        },
+        {
+          "name": "getAll",
+          "signature": "getAll(offset?, limit?)",
+          "description": "获取所有联系人",
+          "parameters": [
+            {
+              "name": "offset",
+              "type": "number",
+              "optional": true,
+              "description": "跳过的记录数，默认 0"
+            },
+            {
+              "name": "limit",
+              "type": "number",
+              "optional": true,
+              "description": "返回的最大数量，默认全部"
+            }
+          ],
+          "returns": "[Contact]"
+        },
+        {
+          "name": "getCount",
+          "signature": "getCount()",
+          "description": "获取联系人总数",
+          "returns": "number"
+        },
+        {
+          "name": "search",
+          "signature": "search(query)",
+          "description": "按名字搜索联系人",
+          "parameters": [
+            {
+              "name": "query",
+              "type": "string",
+              "description": "搜索关键词（匹配姓名）"
+            }
+          ],
+          "returns": "[Contact]"
+        },
+        {
+          "name": "searchByPhone",
+          "signature": "searchByPhone(phone)",
+          "description": "按电话搜索联系人",
+          "parameters": [
+            {
+              "name": "phone",
+              "type": "string",
+              "description": "电话号码（支持模糊匹配）"
+            }
+          ],
+          "returns": "[Contact]"
+        },
+        {
+          "name": "searchByEmail",
+          "signature": "searchByEmail(email)",
+          "description": "按邮箱搜索联系人",
+          "parameters": [
+            {
+              "name": "email",
+              "type": "string",
+              "description": "邮箱地址（支持模糊匹配）"
+            }
+          ],
+          "returns": "[Contact]"
+        },
+        {
+          "name": "getById",
+          "signature": "getById(id)",
+          "description": "根据 ID 获取联系人",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "description": "联系人唯一标识符"
+            }
+          ],
+          "returns": "Contact | null"
+        },
+        {
+          "name": "create",
+          "signature": "create(data)",
+          "description": "创建联系人",
+          "parameters": [
+            {
+              "name": "data",
+              "type": "object",
+              "description": "联系人数据 { givenName, familyName, phoneNumbers?, emailAddresses?, ... }"
+            }
+          ],
+          "returns": "{ success: boolean, id?: string, error?: string }"
+        },
+        {
+          "name": "update",
+          "signature": "update(id, data)",
+          "description": "更新联系人",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "description": "联系人唯一标识符"
+            },
+            {
+              "name": "data",
+              "type": "object",
+              "description": "要更新的字段"
+            }
+          ],
+          "returns": "{ success: boolean, error?: string }"
+        },
+        {
+          "name": "delete",
+          "signature": "delete(id)",
+          "description": "删除联系人",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "description": "联系人唯一标识符"
+            }
+          ],
+          "returns": "{ success: boolean, error?: string }"
+        },
+        {
+          "name": "getGroups",
+          "signature": "getGroups()",
+          "description": "获取所有分组",
+          "returns": "[{ id: string, name: string }]"
+        },
+        {
+          "name": "getContactsInGroup",
+          "signature": "getContactsInGroup(groupId)",
+          "description": "获取分组内联系人",
+          "parameters": [
+            {
+              "name": "groupId",
+              "type": "string",
+              "description": "分组唯一标识符"
+            }
+          ],
+          "returns": "[Contact]"
+        }
+      ]
+    },
+    {
+      "name": "notification",
+      "description": "本地通知",
+      "icon": "bell",
+      "color": "pink",
+      "methods": [
+        {
+          "name": "send",
+          "signature": "send(title, body, options?)",
+          "description": "发送通知",
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "description": "通知标题"
+            },
+            {
+              "name": "body",
+              "type": "string",
+              "description": "通知内容"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "optional": true,
+              "description": "选项 { url, userInfo, sound, badge }"
+            }
+          ],
+          "returns": "Promise<string>"
+        },
+        {
+          "name": "cancel",
+          "signature": "cancel(id)",
+          "description": "取消通知",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "description": "通知 ID"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "cancelAll",
+          "signature": "cancelAll()",
+          "description": "取消所有通知",
+          "returns": "void"
+        },
+        {
+          "name": "getPending",
+          "signature": "getPending()",
+          "description": "获取待发送通知",
+          "returns": "Promise<[{ id: string, title: string, body: string, date: number }]>"
+        },
+        {
+          "name": "getDelivered",
+          "signature": "getDelivered()",
+          "description": "获取已发送通知",
+          "returns": "Promise<[{ id: string, title: string, body: string, date: number }]>"
+        },
+        {
+          "name": "requestPermission",
+          "signature": "requestPermission()",
+          "description": "请求通知权限",
+          "returns": "Promise<boolean>"
+        },
+        {
+          "name": "getPermissionStatus",
+          "signature": "getPermissionStatus()",
+          "description": "获取权限状态",
+          "returns": "Promise<'authorized' | 'denied' | 'notDetermined' | 'provisional' | 'ephemeral' | 'unknown'>"
+        },
+        {
+          "name": "setBadge",
+          "signature": "setBadge(count)",
+          "description": "设置角标数字",
+          "parameters": [
+            {
+              "name": "count",
+              "type": "number",
+              "description": "角标数"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "getBadge",
+          "signature": "getBadge()",
+          "description": "获取角标数字",
+          "returns": "Promise<number>"
+        },
+        {
+          "name": "schedule",
+          "signature": "schedule(title, body, date, options?)",
+          "description": "定时通知",
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "description": "通知标题"
+            },
+            {
+              "name": "body",
+              "type": "string",
+              "description": "通知内容"
+            },
+            {
+              "name": "date",
+              "type": "number",
+              "description": "触发时间戳"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "optional": true,
+              "description": "选项 { url, userInfo, sound, badge, repeat: 'daily'|'weekly'|'monthly' }"
+            }
+          ],
+          "returns": "Promise<string>"
+        }
+      ]
+    },
+    {
+      "name": "alarm",
+      "description": "闹钟和定时提醒",
+      "icon": "alarm",
+      "color": "orange",
+      "methods": [
+        {
+          "name": "requestAccess",
+          "signature": "requestAccess()",
+          "description": "请求通知权限",
+          "returns": "Promise<boolean>"
+        },
+        {
+          "name": "getAccessStatus",
+          "signature": "getAccessStatus()",
+          "description": "获取权限状态",
+          "returns": "Promise<'authorized' | 'denied' | 'notDetermined'>"
+        },
+        {
+          "name": "createOnce",
+          "signature": "createOnce(timestamp, title, options?)",
+          "description": "创建一次性闹钟",
+          "parameters": [
+            {
+              "name": "timestamp",
+              "type": "number",
+              "description": "触发时间戳"
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "description": "标题"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "optional": true,
+              "description": "选项 { sound }"
+            }
+          ],
+          "returns": "Promise<string>"
+        },
+        {
+          "name": "createDaily",
+          "signature": "createDaily(hour, minute, title, options?)",
+          "description": "创建每日重复闹钟",
+          "parameters": [
+            {
+              "name": "hour",
+              "type": "number",
+              "description": "小时 (0-23)"
+            },
+            {
+              "name": "minute",
+              "type": "number",
+              "description": "分钟 (0-59)"
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "description": "标题"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "optional": true,
+              "description": "选项 { sound }"
+            }
+          ],
+          "returns": "Promise<string>"
+        },
+        {
+          "name": "createWeekly",
+          "signature": "createWeekly(weekday, hour, minute, title, options?)",
+          "description": "创建每周重复闹钟",
+          "parameters": [
+            {
+              "name": "weekday",
+              "type": "number",
+              "description": "周几 (1-7, 周日为1)"
+            },
+            {
+              "name": "hour",
+              "type": "number",
+              "description": "小时 (0-23)"
+            },
+            {
+              "name": "minute",
+              "type": "number",
+              "description": "分钟 (0-59)"
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "description": "标题"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "optional": true,
+              "description": "选项 { sound }"
+            }
+          ],
+          "returns": "Promise<string>"
+        },
+        {
+          "name": "createCountdown",
+          "signature": "createCountdown(seconds, title, options?)",
+          "description": "创建倒计时提醒",
+          "parameters": [
+            {
+              "name": "seconds",
+              "type": "number",
+              "description": "秒数"
+            },
+            {
+              "name": "title",
+              "type": "string",
+              "description": "标题"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "optional": true,
+              "description": "选项 { sound }"
+            }
+          ],
+          "returns": "Promise<string>"
+        },
+        {
+          "name": "getPending",
+          "signature": "getPending()",
+          "description": "获取待触发的闹钟",
+          "returns": "Promise<[{ id: string, title: string, date: number, repeat?: string }]>"
+        },
+        {
+          "name": "getCount",
+          "signature": "getCount()",
+          "description": "获取闹钟数量",
+          "returns": "Promise<number>"
+        },
+        {
+          "name": "cancel",
+          "signature": "cancel(id)",
+          "description": "取消指定闹钟",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "description": "闹钟 ID"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "cancelAll",
+          "signature": "cancelAll()",
+          "description": "取消所有闹钟",
+          "returns": "void"
+        },
+        {
+          "name": "openClockApp",
+          "signature": "openClockApp()",
+          "description": "打开系统时钟",
+          "returns": "void"
+        },
+        {
+          "name": "openTimer",
+          "signature": "openTimer()",
+          "description": "打开计时器",
+          "returns": "void"
+        }
+      ]
+    },
+    {
+      "name": "media",
+      "description": "音乐媒体控制",
+      "icon": "music.note",
+      "color": "pink",
+      "methods": [
+        {
+          "name": "play",
+          "signature": "play()",
+          "description": "播放",
+          "returns": "void"
+        },
+        {
+          "name": "pause",
+          "signature": "pause()",
+          "description": "暂停",
+          "returns": "void"
+        },
+        {
+          "name": "stop",
+          "signature": "stop()",
+          "description": "停止",
+          "returns": "void"
+        },
+        {
+          "name": "togglePlayPause",
+          "signature": "togglePlayPause()",
+          "description": "切换播放/暂停",
+          "returns": "void"
+        },
+        {
+          "name": "next",
+          "signature": "next()",
+          "description": "下一首",
+          "returns": "void"
+        },
+        {
+          "name": "previous",
+          "signature": "previous()",
+          "description": "上一首",
+          "returns": "void"
+        },
+        {
+          "name": "skipToBeginning",
+          "signature": "skipToBeginning()",
+          "description": "跳到开头",
+          "returns": "void"
+        },
+        {
+          "name": "getPlaybackState",
+          "signature": "getPlaybackState()",
+          "description": "获取播放状态",
+          "returns": "'playing' | 'paused' | 'stopped'"
+        },
+        {
+          "name": "isPlaying",
+          "signature": "isPlaying()",
+          "description": "是否正在播放",
+          "returns": "boolean"
+        },
+        {
+          "name": "getNowPlaying",
+          "signature": "getNowPlaying()",
+          "description": "获取当前播放信息",
+          "returns": "{ title: string, artist: string, album: string, duration: number, artwork?: string }"
+        },
+        {
+          "name": "getVolume",
+          "signature": "getVolume()",
+          "description": "获取音量",
+          "returns": "number"
+        },
+        {
+          "name": "setVolume",
+          "signature": "setVolume(volume)",
+          "description": "设置音量",
+          "parameters": [
+            {
+              "name": "volume",
+              "type": "number",
+              "description": "音量 (0.0 - 1.0)"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "getRepeatMode",
+          "signature": "getRepeatMode()",
+          "description": "获取重复模式",
+          "returns": "'none' | 'one' | 'all'"
+        },
+        {
+          "name": "setRepeatMode",
+          "signature": "setRepeatMode(mode)",
+          "description": "设置重复模式",
+          "parameters": [
+            {
+              "name": "mode",
+              "type": "string",
+              "description": "'none' | 'one' | 'all'"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "getShuffleMode",
+          "signature": "getShuffleMode()",
+          "description": "获取随机播放模式",
+          "returns": "'off' | 'songs' | 'albums'"
+        },
+        {
+          "name": "setShuffleMode",
+          "signature": "setShuffleMode(mode)",
+          "description": "设置随机播放模式",
+          "parameters": [
+            {
+              "name": "mode",
+              "type": "string",
+              "description": "'off' | 'songs' | 'albums'"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "getCurrentTime",
+          "signature": "getCurrentTime()",
+          "description": "获取当前播放时间",
+          "returns": "number"
+        },
+        {
+          "name": "setCurrentTime",
+          "signature": "setCurrentTime(time)",
+          "description": "设置播放时间",
+          "parameters": [
+            {
+              "name": "time",
+              "type": "number",
+              "description": "时间 (秒)"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "seekForward",
+          "signature": "seekForward(seconds?)",
+          "description": "快进",
+          "parameters": [
+            {
+              "name": "seconds",
+              "type": "number",
+              "optional": true,
+              "description": "秒数 (默认 15)"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "seekBackward",
+          "signature": "seekBackward(seconds?)",
+          "description": "快退",
+          "parameters": [
+            {
+              "name": "seconds",
+              "type": "number",
+              "optional": true,
+              "description": "秒数 (默认 15)"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "requestAccess",
+          "signature": "requestAccess()",
+          "description": "请求音乐库权限",
+          "returns": "Promise<boolean>"
+        },
+        {
+          "name": "getAccessStatus",
+          "signature": "getAccessStatus()",
+          "description": "获取权限状态",
+          "returns": "Promise<'authorized' | 'denied' | 'notDetermined' | 'restricted'>"
+        },
+        {
+          "name": "searchSongs",
+          "signature": "searchSongs(query)",
+          "description": "搜索音乐库",
+          "parameters": [
+            {
+              "name": "query",
+              "type": "string",
+              "description": "搜索关键词"
+            }
+          ],
+          "returns": "Promise<[{ id: string, title: string, artist: string, album: string }]>"
+        },
+        {
+          "name": "playSong",
+          "signature": "playSong(persistentID)",
+          "description": "播放指定歌曲",
+          "parameters": [
+            {
+              "name": "persistentID",
+              "type": "string",
+              "description": "歌曲 ID"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "getAllSongs",
+          "signature": "getAllSongs()",
+          "description": "获取所有歌曲",
+          "returns": "Promise<[{ id: string, title: string, artist: string, album: string }]>"
+        },
+        {
+          "name": "getAlbums",
+          "signature": "getAlbums()",
+          "description": "获取所有专辑",
+          "returns": "Promise<[{ id: string, title: string, artist: string }]>"
+        },
+        {
+          "name": "getArtists",
+          "signature": "getArtists()",
+          "description": "获取所有艺术家",
+          "returns": "Promise<[{ id: string, name: string }]>"
+        },
+        {
+          "name": "getPlaylists",
+          "signature": "getPlaylists()",
+          "description": "获取播放列表",
+          "returns": "Promise<[{ id: string, name: string }]>"
+        },
+        {
+          "name": "playAlbum",
+          "signature": "playAlbum(id)",
+          "description": "播放专辑",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "description": "专辑 ID"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "playArtist",
+          "signature": "playArtist(id)",
+          "description": "播放艺术家",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "description": "艺术家 ID"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "playPlaylist",
+          "signature": "playPlaylist(id)",
+          "description": "播放播放列表",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "description": "播放列表 ID"
+            }
+          ],
+          "returns": "void"
+        }
+      ]
+    },
+    {
+      "name": "mail",
+      "description": "邮件操作",
+      "icon": "envelope",
+      "color": "blue",
+      "methods": [
+        {
+          "name": "canSendMail",
+          "signature": "canSendMail()",
+          "description": "检查是否能发送邮件",
+          "returns": "boolean"
+        },
+        {
+          "name": "getStatus",
+          "signature": "getStatus()",
+          "description": "获取邮件功能状态",
+          "returns": "'available' | 'unavailable'"
+        },
+        {
+          "name": "send",
+          "signature": "send(to, subject, body)",
+          "description": "发送简单邮件",
+          "parameters": [
+            {
+              "name": "to",
+              "type": "string[]",
+              "description": "收件人列表"
+            },
+            {
+              "name": "subject",
+              "type": "string",
+              "description": "主题"
+            },
+            {
+              "name": "body",
+              "type": "string",
+              "description": "正文"
+            }
+          ],
+          "returns": "Promise<boolean>"
+        },
+        {
+          "name": "sendAdvanced",
+          "signature": "sendAdvanced(options)",
+          "description": "发送邮件(完整选项)",
+          "parameters": [
+            {
+              "name": "options",
+              "type": "object",
+              "description": "选项 { to, cc, bcc, subject, body, isHtml, attachments }"
+            }
+          ],
+          "returns": "Promise<boolean>"
+        },
+        {
+          "name": "openMailApp",
+          "signature": "openMailApp()",
+          "description": "打开邮件 App",
+          "returns": "void"
+        },
+        {
+          "name": "openSpecificMailApp",
+          "signature": "openSpecificMailApp(appName)",
+          "description": "打开指定邮件 App",
+          "parameters": [
+            {
+              "name": "appName",
+              "type": "string",
+              "description": "App 名称"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "isValidEmail",
+          "signature": "isValidEmail(email)",
+          "description": "验证邮箱格式",
+          "parameters": [
+            {
+              "name": "email",
+              "type": "string",
+              "description": "邮箱地址"
+            }
+          ],
+          "returns": "boolean"
+        },
+        {
+          "name": "getInstalledMailApps",
+          "signature": "getInstalledMailApps()",
+          "description": "检测已安装的邮件 App",
+          "returns": "string[]"
+        },
+        {
+          "name": "fromTemplate",
+          "signature": "fromTemplate(templateName, variables)",
+          "description": "从模板生成邮件",
+          "parameters": [
+            {
+              "name": "templateName",
+              "type": "string",
+              "description": "模板名称"
+            },
+            {
+              "name": "variables",
+              "type": "object",
+              "description": "变量字典"
+            }
+          ],
+          "returns": "Promise<string>"
+        },
+        {
+          "name": "getTemplates",
+          "signature": "getTemplates()",
+          "description": "获取可用模板列表",
+          "returns": "string[]"
+        }
+      ]
+    },
+    {
+      "name": "sms",
+      "description": "短信操作",
+      "icon": "message",
+      "color": "green",
+      "methods": [
+        {
+          "name": "checkAccess",
+          "signature": "checkAccess()",
+          "description": "检查短信权限",
+          "returns": "boolean"
+        },
+        {
+          "name": "tryAccess",
+          "signature": "tryAccess()",
+          "description": "尝试直接访问短信数据库(调试用)",
+          "returns": "boolean"
+        },
+        {
+          "name": "read",
+          "signature": "read(limit?)",
+          "description": "读取最近的短信",
+          "parameters": [
+            {
+              "name": "limit",
+              "type": "number",
+              "optional": true,
+              "description": "限制条数 (默认 10)"
+            }
+          ],
+          "returns": "[{ id: string, content: string, sender: string, date: number }]"
+        },
+        {
+          "name": "getVerificationCode",
+          "signature": "getVerificationCode(minutes?)",
+          "description": "获取验证码",
+          "parameters": [
+            {
+              "name": "minutes",
+              "type": "number",
+              "optional": true,
+              "description": "查找最近几分钟内的验证码 (默认 5)"
+            }
+          ],
+          "returns": "string | null"
+        },
+        {
+          "name": "search",
+          "signature": "search(keyword)",
+          "description": "搜索短信",
+          "parameters": [
+            {
+              "name": "keyword",
+              "type": "string",
+              "description": "关键词"
+            }
+          ],
+          "returns": "[{ id: string, content: string, sender: string, date: number }]"
+        },
+        {
+          "name": "getByAddress",
+          "signature": "getByAddress(address)",
+          "description": "按号码获取短信",
+          "parameters": [
+            {
+              "name": "address",
+              "type": "string",
+              "description": "发送者号码"
+            }
+          ],
+          "returns": "[{ id: string, content: string, sender: string, date: number }]"
+        },
+        {
+          "name": "getChats",
+          "signature": "getChats()",
+          "description": "获取会话列表",
+          "returns": "[{ id: string, name: string, lastMessage: string, date: number }]"
+        },
+        {
+          "name": "getStatistics",
+          "signature": "getStatistics()",
+          "description": "获取短信统计",
+          "returns": "{ total: number, unread: number, senders: number }"
+        },
+        {
+          "name": "getLatest",
+          "signature": "getLatest()",
+          "description": "获取最新短信",
+          "returns": "{ id: string, content: string, sender: string, date: number } | null"
+        },
+        {
+          "name": "getUnread",
+          "signature": "getUnread()",
+          "description": "获取未读短信",
+          "returns": "[{ id: string, content: string, sender: string, date: number }]"
+        }
+      ]
+    },
+    {
+      "name": "sql",
+      "description": "SQL 数据库查询",
+      "icon": "cylinder.split.1x2",
+      "color": "indigo",
+      "methods": [
+        {
+          "name": "query",
+          "signature": "query(dbPath, sql, params?)",
+          "description": "执行 SELECT 查询并返回结果",
+          "parameters": [
+            {
+              "name": "dbPath",
+              "type": "string",
+              "description": "数据库路径"
+            },
+            {
+              "name": "sql",
+              "type": "string",
+              "description": "SQL 语句"
+            },
+            {
+              "name": "params",
+              "type": "any[]",
+              "optional": true,
+              "description": "参数列表"
+            }
+          ],
+          "returns": "any[]"
+        },
+        {
+          "name": "execute",
+          "signature": "execute(dbPath, sql, params?)",
+          "description": "执行 INSERT/UPDATE/DELETE",
+          "parameters": [
+            {
+              "name": "dbPath",
+              "type": "string",
+              "description": "数据库路径"
+            },
+            {
+              "name": "sql",
+              "type": "string",
+              "description": "SQL 语句"
+            },
+            {
+              "name": "params",
+              "type": "any[]",
+              "optional": true,
+              "description": "参数列表"
+            }
+          ],
+          "returns": "{ changes: number, lastInsertRowId: number }"
+        },
+        {
+          "name": "tables",
+          "signature": "tables(dbPath)",
+          "description": "列出数据库中的所有表",
+          "parameters": [
+            {
+              "name": "dbPath",
+              "type": "string",
+              "description": "数据库路径"
+            }
+          ],
+          "returns": "string[]"
+        },
+        {
+          "name": "schema",
+          "signature": "schema(dbPath, tableName)",
+          "description": "获取表结构",
+          "parameters": [
+            {
+              "name": "dbPath",
+              "type": "string",
+              "description": "数据库路径"
+            },
+            {
+              "name": "tableName",
+              "type": "string",
+              "description": "表名"
+            }
+          ],
+          "returns": "string"
+        }
+      ]
+    },
+    {
+      "name": "shortcuts",
+      "description": "快捷指令操作",
+      "icon": "bolt.square",
+      "color": "indigo",
+      "methods": [
+        {
+          "name": "run",
+          "signature": "run(name)",
+          "description": "运行快捷指令",
+          "parameters": [
+            {
+              "name": "name",
+              "type": "string",
+              "description": "快捷指令名称"
+            }
+          ],
+          "returns": "Promise<string>"
+        },
+        {
+          "name": "runWithText",
+          "signature": "runWithText(name, text)",
+          "description": "运行快捷指令(带文本输入)",
+          "parameters": [
+            {
+              "name": "name",
+              "type": "string",
+              "description": "快捷指令名称"
+            },
+            {
+              "name": "text",
+              "type": "string",
+              "description": "输入文本"
+            }
+          ],
+          "returns": "Promise<string>"
+        },
+        {
+          "name": "runWithClipboard",
+          "signature": "runWithClipboard(name)",
+          "description": "运行快捷指令(剪贴板输入)",
+          "parameters": [
+            {
+              "name": "name",
+              "type": "string",
+              "description": "快捷指令名称"
+            }
+          ],
+          "returns": "Promise<string>"
+        },
+        {
+          "name": "runAdvanced",
+          "signature": "runAdvanced(name, options)",
+          "description": "运行快捷指令(高级选项)",
+          "parameters": [
+            {
+              "name": "name",
+              "type": "string",
+              "description": "快捷指令名称"
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "description": "选项 { input, showOutput }"
+            }
+          ],
+          "returns": "Promise<any>"
+        },
+        {
+          "name": "openApp",
+          "signature": "openApp()",
+          "description": "打开快捷指令 App",
+          "returns": "void"
+        },
+        {
+          "name": "openGallery",
+          "signature": "openGallery()",
+          "description": "打开快捷指令库",
+          "returns": "void"
+        },
+        {
+          "name": "openShortcut",
+          "signature": "openShortcut(name)",
+          "description": "打开指定快捷指令",
+          "parameters": [
+            {
+              "name": "name",
+              "type": "string",
+              "description": "快捷指令名称"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "createNew",
+          "signature": "createNew()",
+          "description": "创建新快捷指令",
+          "returns": "void"
+        },
+        {
+          "name": "importFromUrl",
+          "signature": "importFromUrl(url)",
+          "description": "通过链接导入快捷指令",
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "description": "快捷指令 URL"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "isAvailable",
+          "signature": "isAvailable()",
+          "description": "检查是否安装快捷指令",
+          "returns": "boolean"
+        },
+        {
+          "name": "getCommonShortcuts",
+          "signature": "getCommonShortcuts()",
+          "description": "获取常用快捷指令模板",
+          "returns": "string[]"
+        }
+      ]
+    },
+    {
+      "name": "bluetooth",
+      "description": "蓝牙操作",
+      "icon": "antenna.radiowaves.left.and.right",
+      "color": "blue",
+      "methods": [
+        {
+          "name": "isEnabled",
+          "signature": "isEnabled()",
+          "description": "蓝牙是否开启",
+          "returns": "boolean"
+        },
+        {
+          "name": "getStatus",
+          "signature": "getStatus()",
+          "description": "获取蓝牙状态",
+          "returns": "'poweredOn' | 'poweredOff' | 'unauthorized' | 'unknown'"
+        },
+        {
+          "name": "setEnabled",
+          "signature": "setEnabled(enabled)",
+          "description": "设置蓝牙开关",
+          "parameters": [
+            {
+              "name": "enabled",
+              "type": "boolean",
+              "description": "是否开启"
+            }
+          ],
+          "returns": "void"
+        },
+        {
+          "name": "turnOn",
+          "signature": "turnOn()",
+          "description": "打开蓝牙",
+          "returns": "void"
+        },
+        {
+          "name": "turnOff",
+          "signature": "turnOff()",
+          "description": "关闭蓝牙",
+          "returns": "void"
+        },
+        {
+          "name": "getPairedDevices",
+          "signature": "getPairedDevices()",
+          "description": "获取配对设备",
+          "returns": "Promise<[{ name: string, uuid: string, isConnected: boolean }]>"
+        },
+        {
+          "name": "getConnectedDevices",
+          "signature": "getConnectedDevices()",
+          "description": "获取已连接设备",
+          "returns": "Promise<[{ name: string, uuid: string } মল"
+        },
+        {
+          "name": "connectDevice",
+          "signature": "connectDevice(id)",
+          "description": "连接设备",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "description": "设备 UUID"
+            }
+          ],
+          "returns": "Promise<boolean>"
+        },
+        {
+          "name": "disconnectDevice",
+          "signature": "disconnectDevice(id)",
+          "description": "断开设备",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "description": "设备 UUID"
+            }
+          ],
+          "returns": "Promise<boolean>"
+        },
+        {
+          "name": "startScan",
+          "signature": "startScan()",
+          "description": "开始扫描",
+          "returns": "void"
+        },
+        {
+          "name": "stopScan",
+          "signature": "stopScan()",
+          "description": "停止扫描",
+          "returns": "void"
+        },
+        {
+          "name": "openSettings",
+          "signature": "openSettings()",
+          "description": "打开蓝牙设置",
+          "returns": "void"
+        }
+      ]
+    },
+    {
+      "name": "webview",
+      "description": "网页视图操作",
+      "icon": "safari",
+      "color": "blue",
+      "methods": [
+        {
+          "name": "open",
+          "signature": "open(url)",
+          "description": "打开网页并等待加载",
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "description": "网页 URL"
+            }
+          ],
+          "returns": "Promise<void>"
+        },
+        {
+          "name": "loadHTML",
+          "signature": "loadHTML(html, baseURL?)",
+          "description": "加载 HTML 内容",
+          "parameters": [
+            {
+              "name": "html",
+              "type": "string",
+              "description": "HTML 字符串"
+            },
+            {
+              "name": "baseURL",
+              "type": "string",
+              "optional": true,
+              "description": "基础 URL"
+            }
+          ],
+          "returns": "Promise<void>"
+        },
+        {
+          "name": "evaluate",
+          "signature": "evaluate(script)",
+          "description": "执行页面内 JavaScript",
+          "parameters": [
+            {
+              "name": "script",
+              "type": "string",
+              "description": "JS 代码"
+            }
+          ],
+          "returns": "Promise<any>"
+        },
+        {
+          "name": "getTitle",
+          "signature": "getTitle()",
+          "description": "获取页面标题",
+          "returns": "Promise<string>"
+        },
+        {
+          "name": "getURL",
+          "signature": "getURL()",
+          "description": "获取当前 URL",
+          "returns": "Promise<string>"
+        },
+        {
+          "name": "getHTML",
+          "signature": "getHTML()",
+          "description": "获取页面 HTML 源码",
+          "returns": "Promise<string>"
+        },
+        {
+          "name": "close",
+          "signature": "close()",
+          "description": "关闭网页视图",
+          "returns": "void"
+        },
+        {
+          "name": "isOpen",
+          "signature": "isOpen()",
+          "description": "检查是否已打开",
+          "returns": "boolean"
+        },
+        {
+          "name": "screenshot",
+          "signature": "screenshot()",
+          "description": "截取页面截图",
+          "returns": "Promise<string>"
+        }
+      ]
+    }
+  ]
+}
