@@ -60,7 +60,7 @@ apple-magnifier://install?url=https://github.com/dompling/TrollScript-Release/re
 
 ## JavaScript API
 
-TrollScript 内置丰富的原生模块：
+TrollScript 内置丰富的原生模块，[查看完整 API 文档](API.md)：
 
 ### 基础模块
 
