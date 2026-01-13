@@ -34,6 +34,7 @@ TrollScript provides a powerful JavaScript environment with access to various sy
 - [shortcuts](#shortcuts) - 快捷指令操作
 - [bluetooth](#bluetooth) - 蓝牙操作
 - [webview](#webview) - 网页视图操作
+- [memo](#memo) - 备忘录操作（iCloud 同步）
 
 ---
 
@@ -680,7 +681,7 @@ iCloud 文件操作
 |------|------|-------------|----------|
 | `path` | `string` | 文件或目录路径 | No |
 
-**Returns:** `{ exists: boolean, isDirectory: boolean, size: number }`
+**Returns:** `{ readable: boolean, writable: boolean, exists: boolean, isDirectory: boolean }`
 
 ---
 
@@ -2245,7 +2246,7 @@ Base64 解码
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `title` | `string` | 标题 | No |
-| `options` | `object` | 选项 { listId, notes, dueDate, priority } | Yes |
+| `options` | `object` | 选项 { listId, notes, dueDate, priority, sortOrder, isPinned } | Yes |
 
 **Returns:** `Promise<string>`
 
@@ -2280,6 +2281,125 @@ Base64 解码
 | `id` | `string` | 提醒事项 ID | No |
 
 **Returns:** `Promise<boolean>`
+
+---
+
+### `reminder.getSorted`
+
+**Signature:** `getSorted(options)`
+
+获取排序后的提醒
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `options` | `object` | { sortBy: 'createdAt'\|'dueDate'\|'priority'\|'title', ascending: boolean, completed: boolean } | Yes |
+
+**Returns:** `Promise<[Reminder]>`
+
+---
+
+### `reminder.getUpcoming`
+
+**Signature:** `getUpcoming(days)`
+
+获取即将到期的提醒
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `days` | `number` | 未来几天，默认 7 天 | Yes |
+
+**Returns:** `Promise<[Reminder]>`
+
+---
+
+### `reminder.getOverdue`
+
+**Signature:** `getOverdue()`
+
+获取已过期的提醒
+
+**Returns:** `Promise<[Reminder]>`
+
+---
+
+### `reminder.pin`
+
+**Signature:** `pin(id, isPinned)`
+
+置顶/取消置顶提醒
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `id` | `string` | 提醒事项 ID | No |
+| `isPinned` | `boolean` | 是否置顶 | No |
+
+**Returns:** `Promise<object>`
+
+---
+
+### `reminder.setSortOrder`
+
+**Signature:** `setSortOrder(id, sortOrder)`
+
+设置排序顺序
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `id` | `string` | 提醒事项 ID | No |
+| `sortOrder` | `number` | 排序值（越小越靠前） | No |
+
+**Returns:** `Promise<object>`
+
+---
+
+### `reminder.reorder`
+
+**Signature:** `reorder(ids)`
+
+批量重排序
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `ids` | `string[]` | 按顺序排列的 ID 数组 | No |
+
+**Returns:** `Promise<object>`
+
+---
+
+### `reminder.createSystemReminder`
+
+**Signature:** `createSystemReminder(title, options?)`
+
+创建系统提醒（支持位置触发）
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `title` | `string` | 标题 | No |
+| `options` | `object` | { listId, notes, dueDate, priority, location: { latitude, longitude, radius, onArrive, name } } | Yes |
+
+**Returns:** `Promise<object>`
+
+---
+
+### `reminder.getSystemLists`
+
+**Signature:** `getSystemLists()`
+
+获取系统提醒列表
+
+**Returns:** `Promise<[{ id: string, title: string, isSystem: true }]>`
 
 ---
 
@@ -3903,6 +4023,123 @@ SQL 数据库查询
 截取页面截图
 
 **Returns:** `Promise<string>`
+
+---
+
+## memo
+
+备忘录操作（iCloud 同步）
+
+### `memo.create`
+
+**Signature:** `create(title, content, tags?)`
+
+创建备忘录
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `title` | `string` | 备忘录标题 | No |
+| `content` | `string` | 备忘录内容 | No |
+| `tags` | `[string]` | 标签列表 | Yes |
+
+**Returns:** `object`
+
+---
+
+### `memo.getAll`
+
+**Signature:** `getAll()`
+
+获取所有备忘录
+
+**Returns:** `[object]`
+
+---
+
+### `memo.getById`
+
+**Signature:** `getById(id)`
+
+根据 ID 获取备忘录
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `id` | `string` | 备忘录 ID | No |
+
+**Returns:** `object | null`
+
+---
+
+### `memo.search`
+
+**Signature:** `search(keyword)`
+
+搜索备忘录（标题和内容）
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `keyword` | `string` | 搜索关键词 | No |
+
+**Returns:** `[object]`
+
+---
+
+### `memo.update`
+
+**Signature:** `update(id, data)`
+
+更新备忘录
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `id` | `string` | 备忘录 ID | No |
+| `data` | `object` | 更新数据 { title?: 新标题, content?: 新内容, tags?: 新标签 } | No |
+
+**Returns:** `object`
+
+---
+
+### `memo.delete`
+
+**Signature:** `delete(id)`
+
+删除备忘录
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `id` | `string` | 备忘录 ID | No |
+
+**Returns:** `object`
+
+---
+
+### `memo.clear`
+
+**Signature:** `clear()`
+
+清空所有备忘录
+
+**Returns:** `object`
+
+---
+
+### `memo.count`
+
+**Signature:** `count()`
+
+获取备忘录数量
+
+**Returns:** `number`
 
 ---
 
