@@ -97,144 +97,6 @@ TrollScript 内置丰富的原生模块，[查看完整 API 文档](API.md)：
 | `mail` | 邮件发送、模板管理 |
 | `shortcuts` | 快捷指令调用与集成 |
 
-## 使用示例
-
-### HTTP 请求
-```javascript
-const response = http.get('https://api.example.com/data');
-console.log(response.data);
-
-// POST 请求
-const result = http.post('https://api.example.com/submit', {
-  body: JSON.stringify({ name: 'test' }),
-  headers: { 'Content-Type': 'application/json' }
-});
-```
-
-### 获取位置
-```javascript
-const loc = location.getCurrent();
-if (loc.success) {
-  console.log('经度: ' + loc.longitude);
-  console.log('纬度: ' + loc.latitude);
-  console.log('地址: ' + loc.formattedAddress);
-}
-```
-
-### 发送通知
-```javascript
-notification.send({
-  title: '任务完成',
-  body: '脚本执行成功',
-  sound: true
-});
-```
-
-### 剪贴板操作
-```javascript
-const text = clipboard.getText();
-clipboard.setText('Hello TrollScript!');
-```
-
-### 天气查询
-```javascript
-const weather = weather.get('Beijing');
-console.log('天气: ' + weather.condition);
-console.log('温度: ' + weather.temperature);
-```
-
-### 音乐控制
-```javascript
-// 获取音乐库统计
-const stats = media.getLibraryStats();
-console.log('歌曲总数: ' + stats.totalSongs);
-
-// 获取专辑列表
-const albums = media.getAlbums(0, 20);
-
-// 播放指定专辑
-media.playAlbum('Album Name');
-
-// 按艺术家搜索
-const songs = media.searchByArtist('Artist Name');
-```
-
-### 通讯录操作
-```javascript
-// 请求权限
-contacts.requestAccess();
-
-// 搜索联系人
-const results = contacts.search('张三');
-
-// 获取联系人详情
-const contact = contacts.getById(results[0].id);
-
-// 创建新联系人
-contacts.create({
-  givenName: '李',
-  familyName: '四',
-  phoneNumbers: [{ label: 'mobile', value: '13800138000' }]
-});
-```
-
-### 设置闹钟
-```javascript
-// 一次性闹钟
-alarm.createOnce(Date.now() + 3600000, '提醒事项', {
-  body: '一小时后的提醒',
-  sound: true
-});
-
-// 每日重复闹钟
-alarm.createDaily(8, 30, '起床时间');
-
-// 每周重复（周一到周五）
-alarm.createWeekly([1, 2, 3, 4, 5], 9, 0, '工作日提醒');
-```
-
-### 发送邮件
-```javascript
-// 简单发送
-mail.send('recipient@example.com', '主题', '邮件内容');
-
-// 高级选项
-mail.sendAdvanced({
-  to: ['user1@example.com', 'user2@example.com'],
-  cc: ['cc@example.com'],
-  subject: '会议通知',
-  body: mail.createHtmlBody('<h1>重要会议</h1><p>请准时参加</p>'),
-  isHTML: true
-});
-```
-
-### 调用快捷指令
-```javascript
-// 运行快捷指令
-shortcuts.run('我的快捷指令');
-
-// 传递文本参数
-shortcuts.runWithText('处理文本', '需要处理的内容');
-
-// 使用剪贴板作为输入
-shortcuts.runWithClipboard('处理剪贴板');
-```
-
-### 数据存储
-```javascript
-// 存储数据
-storage.set('key', 'value');
-storage.setObject('user', { name: '张三', age: 25 });
-
-// 读取数据
-const value = storage.get('key');
-const user = storage.getObject('user');
-
-// 删除数据
-storage.remove('key');
-storage.clear();
-```
-
 ## 高级功能
 
 ### iCloud 同步
@@ -258,23 +120,18 @@ TrollScript 支持两种 iCloud 同步模式：
 
 导入支持：`.trollscript`、`.js`、`.json`、`.txt` 格式
 
-### 快捷指令集成
-
-TrollScript 完整支持 iOS 快捷指令：
-
-- **运行脚本** - 在快捷指令中选择并运行脚本
-- **传递参数** - 支持文本/JSON 参数传递
-- **获取结果** - 脚本返回值可在快捷指令中使用
-- **按名称运行** - 通过脚本名称直接运行
-- **执行代码** - 直接执行 JavaScript 代码片段
-
 ### 脚本商店
 
 TrollScript 支持脚本商店功能，通过脚本商店可以方便地获取和分享脚本。
 
 ## 截图
 
-> 待添加应用截图
+<p align="center">
+  <img src="images/2761768272084_.pic_hd-left.png" width="45%" alt="Screenshot 1">
+  <img src="images/2771768272085_.pic_hd-left.png" width="45%" alt="Screenshot 2">
+  <img src="images/2781768272086_.pic_hd-portrait.png" width="45%" alt="Screenshot 3">
+  <img src="images/2791768272087_.pic_hd-portrait.png" width="45%" alt="Screenshot 4">
+</p>
 
 ## 更新日志
 
