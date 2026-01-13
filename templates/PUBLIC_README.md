@@ -55,7 +55,7 @@ TrollScript 是一款利用 TrollStore 特权的 iOS JavaScript 脚本执行器�
 如果已安装 TrollStore，可以点击以下链接直接安装:
 
 ```
-apple-magnifier://install?url=https://github.com/dompling/TrollScript-Release/releases/latest/download/TrollScript.tipa
+apple-magnifier://install?url=https://github.com/dompling/TrollScript-Release/releases/latest/download/TrollScript_latest.tipa
 ```
 
 ## JavaScript API
@@ -137,12 +137,13 @@ npm install --save-dev @dompling/trollscript-types
 ```
 
 ## 截图
-
 <p align="center">
-  <img src="images/2761768272084_.pic_hd-left.png" width="45%" alt="Screenshot 1">
-  <img src="images/2771768272085_.pic_hd-left.png" width="45%" alt="Screenshot 2">
-  <img src="images/2781768272086_.pic_hd-portrait.png" width="45%" alt="Screenshot 3">
-  <img src="images/2791768272087_.pic_hd-portrait.png" width="45%" alt="Screenshot 4">
+  <img src="images/2781768272086_.pic_hd-portrait.png" width="35%" alt="Screenshot 3">
+  <img src="images/2791768272087_.pic_hd-portrait.png" width="35%" alt="Screenshot 4">
+</p>
+<p align="center">
+  <img src="images/2761768272084_.pic_hd-left.png" width="35%" alt="Screenshot 1">
+  <img src="images/2771768272085_.pic_hd-left.png" width="35%" alt="Screenshot 2">
 </p>
 
 ## 更新日志
