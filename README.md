@@ -124,6 +124,18 @@ TrollScript 支持两种 iCloud 同步模式：
 
 TrollScript 支持脚本商店功能，通过脚本商店可以方便地获取和分享脚本。
 
+[默认商店 (TrollScript-Store)](https://github.com/dompling/TrollScript-Store)
+
+### NPM 支持
+
+为了方便开发者编写脚本，提供了 TypeScript 定义包：
+
+[![npm version](https://badge.fury.io/js/%40dompling%2Ftrollscript-types.svg)](https://www.npmjs.com/package/@dompling/trollscript-types)
+
+```bash
+npm install --save-dev @dompling/trollscript-types
+```
+
 ## 截图
 
 <p align="center">

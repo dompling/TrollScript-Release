@@ -1,0 +1,2145 @@
+// Type definitions for TrollScript
+// Project: https://github.com/dompling/TrollScript-Release
+// Definitions by: TrollScript Auto Generator
+
+interface Console {
+    /**
+     * 输出日志信息
+     * @param args 要输出的内容
+     * @returns 无返回值
+     */
+    log(...args: any[]): void;
+
+    /**
+     * 输出错误信息
+     * @param args 要输出的内容
+     * @returns 无返回值
+     */
+    error(...args: any[]): void;
+
+    /**
+     * 输出警告信息
+     * @param args 要输出的内容
+     * @returns 无返回值
+     */
+    warn(...args: any[]): void;
+
+    /**
+     * 输出提示信息
+     * @param args 要输出的内容
+     * @returns 无返回值
+     */
+    info(...args: any[]): void;
+
+    /**
+     * 输出调试信息
+     * @param args 要输出的内容
+     * @returns 无返回值
+     */
+    debug(...args: any[]): void;
+
+    /**
+     * 以表格形式输出
+     * @param data 要显示的表格数据
+     * @returns 无返回值
+     */
+    table(data: any): void;
+
+    /**
+     * 清空控制台
+     * @returns 无返回值
+     */
+    clear(): void;
+
+}
+
+declare const console: Console;
+
+interface Device {
+    /**
+     * 获取设备信息
+     * @returns 包含设备名称、型号、系统版本等信息的对象
+     */
+    info(): any;
+
+    /**
+     * 获取电池信息
+     * @returns 包含电量(0-1)、充电状态、低电量模式等信息的对象
+     */
+    battery(): any;
+
+    /**
+     * 获取屏幕信息
+     * @returns 包含屏幕尺寸、缩放比例、亮度等信息的对象
+     */
+    screen(): any;
+
+}
+
+declare const device: Device;
+
+interface Clipboard {
+    /**
+     * 获取剪贴板文本
+     * @returns 剪贴板中的文本内容
+     */
+    getText(): string;
+
+    /**
+     * 设置剪贴板文本
+     * @param text 要设置的文本内容
+     * @returns 无返回值
+     */
+    setText(text: string): void;
+
+    /**
+     * 清空剪贴板
+     * @returns 无返回值
+     */
+    clear(): void;
+
+}
+
+declare const clipboard: Clipboard;
+
+interface Storage {
+    /**
+     * 获取存储值
+     * @param key 键名
+     * @returns 存储的值，如果不存在返回 undefined
+     */
+    get(key: string): any;
+
+    /**
+     * 设置存储值
+     * @param key 键名
+     * @param value 要存储的值
+     * @returns 无返回值
+     */
+    set(key: string, value: any): void;
+
+    /**
+     * 删除存储值
+     * @param key 键名
+     * @returns 无返回值
+     */
+    remove(key: string): void;
+
+    /**
+     * 清空所有存储
+     * @returns 无返回值
+     */
+    clear(): void;
+
+    /**
+     * 检查键是否存在
+     * @param key 键名
+     * @returns 是否存在
+     */
+    has(key: string): boolean;
+
+}
+
+declare const storage: Storage;
+
+interface Icloud {
+    /**
+     * 检查 iCloud 是否可用
+     * @returns 是否可用
+     */
+    isAvailable(): boolean;
+
+    /**
+     * 获取 iCloud 容器路径
+     * @returns iCloud 容器的本地路径，不可用时返回 null
+     */
+    containerPath(): any;
+
+    /**
+     * 读取 iCloud 文件
+     * @param path 文件路径（相对于 iCloud 容器）
+     * @returns 文件内容
+     */
+    read(path: string): string;
+
+    /**
+     * 写入 iCloud 文件
+     * @param path 文件路径
+     * @param content 要写入的内容
+     * @returns 是否写入成功
+     */
+    write(path: string, content: string): boolean;
+
+    /**
+     * 删除 iCloud 文件
+     * @param path 文件路径
+     * @returns 是否删除成功
+     */
+    delete(path: string): boolean;
+
+    /**
+     * 列出 iCloud 目录
+     * @param path 目录路径，默认为根目录
+     * @returns 文件名列表数组
+     */
+    list(path: string): any;
+
+}
+
+declare const icloud: Icloud;
+
+interface File {
+    /**
+     * 读取文件内容
+     * @param path 文件绝对路径
+     * @returns 文件内容
+     */
+    read(path: string): string;
+
+    /**
+     * 写入文件内容
+     * @param path 文件绝对路径
+     * @param content 要写入的内容
+     * @returns 是否写入成功
+     */
+    write(path: string, content: string): boolean;
+
+    /**
+     * 追加文件内容
+     * @param path 文件绝对路径
+     * @param content 要追加的内容
+     * @returns 是否追加成功
+     */
+    append(path: string, content: string): boolean;
+
+    /**
+     * 检查文件是否存在
+     * @param path 文件绝对路径
+     * @returns 文件是否存在
+     */
+    exists(path: string): boolean;
+
+    /**
+     * 删除文件
+     * @param path 文件绝对路径
+     * @returns 是否删除成功
+     */
+    delete(path: string): boolean;
+
+    /**
+     * 移动文件
+     * @param from 源路径
+     * @param to 目标路径
+     * @returns 是否移动成功
+     */
+    move(from: string, to: string): boolean;
+
+    /**
+     * 复制文件
+     * @param from 源路径
+     * @param to 目标路径
+     * @returns 是否复制成功
+     */
+    copy(from: string, to: string): boolean;
+
+    /**
+     * 列出目录内容
+     * @param path 目录路径
+     * @returns 文件名列表数组
+     */
+    list(path: string): any;
+
+    /**
+     * 创建目录
+     * @param path 目录路径
+     * @returns 是否创建成功
+     */
+    mkdir(path: string): boolean;
+
+    /**
+     * 获取文件信息
+     * @param path 文件路径
+     * @returns 包含大小(字节)、修改时间(时间戳)、创建时间(时间戳)、类型(file/directory)的对象
+     */
+    stat(path: string): any;
+
+    /**
+     * 判断是否是目录
+     * @param path 文件路径
+     * @returns 是否是目录
+     */
+    isDirectory(path: string): boolean;
+
+    /**
+     * 获取文档目录路径
+     * @returns Documents 目录的绝对路径
+     */
+    documentsPath(): string;
+
+    /**
+     * 获取缓存目录路径
+     * @returns Caches 目录的绝对路径
+     */
+    cachePath(): string;
+
+    /**
+     * 获取临时目录路径
+     * @returns Temporary 目录的绝对路径
+     */
+    tempPath(): string;
+
+    /**
+     * 调试路径访问权限详情
+     * @param path 文件路径
+     * @returns 调试信息字符串
+     */
+    debug(path: string): string;
+
+    /**
+     * 使用 Root 权限读取受保护文件（需要 TrollStore）
+     * @param path 文件绝对路径
+     * @returns 文件内容，读取失败返回 null
+     */
+    rootRead(path: string): any;
+
+    /**
+     * 使用 Root 权限列出受保护目录（需要 TrollStore）
+     * @param path 目录绝对路径
+     * @returns 文件名列表，失败返回 null
+     */
+    rootList(path: string): any;
+
+    /**
+     * 使用 Root 权限复制受保护文件（需要 TrollStore）
+     * @param src 源文件路径
+     * @param dest 目标文件路径
+     * @returns 是否复制成功
+     */
+    rootCopy(src: string, dest: string): boolean;
+
+    /**
+     * 使用 Root 权限检查路径信息（需要 TrollStore）
+     * @param path 文件或目录路径
+     * @returns 包含读写权限、存在状态等调试信息的对象
+     */
+    rootCheck(path: string): any;
+
+    /**
+     * 使用 Root 权限检查文件是否存在（需要 TrollStore）
+     * @param path 文件路径
+     * @returns 是否存在
+     */
+    rootExists(path: string): boolean;
+
+    /**
+     * 检查 Root Helper 是否可用
+     * @returns 是否可用
+     */
+    rootAvailable(): boolean;
+
+}
+
+declare const file: File;
+
+interface Http {
+    /**
+     * 发送 GET 请求
+     * @param url 请求地址
+     * @param options 请求选项 { headers, timeout }
+     * @returns 包含状态码、响应数据、响应头的对象
+     */
+    get(url: string, options: Record<string, any>): any;
+
+    /**
+     * 发送 POST 请求
+     * @param url 请求地址
+     * @param options 请求选项 { body, headers, timeout }
+     */
+    post(url: string, options: Record<string, any>): any;
+
+    /**
+     * 发送 PUT 请求
+     * @param url 请求地址
+     * @param options 请求选项 { body, headers, timeout }
+     */
+    put(url: string, options: Record<string, any>): any;
+
+    /**
+     * 发送 DELETE 请求
+     * @param url 请求地址
+     * @param options 请求选项 { headers, timeout }
+     */
+    delete(url: string, options: Record<string, any>): any;
+
+    /**
+     * 发送 PATCH 请求
+     * @param url 请求地址
+     * @param options 请求选项 { body, headers, timeout }
+     */
+    patch(url: string, options: Record<string, any>): any;
+
+    /**
+     * 发送 HEAD 请求
+     * @param url 请求地址
+     * @param options 请求选项 { headers, timeout }
+     */
+    head(url: string, options: Record<string, any>): any;
+
+    /**
+     * 发送自定义请求
+     * @param url 请求地址
+     * @param options 请求选项 { method, body, headers, timeout }
+     */
+    request(url: string, options: Record<string, any>): any;
+
+    /**
+     * 下载文件
+     * @param url 下载地址
+     * @param path 保存路径
+     * @returns 包含本地文件路径的对象
+     */
+    download(url: string, path: string): any;
+
+}
+
+declare const http: Http;
+
+interface Network {
+    /**
+     * 检查网络是否可用
+     * @returns 网络是否可用
+     */
+    isReachable(): boolean;
+
+    /**
+     * 获取连接类型
+     * @returns 连接类型(wifi/cellular/none)
+     */
+    getConnectionType(): any;
+
+    /**
+     * 获取设备 IP 地址
+     * @returns IP 地址
+     */
+    getIPAddress(): any;
+
+    /**
+     * 获取 WiFi 信息
+     * @returns 包含 SSID 和 BSSID 的对象
+     */
+    getWiFiInfo(): any;
+
+    /**
+     * URL 编码
+     * @param string 要编码的字符串
+     * @returns 编码后的 URL 字符串
+     */
+    encodeURL(string: string): string;
+
+    /**
+     * URL 解码
+     * @param string 要解码的字符串
+     * @returns 解码后的 URL 字符串
+     */
+    decodeURL(string: string): string;
+
+    /**
+     * 解析 URL 组件
+     * @param url 要解析的 URL
+     * @returns 包含 URL 组件的对象
+     */
+    parseURL(url: string): any;
+
+    /**
+     * 构建带参数的 URL
+     * @param baseURL 基础 URL
+     * @param params 查询参数
+     * @returns 构建的 URL 字符串
+     */
+    buildURL(baseURL: string, params: Record<string, any>): string;
+
+    /**
+     * Ping 主机
+     * @param host 主机名或 IP
+     * @returns 包含延迟和成功状态的对象
+     */
+    ping(host: string): any;
+
+    /**
+     * 下载文件
+     * @param url 下载地址
+     * @param filename 保存文件名
+     * @returns 包含本地文件路径的对象
+     */
+    download(url: string, filename: string): any;
+
+    /**
+     * 获取飞行模式状态
+     * @returns 是否开启
+     */
+    getAirplaneMode(): boolean;
+
+    /**
+     * 设置飞行模式
+     * @param enabled 是否开启
+     * @returns 是否设置成功
+     */
+    setAirplaneMode(enabled: boolean): boolean;
+
+    /**
+     * 列出 VPN 配置
+     * @returns VPN 配置列表
+     */
+    listVPNs(): any;
+
+    /**
+     * 连接 VPN
+     * @param name VPN 名称，默认第一个
+     * @returns 是否发起连接成功
+     */
+    connectVPN(name: string): boolean;
+
+    /**
+     * 断开 VPN
+     * @returns 是否发起断开成功
+     */
+    disconnectVPN(): boolean;
+
+    /**
+     * 获取 VPN 状态
+     * @returns 包含连接状态和 VPN 名称的对象
+     */
+    getVPNStatus(): any;
+
+    /**
+     * 获取 WiFi 开关状态
+     * @returns 是否开启
+     */
+    getWiFiEnabled(): boolean;
+
+    /**
+     * 设置 WiFi 开关
+     * @param enabled 是否开启
+     * @returns 是否设置成功
+     */
+    setWiFi(enabled: boolean): boolean;
+
+    /**
+     * 打开系统设置
+     * @param section 设置页面（如 'WIFI'）
+     * @returns 是否成功打开
+     */
+    openSettings(section: string): boolean;
+
+}
+
+declare const network: Network;
+
+interface App {
+    /**
+     * 获取应用版本
+     * @returns 应用版本号
+     */
+    version(): string;
+
+    /**
+     * 打开 URL/Scheme
+     * @param url 要打开的 URL
+     * @returns 是否成功打开
+     */
+    open(url: string): any;
+
+    /**
+     * 检查是否能打开
+     * @param url 要检查的 URL
+     * @returns 是否能打开
+     */
+    canOpen(url: string): boolean;
+
+    /**
+     * 震动反馈
+     * @returns 无返回值
+     */
+    vibrate(): void;
+
+    /**
+     * 获取应用日志
+     * @param limit 返回的日志条数
+     * @returns 日志对象数组
+     */
+    getLogs(limit: number): any;
+
+    /**
+     * 导出日志为字符串
+     * @returns 导出的日志内容
+     */
+    exportLogs(): string;
+
+    /**
+     * 获取所有崩溃报告
+     * @returns 崩溃报告数组
+     */
+    getCrashReports(): any;
+
+    /**
+     * 获取最近一次崩溃报告
+     * @returns 最近一次崩溃报告
+     */
+    getLastCrash(): any;
+
+    /**
+     * 清除所有日志
+     * @returns 无返回值
+     */
+    clearLogs(): void;
+
+}
+
+declare const app: App;
+
+interface Ui {
+    /**
+     * 显示提示框
+     * @param title 标题
+     * @param message 内容
+     * @param buttonTitle 按钮文字
+     * @returns 无返回值
+     */
+    alert(title: string, message: string, buttonTitle: string): any;
+
+    /**
+     * 显示 Toast 提示
+     * @param message 提示内容
+     * @param duration 持续时间(秒)
+     * @returns 无返回值
+     */
+    toast(message: string, duration: number): void;
+
+    /**
+     * 显示确认对话框
+     * @param title 标题
+     * @param message 内容
+     * @param confirmTitle 确认按钮文字
+     * @param cancelTitle 取消按钮文字
+     * @returns 是否点击了确认
+     */
+    confirm(title: string, message: string, confirmTitle: string, cancelTitle: string): any;
+
+    /**
+     * 显示输入对话框
+     * @param title 标题
+     * @param message 内容
+     * @param defaultValue 默认值
+     * @param placeholder 占位符
+     * @returns 输入的文本，取消返回 null
+     */
+    prompt(title: string, message: string, defaultValue: string, placeholder: string): any;
+
+    /**
+     * 显示操作表单
+     * @param title 标题
+     * @param message 内容
+     * @param actions 选项列表
+     * @returns 选择的按钮索引(从0开始)
+     */
+    actionSheet(title: string, message: string, actions: any): any;
+
+    /**
+     * 显示加载指示器
+     * @param message 加载提示
+     * @returns 无返回值
+     */
+    showLoading(message: string): void;
+
+    /**
+     * 隐藏加载指示器
+     * @returns 无返回值
+     */
+    hideLoading(): void;
+
+}
+
+declare const ui: Ui;
+
+interface Haptic {
+    /**
+     * 触觉冲击反馈
+     * @param style 'light' | 'medium' | 'heavy' | 'soft' | 'rigid'
+     * @returns 无返回值
+     */
+    impact(style: string): void;
+
+    /**
+     * 通知触觉反馈
+     * @param type 'success' | 'warning' | 'error'
+     * @returns 无返回值
+     */
+    notification(type: string): void;
+
+    /**
+     * 选择触觉反馈
+     * @returns 无返回值
+     */
+    selection(): void;
+
+    /**
+     * 设备振动
+     * @returns 无返回值
+     */
+    vibrate(): void;
+
+    /**
+     * 轻度冲击
+     * @returns 无返回值
+     */
+    light(): void;
+
+    /**
+     * 中度冲击
+     * @returns 无返回值
+     */
+    medium(): void;
+
+    /**
+     * 重度冲击
+     * @returns 无返回值
+     */
+    heavy(): void;
+
+    /**
+     * 成功反馈
+     * @returns 无返回值
+     */
+    success(): void;
+
+    /**
+     * 警告反馈
+     * @returns 无返回值
+     */
+    warning(): void;
+
+    /**
+     * 错误反馈
+     * @returns 无返回值
+     */
+    error(): void;
+
+}
+
+declare const haptic: Haptic;
+
+interface Display {
+    /**
+     * 获取屏幕亮度
+     * @returns 当前亮度(0.0-1.0)
+     */
+    getBrightness(): number;
+
+    /**
+     * 设置屏幕亮度
+     * @param value 亮度值 (0.0 - 1.0)
+     * @returns 无返回值
+     */
+    setBrightness(value: number): void;
+
+    /**
+     * 增加亮度
+     * @param amount 增加量 (默认 0.1)
+     * @returns 无返回值
+     */
+    increaseBrightness(amount: number): void;
+
+    /**
+     * 降低亮度
+     * @param amount 减少量 (默认 0.1)
+     * @returns 无返回值
+     */
+    decreaseBrightness(amount: number): void;
+
+    /**
+     * 获取屏幕信息
+     * @returns 包含宽度、高度、缩放比例的对象
+     */
+    getScreenInfo(): any;
+
+    /**
+     * 获取屏幕方向
+     * @returns 屏幕方向
+     */
+    getOrientation(): any;
+
+    /**
+     * 低电量模式是否开启
+     * @returns 是否开启
+     */
+    isLowPowerModeEnabled(): boolean;
+
+    /**
+     * 设置低电量模式
+     * @param enabled 是否开启
+     * @returns 是否设置成功
+     */
+    setLowPowerMode(enabled: boolean): boolean;
+
+    /**
+     * 获取夜览状态
+     * @returns 是否开启
+     */
+    getNightShiftStatus(): boolean;
+
+    /**
+     * 设置夜览
+     * @param enabled 是否开启
+     * @returns 是否设置成功
+     */
+    setNightShift(enabled: boolean): boolean;
+
+    /**
+     * 获取原彩显示状态
+     * @returns 是否开启
+     */
+    getTrueToneStatus(): boolean;
+
+    /**
+     * 设置原彩显示
+     * @param enabled 是否开启
+     * @returns 是否设置成功
+     */
+    setTrueTone(enabled: boolean): boolean;
+
+    /**
+     * 自动亮度是否开启
+     * @returns 是否开启
+     */
+    isAutoBrightnessEnabled(): boolean;
+
+    /**
+     * 设置自动亮度
+     * @param enabled 是否开启
+     * @returns 是否设置成功
+     */
+    setAutoBrightness(enabled: boolean): boolean;
+
+    /**
+     * 打开显示设置
+     * @returns 是否成功打开
+     */
+    openSettings(): boolean;
+
+}
+
+declare const display: Display;
+
+interface Util {
+    /**
+     * 生成 UUID
+     * @returns 生成的 UUID
+     */
+    uuid(): string;
+
+    /**
+     * 计算 MD5
+     * @param string 要计算的字符串
+     * @returns MD5 哈希值
+     */
+    md5(string: string): string;
+
+    /**
+     * Base64 编码
+     * @param string 要编码的字符串
+     * @returns Base64 编码字符串
+     */
+    base64Encode(string: string): string;
+
+    /**
+     * Base64 解码
+     * @param string 要解码的字符串
+     * @returns 解码后的原始字符串
+     */
+    base64Decode(string: string): string;
+
+    /**
+     * 格式化日期
+     * @param date 日期对象
+     * @param format 格式字符串 (如 'yyyy-MM-dd')
+     * @returns 格式化后的日期字符串
+     */
+    formatDate(date: any, format: string): string;
+
+}
+
+declare const util: Util;
+
+interface Location {
+    /**
+     * 请求定位权限
+     * @returns 无返回值
+     */
+    requestAccess(): void;
+
+    /**
+     * 获取权限状态
+     * @returns 权限状态
+     */
+    getAccessStatus(): any;
+
+    /**
+     * 检查是否已授权
+     * @returns 是否已授权
+     */
+    isAuthorized(): boolean;
+
+    /**
+     * 获取当前位置
+     * @returns 位置信息对象(包含经纬度、海拔等)
+     */
+    getCurrent(): any;
+
+    /**
+     * 获取当前位置(别名)
+     * @returns 位置信息对象
+     */
+    current(): any;
+
+    /**
+     * 计算两点距离
+     * @param lat1 点1纬度
+     * @param lng1 点1经度
+     * @param lat2 点2纬度
+     * @param lng2 点2经度
+     * @returns 距离(米)
+     */
+    distance(lat1: number, lng1: number, lat2: number, lng2: number): number;
+
+    /**
+     * 地址转坐标
+     * @param address 地址字符串
+     * @returns 地理位置对象数组
+     */
+    geocode(address: string): any;
+
+    /**
+     * 坐标转地址
+     * @param lat 纬度
+     * @param lng 经度
+     * @returns 地址信息对象数组
+     */
+    reverseGeocode(lat: number, lng: number): any;
+
+    /**
+     * 定位服务是否开启
+     * @returns 是否开启
+     */
+    isLocationServicesEnabled(): boolean;
+
+}
+
+declare const location: Location;
+
+interface Weather {
+    /**
+     * 获取当前天气
+     * @param city 城市名
+     * @returns 当前天气对象
+     */
+    current(city: string): any;
+
+    /**
+     * 获取天气预报
+     * @param city 城市名
+     * @param days 天数
+     * @returns 天气预报数组
+     */
+    forecast(city: string, days: number): any;
+
+    /**
+     * 根据经纬度获取天气
+     * @param lat 纬度
+     * @param lng 经度
+     * @returns 指定位置的天气对象
+     */
+    byLocation(lat: number, lng: number): any;
+
+}
+
+declare const weather: Weather;
+
+interface Health {
+    /**
+     * 检查 HealthKit 是否可用
+     * @returns 是否可用
+     */
+    isAvailable(): boolean;
+
+    /**
+     * 请求健康数据权限
+     * @param types 权限类型列表 ('stepCount', 'heartRate', 'sleepAnalysis', 'activeEnergyBurned', 'distanceWalkingRunning', 'bodyMass', 'height')
+     * @returns 是否授权成功
+     */
+    requestAccess(types: any): any;
+
+    /**
+     * 获取授权状态
+     * @param type 权限类型
+     * @returns 权限状态
+     */
+    getAuthorizationStatus(type: string): any;
+
+    /**
+     * 获取今日步数
+     * @returns 今日步数
+     */
+    getTodaySteps(): any;
+
+    /**
+     * 获取指定日期步数
+     * @param startTimestamp 开始时间戳
+     * @param endTimestamp 结束时间戳
+     * @returns 步数
+     */
+    getSteps(startTimestamp: number, endTimestamp: number): any;
+
+    /**
+     * 获取最新心率
+     * @returns 最新心率对象
+     */
+    getLatestHeartRate(): any;
+
+    /**
+     * 获取心率历史
+     * @param startTimestamp 开始时间戳
+     * @param endTimestamp 结束时间戳
+     * @param limit 限制条数
+     * @returns 心率历史数组
+     */
+    getHeartRateHistory(startTimestamp: number, endTimestamp: number, limit: number): any;
+
+    /**
+     * 获取最近睡眠
+     * @returns 最近睡眠记录
+     */
+    getLatestSleep(): any;
+
+    /**
+     * 获取睡眠历史
+     * @param days 天数
+     * @returns 睡眠历史记录数组
+     */
+    getSleepHistory(days: number): any;
+
+    /**
+     * 获取今日活动能量
+     * @returns 今日活动能量(千卡)
+     */
+    getTodayActiveEnergy(): any;
+
+    /**
+     * 获取今日行走距离
+     * @returns 今日行走距离(米)
+     */
+    getTodayDistance(): any;
+
+    /**
+     * 获取最新体重
+     * @returns 最新体重记录
+     */
+    getLatestWeight(): any;
+
+    /**
+     * 获取身高
+     * @returns 身高记录
+     */
+    getHeight(): any;
+
+    /**
+     * 获取今日健康摘要
+     * @returns 今日健康摘要对象
+     */
+    getTodaySummary(): any;
+
+    /**
+     * 获取支持的数据类型
+     * @returns 支持的健康数据类型数组
+     */
+    getSupportedTypes(): any;
+
+}
+
+declare const health: Health;
+
+interface Calendar {
+    /**
+     * 检查权限状态
+     */
+    isAuthorized(): boolean;
+
+    /**
+     * 请求日历权限
+     * @returns 是否授权成功
+     */
+    requestAccess(): any;
+
+    /**
+     * 获取所有日历
+     * @returns 日历列表数组
+     */
+    getCalendars(): any;
+
+    /**
+     * 获取今日事件
+     * @returns 今日事件数组
+     */
+    getToday(): any;
+
+    /**
+     * 获取日历事件
+     * @param start 开始时间戳
+     * @param end 结束时间戳
+     * @param calendarId 日历 ID
+     * @returns 事件数组
+     */
+    getEvents(start: number, end: number, calendarId: string): any;
+
+    /**
+     * 创建日历事件
+     * @param title 标题
+     * @param start 开始时间戳
+     * @param end 结束时间戳
+     * @param options 选项 { calendarId, notes, location, url, allDay }
+     * @returns 创建的事件 ID
+     */
+    create(title: string, start: number, end: number, options: Record<string, any>): any;
+
+    /**
+     * 删除日历事件
+     * @param id 事件 ID
+     * @returns 是否删除成功
+     */
+    delete(id: string): any;
+
+}
+
+declare const calendar: Calendar;
+
+interface Reminder {
+    /**
+     * 检查权限状态
+     * @returns 是否已授权
+     */
+    isAuthorized(): boolean;
+
+    /**
+     * 请求提醒事项权限
+     * @returns 是否授权成功
+     */
+    requestAccess(): any;
+
+    /**
+     * 获取所有提醒列表
+     * @returns 提醒列表数组
+     */
+    getLists(): any;
+
+    /**
+     * 获取所有提醒事项
+     * @param listId 列表 ID
+     * @returns 提醒事项数组
+     */
+    getAll(listId: string): any;
+
+    /**
+     * 创建提醒事项
+     * @param title 标题
+     * @param options 选项 { listId, notes, dueDate, priority, sortOrder, isPinned }
+     * @returns 创建的提醒 ID
+     */
+    create(title: string, options: Record<string, any>): any;
+
+    /**
+     * 标记为已完成
+     * @param id 提醒事项 ID
+     * @returns 是否成功
+     */
+    complete(id: string): any;
+
+    /**
+     * 删除提醒事项
+     * @param id 提醒事项 ID
+     * @returns 是否成功
+     */
+    delete(id: string): any;
+
+    /**
+     * 获取排序后的提醒
+     * @param options { sortBy: 'createdAt'|'dueDate'|'priority'|'title', ascending: boolean, completed: boolean }
+     * @returns 排序后的提醒列表
+     */
+    getSorted(options: Record<string, any>): any;
+
+    /**
+     * 获取即将到期的提醒
+     * @param days 未来几天，默认 7 天
+     * @returns 即将到期的提醒列表
+     */
+    getUpcoming(days: number): any;
+
+    /**
+     * 获取已过期的提醒
+     * @returns 已过期的提醒列表
+     */
+    getOverdue(): any;
+
+    /**
+     * 置顶/取消置顶提醒
+     * @param id 提醒事项 ID
+     * @param isPinned 是否置顶
+     * @returns { success: boolean, id: string, isPinned: boolean }
+     */
+    pin(id: string, isPinned: boolean): any;
+
+    /**
+     * 设置排序顺序
+     * @param id 提醒事项 ID
+     * @param sortOrder 排序值（越小越靠前）
+     * @returns { success: boolean, id: string, sortOrder: number }
+     */
+    setSortOrder(id: string, sortOrder: number): any;
+
+    /**
+     * 批量重排序
+     * @param ids 按顺序排列的 ID 数组
+     * @returns { success: boolean, count: number }
+     */
+    reorder(ids: any): any;
+
+    /**
+     * 创建系统提醒（支持位置触发）
+     * @param title 标题
+     * @param options { listId, notes, dueDate, priority, location: { latitude, longitude, radius, onArrive, name } }
+     * @returns { success: boolean, id: string, title: string, isSystemReminder: true }
+     */
+    createSystemReminder(title: string, options: Record<string, any>): any;
+
+    /**
+     * 获取系统提醒列表
+     * @returns 系统提醒列表数组
+     */
+    getSystemLists(): any;
+
+}
+
+declare const reminder: Reminder;
+
+interface Contacts {
+    /**
+     * 请求通讯录权限
+     * @returns 包含授权结果的对象
+     */
+    requestAccess(): any;
+
+    /**
+     * 获取权限状态
+     * @returns 权限状态
+     */
+    getAccessStatus(): any;
+
+    /**
+     * 检查是否已授权
+     * @returns 是否已授权
+     */
+    isAuthorized(): boolean;
+
+    /**
+     * 获取所有联系人
+     * @param offset 跳过的记录数，默认 0
+     * @param limit 返回的最大数量，默认全部
+     * @returns 联系人对象数组
+     */
+    getAll(offset: number, limit: number): any;
+
+    /**
+     * 获取联系人总数
+     * @returns 联系人总数
+     */
+    getCount(): number;
+
+    /**
+     * 按名字搜索联系人
+     * @param query 搜索关键词（匹配姓名）
+     * @returns 联系人对象数组
+     */
+    search(query: string): any;
+
+    /**
+     * 按电话搜索联系人
+     * @param phone 电话号码（支持模糊匹配）
+     * @returns 联系人对象数组
+     */
+    searchByPhone(phone: string): any;
+
+    /**
+     * 按邮箱搜索联系人
+     * @param email 邮箱地址（支持模糊匹配）
+     * @returns 联系人对象数组
+     */
+    searchByEmail(email: string): any;
+
+    /**
+     * 根据 ID 获取联系人
+     * @param id 联系人唯一标识符
+     * @returns 联系人对象
+     */
+    getById(id: string): any;
+
+    /**
+     * 创建联系人
+     * @param data 联系人数据 { givenName, familyName, phoneNumbers?, emailAddresses?, ... }
+     * @returns 包含成功状态和 ID 的对象
+     */
+    create(data: Record<string, any>): any;
+
+    /**
+     * 更新联系人
+     * @param id 联系人唯一标识符
+     * @param data 要更新的字段
+     * @returns 包含成功状态的对象
+     */
+    update(id: string, data: Record<string, any>): any;
+
+    /**
+     * 删除联系人
+     * @param id 联系人唯一标识符
+     * @returns 包含成功状态的对象
+     */
+    delete(id: string): any;
+
+    /**
+     * 获取所有分组
+     * @returns 分组数组
+     */
+    getGroups(): any;
+
+    /**
+     * 获取分组内联系人
+     * @param groupId 分组唯一标识符
+     * @returns 联系人对象数组
+     */
+    getContactsInGroup(groupId: string): any;
+
+}
+
+declare const contacts: Contacts;
+
+interface Notification {
+    /**
+     * 发送通知
+     * @param title 通知标题
+     * @param body 通知内容
+     * @param options 选项 { url, userInfo, sound, badge }
+     * @returns 发送的通知 ID
+     */
+    send(title: string, body: string, options: Record<string, any>): any;
+
+    /**
+     * 取消通知
+     * @param id 通知 ID
+     * @returns 无返回值
+     */
+    cancel(id: string): void;
+
+    /**
+     * 取消所有通知
+     * @returns 无返回值
+     */
+    cancelAll(): void;
+
+    /**
+     * 获取待发送通知
+     * @returns 待发送通知列表
+     */
+    getPending(): any;
+
+    /**
+     * 获取已发送通知
+     * @returns 已发送通知列表
+     */
+    getDelivered(): any;
+
+    /**
+     * 请求通知权限
+     * @returns 是否授权成功
+     */
+    requestPermission(): any;
+
+    /**
+     * 获取权限状态
+     * @returns 权限状态
+     */
+    getPermissionStatus(): any;
+
+    /**
+     * 设置角标数字
+     * @param count 角标数
+     * @returns 无返回值
+     */
+    setBadge(count: number): void;
+
+    /**
+     * 获取角标数字
+     * @returns 角标数字
+     */
+    getBadge(): any;
+
+    /**
+     * 定时通知
+     * @param title 通知标题
+     * @param body 通知内容
+     * @param date 触发时间戳
+     * @param options 选项 { url, userInfo, sound, badge, repeat: 'daily'|'weekly'|'monthly' }
+     * @returns 发送的通知 ID
+     */
+    schedule(title: string, body: string, date: number, options: Record<string, any>): any;
+
+}
+
+declare const notification: Notification;
+
+interface Alarm {
+    /**
+     * 请求通知权限
+     * @returns 是否授权成功
+     */
+    requestAccess(): any;
+
+    /**
+     * 获取权限状态
+     * @returns 权限状态
+     */
+    getAccessStatus(): any;
+
+    /**
+     * 创建一次性闹钟
+     * @param timestamp 触发时间戳
+     * @param title 标题
+     * @param options 选项 { sound }
+     * @returns 创建的闹钟 ID
+     */
+    createOnce(timestamp: number, title: string, options: Record<string, any>): any;
+
+    /**
+     * 创建每日重复闹钟
+     * @param hour 小时 (0-23)
+     * @param minute 分钟 (0-59)
+     * @param title 标题
+     * @param options 选项 { sound }
+     * @returns 创建的闹钟 ID
+     */
+    createDaily(hour: number, minute: number, title: string, options: Record<string, any>): any;
+
+    /**
+     * 创建每周重复闹钟
+     * @param weekday 周几 (1-7, 周日为1)
+     * @param hour 小时 (0-23)
+     * @param minute 分钟 (0-59)
+     * @param title 标题
+     * @param options 选项 { sound }
+     * @returns 创建的闹钟 ID
+     */
+    createWeekly(weekday: number, hour: number, minute: number, title: string, options: Record<string, any>): any;
+
+    /**
+     * 创建倒计时提醒
+     * @param seconds 秒数
+     * @param title 标题
+     * @param options 选项 { sound }
+     * @returns 创建的闹钟 ID
+     */
+    createCountdown(seconds: number, title: string, options: Record<string, any>): any;
+
+    /**
+     * 获取待触发的闹钟
+     * @returns 待触发闹钟列表
+     */
+    getPending(): any;
+
+    /**
+     * 获取闹钟数量
+     * @returns 闹钟数量
+     */
+    getCount(): any;
+
+    /**
+     * 取消指定闹钟
+     * @param id 闹钟 ID
+     * @returns 无返回值
+     */
+    cancel(id: string): void;
+
+    /**
+     * 取消所有闹钟
+     * @returns 无返回值
+     */
+    cancelAll(): void;
+
+    /**
+     * 打开系统时钟
+     * @returns 无返回值
+     */
+    openClockApp(): void;
+
+    /**
+     * 打开计时器
+     * @returns 无返回值
+     */
+    openTimer(): void;
+
+}
+
+declare const alarm: Alarm;
+
+interface Media {
+    /**
+     * 播放
+     * @returns 无返回值
+     */
+    play(): void;
+
+    /**
+     * 暂停
+     * @returns 无返回值
+     */
+    pause(): void;
+
+    /**
+     * 停止
+     * @returns 无返回值
+     */
+    stop(): void;
+
+    /**
+     * 切换播放/暂停
+     * @returns 无返回值
+     */
+    togglePlayPause(): void;
+
+    /**
+     * 下一首
+     * @returns 无返回值
+     */
+    next(): void;
+
+    /**
+     * 上一首
+     * @returns 无返回值
+     */
+    previous(): void;
+
+    /**
+     * 跳到开头
+     * @returns 无返回值
+     */
+    skipToBeginning(): void;
+
+    /**
+     * 获取播放状态
+     * @returns 播放状态
+     */
+    getPlaybackState(): any;
+
+    /**
+     * 是否正在播放
+     * @returns 是否正在播放
+     */
+    isPlaying(): boolean;
+
+    /**
+     * 获取当前播放信息
+     * @returns 当前播放信息对象
+     */
+    getNowPlaying(): any;
+
+    /**
+     * 获取音量
+     * @returns 当前音量(0.0-1.0)
+     */
+    getVolume(): number;
+
+    /**
+     * 设置音量
+     * @param volume 音量 (0.0 - 1.0)
+     * @returns 无返回值
+     */
+    setVolume(volume: number): void;
+
+    /**
+     * 获取重复模式
+     * @returns 重复模式
+     */
+    getRepeatMode(): any;
+
+    /**
+     * 设置重复模式
+     * @param mode 'none' | 'one' | 'all'
+     * @returns 无返回值
+     */
+    setRepeatMode(mode: string): void;
+
+    /**
+     * 获取随机播放模式
+     * @returns 随机播放模式
+     */
+    getShuffleMode(): any;
+
+    /**
+     * 设置随机播放模式
+     * @param mode 'off' | 'songs' | 'albums'
+     * @returns 无返回值
+     */
+    setShuffleMode(mode: string): void;
+
+    /**
+     * 获取当前播放时间
+     * @returns 当前播放时间(秒)
+     */
+    getCurrentTime(): number;
+
+    /**
+     * 设置播放时间
+     * @param time 时间 (秒)
+     * @returns 无返回值
+     */
+    setCurrentTime(time: number): void;
+
+    /**
+     * 快进
+     * @param seconds 秒数 (默认 15)
+     * @returns 无返回值
+     */
+    seekForward(seconds: number): void;
+
+    /**
+     * 快退
+     * @param seconds 秒数 (默认 15)
+     * @returns 无返回值
+     */
+    seekBackward(seconds: number): void;
+
+    /**
+     * 请求音乐库权限
+     * @returns 是否授权成功
+     */
+    requestAccess(): any;
+
+    /**
+     * 获取权限状态
+     * @returns 权限状态
+     */
+    getAccessStatus(): any;
+
+    /**
+     * 搜索音乐库
+     * @param query 搜索关键词
+     * @returns 歌曲列表数组
+     */
+    searchSongs(query: string): any;
+
+    /**
+     * 播放指定歌曲
+     * @param persistentID 歌曲 ID
+     * @returns 无返回值
+     */
+    playSong(persistentID: string): void;
+
+    /**
+     * 获取所有歌曲
+     * @returns 歌曲列表数组
+     */
+    getAllSongs(): any;
+
+    /**
+     * 获取所有专辑
+     * @returns 专辑列表数组
+     */
+    getAlbums(): any;
+
+    /**
+     * 获取所有艺术家
+     * @returns 艺术家列表数组
+     */
+    getArtists(): any;
+
+    /**
+     * 获取播放列表
+     * @returns 播放列表数组
+     */
+    getPlaylists(): any;
+
+    /**
+     * 播放专辑
+     * @param id 专辑 ID
+     * @returns 无返回值
+     */
+    playAlbum(id: string): void;
+
+    /**
+     * 播放艺术家
+     * @param id 艺术家 ID
+     * @returns 无返回值
+     */
+    playArtist(id: string): void;
+
+    /**
+     * 播放播放列表
+     * @param id 播放列表 ID
+     * @returns 无返回值
+     */
+    playPlaylist(id: string): void;
+
+}
+
+declare const media: Media;
+
+interface Mail {
+    /**
+     * 检查是否能发送邮件
+     * @returns 是否能发送
+     */
+    canSendMail(): boolean;
+
+    /**
+     * 获取邮件功能状态
+     * @returns 邮件功能状态
+     */
+    getStatus(): any;
+
+    /**
+     * 发送简单邮件
+     * @param to 收件人列表
+     * @param subject 主题
+     * @param body 正文
+     * @returns 是否发送成功
+     */
+    send(to: any, subject: string, body: string): any;
+
+    /**
+     * 发送邮件(完整选项)
+     * @param options 选项 { to, cc, bcc, subject, body, isHtml, attachments }
+     * @returns 是否发送成功
+     */
+    sendAdvanced(options: Record<string, any>): any;
+
+    /**
+     * 打开邮件 App
+     * @returns 无返回值
+     */
+    openMailApp(): void;
+
+    /**
+     * 打开指定邮件 App
+     * @param appName App 名称
+     * @returns 无返回值
+     */
+    openSpecificMailApp(appName: string): void;
+
+    /**
+     * 验证邮箱格式
+     * @param email 邮箱地址
+     * @returns 是否有效
+     */
+    isValidEmail(email: string): boolean;
+
+    /**
+     * 检测已安装的邮件 App
+     * @returns 已安装的邮件 App 名称数组
+     */
+    getInstalledMailApps(): any;
+
+    /**
+     * 从模板生成邮件
+     * @param templateName 模板名称
+     * @param variables 变量字典
+     * @returns 生成的邮件内容
+     */
+    fromTemplate(templateName: string, variables: Record<string, any>): any;
+
+    /**
+     * 获取可用模板列表
+     * @returns 模板名称数组
+     */
+    getTemplates(): any;
+
+}
+
+declare const mail: Mail;
+
+interface Sms {
+    /**
+     * 检查短信权限
+     * @returns 是否有权限
+     */
+    checkAccess(): boolean;
+
+    /**
+     * 尝试直接访问短信数据库(调试用)
+     * @returns 是否访问成功
+     */
+    tryAccess(): boolean;
+
+    /**
+     * 读取最近的短信
+     * @param limit 限制条数 (默认 10)
+     * @returns 短信对象数组
+     */
+    read(limit: number): any;
+
+    /**
+     * 获取验证码
+     * @param minutes 查找最近几分钟内的验证码 (默认 5)
+     * @returns 验证码或 null
+     */
+    getVerificationCode(minutes: number): any;
+
+    /**
+     * 搜索短信
+     * @param keyword 关键词
+     * @returns 短信对象数组
+     */
+    search(keyword: string): any;
+
+    /**
+     * 按号码获取短信
+     * @param address 发送者号码
+     * @returns 短信对象数组
+     */
+    getByAddress(address: string): any;
+
+    /**
+     * 获取会话列表
+     * @returns 会话列表数组
+     */
+    getChats(): any;
+
+    /**
+     * 获取短信统计
+     * @returns 统计信息对象
+     */
+    getStatistics(): any;
+
+    /**
+     * 获取最新短信
+     * @returns 最新短信对象或 null
+     */
+    getLatest(): any;
+
+    /**
+     * 获取未读短信
+     * @returns 未读短信对象数组
+     */
+    getUnread(): any;
+
+}
+
+declare const sms: Sms;
+
+interface Sql {
+    /**
+     * 执行 SELECT 查询并返回结果
+     * @param dbPath 数据库路径
+     * @param sql SQL 语句
+     * @param params 参数列表
+     * @returns 查询结果数组
+     */
+    query(dbPath: string, sql: string, params: any[]): any[];
+
+    /**
+     * 执行 INSERT/UPDATE/DELETE
+     * @param dbPath 数据库路径
+     * @param sql SQL 语句
+     * @param params 参数列表
+     * @returns 执行结果对象
+     */
+    execute(dbPath: string, sql: string, params: any[]): any;
+
+    /**
+     * 列出数据库中的所有表
+     * @param dbPath 数据库路径
+     * @returns 表名数组
+     */
+    tables(dbPath: string): any;
+
+    /**
+     * 获取表结构
+     * @param dbPath 数据库路径
+     * @param tableName 表名
+     * @returns 表结构 SQL
+     */
+    schema(dbPath: string, tableName: string): string;
+
+}
+
+declare const sql: Sql;
+
+interface Shortcuts {
+    /**
+     * 运行快捷指令
+     * @param name 快捷指令名称
+     * @returns 快捷指令执行结果
+     */
+    run(name: string): any;
+
+    /**
+     * 运行快捷指令(带文本输入)
+     * @param name 快捷指令名称
+     * @param text 输入文本
+     * @returns 快捷指令执行结果
+     */
+    runWithText(name: string, text: string): any;
+
+    /**
+     * 运行快捷指令(剪贴板输入)
+     * @param name 快捷指令名称
+     */
+    runWithClipboard(name: string): any;
+
+    /**
+     * 运行快捷指令(高级选项)
+     * @param name 快捷指令名称
+     * @param options 选项 { input, showOutput }
+     */
+    runAdvanced(name: string, options: Record<string, any>): any;
+
+    /**
+     * 打开快捷指令 App
+     * @returns 无返回值
+     */
+    openApp(): void;
+
+    /**
+     * 打开快捷指令库
+     * @returns 无返回值
+     */
+    openGallery(): void;
+
+    /**
+     * 打开指定快捷指令
+     * @param name 快捷指令名称
+     * @returns 无返回值
+     */
+    openShortcut(name: string): void;
+
+    /**
+     * 创建新快捷指令
+     * @returns 无返回值
+     */
+    createNew(): void;
+
+    /**
+     * 通过链接导入快捷指令
+     * @param url 快捷指令 URL
+     * @returns 无返回值
+     */
+    importFromUrl(url: string): void;
+
+    /**
+     * 检查是否安装快捷指令
+     */
+    isAvailable(): boolean;
+
+    /**
+     * 获取常用快捷指令模板
+     */
+    getCommonShortcuts(): any;
+
+}
+
+declare const shortcuts: Shortcuts;
+
+interface Bluetooth {
+    /**
+     * 蓝牙是否开启
+     */
+    isEnabled(): boolean;
+
+    /**
+     * 获取蓝牙状态
+     */
+    getStatus(): any;
+
+    /**
+     * 设置蓝牙开关
+     * @param enabled 是否开启
+     * @returns 无返回值
+     */
+    setEnabled(enabled: boolean): void;
+
+    /**
+     * 打开蓝牙
+     * @returns 无返回值
+     */
+    turnOn(): void;
+
+    /**
+     * 关闭蓝牙
+     * @returns 无返回值
+     */
+    turnOff(): void;
+
+    /**
+     * 获取配对设备
+     */
+    getPairedDevices(): any;
+
+    /**
+     * 获取已连接设备
+     */
+    getConnectedDevices(): any;
+
+    /**
+     * 连接设备
+     * @param id 设备 UUID
+     */
+    connectDevice(id: string): any;
+
+    /**
+     * 断开设备
+     * @param id 设备 UUID
+     */
+    disconnectDevice(id: string): any;
+
+    /**
+     * 开始扫描
+     * @returns 无返回值
+     */
+    startScan(): void;
+
+    /**
+     * 停止扫描
+     * @returns 无返回值
+     */
+    stopScan(): void;
+
+    /**
+     * 打开蓝牙设置
+     * @returns 无返回值
+     */
+    openSettings(): void;
+
+}
+
+declare const bluetooth: Bluetooth;
+
+interface Webview {
+    /**
+     * 打开网页并等待加载
+     * @param url 网页 URL
+     */
+    open(url: string): any;
+
+    /**
+     * 加载 HTML 内容
+     * @param html HTML 字符串
+     * @param baseURL 基础 URL
+     */
+    loadHTML(html: string, baseURL: string): any;
+
+    /**
+     * 执行页面内 JavaScript
+     * @param script JS 代码
+     */
+    evaluate(script: string): any;
+
+    /**
+     * 获取页面标题
+     */
+    getTitle(): any;
+
+    /**
+     * 获取当前 URL
+     */
+    getURL(): any;
+
+    /**
+     * 获取页面 HTML 源码
+     */
+    getHTML(): any;
+
+    /**
+     * 关闭网页视图
+     * @returns 无返回值
+     */
+    close(): void;
+
+    /**
+     * 检查是否已打开
+     */
+    isOpen(): boolean;
+
+    /**
+     * 截取页面截图
+     */
+    screenshot(): any;
+
+}
+
+declare const webview: Webview;
+
+interface Memo {
+    /**
+     * 创建备忘录
+     * @param title 备忘录标题
+     * @param content 备忘录内容
+     * @param tags 标签列表
+     * @returns { success: 是否成功, id: 备忘录ID, memo: 备忘录对象 }
+     */
+    create(title: string, content: string, tags: any): Record<string, any>;
+
+    /**
+     * 获取所有备忘录
+     * @returns 备忘录数组 [{ id: ID, title: 标题, content: 内容, createdAt: 创建时间, updatedAt: 更新时间, tags: 标签 }]
+     */
+    getAll(): any;
+
+    /**
+     * 根据 ID 获取备忘录
+     * @param id 备忘录 ID
+     * @returns 备忘录对象或 null（不存在时）
+     */
+    getById(id: string): any;
+
+    /**
+     * 搜索备忘录（标题和内容）
+     * @param keyword 搜索关键词
+     * @returns 匹配的备忘录数组
+     */
+    search(keyword: string): any;
+
+    /**
+     * 更新备忘录
+     * @param id 备忘录 ID
+     * @param data 更新数据 { title?: 新标题, content?: 新内容, tags?: 新标签 }
+     * @returns { success: 是否成功, id: 备忘录ID }
+     */
+    update(id: string, data: Record<string, any>): Record<string, any>;
+
+    /**
+     * 删除备忘录
+     * @param id 备忘录 ID
+     * @returns { success: 是否成功, id: 已删除的ID }
+     */
+    delete(id: string): Record<string, any>;
+
+    /**
+     * 清空所有备忘录
+     * @returns { success: 是否成功 }
+     */
+    clear(): Record<string, any>;
+
+    /**
+     * 获取备忘录数量
+     * @returns 备忘录总数
+     */
+    count(): number;
+
+}
+
+declare const memo: Memo;
