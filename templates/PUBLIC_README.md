@@ -126,6 +126,70 @@ TrollScript 支持脚本商店功能，通过脚本商店可以方便地获取�
 
 [默认商店 (TrollScript-Store)](https://github.com/dompling/TrollScript-Store)
 
+### URL Scheme
+
+TrollScript 支持多种 URL Scheme，可用于从其他应用快速操作：
+
+#### 安装脚本
+
+从 URL 下载并导入脚本：
+
+```
+trollscript://install?url=https://example.com/script.js
+```
+
+#### 商店安装
+
+从脚本商店直接安装脚本（用于商店一键安装）：
+
+```
+trollscript://store?id=脚本ID&name=脚本名称&url=https://example.com/script.js
+```
+
+| 参数 | 说明 |
+|------|------|
+| `id` | 脚本唯一标识（用于版本追踪） |
+| `name` | 脚本显示名称 |
+| `url` | 脚本下载地址 |
+
+#### 运行脚本
+
+通过脚本 ID 或名称运行已安装的脚本：
+
+```
+trollscript://run?id=脚本UUID
+trollscript://run?name=脚本名称
+```
+
+#### 导入脚本
+
+通过 Base64 编码的内容导入脚本：
+
+```
+trollscript://import?content=Base64编码内容&name=脚本名称
+```
+
+#### 打开应用
+
+仅打开 TrollScript 应用：
+
+```
+trollscript://open
+```
+
+#### 添加商店订阅
+
+通过 URL 添加脚本商店订阅源：
+
+```
+trollscript://subscribe?name=订阅源名称&url=https://example.com/store.json
+```
+
+| 参数 | 说明 |
+|------|------|
+| `name` | 订阅源显示名称 |
+| `url` | 订阅源 JSON 地址 |
+
 ### NPM 支持
 
 为了方便开发者编写脚本，提供了 TypeScript 定义包：
