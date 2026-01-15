@@ -6,48 +6,41 @@ interface Console {
     /**
      * 输出日志信息
      * @param args 要输出的内容
-     * @returns 无返回值
      */
     log(...args: any[]): void;
 
     /**
      * 输出错误信息
      * @param args 要输出的内容
-     * @returns 无返回值
      */
     error(...args: any[]): void;
 
     /**
      * 输出警告信息
      * @param args 要输出的内容
-     * @returns 无返回值
      */
     warn(...args: any[]): void;
 
     /**
      * 输出提示信息
      * @param args 要输出的内容
-     * @returns 无返回值
      */
     info(...args: any[]): void;
 
     /**
      * 输出调试信息
      * @param args 要输出的内容
-     * @returns 无返回值
      */
     debug(...args: any[]): void;
 
     /**
      * 以表格形式输出
      * @param data 要显示的表格数据
-     * @returns 无返回值
      */
     table(data: any): void;
 
     /**
      * 清空控制台
-     * @returns 无返回值
      */
     clear(): void;
 
@@ -88,13 +81,11 @@ interface Clipboard {
     /**
      * 设置剪贴板文本
      * @param text 要设置的文本内容
-     * @returns 无返回值
      */
     setText(text: string): void;
 
     /**
      * 清空剪贴板
-     * @returns 无返回值
      */
     clear(): void;
 
@@ -114,20 +105,17 @@ interface Storage {
      * 设置存储值
      * @param key 键名
      * @param value 要存储的值
-     * @returns 无返回值
      */
     set(key: string, value: any): void;
 
     /**
      * 删除存储值
      * @param key 键名
-     * @returns 无返回值
      */
     remove(key: string): void;
 
     /**
      * 清空所有存储
-     * @returns 无返回值
      */
     clear(): void;
 
@@ -558,7 +546,6 @@ interface App {
 
     /**
      * 震动反馈
-     * @returns 无返回值
      */
     vibrate(): void;
 
@@ -589,7 +576,6 @@ interface App {
 
     /**
      * 清除所有日志
-     * @returns 无返回值
      */
     clearLogs(): void;
 
@@ -611,7 +597,6 @@ interface Ui {
      * 显示 Toast 提示
      * @param message 提示内容
      * @param duration 持续时间(秒)
-     * @returns 无返回值
      */
     toast(message: string, duration: number): void;
 
@@ -647,13 +632,11 @@ interface Ui {
     /**
      * 显示加载指示器
      * @param message 加载提示
-     * @returns 无返回值
      */
     showLoading(message: string): void;
 
     /**
      * 隐藏加载指示器
-     * @returns 无返回值
      */
     hideLoading(): void;
 
@@ -665,62 +648,52 @@ interface Haptic {
     /**
      * 触觉冲击反馈
      * @param style 'light' | 'medium' | 'heavy' | 'soft' | 'rigid'
-     * @returns 无返回值
      */
     impact(style: string): void;
 
     /**
      * 通知触觉反馈
      * @param type 'success' | 'warning' | 'error'
-     * @returns 无返回值
      */
     notification(type: string): void;
 
     /**
      * 选择触觉反馈
-     * @returns 无返回值
      */
     selection(): void;
 
     /**
      * 设备振动
-     * @returns 无返回值
      */
     vibrate(): void;
 
     /**
      * 轻度冲击
-     * @returns 无返回值
      */
     light(): void;
 
     /**
      * 中度冲击
-     * @returns 无返回值
      */
     medium(): void;
 
     /**
      * 重度冲击
-     * @returns 无返回值
      */
     heavy(): void;
 
     /**
      * 成功反馈
-     * @returns 无返回值
      */
     success(): void;
 
     /**
      * 警告反馈
-     * @returns 无返回值
      */
     warning(): void;
 
     /**
      * 错误反馈
-     * @returns 无返回值
      */
     error(): void;
 
@@ -738,21 +711,18 @@ interface Display {
     /**
      * 设置屏幕亮度
      * @param value 亮度值 (0.0 - 1.0)
-     * @returns 无返回值
      */
     setBrightness(value: number): void;
 
     /**
      * 增加亮度
      * @param amount 增加量 (默认 0.1)
-     * @returns 无返回值
      */
     increaseBrightness(amount: number): void;
 
     /**
      * 降低亮度
      * @param amount 减少量 (默认 0.1)
-     * @returns 无返回值
      */
     decreaseBrightness(amount: number): void;
 
@@ -873,7 +843,6 @@ declare const util: Util;
 interface Location {
     /**
      * 请求定位权限
-     * @returns 无返回值
      */
     requestAccess(): void;
 
@@ -1343,13 +1312,11 @@ interface Notification {
     /**
      * 取消通知
      * @param id 通知 ID
-     * @returns 无返回值
      */
     cancel(id: string): void;
 
     /**
      * 取消所有通知
-     * @returns 无返回值
      */
     cancelAll(): void;
 
@@ -1380,7 +1347,6 @@ interface Notification {
     /**
      * 设置角标数字
      * @param count 角标数
-     * @returns 无返回值
      */
     setBadge(count: number): void;
 
@@ -1471,25 +1437,21 @@ interface Alarm {
     /**
      * 取消指定闹钟
      * @param id 闹钟 ID
-     * @returns 无返回值
      */
     cancel(id: string): void;
 
     /**
      * 取消所有闹钟
-     * @returns 无返回值
      */
     cancelAll(): void;
 
     /**
      * 打开系统时钟
-     * @returns 无返回值
      */
     openClockApp(): void;
 
     /**
      * 打开计时器
-     * @returns 无返回值
      */
     openTimer(): void;
 
@@ -1500,43 +1462,36 @@ declare const alarm: Alarm;
 interface Media {
     /**
      * 播放
-     * @returns 无返回值
      */
     play(): void;
 
     /**
      * 暂停
-     * @returns 无返回值
      */
     pause(): void;
 
     /**
      * 停止
-     * @returns 无返回值
      */
     stop(): void;
 
     /**
      * 切换播放/暂停
-     * @returns 无返回值
      */
     togglePlayPause(): void;
 
     /**
      * 下一首
-     * @returns 无返回值
      */
     next(): void;
 
     /**
      * 上一首
-     * @returns 无返回值
      */
     previous(): void;
 
     /**
      * 跳到开头
-     * @returns 无返回值
      */
     skipToBeginning(): void;
 
@@ -1567,7 +1522,6 @@ interface Media {
     /**
      * 设置音量
      * @param volume 音量 (0.0 - 1.0)
-     * @returns 无返回值
      */
     setVolume(volume: number): void;
 
@@ -1580,7 +1534,6 @@ interface Media {
     /**
      * 设置重复模式
      * @param mode 'none' | 'one' | 'all'
-     * @returns 无返回值
      */
     setRepeatMode(mode: string): void;
 
@@ -1593,7 +1546,6 @@ interface Media {
     /**
      * 设置随机播放模式
      * @param mode 'off' | 'songs' | 'albums'
-     * @returns 无返回值
      */
     setShuffleMode(mode: string): void;
 
@@ -1606,21 +1558,18 @@ interface Media {
     /**
      * 设置播放时间
      * @param time 时间 (秒)
-     * @returns 无返回值
      */
     setCurrentTime(time: number): void;
 
     /**
      * 快进
      * @param seconds 秒数 (默认 15)
-     * @returns 无返回值
      */
     seekForward(seconds: number): void;
 
     /**
      * 快退
      * @param seconds 秒数 (默认 15)
-     * @returns 无返回值
      */
     seekBackward(seconds: number): void;
 
@@ -1646,7 +1595,6 @@ interface Media {
     /**
      * 播放指定歌曲
      * @param persistentID 歌曲 ID
-     * @returns 无返回值
      */
     playSong(persistentID: string): void;
 
@@ -1677,14 +1625,12 @@ interface Media {
     /**
      * 播放专辑
      * @param id 专辑 ID
-     * @returns 无返回值
      */
     playAlbum(id: string): void;
 
     /**
      * 播放艺术家
      * @param id 艺术家 ID
-     * @returns 无返回值
      */
     playArtist(id: string): void;
 

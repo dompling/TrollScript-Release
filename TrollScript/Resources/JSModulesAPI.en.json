@@ -18,8 +18,7 @@
                             "description": "Content to output"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "error",
@@ -32,8 +31,7 @@
                             "description": "Content to output"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "warn",
@@ -46,8 +44,7 @@
                             "description": "Content to output"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "info",
@@ -60,8 +57,7 @@
                             "description": "Content to output"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "debug",
@@ -74,8 +70,7 @@
                             "description": "Content to output"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "table",
@@ -88,15 +83,13 @@
                             "description": "Table data to display"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "clear",
                     "signature": "clear()",
                     "description": "Clear console",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 }
             ]
         },
@@ -153,15 +146,13 @@
                             "description": "Text content to set"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "clear",
                     "signature": "clear()",
                     "description": "Clear clipboard",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 }
             ]
         },
@@ -201,8 +192,7 @@
                             "description": "Value to store"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "remove",
@@ -215,15 +205,13 @@
                             "description": "Key name"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "clear",
                     "signature": "clear()",
                     "description": "Clear all storage",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "has",
@@ -1054,8 +1042,7 @@
                     "name": "vibrate",
                     "signature": "vibrate()",
                     "description": "Vibrate feedback",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "getLogs",
@@ -1097,8 +1084,7 @@
                     "name": "clearLogs",
                     "signature": "clearLogs()",
                     "description": "Clear all logs",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 }
             ]
         },
@@ -1131,8 +1117,7 @@
                             "description": "Button text"
                         }
                     ],
-                    "returns": "Promise<void>",
-                    "returnsDescription": "No return value"
+                    "returns": "Promise<void>"
                 },
                 {
                     "name": "toast",
@@ -1151,8 +1136,7 @@
                             "description": "Duration (seconds)"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "confirm",
@@ -1255,15 +1239,13 @@
                             "description": "Loading message"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "hideLoading",
                     "signature": "hideLoading()",
                     "description": "Hide loading indicator",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 }
             ]
         },
@@ -1285,8 +1267,7 @@
                             "description": "'light' | 'medium' | 'heavy' | 'soft' | 'rigid'"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "notification",
@@ -1299,64 +1280,55 @@
                             "description": "'success' | 'warning' | 'error'"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "selection",
                     "signature": "selection()",
                     "description": "Selection feedback",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "vibrate",
                     "signature": "vibrate()",
                     "description": "Vibrate device",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "light",
                     "signature": "light()",
                     "description": "Light impact",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "medium",
                     "signature": "medium()",
                     "description": "Medium impact",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "heavy",
                     "signature": "heavy()",
                     "description": "Heavy impact",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "success",
                     "signature": "success()",
                     "description": "Success feedback",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "warning",
                     "signature": "warning()",
                     "description": "Warning feedback",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "error",
                     "signature": "error()",
                     "description": "Error feedback",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 }
             ]
         },
@@ -1384,8 +1356,7 @@
                             "description": "Brightness value (0.0 - 1.0)"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "increaseBrightness",
@@ -1399,8 +1370,7 @@
                             "description": "Amount to increase (default 0.1)"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "decreaseBrightness",
@@ -1414,8 +1384,7 @@
                             "description": "Amount to decrease (default 0.1)"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "getScreenInfo",
@@ -1610,8 +1579,7 @@
                     "name": "requestAccess",
                     "signature": "requestAccess()",
                     "description": "Request location access",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "getAccessStatus",
@@ -2471,15 +2439,13 @@
                             "description": "Notification ID"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "cancelAll",
                     "signature": "cancelAll()",
                     "description": "Cancel all notifications",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "getPending",
@@ -2520,8 +2486,7 @@
                             "description": "Badge number"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "getBadge",
@@ -2722,29 +2687,25 @@
                             "description": "Alarm ID"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "cancelAll",
                     "signature": "cancelAll()",
                     "description": "Cancel all alarms",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "openClockApp",
                     "signature": "openClockApp()",
                     "description": "Open Clock app",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "openTimer",
                     "signature": "openTimer()",
                     "description": "Open Timer",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 }
             ]
         },
@@ -2758,50 +2719,43 @@
                     "name": "play",
                     "signature": "play()",
                     "description": "Play",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "pause",
                     "signature": "pause()",
                     "description": "Pause",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "stop",
                     "signature": "stop()",
                     "description": "Stop",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "togglePlayPause",
                     "signature": "togglePlayPause()",
                     "description": "Toggle Play/Pause",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "next",
                     "signature": "next()",
                     "description": "Next track",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "previous",
                     "signature": "previous()",
                     "description": "Previous track",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "skipToBeginning",
                     "signature": "skipToBeginning()",
                     "description": "Skip to beginning",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "getPlaybackState",
@@ -2842,8 +2796,7 @@
                             "description": "Volume (0.0 - 1.0)"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "getRepeatMode",
@@ -2863,8 +2816,7 @@
                             "description": "'none' | 'one' | 'all'"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "getShuffleMode",
@@ -2884,8 +2836,7 @@
                             "description": "'off' | 'songs' | 'albums'"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "getCurrentTime",
@@ -2905,8 +2856,7 @@
                             "description": "Time (seconds)"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "seekForward",
@@ -2920,8 +2870,7 @@
                             "description": "Seconds (default 15)"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "seekBackward",
@@ -2935,8 +2884,7 @@
                             "description": "Seconds (default 15)"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "requestAccess",
@@ -2977,8 +2925,7 @@
                             "description": "Song ID"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "getAllSongs",
@@ -3019,8 +2966,7 @@
                             "description": "Album ID"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "playArtist",
@@ -3033,8 +2979,7 @@
                             "description": "Artist ID"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "playPlaylist",
@@ -3047,8 +2992,7 @@
                             "description": "Playlist ID"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 }
             ]
         },
@@ -3114,8 +3058,7 @@
                     "name": "openMailApp",
                     "signature": "openMailApp()",
                     "description": "Open Mail app",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "openSpecificMailApp",
@@ -3128,8 +3071,7 @@
                             "description": "App name"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "isValidEmail",
@@ -3455,15 +3397,13 @@
                     "name": "openApp",
                     "signature": "openApp()",
                     "description": "Open Shortcuts app",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "openGallery",
                     "signature": "openGallery()",
                     "description": "Open Shortcuts Gallery",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "openShortcut",
@@ -3476,15 +3416,13 @@
                             "description": "Shortcut name"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "createNew",
                     "signature": "createNew()",
                     "description": "Create new shortcut",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "importFromUrl",
@@ -3497,8 +3435,7 @@
                             "description": "Shortcut URL"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "isAvailable",
@@ -3547,22 +3484,19 @@
                             "description": "Whether to enable"
                         }
                     ],
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "turnOn",
                     "signature": "turnOn()",
                     "description": "Turn on Bluetooth",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "turnOff",
                     "signature": "turnOff()",
                     "description": "Turn off Bluetooth",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "getPairedDevices",
@@ -3610,22 +3544,19 @@
                     "name": "startScan",
                     "signature": "startScan()",
                     "description": "Start scanning",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "stopScan",
                     "signature": "stopScan()",
                     "description": "Stop scanning",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "openSettings",
                     "signature": "openSettings()",
                     "description": "Open Bluetooth settings",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 }
             ]
         },
@@ -3646,8 +3577,7 @@
                             "description": "Page URL"
                         }
                     ],
-                    "returns": "Promise<void>",
-                    "returnsDescription": "No return value"
+                    "returns": "Promise<void>"
                 },
                 {
                     "name": "loadHTML",
@@ -3666,8 +3596,7 @@
                             "description": "Base URL"
                         }
                     ],
-                    "returns": "Promise<void>",
-                    "returnsDescription": "No return value"
+                    "returns": "Promise<void>"
                 },
                 {
                     "name": "evaluate",
@@ -3708,8 +3637,7 @@
                     "name": "close",
                     "signature": "close()",
                     "description": "Close webview",
-                    "returns": "void",
-                    "returnsDescription": "No return value"
+                    "returns": "void"
                 },
                 {
                     "name": "isOpen",

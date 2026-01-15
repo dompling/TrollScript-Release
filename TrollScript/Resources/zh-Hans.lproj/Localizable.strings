@@ -116,6 +116,12 @@
 "script.settings.log_keep_count" = "保留日志数";
 "script.settings.count_suffix" = "%d 条";
 "script.settings.log_footer" = "超出数量后自动清理旧日志";
+"script.settings.memory_section" = "内存管理";
+"script.settings.memory_limit" = "内存限制";
+"script.settings.stack_size" = "栈大小";
+"script.settings.auto_gc" = "执行后自动释放";
+"script.settings.unlimited" = "无限制";
+"script.settings.memory_footer" = "限制脚本可使用的内存，防止内存溢出导致崩溃";
 
 /* Store */
 "store.title" = "脚本商店";

@@ -18,9 +18,7 @@
               "description": "要输出的内容"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "error",
@@ -33,9 +31,7 @@
               "description": "要输出的内容"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "warn",
@@ -48,9 +44,7 @@
               "description": "要输出的内容"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "info",
@@ -63,9 +57,7 @@
               "description": "要输出的内容"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "debug",
@@ -78,9 +70,7 @@
               "description": "要输出的内容"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "table",
@@ -93,17 +83,13 @@
               "description": "要显示的表格数据"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "clear",
           "signature": "clear()",
           "description": "清空控制台",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         }
       ]
     },
@@ -160,17 +146,13 @@
               "description": "要设置的文本内容"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "clear",
           "signature": "clear()",
           "description": "清空剪贴板",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         }
       ]
     },
@@ -210,9 +192,7 @@
               "description": "要存储的值"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "remove",
@@ -225,17 +205,13 @@
               "description": "键名"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "clear",
           "signature": "clear()",
           "description": "清空所有存储",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "has",
@@ -1066,9 +1042,7 @@
           "name": "vibrate",
           "signature": "vibrate()",
           "description": "震动反馈",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "getLogs",
@@ -1110,9 +1084,7 @@
           "name": "clearLogs",
           "signature": "clearLogs()",
           "description": "清除所有日志",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         }
       ]
     },
@@ -1165,9 +1137,7 @@
               "description": "持续时间(秒)"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "confirm",
@@ -1270,17 +1240,13 @@
               "description": "加载提示"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "hideLoading",
           "signature": "hideLoading()",
           "description": "隐藏加载指示器",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         }
       ]
     },
@@ -1302,9 +1268,7 @@
               "description": "'light' | 'medium' | 'heavy' | 'soft' | 'rigid'"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "notification",
@@ -1317,73 +1281,55 @@
               "description": "'success' | 'warning' | 'error'"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "selection",
           "signature": "selection()",
           "description": "选择触觉反馈",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "vibrate",
           "signature": "vibrate()",
           "description": "设备振动",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "light",
           "signature": "light()",
           "description": "轻度冲击",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "medium",
           "signature": "medium()",
           "description": "中度冲击",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "heavy",
           "signature": "heavy()",
           "description": "重度冲击",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "success",
           "signature": "success()",
           "description": "成功反馈",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "warning",
           "signature": "warning()",
           "description": "警告反馈",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "error",
           "signature": "error()",
           "description": "错误反馈",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         }
       ]
     },
@@ -1411,9 +1357,7 @@
               "description": "亮度值 (0.0 - 1.0)"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "increaseBrightness",
@@ -1427,9 +1371,7 @@
               "description": "增加量 (默认 0.1)"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "decreaseBrightness",
@@ -1443,9 +1385,7 @@
               "description": "减少量 (默认 0.1)"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "getScreenInfo",
@@ -1640,9 +1580,7 @@
           "name": "requestAccess",
           "signature": "requestAccess()",
           "description": "请求定位权限",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "getAccessStatus",
@@ -2502,17 +2440,13 @@
               "description": "通知 ID"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "cancelAll",
           "signature": "cancelAll()",
           "description": "取消所有通知",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "getPending",
@@ -2553,9 +2487,7 @@
               "description": "角标数"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "getBadge",
@@ -2756,33 +2688,25 @@
               "description": "闹钟 ID"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "cancelAll",
           "signature": "cancelAll()",
           "description": "取消所有闹钟",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "openClockApp",
           "signature": "openClockApp()",
           "description": "打开系统时钟",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "openTimer",
           "signature": "openTimer()",
           "description": "打开计时器",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         }
       ]
     },
@@ -2796,57 +2720,43 @@
           "name": "play",
           "signature": "play()",
           "description": "播放",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "pause",
           "signature": "pause()",
           "description": "暂停",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "stop",
           "signature": "stop()",
           "description": "停止",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "togglePlayPause",
           "signature": "togglePlayPause()",
           "description": "切换播放/暂停",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "next",
           "signature": "next()",
           "description": "下一首",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "previous",
           "signature": "previous()",
           "description": "上一首",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "skipToBeginning",
           "signature": "skipToBeginning()",
           "description": "跳到开头",
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "getPlaybackState",
@@ -2887,9 +2797,7 @@
               "description": "音量 (0.0 - 1.0)"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "getRepeatMode",
@@ -2909,9 +2817,7 @@
               "description": "'none' | 'one' | 'all'"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "getShuffleMode",
@@ -2931,9 +2837,7 @@
               "description": "'off' | 'songs' | 'albums'"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "getCurrentTime",
@@ -2953,9 +2857,7 @@
               "description": "时间 (秒)"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "seekForward",
@@ -2969,9 +2871,7 @@
               "description": "秒数 (默认 15)"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "seekBackward",
@@ -2985,9 +2885,7 @@
               "description": "秒数 (默认 15)"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "requestAccess",
@@ -3028,9 +2926,7 @@
               "description": "歌曲 ID"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "getAllSongs",
@@ -3071,9 +2967,7 @@
               "description": "专辑 ID"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "playArtist",
@@ -3086,9 +2980,7 @@
               "description": "艺术家 ID"
             }
           ],
-          "returns": "void",
-          "returnsDescription": "无返回值",
-          "returnsDescription": "无返回值"
+          "returns": "void"
         },
         {
           "name": "playPlaylist",

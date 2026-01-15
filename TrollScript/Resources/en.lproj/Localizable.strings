@@ -115,6 +115,12 @@
 "script.settings.log_keep_count" = "Keep Logs";
 "script.settings.count_suffix" = "%d Logs";
 "script.settings.log_footer" = "Older logs will be automatically deleted";
+"script.settings.memory_section" = "Memory Management";
+"script.settings.memory_limit" = "Memory Limit";
+"script.settings.stack_size" = "Stack Size";
+"script.settings.auto_gc" = "Auto GC After Execution";
+"script.settings.unlimited" = "Unlimited";
+"script.settings.memory_footer" = "Limit script memory usage to prevent crashes from memory overflow";
 
 /* Store */
 "store.title" = "Script Store";
