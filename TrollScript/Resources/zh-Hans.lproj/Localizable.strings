@@ -1,6 +1,7 @@
 /* Settings */
 "settings.title" = "设置";
 "settings.keep_alive" = "后台保活";
+"settings.process_management" = "进程管理";
 "settings.category_management" = "分类管理";
 "settings.script_execution" = "脚本执行";
 "settings.crash_reports" = "崩溃日志";
@@ -71,6 +72,8 @@
 
 /* Keep Alive */
 "keepalive.title" = "永久保活";
+"process.title" = "进程管理";
+"process.running_count" = "%d 运行中";
 "keepalive.enable" = "启用保活";
 "keepalive.status" = "状态";
 "keepalive.running" = "运行中";
@@ -86,6 +89,26 @@
 "keepalive.note.battery" = "保活功能会略微增加电量消耗";
 "keepalive.note.low_power" = "建议配合「低电量模式」白名单使用";
 "keepalive.note.kill" = "系统可能在极端情况下终止后台 App";
+
+/* HUD Indicator */
+"hud.section_header" = "悬浮指示器";
+"hud.section_footer" = "脚本运行时显示悬浮指示器，可在所有界面显示。需要 TrollStore 环境。";
+"hud.enable" = "启用悬浮指示器";
+"hud.status" = "状态";
+"hud.running" = "运行中";
+"hud.stopped" = "已停止";
+
+/* Safe Mode */
+"safemode.title" = "安全模式已激活";
+"safemode.exit" = "退出安全模式";
+"safemode.section_header" = "安全模式";
+"safemode.section_footer" = "安全模式已启用以防止崩溃循环。守护进程将不会自动重启，直到您手动退出安全模式。";
+
+/* Process Notes */
+"process.notes_header" = "说明";
+"process.note.daemon" = "后台守护进程提供持久化执行";
+"process.note.keepalive" = "自动重启确保持续运行";
+"process.note.safemode" = "安全模式防止崩溃循环";
 
 /* Keep Alive Strategies */
 "keepalive.strategy.silent_audio" = "静音音频";
@@ -551,6 +574,7 @@
 "generic.save" = "保存";
 "generic.copy" = "复制";
 "generic.search" = "搜索";
+"generic.edit" = "编辑";
 "generic.category" = "分类";
 "generic.lines" = "行";
 
@@ -739,3 +763,59 @@
 "shortcuts.trigger.sleep.desc" = "进入/离开睡眠模式时触发";
 "shortcuts.trigger.email.desc" = "收到特定邮件时触发";
 "shortcuts.trigger.message.desc" = "收到特定消息时触发";
+
+/* Scheduler */
+"scheduler.title" = "定时任务";
+"scheduler.empty_title" = "暂无定时任务";
+"scheduler.empty_message" = "点击右上角添加定时任务";
+"scheduler.add_task" = "添加任务";
+"scheduler.edit_task" = "编辑任务";
+"scheduler.delete_confirm_title" = "确认删除";
+"scheduler.delete_confirm" = "确定要删除选中的 %d 个任务吗？";
+"scheduler.delete_selected" = "删除选中";
+"scheduler.basic_info" = "基本信息";
+"scheduler.task_name" = "任务名称";
+"scheduler.select_script" = "选择脚本";
+"scheduler.search_script" = "搜索脚本";
+"scheduler.no_script" = "未选择";
+"scheduler.schedule" = "执行计划";
+"scheduler.cron_expression" = "Cron 表达式";
+"scheduler.next_run" = "下次执行";
+"scheduler.options" = "选项";
+"scheduler.enabled" = "启用";
+"scheduler.show_notification" = "显示通知";
+
+/* Cron Picker */
+"cron.presets" = "预设";
+"cron.custom" = "自定义";
+"cron.custom_hint" = "使用标准 Cron 表达式格式（分钟 小时 日期 月份 星期）";
+"cron.custom_placeholder" = "输入 Cron 表达式";
+"cron.invalid" = "无效的表达式";
+
+/* Cron Presets */
+"cron.preset.every_minute" = "每分钟";
+"cron.preset.every_5_minutes" = "每 5 分钟";
+"cron.preset.every_15_minutes" = "每 15 分钟";
+"cron.preset.every_30_minutes" = "每 30 分钟";
+"cron.preset.every_hour" = "每小时";
+"cron.preset.every_day_9am" = "每天 9:00";
+"cron.preset.every_day_6pm" = "每天 18:00";
+"cron.preset.every_monday" = "每周一 9:00";
+"cron.preset.custom" = "自定义";
+
+/* Manual Trigger */
+"scheduler.trigger_mode" = "触发方式";
+"scheduler.manual_trigger" = "手动触发";
+"scheduler.manual_trigger_hint" = "开启后，任务只能通过 HUD 悬浮按钮手动执行。";
+"scheduler.cron_trigger_hint" = "任务将按照 Cron 表达式自动定时执行。";
+"scheduler.manual_trigger_desc" = "点击 HUD 悬浮按钮执行脚本";
+
+"generic.select" = "选择";
+"generic.select_all" = "全选";
+"generic.delete" = "删除";
+
+/* Home - Edit Mode */
+"home.selected_count" = "已选择 %d 个";
+"home.delete_confirm_title" = "删除脚本";
+"home.delete_confirm_message" = "确定要删除选中的 %d 个脚本吗？此操作无法撤销。";
+"home.no_description" = "暂无描述";

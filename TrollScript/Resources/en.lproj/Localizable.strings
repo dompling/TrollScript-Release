@@ -86,6 +86,31 @@
 "keepalive.note.low_power" = "Recommended to whitelist in Low Power Mode";
 "keepalive.note.kill" = "System may kill background apps in extreme conditions";
 
+/* Process Management */
+"settings.process_management" = "Process Management";
+"process.title" = "Process Management";
+"process.running_count" = "%d Running";
+
+/* HUD Indicator */
+"hud.section_header" = "HUD Indicator";
+"hud.section_footer" = "Display a floating indicator when scripts are running. Requires TrollStore environment.";
+"hud.enable" = "Enable HUD Indicator";
+"hud.status" = "Status";
+"hud.running" = "Running";
+"hud.stopped" = "Stopped";
+
+/* Safe Mode */
+"safemode.title" = "Safe Mode Active";
+"safemode.exit" = "Exit Safe Mode";
+"safemode.section_header" = "Safe Mode";
+"safemode.section_footer" = "Safe mode is enabled to prevent crash loops. The daemon will not auto-restart until you manually exit safe mode.";
+
+/* Process Notes */
+"process.notes_header" = "Notes";
+"process.note.daemon" = "Background daemon provides persistent execution";
+"process.note.keepalive" = "Auto-restart ensures continuous operation";
+"process.note.safemode" = "Safe mode protects against crash loops";
+
 /* Keep Alive Strategies */
 "keepalive.strategy.silent_audio" = "Silent Audio";
 "keepalive.strategy.location" = "Location Updates";
@@ -547,6 +572,7 @@
 "generic.save" = "Save";
 "generic.copy" = "Copy";
 "generic.search" = "Search";
+"generic.edit" = "Edit";
 
 /* Editor Console & Info */
 "editor.console.logs" = "Logs";
@@ -758,3 +784,59 @@
 "shortcuts.trigger.sleep.desc" = "Trigger on sleep mode enter/exit";
 "shortcuts.trigger.email.desc" = "Trigger on specific email";
 "shortcuts.trigger.message.desc" = "Trigger on specific message";
+
+/* Scheduler */
+"scheduler.title" = "Scheduled Tasks";
+"scheduler.empty_title" = "No Scheduled Tasks";
+"scheduler.empty_message" = "Tap + to add a scheduled task";
+"scheduler.add_task" = "Add Task";
+"scheduler.edit_task" = "Edit Task";
+"scheduler.delete_confirm_title" = "Confirm Delete";
+"scheduler.delete_confirm" = "Are you sure you want to delete %d selected task(s)?";
+"scheduler.delete_selected" = "Delete Selected";
+"scheduler.basic_info" = "Basic Info";
+"scheduler.task_name" = "Task Name";
+"scheduler.select_script" = "Select Script";
+"scheduler.search_script" = "Search Script";
+"scheduler.no_script" = "Not Selected";
+"scheduler.schedule" = "Schedule";
+"scheduler.cron_expression" = "Cron Expression";
+"scheduler.next_run" = "Next Run";
+"scheduler.options" = "Options";
+"scheduler.enabled" = "Enabled";
+"scheduler.show_notification" = "Show Notification";
+
+/* Cron Picker */
+"cron.presets" = "Presets";
+"cron.custom" = "Custom";
+"cron.custom_hint" = "Use standard Cron expression format (minute hour day month weekday)";
+"cron.custom_placeholder" = "Enter Cron expression";
+"cron.invalid" = "Invalid expression";
+
+/* Cron Presets */
+"cron.preset.every_minute" = "Every Minute";
+"cron.preset.every_5_minutes" = "Every 5 Minutes";
+"cron.preset.every_15_minutes" = "Every 15 Minutes";
+"cron.preset.every_30_minutes" = "Every 30 Minutes";
+"cron.preset.every_hour" = "Every Hour";
+"cron.preset.every_day_9am" = "Daily at 9:00 AM";
+"cron.preset.every_day_6pm" = "Daily at 6:00 PM";
+"cron.preset.every_monday" = "Every Monday at 9:00 AM";
+"cron.preset.custom" = "Custom";
+
+/* Manual Trigger */
+"scheduler.trigger_mode" = "Trigger Mode";
+"scheduler.manual_trigger" = "Manual Trigger";
+"scheduler.manual_trigger_hint" = "When enabled, the task can only be triggered manually via the HUD floating button.";
+"scheduler.cron_trigger_hint" = "The task will be executed automatically according to the Cron schedule.";
+"scheduler.manual_trigger_desc" = "Tap the floating button in the HUD to execute";
+
+"generic.select" = "Select";
+"generic.select_all" = "Select All";
+"generic.delete" = "Delete";
+
+/* Home - Edit Mode */
+"home.selected_count" = "%d selected";
+"home.delete_confirm_title" = "Delete Scripts";
+"home.delete_confirm_message" = "Are you sure you want to delete %d scripts? This action cannot be undone.";
+"home.no_description" = "No description";
