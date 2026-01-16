@@ -843,3 +843,32 @@
 "home.delete_confirm_title" = "Delete Scripts";
 "home.delete_confirm_message" = "Are you sure you want to delete %d scripts? This action cannot be undone.";
 "home.no_description" = "No description";
+
+/* Background Settings */
+"background.title" = "Background Running";
+"background.hud_style" = "HUD Style";
+"background.hud_size" = "Indicator Size";
+"background.hud_size.small" = "Small (20pt)";
+"background.hud_size.medium" = "Medium (24pt)";
+"background.hud_size.large" = "Large (32pt)";
+"background.breathing_effect" = "Breathing Effect";
+"background.breathing_footer" = "Enable for smooth pulsing glow animation effect";
+"background.process_info" = "Process Info";
+"background.daemon_status" = "Daemon Status";
+
+/* Trigger Button Style */
+"background.trigger_style" = "Trigger Button Style";
+"background.trigger_style_footer" = "Adjust the appearance of manual trigger floating button";
+"background.trigger_width" = "Button Width";
+"background.trigger_height" = "Button Height";
+"background.trigger_corner_radius" = "Corner Radius";
+"background.trigger_icon_size" = "Icon Size";
+"background.trigger_reset" = "Reset to Default";
+
+/* HUD Color Settings */
+"background.hud_color" = "HUD Indicator Colors";
+"background.hud_color_footer" = "Customize indicator colors for different states";
+"background.color_normal" = "Normal State";
+"background.color_running" = "Running";
+"background.color_error" = "Error";
+"background.color_reset" = "Reset Colors";

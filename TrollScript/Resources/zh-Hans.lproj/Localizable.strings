@@ -822,3 +822,32 @@
 "home.delete_confirm_title" = "删除脚本";
 "home.delete_confirm_message" = "确定要删除选中的 %d 个脚本吗？此操作无法撤销。";
 "home.no_description" = "暂无描述";
+
+/* Background Settings */
+"background.title" = "后台运行";
+"background.hud_style" = "HUD 样式";
+"background.hud_size" = "指示器尺寸";
+"background.hud_size.small" = "小 (20pt)";
+"background.hud_size.medium" = "中 (24pt)";
+"background.hud_size.large" = "大 (32pt)";
+"background.breathing_effect" = "呼吸灯效果";
+"background.breathing_footer" = "启用后指示器将有柔和的明暗渐变动画和发光效果";
+"background.process_info" = "进程信息";
+"background.daemon_status" = "守护进程";
+
+/* Trigger Button Style */
+"background.trigger_style" = "触发按钮样式";
+"background.trigger_style_footer" = "调整手动触发悬浮按钮的外观尺寸";
+"background.trigger_width" = "按钮宽度";
+"background.trigger_height" = "按钮高度";
+"background.trigger_corner_radius" = "圆角半径";
+"background.trigger_icon_size" = "图标尺寸";
+"background.trigger_reset" = "恢复默认设置";
+
+/* HUD Color Settings */
+"background.hud_color" = "HUD 指示器颜色";
+"background.hud_color_footer" = "自定义指示器在不同状态下的颜色显示";
+"background.color_normal" = "正常状态";
+"background.color_running" = "运行中";
+"background.color_error" = "出错";
+"background.color_reset" = "恢复默认颜色";
