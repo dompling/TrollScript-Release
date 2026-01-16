@@ -414,6 +414,7 @@
 "performance.title.critical" = "Critical Performance Issue";
 "performance.title.warning" = "Performance Degraded";
 
+"generic.done" = "Done";
 "generic.cancel" = "Cancel";
 "generic.back" = "Back";
 "generic.confirm" = "Confirm";
@@ -833,6 +834,8 @@
 
 "generic.select" = "Select";
 "generic.select_all" = "Select All";
+"generic.deselect_all" = "Deselect All";
+"generic.done" = "Done";
 "generic.delete" = "Delete";
 
 /* Home - Edit Mode */

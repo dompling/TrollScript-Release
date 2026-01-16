@@ -415,6 +415,7 @@
 "performance.title.critical" = "性能严重下降";
 "performance.title.warning" = "性能下降";
 
+"generic.done" = "完成";
 "generic.cancel" = "取消";
 "generic.back" = "返回";
 "generic.confirm" = "确认";
@@ -708,8 +709,8 @@
 /* UI Module */
 "ui.placeholder.input" = "请输入...";
 "ui.loading" = "加载中...";
-"error.webview.create" = "Failed to create WebView";
-"error.webview.not_open" = "WebView not open";
+"error.webview.create" = "无法创建 WebView";
+"error.webview.not_open" = "WebView 未打开";
 
 /* Contacts Module */
 "error.contacts.permission_denied" = "通讯录权限未授权";
@@ -812,6 +813,8 @@
 
 "generic.select" = "选择";
 "generic.select_all" = "全选";
+"generic.deselect_all" = "取消全选";
+"generic.done" = "完成";
 "generic.delete" = "删除";
 
 /* Home - Edit Mode */
