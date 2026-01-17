@@ -767,6 +767,8 @@
 
 /* Scheduler */
 "scheduler.title" = "定时任务";
+"scheduler.enable" = "启用定时任务";
+"scheduler.enable_footer" = "关闭后将卸载所有 TrollScript 相关的 LaunchDaemons 并停止守护进程。";
 "scheduler.empty_title" = "暂无定时任务";
 "scheduler.empty_message" = "点击右上角添加定时任务";
 "scheduler.add_task" = "添加任务";
@@ -851,3 +853,24 @@
 "background.color_running" = "运行中";
 "background.color_error" = "出错";
 "background.color_reset" = "恢复默认颜色";
+
+/* Daemon Status */
+"daemon.section_header" = "守护进程状态";
+"daemon.section_footer" = "查看 HUD 守护进程详细信息和运行状态";
+"daemon.no_installed" = "未安装 LaunchDaemons";
+"daemon.process_status" = "守护进程";
+"daemon.running" = "运行中";
+"daemon.stopped" = "已停止";
+"daemon.refresh" = "刷新状态";
+"daemon.process_name" = "进程名称";
+"daemon.process_state" = "进程状态";
+"daemon.uptime" = "运行时间";
+"daemon.start_time" = "启动时间";
+
+/* Process Status */
+"process.status.idle" = "空闲";
+"process.status.running" = "运行中";
+"process.status.sleeping" = "睡眠";
+"process.status.stopped" = "已停止";
+"process.status.zombie" = "僵尸";
+"process.status.unknown" = "未知";

@@ -788,6 +788,8 @@
 
 /* Scheduler */
 "scheduler.title" = "Scheduled Tasks";
+"scheduler.enable" = "Enable Scheduler";
+"scheduler.enable_footer" = "When disabled, all TrollScript LaunchDaemons will be unloaded and the daemon will be stopped.";
 "scheduler.empty_title" = "No Scheduled Tasks";
 "scheduler.empty_message" = "Tap + to add a scheduled task";
 "scheduler.add_task" = "Add Task";
@@ -872,3 +874,24 @@
 "background.color_running" = "Running";
 "background.color_error" = "Error";
 "background.color_reset" = "Reset Colors";
+
+/* Daemon Status */
+"daemon.section_header" = "Daemon Status";
+"daemon.section_footer" = "View HUD daemon details and process status";
+"daemon.no_installed" = "No LaunchDaemons Installed";
+"daemon.process_status" = "Daemon Process";
+"daemon.running" = "Running";
+"daemon.stopped" = "Stopped";
+"daemon.refresh" = "Refresh Status";
+"daemon.process_name" = "Process Name";
+"daemon.process_state" = "Process State";
+"daemon.uptime" = "Uptime";
+"daemon.start_time" = "Start Time";
+
+/* Process Status */
+"process.status.idle" = "Idle";
+"process.status.running" = "Running";
+"process.status.sleeping" = "Sleeping";
+"process.status.stopped" = "Stopped";
+"process.status.zombie" = "Zombie";
+"process.status.unknown" = "Unknown";
