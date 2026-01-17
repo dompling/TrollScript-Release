@@ -2136,44 +2136,6 @@
                     "returnsDescription": "List of overdue reminders"
                 },
                 {
-                    "name": "pin",
-                    "signature": "pin(id, isPinned)",
-                    "description": "Pin/Unpin reminder",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "type": "string",
-                            "description": "Reminder ID"
-                        },
-                        {
-                            "name": "isPinned",
-                            "type": "boolean",
-                            "description": "Whether pinned"
-                        }
-                    ],
-                    "returns": "Promise<object>",
-                    "returnsDescription": "{ success: boolean, id: string, isPinned: boolean }"
-                },
-                {
-                    "name": "setSortOrder",
-                    "signature": "setSortOrder(id, sortOrder)",
-                    "description": "Set sort order",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "type": "string",
-                            "description": "Reminder ID"
-                        },
-                        {
-                            "name": "sortOrder",
-                            "type": "number",
-                            "description": "Sort value (smaller is higher)"
-                        }
-                    ],
-                    "returns": "Promise<object>",
-                    "returnsDescription": "{ success: boolean, id: string, sortOrder: number }"
-                },
-                {
                     "name": "reorder",
                     "signature": "reorder(ids)",
                     "description": "Batch reorder",

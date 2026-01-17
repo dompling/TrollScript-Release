@@ -2326,40 +2326,6 @@ Base64 解码
 
 ---
 
-### `reminder.pin`
-
-**Signature:** `pin(id, isPinned)`
-
-置顶/取消置顶提醒
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `id` | `string` | 提醒事项 ID | No |
-| `isPinned` | `boolean` | 是否置顶 | No |
-
-**Returns:** `Promise<object>`
-
----
-
-### `reminder.setSortOrder`
-
-**Signature:** `setSortOrder(id, sortOrder)`
-
-设置排序顺序
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `id` | `string` | 提醒事项 ID | No |
-| `sortOrder` | `number` | 排序值（越小越靠前） | No |
-
-**Returns:** `Promise<object>`
-
----
-
 ### `reminder.reorder`
 
 **Signature:** `reorder(ids)`

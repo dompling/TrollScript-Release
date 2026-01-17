@@ -2137,44 +2137,6 @@
           "returnsDescription": "已过期的提醒列表"
         },
         {
-          "name": "pin",
-          "signature": "pin(id, isPinned)",
-          "description": "置顶/取消置顶提醒",
-          "parameters": [
-            {
-              "name": "id",
-              "type": "string",
-              "description": "提醒事项 ID"
-            },
-            {
-              "name": "isPinned",
-              "type": "boolean",
-              "description": "是否置顶"
-            }
-          ],
-          "returns": "Promise<object>",
-          "returnsDescription": "{ success: boolean, id: string, isPinned: boolean }"
-        },
-        {
-          "name": "setSortOrder",
-          "signature": "setSortOrder(id, sortOrder)",
-          "description": "设置排序顺序",
-          "parameters": [
-            {
-              "name": "id",
-              "type": "string",
-              "description": "提醒事项 ID"
-            },
-            {
-              "name": "sortOrder",
-              "type": "number",
-              "description": "排序值（越小越靠前）"
-            }
-          ],
-          "returns": "Promise<object>",
-          "returnsDescription": "{ success: boolean, id: string, sortOrder: number }"
-        },
-        {
           "name": "reorder",
           "signature": "reorder(ids)",
           "description": "批量重排序",

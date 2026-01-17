@@ -1159,22 +1159,6 @@ interface Reminder {
     getOverdue(): any;
 
     /**
-     * 置顶/取消置顶提醒
-     * @param id 提醒事项 ID
-     * @param isPinned 是否置顶
-     * @returns { success: boolean, id: string, isPinned: boolean }
-     */
-    pin(id: string, isPinned: boolean): any;
-
-    /**
-     * 设置排序顺序
-     * @param id 提醒事项 ID
-     * @param sortOrder 排序值（越小越靠前）
-     * @returns { success: boolean, id: string, sortOrder: number }
-     */
-    setSortOrder(id: string, sortOrder: number): any;
-
-    /**
      * 批量重排序
      * @param ids 按顺序排列的 ID 数组
      * @returns { success: boolean, count: number }

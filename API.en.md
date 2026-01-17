@@ -2326,40 +2326,6 @@ Get overdue reminders
 
 ---
 
-### `reminder.pin`
-
-**Signature:** `pin(id, isPinned)`
-
-Pin/Unpin reminder
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `id` | `string` | Reminder ID | No |
-| `isPinned` | `boolean` | Whether pinned | No |
-
-**Returns:** `Promise<object>`
-
----
-
-### `reminder.setSortOrder`
-
-**Signature:** `setSortOrder(id, sortOrder)`
-
-Set sort order
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `id` | `string` | Reminder ID | No |
-| `sortOrder` | `number` | Sort value (smaller is higher) | No |
-
-**Returns:** `Promise<object>`
-
----
-
 ### `reminder.reorder`
 
 **Signature:** `reorder(ids)`
