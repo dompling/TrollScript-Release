@@ -41,6 +41,7 @@
 "settings.debug_mode" = "调试模式";
 "settings.enabled" = "已启用";
 "settings.disabled" = "已禁用";
+"settings.editor_theme" = "编辑器主题";
 
 /* Tabs */
 "tab.scripts" = "脚本";

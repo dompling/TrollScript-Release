@@ -39,6 +39,7 @@
 "settings.feedback" = "Feedback";
 "settings.debug_mode" = "Debug Mode";
 "settings.enabled" = "Enabled";
+"settings.editor_theme" = "Editor theme";
 
 /* Tabs */
 "tab.scripts" = "Scripts";
