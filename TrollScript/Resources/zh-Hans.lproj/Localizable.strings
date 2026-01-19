@@ -875,3 +875,34 @@
 "process.status.stopped" = "已停止";
 "process.status.zombie" = "僵尸";
 "process.status.unknown" = "未知";
+
+/* WebDAV Settings */
+"webdav.title" = "Web 控制台";
+"webdav.status.running" = "运行中";
+"webdav.status.stopped" = "已停止";
+"webdav.section.status" = "服务状态";
+"webdav.footer.running" = "点击地址可复制到剪贴板，在浏览器中打开即可访问控制台";
+"webdav.footer.stopped" = "启动 HTTP 服务器后，可在浏览器中远程管理脚本";
+"webdav.section.network" = "网络配置";
+"webdav.port" = "端口号";
+"webdav.address" = "访问地址";
+"webdav.copied" = "已复制";
+"webdav.apply_port" = "应用端口更改";
+"webdav.port_footer" = "修改端口后需要重启服务才能生效。默认端口: 8080";
+"webdav.section.features" = "功能特性";
+"webdav.feature.list" = "查看所有脚本列表";
+"webdav.feature.run" = "一键执行脚本";
+"webdav.feature.logs" = "实时查看运行日志";
+"webdav.feature.refresh" = "自动刷新状态";
+"webdav.section.security" = "安全提示";
+"webdav.security.network" = "请确保在受信任的网络环境中使用此功能";
+"webdav.security.vpn" = "建议仅在本地网络或 VPN 环境下启用";
+"webdav.security.noauth" = "当前未启用身份验证，任何人都可访问";
+"webdav.security.firewall" = "公共 Wi-Fi 下请勿开启此服务";
+"webdav.security.autostop" = "不使用时请及时关闭服务";
+"webdav.security.stacksize" = "若脚本报 stack overflow 错误，请增大「栈大小限制」设置";
+"webdav.section.error" = "错误信息";
+"webdav.alert.invalid_port" = "端口号无效";
+"webdav.alert.invalid_port_message" = "请输入有效的端口号 (1-65535)";
+"webdav.ip.unknown" = "未知";
+"webdav.ip.loading" = "正在获取...";

@@ -896,3 +896,34 @@
 "process.status.stopped" = "Stopped";
 "process.status.zombie" = "Zombie";
 "process.status.unknown" = "Unknown";
+
+/* WebDAV Settings */
+"webdav.title" = "Web Console";
+"webdav.status.running" = "Running";
+"webdav.status.stopped" = "Stopped";
+"webdav.section.status" = "Service Status";
+"webdav.footer.running" = "Tap address to copy. Open in browser to access console.";
+"webdav.footer.stopped" = "Start HTTP server to manage scripts remotely via browser.";
+"webdav.section.network" = "Network Configuration";
+"webdav.port" = "Port";
+"webdav.address" = "Address";
+"webdav.copied" = "Copied";
+"webdav.apply_port" = "Apply Port Change";
+"webdav.port_footer" = "Restart service after changing port. Default: 8080";
+"webdav.section.features" = "Features";
+"webdav.feature.list" = "View all scripts";
+"webdav.feature.run" = "Run scripts with one click";
+"webdav.feature.logs" = "View real-time logs";
+"webdav.feature.refresh" = "Auto refresh status";
+"webdav.section.security" = "Security Notice";
+"webdav.security.network" = "Use this feature only on trusted networks";
+"webdav.security.vpn" = "Recommended for local network or VPN only";
+"webdav.security.noauth" = "No authentication enabled, anyone can access";
+"webdav.security.firewall" = "Do not enable on public Wi-Fi networks";
+"webdav.security.autostop" = "Remember to stop the service when not in use";
+"webdav.security.stacksize" = "If scripts report stack overflow, increase 'Stack Size Limit' in settings";
+"webdav.section.error" = "Error";
+"webdav.alert.invalid_port" = "Invalid Port";
+"webdav.alert.invalid_port_message" = "Please enter a valid port number (1-65535)";
+"webdav.ip.unknown" = "Unknown";
+"webdav.ip.loading" = "Loading...";

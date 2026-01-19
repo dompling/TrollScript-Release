@@ -62,6 +62,8 @@ apple-magnifier://install?url=https://github.com/dompling/TrollScript-Release/re
 
 TrollScript 内置丰富的原生模块，[查看完整中文 API 文档](API.md) [查看完整 English API 文档](API.en.md)。
 
+> [示例脚本 (TrollScript-Store)](https://github.com/dompling/TrollScript-Release/template/TesetScripts)
+
 ### 基础模块
 
 | 模块 | 功能 |
