@@ -1490,6 +1490,40 @@
                     "description": "Open display settings",
                     "returns": "boolean",
                     "returnsDescription": "Whether opened successfully"
+                },
+                {
+                    "name": "getAutoLockTime",
+                    "signature": "getAutoLockTime()",
+                    "description": "Get auto-lock time",
+                    "returns": "number",
+                    "returnsDescription": "Auto-lock time in seconds, 0 means never"
+                },
+                {
+                    "name": "setAutoLock",
+                    "signature": "setAutoLock(seconds)",
+                    "description": "Set auto-lock time",
+                    "parameters": [
+                        {
+                            "name": "seconds",
+                            "type": "number",
+                            "description": "Lock time in seconds, 0 means never"
+                        }
+                    ],
+                    "returns": "boolean",
+                    "returnsDescription": "Whether setting was successful"
+                },
+                {
+                    "name": "keepAwake",
+                    "signature": "keepAwake(enabled)",
+                    "description": "Keep screen awake",
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "type": "boolean",
+                            "description": "Whether to keep awake"
+                        }
+                    ],
+                    "returns": "void"
                 }
             ]
         },
@@ -2232,6 +2266,12 @@
                     "description": "Get badge count",
                     "returns": "Promise<number>",
                     "returnsDescription": "Badge number"
+                },
+                {
+                    "name": "clearBadge",
+                    "signature": "clearBadge()",
+                    "description": "Clear badge",
+                    "returns": "void"
                 },
                 {
                     "name": "schedule",

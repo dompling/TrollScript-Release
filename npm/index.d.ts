@@ -796,6 +796,25 @@ interface Display {
      */
     openSettings(): boolean;
 
+    /**
+     * 获取自动锁定时间
+     * @returns 自动锁定时间(秒)，0 表示永不
+     */
+    getAutoLockTime(): number;
+
+    /**
+     * 设置自动锁定时间
+     * @param seconds 锁定时间(秒)，0 表示永不
+     * @returns 是否设置成功
+     */
+    setAutoLock(seconds: number): boolean;
+
+    /**
+     * 保持屏幕常亮
+     * @param enabled 是否保持常亮
+     */
+    keepAwake(enabled: boolean): void;
+
 }
 
 declare const display: Display;
@@ -1208,6 +1227,11 @@ interface Notification {
      * @returns 角标数字
      */
     getBadge(): any;
+
+    /**
+     * 清除角标
+     */
+    clearBadge(): void;
 
     /**
      * 定时通知

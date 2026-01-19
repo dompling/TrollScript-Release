@@ -1650,6 +1650,48 @@ Open display settings
 
 ---
 
+### `display.getAutoLockTime`
+
+**Signature:** `getAutoLockTime()`
+
+Get auto-lock time
+
+**Returns:** `number`
+
+---
+
+### `display.setAutoLock`
+
+**Signature:** `setAutoLock(seconds)`
+
+Set auto-lock time
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `seconds` | `number` | Lock time in seconds, 0 means never | No |
+
+**Returns:** `boolean`
+
+---
+
+### `display.keepAwake`
+
+**Signature:** `keepAwake(enabled)`
+
+Keep screen awake
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | Whether to keep awake | No |
+
+**Returns:** `void`
+
+---
+
 ## util
 
 Utility functions
@@ -2437,6 +2479,16 @@ Set badge count
 Get badge count
 
 **Returns:** `Promise<number>`
+
+---
+
+### `notification.clearBadge`
+
+**Signature:** `clearBadge()`
+
+Clear badge
+
+**Returns:** `void`
 
 ---
 

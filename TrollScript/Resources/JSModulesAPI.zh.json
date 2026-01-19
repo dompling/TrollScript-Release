@@ -1491,6 +1491,40 @@
           "description": "打开显示设置",
           "returns": "boolean",
           "returnsDescription": "是否成功打开"
+        },
+        {
+          "name": "getAutoLockTime",
+          "signature": "getAutoLockTime()",
+          "description": "获取自动锁定时间",
+          "returns": "number",
+          "returnsDescription": "自动锁定时间(秒)，0 表示永不"
+        },
+        {
+          "name": "setAutoLock",
+          "signature": "setAutoLock(seconds)",
+          "description": "设置自动锁定时间",
+          "parameters": [
+            {
+              "name": "seconds",
+              "type": "number",
+              "description": "锁定时间(秒)，0 表示永不"
+            }
+          ],
+          "returns": "boolean",
+          "returnsDescription": "是否设置成功"
+        },
+        {
+          "name": "keepAwake",
+          "signature": "keepAwake(enabled)",
+          "description": "保持屏幕常亮",
+          "parameters": [
+            {
+              "name": "enabled",
+              "type": "boolean",
+              "description": "是否保持常亮"
+            }
+          ],
+          "returns": "void"
         }
       ]
     },
@@ -2233,6 +2267,12 @@
           "description": "获取角标数字",
           "returns": "Promise<number>",
           "returnsDescription": "角标数字"
+        },
+        {
+          "name": "clearBadge",
+          "signature": "clearBadge()",
+          "description": "清除角标",
+          "returns": "void"
         },
         {
           "name": "schedule",

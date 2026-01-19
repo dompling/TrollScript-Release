@@ -1650,6 +1650,48 @@ UI 交互
 
 ---
 
+### `display.getAutoLockTime`
+
+**Signature:** `getAutoLockTime()`
+
+获取自动锁定时间
+
+**Returns:** `number`
+
+---
+
+### `display.setAutoLock`
+
+**Signature:** `setAutoLock(seconds)`
+
+设置自动锁定时间
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `seconds` | `number` | 锁定时间(秒)，0 表示永不 | No |
+
+**Returns:** `boolean`
+
+---
+
+### `display.keepAwake`
+
+**Signature:** `keepAwake(enabled)`
+
+保持屏幕常亮
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | 是否保持常亮 | No |
+
+**Returns:** `void`
+
+---
+
 ## util
 
 工具函数
@@ -2437,6 +2479,16 @@ Base64 解码
 获取角标数字
 
 **Returns:** `Promise<number>`
+
+---
+
+### `notification.clearBadge`
+
+**Signature:** `clearBadge()`
+
+清除角标
+
+**Returns:** `void`
 
 ---
 
