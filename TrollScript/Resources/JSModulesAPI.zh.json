@@ -134,7 +134,7 @@
       "description": "剪贴板操作",
       "icon": "doc.on.clipboard",
       "color": "orange",
-      "daemonSupport": "full",
+      "daemonSupport": "limited",
       "methods": [
         {
           "name": "getText",
@@ -147,6 +147,7 @@
           "name": "setText",
           "signature": "setText(text)",
           "description": "设置剪贴板文本",
+          "daemonSupport": "none",
           "parameters": [
             {
               "name": "text",
@@ -160,7 +161,8 @@
           "name": "clear",
           "signature": "clear()",
           "description": "清空剪贴板",
-          "returns": "void"
+          "returns": "void",
+          "daemonSupport": "none"
         }
       ]
     },

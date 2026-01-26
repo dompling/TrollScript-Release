@@ -18,7 +18,7 @@ The following icons indicate API compatibility when running in background trigge
 
 - [console](#console) ✅ - 控制台输出
 - [device](#device) ✅ - 设备信息
-- [clipboard](#clipboard) ✅ - 剪贴板操作
+- [clipboard](#clipboard) ⚠️ - 剪贴板操作
 - [storage](#storage) ✅ - 本地存储
 - [icloud](#icloud) ✅ - iCloud 文件操作
 - [file](#file) ✅ - 文件操作
@@ -200,7 +200,7 @@ The following icons indicate API compatibility when running in background trigge
 
 ## clipboard
 
-![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
 
 剪贴板操作
 
@@ -218,6 +218,8 @@ The following icons indicate API compatibility when running in background trigge
 
 ### `clipboard.setText`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `setText(text)`
 
 设置剪贴板文本
@@ -233,6 +235,8 @@ The following icons indicate API compatibility when running in background trigge
 ---
 
 ### `clipboard.clear`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `clear()`
 
