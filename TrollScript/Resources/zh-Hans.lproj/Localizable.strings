@@ -961,8 +961,8 @@
 /* HUD Settings */
 "hud.settings.title" = "悬浮组件";
 "hud.settings.scheduler_section" = "快捷操作";
-"hud.settings.scheduler_toggle" = "启用定时任务";
-"hud.settings.scheduler_footer" = "启用定时任务将自动启动悬浮组件";
+"hud.settings.scheduler_toggle" = "启用触发器";
+"hud.settings.scheduler_footer" = "启用触发器将自动启动悬浮组件";
 "hud.settings.hud_toggle" = "启用悬浮组件";
 
 "hud.settings.indicator_section" = "状态指示器";

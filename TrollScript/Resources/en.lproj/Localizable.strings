@@ -983,9 +983,9 @@
 
 /* HUD Settings */
 "hud.settings.title" = "Floating Widget";
-"hud.settings.scheduler_section" = "Quick Actions";
-"hud.settings.scheduler_toggle" = "Enable Scheduled Tasks";
-"hud.settings.scheduler_footer" = "Enabling scheduled tasks will automatically start the floating widget";
+"hud.settings.scheduler_section" = "Trigger Actions";
+"hud.settings.scheduler_toggle" = "Enable Trigger Tasks";
+"hud.settings.scheduler_footer" = "Enabling Trigger tasks will automatically start the floating widget";
 "hud.settings.hud_toggle" = "Enable Floating Widget";
 
 "hud.settings.indicator_section" = "Status Indicator";
