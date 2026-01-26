@@ -35,11 +35,19 @@
 "settings.release_notes" = "Release Notes";
 "settings.no_release_notes" = "No release notes available";
 "settings.download_tipa" = "Download TIPA";
+"settings.install_trollstore" = "Install via TrollStore";
 "settings.view_on_github" = "View on GitHub";
 "settings.feedback" = "Feedback";
 "settings.debug_mode" = "Debug Mode";
 "settings.enabled" = "Enabled";
 "settings.editor_theme" = "Editor theme";
+"settings.github_token" = "GitHub API Token";
+"settings.github_token.description" = "Configure a GitHub API Token to increase the API rate limit for update checks, preventing detection failures due to rate limiting.";
+"settings.github_token.footer" = "The token is only used for update checks and will not be sent to any third-party servers.";
+"settings.github_token.generate" = "Generate New Token";
+"settings.github_token.scope_hint" = "No scopes are required when generating the token. Public repository access doesn't need additional permissions.";
+"settings.github_token.clear" = "Clear Token";
+"settings.configured" = "Configured";
 
 /* Tabs */
 "tab.scripts" = "Scripts";
@@ -262,11 +270,8 @@
 "stats.status.critical" = "Critical";
 "stats.status.warning" = "Warning";
 "stats.status.normal" = "Normal";
-"stats.summary.total" = "Total Executions";
-"stats.summary.success" = "Success Count";
-"stats.summary.failed" = "Failed Count";
-"stats.summary.avg_time" = "Avg Time";
-"stats.summary.avg_memory" = "Avg Peak Memory";
+"stats.about" = "About";
+"stats.description" = "Performance stats monitor the real-time status of the app. Warnings are shown when memory usage exceeds 200MB or CPU usage exceeds 80%.";
 
 // MARK: - Script Detail & Editor
 "script.detail.title" = "Script Details";
@@ -380,6 +385,7 @@
 "sfsymbols.search.prompt" = "Search Icons";
 "sfsymbols.title" = "Select Icon";
 "sfsymbols.done" = "Done";
+"sfsymbols.tap_for_custom" = "Tap to use custom image";
 "sfsymbols.preset.blue" = "Blue";
 "sfsymbols.preset.purple" = "Purple";
 "sfsymbols.preset.pink" = "Pink";
@@ -1074,6 +1080,7 @@
 "editor.icon.sf_symbol" = "SF Symbol";
 "editor.icon.custom_image" = "Custom Image";
 "editor.icon.clear_custom" = "Clear Custom Icon";
+"editor.icon.crop_hint" = "Pinch to zoom and drag to adjust crop area";
 
 /* Notification Copy on Tap */
 "notification.copy_success_title" = "Copied";

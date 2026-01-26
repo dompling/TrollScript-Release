@@ -36,12 +36,20 @@
 "settings.release_notes" = "更新说明";
 "settings.no_release_notes" = "暂无更新说明";
 "settings.download_tipa" = "下载 TIPA";
+"settings.install_trollstore" = "巨魔安装";
 "settings.view_on_github" = "在 GitHub 查看";
 "settings.feedback" = "反馈问题";
 "settings.debug_mode" = "调试模式";
 "settings.enabled" = "已启用";
 "settings.disabled" = "已禁用";
 "settings.editor_theme" = "编辑器主题";
+"settings.github_token" = "GitHub API Token";
+"settings.github_token.description" = "配置 GitHub API Token 可以提高更新检测的 API 请求限额，避免因请求频率过高导致检测失败。";
+"settings.github_token.footer" = "Token 仅用于检测更新，不会上传到任何第三方服务器。";
+"settings.github_token.generate" = "生成新 Token";
+"settings.github_token.scope_hint" = "生成 Token 时无需选择任何权限范围 (Scopes)，公开仓库访问不需要额外权限。";
+"settings.github_token.clear" = "清除 Token";
+"settings.configured" = "已配置";
 
 /* Tabs */
 "tab.scripts" = "脚本";
@@ -261,11 +269,8 @@
 "stats.status.critical" = "性能严重下降";
 "stats.status.warning" = "性能警告";
 "stats.status.normal" = "正常";
-"stats.summary.total" = "总执行次数";
-"stats.summary.success" = "成功次数";
-"stats.summary.failed" = "失败次数";
-"stats.summary.avg_time" = "平均执行时间";
-"stats.summary.avg_memory" = "平均峰值内存";
+"stats.about" = "说明";
+"stats.description" = "性能统计用于监控应用的实时运行状态。内存使用超过 200MB 或 CPU 使用超过 80% 时会显示警告。";
 
 // MARK: - Script Detail & Editor
 "script.detail.title" = "脚本详情";
@@ -379,6 +384,7 @@
 "sfsymbols.search.prompt" = "搜索图标";
 "sfsymbols.title" = "选择图标";
 "sfsymbols.done" = "完成";
+"sfsymbols.tap_for_custom" = "点击使用自定义图片";
 "sfsymbols.preset.blue" = "蓝色";
 "sfsymbols.preset.purple" = "紫色";
 "sfsymbols.preset.pink" = "粉色";
@@ -1051,6 +1057,7 @@
 "editor.icon.sf_symbol" = "系统图标";
 "editor.icon.custom_image" = "自定义图片";
 "editor.icon.clear_custom" = "清除自定义图标";
+"editor.icon.crop_hint" = "双指缩放和拖动来调整裁剪区域";
 
 /* Notification Copy on Tap */
 "notification.copy_success_title" = "已复制";
