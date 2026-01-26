@@ -318,6 +318,14 @@
 "script.info.char_count" = "Character Count";
 
 // MARK: - API Picker
+"script.api.search_placeholder" = "Search API";
+"script.api.title" = "API Reference";
+"script.api.daemon_filter" = "Trigger Compatible Only";
+"script.api.daemon_filter_hint" = "Filter enabled";
+"script.api.daemon_full" = "Full";
+"script.api.daemon_limited" = "Limited";
+"script.api.daemon_none" = "Trigger None";
+
 // MARK: - Script Import/Export
 "export.title" = "Export Script";
 "export.format" = "Export Format";

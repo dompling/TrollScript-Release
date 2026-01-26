@@ -1,40 +1,52 @@
-# TrollScript API Reference (v1.0.0)
+# TrollScript API Reference (v1.1.0)
 
 TrollScript provides a powerful JavaScript environment with access to various system features. Below is the comprehensive API reference for all available modules.
+
+## Trigger Compatibility Legend
+
+The following icons indicate API compatibility when running in background trigger mode:
+
+| Icon | Status | Description |
+|:----:|--------|-------------|
+| ✅ | **Full** | 完全支持 - 在触发器下可正常运行 |
+| ⚠️ | **Limited** | 有限支持 - 部分功能可能受限或不生效 |
+| ❌ | **None** | 不支持 - 需要前台运行，触发器下不可用 |
 
 ---
 
 ## Table of Contents
 
-- [console](#console) - 控制台输出
-- [device](#device) - 设备信息
-- [clipboard](#clipboard) - 剪贴板操作
-- [storage](#storage) - 本地存储
-- [icloud](#icloud) - iCloud 文件操作
-- [file](#file) - 文件操作
-- [http](#http) - 网络请求
-- [network](#network) - 网络操作
-- [app](#app) - 应用操作
-- [haptic](#haptic) - 触觉反馈
-- [display](#display) - 显示控制
-- [util](#util) - 工具函数
-- [location](#location) - 定位服务
-- [calendar](#calendar) - 系统日历
-- [reminder](#reminder) - 提醒事项
-- [contacts](#contacts) - 通讯录操作
-- [notification](#notification) - 本地通知
-- [alarm](#alarm) - 闹钟和定时提醒
-- [media](#media) - 音乐媒体控制
-- [mail](#mail) - 邮件操作
-- [sms](#sms) - 短信操作
-- [sql](#sql) - SQL 数据库查询
-- [shortcuts](#shortcuts) - 快捷指令操作
-- [bluetooth](#bluetooth) - 蓝牙操作
-- [memo](#memo) - 备忘录操作（iCloud 同步）
+- [console](#console) ✅ - 控制台输出
+- [device](#device) ✅ - 设备信息
+- [clipboard](#clipboard) ✅ - 剪贴板操作
+- [storage](#storage) ✅ - 本地存储
+- [icloud](#icloud) ✅ - iCloud 文件操作
+- [file](#file) ✅ - 文件操作
+- [http](#http) ✅ - 网络请求
+- [network](#network) ⚠️ - 网络操作
+- [app](#app) ⚠️ - 应用操作
+- [haptic](#haptic) ⚠️ - 触觉反馈
+- [display](#display) ⚠️ - 显示控制
+- [util](#util) ✅ - 工具函数
+- [location](#location) ⚠️ - 定位服务
+- [calendar](#calendar) ⚠️ - 系统日历
+- [reminder](#reminder) ⚠️ - 提醒事项
+- [contacts](#contacts) ⚠️ - 通讯录操作
+- [notification](#notification) ⚠️ - 本地通知
+- [alarm](#alarm) ⚠️ - 闹钟和定时提醒
+- [media](#media) ⚠️ - 音乐媒体控制
+- [mail](#mail) ❌ - 邮件操作
+- [sms](#sms) ✅ - 短信操作
+- [sql](#sql) ✅ - SQL 数据库查询
+- [shortcuts](#shortcuts) ❌ - 快捷指令操作
+- [bluetooth](#bluetooth) ⚠️ - 蓝牙操作
+- [memo](#memo) ✅ - 备忘录操作（iCloud 同步）
 
 ---
 
 ## console
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 控制台输出
 
@@ -146,6 +158,8 @@ TrollScript provides a powerful JavaScript environment with access to various sy
 
 ## device
 
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
 设备信息
 
 ### `device.info`
@@ -155,6 +169,8 @@ TrollScript provides a powerful JavaScript environment with access to various sy
 获取设备信息
 
 **Returns:** `{ name: string, model: string, systemName: string, systemVersion: string, identifier: string }`
+
+*包含设备名称、型号、系统版本等信息的对象*
 
 ---
 
@@ -166,6 +182,8 @@ TrollScript provides a powerful JavaScript environment with access to various sy
 
 **Returns:** `{ level: number, state: string, lowPowerMode: boolean }`
 
+*包含电量(0-1)、充电状态、低电量模式等信息的对象*
+
 ---
 
 ### `device.screen`
@@ -176,9 +194,13 @@ TrollScript provides a powerful JavaScript environment with access to various sy
 
 **Returns:** `{ width: number, height: number, scale: number, brightness: number }`
 
+*包含屏幕尺寸、缩放比例、亮度等信息的对象*
+
 ---
 
 ## clipboard
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 剪贴板操作
 
@@ -189,6 +211,8 @@ TrollScript provides a powerful JavaScript environment with access to various sy
 获取剪贴板文本
 
 **Returns:** `string`
+
+*剪贴板中的文本内容*
 
 ---
 
@@ -220,6 +244,8 @@ TrollScript provides a powerful JavaScript environment with access to various sy
 
 ## storage
 
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
 本地存储
 
 ### `storage.get`
@@ -235,6 +261,8 @@ TrollScript provides a powerful JavaScript environment with access to various sy
 | `key` | `string` | 键名 | No |
 
 **Returns:** `any`
+
+*存储的值，如果不存在返回 undefined*
 
 ---
 
@@ -295,9 +323,13 @@ TrollScript provides a powerful JavaScript environment with access to various sy
 
 **Returns:** `boolean`
 
+*是否存在*
+
 ---
 
 ## icloud
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 iCloud 文件操作
 
@@ -309,6 +341,8 @@ iCloud 文件操作
 
 **Returns:** `boolean`
 
+*是否可用*
+
 ---
 
 ### `icloud.containerPath`
@@ -317,7 +351,9 @@ iCloud 文件操作
 
 获取 iCloud 容器路径
 
-**Returns:** `string | null`
+**Returns:** `string \| null`
+
+*iCloud 容器的本地路径，不可用时返回 null*
 
 ---
 
@@ -334,6 +370,8 @@ iCloud 文件操作
 | `path` | `string` | 文件路径（相对于 iCloud 容器） | No |
 
 **Returns:** `string`
+
+*文件内容*
 
 ---
 
@@ -352,6 +390,8 @@ iCloud 文件操作
 
 **Returns:** `boolean`
 
+*是否写入成功*
+
 ---
 
 ### `icloud.delete`
@@ -367,6 +407,8 @@ iCloud 文件操作
 | `path` | `string` | 文件路径 | No |
 
 **Returns:** `boolean`
+
+*是否删除成功*
 
 ---
 
@@ -384,9 +426,13 @@ iCloud 文件操作
 
 **Returns:** `[string]`
 
+*文件名列表数组*
+
 ---
 
 ## file
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 文件操作
 
@@ -403,6 +449,8 @@ iCloud 文件操作
 | `path` | `string` | 文件绝对路径 | No |
 
 **Returns:** `string`
+
+*文件内容*
 
 ---
 
@@ -421,6 +469,8 @@ iCloud 文件操作
 
 **Returns:** `boolean`
 
+*是否写入成功*
+
 ---
 
 ### `file.append`
@@ -438,6 +488,8 @@ iCloud 文件操作
 
 **Returns:** `boolean`
 
+*是否追加成功*
+
 ---
 
 ### `file.exists`
@@ -454,6 +506,8 @@ iCloud 文件操作
 
 **Returns:** `boolean`
 
+*文件是否存在*
+
 ---
 
 ### `file.delete`
@@ -469,6 +523,8 @@ iCloud 文件操作
 | `path` | `string` | 文件绝对路径 | No |
 
 **Returns:** `boolean`
+
+*是否删除成功*
 
 ---
 
@@ -487,6 +543,8 @@ iCloud 文件操作
 
 **Returns:** `boolean`
 
+*是否移动成功*
+
 ---
 
 ### `file.copy`
@@ -504,6 +562,8 @@ iCloud 文件操作
 
 **Returns:** `boolean`
 
+*是否复制成功*
+
 ---
 
 ### `file.list`
@@ -519,6 +579,8 @@ iCloud 文件操作
 | `path` | `string` | 目录路径 | No |
 
 **Returns:** `[string]`
+
+*文件名列表数组*
 
 ---
 
@@ -536,6 +598,8 @@ iCloud 文件操作
 
 **Returns:** `boolean`
 
+*是否创建成功*
+
 ---
 
 ### `file.stat`
@@ -551,6 +615,8 @@ iCloud 文件操作
 | `path` | `string` | 文件路径 | No |
 
 **Returns:** `{ size: number, modificationDate: number, creationDate: number, type: string }`
+
+*包含大小(字节)、修改时间(时间戳)、创建时间(时间戳)、类型(file/directory)的对象*
 
 ---
 
@@ -568,6 +634,8 @@ iCloud 文件操作
 
 **Returns:** `boolean`
 
+*是否是目录*
+
 ---
 
 ### `file.documentsPath`
@@ -577,6 +645,8 @@ iCloud 文件操作
 获取文档目录路径
 
 **Returns:** `string`
+
+*Documents 目录的绝对路径*
 
 ---
 
@@ -588,6 +658,8 @@ iCloud 文件操作
 
 **Returns:** `string`
 
+*Caches 目录的绝对路径*
+
 ---
 
 ### `file.tempPath`
@@ -597,6 +669,8 @@ iCloud 文件操作
 获取临时目录路径
 
 **Returns:** `string`
+
+*Temporary 目录的绝对路径*
 
 ---
 
@@ -614,6 +688,8 @@ iCloud 文件操作
 
 **Returns:** `string`
 
+*调试信息字符串*
+
 ---
 
 ### `file.rootRead`
@@ -628,7 +704,9 @@ iCloud 文件操作
 |------|------|-------------|----------|
 | `path` | `string` | 文件绝对路径 | No |
 
-**Returns:** `string | null`
+**Returns:** `string \| null`
+
+*文件内容，读取失败返回 null*
 
 ---
 
@@ -644,7 +722,9 @@ iCloud 文件操作
 |------|------|-------------|----------|
 | `path` | `string` | 目录绝对路径 | No |
 
-**Returns:** `[string] | null`
+**Returns:** `[string] \| null`
+
+*文件名列表，失败返回 null*
 
 ---
 
@@ -663,6 +743,8 @@ iCloud 文件操作
 
 **Returns:** `boolean`
 
+*是否复制成功*
+
 ---
 
 ### `file.rootCheck`
@@ -678,6 +760,8 @@ iCloud 文件操作
 | `path` | `string` | 文件或目录路径 | No |
 
 **Returns:** `{ readable: boolean, writable: boolean, exists: boolean, isDirectory: boolean }`
+
+*包含读写权限、存在状态等调试信息的对象*
 
 ---
 
@@ -695,6 +779,8 @@ iCloud 文件操作
 
 **Returns:** `boolean`
 
+*是否存在*
+
 ---
 
 ### `file.rootAvailable`
@@ -705,9 +791,13 @@ iCloud 文件操作
 
 **Returns:** `boolean`
 
+*是否可用*
+
 ---
 
 ## http
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 网络请求
 
@@ -725,6 +815,8 @@ iCloud 文件操作
 | `options` | `object` | 请求选项 { headers, timeout } | Yes |
 
 **Returns:** `Promise<{ status: number, data: string, headers: object }>`
+
+*包含状态码、响应数据、响应头的对象*
 
 ---
 
@@ -845,11 +937,17 @@ iCloud 文件操作
 
 **Returns:** `Promise<{ path: string }>`
 
+*包含本地文件路径的对象*
+
 ---
 
 ## network
 
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
+
 网络操作
+
+> **Trigger Note:** openSettings 方法需要 UI 交互，Daemon 模式下不可用
 
 ### `network.isReachable`
 
@@ -859,6 +957,8 @@ iCloud 文件操作
 
 **Returns:** `boolean`
 
+*网络是否可用*
+
 ---
 
 ### `network.getConnectionType`
@@ -867,7 +967,9 @@ iCloud 文件操作
 
 获取连接类型
 
-**Returns:** `'wifi' | 'cellular' | 'none'`
+**Returns:** `'wifi' \| 'cellular' \| 'none'`
+
+*连接类型(wifi/cellular/none)*
 
 ---
 
@@ -877,7 +979,9 @@ iCloud 文件操作
 
 获取设备 IP 地址
 
-**Returns:** `string | null`
+**Returns:** `string \| null`
+
+*IP 地址*
 
 ---
 
@@ -887,7 +991,9 @@ iCloud 文件操作
 
 获取 WiFi 信息
 
-**Returns:** `{ ssid: string, bssid: string } | null`
+**Returns:** `{ ssid: string, bssid: string } \| null`
+
+*包含 SSID 和 BSSID 的对象*
 
 ---
 
@@ -905,6 +1011,8 @@ URL 编码
 
 **Returns:** `string`
 
+*编码后的 URL 字符串*
+
 ---
 
 ### `network.decodeURL`
@@ -921,6 +1029,8 @@ URL 解码
 
 **Returns:** `string`
 
+*解码后的 URL 字符串*
+
 ---
 
 ### `network.parseURL`
@@ -936,6 +1046,8 @@ URL 解码
 | `url` | `string` | 要解析的 URL | No |
 
 **Returns:** `{ scheme: string, host: string, path: string, query: string, params: object }`
+
+*包含 URL 组件的对象*
 
 ---
 
@@ -954,6 +1066,8 @@ URL 解码
 
 **Returns:** `string`
 
+*构建的 URL 字符串*
+
 ---
 
 ### `network.ping`
@@ -969,6 +1083,8 @@ Ping 主机
 | `host` | `string` | 主机名或 IP | No |
 
 **Returns:** `Promise<{ latency: number, success: boolean }>`
+
+*包含延迟和成功状态的对象*
 
 ---
 
@@ -987,6 +1103,8 @@ Ping 主机
 
 **Returns:** `Promise<{ path: string }>`
 
+*包含本地文件路径的对象*
+
 ---
 
 ### `network.getAirplaneMode`
@@ -996,6 +1114,8 @@ Ping 主机
 获取飞行模式状态
 
 **Returns:** `boolean`
+
+*是否开启*
 
 ---
 
@@ -1013,6 +1133,8 @@ Ping 主机
 
 **Returns:** `boolean`
 
+*是否设置成功*
+
 ---
 
 ### `network.listVPNs`
@@ -1022,6 +1144,8 @@ Ping 主机
 列出 VPN 配置
 
 **Returns:** `[{ name: string, active: boolean }]`
+
+*VPN 配置列表*
 
 ---
 
@@ -1039,6 +1163,8 @@ Ping 主机
 
 **Returns:** `boolean`
 
+*是否发起连接成功*
+
 ---
 
 ### `network.disconnectVPN`
@@ -1048,6 +1174,8 @@ Ping 主机
 断开 VPN
 
 **Returns:** `boolean`
+
+*是否发起断开成功*
 
 ---
 
@@ -1059,6 +1187,8 @@ Ping 主机
 
 **Returns:** `{ connected: boolean, name?: string }`
 
+*包含连接状态和 VPN 名称的对象*
+
 ---
 
 ### `network.getWiFiEnabled`
@@ -1068,6 +1198,8 @@ Ping 主机
 获取 WiFi 开关状态
 
 **Returns:** `boolean`
+
+*是否开启*
 
 ---
 
@@ -1085,9 +1217,13 @@ Ping 主机
 
 **Returns:** `boolean`
 
+*是否设置成功*
+
 ---
 
 ### `network.openSettings`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `openSettings(section?)`
 
@@ -1101,11 +1237,17 @@ Ping 主机
 
 **Returns:** `boolean`
 
+*是否成功打开*
+
 ---
 
 ## app
 
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
+
 应用操作
+
+> **Trigger Note:** open 方法需要前台运行，vibrate 方法后台可能不生效
 
 ### `app.version`
 
@@ -1115,9 +1257,13 @@ Ping 主机
 
 **Returns:** `string`
 
+*应用版本号*
+
 ---
 
 ### `app.open`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `open(url)`
 
@@ -1130,6 +1276,8 @@ Ping 主机
 | `url` | `string` | 要打开的 URL | No |
 
 **Returns:** `Promise<boolean>`
+
+*是否成功打开*
 
 ---
 
@@ -1146,6 +1294,8 @@ Ping 主机
 | `url` | `string` | 要检查的 URL | No |
 
 **Returns:** `boolean`
+
+*是否能打开*
 
 ---
 
@@ -1173,6 +1323,8 @@ Ping 主机
 
 **Returns:** `[LogMessage]`
 
+*日志对象数组*
+
 ---
 
 ### `app.exportLogs`
@@ -1182,6 +1334,8 @@ Ping 主机
 导出日志为字符串
 
 **Returns:** `string`
+
+*导出的日志内容*
 
 ---
 
@@ -1193,6 +1347,8 @@ Ping 主机
 
 **Returns:** `[CrashReport]`
 
+*崩溃报告数组*
+
 ---
 
 ### `app.getLastCrash`
@@ -1201,7 +1357,9 @@ Ping 主机
 
 获取最近一次崩溃报告
 
-**Returns:** `CrashReport | null`
+**Returns:** `CrashReport \| null`
+
+*最近一次崩溃报告*
 
 ---
 
@@ -1217,7 +1375,11 @@ Ping 主机
 
 ## haptic
 
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
+
 触觉反馈
+
+> **Trigger Note:** 触觉反馈在后台模式下可能不生效，需要设备支持
 
 ### `haptic.impact`
 
@@ -1333,7 +1495,11 @@ Ping 主机
 
 ## display
 
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
+
 显示控制
+
+> **Trigger Note:** 亮度设置和 keepAwake 后台可能不生效，openSettings 需要 UI 交互
 
 ### `display.getBrightness`
 
@@ -1342,6 +1508,8 @@ Ping 主机
 获取屏幕亮度
 
 **Returns:** `number`
+
+*当前亮度(0.0-1.0)*
 
 ---
 
@@ -1401,6 +1569,8 @@ Ping 主机
 
 **Returns:** `{ width: number, height: number, scale: number }`
 
+*包含宽度、高度、缩放比例的对象*
+
 ---
 
 ### `display.getOrientation`
@@ -1409,7 +1579,9 @@ Ping 主机
 
 获取屏幕方向
 
-**Returns:** `'portrait' | 'landscape'`
+**Returns:** `'portrait' \| 'landscape'`
+
+*屏幕方向*
 
 ---
 
@@ -1420,6 +1592,8 @@ Ping 主机
 低电量模式是否开启
 
 **Returns:** `boolean`
+
+*是否开启*
 
 ---
 
@@ -1437,6 +1611,8 @@ Ping 主机
 
 **Returns:** `boolean`
 
+*是否设置成功*
+
 ---
 
 ### `display.getNightShiftStatus`
@@ -1446,6 +1622,8 @@ Ping 主机
 获取夜览状态
 
 **Returns:** `boolean`
+
+*是否开启*
 
 ---
 
@@ -1463,6 +1641,8 @@ Ping 主机
 
 **Returns:** `boolean`
 
+*是否设置成功*
+
 ---
 
 ### `display.getTrueToneStatus`
@@ -1472,6 +1652,8 @@ Ping 主机
 获取原彩显示状态
 
 **Returns:** `boolean`
+
+*是否开启*
 
 ---
 
@@ -1489,6 +1671,8 @@ Ping 主机
 
 **Returns:** `boolean`
 
+*是否设置成功*
+
 ---
 
 ### `display.isAutoBrightnessEnabled`
@@ -1498,6 +1682,8 @@ Ping 主机
 自动亮度是否开启
 
 **Returns:** `boolean`
+
+*是否开启*
 
 ---
 
@@ -1515,15 +1701,21 @@ Ping 主机
 
 **Returns:** `boolean`
 
+*是否设置成功*
+
 ---
 
 ### `display.openSettings`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `openSettings()`
 
 打开显示设置
 
 **Returns:** `boolean`
+
+*是否成功打开*
 
 ---
 
@@ -1534,6 +1726,8 @@ Ping 主机
 获取自动锁定时间
 
 **Returns:** `number`
+
+*自动锁定时间(秒)，0 表示永不*
 
 ---
 
@@ -1550,6 +1744,8 @@ Ping 主机
 | `seconds` | `number` | 锁定时间(秒)，0 表示永不 | No |
 
 **Returns:** `boolean`
+
+*是否设置成功*
 
 ---
 
@@ -1571,6 +1767,8 @@ Ping 主机
 
 ## util
 
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
 工具函数
 
 ### `util.uuid`
@@ -1580,6 +1778,8 @@ Ping 主机
 生成 UUID
 
 **Returns:** `string`
+
+*生成的 UUID*
 
 ---
 
@@ -1597,6 +1797,8 @@ Ping 主机
 
 **Returns:** `string`
 
+*MD5 哈希值*
+
 ---
 
 ### `util.base64Encode`
@@ -1613,6 +1815,8 @@ Base64 编码
 
 **Returns:** `string`
 
+*Base64 编码字符串*
+
 ---
 
 ### `util.base64Decode`
@@ -1628,6 +1832,8 @@ Base64 解码
 | `string` | `string` | 要解码的字符串 | No |
 
 **Returns:** `string`
+
+*解码后的原始字符串*
 
 ---
 
@@ -1646,13 +1852,21 @@ Base64 解码
 
 **Returns:** `string`
 
+*格式化后的日期字符串*
+
 ---
 
 ## location
 
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
+
 定位服务
 
+> **Trigger Note:** requestAccess 需要 UI 交互，getCurrent 需要预先获得权限
+
 ### `location.requestAccess`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `requestAccess()`
 
@@ -1668,7 +1882,9 @@ Base64 解码
 
 获取权限状态
 
-**Returns:** `'authorized' | 'denied' | 'restricted' | 'notDetermined' | 'unknown'`
+**Returns:** `'authorized' \| 'denied' \| 'restricted' \| 'notDetermined' \| 'unknown'`
+
+*权限状态*
 
 ---
 
@@ -1680,6 +1896,8 @@ Base64 解码
 
 **Returns:** `boolean`
 
+*是否已授权*
+
 ---
 
 ### `location.getCurrent`
@@ -1690,6 +1908,8 @@ Base64 解码
 
 **Returns:** `Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, timestamp: number }>`
 
+*位置信息对象(包含经纬度、海拔等)*
+
 ---
 
 ### `location.current`
@@ -1699,6 +1919,8 @@ Base64 解码
 获取当前位置(别名)
 
 **Returns:** `Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, timestamp: number }>`
+
+*位置信息对象*
 
 ---
 
@@ -1719,6 +1941,8 @@ Base64 解码
 
 **Returns:** `number`
 
+*距离(米)*
+
 ---
 
 ### `location.geocode`
@@ -1734,6 +1958,8 @@ Base64 解码
 | `address` | `string` | 地址字符串 | No |
 
 **Returns:** `Promise<[{ lat: number, lng: number, name: string }]>`
+
+*地理位置对象数组*
 
 ---
 
@@ -1752,6 +1978,8 @@ Base64 解码
 
 **Returns:** `Promise<[{ name: string, country: string, locality: string, administrativeArea: string }]>`
 
+*地址信息对象数组*
+
 ---
 
 ### `location.isLocationServicesEnabled`
@@ -1762,11 +1990,17 @@ Base64 解码
 
 **Returns:** `boolean`
 
+*是否开启*
+
 ---
 
 ## calendar
 
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
+
 系统日历
+
+> **Trigger Note:** requestAccess 需要 UI 交互，其他操作需要预先获得权限
 
 ### `calendar.isAuthorized`
 
@@ -1780,11 +2014,15 @@ Base64 解码
 
 ### `calendar.requestAccess`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `requestAccess()`
 
 请求日历权限
 
 **Returns:** `Promise<boolean>`
+
+*是否授权成功*
 
 ---
 
@@ -1796,6 +2034,8 @@ Base64 解码
 
 **Returns:** `Promise<[{ id: string, title: string, color: string }]>`
 
+*日历列表数组*
+
 ---
 
 ### `calendar.getToday`
@@ -1805,6 +2045,8 @@ Base64 解码
 获取今日事件
 
 **Returns:** `Promise<[{ id: string, title: string, startDate: number, endDate: number, calendar: string }]>`
+
+*今日事件数组*
 
 ---
 
@@ -1823,6 +2065,8 @@ Base64 解码
 | `calendarId` | `string` | 日历 ID | Yes |
 
 **Returns:** `Promise<[{ id: string, title: string, startDate: number, endDate: number, calendar: string }]>`
+
+*事件数组*
 
 ---
 
@@ -1843,6 +2087,8 @@ Base64 解码
 
 **Returns:** `Promise<string>`
 
+*创建的事件 ID*
+
 ---
 
 ### `calendar.delete`
@@ -1859,11 +2105,17 @@ Base64 解码
 
 **Returns:** `Promise<boolean>`
 
+*是否删除成功*
+
 ---
 
 ## reminder
 
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
+
 提醒事项
+
+> **Trigger Note:** requestAccess 需要 UI 交互，其他操作需要预先获得权限
 
 ### `reminder.isAuthorized`
 
@@ -1873,15 +2125,21 @@ Base64 解码
 
 **Returns:** `boolean`
 
+*是否已授权*
+
 ---
 
 ### `reminder.requestAccess`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `requestAccess()`
 
 请求提醒事项权限
 
 **Returns:** `Promise<boolean>`
+
+*是否授权成功*
 
 ---
 
@@ -1892,6 +2150,8 @@ Base64 解码
 获取所有提醒列表
 
 **Returns:** `Promise<[{ id: string, title: string, color: string }]>`
+
+*提醒列表数组*
 
 ---
 
@@ -1908,6 +2168,8 @@ Base64 解码
 | `listId` | `string` | 列表 ID | Yes |
 
 **Returns:** `Promise<[{ id: string, title: string, isCompleted: boolean, listId: string, dueDate?: number }]>`
+
+*提醒事项数组*
 
 ---
 
@@ -1926,6 +2188,8 @@ Base64 解码
 
 **Returns:** `Promise<string>`
 
+*创建的提醒 ID*
+
 ---
 
 ### `reminder.complete`
@@ -1941,6 +2205,8 @@ Base64 解码
 | `id` | `string` | 提醒事项 ID | No |
 
 **Returns:** `Promise<boolean>`
+
+*是否成功*
 
 ---
 
@@ -1958,6 +2224,8 @@ Base64 解码
 
 **Returns:** `Promise<boolean>`
 
+*是否成功*
+
 ---
 
 ### `reminder.getSorted`
@@ -1973,6 +2241,8 @@ Base64 解码
 | `options` | `object` | { sortBy: 'createdAt'\|'dueDate'\|'priority'\|'title', ascending: boolean, completed: boolean } | Yes |
 
 **Returns:** `Promise<[Reminder]>`
+
+*排序后的提醒列表*
 
 ---
 
@@ -1990,6 +2260,8 @@ Base64 解码
 
 **Returns:** `Promise<[Reminder]>`
 
+*即将到期的提醒列表*
+
 ---
 
 ### `reminder.getOverdue`
@@ -1999,6 +2271,8 @@ Base64 解码
 获取已过期的提醒
 
 **Returns:** `Promise<[Reminder]>`
+
+*已过期的提醒列表*
 
 ---
 
@@ -2015,6 +2289,8 @@ Base64 解码
 | `ids` | `string[]` | 按顺序排列的 ID 数组 | No |
 
 **Returns:** `Promise<object>`
+
+*{ success: boolean, count: number }*
 
 ---
 
@@ -2033,6 +2309,8 @@ Base64 解码
 
 **Returns:** `Promise<object>`
 
+*{ success: boolean, id: string, title: string, isSystemReminder: true }*
+
 ---
 
 ### `reminder.getSystemLists`
@@ -2043,19 +2321,29 @@ Base64 解码
 
 **Returns:** `Promise<[{ id: string, title: string, isSystem: true }]>`
 
+*系统提醒列表数组*
+
 ---
 
 ## contacts
 
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
+
 通讯录操作
 
+> **Trigger Note:** requestAccess 需要 UI 交互，其他操作需要预先获得权限
+
 ### `contacts.requestAccess`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `requestAccess()`
 
 请求通讯录权限
 
 **Returns:** `{ granted: boolean, error?: string }`
+
+*包含授权结果的对象*
 
 ---
 
@@ -2065,7 +2353,9 @@ Base64 解码
 
 获取权限状态
 
-**Returns:** `'authorized' | 'denied' | 'restricted' | 'notDetermined'`
+**Returns:** `'authorized' \| 'denied' \| 'restricted' \| 'notDetermined'`
+
+*权限状态*
 
 ---
 
@@ -2076,6 +2366,8 @@ Base64 解码
 检查是否已授权
 
 **Returns:** `boolean`
+
+*是否已授权*
 
 ---
 
@@ -2094,6 +2386,8 @@ Base64 解码
 
 **Returns:** `[Contact]`
 
+*联系人对象数组*
+
 ---
 
 ### `contacts.getCount`
@@ -2103,6 +2397,8 @@ Base64 解码
 获取联系人总数
 
 **Returns:** `number`
+
+*联系人总数*
 
 ---
 
@@ -2120,6 +2416,8 @@ Base64 解码
 
 **Returns:** `[Contact]`
 
+*联系人对象数组*
+
 ---
 
 ### `contacts.searchByPhone`
@@ -2135,6 +2433,8 @@ Base64 解码
 | `phone` | `string` | 电话号码（支持模糊匹配） | No |
 
 **Returns:** `[Contact]`
+
+*联系人对象数组*
 
 ---
 
@@ -2152,6 +2452,8 @@ Base64 解码
 
 **Returns:** `[Contact]`
 
+*联系人对象数组*
+
 ---
 
 ### `contacts.getById`
@@ -2166,7 +2468,9 @@ Base64 解码
 |------|------|-------------|----------|
 | `id` | `string` | 联系人唯一标识符 | No |
 
-**Returns:** `Contact | null`
+**Returns:** `Contact \| null`
+
+*联系人对象*
 
 ---
 
@@ -2183,6 +2487,8 @@ Base64 解码
 | `data` | `object` | 联系人数据 { givenName, familyName, phoneNumbers?, emailAddresses?, ... } | No |
 
 **Returns:** `{ success: boolean, id?: string, error?: string }`
+
+*包含成功状态和 ID 的对象*
 
 ---
 
@@ -2201,6 +2507,8 @@ Base64 解码
 
 **Returns:** `{ success: boolean, error?: string }`
 
+*包含成功状态的对象*
+
 ---
 
 ### `contacts.delete`
@@ -2217,6 +2525,8 @@ Base64 解码
 
 **Returns:** `{ success: boolean, error?: string }`
 
+*包含成功状态的对象*
+
 ---
 
 ### `contacts.getGroups`
@@ -2226,6 +2536,8 @@ Base64 解码
 获取所有分组
 
 **Returns:** `[{ id: string, name: string }]`
+
+*分组数组*
 
 ---
 
@@ -2243,11 +2555,17 @@ Base64 解码
 
 **Returns:** `[Contact]`
 
+*联系人对象数组*
+
 ---
 
 ## notification
 
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
+
 本地通知
+
+> **Trigger Note:** requestPermission 需要 UI 交互，其他操作需要预先获得权限
 
 ### `notification.send`
 
@@ -2264,6 +2582,8 @@ Base64 解码
 | `options` | `object` | 选项 { url, userInfo, sound, badge } | Yes |
 
 **Returns:** `Promise<string>`
+
+*发送的通知 ID*
 
 ---
 
@@ -2301,6 +2621,8 @@ Base64 解码
 
 **Returns:** `Promise<[{ id: string, title: string, body: string, date: number }]>`
 
+*待发送通知列表*
+
 ---
 
 ### `notification.getDelivered`
@@ -2311,15 +2633,21 @@ Base64 解码
 
 **Returns:** `Promise<[{ id: string, title: string, body: string, date: number }]>`
 
+*已发送通知列表*
+
 ---
 
 ### `notification.requestPermission`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `requestPermission()`
 
 请求通知权限
 
 **Returns:** `Promise<boolean>`
+
+*是否授权成功*
 
 ---
 
@@ -2329,7 +2657,9 @@ Base64 解码
 
 获取权限状态
 
-**Returns:** `Promise<'authorized' | 'denied' | 'notDetermined' | 'provisional' | 'ephemeral' | 'unknown'>`
+**Returns:** `Promise<'authorized' \| 'denied' \| 'notDetermined' \| 'provisional' \| 'ephemeral' \| 'unknown'>`
+
+*权限状态*
 
 ---
 
@@ -2356,6 +2686,8 @@ Base64 解码
 获取角标数字
 
 **Returns:** `Promise<number>`
+
+*角标数字*
 
 ---
 
@@ -2386,19 +2718,29 @@ Base64 解码
 
 **Returns:** `Promise<string>`
 
+*发送的通知 ID*
+
 ---
 
 ## alarm
 
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
+
 闹钟和定时提醒
 
+> **Trigger Note:** requestAccess 和打开系统应用的方法需要 UI 交互
+
 ### `alarm.requestAccess`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `requestAccess()`
 
 请求通知权限
 
 **Returns:** `Promise<boolean>`
+
+*是否授权成功*
 
 ---
 
@@ -2408,7 +2750,9 @@ Base64 解码
 
 获取权限状态
 
-**Returns:** `Promise<'authorized' | 'denied' | 'notDetermined'>`
+**Returns:** `Promise<'authorized' \| 'denied' \| 'notDetermined'>`
+
+*权限状态*
 
 ---
 
@@ -2428,6 +2772,8 @@ Base64 解码
 
 **Returns:** `Promise<string>`
 
+*创建的闹钟 ID*
+
 ---
 
 ### `alarm.createDaily`
@@ -2446,6 +2792,8 @@ Base64 解码
 | `options` | `object` | 选项 { sound } | Yes |
 
 **Returns:** `Promise<string>`
+
+*创建的闹钟 ID*
 
 ---
 
@@ -2467,6 +2815,8 @@ Base64 解码
 
 **Returns:** `Promise<string>`
 
+*创建的闹钟 ID*
+
 ---
 
 ### `alarm.createCountdown`
@@ -2485,6 +2835,8 @@ Base64 解码
 
 **Returns:** `Promise<string>`
 
+*创建的闹钟 ID*
+
 ---
 
 ### `alarm.getPending`
@@ -2495,6 +2847,8 @@ Base64 解码
 
 **Returns:** `Promise<[{ id: string, title: string, date: number, repeat?: string }]>`
 
+*待触发闹钟列表*
+
 ---
 
 ### `alarm.getCount`
@@ -2504,6 +2858,8 @@ Base64 解码
 获取闹钟数量
 
 **Returns:** `Promise<number>`
+
+*闹钟数量*
 
 ---
 
@@ -2535,6 +2891,8 @@ Base64 解码
 
 ### `alarm.openClockApp`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `openClockApp()`
 
 打开系统时钟
@@ -2544,6 +2902,8 @@ Base64 解码
 ---
 
 ### `alarm.openTimer`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `openTimer()`
 
@@ -2555,7 +2915,11 @@ Base64 解码
 
 ## media
 
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
+
 音乐媒体控制
+
+> **Trigger Note:** requestAccess 需要 UI 交互，媒体控制需要预先获得权限且 Audio Session 正确配置
 
 ### `media.play`
 
@@ -2633,7 +2997,9 @@ Base64 解码
 
 获取播放状态
 
-**Returns:** `'playing' | 'paused' | 'stopped'`
+**Returns:** `'playing' \| 'paused' \| 'stopped'`
+
+*播放状态*
 
 ---
 
@@ -2645,6 +3011,8 @@ Base64 解码
 
 **Returns:** `boolean`
 
+*是否正在播放*
+
 ---
 
 ### `media.getNowPlaying`
@@ -2655,6 +3023,8 @@ Base64 解码
 
 **Returns:** `{ title: string, artist: string, album: string, duration: number, artwork?: string }`
 
+*当前播放信息对象*
+
 ---
 
 ### `media.getVolume`
@@ -2664,6 +3034,8 @@ Base64 解码
 获取音量
 
 **Returns:** `number`
+
+*当前音量(0.0-1.0)*
 
 ---
 
@@ -2689,7 +3061,9 @@ Base64 解码
 
 获取重复模式
 
-**Returns:** `'none' | 'one' | 'all'`
+**Returns:** `'none' \| 'one' \| 'all'`
+
+*重复模式*
 
 ---
 
@@ -2715,7 +3089,9 @@ Base64 解码
 
 获取随机播放模式
 
-**Returns:** `'off' | 'songs' | 'albums'`
+**Returns:** `'off' \| 'songs' \| 'albums'`
+
+*随机播放模式*
 
 ---
 
@@ -2742,6 +3118,8 @@ Base64 解码
 获取当前播放时间
 
 **Returns:** `number`
+
+*当前播放时间(秒)*
 
 ---
 
@@ -2795,11 +3173,15 @@ Base64 解码
 
 ### `media.requestAccess`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `requestAccess()`
 
 请求音乐库权限
 
 **Returns:** `Promise<boolean>`
+
+*是否授权成功*
 
 ---
 
@@ -2809,7 +3191,9 @@ Base64 解码
 
 获取权限状态
 
-**Returns:** `Promise<'authorized' | 'denied' | 'notDetermined' | 'restricted'>`
+**Returns:** `Promise<'authorized' \| 'denied' \| 'notDetermined' \| 'restricted'>`
+
+*权限状态*
 
 ---
 
@@ -2826,6 +3210,8 @@ Base64 解码
 | `query` | `string` | 搜索关键词 | No |
 
 **Returns:** `Promise<[{ id: string, title: string, artist: string, album: string }]>`
+
+*歌曲列表数组*
 
 ---
 
@@ -2853,6 +3239,8 @@ Base64 解码
 
 **Returns:** `Promise<[{ id: string, title: string, artist: string, album: string }]>`
 
+*歌曲列表数组*
+
 ---
 
 ### `media.getAlbums`
@@ -2862,6 +3250,8 @@ Base64 解码
 获取所有专辑
 
 **Returns:** `Promise<[{ id: string, title: string, artist: string }]>`
+
+*专辑列表数组*
 
 ---
 
@@ -2873,6 +3263,8 @@ Base64 解码
 
 **Returns:** `Promise<[{ id: string, name: string }]>`
 
+*艺术家列表数组*
+
 ---
 
 ### `media.getPlaylists`
@@ -2882,6 +3274,8 @@ Base64 解码
 获取播放列表
 
 **Returns:** `Promise<[{ id: string, name: string }]>`
+
+*播放列表数组*
 
 ---
 
@@ -2931,11 +3325,17 @@ Base64 解码
 
 **Returns:** `void`
 
+*无返回值*
+
 ---
 
 ## mail
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 邮件操作
+
+> **Trigger Note:** 所有邮件发送和打开邮件应用的方法都需要 UI 交互，Daemon 模式下完全不可用
 
 ### `mail.canSendMail`
 
@@ -2945,6 +3345,8 @@ Base64 解码
 
 **Returns:** `boolean`
 
+*是否能发送*
+
 ---
 
 ### `mail.getStatus`
@@ -2953,7 +3355,9 @@ Base64 解码
 
 获取邮件功能状态
 
-**Returns:** `'available' | 'unavailable'`
+**Returns:** `'available' \| 'unavailable'`
+
+*邮件功能状态*
 
 ---
 
@@ -2973,6 +3377,8 @@ Base64 解码
 
 **Returns:** `Promise<boolean>`
 
+*是否发送成功*
+
 ---
 
 ### `mail.sendAdvanced`
@@ -2989,6 +3395,8 @@ Base64 解码
 
 **Returns:** `Promise<boolean>`
 
+*是否发送成功*
+
 ---
 
 ### `mail.openMailApp`
@@ -2998,6 +3406,8 @@ Base64 解码
 打开邮件 App
 
 **Returns:** `void`
+
+*无返回值*
 
 ---
 
@@ -3015,6 +3425,8 @@ Base64 解码
 
 **Returns:** `void`
 
+*无返回值*
+
 ---
 
 ### `mail.isValidEmail`
@@ -3031,6 +3443,8 @@ Base64 解码
 
 **Returns:** `boolean`
 
+*是否有效*
+
 ---
 
 ### `mail.getInstalledMailApps`
@@ -3040,6 +3454,8 @@ Base64 解码
 检测已安装的邮件 App
 
 **Returns:** `string[]`
+
+*已安装的邮件 App 名称数组*
 
 ---
 
@@ -3058,6 +3474,8 @@ Base64 解码
 
 **Returns:** `Promise<string>`
 
+*生成的邮件内容*
+
 ---
 
 ### `mail.getTemplates`
@@ -3068,11 +3486,17 @@ Base64 解码
 
 **Returns:** `string[]`
 
+*模板名称数组*
+
 ---
 
 ## sms
 
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
 短信操作
+
+> **Trigger Note:** 需要 TrollStore Root 权限才能访问短信数据库
 
 ### `sms.checkAccess`
 
@@ -3081,6 +3505,8 @@ Base64 解码
 检查短信权限
 
 **Returns:** `boolean`
+
+*是否有权限*
 
 ---
 
@@ -3091,6 +3517,8 @@ Base64 解码
 尝试直接访问短信数据库(调试用)
 
 **Returns:** `boolean`
+
+*是否访问成功*
 
 ---
 
@@ -3108,6 +3536,8 @@ Base64 解码
 
 **Returns:** `[{ id: string, content: string, sender: string, date: number }]`
 
+*短信对象数组*
+
 ---
 
 ### `sms.getVerificationCode`
@@ -3122,7 +3552,9 @@ Base64 解码
 |------|------|-------------|----------|
 | `minutes` | `number` | 查找最近几分钟内的验证码 (默认 5) | Yes |
 
-**Returns:** `string | null`
+**Returns:** `string \| null`
+
+*验证码或 null*
 
 ---
 
@@ -3140,6 +3572,8 @@ Base64 解码
 
 **Returns:** `[{ id: string, content: string, sender: string, date: number }]`
 
+*短信对象数组*
+
 ---
 
 ### `sms.getByAddress`
@@ -3156,6 +3590,8 @@ Base64 解码
 
 **Returns:** `[{ id: string, content: string, sender: string, date: number }]`
 
+*短信对象数组*
+
 ---
 
 ### `sms.getChats`
@@ -3165,6 +3601,8 @@ Base64 解码
 获取会话列表
 
 **Returns:** `[{ id: string, name: string, lastMessage: string, date: number }]`
+
+*会话列表数组*
 
 ---
 
@@ -3176,6 +3614,8 @@ Base64 解码
 
 **Returns:** `{ total: number, unread: number, senders: number }`
 
+*统计信息对象*
+
 ---
 
 ### `sms.getLatest`
@@ -3184,7 +3624,9 @@ Base64 解码
 
 获取最新短信
 
-**Returns:** `{ id: string, content: string, sender: string, date: number } | null`
+**Returns:** `{ id: string, content: string, sender: string, date: number } \| null`
+
+*最新短信对象或 null*
 
 ---
 
@@ -3196,9 +3638,13 @@ Base64 解码
 
 **Returns:** `[{ id: string, content: string, sender: string, date: number }]`
 
+*未读短信对象数组*
+
 ---
 
 ## sql
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 SQL 数据库查询
 
@@ -3218,6 +3664,8 @@ SQL 数据库查询
 
 **Returns:** `any[]`
 
+*查询结果数组*
+
 ---
 
 ### `sql.execute`
@@ -3236,6 +3684,8 @@ SQL 数据库查询
 
 **Returns:** `{ changes: number, lastInsertRowId: number }`
 
+*执行结果对象*
+
 ---
 
 ### `sql.tables`
@@ -3251,6 +3701,8 @@ SQL 数据库查询
 | `dbPath` | `string` | 数据库路径 | No |
 
 **Returns:** `string[]`
+
+*表名数组*
 
 ---
 
@@ -3269,11 +3721,17 @@ SQL 数据库查询
 
 **Returns:** `string`
 
+*表结构 SQL*
+
 ---
 
 ## shortcuts
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 快捷指令操作
+
+> **Trigger Note:** 运行快捷指令和打开 App 都需要前台 UI 交互，Daemon 模式下完全不可用
 
 ### `shortcuts.run`
 
@@ -3288,6 +3746,8 @@ SQL 数据库查询
 | `name` | `string` | 快捷指令名称 | No |
 
 **Returns:** `Promise<string>`
+
+*快捷指令执行结果*
 
 ---
 
@@ -3305,6 +3765,8 @@ SQL 数据库查询
 | `text` | `string` | 输入文本 | No |
 
 **Returns:** `Promise<string>`
+
+*快捷指令执行结果*
 
 ---
 
@@ -3349,6 +3811,8 @@ SQL 数据库查询
 
 **Returns:** `void`
 
+*无返回值*
+
 ---
 
 ### `shortcuts.openGallery`
@@ -3358,6 +3822,8 @@ SQL 数据库查询
 打开快捷指令库
 
 **Returns:** `void`
+
+*无返回值*
 
 ---
 
@@ -3375,6 +3841,8 @@ SQL 数据库查询
 
 **Returns:** `void`
 
+*无返回值*
+
 ---
 
 ### `shortcuts.createNew`
@@ -3384,6 +3852,8 @@ SQL 数据库查询
 创建新快捷指令
 
 **Returns:** `void`
+
+*无返回值*
 
 ---
 
@@ -3400,6 +3870,8 @@ SQL 数据库查询
 | `url` | `string` | 快捷指令 URL | No |
 
 **Returns:** `void`
+
+*无返回值*
 
 ---
 
@@ -3425,7 +3897,11 @@ SQL 数据库查询
 
 ## bluetooth
 
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
+
 蓝牙操作
+
+> **Trigger Note:** openSettings 需要 UI 交互，扫描功能可能需要前台运行
 
 ### `bluetooth.isEnabled`
 
@@ -3443,7 +3919,7 @@ SQL 数据库查询
 
 获取蓝牙状态
 
-**Returns:** `'poweredOn' | 'poweredOff' | 'unauthorized' | 'unknown'`
+**Returns:** `'poweredOn' \| 'poweredOff' \| 'unauthorized' \| 'unknown'`
 
 ---
 
@@ -3461,6 +3937,8 @@ SQL 数据库查询
 
 **Returns:** `void`
 
+*无返回值*
+
 ---
 
 ### `bluetooth.turnOn`
@@ -3471,6 +3949,8 @@ SQL 数据库查询
 
 **Returns:** `void`
 
+*无返回值*
+
 ---
 
 ### `bluetooth.turnOff`
@@ -3480,6 +3960,8 @@ SQL 数据库查询
 关闭蓝牙
 
 **Returns:** `void`
+
+*无返回值*
 
 ---
 
@@ -3543,6 +4025,8 @@ SQL 数据库查询
 
 **Returns:** `void`
 
+*无返回值*
+
 ---
 
 ### `bluetooth.stopScan`
@@ -3553,9 +4037,13 @@ SQL 数据库查询
 
 **Returns:** `void`
 
+*无返回值*
+
 ---
 
 ### `bluetooth.openSettings`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `openSettings()`
 
@@ -3563,9 +4051,13 @@ SQL 数据库查询
 
 **Returns:** `void`
 
+*无返回值*
+
 ---
 
 ## memo
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 备忘录操作（iCloud 同步）
 
@@ -3585,6 +4077,8 @@ SQL 数据库查询
 
 **Returns:** `object`
 
+*{ success: 是否成功, id: 备忘录ID, memo: 备忘录对象 }*
+
 ---
 
 ### `memo.getAll`
@@ -3594,6 +4088,8 @@ SQL 数据库查询
 获取所有备忘录
 
 **Returns:** `[object]`
+
+*备忘录数组 [{ id: ID, title: 标题, content: 内容, createdAt: 创建时间, updatedAt: 更新时间, tags: 标签 }]*
 
 ---
 
@@ -3609,7 +4105,9 @@ SQL 数据库查询
 |------|------|-------------|----------|
 | `id` | `string` | 备忘录 ID | No |
 
-**Returns:** `object | null`
+**Returns:** `object \| null`
+
+*备忘录对象或 null（不存在时）*
 
 ---
 
@@ -3626,6 +4124,8 @@ SQL 数据库查询
 | `keyword` | `string` | 搜索关键词 | No |
 
 **Returns:** `[object]`
+
+*匹配的备忘录数组*
 
 ---
 
@@ -3644,6 +4144,8 @@ SQL 数据库查询
 
 **Returns:** `object`
 
+*{ success: 是否成功, id: 备忘录ID }*
+
 ---
 
 ### `memo.delete`
@@ -3660,6 +4162,8 @@ SQL 数据库查询
 
 **Returns:** `object`
 
+*{ success: 是否成功, id: 已删除的ID }*
+
 ---
 
 ### `memo.clear`
@@ -3670,6 +4174,8 @@ SQL 数据库查询
 
 **Returns:** `object`
 
+*{ success: 是否成功 }*
+
 ---
 
 ### `memo.count`
@@ -3679,6 +4185,8 @@ SQL 数据库查询
 获取备忘录数量
 
 **Returns:** `number`
+
+*备忘录总数*
 
 ---
 

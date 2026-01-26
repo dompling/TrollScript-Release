@@ -318,6 +318,12 @@
 
 // MARK: - API Picker
 "script.api.search_placeholder" = "搜索 API";
+"script.api.title" = "API 文档";
+"script.api.daemon_filter" = "仅显示触发器兼容";
+"script.api.daemon_filter_hint" = "已启用筛选";
+"script.api.daemon_full" = "完全支持";
+"script.api.daemon_limited" = "有限支持";
+"script.api.daemon_none" = "不支持触发器";
 
 // MARK: - Script Import/Export
 "export.title" = "导出脚本";

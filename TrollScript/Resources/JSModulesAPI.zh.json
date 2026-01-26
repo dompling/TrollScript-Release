@@ -1,11 +1,17 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "daemonSupportLegend": {
+    "full": "完全支持 - 在触发器下可正常运行",
+    "limited": "有限支持 - 部分功能可能受限或不生效",
+    "none": "不支持 - 需要前台运行，触发器下不可用"
+  },
   "modules": [
     {
       "name": "console",
       "description": "控制台输出",
       "icon": "terminal",
       "color": "gray",
+      "daemonSupport": "full",
       "methods": [
         {
           "name": "log",
@@ -98,6 +104,7 @@
       "description": "设备信息",
       "icon": "iphone",
       "color": "blue",
+      "daemonSupport": "full",
       "methods": [
         {
           "name": "info",
@@ -127,6 +134,7 @@
       "description": "剪贴板操作",
       "icon": "doc.on.clipboard",
       "color": "orange",
+      "daemonSupport": "full",
       "methods": [
         {
           "name": "getText",
@@ -161,6 +169,7 @@
       "description": "本地存储",
       "icon": "externaldrive",
       "color": "indigo",
+      "daemonSupport": "full",
       "methods": [
         {
           "name": "get",
@@ -234,6 +243,7 @@
       "description": "iCloud 文件操作",
       "icon": "icloud",
       "color": "blue",
+      "daemonSupport": "full",
       "methods": [
         {
           "name": "isAvailable",
@@ -318,6 +328,7 @@
       "description": "文件操作",
       "icon": "folder",
       "color": "cyan",
+      "daemonSupport": "full",
       "methods": [
         {
           "name": "read",
@@ -617,6 +628,7 @@
       "description": "网络请求",
       "icon": "network",
       "color": "purple",
+      "daemonSupport": "full",
       "methods": [
         {
           "name": "get",
@@ -777,6 +789,8 @@
       "description": "网络操作",
       "icon": "wifi",
       "color": "mint",
+      "daemonSupport": "limited",
+      "daemonNote": "openSettings 方法需要 UI 交互，Daemon 模式下不可用",
       "methods": [
         {
           "name": "isReachable",
@@ -984,6 +998,7 @@
           "name": "openSettings",
           "signature": "openSettings(section?)",
           "description": "打开系统设置",
+          "daemonSupport": "none",
           "parameters": [
             {
               "name": "section",
@@ -1002,6 +1017,8 @@
       "description": "应用操作",
       "icon": "app",
       "color": "blue",
+      "daemonSupport": "limited",
+      "daemonNote": "open 方法需要前台运行，vibrate 方法后台可能不生效",
       "methods": [
         {
           "name": "version",
@@ -1014,6 +1031,7 @@
           "name": "open",
           "signature": "open(url)",
           "description": "打开 URL/Scheme",
+          "daemonSupport": "none",
           "parameters": [
             {
               "name": "url",
@@ -1042,6 +1060,7 @@
           "name": "vibrate",
           "signature": "vibrate()",
           "description": "震动反馈",
+          "daemonSupport": "limited",
           "returns": "void"
         },
         {
@@ -1093,6 +1112,8 @@
       "description": "触觉反馈",
       "icon": "waveform.path",
       "color": "purple",
+      "daemonSupport": "limited",
+      "daemonNote": "触觉反馈在后台模式下可能不生效，需要设备支持",
       "methods": [
         {
           "name": "impact",
@@ -1176,6 +1197,8 @@
       "description": "显示控制",
       "icon": "sun.max",
       "color": "yellow",
+      "daemonSupport": "limited",
+      "daemonNote": "亮度设置和 keepAwake 后台可能不生效，openSettings 需要 UI 交互",
       "methods": [
         {
           "name": "getBrightness",
@@ -1327,6 +1350,7 @@
           "name": "openSettings",
           "signature": "openSettings()",
           "description": "打开显示设置",
+          "daemonSupport": "none",
           "returns": "boolean",
           "returnsDescription": "是否成功打开"
         },
@@ -1371,6 +1395,7 @@
       "description": "工具函数",
       "icon": "wrench.and.screwdriver",
       "color": "gray",
+      "daemonSupport": "full",
       "methods": [
         {
           "name": "uuid",
@@ -1447,11 +1472,14 @@
       "description": "定位服务",
       "icon": "location",
       "color": "red",
+      "daemonSupport": "limited",
+      "daemonNote": "requestAccess 需要 UI 交互，getCurrent 需要预先获得权限",
       "methods": [
         {
           "name": "requestAccess",
           "signature": "requestAccess()",
           "description": "请求定位权限",
+          "daemonSupport": "none",
           "returns": "void"
         },
         {
@@ -1558,6 +1586,8 @@
       "description": "系统日历",
       "icon": "calendar",
       "color": "red",
+      "daemonSupport": "limited",
+      "daemonNote": "requestAccess 需要 UI 交互，其他操作需要预先获得权限",
       "methods": [
         {
           "name": "isAuthorized",
@@ -1569,6 +1599,7 @@
           "name": "requestAccess",
           "signature": "requestAccess()",
           "description": "请求日历权限",
+          "daemonSupport": "none",
           "returns": "Promise<boolean>",
           "returnsDescription": "是否授权成功"
         },
@@ -1662,6 +1693,8 @@
       "description": "提醒事项",
       "icon": "checklist",
       "color": "orange",
+      "daemonSupport": "limited",
+      "daemonNote": "requestAccess 需要 UI 交互，其他操作需要预先获得权限",
       "methods": [
         {
           "name": "isAuthorized",
@@ -1674,6 +1707,7 @@
           "name": "requestAccess",
           "signature": "requestAccess()",
           "description": "请求提醒事项权限",
+          "daemonSupport": "none",
           "returns": "Promise<boolean>",
           "returnsDescription": "是否授权成功"
         },
@@ -1832,11 +1866,14 @@
       "description": "通讯录操作",
       "icon": "person.crop.circle",
       "color": "blue",
+      "daemonSupport": "limited",
+      "daemonNote": "requestAccess 需要 UI 交互，其他操作需要预先获得权限",
       "methods": [
         {
           "name": "requestAccess",
           "signature": "requestAccess()",
           "description": "请求通讯录权限",
+          "daemonSupport": "none",
           "returns": "{ granted: boolean, error?: string }",
           "returnsDescription": "包含授权结果的对象"
         },
@@ -2013,6 +2050,8 @@
       "description": "本地通知",
       "icon": "bell",
       "color": "pink",
+      "daemonSupport": "limited",
+      "daemonNote": "requestPermission 需要 UI 交互，其他操作需要预先获得权限",
       "methods": [
         {
           "name": "send",
@@ -2076,6 +2115,7 @@
           "name": "requestPermission",
           "signature": "requestPermission()",
           "description": "请求通知权限",
+          "daemonSupport": "none",
           "returns": "Promise<boolean>",
           "returnsDescription": "是否授权成功"
         },
@@ -2149,11 +2189,14 @@
       "description": "闹钟和定时提醒",
       "icon": "alarm",
       "color": "orange",
+      "daemonSupport": "limited",
+      "daemonNote": "requestAccess 和打开系统应用的方法需要 UI 交互",
       "methods": [
         {
           "name": "requestAccess",
           "signature": "requestAccess()",
           "description": "请求通知权限",
+          "daemonSupport": "none",
           "returns": "Promise<boolean>",
           "returnsDescription": "是否授权成功"
         },
@@ -2316,12 +2359,14 @@
           "name": "openClockApp",
           "signature": "openClockApp()",
           "description": "打开系统时钟",
+          "daemonSupport": "none",
           "returns": "void"
         },
         {
           "name": "openTimer",
           "signature": "openTimer()",
           "description": "打开计时器",
+          "daemonSupport": "none",
           "returns": "void"
         }
       ]
@@ -2331,6 +2376,8 @@
       "description": "音乐媒体控制",
       "icon": "music.note",
       "color": "pink",
+      "daemonSupport": "limited",
+      "daemonNote": "requestAccess 需要 UI 交互，媒体控制需要预先获得权限且 Audio Session 正确配置",
       "methods": [
         {
           "name": "play",
@@ -2507,6 +2554,7 @@
           "name": "requestAccess",
           "signature": "requestAccess()",
           "description": "请求音乐库权限",
+          "daemonSupport": "none",
           "returns": "Promise<boolean>",
           "returnsDescription": "是否授权成功"
         },
@@ -2619,6 +2667,8 @@
       "description": "邮件操作",
       "icon": "envelope",
       "color": "blue",
+      "daemonSupport": "none",
+      "daemonNote": "所有邮件发送和打开邮件应用的方法都需要 UI 交互，Daemon 模式下完全不可用",
       "methods": [
         {
           "name": "canSendMail",
@@ -2747,6 +2797,8 @@
       "description": "短信操作",
       "icon": "message",
       "color": "green",
+      "daemonSupport": "full",
+      "daemonNote": "需要 TrollStore Root 权限才能访问短信数据库",
       "methods": [
         {
           "name": "checkAccess",
@@ -2855,6 +2907,7 @@
       "description": "SQL 数据库查询",
       "icon": "cylinder.split.1x2",
       "color": "indigo",
+      "daemonSupport": "full",
       "methods": [
         {
           "name": "query",
@@ -2946,6 +2999,8 @@
       "description": "快捷指令操作",
       "icon": "bolt.square",
       "color": "indigo",
+      "daemonSupport": "none",
+      "daemonNote": "运行快捷指令和打开 App 都需要前台 UI 交互，Daemon 模式下完全不可用",
       "methods": [
         {
           "name": "run",
@@ -3079,6 +3134,8 @@
       "description": "蓝牙操作",
       "icon": "antenna.radiowaves.left.and.right",
       "color": "blue",
+      "daemonSupport": "limited",
+      "daemonNote": "openSettings 需要 UI 交互，扫描功能可能需要前台运行",
       "methods": [
         {
           "name": "isEnabled",
@@ -3176,6 +3233,7 @@
           "name": "openSettings",
           "signature": "openSettings()",
           "description": "打开蓝牙设置",
+          "daemonSupport": "none",
           "returns": "void",
           "returnsDescription": "无返回值"
         }
@@ -3186,6 +3244,7 @@
       "description": "备忘录操作（iCloud 同步）",
       "icon": "note.text",
       "color": "yellow",
+      "daemonSupport": "full",
       "methods": [
         {
           "name": "create",

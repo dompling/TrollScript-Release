@@ -2,39 +2,51 @@
 
 TrollScript provides a powerful JavaScript environment with access to various system features. Below is the comprehensive API reference for all available modules.
 
+## Trigger Compatibility Legend
+
+The following icons indicate API compatibility when running in background trigger mode:
+
+| Icon | Status | Description |
+|:----:|--------|-------------|
+| ✅ | **Full** | Fully supported in trigger mode |
+| ⚠️ | **Limited** | Partial support, some features may not work |
+| ❌ | **None** | Not supported in trigger mode, requires foreground |
+
 ---
 
 ## Table of Contents
 
-- [console](#console) - Console output
-- [device](#device) - Device information
-- [clipboard](#clipboard) - Clipboard operations
-- [storage](#storage) - Local storage
-- [icloud](#icloud) - iCloud file operations
-- [file](#file) - File operations
-- [http](#http) - Network requests
-- [network](#network) - Network operations
-- [app](#app) - App operations
-- [haptic](#haptic) - Haptic feedback
-- [display](#display) - Display control
-- [util](#util) - Utility functions
-- [location](#location) - Location services
-- [calendar](#calendar) - System calendar
-- [reminder](#reminder) - Reminders
-- [contacts](#contacts) - Contacts operations
-- [notification](#notification) - Local notifications
-- [alarm](#alarm) - Alarms and Timers
-- [media](#media) - Music & Media control
-- [mail](#mail) - Mail operations
-- [sms](#sms) - SMS operations
-- [sql](#sql) - SQL Database Query
-- [shortcuts](#shortcuts) - Shortcuts operations
-- [bluetooth](#bluetooth) - Bluetooth operations
-- [memo](#memo) - Memo operations (iCloud Sync)
+- [console](#console) ✅ - Console output
+- [device](#device) ✅ - Device information
+- [clipboard](#clipboard) ✅ - Clipboard operations
+- [storage](#storage) ✅ - Local storage
+- [icloud](#icloud) ✅ - iCloud file operations
+- [file](#file) ✅ - File operations
+- [http](#http) ✅ - Network requests
+- [network](#network) ✅ - Network operations
+- [app](#app) ✅ - App operations
+- [haptic](#haptic) ✅ - Haptic feedback
+- [display](#display) ✅ - Display control
+- [util](#util) ✅ - Utility functions
+- [location](#location) ✅ - Location services
+- [calendar](#calendar) ✅ - System calendar
+- [reminder](#reminder) ✅ - Reminders
+- [contacts](#contacts) ✅ - Contacts operations
+- [notification](#notification) ✅ - Local notifications
+- [alarm](#alarm) ✅ - Alarms and Timers
+- [media](#media) ✅ - Music & Media control
+- [mail](#mail) ✅ - Mail operations
+- [sms](#sms) ✅ - SMS operations
+- [sql](#sql) ✅ - SQL Database Query
+- [shortcuts](#shortcuts) ✅ - Shortcuts operations
+- [bluetooth](#bluetooth) ✅ - Bluetooth operations
+- [memo](#memo) ✅ - Memo operations (iCloud Sync)
 
 ---
 
 ## console
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 Console output
 
@@ -146,6 +158,8 @@ Clear console
 
 ## device
 
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
 Device information
 
 ### `device.info`
@@ -155,6 +169,8 @@ Device information
 Get device information
 
 **Returns:** `{ name: string, model: string, systemName: string, systemVersion: string, identifier: string }`
+
+*Object containing device name, model, system version, etc.*
 
 ---
 
@@ -166,6 +182,8 @@ Get battery information
 
 **Returns:** `{ level: number, state: string, lowPowerMode: boolean }`
 
+*Object containing battery level (0-1), charging state, low power mode, etc.*
+
 ---
 
 ### `device.screen`
@@ -176,9 +194,13 @@ Get screen information
 
 **Returns:** `{ width: number, height: number, scale: number, brightness: number }`
 
+*Object containing screen dimensions, scale factor, brightness, etc.*
+
 ---
 
 ## clipboard
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 Clipboard operations
 
@@ -189,6 +211,8 @@ Clipboard operations
 Get clipboard text
 
 **Returns:** `string`
+
+*Text content from clipboard*
 
 ---
 
@@ -220,6 +244,8 @@ Clear clipboard
 
 ## storage
 
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
 Local storage
 
 ### `storage.get`
@@ -235,6 +261,8 @@ Get stored value
 | `key` | `string` | Key name | No |
 
 **Returns:** `any`
+
+*Stored value, or undefined if not exists*
 
 ---
 
@@ -295,9 +323,13 @@ Check if key exists
 
 **Returns:** `boolean`
 
+*Whether the key exists*
+
 ---
 
 ## icloud
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 iCloud file operations
 
@@ -309,6 +341,8 @@ Check if iCloud is available
 
 **Returns:** `boolean`
 
+*Availability status*
+
 ---
 
 ### `icloud.containerPath`
@@ -317,7 +351,9 @@ Check if iCloud is available
 
 Get iCloud container path
 
-**Returns:** `string | null`
+**Returns:** `string \| null`
+
+*Local path of iCloud container, null if unavailable*
 
 ---
 
@@ -334,6 +370,8 @@ Read iCloud file
 | `path` | `string` | File path (relative to iCloud container) | No |
 
 **Returns:** `string`
+
+*File content*
 
 ---
 
@@ -352,6 +390,8 @@ Write to iCloud file
 
 **Returns:** `boolean`
 
+*Whether write was successful*
+
 ---
 
 ### `icloud.delete`
@@ -367,6 +407,8 @@ Delete iCloud file
 | `path` | `string` | File path | No |
 
 **Returns:** `boolean`
+
+*Whether deletion was successful*
 
 ---
 
@@ -384,9 +426,13 @@ List iCloud directory
 
 **Returns:** `[string]`
 
+*Array of filenames*
+
 ---
 
 ## file
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 File operations
 
@@ -403,6 +449,8 @@ Read file content
 | `path` | `string` | Absolute file path | No |
 
 **Returns:** `string`
+
+*File content*
 
 ---
 
@@ -421,6 +469,8 @@ Write file content
 
 **Returns:** `boolean`
 
+*Whether write was successful*
+
 ---
 
 ### `file.append`
@@ -438,6 +488,8 @@ Append to file
 
 **Returns:** `boolean`
 
+*Whether append was successful*
+
 ---
 
 ### `file.exists`
@@ -454,6 +506,8 @@ Check if file exists
 
 **Returns:** `boolean`
 
+*Existence status*
+
 ---
 
 ### `file.delete`
@@ -469,6 +523,8 @@ Delete file
 | `path` | `string` | Absolute file path | No |
 
 **Returns:** `boolean`
+
+*Whether deletion was successful*
 
 ---
 
@@ -487,6 +543,8 @@ Move file
 
 **Returns:** `boolean`
 
+*Whether move was successful*
+
 ---
 
 ### `file.copy`
@@ -504,6 +562,8 @@ Copy file
 
 **Returns:** `boolean`
 
+*Whether copy was successful*
+
 ---
 
 ### `file.list`
@@ -519,6 +579,8 @@ List directory contents
 | `path` | `string` | Directory path | No |
 
 **Returns:** `[string]`
+
+*Array of filenames*
 
 ---
 
@@ -536,6 +598,8 @@ Create directory
 
 **Returns:** `boolean`
 
+*Whether creation was successful*
+
 ---
 
 ### `file.stat`
@@ -551,6 +615,8 @@ Get file statistics
 | `path` | `string` | File path | No |
 
 **Returns:** `{ size: number, modificationDate: number, creationDate: number, type: string }`
+
+*Object containing size (bytes), modification timestamp, creation timestamp, type (file/directory)*
 
 ---
 
@@ -568,6 +634,8 @@ Check if path is a directory
 
 **Returns:** `boolean`
 
+*Whether it is a directory*
+
 ---
 
 ### `file.documentsPath`
@@ -577,6 +645,8 @@ Check if path is a directory
 Get Documents path
 
 **Returns:** `string`
+
+*Absolute path to Documents directory*
 
 ---
 
@@ -588,6 +658,8 @@ Get Caches path
 
 **Returns:** `string`
 
+*Absolute path to Caches directory*
+
 ---
 
 ### `file.tempPath`
@@ -597,6 +669,8 @@ Get Caches path
 Get Temporary path
 
 **Returns:** `string`
+
+*Absolute path to Temporary directory*
 
 ---
 
@@ -614,6 +688,8 @@ Debug path access permissions
 
 **Returns:** `string`
 
+*Debug information string*
+
 ---
 
 ### `file.rootRead`
@@ -628,7 +704,9 @@ Read protected file using Root (Requires TrollStore)
 |------|------|-------------|----------|
 | `path` | `string` | Absolute file path | No |
 
-**Returns:** `string | null`
+**Returns:** `string \| null`
+
+*File content, or null on failure*
 
 ---
 
@@ -644,7 +722,9 @@ List protected directory using Root (Requires TrollStore)
 |------|------|-------------|----------|
 | `path` | `string` | Absolute directory path | No |
 
-**Returns:** `[string] | null`
+**Returns:** `[string] \| null`
+
+*List of filenames, or null on failure*
 
 ---
 
@@ -663,6 +743,8 @@ Copy protected file using Root (Requires TrollStore)
 
 **Returns:** `boolean`
 
+*Whether copy was successful*
+
 ---
 
 ### `file.rootCheck`
@@ -678,6 +760,8 @@ Check path info using Root (Requires TrollStore)
 | `path` | `string` | File or directory path | No |
 
 **Returns:** `{ readable: boolean, writable: boolean, exists: boolean, isDirectory: boolean }`
+
+*Object containing R/W permissions, existence, and debugging info*
 
 ---
 
@@ -695,6 +779,8 @@ Check file existence using Root (Requires TrollStore)
 
 **Returns:** `boolean`
 
+*Existence status*
+
 ---
 
 ### `file.rootAvailable`
@@ -705,9 +791,13 @@ Check if Root Helper is available
 
 **Returns:** `boolean`
 
+*Availability status*
+
 ---
 
 ## http
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 Network requests
 
@@ -725,6 +815,8 @@ Send GET request
 | `options` | `object` | Request options { headers, timeout } | Yes |
 
 **Returns:** `Promise<{ status: number, data: string, headers: object }>`
+
+*Object containing status code, response data, headers*
 
 ---
 
@@ -845,9 +937,13 @@ Download file
 
 **Returns:** `Promise<{ path: string }>`
 
+*Object containing local file path*
+
 ---
 
 ## network
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 Network operations
 
@@ -859,6 +955,8 @@ Check if network is reachable
 
 **Returns:** `boolean`
 
+*Reachability status*
+
 ---
 
 ### `network.getConnectionType`
@@ -867,7 +965,9 @@ Check if network is reachable
 
 Get connection type
 
-**Returns:** `'wifi' | 'cellular' | 'none'`
+**Returns:** `'wifi' \| 'cellular' \| 'none'`
+
+*Connection type (wifi/cellular/none)*
 
 ---
 
@@ -877,7 +977,9 @@ Get connection type
 
 Get device IP address
 
-**Returns:** `string | null`
+**Returns:** `string \| null`
+
+*IP Address*
 
 ---
 
@@ -887,7 +989,9 @@ Get device IP address
 
 Get WiFi information
 
-**Returns:** `{ ssid: string, bssid: string } | null`
+**Returns:** `{ ssid: string, bssid: string } \| null`
+
+*Object containing SSID and BSSID*
 
 ---
 
@@ -905,6 +1009,8 @@ URL encode
 
 **Returns:** `string`
 
+*Encoded URL string*
+
 ---
 
 ### `network.decodeURL`
@@ -921,6 +1027,8 @@ URL decode
 
 **Returns:** `string`
 
+*Decoded URL string*
+
 ---
 
 ### `network.parseURL`
@@ -936,6 +1044,8 @@ Parse URL components
 | `url` | `string` | URL to parse | No |
 
 **Returns:** `{ scheme: string, host: string, path: string, query: string, params: object }`
+
+*Object containing URL components*
 
 ---
 
@@ -954,6 +1064,8 @@ Build URL with parameters
 
 **Returns:** `string`
 
+*Built URL string*
+
 ---
 
 ### `network.ping`
@@ -969,6 +1081,8 @@ Ping host
 | `host` | `string` | Hostname or IP | No |
 
 **Returns:** `Promise<{ latency: number, success: boolean }>`
+
+*Object containing latency and success status*
 
 ---
 
@@ -987,6 +1101,8 @@ Download file
 
 **Returns:** `Promise<{ path: string }>`
 
+*Object containing local file path*
+
 ---
 
 ### `network.getAirplaneMode`
@@ -996,6 +1112,8 @@ Download file
 Get Airplane Mode status
 
 **Returns:** `boolean`
+
+*Whether enabled*
 
 ---
 
@@ -1013,6 +1131,8 @@ Set Airplane Mode
 
 **Returns:** `boolean`
 
+*Whether setting was successful*
+
 ---
 
 ### `network.listVPNs`
@@ -1022,6 +1142,8 @@ Set Airplane Mode
 List VPN configurations
 
 **Returns:** `[{ name: string, active: boolean }]`
+
+*List of VPN configurations*
 
 ---
 
@@ -1039,6 +1161,8 @@ Connect VPN
 
 **Returns:** `boolean`
 
+*Whether connection initiation was successful*
+
 ---
 
 ### `network.disconnectVPN`
@@ -1048,6 +1172,8 @@ Connect VPN
 Disconnect VPN
 
 **Returns:** `boolean`
+
+*Whether disconnection initiation was successful*
 
 ---
 
@@ -1059,6 +1185,8 @@ Get VPN status
 
 **Returns:** `{ connected: boolean, name?: string }`
 
+*Object containing connection status and VPN name*
+
 ---
 
 ### `network.getWiFiEnabled`
@@ -1068,6 +1196,8 @@ Get VPN status
 Get WiFi switch status
 
 **Returns:** `boolean`
+
+*Whether enabled*
 
 ---
 
@@ -1085,6 +1215,8 @@ Set WiFi switch
 
 **Returns:** `boolean`
 
+*Whether setting was successful*
+
 ---
 
 ### `network.openSettings`
@@ -1101,9 +1233,13 @@ Open system settings
 
 **Returns:** `boolean`
 
+*Whether opened successfully*
+
 ---
 
 ## app
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 App operations
 
@@ -1114,6 +1250,8 @@ App operations
 Get app version
 
 **Returns:** `string`
+
+*App version number*
 
 ---
 
@@ -1131,6 +1269,8 @@ Open URL/Scheme
 
 **Returns:** `Promise<boolean>`
 
+*Whether opened successfully*
+
 ---
 
 ### `app.canOpen`
@@ -1146,6 +1286,8 @@ Check if URL can be opened
 | `url` | `string` | URL to check | No |
 
 **Returns:** `boolean`
+
+*Whether it can be opened*
 
 ---
 
@@ -1173,6 +1315,8 @@ Get app logs
 
 **Returns:** `[LogMessage]`
 
+*Array of log objects*
+
 ---
 
 ### `app.exportLogs`
@@ -1182,6 +1326,8 @@ Get app logs
 Export logs as string
 
 **Returns:** `string`
+
+*Exported log content*
 
 ---
 
@@ -1193,6 +1339,8 @@ Get all crash reports
 
 **Returns:** `[CrashReport]`
 
+*Array of crash reports*
+
 ---
 
 ### `app.getLastCrash`
@@ -1201,7 +1349,9 @@ Get all crash reports
 
 Get last crash report
 
-**Returns:** `CrashReport | null`
+**Returns:** `CrashReport \| null`
+
+*Last crash report*
 
 ---
 
@@ -1216,6 +1366,8 @@ Clear all logs
 ---
 
 ## haptic
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 Haptic feedback
 
@@ -1333,6 +1485,8 @@ Error feedback
 
 ## display
 
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
 Display control
 
 ### `display.getBrightness`
@@ -1342,6 +1496,8 @@ Display control
 Get screen brightness
 
 **Returns:** `number`
+
+*Current brightness (0.0-1.0)*
 
 ---
 
@@ -1401,6 +1557,8 @@ Get screen info
 
 **Returns:** `{ width: number, height: number, scale: number }`
 
+*Object containing width, height, and scale*
+
 ---
 
 ### `display.getOrientation`
@@ -1409,7 +1567,9 @@ Get screen info
 
 Get screen orientation
 
-**Returns:** `'portrait' | 'landscape'`
+**Returns:** `'portrait' \| 'landscape'`
+
+*Screen orientation*
 
 ---
 
@@ -1420,6 +1580,8 @@ Get screen orientation
 Is Low Power Mode enabled
 
 **Returns:** `boolean`
+
+*Whether enabled*
 
 ---
 
@@ -1437,6 +1599,8 @@ Set Low Power Mode
 
 **Returns:** `boolean`
 
+*Whether setting was successful*
+
 ---
 
 ### `display.getNightShiftStatus`
@@ -1446,6 +1610,8 @@ Set Low Power Mode
 Get Night Shift status
 
 **Returns:** `boolean`
+
+*Whether enabled*
 
 ---
 
@@ -1463,6 +1629,8 @@ Set Night Shift
 
 **Returns:** `boolean`
 
+*Whether setting was successful*
+
 ---
 
 ### `display.getTrueToneStatus`
@@ -1472,6 +1640,8 @@ Set Night Shift
 Get True Tone status
 
 **Returns:** `boolean`
+
+*Whether enabled*
 
 ---
 
@@ -1489,6 +1659,8 @@ Set True Tone
 
 **Returns:** `boolean`
 
+*Whether setting was successful*
+
 ---
 
 ### `display.isAutoBrightnessEnabled`
@@ -1498,6 +1670,8 @@ Set True Tone
 Is Auto Brightness enabled
 
 **Returns:** `boolean`
+
+*Whether enabled*
 
 ---
 
@@ -1515,6 +1689,8 @@ Set Auto Brightness
 
 **Returns:** `boolean`
 
+*Whether setting was successful*
+
 ---
 
 ### `display.openSettings`
@@ -1525,6 +1701,8 @@ Open display settings
 
 **Returns:** `boolean`
 
+*Whether opened successfully*
+
 ---
 
 ### `display.getAutoLockTime`
@@ -1534,6 +1712,8 @@ Open display settings
 Get auto-lock time
 
 **Returns:** `number`
+
+*Auto-lock time in seconds, 0 means never*
 
 ---
 
@@ -1550,6 +1730,8 @@ Set auto-lock time
 | `seconds` | `number` | Lock time in seconds, 0 means never | No |
 
 **Returns:** `boolean`
+
+*Whether setting was successful*
 
 ---
 
@@ -1571,6 +1753,8 @@ Keep screen awake
 
 ## util
 
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
 Utility functions
 
 ### `util.uuid`
@@ -1580,6 +1764,8 @@ Utility functions
 Generate UUID
 
 **Returns:** `string`
+
+*Generated UUID*
 
 ---
 
@@ -1597,6 +1783,8 @@ Calculate MD5
 
 **Returns:** `string`
 
+*MD5 hash value*
+
 ---
 
 ### `util.base64Encode`
@@ -1613,6 +1801,8 @@ Base64 encode
 
 **Returns:** `string`
 
+*Base64 encoded string*
+
 ---
 
 ### `util.base64Decode`
@@ -1628,6 +1818,8 @@ Base64 decode
 | `string` | `string` | String to decode | No |
 
 **Returns:** `string`
+
+*Decoded original string*
 
 ---
 
@@ -1646,9 +1838,13 @@ Format date
 
 **Returns:** `string`
 
+*Formatted date string*
+
 ---
 
 ## location
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 Location services
 
@@ -1668,7 +1864,9 @@ Request location access
 
 Get access status
 
-**Returns:** `'authorized' | 'denied' | 'restricted' | 'notDetermined' | 'unknown'`
+**Returns:** `'authorized' \| 'denied' \| 'restricted' \| 'notDetermined' \| 'unknown'`
+
+*Permission status*
 
 ---
 
@@ -1680,6 +1878,8 @@ Check if authorized
 
 **Returns:** `boolean`
 
+*Whether authorized*
+
 ---
 
 ### `location.getCurrent`
@@ -1690,6 +1890,8 @@ Get current location
 
 **Returns:** `Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, timestamp: number }>`
 
+*Location object (including latitude, longitude, etc.)*
+
 ---
 
 ### `location.current`
@@ -1699,6 +1901,8 @@ Get current location
 Get current location (alias)
 
 **Returns:** `Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, timestamp: number }>`
+
+*Location object*
 
 ---
 
@@ -1719,6 +1923,8 @@ Calculate distance between two points
 
 **Returns:** `number`
 
+*Distance (meters)*
+
 ---
 
 ### `location.geocode`
@@ -1734,6 +1940,8 @@ Address to coordinates
 | `address` | `string` | Address string | No |
 
 **Returns:** `Promise<[{ lat: number, lng: number, name: string }]>`
+
+*Array of geographic location objects*
 
 ---
 
@@ -1752,6 +1960,8 @@ Coordinates to address
 
 **Returns:** `Promise<[{ name: string, country: string, locality: string, administrativeArea: string }]>`
 
+*Array of address information objects*
+
 ---
 
 ### `location.isLocationServicesEnabled`
@@ -1762,9 +1972,13 @@ Is location services enabled
 
 **Returns:** `boolean`
 
+*Whether enabled*
+
 ---
 
 ## calendar
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 System calendar
 
@@ -1786,6 +2000,8 @@ Request calendar access
 
 **Returns:** `Promise<boolean>`
 
+*Whether authorization was successful*
+
 ---
 
 ### `calendar.getCalendars`
@@ -1796,6 +2012,8 @@ Get all calendars
 
 **Returns:** `Promise<[{ id: string, title: string, color: string }]>`
 
+*List of calendars*
+
 ---
 
 ### `calendar.getToday`
@@ -1805,6 +2023,8 @@ Get all calendars
 Get events for today
 
 **Returns:** `Promise<[{ id: string, title: string, startDate: number, endDate: number, calendar: string }]>`
+
+*Array of events for today*
 
 ---
 
@@ -1823,6 +2043,8 @@ Get calendar events
 | `calendarId` | `string` | Calendar ID | Yes |
 
 **Returns:** `Promise<[{ id: string, title: string, startDate: number, endDate: number, calendar: string }]>`
+
+*Array of events*
 
 ---
 
@@ -1843,6 +2065,8 @@ Create calendar event
 
 **Returns:** `Promise<string>`
 
+*Created event ID*
+
 ---
 
 ### `calendar.delete`
@@ -1859,9 +2083,13 @@ Delete calendar event
 
 **Returns:** `Promise<boolean>`
 
+*Whether deletion was successful*
+
 ---
 
 ## reminder
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 Reminders
 
@@ -1873,6 +2101,8 @@ Check authorization status
 
 **Returns:** `boolean`
 
+*Whether authorized*
+
 ---
 
 ### `reminder.requestAccess`
@@ -1883,6 +2113,8 @@ Request reminder access
 
 **Returns:** `Promise<boolean>`
 
+*Whether authorization was successful*
+
 ---
 
 ### `reminder.getLists`
@@ -1892,6 +2124,8 @@ Request reminder access
 Get all reminder lists
 
 **Returns:** `Promise<[{ id: string, title: string, color: string }]>`
+
+*Array of reminder lists*
 
 ---
 
@@ -1908,6 +2142,8 @@ Get all reminders
 | `listId` | `string` | List ID | Yes |
 
 **Returns:** `Promise<[{ id: string, title: string, isCompleted: boolean, listId: string, dueDate?: number }]>`
+
+*Array of reminders*
 
 ---
 
@@ -1926,6 +2162,8 @@ Create reminder
 
 **Returns:** `Promise<string>`
 
+*Created reminder ID*
+
 ---
 
 ### `reminder.complete`
@@ -1941,6 +2179,8 @@ Mark as completed
 | `id` | `string` | Reminder ID | No |
 
 **Returns:** `Promise<boolean>`
+
+*Whether successful*
 
 ---
 
@@ -1958,6 +2198,8 @@ Delete reminder
 
 **Returns:** `Promise<boolean>`
 
+*Whether successful*
+
 ---
 
 ### `reminder.getSorted`
@@ -1973,6 +2215,8 @@ Get sorted reminders
 | `options` | `object` | { sortBy: 'createdAt'\|'dueDate'\|'priority'\|'title', ascending: boolean, completed: boolean } | Yes |
 
 **Returns:** `Promise<[Reminder]>`
+
+*Sorted list of reminders*
 
 ---
 
@@ -1990,6 +2234,8 @@ Get upcoming reminders
 
 **Returns:** `Promise<[Reminder]>`
 
+*List of upcoming reminders*
+
 ---
 
 ### `reminder.getOverdue`
@@ -1999,6 +2245,8 @@ Get upcoming reminders
 Get overdue reminders
 
 **Returns:** `Promise<[Reminder]>`
+
+*List of overdue reminders*
 
 ---
 
@@ -2015,6 +2263,8 @@ Batch reorder
 | `ids` | `string[]` | Array of IDs in order | No |
 
 **Returns:** `Promise<object>`
+
+*{ success: boolean, count: number }*
 
 ---
 
@@ -2033,6 +2283,8 @@ Create system reminder (supports location trigger)
 
 **Returns:** `Promise<object>`
 
+*{ success: boolean, id: string, title: string, isSystemReminder: true }*
+
 ---
 
 ### `reminder.getSystemLists`
@@ -2043,9 +2295,13 @@ Get system reminder lists
 
 **Returns:** `Promise<[{ id: string, title: string, isSystem: true }]>`
 
+*Array of system reminder lists*
+
 ---
 
 ## contacts
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 Contacts operations
 
@@ -2057,6 +2313,8 @@ Request contacts access
 
 **Returns:** `{ granted: boolean, error?: string }`
 
+*Object containing authorization result*
+
 ---
 
 ### `contacts.getAccessStatus`
@@ -2065,7 +2323,9 @@ Request contacts access
 
 Get access status
 
-**Returns:** `'authorized' | 'denied' | 'restricted' | 'notDetermined'`
+**Returns:** `'authorized' \| 'denied' \| 'restricted' \| 'notDetermined'`
+
+*Permission status*
 
 ---
 
@@ -2076,6 +2336,8 @@ Get access status
 Check if authorized
 
 **Returns:** `boolean`
+
+*Whether authorized*
 
 ---
 
@@ -2094,6 +2356,8 @@ Get all contacts
 
 **Returns:** `[Contact]`
 
+*Array of contact objects*
+
 ---
 
 ### `contacts.getCount`
@@ -2103,6 +2367,8 @@ Get all contacts
 Get total contact count
 
 **Returns:** `number`
+
+*Total contacts*
 
 ---
 
@@ -2120,6 +2386,8 @@ Search contacts by name
 
 **Returns:** `[Contact]`
 
+*Array of contact objects*
+
 ---
 
 ### `contacts.searchByPhone`
@@ -2135,6 +2403,8 @@ Search contacts by phone
 | `phone` | `string` | Phone number (supports fuzzy match) | No |
 
 **Returns:** `[Contact]`
+
+*Array of contact objects*
 
 ---
 
@@ -2152,6 +2422,8 @@ Search contacts by email
 
 **Returns:** `[Contact]`
 
+*Array of contact objects*
+
 ---
 
 ### `contacts.getById`
@@ -2166,7 +2438,9 @@ Get contact by ID
 |------|------|-------------|----------|
 | `id` | `string` | Contact unique identifier | No |
 
-**Returns:** `Contact | null`
+**Returns:** `Contact \| null`
+
+*Contact object*
 
 ---
 
@@ -2183,6 +2457,8 @@ Create contact
 | `data` | `object` | Contact data { givenName, familyName, phoneNumbers?, emailAddresses?, ... } | No |
 
 **Returns:** `{ success: boolean, id?: string, error?: string }`
+
+*Object containing success status and ID*
 
 ---
 
@@ -2201,6 +2477,8 @@ Update contact
 
 **Returns:** `{ success: boolean, error?: string }`
 
+*Object containing success status*
+
 ---
 
 ### `contacts.delete`
@@ -2217,6 +2495,8 @@ Delete contact
 
 **Returns:** `{ success: boolean, error?: string }`
 
+*Object containing success status*
+
 ---
 
 ### `contacts.getGroups`
@@ -2226,6 +2506,8 @@ Delete contact
 Get all groups
 
 **Returns:** `[{ id: string, name: string }]`
+
+*Array of groups*
 
 ---
 
@@ -2243,9 +2525,13 @@ Get contacts in group
 
 **Returns:** `[Contact]`
 
+*Array of contact objects*
+
 ---
 
 ## notification
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 Local notifications
 
@@ -2264,6 +2550,8 @@ Send notification
 | `options` | `object` | Options { url, userInfo, sound, badge } | Yes |
 
 **Returns:** `Promise<string>`
+
+*ID of sent notification*
 
 ---
 
@@ -2301,6 +2589,8 @@ Get pending notifications
 
 **Returns:** `Promise<[{ id: string, title: string, body: string, date: number }]>`
 
+*List of pending notifications*
+
 ---
 
 ### `notification.getDelivered`
@@ -2310,6 +2600,8 @@ Get pending notifications
 Get delivered notifications
 
 **Returns:** `Promise<[{ id: string, title: string, body: string, date: number }]>`
+
+*List of delivered notifications*
 
 ---
 
@@ -2321,6 +2613,8 @@ Request notification permission
 
 **Returns:** `Promise<boolean>`
 
+*Whether authorized*
+
 ---
 
 ### `notification.getPermissionStatus`
@@ -2329,7 +2623,9 @@ Request notification permission
 
 Get permission status
 
-**Returns:** `Promise<'authorized' | 'denied' | 'notDetermined' | 'provisional' | 'ephemeral' | 'unknown'>`
+**Returns:** `Promise<'authorized' \| 'denied' \| 'notDetermined' \| 'provisional' \| 'ephemeral' \| 'unknown'>`
+
+*Permission status*
 
 ---
 
@@ -2356,6 +2652,8 @@ Set badge count
 Get badge count
 
 **Returns:** `Promise<number>`
+
+*Badge number*
 
 ---
 
@@ -2386,9 +2684,13 @@ Schedule notification
 
 **Returns:** `Promise<string>`
 
+*ID of scheduled notification*
+
 ---
 
 ## alarm
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 Alarms and Timers
 
@@ -2400,6 +2702,8 @@ Request notification access
 
 **Returns:** `Promise<boolean>`
 
+*Whether authorized*
+
 ---
 
 ### `alarm.getAccessStatus`
@@ -2408,7 +2712,9 @@ Request notification access
 
 Get access status
 
-**Returns:** `Promise<'authorized' | 'denied' | 'notDetermined'>`
+**Returns:** `Promise<'authorized' \| 'denied' \| 'notDetermined'>`
+
+*Permission status*
 
 ---
 
@@ -2428,6 +2734,8 @@ Create one-time alarm
 
 **Returns:** `Promise<string>`
 
+*Created alarm ID*
+
 ---
 
 ### `alarm.createDaily`
@@ -2446,6 +2754,8 @@ Create daily repeating alarm
 | `options` | `object` | Options { sound } | Yes |
 
 **Returns:** `Promise<string>`
+
+*Created alarm ID*
 
 ---
 
@@ -2467,6 +2777,8 @@ Create weekly repeating alarm
 
 **Returns:** `Promise<string>`
 
+*Created alarm ID*
+
 ---
 
 ### `alarm.createCountdown`
@@ -2485,6 +2797,8 @@ Create countdown timer
 
 **Returns:** `Promise<string>`
 
+*Created alarm ID*
+
 ---
 
 ### `alarm.getPending`
@@ -2495,6 +2809,8 @@ Get pending alarms
 
 **Returns:** `Promise<[{ id: string, title: string, date: number, repeat?: string }]>`
 
+*List of pending alarms*
+
 ---
 
 ### `alarm.getCount`
@@ -2504,6 +2820,8 @@ Get pending alarms
 Get alarm count
 
 **Returns:** `Promise<number>`
+
+*Number of alarms*
 
 ---
 
@@ -2554,6 +2872,8 @@ Open Timer
 ---
 
 ## media
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 Music & Media control
 
@@ -2633,7 +2953,9 @@ Skip to beginning
 
 Get playback state
 
-**Returns:** `'playing' | 'paused' | 'stopped'`
+**Returns:** `'playing' \| 'paused' \| 'stopped'`
+
+*Playback state*
 
 ---
 
@@ -2645,6 +2967,8 @@ Is currently playing
 
 **Returns:** `boolean`
 
+*Whether playing*
+
 ---
 
 ### `media.getNowPlaying`
@@ -2655,6 +2979,8 @@ Get current playing info
 
 **Returns:** `{ title: string, artist: string, album: string, duration: number, artwork?: string }`
 
+*Current playback info object*
+
 ---
 
 ### `media.getVolume`
@@ -2664,6 +2990,8 @@ Get current playing info
 Get volume
 
 **Returns:** `number`
+
+*Current volume (0.0-1.0)*
 
 ---
 
@@ -2689,7 +3017,9 @@ Set volume
 
 Get repeat mode
 
-**Returns:** `'none' | 'one' | 'all'`
+**Returns:** `'none' \| 'one' \| 'all'`
+
+*Repeat mode*
 
 ---
 
@@ -2715,7 +3045,9 @@ Set repeat mode
 
 Get shuffle mode
 
-**Returns:** `'off' | 'songs' | 'albums'`
+**Returns:** `'off' \| 'songs' \| 'albums'`
+
+*Shuffle mode*
 
 ---
 
@@ -2742,6 +3074,8 @@ Set shuffle mode
 Get current playback time
 
 **Returns:** `number`
+
+*Current time (seconds)*
 
 ---
 
@@ -2801,6 +3135,8 @@ Request music library access
 
 **Returns:** `Promise<boolean>`
 
+*Whether authorized*
+
 ---
 
 ### `media.getAccessStatus`
@@ -2809,7 +3145,9 @@ Request music library access
 
 Get access status
 
-**Returns:** `Promise<'authorized' | 'denied' | 'notDetermined' | 'restricted'>`
+**Returns:** `Promise<'authorized' \| 'denied' \| 'notDetermined' \| 'restricted'>`
+
+*Permission status*
 
 ---
 
@@ -2826,6 +3164,8 @@ Search music library
 | `query` | `string` | Search keyword | No |
 
 **Returns:** `Promise<[{ id: string, title: string, artist: string, album: string }]>`
+
+*Array of songs*
 
 ---
 
@@ -2853,6 +3193,8 @@ Get all songs
 
 **Returns:** `Promise<[{ id: string, title: string, artist: string, album: string }]>`
 
+*Array of songs*
+
 ---
 
 ### `media.getAlbums`
@@ -2862,6 +3204,8 @@ Get all songs
 Get all albums
 
 **Returns:** `Promise<[{ id: string, title: string, artist: string }]>`
+
+*Array of albums*
 
 ---
 
@@ -2873,6 +3217,8 @@ Get all artists
 
 **Returns:** `Promise<[{ id: string, name: string }]>`
 
+*Array of artists*
+
 ---
 
 ### `media.getPlaylists`
@@ -2882,6 +3228,8 @@ Get all artists
 Get playlists
 
 **Returns:** `Promise<[{ id: string, name: string }]>`
+
+*Array of playlists*
 
 ---
 
@@ -2935,6 +3283,8 @@ Play playlist
 
 ## mail
 
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
 Mail operations
 
 ### `mail.canSendMail`
@@ -2945,6 +3295,8 @@ Check if can send mail
 
 **Returns:** `boolean`
 
+*Whether capable*
+
 ---
 
 ### `mail.getStatus`
@@ -2953,7 +3305,9 @@ Check if can send mail
 
 Get mail service status
 
-**Returns:** `'available' | 'unavailable'`
+**Returns:** `'available' \| 'unavailable'`
+
+*Mail service status*
 
 ---
 
@@ -2973,6 +3327,8 @@ Send simple email
 
 **Returns:** `Promise<boolean>`
 
+*Whether sent successfully*
+
 ---
 
 ### `mail.sendAdvanced`
@@ -2988,6 +3344,8 @@ Send email (advanced options)
 | `options` | `object` | Options { to, cc, bcc, subject, body, isHtml, attachments } | No |
 
 **Returns:** `Promise<boolean>`
+
+*Whether sent successfully*
 
 ---
 
@@ -3031,6 +3389,8 @@ Validate email format
 
 **Returns:** `boolean`
 
+*Whether valid*
+
 ---
 
 ### `mail.getInstalledMailApps`
@@ -3040,6 +3400,8 @@ Validate email format
 Detect installed mail apps
 
 **Returns:** `string[]`
+
+*Array of installed mail app names*
 
 ---
 
@@ -3058,6 +3420,8 @@ Generate email from template
 
 **Returns:** `Promise<string>`
 
+*Generated email content*
+
 ---
 
 ### `mail.getTemplates`
@@ -3068,9 +3432,13 @@ Get available templates
 
 **Returns:** `string[]`
 
+*Array of template names*
+
 ---
 
 ## sms
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 SMS operations
 
@@ -3082,6 +3450,8 @@ Check SMS access
 
 **Returns:** `boolean`
 
+*Whether has permission*
+
 ---
 
 ### `sms.tryAccess`
@@ -3091,6 +3461,8 @@ Check SMS access
 Try direct SMS database access (Debug)
 
 **Returns:** `boolean`
+
+*Whether access successful*
 
 ---
 
@@ -3108,6 +3480,8 @@ Read recent SMS
 
 **Returns:** `[{ id: string, content: string, sender: string, date: number }]`
 
+*Array of SMS objects*
+
 ---
 
 ### `sms.getVerificationCode`
@@ -3122,7 +3496,9 @@ Get verification code
 |------|------|-------------|----------|
 | `minutes` | `number` | Look back minutes (default 5) | Yes |
 
-**Returns:** `string | null`
+**Returns:** `string \| null`
+
+*Verification code or null*
 
 ---
 
@@ -3140,6 +3516,8 @@ Search SMS
 
 **Returns:** `[{ id: string, content: string, sender: string, date: number }]`
 
+*Array of SMS objects*
+
 ---
 
 ### `sms.getByAddress`
@@ -3156,6 +3534,8 @@ Get SMS by number
 
 **Returns:** `[{ id: string, content: string, sender: string, date: number }]`
 
+*Array of SMS objects*
+
 ---
 
 ### `sms.getChats`
@@ -3165,6 +3545,8 @@ Get SMS by number
 Get conversation list
 
 **Returns:** `[{ id: string, name: string, lastMessage: string, date: number }]`
+
+*Array of conversation objects*
 
 ---
 
@@ -3176,6 +3558,8 @@ Get SMS statistics
 
 **Returns:** `{ total: number, unread: number, senders: number }`
 
+*Statistics object*
+
 ---
 
 ### `sms.getLatest`
@@ -3184,7 +3568,9 @@ Get SMS statistics
 
 Get latest SMS
 
-**Returns:** `{ id: string, content: string, sender: string, date: number } | null`
+**Returns:** `{ id: string, content: string, sender: string, date: number } \| null`
+
+*Latest SMS object or null*
 
 ---
 
@@ -3196,9 +3582,13 @@ Get unread SMS
 
 **Returns:** `[{ id: string, content: string, sender: string, date: number }]`
 
+*Array of unread SMS objects*
+
 ---
 
 ## sql
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 SQL Database Query
 
@@ -3218,6 +3608,8 @@ Execute SELECT query
 
 **Returns:** `any[]`
 
+*Query result array*
+
 ---
 
 ### `sql.execute`
@@ -3236,6 +3628,8 @@ Execute INSERT/UPDATE/DELETE
 
 **Returns:** `{ changes: number, lastInsertRowId: number }`
 
+*Execution result object*
+
 ---
 
 ### `sql.tables`
@@ -3251,6 +3645,8 @@ List all tables in database
 | `dbPath` | `string` | Database path | No |
 
 **Returns:** `string[]`
+
+*Array of table names*
 
 ---
 
@@ -3269,9 +3665,13 @@ Get table schema
 
 **Returns:** `string`
 
+*Table schema SQL*
+
 ---
 
 ## shortcuts
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 Shortcuts operations
 
@@ -3288,6 +3688,8 @@ Run shortcut
 | `name` | `string` | Shortcut name | No |
 
 **Returns:** `Promise<string>`
+
+*Execution result*
 
 ---
 
@@ -3306,6 +3708,8 @@ Run shortcut (with text input)
 
 **Returns:** `Promise<string>`
 
+*Execution result*
+
 ---
 
 ### `shortcuts.runWithClipboard`
@@ -3321,6 +3725,8 @@ Run shortcut (clipboard input)
 | `name` | `string` | Shortcut name | No |
 
 **Returns:** `Promise<string>`
+
+*Execution result*
 
 ---
 
@@ -3338,6 +3744,8 @@ Run shortcut (advanced options)
 | `options` | `object` | Options { input, showOutput } | No |
 
 **Returns:** `Promise<any>`
+
+*Execution result*
 
 ---
 
@@ -3411,6 +3819,8 @@ Check if Shortcuts installed
 
 **Returns:** `boolean`
 
+*Availability status*
+
 ---
 
 ### `shortcuts.getCommonShortcuts`
@@ -3421,9 +3831,13 @@ Get common shortcut templates
 
 **Returns:** `string[]`
 
+*List of templates*
+
 ---
 
 ## bluetooth
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
 Bluetooth operations
 
@@ -3435,6 +3849,8 @@ Is Bluetooth enabled
 
 **Returns:** `boolean`
 
+*Whether enabled*
+
 ---
 
 ### `bluetooth.getStatus`
@@ -3443,7 +3859,9 @@ Is Bluetooth enabled
 
 Get Bluetooth status
 
-**Returns:** `'poweredOn' | 'poweredOff' | 'unauthorized' | 'unknown'`
+**Returns:** `'poweredOn' \| 'poweredOff' \| 'unauthorized' \| 'unknown'`
+
+*Bluetooth status*
 
 ---
 
@@ -3491,6 +3909,8 @@ Get paired devices
 
 **Returns:** `Promise<[{ name: string, uuid: string, isConnected: boolean }]>`
 
+*List of paired devices*
+
 ---
 
 ### `bluetooth.getConnectedDevices`
@@ -3500,6 +3920,8 @@ Get paired devices
 Get connected devices
 
 **Returns:** `Promise<[{ name: string, uuid: string }]>`
+
+*List of connected devices*
 
 ---
 
@@ -3517,6 +3939,8 @@ Connect device
 
 **Returns:** `Promise<boolean>`
 
+*Whether connection successful*
+
 ---
 
 ### `bluetooth.disconnectDevice`
@@ -3532,6 +3956,8 @@ Disconnect device
 | `id` | `string` | Device UUID | No |
 
 **Returns:** `Promise<boolean>`
+
+*Whether disconnection successful*
 
 ---
 
@@ -3567,6 +3993,8 @@ Open Bluetooth settings
 
 ## memo
 
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
 Memo operations (iCloud Sync)
 
 ### `memo.create`
@@ -3585,6 +4013,8 @@ Create memo
 
 **Returns:** `object`
 
+*{ success: boolean, id: string, memo: object }*
+
 ---
 
 ### `memo.getAll`
@@ -3594,6 +4024,8 @@ Create memo
 Get all memos
 
 **Returns:** `[object]`
+
+*Memo array [{ id, title, content, createdAt, updatedAt, tags }]*
 
 ---
 
@@ -3609,7 +4041,9 @@ Get memo by ID
 |------|------|-------------|----------|
 | `id` | `string` | Memo ID | No |
 
-**Returns:** `object | null`
+**Returns:** `object \| null`
+
+*Memo object or null*
 
 ---
 
@@ -3626,6 +4060,8 @@ Search memos (title and content)
 | `keyword` | `string` | Search keyword | No |
 
 **Returns:** `[object]`
+
+*Array of matching memos*
 
 ---
 
@@ -3644,6 +4080,8 @@ Update memo
 
 **Returns:** `object`
 
+*{ success: boolean, id: string }*
+
 ---
 
 ### `memo.delete`
@@ -3660,6 +4098,8 @@ Delete memo
 
 **Returns:** `object`
 
+*{ success: boolean, id: string }*
+
 ---
 
 ### `memo.clear`
@@ -3670,6 +4110,8 @@ Clear all memos
 
 **Returns:** `object`
 
+*{ success: boolean }*
+
 ---
 
 ### `memo.count`
@@ -3679,6 +4121,8 @@ Clear all memos
 Get memo count
 
 **Returns:** `number`
+
+*Total count of memos*
 
 ---
 
