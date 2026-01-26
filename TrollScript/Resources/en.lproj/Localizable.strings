@@ -228,6 +228,21 @@
 "logs.empty" = "No Logs";
 "logs.empty_filters" = "Try changing filters";
 
+// MARK: - Script Logs
+"script_logs.title" = "Script Execution Logs";
+"script_logs.empty" = "No Script Logs";
+"script_logs.empty_hint" = "Run a script and logs will be recorded here";
+"script_logs.refresh" = "Refresh";
+"script_logs.clear_all" = "Clear All Logs";
+"script_logs.clear_confirm_title" = "Clear all script logs?";
+"script_logs.clear_confirm_message" = "This action cannot be undone. All script execution logs will be deleted.";
+"script_logs.clear_action" = "Clear";
+"script_logs.total_size" = "Total Log Size";
+"script_logs.content_empty" = "Log content is empty";
+"script_logs.copy" = "Copy Content";
+"script_logs.share" = "Share";
+"settings.script_logs" = "Script Execution Logs";
+
 // MARK: - Performance Stats
 "stats.title" = "Performance Stats";
 "stats.realtime" = "Real-time Monitoring";
@@ -789,7 +804,8 @@
 
 /* Scheduler */
 "scheduler.title" = "Scheduled Tasks";
-"scheduler.enable" = "Enable Scheduler";
+"scheduler.triggers" = "Triggers";
+"scheduler.enable" = "Enable Triggers";
 "scheduler.enable_footer" = "When disabled, all TrollScript LaunchDaemons will be unloaded and the daemon will be stopped.";
 "scheduler.empty_title" = "No Scheduled Tasks";
 "scheduler.empty_message" = "Tap + to add a scheduled task";
@@ -834,6 +850,35 @@
 "scheduler.manual_trigger_hint" = "When enabled, the task can only be triggered manually via the HUD floating button.";
 "scheduler.cron_trigger_hint" = "The task will be executed automatically according to the Cron schedule.";
 "scheduler.manual_trigger_desc" = "Tap the floating button in the HUD to execute";
+
+/* Trigger Types */
+"trigger.type.scheduled" = "Scheduled";
+"trigger.type.manual" = "Manual";
+"trigger.type.clipboard" = "Clipboard";
+"trigger.type.file_monitor" = "File Monitor";
+
+/* Trigger Hints */
+"trigger.hint.scheduled" = "Execute automatically based on Cron expression schedule.";
+"trigger.hint.manual" = "Manually trigger via HUD floating button.";
+"trigger.hint.clipboard" = "Trigger when clipboard content changes.";
+"trigger.hint.file_monitor" = "Trigger when monitored files change.";
+
+/* Clipboard Trigger Config */
+"trigger.clipboard.config" = "Clipboard Settings";
+"trigger.clipboard.config_footer" = "Configure clipboard monitoring behavior.";
+"trigger.clipboard.ignore_script_updates" = "Ignore Script Updates";
+"trigger.clipboard.check_interval" = "Check Interval";
+"trigger.clipboard.content_filter" = "Content Filter (Regex)";
+"trigger.clipboard.filter_placeholder" = "Optional regex pattern...";
+
+/* File Monitor Config */
+"trigger.file_monitor.config" = "File Monitor Settings";
+"trigger.file_monitor.config_footer" = "Add file paths to monitor. Requires TrollStore permissions for system paths.";
+"trigger.file_monitor.add_path" = "Add Path";
+"trigger.file_monitor.debounce" = "Debounce Interval";
+"trigger.file_monitor.paths_count" = "paths monitored";
+"trigger.file_monitor.path_not_exist" = "Path does not exist";
+"trigger.file_monitor.path_placeholder" = "Enter file path...";
 
 "generic.select" = "Select";
 "generic.select_all" = "Select All";
@@ -927,3 +972,101 @@
 "webdav.alert.invalid_port_message" = "Please enter a valid port number (1-65535)";
 "webdav.ip.unknown" = "Unknown";
 "webdav.ip.loading" = "Loading...";
+
+/* HUD Settings */
+"hud.settings.title" = "Floating Widget";
+"hud.settings.scheduler_section" = "Quick Actions";
+"hud.settings.scheduler_toggle" = "Enable Scheduled Tasks";
+"hud.settings.scheduler_footer" = "Enabling scheduled tasks will automatically start the floating widget";
+"hud.settings.hud_toggle" = "Enable Floating Widget";
+
+"hud.settings.indicator_section" = "Status Indicator";
+"hud.settings.indicator_size" = "Indicator Size";
+"hud.settings.indicator_reset_position" = "Reset Position";
+
+"hud.settings.trigger_section" = "Quick Action Button";
+"hud.settings.trigger_scale" = "Button Scale";
+"hud.settings.trigger_bg" = "Background Color";
+"hud.settings.trigger_reset" = "Reset to Default";
+
+"hud.settings.color_section" = "Indicator Colors";
+"hud.settings.color_idle" = "Idle";
+"hud.settings.color_running" = "Running";
+"hud.settings.color_error" = "Error";
+"hud.settings.color_warning" = "Warning";
+"hud.settings.color_reset" = "Reset Colors";
+
+"hud.settings.background_section" = "Background Colors";
+"hud.settings.light_background" = "Light Mode Background";
+"hud.settings.dark_background" = "Dark Mode Background";
+
+/* Scheduler Errors */
+"scheduler.error.load_failed" = "Failed to load tasks: %@";
+"scheduler.error.save_failed" = "Failed to save tasks: %@";
+"scheduler.error.task_not_found" = "Task not found: %@";
+"scheduler.error.script_not_found" = "Script file not found";
+
+/* Scheduler Notifications */
+"scheduler.notification.started" = "Task '%@' started";
+"scheduler.notification.success" = "Task '%@' completed successfully";
+"scheduler.notification.failed" = "Task '%@' failed: %@";
+
+/* File Monitor Path Input */
+"trigger.file_monitor.path_hint" = "Enter an absolute path starting with /";
+"trigger.file_monitor.error.empty_path" = "Path cannot be empty";
+"trigger.file_monitor.error.invalid_path" = "Path must start with /";
+"trigger.file_monitor.error.duplicate_path" = "This path is already being monitored";
+"trigger.file_monitor.preset_paths" = "Preset Paths";
+
+/* Preset File Paths */
+"preset_path.sms_database" = "SMS Database";
+"preset_path.sms_database.desc" = "SMS/iMessage storage, triggers on send/receive";
+"preset_path.sms_database_wal" = "SMS Database (Real-time)";
+"preset_path.sms_database_wal.desc" = "WAL log file, updates faster than main database";
+"preset_path.call_history" = "Call History";
+"preset_path.call_history.desc" = "Incoming/outgoing/missed calls";
+"preset_path.safari_history" = "Safari History";
+"preset_path.safari_history.desc" = "Browse history, triggers on page visits";
+"preset_path.safari_bookmarks" = "Safari Bookmarks";
+"preset_path.safari_bookmarks.desc" = "Bookmarks and favorites changes";
+"preset_path.preferences" = "System Preferences";
+"preset_path.preferences.desc" = "Global system settings changes";
+"preset_path.health_database" = "Health Database";
+"preset_path.health_database.desc" = "Health app data, triggers on new records";
+"preset_path.location_cache" = "Location Cache";
+"preset_path.location_cache.desc" = "Location data cache, triggers on location change";
+"preset_path.address_book" = "Address Book";
+"preset_path.address_book.desc" = "Contact data, triggers on add/modify contacts";
+"preset_path.calendar" = "Calendar";
+"preset_path.calendar.desc" = "Calendar events, triggers on add/modify events";
+"preset_path.notes" = "Notes";
+"preset_path.notes.desc" = "Notes data, triggers on note editing";
+"preset_path.reminders" = "Reminders";
+"preset_path.reminders.desc" = "Reminders data, triggers on add/complete reminders";
+"preset_path.appstore_queue" = "App Store Queue";
+"preset_path.appstore_queue.desc" = "App download/update queue changes";
+"preset_path.system_log" = "System Log";
+"preset_path.system_log.desc" = "Diagnostic and crash logs";
+
+/* Generic */
+"generic.error" = "Error";
+"generic.add" = "Add";
+
+/* Auto Collapse (Floating Ball) */
+"hud.settings.auto_collapse" = "Auto Collapse";
+"hud.settings.auto_collapse_section" = "Floating Ball";
+"hud.settings.auto_collapse_footer" = "After idle, side buttons collapse into a floating ball. Tap to expand.";
+"hud.settings.collapse_delay" = "Collapse Delay";
+"hud.settings.floating_ball_size" = "Ball Size";
+"hud.settings.floating_ball_image" = "Custom Image";
+"hud.settings.floating_ball_image_select" = "Select Image";
+"hud.settings.floating_ball_image_clear" = "Clear Image";
+
+/* Script Icon */
+"editor.icon.sf_symbol" = "SF Symbol";
+"editor.icon.custom_image" = "Custom Image";
+"editor.icon.clear_custom" = "Clear Custom Icon";
+
+/* Notification Copy on Tap */
+"notification.copy_success_title" = "Copied";
+"notification.copy_success_body" = "Content copied: %@";

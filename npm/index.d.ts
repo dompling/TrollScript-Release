@@ -583,67 +583,6 @@ interface App {
 
 declare const app: App;
 
-interface Ui {
-    /**
-     * 显示提示框
-     * @param title 标题
-     * @param message 内容
-     * @param buttonTitle 按钮文字
-     * @returns 无返回值
-     */
-    alert(title: string, message: string, buttonTitle: string): any;
-
-    /**
-     * 显示 Toast 提示
-     * @param message 提示内容
-     * @param duration 持续时间(秒)
-     */
-    toast(message: string, duration: number): void;
-
-    /**
-     * 显示确认对话框
-     * @param title 标题
-     * @param message 内容
-     * @param confirmTitle 确认按钮文字
-     * @param cancelTitle 取消按钮文字
-     * @returns 是否点击了确认
-     */
-    confirm(title: string, message: string, confirmTitle: string, cancelTitle: string): any;
-
-    /**
-     * 显示输入对话框
-     * @param title 标题
-     * @param message 内容
-     * @param defaultValue 默认值
-     * @param placeholder 占位符
-     * @returns 输入的文本，取消返回 null
-     */
-    prompt(title: string, message: string, defaultValue: string, placeholder: string): any;
-
-    /**
-     * 显示操作表单
-     * @param title 标题
-     * @param message 内容
-     * @param actions 选项列表
-     * @returns 选择的按钮索引(从0开始)
-     */
-    actionSheet(title: string, message: string, actions: any): any;
-
-    /**
-     * 显示加载指示器
-     * @param message 加载提示
-     */
-    showLoading(message: string): void;
-
-    /**
-     * 隐藏加载指示器
-     */
-    hideLoading(): void;
-
-}
-
-declare const ui: Ui;
-
 interface Haptic {
     /**
      * 触觉冲击反馈
@@ -1850,61 +1789,6 @@ interface Bluetooth {
 }
 
 declare const bluetooth: Bluetooth;
-
-interface Webview {
-    /**
-     * 打开网页并等待加载
-     * @param url 网页 URL
-     */
-    open(url: string): any;
-
-    /**
-     * 加载 HTML 内容
-     * @param html HTML 字符串
-     * @param baseURL 基础 URL
-     */
-    loadHTML(html: string, baseURL: string): any;
-
-    /**
-     * 执行页面内 JavaScript
-     * @param script JS 代码
-     */
-    evaluate(script: string): any;
-
-    /**
-     * 获取页面标题
-     */
-    getTitle(): any;
-
-    /**
-     * 获取当前 URL
-     */
-    getURL(): any;
-
-    /**
-     * 获取页面 HTML 源码
-     */
-    getHTML(): any;
-
-    /**
-     * 关闭网页视图
-     * @returns 无返回值
-     */
-    close(): void;
-
-    /**
-     * 检查是否已打开
-     */
-    isOpen(): boolean;
-
-    /**
-     * 截取页面截图
-     */
-    screenshot(): any;
-
-}
-
-declare const webview: Webview;
 
 interface Memo {
     /**

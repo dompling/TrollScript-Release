@@ -227,6 +227,21 @@
 "logs.empty" = "暂无日志";
 "logs.empty_filters" = "尝试更改过滤条件";
 
+// MARK: - Script Logs
+"script_logs.title" = "脚本执行日志";
+"script_logs.empty" = "暂无脚本日志";
+"script_logs.empty_hint" = "运行脚本后，日志将自动记录在这里";
+"script_logs.refresh" = "刷新";
+"script_logs.clear_all" = "清除所有日志";
+"script_logs.clear_confirm_title" = "清除所有脚本日志？";
+"script_logs.clear_confirm_message" = "此操作无法撤销，所有脚本的执行日志都将被删除";
+"script_logs.clear_action" = "清除";
+"script_logs.total_size" = "日志总大小";
+"script_logs.content_empty" = "日志内容为空";
+"script_logs.copy" = "复制内容";
+"script_logs.share" = "分享";
+"settings.script_logs" = "脚本执行日志";
+
 // MARK: - Performance Stats
 "stats.title" = "性能统计";
 "stats.realtime" = "实时监控";
@@ -768,7 +783,8 @@
 
 /* Scheduler */
 "scheduler.title" = "定时任务";
-"scheduler.enable" = "启用定时任务";
+"scheduler.triggers" = "触发器";
+"scheduler.enable" = "启用触发器";
 "scheduler.enable_footer" = "关闭后将卸载所有 TrollScript 相关的 LaunchDaemons 并停止守护进程。";
 "scheduler.empty_title" = "暂无定时任务";
 "scheduler.empty_message" = "点击右上角添加定时任务";
@@ -813,6 +829,35 @@
 "scheduler.manual_trigger_hint" = "开启后，任务只能通过 HUD 悬浮按钮手动执行。";
 "scheduler.cron_trigger_hint" = "任务将按照 Cron 表达式自动定时执行。";
 "scheduler.manual_trigger_desc" = "点击 HUD 悬浮按钮执行脚本";
+
+/* Trigger Types */
+"trigger.type.scheduled" = "定时触发";
+"trigger.type.manual" = "手动触发";
+"trigger.type.clipboard" = "剪贴板触发";
+"trigger.type.file_monitor" = "文件监控";
+
+/* Trigger Hints */
+"trigger.hint.scheduled" = "根据 Cron 表达式自动定时执行脚本。";
+"trigger.hint.manual" = "通过 HUD 悬浮按钮手动触发执行。";
+"trigger.hint.clipboard" = "当剪贴板内容变化时自动触发执行。";
+"trigger.hint.file_monitor" = "当监控的文件发生变化时自动触发执行。";
+
+/* Clipboard Trigger Config */
+"trigger.clipboard.config" = "剪贴板设置";
+"trigger.clipboard.config_footer" = "配置剪贴板监控行为。";
+"trigger.clipboard.ignore_script_updates" = "忽略脚本更新";
+"trigger.clipboard.check_interval" = "检查间隔";
+"trigger.clipboard.content_filter" = "内容过滤 (正则)";
+"trigger.clipboard.filter_placeholder" = "可选的正则表达式...";
+
+/* File Monitor Config */
+"trigger.file_monitor.config" = "文件监控设置";
+"trigger.file_monitor.config_footer" = "添加要监控的文件路径。访问系统路径需要 TrollStore 权限。";
+"trigger.file_monitor.add_path" = "添加路径";
+"trigger.file_monitor.debounce" = "防抖间隔";
+"trigger.file_monitor.paths_count" = "个文件监控中";
+"trigger.file_monitor.path_not_exist" = "路径不存在";
+"trigger.file_monitor.path_placeholder" = "输入文件路径...";
 
 "generic.select" = "选择";
 "generic.select_all" = "全选";
@@ -906,3 +951,101 @@
 "webdav.alert.invalid_port_message" = "请输入有效的端口号 (1-65535)";
 "webdav.ip.unknown" = "未知";
 "webdav.ip.loading" = "正在获取...";
+
+/* HUD Settings */
+"hud.settings.title" = "悬浮组件";
+"hud.settings.scheduler_section" = "快捷操作";
+"hud.settings.scheduler_toggle" = "启用定时任务";
+"hud.settings.scheduler_footer" = "启用定时任务将自动启动悬浮组件";
+"hud.settings.hud_toggle" = "启用悬浮组件";
+
+"hud.settings.indicator_section" = "状态指示器";
+"hud.settings.indicator_size" = "指示器大小";
+"hud.settings.indicator_reset_position" = "重置位置";
+
+"hud.settings.trigger_section" = "快捷按钮样式";
+"hud.settings.trigger_scale" = "按钮缩放";
+"hud.settings.trigger_bg" = "背景颜色";
+"hud.settings.trigger_reset" = "恢复默认设置";
+
+"hud.settings.color_section" = "指示器颜色";
+"hud.settings.color_idle" = "空闲状态";
+"hud.settings.color_running" = "运行中";
+"hud.settings.color_error" = "错误状态";
+"hud.settings.color_warning" = "警告状态";
+"hud.settings.color_reset" = "恢复默认颜色";
+
+"hud.settings.background_section" = "背景颜色";
+"hud.settings.light_background" = "浅色模式背景";
+"hud.settings.dark_background" = "深色模式背景";
+
+/* Scheduler Errors */
+"scheduler.error.load_failed" = "加载任务失败: %@";
+"scheduler.error.save_failed" = "保存任务失败: %@";
+"scheduler.error.task_not_found" = "任务未找到: %@";
+"scheduler.error.script_not_found" = "脚本文件未找到";
+
+/* Scheduler Notifications */
+"scheduler.notification.started" = "任务「%@」已开始";
+"scheduler.notification.success" = "任务「%@」执行成功";
+"scheduler.notification.failed" = "任务「%@」执行失败: %@";
+
+/* File Monitor Path Input */
+"trigger.file_monitor.path_hint" = "输入以 / 开头的绝对路径";
+"trigger.file_monitor.error.empty_path" = "路径不能为空";
+"trigger.file_monitor.error.invalid_path" = "路径必须以 / 开头";
+"trigger.file_monitor.error.duplicate_path" = "该路径已在监控列表中";
+"trigger.file_monitor.preset_paths" = "常用路径";
+
+/* Preset File Paths */
+"preset_path.sms_database" = "短信数据库";
+"preset_path.sms_database.desc" = "SMS/iMessage 消息存储，收发短信时触发";
+"preset_path.sms_database_wal" = "短信数据库 (实时)";
+"preset_path.sms_database_wal.desc" = "WAL 日志文件，比主数据库更新更快";
+"preset_path.call_history" = "通话记录";
+"preset_path.call_history.desc" = "来电/去电/未接来电记录";
+"preset_path.safari_history" = "Safari 历史记录";
+"preset_path.safari_history.desc" = "网页浏览历史，访问新页面时触发";
+"preset_path.safari_bookmarks" = "Safari 书签";
+"preset_path.safari_bookmarks.desc" = "书签和收藏夹变更";
+"preset_path.preferences" = "系统偏好设置";
+"preset_path.preferences.desc" = "全局系统设置变更";
+"preset_path.health_database" = "健康数据库";
+"preset_path.health_database.desc" = "健康 App 数据，新增健康记录时触发";
+"preset_path.location_cache" = "位置服务缓存";
+"preset_path.location_cache.desc" = "定位信息缓存，位置变更时触发";
+"preset_path.address_book" = "通讯录";
+"preset_path.address_book.desc" = "联系人数据，新增/修改联系人时触发";
+"preset_path.calendar" = "日历";
+"preset_path.calendar.desc" = "日历事件数据，新增/修改事件时触发";
+"preset_path.notes" = "备忘录";
+"preset_path.notes.desc" = "备忘录数据，编辑笔记时触发";
+"preset_path.reminders" = "提醒事项";
+"preset_path.reminders.desc" = "提醒事项数据，新增/完成提醒时触发";
+"preset_path.appstore_queue" = "App Store 下载队列";
+"preset_path.appstore_queue.desc" = "应用下载/更新队列变更";
+"preset_path.system_log" = "系统日志";
+"preset_path.system_log.desc" = "诊断和崩溃日志";
+
+/* Generic */
+"generic.error" = "错误";
+"generic.add" = "添加";
+
+/* Auto Collapse (Floating Ball) */
+"hud.settings.auto_collapse" = "自动收起";
+"hud.settings.auto_collapse_section" = "悬浮球设置";
+"hud.settings.auto_collapse_footer" = "闲置一段时间后，侧边按钮将自动收起为悬浮球，点击可展开";
+"hud.settings.collapse_delay" = "收起延时";
+"hud.settings.floating_ball_size" = "悬浮球大小";
+"hud.settings.floating_ball_image" = "自定义图片";
+"hud.settings.floating_ball_image_select" = "选择图片";
+"hud.settings.floating_ball_image_clear" = "清除图片";
+
+/* Script Icon */
+"editor.icon.sf_symbol" = "系统图标";
+"editor.icon.custom_image" = "自定义图片";
+"editor.icon.clear_custom" = "清除自定义图标";
+
+/* Notification Copy on Tap */
+"notification.copy_success_title" = "已复制";
+"notification.copy_success_body" = "已复制内容: %@";
