@@ -849,15 +849,35 @@ interface Location {
      * 坐标转地址
      * @param lat 纬度
      * @param lng 经度
+     * @param locale 语言区域标识(可选，如 'zh_CN'、'en_US'，默认使用系统语言)
      * @returns 地址信息对象数组
      */
-    reverseGeocode(lat: number, lng: number): any;
+    reverseGeocode(lat: number, lng: number, locale: string): any;
 
     /**
      * 定位服务是否开启
      * @returns 是否开启
      */
     isLocationServicesEnabled(): boolean;
+
+    /**
+     * 检查是否有 TrollStore 权限
+     * @returns 是否有权限
+     */
+    hasTrollStorePermission(): boolean;
+
+    /**
+     * 开关系统定位服务(需要 TrollStore 权限)
+     * @param enabled true 开启，false 关闭
+     * @returns 操作结果(success 表示是否成功，enabled 为当前状态)
+     */
+    setLocationServicesEnabled(enabled: boolean): any;
+
+    /**
+     * 切换定位服务状态(需要 TrollStore 权限)
+     * @returns 操作结果(success 表示是否成功，enabled 为切换后状态)
+     */
+    toggleLocationServices(): any;
 
 }
 

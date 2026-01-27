@@ -1527,7 +1527,7 @@
                 },
                 {
                     "name": "reverseGeocode",
-                    "signature": "reverseGeocode(lat, lng)",
+                    "signature": "reverseGeocode(lat, lng, locale?)",
                     "description": "Coordinates to address",
                     "parameters": [
                         {
@@ -1539,6 +1539,12 @@
                             "name": "lng",
                             "type": "number",
                             "description": "Longitude"
+                        },
+                        {
+                            "name": "locale",
+                            "type": "string",
+                            "description": "Locale identifier (optional, e.g. 'zh_CN', 'en_US', defaults to system language)",
+                            "optional": true
                         }
                     ],
                     "returns": "Promise<[{ name: string, country: string, locality: string, administrativeArea: string }]>",
@@ -1550,6 +1556,36 @@
                     "description": "Is location services enabled",
                     "returns": "boolean",
                     "returnsDescription": "Whether enabled"
+                },
+                {
+                    "name": "hasTrollStorePermission",
+                    "signature": "hasTrollStorePermission()",
+                    "description": "Check if TrollStore permission is available",
+                    "returns": "boolean",
+                    "returnsDescription": "Whether has permission"
+                },
+                {
+                    "name": "setLocationServicesEnabled",
+                    "signature": "setLocationServicesEnabled(enabled)",
+                    "description": "Enable or disable system location services (requires TrollStore)",
+                    "daemonSupport": "full",
+                    "parameters": [
+                        {
+                            "name": "enabled",
+                            "type": "boolean",
+                            "description": "true to enable, false to disable"
+                        }
+                    ],
+                    "returns": "{ success: boolean, enabled?: boolean, message?: string }",
+                    "returnsDescription": "Result object (success indicates if operation succeeded, enabled is current state)"
+                },
+                {
+                    "name": "toggleLocationServices",
+                    "signature": "toggleLocationServices()",
+                    "description": "Toggle location services state (requires TrollStore)",
+                    "daemonSupport": "full",
+                    "returns": "{ success: boolean, enabled?: boolean, message?: string }",
+                    "returnsDescription": "Result object (success indicates if operation succeeded, enabled is state after toggle)"
                 }
             ]
         },

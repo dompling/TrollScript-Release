@@ -1947,7 +1947,7 @@ Address to coordinates
 
 ### `location.reverseGeocode`
 
-**Signature:** `reverseGeocode(lat, lng)`
+**Signature:** `reverseGeocode(lat, lng, locale?)`
 
 Coordinates to address
 
@@ -1957,6 +1957,7 @@ Coordinates to address
 |------|------|-------------|----------|
 | `lat` | `number` | Latitude | No |
 | `lng` | `number` | Longitude | No |
+| `locale` | `string` | Locale identifier (optional, e.g. 'zh_CN', 'en_US', defaults to system language) | Yes |
 
 **Returns:** `Promise<[{ name: string, country: string, locality: string, administrativeArea: string }]>`
 
@@ -1973,6 +1974,48 @@ Is location services enabled
 **Returns:** `boolean`
 
 *Whether enabled*
+
+---
+
+### `location.hasTrollStorePermission`
+
+**Signature:** `hasTrollStorePermission()`
+
+Check if TrollStore permission is available
+
+**Returns:** `boolean`
+
+*Whether has permission*
+
+---
+
+### `location.setLocationServicesEnabled`
+
+**Signature:** `setLocationServicesEnabled(enabled)`
+
+Enable or disable system location services (requires TrollStore)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | true to enable, false to disable | No |
+
+**Returns:** `{ success: boolean, enabled?: boolean, message?: string }`
+
+*Result object (success indicates if operation succeeded, enabled is current state)*
+
+---
+
+### `location.toggleLocationServices`
+
+**Signature:** `toggleLocationServices()`
+
+Toggle location services state (requires TrollStore)
+
+**Returns:** `{ success: boolean, enabled?: boolean, message?: string }`
+
+*Result object (success indicates if operation succeeded, enabled is state after toggle)*
 
 ---
 

@@ -890,6 +890,7 @@
 "trigger.file_monitor.config_footer" = "Add file paths to monitor. Requires TrollStore permissions for system paths.";
 "trigger.file_monitor.add_path" = "Add Path";
 "trigger.file_monitor.debounce" = "Debounce Interval";
+"trigger.file_monitor.debounce_disabled" = "Disabled";
 "trigger.file_monitor.paths_count" = "paths monitored";
 "trigger.file_monitor.path_not_exist" = "Path does not exist";
 "trigger.file_monitor.path_placeholder" = "Enter file path...";

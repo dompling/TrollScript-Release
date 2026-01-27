@@ -867,6 +867,7 @@
 "trigger.file_monitor.config_footer" = "添加要监控的文件路径。访问系统路径需要 TrollStore 权限。";
 "trigger.file_monitor.add_path" = "添加路径";
 "trigger.file_monitor.debounce" = "防抖间隔";
+"trigger.file_monitor.debounce_disabled" = "禁用";
 "trigger.file_monitor.paths_count" = "个文件监控中";
 "trigger.file_monitor.path_not_exist" = "路径不存在";
 "trigger.file_monitor.path_placeholder" = "输入文件路径...";

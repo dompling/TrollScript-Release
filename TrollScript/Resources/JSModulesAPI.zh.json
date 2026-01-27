@@ -1557,7 +1557,7 @@
         },
         {
           "name": "reverseGeocode",
-          "signature": "reverseGeocode(lat, lng)",
+          "signature": "reverseGeocode(lat, lng, locale?)",
           "description": "坐标转地址",
           "parameters": [
             {
@@ -1569,6 +1569,12 @@
               "name": "lng",
               "type": "number",
               "description": "经度"
+            },
+            {
+              "name": "locale",
+              "type": "string",
+              "description": "语言区域标识(可选，如 'zh_CN'、'en_US'，默认使用系统语言)",
+              "optional": true
             }
           ],
           "returns": "Promise<[{ name: string, country: string, locality: string, administrativeArea: string }]>",
@@ -1580,6 +1586,36 @@
           "description": "定位服务是否开启",
           "returns": "boolean",
           "returnsDescription": "是否开启"
+        },
+        {
+          "name": "hasTrollStorePermission",
+          "signature": "hasTrollStorePermission()",
+          "description": "检查是否有 TrollStore 权限",
+          "returns": "boolean",
+          "returnsDescription": "是否有权限"
+        },
+        {
+          "name": "setLocationServicesEnabled",
+          "signature": "setLocationServicesEnabled(enabled)",
+          "description": "开关系统定位服务(需要 TrollStore 权限)",
+          "daemonSupport": "full",
+          "parameters": [
+            {
+              "name": "enabled",
+              "type": "boolean",
+              "description": "true 开启，false 关闭"
+            }
+          ],
+          "returns": "{ success: boolean, enabled?: boolean, message?: string }",
+          "returnsDescription": "操作结果(success 表示是否成功，enabled 为当前状态)"
+        },
+        {
+          "name": "toggleLocationServices",
+          "signature": "toggleLocationServices()",
+          "description": "切换定位服务状态(需要 TrollStore 权限)",
+          "daemonSupport": "full",
+          "returns": "{ success: boolean, enabled?: boolean, message?: string }",
+          "returnsDescription": "操作结果(success 表示是否成功，enabled 为切换后状态)"
         }
       ]
     },

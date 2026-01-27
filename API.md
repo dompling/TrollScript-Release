@@ -1969,7 +1969,7 @@ Base64 解码
 
 ### `location.reverseGeocode`
 
-**Signature:** `reverseGeocode(lat, lng)`
+**Signature:** `reverseGeocode(lat, lng, locale?)`
 
 坐标转地址
 
@@ -1979,6 +1979,7 @@ Base64 解码
 |------|------|-------------|----------|
 | `lat` | `number` | 纬度 | No |
 | `lng` | `number` | 经度 | No |
+| `locale` | `string` | 语言区域标识(可选，如 'zh_CN'、'en_US'，默认使用系统语言) | Yes |
 
 **Returns:** `Promise<[{ name: string, country: string, locality: string, administrativeArea: string }]>`
 
@@ -1995,6 +1996,52 @@ Base64 解码
 **Returns:** `boolean`
 
 *是否开启*
+
+---
+
+### `location.hasTrollStorePermission`
+
+**Signature:** `hasTrollStorePermission()`
+
+检查是否有 TrollStore 权限
+
+**Returns:** `boolean`
+
+*是否有权限*
+
+---
+
+### `location.setLocationServicesEnabled`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `setLocationServicesEnabled(enabled)`
+
+开关系统定位服务(需要 TrollStore 权限)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | true 开启，false 关闭 | No |
+
+**Returns:** `{ success: boolean, enabled?: boolean, message?: string }`
+
+*操作结果(success 表示是否成功，enabled 为当前状态)*
+
+---
+
+### `location.toggleLocationServices`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `toggleLocationServices()`
+
+切换定位服务状态(需要 TrollStore 权限)
+
+**Returns:** `{ success: boolean, enabled?: boolean, message?: string }`
+
+*操作结果(success 表示是否成功，enabled 为切换后状态)*
 
 ---
 
