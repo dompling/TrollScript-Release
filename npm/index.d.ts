@@ -531,6 +531,24 @@ interface App {
     version(): string;
 
     /**
+     * 获取应用构建号
+     * @returns 应用构建号 (CFBundleVersion)
+     */
+    build(): string;
+
+    /**
+     * 获取应用 Bundle ID
+     * @returns 应用的 Bundle Identifier
+     */
+    bundleId(): string;
+
+    /**
+     * 获取应用完整信息
+     * @returns 包含 name, version, build, bundleId, language 的应用信息对象
+     */
+    info(): any;
+
+    /**
      * 打开 URL/Scheme
      * @param url 要打开的 URL
      * @returns 是否成功打开
@@ -578,6 +596,59 @@ interface App {
      * 清除所有日志
      */
     clearLogs(): void;
+
+    /**
+     * 退出应用（仅用于调试）
+     * @param code 退出码，默认为 0
+     */
+    exit(code: number): void;
+
+    /**
+     * 打开应用设置页面
+     * @returns 是否成功打开设置
+     */
+    openSettings(): boolean;
+
+    /**
+     * 获取所有已安装应用列表 (TrollStore 权限)
+     * @returns 应用信息数组，包含 bundleIdentifier, name, version, type 等字段
+     */
+    list(): any;
+
+    /**
+     * 获取指定应用的详细信息 (TrollStore 权限)
+     * @param bundleId 应用的 Bundle Identifier
+     * @returns 应用信息对象，包含 bundleIdentifier, name, version, build, type, teamID, bundlePath, dataContainerPath, urlSchemes 等
+     */
+    getAppInfo(bundleId: string): any;
+
+    /**
+     * 启动指定应用 (TrollStore 权限)
+     * @param bundleId 应用的 Bundle Identifier
+     * @returns 是否成功启动
+     */
+    launch(bundleId: string): boolean;
+
+    /**
+     * 终止指定应用 (TrollStore 权限，需要后台权限)
+     * @param bundleId 应用的 Bundle Identifier
+     * @returns 是否成功终止
+     */
+    terminate(bundleId: string): boolean;
+
+    /**
+     * 检查应用是否已安装
+     * @param bundleId 应用的 Bundle Identifier
+     * @returns 是否已安装
+     */
+    isInstalled(bundleId: string): boolean;
+
+    /**
+     * 获取应用数据容器路径 (TrollStore 权限)
+     * @param bundleId 应用的 Bundle Identifier
+     * @returns 数据容器路径，未找到返回 null
+     */
+    getDataContainer(bundleId: string): any;
 
 }
 
@@ -691,32 +762,6 @@ interface Display {
     setLowPowerMode(enabled: boolean): boolean;
 
     /**
-     * 获取夜览状态
-     * @returns 是否开启
-     */
-    getNightShiftStatus(): boolean;
-
-    /**
-     * 设置夜览
-     * @param enabled 是否开启
-     * @returns 是否设置成功
-     */
-    setNightShift(enabled: boolean): boolean;
-
-    /**
-     * 获取原彩显示状态
-     * @returns 是否开启
-     */
-    getTrueToneStatus(): boolean;
-
-    /**
-     * 设置原彩显示
-     * @param enabled 是否开启
-     * @returns 是否设置成功
-     */
-    setTrueTone(enabled: boolean): boolean;
-
-    /**
      * 自动亮度是否开启
      * @returns 是否开启
      */
@@ -734,19 +779,6 @@ interface Display {
      * @returns 是否成功打开
      */
     openSettings(): boolean;
-
-    /**
-     * 获取自动锁定时间
-     * @returns 自动锁定时间(秒)，0 表示永不
-     */
-    getAutoLockTime(): number;
-
-    /**
-     * 设置自动锁定时间
-     * @param seconds 锁定时间(秒)，0 表示永不
-     * @returns 是否设置成功
-     */
-    setAutoLock(seconds: number): boolean;
 
     /**
      * 保持屏幕常亮
@@ -1165,32 +1197,34 @@ interface Notification {
 
     /**
      * 请求通知权限
-     * @returns 是否授权成功
+     * @returns 授权结果对象
      */
-    requestPermission(): any;
+    requestAccess(): any;
 
     /**
      * 获取权限状态
-     * @returns 权限状态
+     * @returns 权限状态字符串
      */
-    getPermissionStatus(): any;
+    getAccessStatus(): any;
+
+    /**
+     * 检查是否已授权通知权限
+     * @returns 是否已授权
+     */
+    isAuthorized(): boolean;
 
     /**
      * 设置角标数字
      * @param count 角标数
+     * @returns 是否成功
      */
-    setBadge(count: number): void;
-
-    /**
-     * 获取角标数字
-     * @returns 角标数字
-     */
-    getBadge(): any;
+    setBadge(count: number): boolean;
 
     /**
      * 清除角标
+     * @returns 是否成功
      */
-    clearBadge(): void;
+    clearBadge(): boolean;
 
     /**
      * 定时通知
@@ -1483,72 +1517,31 @@ declare const media: Media;
 
 interface Mail {
     /**
-     * 检查是否能发送邮件
-     * @returns 是否能发送
+     * 检查邮件功能是否可用
+     * @returns 是否能发送邮件
      */
-    canSendMail(): boolean;
+    isAvailable(): boolean;
 
     /**
-     * 获取邮件功能状态
-     * @returns 邮件功能状态
+     * 打开邮件编辑器
+     * @param options 邮件选项 { to: string|string[], cc?: string|string[], bcc?: string|string[], subject?: string, body?: string, isHTML?: boolean, attachments?: [{path, mimeType?, filename?}] }
+     * @returns 包含发送结果的对象
      */
-    getStatus(): any;
+    compose(options: Record<string, any>): any;
 
     /**
-     * 发送简单邮件
-     * @param to 收件人列表
-     * @param subject 主题
-     * @param body 正文
-     * @returns 是否发送成功
+     * 通过 URL Scheme 发送邮件 (sendDirect 的别名)
+     * @param options 邮件选项 { to: string|string[], cc?: string, bcc?: string, subject?: string, body?: string }
+     * @returns 是否成功打开邮件客户端
      */
-    send(to: any, subject: string, body: string): any;
+    send(options: Record<string, any>): boolean;
 
     /**
-     * 发送邮件(完整选项)
-     * @param options 选项 { to, cc, bcc, subject, body, isHtml, attachments }
-     * @returns 是否发送成功
+     * 通过 URL Scheme 发送邮件（打开默认邮件客户端）
+     * @param options 邮件选项 { to: string|string[], cc?: string, bcc?: string, subject?: string, body?: string }
+     * @returns 是否成功打开邮件客户端
      */
-    sendAdvanced(options: Record<string, any>): any;
-
-    /**
-     * 打开邮件 App
-     * @returns 无返回值
-     */
-    openMailApp(): void;
-
-    /**
-     * 打开指定邮件 App
-     * @param appName App 名称
-     * @returns 无返回值
-     */
-    openSpecificMailApp(appName: string): void;
-
-    /**
-     * 验证邮箱格式
-     * @param email 邮箱地址
-     * @returns 是否有效
-     */
-    isValidEmail(email: string): boolean;
-
-    /**
-     * 检测已安装的邮件 App
-     * @returns 已安装的邮件 App 名称数组
-     */
-    getInstalledMailApps(): any;
-
-    /**
-     * 从模板生成邮件
-     * @param templateName 模板名称
-     * @param variables 变量字典
-     * @returns 生成的邮件内容
-     */
-    fromTemplate(templateName: string, variables: Record<string, any>): any;
-
-    /**
-     * 获取可用模板列表
-     * @returns 模板名称数组
-     */
-    getTemplates(): any;
+    sendDirect(options: Record<string, any>): boolean;
 
 }
 
@@ -1665,72 +1658,71 @@ interface Shortcuts {
     /**
      * 运行快捷指令
      * @param name 快捷指令名称
-     * @returns 快捷指令执行结果
+     * @param input 输入文本（可选）
+     * @returns 是否成功打开快捷指令
      */
-    run(name: string): any;
+    run(name: string, input: string): boolean;
 
     /**
-     * 运行快捷指令(带文本输入)
+     * 运行快捷指令（带 x-callback-url 回调）
      * @param name 快捷指令名称
-     * @param text 输入文本
-     * @returns 快捷指令执行结果
+     * @param input 输入文本（可选）
+     * @returns 是否成功打开快捷指令
      */
-    runWithText(name: string, text: string): any;
-
-    /**
-     * 运行快捷指令(剪贴板输入)
-     * @param name 快捷指令名称
-     */
-    runWithClipboard(name: string): any;
-
-    /**
-     * 运行快捷指令(高级选项)
-     * @param name 快捷指令名称
-     * @param options 选项 { input, showOutput }
-     */
-    runAdvanced(name: string, options: Record<string, any>): any;
+    runWithCallback(name: string, input: string): boolean;
 
     /**
      * 打开快捷指令 App
-     * @returns 无返回值
+     * @returns 是否成功打开
      */
-    openApp(): void;
+    open(): boolean;
 
     /**
-     * 打开快捷指令库
-     * @returns 无返回值
+     * 打开快捷指令中心/库
+     * @returns 是否成功打开
      */
-    openGallery(): void;
-
-    /**
-     * 打开指定快捷指令
-     * @param name 快捷指令名称
-     * @returns 无返回值
-     */
-    openShortcut(name: string): void;
+    openGallery(): boolean;
 
     /**
      * 创建新快捷指令
-     * @returns 无返回值
+     * @param name 快捷指令名称
+     * @returns 是否成功打开创建界面
      */
-    createNew(): void;
+    create(name: string): boolean;
 
     /**
      * 通过链接导入快捷指令
      * @param url 快捷指令 URL
-     * @returns 无返回值
+     * @returns 是否成功打开导入界面
      */
-    importFromUrl(url: string): void;
+    import(url: string): boolean;
 
     /**
-     * 检查是否安装快捷指令
+     * 检查是否安装快捷指令 App
+     * @returns 是否可用
      */
     isAvailable(): boolean;
 
     /**
-     * 获取常用快捷指令模板
+     * 捐赠 Siri 建议
+     * @param title 建议标题/调用短语
+     * @param identifier 交互标识符
+     * @returns 是否成功捐赠
      */
-    getCommonShortcuts(): any;
+    donateInteraction(title: string, identifier: string): boolean;
+
+    /**
+     * 删除指定的 Siri 建议
+     * @param identifier 交互标识符
+     * @returns 是否成功删除
+     */
+    deleteInteraction(identifier: string): boolean;
+
+    /**
+     * 删除所有 Siri 建议
+     * @returns 是否成功删除
+     */
+    deleteAllInteractions(): boolean;
 
 }
 
@@ -1870,3 +1862,154 @@ interface Memo {
 }
 
 declare const memo: Memo;
+
+interface System {
+    /**
+     * 检查 WiFi 是否开启
+     * @returns WiFi 是否开启
+     */
+    isWiFiEnabled(): boolean;
+
+    /**
+     * 设置 WiFi 开关 (TrollStore 权限)
+     * @param enabled 是否开启 WiFi
+     * @returns 是否设置成功
+     */
+    setWiFi(enabled: boolean): boolean;
+
+    /**
+     * 检查蓝牙是否开启
+     * @returns 蓝牙是否开启
+     */
+    isBluetoothEnabled(): boolean;
+
+    /**
+     * 设置蓝牙开关 (TrollStore 权限)
+     * @param enabled 是否开启蓝牙
+     * @returns 是否设置成功
+     */
+    setBluetooth(enabled: boolean): boolean;
+
+    /**
+     * 检查飞行模式是否开启
+     * @returns 飞行模式是否开启
+     */
+    isAirplaneModeEnabled(): boolean;
+
+    /**
+     * 设置飞行模式 (TrollStore 权限)
+     * @param enabled 是否开启飞行模式
+     * @returns 是否设置成功
+     */
+    setAirplaneMode(enabled: boolean): boolean;
+
+    /**
+     * 检查勿扰模式是否开启
+     * @returns 勿扰模式是否开启
+     */
+    isDoNotDisturbEnabled(): boolean;
+
+    /**
+     * 设置勿扰模式
+     * @param enabled 是否开启勿扰模式
+     * @returns 是否设置成功
+     */
+    setDoNotDisturb(enabled: boolean): boolean;
+
+    /**
+     * 获取系统音量
+     * @param category 音量类别: 'System', 'Ringer', 'Media'，默认 'Media'
+     * @returns 当前音量 (0.0 - 1.0)
+     */
+    getVolume(category: string): number;
+
+    /**
+     * 设置系统音量
+     * @param level 音量级别 (0.0 - 1.0)
+     * @param category 音量类别: 'System', 'Ringer', 'Media'，默认 'Media'
+     * @returns 是否设置成功
+     */
+    setVolume(level: number, category: string): boolean;
+
+    /**
+     * 检查设备是否有闪光灯
+     * @returns 是否有闪光灯
+     */
+    hasFlashlight(): boolean;
+
+    /**
+     * 检查闪光灯是否开启
+     * @returns 闪光灯是否开启
+     */
+    isFlashlightOn(): boolean;
+
+    /**
+     * 设置闪光灯
+     * @param enabled 是否开启闪光灯
+     * @param level 亮度级别 (0.0 - 1.0)，默认 1.0
+     * @returns 是否设置成功
+     */
+    setFlashlight(enabled: boolean, level: number): boolean;
+
+    /**
+     * 检查方向锁定是否开启
+     * @returns 方向锁定是否开启
+     */
+    isOrientationLockEnabled(): boolean;
+
+    /**
+     * 设置方向锁定
+     * @param enabled 是否开启方向锁定
+     * @returns 是否设置成功
+     */
+    setOrientationLock(enabled: boolean): boolean;
+
+    /**
+     * 检查低电量模式是否开启
+     * @returns 低电量模式是否开启
+     */
+    isLowPowerModeEnabled(): boolean;
+
+    /**
+     * 设置低电量模式 (TrollStore 权限)
+     * @param enabled 是否开启低电量模式
+     * @returns 是否设置成功
+     */
+    setLowPowerMode(enabled: boolean): boolean;
+
+    /**
+     * 检查位置服务是否开启
+     * @returns 位置服务是否开启
+     */
+    isLocationServicesEnabled(): boolean;
+
+    /**
+     * 设置位置服务 (TrollStore 权限)
+     * @param enabled 是否开启位置服务
+     * @returns 是否设置成功
+     */
+    setLocationServices(enabled: boolean): boolean;
+
+    /**
+     * 检查蜂窝数据是否开启
+     * @returns 蜂窝数据是否开启
+     */
+    isCellularDataEnabled(): boolean;
+
+    /**
+     * 设置蜂窝数据 (TrollStore 权限)
+     * @param enabled 是否开启蜂窝数据
+     * @returns 是否设置成功
+     */
+    setCellularData(enabled: boolean): boolean;
+
+    /**
+     * 打开系统设置
+     * @param section 设置页面: 'WIFI', 'BLUETOOTH', 'CELLULAR', 'VPN', 'GENERAL', 'DISPLAY', 'SOUND', 'NOTIFICATION', 'PRIVACY', 'BATTERY', 'STORAGE', 'WALLPAPER', 'SIRI', 'ACCESSIBILITY', 'DND', 'SCREEN_TIME', 'PASSWORDS'
+     * @returns 是否成功打开
+     */
+    openSettings(section: string): boolean;
+
+}
+
+declare const system: System;

@@ -1,0 +1,150 @@
+{
+  "name": "location",
+  "description": "定位服务",
+  "icon": "location",
+  "color": "red",
+  "daemonSupport": "limited",
+  "daemonNote": "requestAccess 需要 UI 交互，getCurrent 需要预先获得权限",
+  "methods": [
+    {
+      "name": "requestAccess",
+      "signature": "requestAccess()",
+      "description": "请求定位权限",
+      "daemonSupport": "none",
+      "returns": "void"
+    },
+    {
+      "name": "getAccessStatus",
+      "signature": "getAccessStatus()",
+      "description": "获取权限状态",
+      "returns": "'authorized' | 'denied' | 'restricted' | 'notDetermined' | 'unknown'",
+      "returnsDescription": "权限状态"
+    },
+    {
+      "name": "isAuthorized",
+      "signature": "isAuthorized()",
+      "description": "检查是否已授权",
+      "returns": "boolean",
+      "returnsDescription": "是否已授权"
+    },
+    {
+      "name": "getCurrent",
+      "signature": "getCurrent()",
+      "description": "获取当前位置",
+      "returns": "Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, timestamp: number }>",
+      "returnsDescription": "位置信息对象(包含经纬度、海拔等)"
+    },
+    {
+      "name": "current",
+      "signature": "current()",
+      "description": "获取当前位置(别名)",
+      "returns": "Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, timestamp: number }>",
+      "returnsDescription": "位置信息对象"
+    },
+    {
+      "name": "distance",
+      "signature": "distance(lat1, lng1, lat2, lng2)",
+      "description": "计算两点距离",
+      "parameters": [
+        {
+          "name": "lat1",
+          "type": "number",
+          "description": "点1纬度"
+        },
+        {
+          "name": "lng1",
+          "type": "number",
+          "description": "点1经度"
+        },
+        {
+          "name": "lat2",
+          "type": "number",
+          "description": "点2纬度"
+        },
+        {
+          "name": "lng2",
+          "type": "number",
+          "description": "点2经度"
+        }
+      ],
+      "returns": "number",
+      "returnsDescription": "距离(米)"
+    },
+    {
+      "name": "geocode",
+      "signature": "geocode(address)",
+      "description": "地址转坐标",
+      "parameters": [
+        {
+          "name": "address",
+          "type": "string",
+          "description": "地址字符串"
+        }
+      ],
+      "returns": "Promise<[{ lat: number, lng: number, name: string }]>",
+      "returnsDescription": "地理位置对象数组"
+    },
+    {
+      "name": "reverseGeocode",
+      "signature": "reverseGeocode(lat, lng, locale?)",
+      "description": "坐标转地址",
+      "parameters": [
+        {
+          "name": "lat",
+          "type": "number",
+          "description": "纬度"
+        },
+        {
+          "name": "lng",
+          "type": "number",
+          "description": "经度"
+        },
+        {
+          "name": "locale",
+          "type": "string",
+          "description": "语言区域标识(可选，如 'zh_CN'、'en_US'，默认使用系统语言)",
+          "optional": true
+        }
+      ],
+      "returns": "Promise<[{ name: string, country: string, locality: string, administrativeArea: string }]>",
+      "returnsDescription": "地址信息对象数组"
+    },
+    {
+      "name": "isLocationServicesEnabled",
+      "signature": "isLocationServicesEnabled()",
+      "description": "定位服务是否开启",
+      "returns": "boolean",
+      "returnsDescription": "是否开启"
+    },
+    {
+      "name": "hasTrollStorePermission",
+      "signature": "hasTrollStorePermission()",
+      "description": "检查是否有 TrollStore 权限",
+      "returns": "boolean",
+      "returnsDescription": "是否有权限"
+    },
+    {
+      "name": "setLocationServicesEnabled",
+      "signature": "setLocationServicesEnabled(enabled)",
+      "description": "开关系统定位服务(需要 TrollStore 权限)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "true 开启，false 关闭"
+        }
+      ],
+      "returns": "{ success: boolean, enabled?: boolean, message?: string }",
+      "returnsDescription": "操作结果(success 表示是否成功，enabled 为当前状态)"
+    },
+    {
+      "name": "toggleLocationServices",
+      "signature": "toggleLocationServices()",
+      "description": "切换定位服务状态(需要 TrollStore 权限)",
+      "daemonSupport": "full",
+      "returns": "{ success: boolean, enabled?: boolean, message?: string }",
+      "returnsDescription": "操作结果(success 表示是否成功，enabled 为切换后状态)"
+    }
+  ]
+}

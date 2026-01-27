@@ -1,0 +1,92 @@
+{
+  "name": "sql",
+  "description": "SQL database operations",
+  "icon": "cylinder.split.1x2",
+  "color": "indigo",
+  "daemonSupport": "full",
+  "methods": [
+    {
+      "name": "query",
+      "signature": "query(dbPath, sql, params?)",
+      "description": "Execute a SELECT statement and return results",
+      "parameters": [
+        {
+          "name": "dbPath",
+          "type": "string",
+          "description": "Path to the database file"
+        },
+        {
+          "name": "sql",
+          "type": "string",
+          "description": "SQL query string"
+        },
+        {
+          "name": "params",
+          "type": "any[]",
+          "optional": true,
+          "description": "List of parameters for prepared statement"
+        }
+      ],
+      "returns": "any[]",
+      "returnsDescription": "An array of objects representing the query rows"
+    },
+    {
+      "name": "execute",
+      "signature": "execute(dbPath, sql, params?)",
+      "description": "Execute INSERT, UPDATE, or DELETE statements",
+      "parameters": [
+        {
+          "name": "dbPath",
+          "type": "string",
+          "description": "Path to the database file"
+        },
+        {
+          "name": "sql",
+          "type": "string",
+          "description": "SQL execution string"
+        },
+        {
+          "name": "params",
+          "type": "any[]",
+          "optional": true,
+          "description": "List of parameters for prepared statement"
+        }
+      ],
+      "returns": "{ changes: number, lastInsertRowId: number }",
+      "returnsDescription": "Result object containing affected rows and the last inserted ID"
+    },
+    {
+      "name": "tables",
+      "signature": "tables(dbPath)",
+      "description": "List all tables in the database",
+      "parameters": [
+        {
+          "name": "dbPath",
+          "type": "string",
+          "description": "Path to the database file"
+        }
+      ],
+      "returns": "string[]",
+      "returnsDescription": "An array of table names"
+    },
+    {
+      "name": "schema",
+      "signature": "schema(dbPath, tableName)",
+      "description": "Retrieve the schema (structure) of a specific table",
+      "parameters": [
+        {
+          "name": "dbPath",
+          "type": "string",
+          "description": "Path to the database file"
+        },
+        {
+          "name": "tableName",
+          "type": "string",
+          "description": "The name of the table"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "The SQL statement used to create the table"
+    }
+  ]
+}

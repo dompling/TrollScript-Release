@@ -1,0 +1,184 @@
+{
+  "name": "contacts",
+  "description": "通讯录操作",
+  "icon": "person.crop.circle",
+  "color": "blue",
+  "daemonSupport": "limited",
+  "daemonNote": "requestAccess 需要 UI 交互，其他操作需要预先获得权限",
+  "methods": [
+    {
+      "name": "requestAccess",
+      "signature": "requestAccess()",
+      "description": "请求通讯录权限",
+      "daemonSupport": "none",
+      "returns": "{ granted: boolean, error?: string }",
+      "returnsDescription": "包含授权结果的对象"
+    },
+    {
+      "name": "getAccessStatus",
+      "signature": "getAccessStatus()",
+      "description": "获取权限状态",
+      "returns": "'authorized' | 'denied' | 'restricted' | 'notDetermined'",
+      "returnsDescription": "权限状态"
+    },
+    {
+      "name": "isAuthorized",
+      "signature": "isAuthorized()",
+      "description": "检查是否已授权",
+      "returns": "boolean",
+      "returnsDescription": "是否已授权"
+    },
+    {
+      "name": "getAll",
+      "signature": "getAll(offset?, limit?)",
+      "description": "获取所有联系人",
+      "parameters": [
+        {
+          "name": "offset",
+          "type": "number",
+          "optional": true,
+          "description": "跳过的记录数，默认 0"
+        },
+        {
+          "name": "limit",
+          "type": "number",
+          "optional": true,
+          "description": "返回的最大数量，默认全部"
+        }
+      ],
+      "returns": "[Contact]",
+      "returnsDescription": "联系人对象数组"
+    },
+    {
+      "name": "getCount",
+      "signature": "getCount()",
+      "description": "获取联系人总数",
+      "returns": "number",
+      "returnsDescription": "联系人总数"
+    },
+    {
+      "name": "search",
+      "signature": "search(query)",
+      "description": "按名字搜索联系人",
+      "parameters": [
+        {
+          "name": "query",
+          "type": "string",
+          "description": "搜索关键词（匹配姓名）"
+        }
+      ],
+      "returns": "[Contact]",
+      "returnsDescription": "联系人对象数组"
+    },
+    {
+      "name": "searchByPhone",
+      "signature": "searchByPhone(phone)",
+      "description": "按电话搜索联系人",
+      "parameters": [
+        {
+          "name": "phone",
+          "type": "string",
+          "description": "电话号码（支持模糊匹配）"
+        }
+      ],
+      "returns": "[Contact]",
+      "returnsDescription": "联系人对象数组"
+    },
+    {
+      "name": "searchByEmail",
+      "signature": "searchByEmail(email)",
+      "description": "按邮箱搜索联系人",
+      "parameters": [
+        {
+          "name": "email",
+          "type": "string",
+          "description": "邮箱地址（支持模糊匹配）"
+        }
+      ],
+      "returns": "[Contact]",
+      "returnsDescription": "联系人对象数组"
+    },
+    {
+      "name": "getById",
+      "signature": "getById(id)",
+      "description": "根据 ID 获取联系人",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "联系人唯一标识符"
+        }
+      ],
+      "returns": "Contact | null",
+      "returnsDescription": "联系人对象"
+    },
+    {
+      "name": "create",
+      "signature": "create(data)",
+      "description": "创建联系人",
+      "parameters": [
+        {
+          "name": "data",
+          "type": "object",
+          "description": "联系人数据 { givenName, familyName, phoneNumbers?, emailAddresses?, ... }"
+        }
+      ],
+      "returns": "{ success: boolean, id?: string, error?: string }",
+      "returnsDescription": "包含成功状态和 ID 的对象"
+    },
+    {
+      "name": "update",
+      "signature": "update(id, data)",
+      "description": "更新联系人",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "联系人唯一标识符"
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "description": "要更新的字段"
+        }
+      ],
+      "returns": "{ success: boolean, error?: string }",
+      "returnsDescription": "包含成功状态的对象"
+    },
+    {
+      "name": "delete",
+      "signature": "delete(id)",
+      "description": "删除联系人",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "联系人唯一标识符"
+        }
+      ],
+      "returns": "{ success: boolean, error?: string }",
+      "returnsDescription": "包含成功状态的对象"
+    },
+    {
+      "name": "getGroups",
+      "signature": "getGroups()",
+      "description": "获取所有分组",
+      "returns": "[{ id: string, name: string }]",
+      "returnsDescription": "分组数组"
+    },
+    {
+      "name": "getContactsInGroup",
+      "signature": "getContactsInGroup(groupId)",
+      "description": "获取分组内联系人",
+      "parameters": [
+        {
+          "name": "groupId",
+          "type": "string",
+          "description": "分组唯一标识符"
+        }
+      ],
+      "returns": "[Contact]",
+      "returnsDescription": "联系人对象数组"
+    }
+  ]
+}

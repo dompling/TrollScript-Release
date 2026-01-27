@@ -1,0 +1,139 @@
+{
+  "name": "shortcuts",
+  "description": "Shortcuts operations",
+  "icon": "bolt.square",
+  "color": "indigo",
+  "daemonSupport": "none",
+  "daemonNote": "Running shortcuts and opening apps require foreground UI interaction; completely unavailable in Daemon mode",
+  "methods": [
+    {
+      "name": "run",
+      "signature": "run(name, input?)",
+      "description": "Run a shortcut",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Shortcut name"
+        },
+        {
+          "name": "input",
+          "type": "string",
+          "optional": true,
+          "description": "Input text (optional)"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the shortcut was successfully opened"
+    },
+    {
+      "name": "runWithCallback",
+      "signature": "runWithCallback(name, input?)",
+      "description": "Run a shortcut with x-callback-url support",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Shortcut name"
+        },
+        {
+          "name": "input",
+          "type": "string",
+          "optional": true,
+          "description": "Input text (optional)"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the shortcut was successfully opened"
+    },
+    {
+      "name": "open",
+      "signature": "open()",
+      "description": "Open the Shortcuts app",
+      "returns": "boolean",
+      "returnsDescription": "Whether the app was successfully opened"
+    },
+    {
+      "name": "openGallery",
+      "signature": "openGallery()",
+      "description": "Open the Shortcuts gallery",
+      "returns": "boolean",
+      "returnsDescription": "Whether the gallery was successfully opened"
+    },
+    {
+      "name": "create",
+      "signature": "create(name)",
+      "description": "Create a new shortcut",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Shortcut name"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the creation interface was successfully opened"
+    },
+    {
+      "name": "import",
+      "signature": "import(url)",
+      "description": "Import a shortcut from URL",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "Shortcut URL"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the import interface was successfully opened"
+    },
+    {
+      "name": "isAvailable",
+      "signature": "isAvailable()",
+      "description": "Check if Shortcuts app is installed",
+      "returns": "boolean",
+      "returnsDescription": "Whether Shortcuts is available"
+    },
+    {
+      "name": "donateInteraction",
+      "signature": "donateInteraction(title, identifier)",
+      "description": "Donate a Siri suggestion",
+      "parameters": [
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Suggestion title/invocation phrase"
+        },
+        {
+          "name": "identifier",
+          "type": "string",
+          "description": "Interaction identifier"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the donation was successful"
+    },
+    {
+      "name": "deleteInteraction",
+      "signature": "deleteInteraction(identifier)",
+      "description": "Delete a specific Siri suggestion",
+      "parameters": [
+        {
+          "name": "identifier",
+          "type": "string",
+          "description": "Interaction identifier"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the deletion was successful"
+    },
+    {
+      "name": "deleteAllInteractions",
+      "signature": "deleteAllInteractions()",
+      "description": "Delete all Siri suggestions",
+      "returns": "boolean",
+      "returnsDescription": "Whether the deletion was successful"
+    }
+  ]
+}

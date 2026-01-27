@@ -1,0 +1,77 @@
+{
+  "name": "util",
+  "description": "工具函数",
+  "icon": "wrench.and.screwdriver",
+  "color": "gray",
+  "daemonSupport": "full",
+  "methods": [
+    {
+      "name": "uuid",
+      "signature": "uuid()",
+      "description": "生成 UUID",
+      "returns": "string",
+      "returnsDescription": "生成的 UUID"
+    },
+    {
+      "name": "md5",
+      "signature": "md5(string)",
+      "description": "计算 MD5",
+      "parameters": [
+        {
+          "name": "string",
+          "type": "string",
+          "description": "要计算的字符串"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "MD5 哈希值"
+    },
+    {
+      "name": "base64Encode",
+      "signature": "base64Encode(string)",
+      "description": "Base64 编码",
+      "parameters": [
+        {
+          "name": "string",
+          "type": "string",
+          "description": "要编码的字符串"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "Base64 编码字符串"
+    },
+    {
+      "name": "base64Decode",
+      "signature": "base64Decode(string)",
+      "description": "Base64 解码",
+      "parameters": [
+        {
+          "name": "string",
+          "type": "string",
+          "description": "要解码的字符串"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "解码后的原始字符串"
+    },
+    {
+      "name": "formatDate",
+      "signature": "formatDate(date, format)",
+      "description": "格式化日期",
+      "parameters": [
+        {
+          "name": "date",
+          "type": "Date",
+          "description": "日期对象"
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "description": "格式字符串 (如 'yyyy-MM-dd')"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "格式化后的日期字符串"
+    }
+  ]
+}

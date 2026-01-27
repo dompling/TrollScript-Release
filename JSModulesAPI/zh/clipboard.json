@@ -1,0 +1,37 @@
+{
+  "name": "clipboard",
+  "description": "剪贴板操作",
+  "icon": "doc.on.clipboard",
+  "color": "orange",
+  "daemonSupport": "limited",
+  "methods": [
+    {
+      "name": "getText",
+      "signature": "getText()",
+      "description": "获取剪贴板文本",
+      "returns": "string",
+      "returnsDescription": "剪贴板中的文本内容"
+    },
+    {
+      "name": "setText",
+      "signature": "setText(text)",
+      "description": "设置剪贴板文本",
+      "daemonSupport": "none",
+      "parameters": [
+        {
+          "name": "text",
+          "type": "string",
+          "description": "要设置的文本内容"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "clear",
+      "signature": "clear()",
+      "description": "清空剪贴板",
+      "returns": "void",
+      "daemonSupport": "none"
+    }
+  ]
+}

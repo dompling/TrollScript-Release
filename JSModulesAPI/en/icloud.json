@@ -1,0 +1,85 @@
+{
+  "name": "icloud",
+  "description": "iCloud file operations",
+  "icon": "icloud",
+  "color": "blue",
+  "daemonSupport": "full",
+  "methods": [
+    {
+      "name": "isAvailable",
+      "signature": "isAvailable()",
+      "description": "Check if iCloud is available",
+      "returns": "boolean",
+      "returnsDescription": "Whether iCloud service is available"
+    },
+    {
+      "name": "containerPath",
+      "signature": "containerPath()",
+      "description": "Get the iCloud container path",
+      "returns": "string | null",
+      "returnsDescription": "Local path of the iCloud container, or null if unavailable"
+    },
+    {
+      "name": "read",
+      "signature": "read(path)",
+      "description": "Read a file from iCloud",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "File path (relative to the iCloud container)"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "The content of the file"
+    },
+    {
+      "name": "write",
+      "signature": "write(path, content)",
+      "description": "Write content to an iCloud file",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "File path"
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "description": "The content to be written"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the write operation was successful"
+    },
+    {
+      "name": "delete",
+      "signature": "delete(path)",
+      "description": "Delete a file from iCloud",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "File path"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the deletion was successful"
+    },
+    {
+      "name": "list",
+      "signature": "list(path?)",
+      "description": "List contents of an iCloud directory",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "optional": true,
+          "description": "Directory path, defaults to the root directory"
+        }
+      ],
+      "returns": "[string]",
+      "returnsDescription": "An array of file names"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "device",
+  "description": "设备信息",
+  "icon": "iphone",
+  "color": "blue",
+  "daemonSupport": "full",
+  "methods": [
+    {
+      "name": "info",
+      "signature": "info()",
+      "description": "获取设备信息",
+      "returns": "{ name: string, model: string, systemName: string, systemVersion: string, identifier: string }",
+      "returnsDescription": "包含设备名称、型号、系统版本等信息的对象"
+    },
+    {
+      "name": "battery",
+      "signature": "battery()",
+      "description": "获取电池信息",
+      "returns": "{ level: number, state: string, lowPowerMode: boolean }",
+      "returnsDescription": "包含电量(0-1)、充电状态、低电量模式等信息的对象"
+    },
+    {
+      "name": "screen",
+      "signature": "screen()",
+      "description": "获取屏幕信息",
+      "returns": "{ width: number, height: number, scale: number, brightness: number }",
+      "returnsDescription": "包含屏幕尺寸、缩放比例、亮度等信息的对象"
+    }
+  ]
+}

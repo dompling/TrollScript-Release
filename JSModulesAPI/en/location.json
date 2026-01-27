@@ -1,0 +1,150 @@
+{
+  "name": "location",
+  "description": "Location services",
+  "icon": "location",
+  "color": "red",
+  "daemonSupport": "limited",
+  "daemonNote": "The 'requestAccess' method requires UI interaction; 'getCurrent' requires prior authorization.",
+  "methods": [
+    {
+      "name": "requestAccess",
+      "signature": "requestAccess()",
+      "description": "Request location access permissions",
+      "daemonSupport": "none",
+      "returns": "void"
+    },
+    {
+      "name": "getAccessStatus",
+      "signature": "getAccessStatus()",
+      "description": "Get current authorization status",
+      "returns": "'authorized' | 'denied' | 'restricted' | 'notDetermined' | 'unknown'",
+      "returnsDescription": "Current permission status"
+    },
+    {
+      "name": "isAuthorized",
+      "signature": "isAuthorized()",
+      "description": "Check if location access is granted",
+      "returns": "boolean",
+      "returnsDescription": "Whether access is authorized"
+    },
+    {
+      "name": "getCurrent",
+      "signature": "getCurrent()",
+      "description": "Retrieve current geographic location",
+      "returns": "Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, timestamp: number }>",
+      "returnsDescription": "Location data object containing coordinates, altitude, etc."
+    },
+    {
+      "name": "current",
+      "signature": "current()",
+      "description": "Get current location (Alias for getCurrent)",
+      "returns": "Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, timestamp: number }>",
+      "returnsDescription": "Location data object"
+    },
+    {
+      "name": "distance",
+      "signature": "distance(lat1, lng1, lat2, lng2)",
+      "description": "Calculate the distance between two points",
+      "parameters": [
+        {
+          "name": "lat1",
+          "type": "number",
+          "description": "Latitude of point 1"
+        },
+        {
+          "name": "lng1",
+          "type": "number",
+          "description": "Longitude of point 1"
+        },
+        {
+          "name": "lat2",
+          "type": "number",
+          "description": "Latitude of point 2"
+        },
+        {
+          "name": "lng2",
+          "type": "number",
+          "description": "Longitude of point 2"
+        }
+      ],
+      "returns": "number",
+      "returnsDescription": "Distance in meters"
+    },
+    {
+      "name": "geocode",
+      "signature": "geocode(address)",
+      "description": "Geocoding: Address to coordinates",
+      "parameters": [
+        {
+          "name": "address",
+          "type": "string",
+          "description": "Target address string"
+        }
+      ],
+      "returns": "Promise<[{ lat: number, lng: number, name: string }]>",
+      "returnsDescription": "An array of geographic location objects"
+    },
+    {
+      "name": "reverseGeocode",
+      "signature": "reverseGeocode(lat, lng, locale?)",
+      "description": "Reverse Geocoding: Coordinates to address",
+      "parameters": [
+        {
+          "name": "lat",
+          "type": "number",
+          "description": "Latitude"
+        },
+        {
+          "name": "lng",
+          "type": "number",
+          "description": "Longitude"
+        },
+        {
+          "name": "locale",
+          "type": "string",
+          "description": "Locale identifier (optional, e.g., 'en_US', defaults to system language)",
+          "optional": true
+        }
+      ],
+      "returns": "Promise<[{ name: string, country: string, locality: string, administrativeArea: string }]>",
+      "returnsDescription": "An array of address information objects"
+    },
+    {
+      "name": "isLocationServicesEnabled",
+      "signature": "isLocationServicesEnabled()",
+      "description": "Check if system-wide location services are enabled",
+      "returns": "boolean",
+      "returnsDescription": "Whether services are enabled"
+    },
+    {
+      "name": "hasTrollStorePermission",
+      "signature": "hasTrollStorePermission()",
+      "description": "Check for TrollStore-specific permissions",
+      "returns": "boolean",
+      "returnsDescription": "Whether permission is present"
+    },
+    {
+      "name": "setLocationServicesEnabled",
+      "signature": "setLocationServicesEnabled(enabled)",
+      "description": "Toggle system location services (Requires TrollStore)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "True to enable, false to disable"
+        }
+      ],
+      "returns": "{ success: boolean, enabled?: boolean, message?: string }",
+      "returnsDescription": "Operation result (success status and current state)"
+    },
+    {
+      "name": "toggleLocationServices",
+      "signature": "toggleLocationServices()",
+      "description": "Switch location services state (Requires TrollStore)",
+      "daemonSupport": "full",
+      "returns": "{ success: boolean, enabled?: boolean, message?: string }",
+      "returnsDescription": "Operation result (success status and new state)"
+    }
+  ]
+}

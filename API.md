@@ -1,4 +1,4 @@
-# TrollScript API Reference (v1.1.0)
+# TrollScript API Reference (v1.2.0)
 
 TrollScript provides a powerful JavaScript environment with access to various system features. Below is the comprehensive API reference for all available modules.
 
@@ -24,7 +24,7 @@ The following icons indicate API compatibility when running in background trigge
 - [file](#file) ✅ - 文件操作
 - [http](#http) ✅ - 网络请求
 - [network](#network) ⚠️ - 网络操作
-- [app](#app) ⚠️ - 应用操作
+- [app](#app) ⚠️ - 应用操作与管理
 - [haptic](#haptic) ⚠️ - 触觉反馈
 - [display](#display) ⚠️ - 显示控制
 - [util](#util) ✅ - 工具函数
@@ -41,6 +41,7 @@ The following icons indicate API compatibility when running in background trigge
 - [shortcuts](#shortcuts) ❌ - 快捷指令操作
 - [bluetooth](#bluetooth) ⚠️ - 蓝牙操作
 - [memo](#memo) ✅ - 备忘录操作（iCloud 同步）
+- [system](#system) ✅ - 系统设置控制
 
 ---
 
@@ -1249,9 +1250,9 @@ Ping 主机
 
 ![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
 
-应用操作
+应用操作与管理
 
-> **Trigger Note:** open 方法需要前台运行，vibrate 方法后台可能不生效
+> **Trigger Note:** open/launch 方法需要前台运行，vibrate 方法后台可能不生效
 
 ### `app.version`
 
@@ -1262,6 +1263,42 @@ Ping 主机
 **Returns:** `string`
 
 *应用版本号*
+
+---
+
+### `app.build`
+
+**Signature:** `build()`
+
+获取应用构建号
+
+**Returns:** `string`
+
+*应用构建号 (CFBundleVersion)*
+
+---
+
+### `app.bundleId`
+
+**Signature:** `bundleId()`
+
+获取应用 Bundle ID
+
+**Returns:** `string`
+
+*应用的 Bundle Identifier*
+
+---
+
+### `app.info`
+
+**Signature:** `info()`
+
+获取应用完整信息
+
+**Returns:** `AppInfo`
+
+*包含 name, version, build, bundleId, language 的应用信息对象*
 
 ---
 
@@ -1374,6 +1411,150 @@ Ping 主机
 清除所有日志
 
 **Returns:** `void`
+
+---
+
+### `app.exit`
+
+**Signature:** `exit(code?)`
+
+退出应用（仅用于调试）
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `code` | `number` | 退出码，默认为 0 | Yes |
+
+**Returns:** `void`
+
+---
+
+### `app.openSettings`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
+**Signature:** `openSettings()`
+
+打开应用设置页面
+
+**Returns:** `boolean`
+
+*是否成功打开设置*
+
+---
+
+### `app.list`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `list()`
+
+获取所有已安装应用列表 (TrollStore 权限)
+
+**Returns:** `[AppInfo]`
+
+*应用信息数组，包含 bundleIdentifier, name, version, type 等字段*
+
+---
+
+### `app.getAppInfo`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `getAppInfo(bundleId)`
+
+获取指定应用的详细信息 (TrollStore 权限)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `bundleId` | `string` | 应用的 Bundle Identifier | No |
+
+**Returns:** `AppInfo \| null`
+
+*应用信息对象，包含 bundleIdentifier, name, version, build, type, teamID, bundlePath, dataContainerPath, urlSchemes 等*
+
+---
+
+### `app.launch`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
+**Signature:** `launch(bundleId)`
+
+启动指定应用 (TrollStore 权限)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `bundleId` | `string` | 应用的 Bundle Identifier | No |
+
+**Returns:** `boolean`
+
+*是否成功启动*
+
+---
+
+### `app.terminate`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `terminate(bundleId)`
+
+终止指定应用 (TrollStore 权限，需要后台权限)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `bundleId` | `string` | 应用的 Bundle Identifier | No |
+
+**Returns:** `boolean`
+
+*是否成功终止*
+
+---
+
+### `app.isInstalled`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `isInstalled(bundleId)`
+
+检查应用是否已安装
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `bundleId` | `string` | 应用的 Bundle Identifier | No |
+
+**Returns:** `boolean`
+
+*是否已安装*
+
+---
+
+### `app.getDataContainer`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `getDataContainer(bundleId)`
+
+获取应用数据容器路径 (TrollStore 权限)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `bundleId` | `string` | 应用的 Bundle Identifier | No |
+
+**Returns:** `string \| null`
+
+*数据容器路径，未找到返回 null*
 
 ---
 
@@ -1619,66 +1800,6 @@ Ping 主机
 
 ---
 
-### `display.getNightShiftStatus`
-
-**Signature:** `getNightShiftStatus()`
-
-获取夜览状态
-
-**Returns:** `boolean`
-
-*是否开启*
-
----
-
-### `display.setNightShift`
-
-**Signature:** `setNightShift(enabled)`
-
-设置夜览
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `enabled` | `boolean` | 是否开启 | No |
-
-**Returns:** `boolean`
-
-*是否设置成功*
-
----
-
-### `display.getTrueToneStatus`
-
-**Signature:** `getTrueToneStatus()`
-
-获取原彩显示状态
-
-**Returns:** `boolean`
-
-*是否开启*
-
----
-
-### `display.setTrueTone`
-
-**Signature:** `setTrueTone(enabled)`
-
-设置原彩显示
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `enabled` | `boolean` | 是否开启 | No |
-
-**Returns:** `boolean`
-
-*是否设置成功*
-
----
-
 ### `display.isAutoBrightnessEnabled`
 
 **Signature:** `isAutoBrightnessEnabled()`
@@ -1720,36 +1841,6 @@ Ping 主机
 **Returns:** `boolean`
 
 *是否成功打开*
-
----
-
-### `display.getAutoLockTime`
-
-**Signature:** `getAutoLockTime()`
-
-获取自动锁定时间
-
-**Returns:** `number`
-
-*自动锁定时间(秒)，0 表示永不*
-
----
-
-### `display.setAutoLock`
-
-**Signature:** `setAutoLock(seconds)`
-
-设置自动锁定时间
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `seconds` | `number` | 锁定时间(秒)，0 表示永不 | No |
-
-**Returns:** `boolean`
-
-*是否设置成功*
 
 ---
 
@@ -2688,29 +2779,41 @@ Base64 解码
 
 ---
 
-### `notification.requestPermission`
+### `notification.requestAccess`
 
 ![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
-**Signature:** `requestPermission()`
+**Signature:** `requestAccess()`
 
 请求通知权限
 
-**Returns:** `Promise<boolean>`
+**Returns:** `{ granted: boolean, error?: string }`
 
-*是否授权成功*
+*授权结果对象*
 
 ---
 
-### `notification.getPermissionStatus`
+### `notification.getAccessStatus`
 
-**Signature:** `getPermissionStatus()`
+**Signature:** `getAccessStatus()`
 
 获取权限状态
 
-**Returns:** `Promise<'authorized' \| 'denied' \| 'notDetermined' \| 'provisional' \| 'ephemeral' \| 'unknown'>`
+**Returns:** `'authorized' \| 'denied' \| 'notDetermined' \| 'provisional' \| 'ephemeral' \| 'unknown'`
 
-*权限状态*
+*权限状态字符串*
+
+---
+
+### `notification.isAuthorized`
+
+**Signature:** `isAuthorized()`
+
+检查是否已授权通知权限
+
+**Returns:** `boolean`
+
+*是否已授权*
 
 ---
 
@@ -2726,19 +2829,9 @@ Base64 解码
 |------|------|-------------|----------|
 | `count` | `number` | 角标数 | No |
 
-**Returns:** `void`
+**Returns:** `boolean`
 
----
-
-### `notification.getBadge`
-
-**Signature:** `getBadge()`
-
-获取角标数字
-
-**Returns:** `Promise<number>`
-
-*角标数字*
+*是否成功*
 
 ---
 
@@ -2748,7 +2841,9 @@ Base64 解码
 
 清除角标
 
-**Returns:** `void`
+**Returns:** `boolean`
+
+*是否成功*
 
 ---
 
@@ -3386,158 +3481,71 @@ Base64 解码
 
 邮件操作
 
-> **Trigger Note:** 所有邮件发送和打开邮件应用的方法都需要 UI 交互，Daemon 模式下完全不可用
+> **Trigger Note:** 所有邮件发送方法都需要 UI 交互，Daemon 模式下完全不可用
 
-### `mail.canSendMail`
+### `mail.isAvailable`
 
-**Signature:** `canSendMail()`
+**Signature:** `isAvailable()`
 
-检查是否能发送邮件
+检查邮件功能是否可用
 
 **Returns:** `boolean`
 
-*是否能发送*
+*是否能发送邮件*
 
 ---
 
-### `mail.getStatus`
+### `mail.compose`
 
-**Signature:** `getStatus()`
+**Signature:** `compose(options)`
 
-获取邮件功能状态
+打开邮件编辑器
 
-**Returns:** `'available' \| 'unavailable'`
+**Parameters:**
 
-*邮件功能状态*
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `options` | `object` | 邮件选项 { to: string\|string[], cc?: string\|string[], bcc?: string\|string[], subject?: string, body?: string, isHTML?: boolean, attachments?: [{path, mimeType?, filename?}] } | No |
+
+**Returns:** `{ success: boolean, error?: string }`
+
+*包含发送结果的对象*
 
 ---
 
 ### `mail.send`
 
-**Signature:** `send(to, subject, body)`
+**Signature:** `send(options)`
 
-发送简单邮件
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `to` | `string[]` | 收件人列表 | No |
-| `subject` | `string` | 主题 | No |
-| `body` | `string` | 正文 | No |
-
-**Returns:** `Promise<boolean>`
-
-*是否发送成功*
-
----
-
-### `mail.sendAdvanced`
-
-**Signature:** `sendAdvanced(options)`
-
-发送邮件(完整选项)
+通过 URL Scheme 发送邮件 (sendDirect 的别名)
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `options` | `object` | 选项 { to, cc, bcc, subject, body, isHtml, attachments } | No |
-
-**Returns:** `Promise<boolean>`
-
-*是否发送成功*
-
----
-
-### `mail.openMailApp`
-
-**Signature:** `openMailApp()`
-
-打开邮件 App
-
-**Returns:** `void`
-
-*无返回值*
-
----
-
-### `mail.openSpecificMailApp`
-
-**Signature:** `openSpecificMailApp(appName)`
-
-打开指定邮件 App
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `appName` | `string` | App 名称 | No |
-
-**Returns:** `void`
-
-*无返回值*
-
----
-
-### `mail.isValidEmail`
-
-**Signature:** `isValidEmail(email)`
-
-验证邮箱格式
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `email` | `string` | 邮箱地址 | No |
+| `options` | `object` | 邮件选项 { to: string\|string[], cc?: string, bcc?: string, subject?: string, body?: string } | No |
 
 **Returns:** `boolean`
 
-*是否有效*
+*是否成功打开邮件客户端*
 
 ---
 
-### `mail.getInstalledMailApps`
+### `mail.sendDirect`
 
-**Signature:** `getInstalledMailApps()`
+**Signature:** `sendDirect(options)`
 
-检测已安装的邮件 App
-
-**Returns:** `string[]`
-
-*已安装的邮件 App 名称数组*
-
----
-
-### `mail.fromTemplate`
-
-**Signature:** `fromTemplate(templateName, variables)`
-
-从模板生成邮件
+通过 URL Scheme 发送邮件（打开默认邮件客户端）
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `templateName` | `string` | 模板名称 | No |
-| `variables` | `object` | 变量字典 | No |
+| `options` | `object` | 邮件选项 { to: string\|string[], cc?: string, bcc?: string, subject?: string, body?: string } | No |
 
-**Returns:** `Promise<string>`
+**Returns:** `boolean`
 
-*生成的邮件内容*
-
----
-
-### `mail.getTemplates`
-
-**Signature:** `getTemplates()`
-
-获取可用模板列表
-
-**Returns:** `string[]`
-
-*模板名称数组*
+*是否成功打开邮件客户端*
 
 ---
 
@@ -3786,7 +3794,7 @@ SQL 数据库查询
 
 ### `shortcuts.run`
 
-**Signature:** `run(name)`
+**Signature:** `run(name, input?)`
 
 运行快捷指令
 
@@ -3795,74 +3803,42 @@ SQL 数据库查询
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `name` | `string` | 快捷指令名称 | No |
+| `input` | `string` | 输入文本（可选） | Yes |
 
-**Returns:** `Promise<string>`
+**Returns:** `boolean`
 
-*快捷指令执行结果*
+*是否成功打开快捷指令*
 
 ---
 
-### `shortcuts.runWithText`
+### `shortcuts.runWithCallback`
 
-**Signature:** `runWithText(name, text)`
+**Signature:** `runWithCallback(name, input?)`
 
-运行快捷指令(带文本输入)
+运行快捷指令（带 x-callback-url 回调）
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `name` | `string` | 快捷指令名称 | No |
-| `text` | `string` | 输入文本 | No |
+| `input` | `string` | 输入文本（可选） | Yes |
 
-**Returns:** `Promise<string>`
+**Returns:** `boolean`
 
-*快捷指令执行结果*
-
----
-
-### `shortcuts.runWithClipboard`
-
-**Signature:** `runWithClipboard(name)`
-
-运行快捷指令(剪贴板输入)
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `name` | `string` | 快捷指令名称 | No |
-
-**Returns:** `Promise<string>`
+*是否成功打开快捷指令*
 
 ---
 
-### `shortcuts.runAdvanced`
+### `shortcuts.open`
 
-**Signature:** `runAdvanced(name, options)`
-
-运行快捷指令(高级选项)
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `name` | `string` | 快捷指令名称 | No |
-| `options` | `object` | 选项 { input, showOutput } | No |
-
-**Returns:** `Promise<any>`
-
----
-
-### `shortcuts.openApp`
-
-**Signature:** `openApp()`
+**Signature:** `open()`
 
 打开快捷指令 App
 
-**Returns:** `void`
+**Returns:** `boolean`
 
-*无返回值*
+*是否成功打开*
 
 ---
 
@@ -3870,19 +3846,19 @@ SQL 数据库查询
 
 **Signature:** `openGallery()`
 
-打开快捷指令库
+打开快捷指令中心/库
 
-**Returns:** `void`
+**Returns:** `boolean`
 
-*无返回值*
+*是否成功打开*
 
 ---
 
-### `shortcuts.openShortcut`
+### `shortcuts.create`
 
-**Signature:** `openShortcut(name)`
+**Signature:** `create(name)`
 
-打开指定快捷指令
+创建新快捷指令
 
 **Parameters:**
 
@@ -3890,27 +3866,15 @@ SQL 数据库查询
 |------|------|-------------|----------|
 | `name` | `string` | 快捷指令名称 | No |
 
-**Returns:** `void`
+**Returns:** `boolean`
 
-*无返回值*
-
----
-
-### `shortcuts.createNew`
-
-**Signature:** `createNew()`
-
-创建新快捷指令
-
-**Returns:** `void`
-
-*无返回值*
+*是否成功打开创建界面*
 
 ---
 
-### `shortcuts.importFromUrl`
+### `shortcuts.import`
 
-**Signature:** `importFromUrl(url)`
+**Signature:** `import(url)`
 
 通过链接导入快捷指令
 
@@ -3920,9 +3884,9 @@ SQL 数据库查询
 |------|------|-------------|----------|
 | `url` | `string` | 快捷指令 URL | No |
 
-**Returns:** `void`
+**Returns:** `boolean`
 
-*无返回值*
+*是否成功打开导入界面*
 
 ---
 
@@ -3930,19 +3894,60 @@ SQL 数据库查询
 
 **Signature:** `isAvailable()`
 
-检查是否安装快捷指令
+检查是否安装快捷指令 App
 
 **Returns:** `boolean`
 
+*是否可用*
+
 ---
 
-### `shortcuts.getCommonShortcuts`
+### `shortcuts.donateInteraction`
 
-**Signature:** `getCommonShortcuts()`
+**Signature:** `donateInteraction(title, identifier)`
 
-获取常用快捷指令模板
+捐赠 Siri 建议
 
-**Returns:** `string[]`
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `title` | `string` | 建议标题/调用短语 | No |
+| `identifier` | `string` | 交互标识符 | No |
+
+**Returns:** `boolean`
+
+*是否成功捐赠*
+
+---
+
+### `shortcuts.deleteInteraction`
+
+**Signature:** `deleteInteraction(identifier)`
+
+删除指定的 Siri 建议
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `identifier` | `string` | 交互标识符 | No |
+
+**Returns:** `boolean`
+
+*是否成功删除*
+
+---
+
+### `shortcuts.deleteAllInteractions`
+
+**Signature:** `deleteAllInteractions()`
+
+删除所有 Siri 建议
+
+**Returns:** `boolean`
+
+*是否成功删除*
 
 ---
 
@@ -4032,7 +4037,7 @@ SQL 数据库查询
 
 获取已连接设备
 
-**Returns:** `Promise<[{ name: string, uuid: string } মল`
+**Returns:** `Promise<[{ name: string, uuid: string }]>`
 
 ---
 
@@ -4238,6 +4243,354 @@ SQL 数据库查询
 **Returns:** `number`
 
 *备忘录总数*
+
+---
+
+## system
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+系统设置控制
+
+> **Trigger Note:** 大部分方法需要 TrollStore 权限才能正常工作
+
+### `system.isWiFiEnabled`
+
+**Signature:** `isWiFiEnabled()`
+
+检查 WiFi 是否开启
+
+**Returns:** `boolean`
+
+*WiFi 是否开启*
+
+---
+
+### `system.setWiFi`
+
+**Signature:** `setWiFi(enabled)`
+
+设置 WiFi 开关 (TrollStore 权限)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | 是否开启 WiFi | No |
+
+**Returns:** `boolean`
+
+*是否设置成功*
+
+---
+
+### `system.isBluetoothEnabled`
+
+**Signature:** `isBluetoothEnabled()`
+
+检查蓝牙是否开启
+
+**Returns:** `boolean`
+
+*蓝牙是否开启*
+
+---
+
+### `system.setBluetooth`
+
+**Signature:** `setBluetooth(enabled)`
+
+设置蓝牙开关 (TrollStore 权限)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | 是否开启蓝牙 | No |
+
+**Returns:** `boolean`
+
+*是否设置成功*
+
+---
+
+### `system.isAirplaneModeEnabled`
+
+**Signature:** `isAirplaneModeEnabled()`
+
+检查飞行模式是否开启
+
+**Returns:** `boolean`
+
+*飞行模式是否开启*
+
+---
+
+### `system.setAirplaneMode`
+
+**Signature:** `setAirplaneMode(enabled)`
+
+设置飞行模式 (TrollStore 权限)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | 是否开启飞行模式 | No |
+
+**Returns:** `boolean`
+
+*是否设置成功*
+
+---
+
+### `system.isDoNotDisturbEnabled`
+
+**Signature:** `isDoNotDisturbEnabled()`
+
+检查勿扰模式是否开启
+
+**Returns:** `boolean`
+
+*勿扰模式是否开启*
+
+---
+
+### `system.setDoNotDisturb`
+
+**Signature:** `setDoNotDisturb(enabled)`
+
+设置勿扰模式
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | 是否开启勿扰模式 | No |
+
+**Returns:** `boolean`
+
+*是否设置成功*
+
+---
+
+### `system.getVolume`
+
+**Signature:** `getVolume(category?)`
+
+获取系统音量
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `category` | `string` | 音量类别: 'System', 'Ringer', 'Media'，默认 'Media' | Yes |
+
+**Returns:** `number`
+
+*当前音量 (0.0 - 1.0)*
+
+---
+
+### `system.setVolume`
+
+**Signature:** `setVolume(level, category?)`
+
+设置系统音量
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `level` | `number` | 音量级别 (0.0 - 1.0) | No |
+| `category` | `string` | 音量类别: 'System', 'Ringer', 'Media'，默认 'Media' | Yes |
+
+**Returns:** `boolean`
+
+*是否设置成功*
+
+---
+
+### `system.hasFlashlight`
+
+**Signature:** `hasFlashlight()`
+
+检查设备是否有闪光灯
+
+**Returns:** `boolean`
+
+*是否有闪光灯*
+
+---
+
+### `system.isFlashlightOn`
+
+**Signature:** `isFlashlightOn()`
+
+检查闪光灯是否开启
+
+**Returns:** `boolean`
+
+*闪光灯是否开启*
+
+---
+
+### `system.setFlashlight`
+
+**Signature:** `setFlashlight(enabled, level?)`
+
+设置闪光灯
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | 是否开启闪光灯 | No |
+| `level` | `number` | 亮度级别 (0.0 - 1.0)，默认 1.0 | Yes |
+
+**Returns:** `boolean`
+
+*是否设置成功*
+
+---
+
+### `system.isOrientationLockEnabled`
+
+**Signature:** `isOrientationLockEnabled()`
+
+检查方向锁定是否开启
+
+**Returns:** `boolean`
+
+*方向锁定是否开启*
+
+---
+
+### `system.setOrientationLock`
+
+**Signature:** `setOrientationLock(enabled)`
+
+设置方向锁定
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | 是否开启方向锁定 | No |
+
+**Returns:** `boolean`
+
+*是否设置成功*
+
+---
+
+### `system.isLowPowerModeEnabled`
+
+**Signature:** `isLowPowerModeEnabled()`
+
+检查低电量模式是否开启
+
+**Returns:** `boolean`
+
+*低电量模式是否开启*
+
+---
+
+### `system.setLowPowerMode`
+
+**Signature:** `setLowPowerMode(enabled)`
+
+设置低电量模式 (TrollStore 权限)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | 是否开启低电量模式 | No |
+
+**Returns:** `boolean`
+
+*是否设置成功*
+
+---
+
+### `system.isLocationServicesEnabled`
+
+**Signature:** `isLocationServicesEnabled()`
+
+检查位置服务是否开启
+
+**Returns:** `boolean`
+
+*位置服务是否开启*
+
+---
+
+### `system.setLocationServices`
+
+**Signature:** `setLocationServices(enabled)`
+
+设置位置服务 (TrollStore 权限)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | 是否开启位置服务 | No |
+
+**Returns:** `boolean`
+
+*是否设置成功*
+
+---
+
+### `system.isCellularDataEnabled`
+
+**Signature:** `isCellularDataEnabled()`
+
+检查蜂窝数据是否开启
+
+**Returns:** `boolean`
+
+*蜂窝数据是否开启*
+
+---
+
+### `system.setCellularData`
+
+**Signature:** `setCellularData(enabled)`
+
+设置蜂窝数据 (TrollStore 权限)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | 是否开启蜂窝数据 | No |
+
+**Returns:** `boolean`
+
+*是否设置成功*
+
+---
+
+### `system.openSettings`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
+**Signature:** `openSettings(section?)`
+
+打开系统设置
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `section` | `string` | 设置页面: 'WIFI', 'BLUETOOTH', 'CELLULAR', 'VPN', 'GENERAL', 'DISPLAY', 'SOUND', 'NOTIFICATION', 'PRIVACY', 'BATTERY', 'STORAGE', 'WALLPAPER', 'SIRI', 'ACCESSIBILITY', 'DND', 'SCREEN_TIME', 'PASSWORDS' | Yes |
+
+**Returns:** `boolean`
+
+*是否成功打开*
 
 ---
 

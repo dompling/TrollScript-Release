@@ -1,0 +1,173 @@
+{
+  "name": "reminder",
+  "description": "Reminders and checklists",
+  "icon": "checklist",
+  "color": "orange",
+  "daemonSupport": "limited",
+  "daemonNote": "The 'requestAccess' method requires UI interaction; other operations require prior authorization.",
+  "methods": [
+    {
+      "name": "isAuthorized",
+      "signature": "isAuthorized()",
+      "description": "Check current authorization status",
+      "returns": "boolean",
+      "returnsDescription": "Whether access is granted"
+    },
+    {
+      "name": "requestAccess",
+      "signature": "requestAccess()",
+      "description": "Request reminder access permissions",
+      "daemonSupport": "none",
+      "returns": "Promise<boolean>",
+      "returnsDescription": "Whether authorization was granted"
+    },
+    {
+      "name": "getLists",
+      "signature": "getLists()",
+      "description": "Retrieve all reminder lists",
+      "returns": "Promise<[{ id: string, title: string, color: string }]>",
+      "returnsDescription": "An array of reminder list objects"
+    },
+    {
+      "name": "getAll",
+      "signature": "getAll(listId?)",
+      "description": "Retrieve all reminder items",
+      "parameters": [
+        {
+          "name": "listId",
+          "type": "string",
+          "optional": true,
+          "description": "Specific list ID to filter by"
+        }
+      ],
+      "returns": "Promise<[{ id: string, title: string, isCompleted: boolean, listId: string, dueDate?: number }]>",
+      "returnsDescription": "An array of reminder items"
+    },
+    {
+      "name": "create",
+      "signature": "create(title, options?)",
+      "description": "Create a new reminder",
+      "parameters": [
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Reminder title"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "Options: { listId, notes, dueDate, priority, sortOrder, isPinned }"
+        }
+      ],
+      "returns": "Promise<string>",
+      "returnsDescription": "The unique ID of the created reminder"
+    },
+    {
+      "name": "complete",
+      "signature": "complete(id)",
+      "description": "Mark a reminder as completed",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Reminder ID"
+        }
+      ],
+      "returns": "Promise<boolean>",
+      "returnsDescription": "Whether the operation was successful"
+    },
+    {
+      "name": "delete",
+      "signature": "delete(id)",
+      "description": "Delete a specific reminder",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Reminder ID"
+        }
+      ],
+      "returns": "Promise<boolean>",
+      "returnsDescription": "Whether the deletion was successful"
+    },
+    {
+      "name": "getSorted",
+      "signature": "getSorted(options)",
+      "description": "Retrieve sorted reminders",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "{ sortBy: 'createdAt'|'dueDate'|'priority'|'title', ascending: boolean, completed: boolean }"
+        }
+      ],
+      "returns": "Promise<[Reminder]>",
+      "returnsDescription": "A list of sorted reminder items"
+    },
+    {
+      "name": "getUpcoming",
+      "signature": "getUpcoming(days)",
+      "description": "Retrieve reminders due soon",
+      "parameters": [
+        {
+          "name": "days",
+          "type": "number",
+          "optional": true,
+          "description": "Number of days in the future, defaults to 7"
+        }
+      ],
+      "returns": "Promise<[Reminder]>",
+      "returnsDescription": "A list of upcoming reminders"
+    },
+    {
+      "name": "getOverdue",
+      "signature": "getOverdue()",
+      "description": "Retrieve all overdue reminders",
+      "returns": "Promise<[Reminder]>",
+      "returnsDescription": "A list of reminders past their due date"
+    },
+    {
+      "name": "reorder",
+      "signature": "reorder(ids)",
+      "description": "Batch reorder reminders",
+      "parameters": [
+        {
+          "name": "ids",
+          "type": "string[]",
+          "description": "An ordered array of reminder IDs"
+        }
+      ],
+      "returns": "Promise<object>",
+      "returnsDescription": "{ success: boolean, count: number }"
+    },
+    {
+      "name": "createSystemReminder",
+      "signature": "createSystemReminder(title, options?)",
+      "description": "Create a system reminder with advanced features (e.g., location-based triggers)",
+      "parameters": [
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Reminder title"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "{ listId, notes, dueDate, priority, location: { latitude, longitude, radius, onArrive, name } }"
+        }
+      ],
+      "returns": "Promise<object>",
+      "returnsDescription": "Object containing success status and system reminder details"
+    },
+    {
+      "name": "getSystemLists",
+      "signature": "getSystemLists()",
+      "description": "Retrieve system-managed reminder lists",
+      "returns": "Promise<[{ id: string, title: string, isSystem: true }]>",
+      "returnsDescription": "An array of system reminder lists"
+    }
+  ]
+}

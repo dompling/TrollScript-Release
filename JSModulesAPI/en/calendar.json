@@ -1,0 +1,107 @@
+{
+  "name": "calendar",
+  "description": "System calendar",
+  "icon": "calendar",
+  "color": "red",
+  "daemonSupport": "limited",
+  "daemonNote": "The 'requestAccess' method requires UI interaction; other operations require prior authorization.",
+  "methods": [
+    {
+      "name": "isAuthorized",
+      "signature": "isAuthorized()",
+      "description": "Check current authorization status",
+      "returns": "boolean"
+    },
+    {
+      "name": "requestAccess",
+      "signature": "requestAccess()",
+      "description": "Request calendar access permissions",
+      "daemonSupport": "none",
+      "returns": "Promise<boolean>",
+      "returnsDescription": "Whether authorization was granted"
+    },
+    {
+      "name": "getCalendars",
+      "signature": "getCalendars()",
+      "description": "Retrieve all available calendars",
+      "returns": "Promise<[{ id: string, title: string, color: string }]>",
+      "returnsDescription": "An array of calendar objects"
+    },
+    {
+      "name": "getToday",
+      "signature": "getToday()",
+      "description": "Fetch today's events",
+      "returns": "Promise<[{ id: string, title: string, startDate: number, endDate: number, calendar: string }]>",
+      "returnsDescription": "An array of events for today"
+    },
+    {
+      "name": "getEvents",
+      "signature": "getEvents(start, end, calendarId?)",
+      "description": "Retrieve events within a specific time range",
+      "parameters": [
+        {
+          "name": "start",
+          "type": "number",
+          "description": "Start timestamp"
+        },
+        {
+          "name": "end",
+          "type": "number",
+          "description": "End timestamp"
+        },
+        {
+          "name": "calendarId",
+          "type": "string",
+          "optional": true,
+          "description": "Specific calendar ID to filter by"
+        }
+      ],
+      "returns": "Promise<[{ id: string, title: string, startDate: number, endDate: number, calendar: string }]>",
+      "returnsDescription": "An array of event objects"
+    },
+    {
+      "name": "create",
+      "signature": "create(title, start, end, options?)",
+      "description": "Create a new calendar event",
+      "parameters": [
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Event title"
+        },
+        {
+          "name": "start",
+          "type": "number",
+          "description": "Start timestamp"
+        },
+        {
+          "name": "end",
+          "type": "number",
+          "description": "End timestamp"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "Options { calendarId, notes, location, url, allDay }"
+        }
+      ],
+      "returns": "Promise<string>",
+      "returnsDescription": "ID of the newly created event"
+    },
+    {
+      "name": "delete",
+      "signature": "delete(id)",
+      "description": "Delete a specific calendar event",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Event ID"
+        }
+      ],
+      "returns": "Promise<boolean>",
+      "returnsDescription": "Whether the deletion was successful"
+    }
+  ]
+}

@@ -1,0 +1,291 @@
+{
+  "name": "media",
+  "description": "Music and media controls",
+  "icon": "music.note",
+  "color": "pink",
+  "daemonSupport": "limited",
+  "daemonNote": "The 'requestAccess' method requires UI interaction; media control requires prior authorization and a correctly configured Audio Session.",
+  "methods": [
+    {
+      "name": "play",
+      "signature": "play()",
+      "description": "Start playback",
+      "returns": "void"
+    },
+    {
+      "name": "pause",
+      "signature": "pause()",
+      "description": "Pause playback",
+      "returns": "void"
+    },
+    {
+      "name": "stop",
+      "signature": "stop()",
+      "description": "Stop playback",
+      "returns": "void"
+    },
+    {
+      "name": "togglePlayPause",
+      "signature": "togglePlayPause()",
+      "description": "Toggle between play and pause states",
+      "returns": "void"
+    },
+    {
+      "name": "next",
+      "signature": "next()",
+      "description": "Skip to the next track",
+      "returns": "void"
+    },
+    {
+      "name": "previous",
+      "signature": "previous()",
+      "description": "Skip to the previous track",
+      "returns": "void"
+    },
+    {
+      "name": "skipToBeginning",
+      "signature": "skipToBeginning()",
+      "description": "Skip to the beginning of the current track",
+      "returns": "void"
+    },
+    {
+      "name": "getPlaybackState",
+      "signature": "getPlaybackState()",
+      "description": "Get current playback state",
+      "returns": "'playing' | 'paused' | 'stopped'",
+      "returnsDescription": "Current playback status"
+    },
+    {
+      "name": "isPlaying",
+      "signature": "isPlaying()",
+      "description": "Check if media is currently playing",
+      "returns": "boolean",
+      "returnsDescription": "Whether media is playing"
+    },
+    {
+      "name": "getNowPlaying",
+      "signature": "getNowPlaying()",
+      "description": "Get information about the currently playing item",
+      "returns": "{ title: string, artist: string, album: string, duration: number, artwork?: string }",
+      "returnsDescription": "Object containing current track metadata"
+    },
+    {
+      "name": "getVolume",
+      "signature": "getVolume()",
+      "description": "Get current output volume",
+      "returns": "number",
+      "returnsDescription": "Current volume level (0.0 to 1.0)"
+    },
+    {
+      "name": "setVolume",
+      "signature": "setVolume(volume)",
+      "description": "Set output volume",
+      "parameters": [
+        {
+          "name": "volume",
+          "type": "number",
+          "description": "Volume level (0.0 to 1.0)"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "getRepeatMode",
+      "signature": "getRepeatMode()",
+      "description": "Get the current repeat mode",
+      "returns": "'none' | 'one' | 'all'",
+      "returnsDescription": "Repeat mode setting"
+    },
+    {
+      "name": "setRepeatMode",
+      "signature": "setRepeatMode(mode)",
+      "description": "Set the repeat mode",
+      "parameters": [
+        {
+          "name": "mode",
+          "type": "string",
+          "description": "Repeat mode: 'none' | 'one' | 'all'"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "getShuffleMode",
+      "signature": "getShuffleMode()",
+      "description": "Get the current shuffle mode",
+      "returns": "'off' | 'songs' | 'albums'",
+      "returnsDescription": "Shuffle mode setting"
+    },
+    {
+      "name": "setShuffleMode",
+      "signature": "setShuffleMode(mode)",
+      "description": "Set the shuffle mode",
+      "parameters": [
+        {
+          "name": "mode",
+          "type": "string",
+          "description": "Shuffle mode: 'off' | 'songs' | 'albums'"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "getCurrentTime",
+      "signature": "getCurrentTime()",
+      "description": "Get the current playback time position",
+      "returns": "number",
+      "returnsDescription": "Current playback position in seconds"
+    },
+    {
+      "name": "setCurrentTime",
+      "signature": "setCurrentTime(time)",
+      "description": "Seek to a specific time position",
+      "parameters": [
+        {
+          "name": "time",
+          "type": "number",
+          "description": "Time position in seconds"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "seekForward",
+      "signature": "seekForward(seconds?)",
+      "description": "Fast-forward by a specific duration",
+      "parameters": [
+        {
+          "name": "seconds",
+          "type": "number",
+          "optional": true,
+          "description": "Duration in seconds (defaults to 15)"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "seekBackward",
+      "signature": "seekBackward(seconds?)",
+      "description": "Rewind by a specific duration",
+      "parameters": [
+        {
+          "name": "seconds",
+          "type": "number",
+          "optional": true,
+          "description": "Duration in seconds (defaults to 15)"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "requestAccess",
+      "signature": "requestAccess()",
+      "description": "Request media library access permissions",
+      "daemonSupport": "none",
+      "returns": "Promise<boolean>",
+      "returnsDescription": "Whether authorization was granted"
+    },
+    {
+      "name": "getAccessStatus",
+      "signature": "getAccessStatus()",
+      "description": "Get current media library permission status",
+      "returns": "Promise<'authorized' | 'denied' | 'notDetermined' | 'restricted'>",
+      "returnsDescription": "Permission status"
+    },
+    {
+      "name": "searchSongs",
+      "signature": "searchSongs(query)",
+      "description": "Search the music library",
+      "parameters": [
+        {
+          "name": "query",
+          "type": "string",
+          "description": "Search keyword"
+        }
+      ],
+      "returns": "Promise<[{ id: string, title: string, artist: string, album: string }]>",
+      "returnsDescription": "An array of song objects"
+    },
+    {
+      "name": "playSong",
+      "signature": "playSong(persistentID)",
+      "description": "Play a specific song by ID",
+      "parameters": [
+        {
+          "name": "persistentID",
+          "type": "string",
+          "description": "Persistent song ID"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "getAllSongs",
+      "signature": "getAllSongs()",
+      "description": "Retrieve all songs from the music library",
+      "returns": "Promise<[{ id: string, title: string, artist: string, album: string }]>",
+      "returnsDescription": "An array of all song objects"
+    },
+    {
+      "name": "getAlbums",
+      "signature": "getAlbums()",
+      "description": "Retrieve all albums from the music library",
+      "returns": "Promise<[{ id: string, title: string, artist: string }]>",
+      "returnsDescription": "An array of album objects"
+    },
+    {
+      "name": "getArtists",
+      "signature": "getArtists()",
+      "description": "Retrieve all artists from the music library",
+      "returns": "Promise<[{ id: string, name: string }]>",
+      "returnsDescription": "An array of artist objects"
+    },
+    {
+      "name": "getPlaylists",
+      "signature": "getPlaylists()",
+      "description": "Retrieve all playlists",
+      "returns": "Promise<[{ id: string, name: string }]>",
+      "returnsDescription": "An array of playlist objects"
+    },
+    {
+      "name": "playAlbum",
+      "signature": "playAlbum(id)",
+      "description": "Play a specific album",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Album ID"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "playArtist",
+      "signature": "playArtist(id)",
+      "description": "Play tracks from a specific artist",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Artist ID"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "playPlaylist",
+      "signature": "playPlaylist(id)",
+      "description": "Play a specific playlist",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Playlist ID"
+        }
+      ],
+      "returns": "void",
+      "returnsDescription": "No return value"
+    }
+  ]
+}

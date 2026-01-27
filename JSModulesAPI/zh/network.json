@@ -1,0 +1,228 @@
+{
+  "name": "network",
+  "description": "网络操作",
+  "icon": "wifi",
+  "color": "mint",
+  "daemonSupport": "limited",
+  "daemonNote": "openSettings 方法需要 UI 交互，Daemon 模式下不可用",
+  "methods": [
+    {
+      "name": "isReachable",
+      "signature": "isReachable()",
+      "description": "检查网络是否可用",
+      "returns": "boolean",
+      "returnsDescription": "网络是否可用"
+    },
+    {
+      "name": "getConnectionType",
+      "signature": "getConnectionType()",
+      "description": "获取连接类型",
+      "returns": "'wifi' | 'cellular' | 'none'",
+      "returnsDescription": "连接类型(wifi/cellular/none)"
+    },
+    {
+      "name": "getIPAddress",
+      "signature": "getIPAddress()",
+      "description": "获取设备 IP 地址",
+      "returns": "string | null",
+      "returnsDescription": "IP 地址"
+    },
+    {
+      "name": "getWiFiInfo",
+      "signature": "getWiFiInfo()",
+      "description": "获取 WiFi 信息",
+      "returns": "{ ssid: string, bssid: string } | null",
+      "returnsDescription": "包含 SSID 和 BSSID 的对象"
+    },
+    {
+      "name": "encodeURL",
+      "signature": "encodeURL(string)",
+      "description": "URL 编码",
+      "parameters": [
+        {
+          "name": "string",
+          "type": "string",
+          "description": "要编码的字符串"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "编码后的 URL 字符串"
+    },
+    {
+      "name": "decodeURL",
+      "signature": "decodeURL(string)",
+      "description": "URL 解码",
+      "parameters": [
+        {
+          "name": "string",
+          "type": "string",
+          "description": "要解码的字符串"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "解码后的 URL 字符串"
+    },
+    {
+      "name": "parseURL",
+      "signature": "parseURL(url)",
+      "description": "解析 URL 组件",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "要解析的 URL"
+        }
+      ],
+      "returns": "{ scheme: string, host: string, path: string, query: string, params: object }",
+      "returnsDescription": "包含 URL 组件的对象"
+    },
+    {
+      "name": "buildURL",
+      "signature": "buildURL(baseURL, params?)",
+      "description": "构建带参数的 URL",
+      "parameters": [
+        {
+          "name": "baseURL",
+          "type": "string",
+          "description": "基础 URL"
+        },
+        {
+          "name": "params",
+          "type": "object",
+          "optional": true,
+          "description": "查询参数"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "构建的 URL 字符串"
+    },
+    {
+      "name": "ping",
+      "signature": "ping(host)",
+      "description": "Ping 主机",
+      "parameters": [
+        {
+          "name": "host",
+          "type": "string",
+          "description": "主机名或 IP"
+        }
+      ],
+      "returns": "Promise<{ latency: number, success: boolean }>",
+      "returnsDescription": "包含延迟和成功状态的对象"
+    },
+    {
+      "name": "download",
+      "signature": "download(url, filename?)",
+      "description": "下载文件",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "下载地址"
+        },
+        {
+          "name": "filename",
+          "type": "string",
+          "optional": true,
+          "description": "保存文件名"
+        }
+      ],
+      "returns": "Promise<{ path: string }>",
+      "returnsDescription": "包含本地文件路径的对象"
+    },
+    {
+      "name": "getAirplaneMode",
+      "signature": "getAirplaneMode()",
+      "description": "获取飞行模式状态",
+      "returns": "boolean",
+      "returnsDescription": "是否开启"
+    },
+    {
+      "name": "setAirplaneMode",
+      "signature": "setAirplaneMode(enabled)",
+      "description": "设置飞行模式",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "是否开启"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否设置成功"
+    },
+    {
+      "name": "listVPNs",
+      "signature": "listVPNs()",
+      "description": "列出 VPN 配置",
+      "returns": "[{ name: string, active: boolean }]",
+      "returnsDescription": "VPN 配置列表"
+    },
+    {
+      "name": "connectVPN",
+      "signature": "connectVPN(name?)",
+      "description": "连接 VPN",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "optional": true,
+          "description": "VPN 名称，默认第一个"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否发起连接成功"
+    },
+    {
+      "name": "disconnectVPN",
+      "signature": "disconnectVPN()",
+      "description": "断开 VPN",
+      "returns": "boolean",
+      "returnsDescription": "是否发起断开成功"
+    },
+    {
+      "name": "getVPNStatus",
+      "signature": "getVPNStatus()",
+      "description": "获取 VPN 状态",
+      "returns": "{ connected: boolean, name?: string }",
+      "returnsDescription": "包含连接状态和 VPN 名称的对象"
+    },
+    {
+      "name": "getWiFiEnabled",
+      "signature": "getWiFiEnabled()",
+      "description": "获取 WiFi 开关状态",
+      "returns": "boolean",
+      "returnsDescription": "是否开启"
+    },
+    {
+      "name": "setWiFi",
+      "signature": "setWiFi(enabled)",
+      "description": "设置 WiFi 开关",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "是否开启"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否设置成功"
+    },
+    {
+      "name": "openSettings",
+      "signature": "openSettings(section?)",
+      "description": "打开系统设置",
+      "daemonSupport": "none",
+      "parameters": [
+        {
+          "name": "section",
+          "type": "string",
+          "optional": true,
+          "description": "设置页面（如 'WIFI'）"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否成功打开"
+    }
+  ]
+}

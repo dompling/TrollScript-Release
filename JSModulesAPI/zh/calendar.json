@@ -1,0 +1,107 @@
+{
+  "name": "calendar",
+  "description": "系统日历",
+  "icon": "calendar",
+  "color": "red",
+  "daemonSupport": "limited",
+  "daemonNote": "requestAccess 需要 UI 交互，其他操作需要预先获得权限",
+  "methods": [
+    {
+      "name": "isAuthorized",
+      "signature": "isAuthorized()",
+      "description": "检查权限状态",
+      "returns": "boolean"
+    },
+    {
+      "name": "requestAccess",
+      "signature": "requestAccess()",
+      "description": "请求日历权限",
+      "daemonSupport": "none",
+      "returns": "Promise<boolean>",
+      "returnsDescription": "是否授权成功"
+    },
+    {
+      "name": "getCalendars",
+      "signature": "getCalendars()",
+      "description": "获取所有日历",
+      "returns": "Promise<[{ id: string, title: string, color: string }]>",
+      "returnsDescription": "日历列表数组"
+    },
+    {
+      "name": "getToday",
+      "signature": "getToday()",
+      "description": "获取今日事件",
+      "returns": "Promise<[{ id: string, title: string, startDate: number, endDate: number, calendar: string }]>",
+      "returnsDescription": "今日事件数组"
+    },
+    {
+      "name": "getEvents",
+      "signature": "getEvents(start, end, calendarId?)",
+      "description": "获取日历事件",
+      "parameters": [
+        {
+          "name": "start",
+          "type": "number",
+          "description": "开始时间戳"
+        },
+        {
+          "name": "end",
+          "type": "number",
+          "description": "结束时间戳"
+        },
+        {
+          "name": "calendarId",
+          "type": "string",
+          "optional": true,
+          "description": "日历 ID"
+        }
+      ],
+      "returns": "Promise<[{ id: string, title: string, startDate: number, endDate: number, calendar: string }]>",
+      "returnsDescription": "事件数组"
+    },
+    {
+      "name": "create",
+      "signature": "create(title, start, end, options?)",
+      "description": "创建日历事件",
+      "parameters": [
+        {
+          "name": "title",
+          "type": "string",
+          "description": "标题"
+        },
+        {
+          "name": "start",
+          "type": "number",
+          "description": "开始时间戳"
+        },
+        {
+          "name": "end",
+          "type": "number",
+          "description": "结束时间戳"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "选项 { calendarId, notes, location, url, allDay }"
+        }
+      ],
+      "returns": "Promise<string>",
+      "returnsDescription": "创建的事件 ID"
+    },
+    {
+      "name": "delete",
+      "signature": "delete(id)",
+      "description": "删除日历事件",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "事件 ID"
+        }
+      ],
+      "returns": "Promise<boolean>",
+      "returnsDescription": "是否删除成功"
+    }
+  ]
+}

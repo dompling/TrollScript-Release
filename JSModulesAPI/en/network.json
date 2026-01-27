@@ -1,0 +1,228 @@
+{
+  "name": "network",
+  "description": "Network operations",
+  "icon": "wifi",
+  "color": "mint",
+  "daemonSupport": "limited",
+  "daemonNote": "The 'openSettings' method requires UI interaction and is unavailable in Daemon mode.",
+  "methods": [
+    {
+      "name": "isReachable",
+      "signature": "isReachable()",
+      "description": "Check if the network is reachable",
+      "returns": "boolean",
+      "returnsDescription": "Whether the network is available"
+    },
+    {
+      "name": "getConnectionType",
+      "signature": "getConnectionType()",
+      "description": "Get current connection type",
+      "returns": "'wifi' | 'cellular' | 'none'",
+      "returnsDescription": "Connection type (wifi/cellular/none)"
+    },
+    {
+      "name": "getIPAddress",
+      "signature": "getIPAddress()",
+      "description": "Get the device's IP address",
+      "returns": "string | null",
+      "returnsDescription": "IP address string"
+    },
+    {
+      "name": "getWiFiInfo",
+      "signature": "getWiFiInfo()",
+      "description": "Retrieve current Wi-Fi network information",
+      "returns": "{ ssid: string, bssid: string } | null",
+      "returnsDescription": "Object containing SSID and BSSID"
+    },
+    {
+      "name": "encodeURL",
+      "signature": "encodeURL(string)",
+      "description": "Percent-encode a URL string",
+      "parameters": [
+        {
+          "name": "string",
+          "type": "string",
+          "description": "The string to encode"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "Encoded URL string"
+    },
+    {
+      "name": "decodeURL",
+      "signature": "decodeURL(string)",
+      "description": "Decode a percent-encoded URL string",
+      "parameters": [
+        {
+          "name": "string",
+          "type": "string",
+          "description": "The string to decode"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "Decoded URL string"
+    },
+    {
+      "name": "parseURL",
+      "signature": "parseURL(url)",
+      "description": "Parse a URL into its components",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "The URL to parse"
+        }
+      ],
+      "returns": "{ scheme: string, host: string, path: string, query: string, params: object }",
+      "returnsDescription": "Object containing URL components"
+    },
+    {
+      "name": "buildURL",
+      "signature": "buildURL(baseURL, params?)",
+      "description": "Construct a URL with query parameters",
+      "parameters": [
+        {
+          "name": "baseURL",
+          "type": "string",
+          "description": "The base URL"
+        },
+        {
+          "name": "params",
+          "type": "object",
+          "optional": true,
+          "description": "Query parameters"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "The constructed URL string"
+    },
+    {
+      "name": "ping",
+      "signature": "ping(host)",
+      "description": "Ping a remote host",
+      "parameters": [
+        {
+          "name": "host",
+          "type": "string",
+          "description": "Hostname or IP address"
+        }
+      ],
+      "returns": "Promise<{ latency: number, success: boolean }>",
+      "returnsDescription": "Object containing latency (ms) and success status"
+    },
+    {
+      "name": "download",
+      "signature": "download(url, filename?)",
+      "description": "Download a file from a URL",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "Download source URL"
+        },
+        {
+          "name": "filename",
+          "type": "string",
+          "optional": true,
+          "description": "Local filename to save as"
+        }
+      ],
+      "returns": "Promise<{ path: string }>",
+      "returnsDescription": "Object containing the local file path"
+    },
+    {
+      "name": "getAirplaneMode",
+      "signature": "getAirplaneMode()",
+      "description": "Get Airplane Mode status",
+      "returns": "boolean",
+      "returnsDescription": "Whether Airplane Mode is enabled"
+    },
+    {
+      "name": "setAirplaneMode",
+      "signature": "setAirplaneMode(enabled)",
+      "description": "Set Airplane Mode status",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "True to enable, false to disable"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the setting was successfully updated"
+    },
+    {
+      "name": "listVPNs",
+      "signature": "listVPNs()",
+      "description": "List all VPN configurations",
+      "returns": "[{ name: string, active: boolean }]",
+      "returnsDescription": "A list of VPN configuration objects"
+    },
+    {
+      "name": "connectVPN",
+      "signature": "connectVPN(name?)",
+      "description": "Establish a VPN connection",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "optional": true,
+          "description": "VPN configuration name (defaults to the first one)"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the connection request was successful"
+    },
+    {
+      "name": "disconnectVPN",
+      "signature": "disconnectVPN()",
+      "description": "Terminate the VPN connection",
+      "returns": "boolean",
+      "returnsDescription": "Whether the disconnection request was successful"
+    },
+    {
+      "name": "getVPNStatus",
+      "signature": "getVPNStatus()",
+      "description": "Get current VPN connection status",
+      "returns": "{ connected: boolean, name?: string }",
+      "returnsDescription": "Object containing connection state and VPN name"
+    },
+    {
+      "name": "getWiFiEnabled",
+      "signature": "getWiFiEnabled()",
+      "description": "Check if Wi-Fi is powered on",
+      "returns": "boolean",
+      "returnsDescription": "Whether Wi-Fi is enabled"
+    },
+    {
+      "name": "setWiFi",
+      "signature": "setWiFi(enabled)",
+      "description": "Toggle Wi-Fi power state",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "True to enable, false to disable"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the state was successfully updated"
+    },
+    {
+      "name": "openSettings",
+      "signature": "openSettings(section?)",
+      "description": "Open system network settings",
+      "daemonSupport": "none",
+      "parameters": [
+        {
+          "name": "section",
+          "type": "string",
+          "optional": true,
+          "description": "Specific setting section (e.g., 'WIFI')"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the settings page was opened"
+    }
+  ]
+}

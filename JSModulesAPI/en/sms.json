@@ -1,0 +1,110 @@
+{
+  "name": "sms",
+  "description": "SMS and messaging operations",
+  "icon": "message",
+  "color": "green",
+  "daemonSupport": "full",
+  "daemonNote": "TrollStore Root privileges are required to access the system SMS database.",
+  "methods": [
+    {
+      "name": "checkAccess",
+      "signature": "checkAccess()",
+      "description": "Check SMS database access permissions",
+      "returns": "boolean",
+      "returnsDescription": "Whether access is granted"
+    },
+    {
+      "name": "tryAccess",
+      "signature": "tryAccess()",
+      "description": "Attempt direct access to the SMS database (for debugging)",
+      "returns": "boolean",
+      "returnsDescription": "Whether the access attempt was successful"
+    },
+    {
+      "name": "read",
+      "signature": "read(limit?)",
+      "description": "Read recent SMS messages",
+      "parameters": [
+        {
+          "name": "limit",
+          "type": "number",
+          "optional": true,
+          "description": "Maximum number of messages to retrieve (defaults to 10)"
+        }
+      ],
+      "returns": "[{ id: string, content: string, sender: string, date: number }]",
+      "returnsDescription": "An array of message objects"
+    },
+    {
+      "name": "getVerificationCode",
+      "signature": "getVerificationCode(minutes?)",
+      "description": "Extract a verification code from recent messages",
+      "parameters": [
+        {
+          "name": "minutes",
+          "type": "number",
+          "optional": true,
+          "description": "Time window in minutes to search for a code (defaults to 5)"
+        }
+      ],
+      "returns": "string | null",
+      "returnsDescription": "The extracted code or null if not found"
+    },
+    {
+      "name": "search",
+      "signature": "search(keyword)",
+      "description": "Search messages by keyword",
+      "parameters": [
+        {
+          "name": "keyword",
+          "type": "string",
+          "description": "Search keyword"
+        }
+      ],
+      "returns": "[{ id: string, content: string, sender: string, date: number }]",
+      "returnsDescription": "An array of matching message objects"
+    },
+    {
+      "name": "getByAddress",
+      "signature": "getByAddress(address)",
+      "description": "Retrieve messages from a specific phone number",
+      "parameters": [
+        {
+          "name": "address",
+          "type": "string",
+          "description": "Sender's phone number or address"
+        }
+      ],
+      "returns": "[{ id: string, content: string, sender: string, date: number }]",
+      "returnsDescription": "An array of message objects"
+    },
+    {
+      "name": "getChats",
+      "signature": "getChats()",
+      "description": "Retrieve a list of conversation threads",
+      "returns": "[{ id: string, name: string, lastMessage: string, date: number }]",
+      "returnsDescription": "An array of chat session objects"
+    },
+    {
+      "name": "getStatistics",
+      "signature": "getStatistics()",
+      "description": "Get SMS usage statistics",
+      "returns": "{ total: number, unread: number, senders: number }",
+      "returnsDescription": "An object containing summary statistics"
+    },
+    {
+      "name": "getLatest",
+      "signature": "getLatest()",
+      "description": "Retrieve the most recent message",
+      "returns": "{ id: string, content: string, sender: string, date: number } | null",
+      "returnsDescription": "The latest message object or null"
+    },
+    {
+      "name": "getUnread",
+      "signature": "getUnread()",
+      "description": "Retrieve all unread messages",
+      "returns": "[{ id: string, content: string, sender: string, date: number }]",
+      "returnsDescription": "An array of unread message objects"
+    }
+  ]
+}

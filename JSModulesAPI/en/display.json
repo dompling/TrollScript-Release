@@ -1,0 +1,149 @@
+{
+  "name": "display",
+  "description": "Display and screen control",
+  "icon": "sun.max",
+  "color": "yellow",
+  "daemonSupport": "limited",
+  "daemonNote": "Brightness settings and 'keepAwake' may not function in the background; 'openSettings' requires UI interaction.",
+  "methods": [
+    {
+      "name": "getBrightness",
+      "signature": "getBrightness()",
+      "description": "Get current screen brightness",
+      "returns": "number",
+      "returnsDescription": "Current brightness level (0.0 to 1.0)"
+    },
+    {
+      "name": "setBrightness",
+      "signature": "setBrightness(value)",
+      "description": "Set screen brightness",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "number",
+          "description": "Brightness value (0.0 to 1.0)"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "increaseBrightness",
+      "signature": "increaseBrightness(amount?)",
+      "description": "Increase screen brightness",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "number",
+          "optional": true,
+          "description": "Amount to increase (defaults to 0.1)"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "decreaseBrightness",
+      "signature": "decreaseBrightness(amount?)",
+      "description": "Decrease screen brightness",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "number",
+          "optional": true,
+          "description": "Amount to decrease (defaults to 0.1)"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "getScreenInfo",
+      "signature": "getScreenInfo()",
+      "description": "Get screen dimensions and scale",
+      "returns": "{ width: number, height: number, scale: number }",
+      "returnsDescription": "Object containing width, height, and display scale"
+    },
+    {
+      "name": "getOrientation",
+      "signature": "getOrientation()",
+      "description": "Get current screen orientation",
+      "returns": "'portrait' | 'landscape'",
+      "returnsDescription": "Screen orientation mode"
+    },
+    {
+      "name": "isLowPowerModeEnabled",
+      "signature": "isLowPowerModeEnabled()",
+      "description": "Check if Low Power Mode is enabled",
+      "returns": "boolean",
+      "returnsDescription": "Whether the mode is active"
+    },
+    {
+      "name": "setLowPowerMode",
+      "signature": "setLowPowerMode(enabled)",
+      "description": "Toggle Low Power Mode",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Whether to enable Low Power Mode"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the state was successfully updated"
+    },
+    {
+      "name": "setNightShift",
+      "signature": "setNightShift(enabled)",
+      "description": "Toggle Night Shift",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Whether to enable Night Shift"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the update was successful"
+    },
+    {
+      "name": "isAutoBrightnessEnabled",
+      "signature": "isAutoBrightnessEnabled()",
+      "description": "Check if Auto-Brightness is enabled",
+      "returns": "boolean",
+      "returnsDescription": "Whether Auto-Brightness is on"
+    },
+    {
+      "name": "setAutoBrightness",
+      "signature": "setAutoBrightness(enabled)",
+      "description": "Toggle Auto-Brightness",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Whether to enable Auto-Brightness"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the update was successful"
+    },
+    {
+      "name": "openSettings",
+      "signature": "openSettings()",
+      "description": "Open system display settings",
+      "daemonSupport": "none",
+      "returns": "boolean",
+      "returnsDescription": "Whether the settings page was opened"
+    },
+    {
+      "name": "keepAwake",
+      "signature": "keepAwake(enabled)",
+      "description": "Keep screen awake and prevent dimming",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Whether to keep the screen on"
+        }
+      ],
+      "returns": "void"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "name": "icloud",
+  "description": "iCloud 文件操作",
+  "icon": "icloud",
+  "color": "blue",
+  "daemonSupport": "full",
+  "methods": [
+    {
+      "name": "isAvailable",
+      "signature": "isAvailable()",
+      "description": "检查 iCloud 是否可用",
+      "returns": "boolean",
+      "returnsDescription": "是否可用"
+    },
+    {
+      "name": "containerPath",
+      "signature": "containerPath()",
+      "description": "获取 iCloud 容器路径",
+      "returns": "string | null",
+      "returnsDescription": "iCloud 容器的本地路径，不可用时返回 null"
+    },
+    {
+      "name": "read",
+      "signature": "read(path)",
+      "description": "读取 iCloud 文件",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "文件路径（相对于 iCloud 容器）"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "文件内容"
+    },
+    {
+      "name": "write",
+      "signature": "write(path, content)",
+      "description": "写入 iCloud 文件",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "文件路径"
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "description": "要写入的内容"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否写入成功"
+    },
+    {
+      "name": "delete",
+      "signature": "delete(path)",
+      "description": "删除 iCloud 文件",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "文件路径"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否删除成功"
+    },
+    {
+      "name": "list",
+      "signature": "list(path?)",
+      "description": "列出 iCloud 目录",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "optional": true,
+          "description": "目录路径，默认为根目录"
+        }
+      ],
+      "returns": "[string]",
+      "returnsDescription": "文件名列表数组"
+    }
+  ]
+}

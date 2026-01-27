@@ -1,0 +1,110 @@
+{
+  "name": "sms",
+  "description": "短信操作",
+  "icon": "message",
+  "color": "green",
+  "daemonSupport": "full",
+  "daemonNote": "需要 TrollStore Root 权限才能访问短信数据库",
+  "methods": [
+    {
+      "name": "checkAccess",
+      "signature": "checkAccess()",
+      "description": "检查短信权限",
+      "returns": "boolean",
+      "returnsDescription": "是否有权限"
+    },
+    {
+      "name": "tryAccess",
+      "signature": "tryAccess()",
+      "description": "尝试直接访问短信数据库(调试用)",
+      "returns": "boolean",
+      "returnsDescription": "是否访问成功"
+    },
+    {
+      "name": "read",
+      "signature": "read(limit?)",
+      "description": "读取最近的短信",
+      "parameters": [
+        {
+          "name": "limit",
+          "type": "number",
+          "optional": true,
+          "description": "限制条数 (默认 10)"
+        }
+      ],
+      "returns": "[{ id: string, content: string, sender: string, date: number }]",
+      "returnsDescription": "短信对象数组"
+    },
+    {
+      "name": "getVerificationCode",
+      "signature": "getVerificationCode(minutes?)",
+      "description": "获取验证码",
+      "parameters": [
+        {
+          "name": "minutes",
+          "type": "number",
+          "optional": true,
+          "description": "查找最近几分钟内的验证码 (默认 5)"
+        }
+      ],
+      "returns": "string | null",
+      "returnsDescription": "验证码或 null"
+    },
+    {
+      "name": "search",
+      "signature": "search(keyword)",
+      "description": "搜索短信",
+      "parameters": [
+        {
+          "name": "keyword",
+          "type": "string",
+          "description": "关键词"
+        }
+      ],
+      "returns": "[{ id: string, content: string, sender: string, date: number }]",
+      "returnsDescription": "短信对象数组"
+    },
+    {
+      "name": "getByAddress",
+      "signature": "getByAddress(address)",
+      "description": "按号码获取短信",
+      "parameters": [
+        {
+          "name": "address",
+          "type": "string",
+          "description": "发送者号码"
+        }
+      ],
+      "returns": "[{ id: string, content: string, sender: string, date: number }]",
+      "returnsDescription": "短信对象数组"
+    },
+    {
+      "name": "getChats",
+      "signature": "getChats()",
+      "description": "获取会话列表",
+      "returns": "[{ id: string, name: string, lastMessage: string, date: number }]",
+      "returnsDescription": "会话列表数组"
+    },
+    {
+      "name": "getStatistics",
+      "signature": "getStatistics()",
+      "description": "获取短信统计",
+      "returns": "{ total: number, unread: number, senders: number }",
+      "returnsDescription": "统计信息对象"
+    },
+    {
+      "name": "getLatest",
+      "signature": "getLatest()",
+      "description": "获取最新短信",
+      "returns": "{ id: string, content: string, sender: string, date: number } | null",
+      "returnsDescription": "最新短信对象或 null"
+    },
+    {
+      "name": "getUnread",
+      "signature": "getUnread()",
+      "description": "获取未读短信",
+      "returns": "[{ id: string, content: string, sender: string, date: number }]",
+      "returnsDescription": "未读短信对象数组"
+    }
+  ]
+}

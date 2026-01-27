@@ -1,0 +1,221 @@
+{
+  "name": "app",
+  "description": "App operations and management",
+  "icon": "app",
+  "color": "blue",
+  "daemonSupport": "limited",
+  "daemonNote": "The 'open/launch' methods require the app to be in the foreground; 'vibrate' may not work in the background.",
+  "methods": [
+    {
+      "name": "version",
+      "signature": "version()",
+      "description": "Get app version",
+      "returns": "string",
+      "returnsDescription": "App version number"
+    },
+    {
+      "name": "build",
+      "signature": "build()",
+      "description": "Get app build number",
+      "returns": "string",
+      "returnsDescription": "App build number (CFBundleVersion)"
+    },
+    {
+      "name": "bundleId",
+      "signature": "bundleId()",
+      "description": "Get app Bundle ID",
+      "returns": "string",
+      "returnsDescription": "App's Bundle Identifier"
+    },
+    {
+      "name": "info",
+      "signature": "info()",
+      "description": "Get full app information",
+      "returns": "AppInfo",
+      "returnsDescription": "App info object containing name, version, build, bundleId, language"
+    },
+    {
+      "name": "open",
+      "signature": "open(url)",
+      "description": "Open a URL or URI Scheme",
+      "daemonSupport": "none",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "The URL to open"
+        }
+      ],
+      "returns": "Promise<boolean>",
+      "returnsDescription": "Whether the URL was opened successfully"
+    },
+    {
+      "name": "canOpen",
+      "signature": "canOpen(url)",
+      "description": "Check if a URL can be opened",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "The URL to check"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the URL can be opened"
+    },
+    {
+      "name": "vibrate",
+      "signature": "vibrate()",
+      "description": "Trigger haptic feedback",
+      "daemonSupport": "limited",
+      "returns": "void"
+    },
+    {
+      "name": "getLogs",
+      "signature": "getLogs(limit?)",
+      "description": "Get app logs",
+      "parameters": [
+        {
+          "name": "limit",
+          "type": "number",
+          "optional": true,
+          "description": "Maximum number of log entries to return"
+        }
+      ],
+      "returns": "[LogMessage]",
+      "returnsDescription": "Array of log message objects"
+    },
+    {
+      "name": "exportLogs",
+      "signature": "exportLogs()",
+      "description": "Export logs as a string",
+      "returns": "string",
+      "returnsDescription": "Exported log content"
+    },
+    {
+      "name": "getCrashReports",
+      "signature": "getCrashReports()",
+      "description": "Get all crash reports",
+      "returns": "[CrashReport]",
+      "returnsDescription": "Array of crash reports"
+    },
+    {
+      "name": "getLastCrash",
+      "signature": "getLastCrash()",
+      "description": "Get the most recent crash report",
+      "returns": "CrashReport | null",
+      "returnsDescription": "The most recent crash report"
+    },
+    {
+      "name": "clearLogs",
+      "signature": "clearLogs()",
+      "description": "Clear all logs",
+      "returns": "void"
+    },
+    {
+      "name": "exit",
+      "signature": "exit(code?)",
+      "description": "Exit the app (for debugging only)",
+      "parameters": [
+        {
+          "name": "code",
+          "type": "number",
+          "optional": true,
+          "description": "Exit code, defaults to 0"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "openSettings",
+      "signature": "openSettings()",
+      "description": "Open app settings page",
+      "daemonSupport": "none",
+      "returns": "boolean",
+      "returnsDescription": "Whether settings was opened successfully"
+    },
+    {
+      "name": "list",
+      "signature": "list()",
+      "description": "Get all installed apps (TrollStore privilege)",
+      "daemonSupport": "full",
+      "returns": "[AppInfo]",
+      "returnsDescription": "Array of app info objects containing bundleIdentifier, name, version, type, etc."
+    },
+    {
+      "name": "getAppInfo",
+      "signature": "getAppInfo(bundleId)",
+      "description": "Get detailed info for a specific app (TrollStore privilege)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "bundleId",
+          "type": "string",
+          "description": "The app's Bundle Identifier"
+        }
+      ],
+      "returns": "AppInfo | null",
+      "returnsDescription": "App info object containing bundleIdentifier, name, version, build, type, teamID, bundlePath, dataContainerPath, urlSchemes, etc."
+    },
+    {
+      "name": "launch",
+      "signature": "launch(bundleId)",
+      "description": "Launch a specific app (TrollStore privilege)",
+      "daemonSupport": "none",
+      "parameters": [
+        {
+          "name": "bundleId",
+          "type": "string",
+          "description": "The app's Bundle Identifier"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the app was launched successfully"
+    },
+    {
+      "name": "terminate",
+      "signature": "terminate(bundleId)",
+      "description": "Terminate a specific app (TrollStore privilege, requires background permission)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "bundleId",
+          "type": "string",
+          "description": "The app's Bundle Identifier"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the app was terminated successfully"
+    },
+    {
+      "name": "isInstalled",
+      "signature": "isInstalled(bundleId)",
+      "description": "Check if an app is installed",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "bundleId",
+          "type": "string",
+          "description": "The app's Bundle Identifier"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the app is installed"
+    },
+    {
+      "name": "getDataContainer",
+      "signature": "getDataContainer(bundleId)",
+      "description": "Get the data container path for an app (TrollStore privilege)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "bundleId",
+          "type": "string",
+          "description": "The app's Bundle Identifier"
+        }
+      ],
+      "returns": "string | null",
+      "returnsDescription": "Data container path, or null if not found"
+    }
+  ]
+}

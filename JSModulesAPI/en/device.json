@@ -1,0 +1,30 @@
+{
+  "name": "device",
+  "description": "Device information",
+  "icon": "iphone",
+  "color": "blue",
+  "daemonSupport": "full",
+  "methods": [
+    {
+      "name": "info",
+      "signature": "info()",
+      "description": "Retrieve general device information",
+      "returns": "{ name: string, model: string, systemName: string, systemVersion: string, identifier: string }",
+      "returnsDescription": "An object containing device name, model, OS name, OS version, and identifier"
+    },
+    {
+      "name": "battery",
+      "signature": "battery()",
+      "description": "Get battery and power status",
+      "returns": "{ level: number, state: string, lowPowerMode: boolean }",
+      "returnsDescription": "An object containing battery level (0-1), charging state, and Low Power Mode status"
+    },
+    {
+      "name": "screen",
+      "signature": "screen()",
+      "description": "Retrieve screen and display metrics",
+      "returns": "{ width: number, height: number, scale: number, brightness: number }",
+      "returnsDescription": "An object containing screen dimensions, display scale (PPI factor), and brightness level"
+    }
+  ]
+}

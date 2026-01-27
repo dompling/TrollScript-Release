@@ -1,0 +1,74 @@
+{
+  "name": "storage",
+  "description": "本地存储",
+  "icon": "externaldrive",
+  "color": "indigo",
+  "daemonSupport": "full",
+  "methods": [
+    {
+      "name": "get",
+      "signature": "get(key)",
+      "description": "获取存储值",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "string",
+          "description": "键名"
+        }
+      ],
+      "returns": "any",
+      "returnsDescription": "存储的值，如果不存在返回 undefined"
+    },
+    {
+      "name": "set",
+      "signature": "set(key, value)",
+      "description": "设置存储值",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "string",
+          "description": "键名"
+        },
+        {
+          "name": "value",
+          "type": "any",
+          "description": "要存储的值"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "remove",
+      "signature": "remove(key)",
+      "description": "删除存储值",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "string",
+          "description": "键名"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "clear",
+      "signature": "clear()",
+      "description": "清空所有存储",
+      "returns": "void"
+    },
+    {
+      "name": "has",
+      "signature": "has(key)",
+      "description": "检查键是否存在",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "string",
+          "description": "键名"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否存在"
+    }
+  ]
+}

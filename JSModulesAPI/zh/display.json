@@ -1,0 +1,135 @@
+{
+  "name": "display",
+  "description": "显示控制",
+  "icon": "sun.max",
+  "color": "yellow",
+  "daemonSupport": "limited",
+  "daemonNote": "亮度设置和 keepAwake 后台可能不生效，openSettings 需要 UI 交互",
+  "methods": [
+    {
+      "name": "getBrightness",
+      "signature": "getBrightness()",
+      "description": "获取屏幕亮度",
+      "returns": "number",
+      "returnsDescription": "当前亮度(0.0-1.0)"
+    },
+    {
+      "name": "setBrightness",
+      "signature": "setBrightness(value)",
+      "description": "设置屏幕亮度",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "number",
+          "description": "亮度值 (0.0 - 1.0)"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "increaseBrightness",
+      "signature": "increaseBrightness(amount?)",
+      "description": "增加亮度",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "number",
+          "optional": true,
+          "description": "增加量 (默认 0.1)"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "decreaseBrightness",
+      "signature": "decreaseBrightness(amount?)",
+      "description": "降低亮度",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "number",
+          "optional": true,
+          "description": "减少量 (默认 0.1)"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "getScreenInfo",
+      "signature": "getScreenInfo()",
+      "description": "获取屏幕信息",
+      "returns": "{ width: number, height: number, scale: number }",
+      "returnsDescription": "包含宽度、高度、缩放比例的对象"
+    },
+    {
+      "name": "getOrientation",
+      "signature": "getOrientation()",
+      "description": "获取屏幕方向",
+      "returns": "'portrait' | 'landscape'",
+      "returnsDescription": "屏幕方向"
+    },
+    {
+      "name": "isLowPowerModeEnabled",
+      "signature": "isLowPowerModeEnabled()",
+      "description": "低电量模式是否开启",
+      "returns": "boolean",
+      "returnsDescription": "是否开启"
+    },
+    {
+      "name": "setLowPowerMode",
+      "signature": "setLowPowerMode(enabled)",
+      "description": "设置低电量模式",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "是否开启"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否设置成功"
+    },
+    {
+      "name": "isAutoBrightnessEnabled",
+      "signature": "isAutoBrightnessEnabled()",
+      "description": "自动亮度是否开启",
+      "returns": "boolean",
+      "returnsDescription": "是否开启"
+    },
+    {
+      "name": "setAutoBrightness",
+      "signature": "setAutoBrightness(enabled)",
+      "description": "设置自动亮度",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "是否开启"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否设置成功"
+    },
+    {
+      "name": "openSettings",
+      "signature": "openSettings()",
+      "description": "打开显示设置",
+      "daemonSupport": "none",
+      "returns": "boolean",
+      "returnsDescription": "是否成功打开"
+    },
+    {
+      "name": "keepAwake",
+      "signature": "keepAwake(enabled)",
+      "description": "保持屏幕常亮",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "是否保持常亮"
+        }
+      ],
+      "returns": "void"
+    }
+  ]
+}

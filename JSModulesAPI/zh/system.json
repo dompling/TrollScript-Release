@@ -1,0 +1,284 @@
+{
+  "name": "system",
+  "description": "系统设置控制",
+  "icon": "gearshape.fill",
+  "color": "gray",
+  "daemonSupport": "full",
+  "daemonNote": "大部分方法需要 TrollStore 权限才能正常工作",
+  "methods": [
+    {
+      "name": "isWiFiEnabled",
+      "signature": "isWiFiEnabled()",
+      "description": "检查 WiFi 是否开启",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "WiFi 是否开启"
+    },
+    {
+      "name": "setWiFi",
+      "signature": "setWiFi(enabled)",
+      "description": "设置 WiFi 开关 (TrollStore 权限)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "是否开启 WiFi"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否设置成功"
+    },
+    {
+      "name": "isBluetoothEnabled",
+      "signature": "isBluetoothEnabled()",
+      "description": "检查蓝牙是否开启",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "蓝牙是否开启"
+    },
+    {
+      "name": "setBluetooth",
+      "signature": "setBluetooth(enabled)",
+      "description": "设置蓝牙开关 (TrollStore 权限)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "是否开启蓝牙"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否设置成功"
+    },
+    {
+      "name": "isAirplaneModeEnabled",
+      "signature": "isAirplaneModeEnabled()",
+      "description": "检查飞行模式是否开启",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "飞行模式是否开启"
+    },
+    {
+      "name": "setAirplaneMode",
+      "signature": "setAirplaneMode(enabled)",
+      "description": "设置飞行模式 (TrollStore 权限)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "是否开启飞行模式"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否设置成功"
+    },
+    {
+      "name": "isDoNotDisturbEnabled",
+      "signature": "isDoNotDisturbEnabled()",
+      "description": "检查勿扰模式是否开启",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "勿扰模式是否开启"
+    },
+    {
+      "name": "setDoNotDisturb",
+      "signature": "setDoNotDisturb(enabled)",
+      "description": "设置勿扰模式",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "是否开启勿扰模式"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否设置成功"
+    },
+    {
+      "name": "getVolume",
+      "signature": "getVolume(category?)",
+      "description": "获取系统音量",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "category",
+          "type": "string",
+          "optional": true,
+          "description": "音量类别: 'System', 'Ringer', 'Media'，默认 'Media'"
+        }
+      ],
+      "returns": "number",
+      "returnsDescription": "当前音量 (0.0 - 1.0)"
+    },
+    {
+      "name": "setVolume",
+      "signature": "setVolume(level, category?)",
+      "description": "设置系统音量",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "number",
+          "description": "音量级别 (0.0 - 1.0)"
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "optional": true,
+          "description": "音量类别: 'System', 'Ringer', 'Media'，默认 'Media'"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否设置成功"
+    },
+    {
+      "name": "hasFlashlight",
+      "signature": "hasFlashlight()",
+      "description": "检查设备是否有闪光灯",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "是否有闪光灯"
+    },
+    {
+      "name": "isFlashlightOn",
+      "signature": "isFlashlightOn()",
+      "description": "检查闪光灯是否开启",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "闪光灯是否开启"
+    },
+    {
+      "name": "setFlashlight",
+      "signature": "setFlashlight(enabled, level?)",
+      "description": "设置闪光灯",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "是否开启闪光灯"
+        },
+        {
+          "name": "level",
+          "type": "number",
+          "optional": true,
+          "description": "亮度级别 (0.0 - 1.0)，默认 1.0"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否设置成功"
+    },
+    {
+      "name": "isOrientationLockEnabled",
+      "signature": "isOrientationLockEnabled()",
+      "description": "检查方向锁定是否开启",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "方向锁定是否开启"
+    },
+    {
+      "name": "setOrientationLock",
+      "signature": "setOrientationLock(enabled)",
+      "description": "设置方向锁定",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "是否开启方向锁定"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否设置成功"
+    },
+    {
+      "name": "isLowPowerModeEnabled",
+      "signature": "isLowPowerModeEnabled()",
+      "description": "检查低电量模式是否开启",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "低电量模式是否开启"
+    },
+    {
+      "name": "setLowPowerMode",
+      "signature": "setLowPowerMode(enabled)",
+      "description": "设置低电量模式 (TrollStore 权限)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "是否开启低电量模式"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否设置成功"
+    },
+    {
+      "name": "isLocationServicesEnabled",
+      "signature": "isLocationServicesEnabled()",
+      "description": "检查位置服务是否开启",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "位置服务是否开启"
+    },
+    {
+      "name": "setLocationServices",
+      "signature": "setLocationServices(enabled)",
+      "description": "设置位置服务 (TrollStore 权限)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "是否开启位置服务"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否设置成功"
+    },
+    {
+      "name": "isCellularDataEnabled",
+      "signature": "isCellularDataEnabled()",
+      "description": "检查蜂窝数据是否开启",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "蜂窝数据是否开启"
+    },
+    {
+      "name": "setCellularData",
+      "signature": "setCellularData(enabled)",
+      "description": "设置蜂窝数据 (TrollStore 权限)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "是否开启蜂窝数据"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否设置成功"
+    },
+    {
+      "name": "openSettings",
+      "signature": "openSettings(section?)",
+      "description": "打开系统设置",
+      "daemonSupport": "none",
+      "parameters": [
+        {
+          "name": "section",
+          "type": "string",
+          "optional": true,
+          "description": "设置页面: 'WIFI', 'BLUETOOTH', 'CELLULAR', 'VPN', 'GENERAL', 'DISPLAY', 'SOUND', 'NOTIFICATION', 'PRIVACY', 'BATTERY', 'STORAGE', 'WALLPAPER', 'SIRI', 'ACCESSIBILITY', 'DND', 'SCREEN_TIME', 'PASSWORDS'"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否成功打开"
+    }
+  ]
+}

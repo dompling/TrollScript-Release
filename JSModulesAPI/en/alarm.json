@@ -1,0 +1,187 @@
+{
+  "name": "alarm",
+  "description": "Alarms and scheduled reminders",
+  "icon": "alarm",
+  "color": "orange",
+  "daemonSupport": "limited",
+  "daemonNote": "Methods for requestAccess and opening system apps require UI interaction",
+  "methods": [
+    {
+      "name": "requestAccess",
+      "signature": "requestAccess()",
+      "description": "Request notification permissions",
+      "daemonSupport": "none",
+      "returns": "Promise<boolean>",
+      "returnsDescription": "Whether authorization was successful"
+    },
+    {
+      "name": "getAccessStatus",
+      "signature": "getAccessStatus()",
+      "description": "Get current permission status",
+      "returns": "Promise<'authorized' | 'denied' | 'notDetermined'>",
+      "returnsDescription": "Permission status"
+    },
+    {
+      "name": "createOnce",
+      "signature": "createOnce(timestamp, title, options?)",
+      "description": "Create a one-time alarm",
+      "parameters": [
+        {
+          "name": "timestamp",
+          "type": "number",
+          "description": "Trigger timestamp"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Title"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "Options { sound }"
+        }
+      ],
+      "returns": "Promise<string>",
+      "returnsDescription": "Created alarm ID"
+    },
+    {
+      "name": "createDaily",
+      "signature": "createDaily(hour, minute, title, options?)",
+      "description": "Create a daily recurring alarm",
+      "parameters": [
+        {
+          "name": "hour",
+          "type": "number",
+          "description": "Hour (0-23)"
+        },
+        {
+          "name": "minute",
+          "type": "number",
+          "description": "Minute (0-59)"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Title"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "Options { sound }"
+        }
+      ],
+      "returns": "Promise<string>",
+      "returnsDescription": "Created alarm ID"
+    },
+    {
+      "name": "createWeekly",
+      "signature": "createWeekly(weekday, hour, minute, title, options?)",
+      "description": "Create a weekly recurring alarm",
+      "parameters": [
+        {
+          "name": "weekday",
+          "type": "number",
+          "description": "Day of the week (1-7, Sunday is 1)"
+        },
+        {
+          "name": "hour",
+          "type": "number",
+          "description": "Hour (0-23)"
+        },
+        {
+          "name": "minute",
+          "type": "number",
+          "description": "Minute (0-59)"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Title"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "Options { sound }"
+        }
+      ],
+      "returns": "Promise<string>",
+      "returnsDescription": "Created alarm ID"
+    },
+    {
+      "name": "createCountdown",
+      "signature": "createCountdown(seconds, title, options?)",
+      "description": "Create a countdown reminder",
+      "parameters": [
+        {
+          "name": "seconds",
+          "type": "number",
+          "description": "Duration in seconds"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Title"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "Options { sound }"
+        }
+      ],
+      "returns": "Promise<string>",
+      "returnsDescription": "Created alarm ID"
+    },
+    {
+      "name": "getPending",
+      "signature": "getPending()",
+      "description": "Get all pending alarms",
+      "returns": "Promise<[{ id: string, title: string, date: number, repeat?: string }]>",
+      "returnsDescription": "List of pending alarms"
+    },
+    {
+      "name": "getCount",
+      "signature": "getCount()",
+      "description": "Get total number of alarms",
+      "returns": "Promise<number>",
+      "returnsDescription": "Number of alarms"
+    },
+    {
+      "name": "cancel",
+      "signature": "cancel(id)",
+      "description": "Cancel a specific alarm",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Alarm ID"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "cancelAll",
+      "signature": "cancelAll()",
+      "description": "Cancel all alarms",
+      "returns": "void"
+    },
+    {
+      "name": "openClockApp",
+      "signature": "openClockApp()",
+      "description": "Open the system Clock app",
+      "daemonSupport": "none",
+      "returns": "void"
+    },
+    {
+      "name": "openTimer",
+      "signature": "openTimer()",
+      "description": "Open the timer",
+      "daemonSupport": "none",
+      "returns": "void"
+    }
+  ]
+}

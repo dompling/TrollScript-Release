@@ -1,0 +1,74 @@
+{
+  "name": "storage",
+  "description": "Local key-value storage",
+  "icon": "externaldrive",
+  "color": "indigo",
+  "daemonSupport": "full",
+  "methods": [
+    {
+      "name": "get",
+      "signature": "get(key)",
+      "description": "Retrieve a stored value",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "string",
+          "description": "The unique key for the stored data"
+        }
+      ],
+      "returns": "any",
+      "returnsDescription": "The stored value, or undefined if the key does not exist"
+    },
+    {
+      "name": "set",
+      "signature": "set(key, value)",
+      "description": "Store a value associated with a key",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "string",
+          "description": "The key under which to store the value"
+        },
+        {
+          "name": "value",
+          "type": "any",
+          "description": "The data to be persisted"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "remove",
+      "signature": "remove(key)",
+      "description": "Delete a specific key and its associated value",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "string",
+          "description": "The key to be removed"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "clear",
+      "signature": "clear()",
+      "description": "Remove all stored keys and values",
+      "returns": "void"
+    },
+    {
+      "name": "has",
+      "signature": "has(key)",
+      "description": "Check if a specific key exists in storage",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "string",
+          "description": "The key to check"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the key exists"
+    }
+  ]
+}

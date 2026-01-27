@@ -1,0 +1,141 @@
+{
+  "name": "notification",
+  "description": "Local notifications",
+  "icon": "bell",
+  "color": "pink",
+  "daemonSupport": "limited",
+  "daemonNote": "The 'requestAccess' method requires UI interaction; other operations require prior authorization.",
+  "methods": [
+    {
+      "name": "send",
+      "signature": "send(title, body, options?)",
+      "description": "Send an immediate notification",
+      "parameters": [
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Notification title"
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "description": "Notification body content"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "Options: { url, userInfo, sound, badge }"
+        }
+      ],
+      "returns": "Promise<string>",
+      "returnsDescription": "The unique ID of the sent notification"
+    },
+    {
+      "name": "cancel",
+      "signature": "cancel(id)",
+      "description": "Cancel a specific notification",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Notification ID"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "cancelAll",
+      "signature": "cancelAll()",
+      "description": "Cancel all scheduled notifications",
+      "returns": "void"
+    },
+    {
+      "name": "getPending",
+      "signature": "getPending()",
+      "description": "Retrieve all pending (scheduled) notifications",
+      "returns": "Promise<[{ id: string, title: string, body: string, date: number }]>",
+      "returnsDescription": "A list of notifications waiting to be triggered"
+    },
+    {
+      "name": "getDelivered",
+      "signature": "getDelivered()",
+      "description": "Retrieve all delivered notifications",
+      "returns": "Promise<[{ id: string, title: string, body: string, date: number }]>",
+      "returnsDescription": "A list of notifications currently displayed in the notification center"
+    },
+    {
+      "name": "requestAccess",
+      "signature": "requestAccess()",
+      "description": "Request user permission for notifications",
+      "daemonSupport": "none",
+      "returns": "{ granted: boolean, error?: string }",
+      "returnsDescription": "Authorization result object"
+    },
+    {
+      "name": "getAccessStatus",
+      "signature": "getAccessStatus()",
+      "description": "Get current authorization status",
+      "returns": "'authorized' | 'denied' | 'notDetermined' | 'provisional' | 'ephemeral' | 'unknown'",
+      "returnsDescription": "Current permission status string"
+    },
+    {
+      "name": "isAuthorized",
+      "signature": "isAuthorized()",
+      "description": "Check if notification permission is authorized",
+      "returns": "boolean",
+      "returnsDescription": "Whether notifications are authorized"
+    },
+    {
+      "name": "setBadge",
+      "signature": "setBadge(count)",
+      "description": "Set the application badge number",
+      "parameters": [
+        {
+          "name": "count",
+          "type": "number",
+          "description": "The number to display on the badge"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the operation was successful"
+    },
+    {
+      "name": "clearBadge",
+      "signature": "clearBadge()",
+      "description": "Clear the application badge",
+      "returns": "boolean",
+      "returnsDescription": "Whether the operation was successful"
+    },
+    {
+      "name": "schedule",
+      "signature": "schedule(title, body, date, options?)",
+      "description": "Schedule a notification for a future date",
+      "parameters": [
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Notification title"
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "description": "Notification body content"
+        },
+        {
+          "name": "date",
+          "type": "number",
+          "description": "Trigger timestamp"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "Options: { url, userInfo, sound, badge, repeat: 'daily'|'weekly'|'monthly' }"
+        }
+      ],
+      "returns": "Promise<string>",
+      "returnsDescription": "The unique ID of the scheduled notification"
+    }
+  ]
+}

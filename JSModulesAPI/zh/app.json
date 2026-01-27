@@ -1,0 +1,221 @@
+{
+  "name": "app",
+  "description": "应用操作与管理",
+  "icon": "app",
+  "color": "blue",
+  "daemonSupport": "limited",
+  "daemonNote": "open/launch 方法需要前台运行，vibrate 方法后台可能不生效",
+  "methods": [
+    {
+      "name": "version",
+      "signature": "version()",
+      "description": "获取应用版本",
+      "returns": "string",
+      "returnsDescription": "应用版本号"
+    },
+    {
+      "name": "build",
+      "signature": "build()",
+      "description": "获取应用构建号",
+      "returns": "string",
+      "returnsDescription": "应用构建号 (CFBundleVersion)"
+    },
+    {
+      "name": "bundleId",
+      "signature": "bundleId()",
+      "description": "获取应用 Bundle ID",
+      "returns": "string",
+      "returnsDescription": "应用的 Bundle Identifier"
+    },
+    {
+      "name": "info",
+      "signature": "info()",
+      "description": "获取应用完整信息",
+      "returns": "AppInfo",
+      "returnsDescription": "包含 name, version, build, bundleId, language 的应用信息对象"
+    },
+    {
+      "name": "open",
+      "signature": "open(url)",
+      "description": "打开 URL/Scheme",
+      "daemonSupport": "none",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "要打开的 URL"
+        }
+      ],
+      "returns": "Promise<boolean>",
+      "returnsDescription": "是否成功打开"
+    },
+    {
+      "name": "canOpen",
+      "signature": "canOpen(url)",
+      "description": "检查是否能打开",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "要检查的 URL"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否能打开"
+    },
+    {
+      "name": "vibrate",
+      "signature": "vibrate()",
+      "description": "震动反馈",
+      "daemonSupport": "limited",
+      "returns": "void"
+    },
+    {
+      "name": "getLogs",
+      "signature": "getLogs(limit?)",
+      "description": "获取应用日志",
+      "parameters": [
+        {
+          "name": "limit",
+          "type": "number",
+          "optional": true,
+          "description": "返回的日志条数"
+        }
+      ],
+      "returns": "[LogMessage]",
+      "returnsDescription": "日志对象数组"
+    },
+    {
+      "name": "exportLogs",
+      "signature": "exportLogs()",
+      "description": "导出日志为字符串",
+      "returns": "string",
+      "returnsDescription": "导出的日志内容"
+    },
+    {
+      "name": "getCrashReports",
+      "signature": "getCrashReports()",
+      "description": "获取所有崩溃报告",
+      "returns": "[CrashReport]",
+      "returnsDescription": "崩溃报告数组"
+    },
+    {
+      "name": "getLastCrash",
+      "signature": "getLastCrash()",
+      "description": "获取最近一次崩溃报告",
+      "returns": "CrashReport | null",
+      "returnsDescription": "最近一次崩溃报告"
+    },
+    {
+      "name": "clearLogs",
+      "signature": "clearLogs()",
+      "description": "清除所有日志",
+      "returns": "void"
+    },
+    {
+      "name": "exit",
+      "signature": "exit(code?)",
+      "description": "退出应用（仅用于调试）",
+      "parameters": [
+        {
+          "name": "code",
+          "type": "number",
+          "optional": true,
+          "description": "退出码，默认为 0"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "openSettings",
+      "signature": "openSettings()",
+      "description": "打开应用设置页面",
+      "daemonSupport": "none",
+      "returns": "boolean",
+      "returnsDescription": "是否成功打开设置"
+    },
+    {
+      "name": "list",
+      "signature": "list()",
+      "description": "获取所有已安装应用列表 (TrollStore 权限)",
+      "daemonSupport": "full",
+      "returns": "[AppInfo]",
+      "returnsDescription": "应用信息数组，包含 bundleIdentifier, name, version, type 等字段"
+    },
+    {
+      "name": "getAppInfo",
+      "signature": "getAppInfo(bundleId)",
+      "description": "获取指定应用的详细信息 (TrollStore 权限)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "bundleId",
+          "type": "string",
+          "description": "应用的 Bundle Identifier"
+        }
+      ],
+      "returns": "AppInfo | null",
+      "returnsDescription": "应用信息对象，包含 bundleIdentifier, name, version, build, type, teamID, bundlePath, dataContainerPath, urlSchemes 等"
+    },
+    {
+      "name": "launch",
+      "signature": "launch(bundleId)",
+      "description": "启动指定应用 (TrollStore 权限)",
+      "daemonSupport": "none",
+      "parameters": [
+        {
+          "name": "bundleId",
+          "type": "string",
+          "description": "应用的 Bundle Identifier"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否成功启动"
+    },
+    {
+      "name": "terminate",
+      "signature": "terminate(bundleId)",
+      "description": "终止指定应用 (TrollStore 权限，需要后台权限)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "bundleId",
+          "type": "string",
+          "description": "应用的 Bundle Identifier"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否成功终止"
+    },
+    {
+      "name": "isInstalled",
+      "signature": "isInstalled(bundleId)",
+      "description": "检查应用是否已安装",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "bundleId",
+          "type": "string",
+          "description": "应用的 Bundle Identifier"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否已安装"
+    },
+    {
+      "name": "getDataContainer",
+      "signature": "getDataContainer(bundleId)",
+      "description": "获取应用数据容器路径 (TrollStore 权限)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "bundleId",
+          "type": "string",
+          "description": "应用的 Bundle Identifier"
+        }
+      ],
+      "returns": "string | null",
+      "returnsDescription": "数据容器路径，未找到返回 null"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "name": "sql",
+  "description": "SQL 数据库查询",
+  "icon": "cylinder.split.1x2",
+  "color": "indigo",
+  "daemonSupport": "full",
+  "methods": [
+    {
+      "name": "query",
+      "signature": "query(dbPath, sql, params?)",
+      "description": "执行 SELECT 查询并返回结果",
+      "parameters": [
+        {
+          "name": "dbPath",
+          "type": "string",
+          "description": "数据库路径"
+        },
+        {
+          "name": "sql",
+          "type": "string",
+          "description": "SQL 语句"
+        },
+        {
+          "name": "params",
+          "type": "any[]",
+          "optional": true,
+          "description": "参数列表"
+        }
+      ],
+      "returns": "any[]",
+      "returnsDescription": "查询结果数组"
+    },
+    {
+      "name": "execute",
+      "signature": "execute(dbPath, sql, params?)",
+      "description": "执行 INSERT/UPDATE/DELETE",
+      "parameters": [
+        {
+          "name": "dbPath",
+          "type": "string",
+          "description": "数据库路径"
+        },
+        {
+          "name": "sql",
+          "type": "string",
+          "description": "SQL 语句"
+        },
+        {
+          "name": "params",
+          "type": "any[]",
+          "optional": true,
+          "description": "参数列表"
+        }
+      ],
+      "returns": "{ changes: number, lastInsertRowId: number }",
+      "returnsDescription": "执行结果对象"
+    },
+    {
+      "name": "tables",
+      "signature": "tables(dbPath)",
+      "description": "列出数据库中的所有表",
+      "parameters": [
+        {
+          "name": "dbPath",
+          "type": "string",
+          "description": "数据库路径"
+        }
+      ],
+      "returns": "string[]",
+      "returnsDescription": "表名数组"
+    },
+    {
+      "name": "schema",
+      "signature": "schema(dbPath, tableName)",
+      "description": "获取表结构",
+      "parameters": [
+        {
+          "name": "dbPath",
+          "type": "string",
+          "description": "数据库路径"
+        },
+        {
+          "name": "tableName",
+          "type": "string",
+          "description": "表名"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "表结构 SQL"
+    }
+  ]
+}

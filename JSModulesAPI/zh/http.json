@@ -1,0 +1,161 @@
+{
+  "name": "http",
+  "description": "网络请求",
+  "icon": "network",
+  "color": "purple",
+  "daemonSupport": "full",
+  "methods": [
+    {
+      "name": "get",
+      "signature": "get(url, options?)",
+      "description": "发送 GET 请求",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "请求地址"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "请求选项 { headers, timeout }"
+        }
+      ],
+      "returns": "Promise<{ status: number, data: string, headers: object }>",
+      "returnsDescription": "包含状态码、响应数据、响应头的对象"
+    },
+    {
+      "name": "post",
+      "signature": "post(url, options?)",
+      "description": "发送 POST 请求",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "请求地址"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "请求选项 { body, headers, timeout }"
+        }
+      ],
+      "returns": "Promise<{ status: number, data: string, headers: object }>"
+    },
+    {
+      "name": "put",
+      "signature": "put(url, options?)",
+      "description": "发送 PUT 请求",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "请求地址"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "请求选项 { body, headers, timeout }"
+        }
+      ],
+      "returns": "Promise<{ status: number, data: string, headers: object }>"
+    },
+    {
+      "name": "delete",
+      "signature": "delete(url, options?)",
+      "description": "发送 DELETE 请求",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "请求地址"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "请求选项 { headers, timeout }"
+        }
+      ],
+      "returns": "Promise<{ status: number, data: string, headers: object }>"
+    },
+    {
+      "name": "patch",
+      "signature": "patch(url, options?)",
+      "description": "发送 PATCH 请求",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "请求地址"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "请求选项 { body, headers, timeout }"
+        }
+      ],
+      "returns": "Promise<{ status: number, data: string, headers: object }>"
+    },
+    {
+      "name": "head",
+      "signature": "head(url, options?)",
+      "description": "发送 HEAD 请求",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "请求地址"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "请求选项 { headers, timeout }"
+        }
+      ],
+      "returns": "Promise<{ status: number, data: string, headers: object }>"
+    },
+    {
+      "name": "request",
+      "signature": "request(url, options)",
+      "description": "发送自定义请求",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "请求地址"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "description": "请求选项 { method, body, headers, timeout }"
+        }
+      ],
+      "returns": "Promise<{ status: number, data: string, headers: object }>"
+    },
+    {
+      "name": "download",
+      "signature": "download(url, path)",
+      "description": "下载文件",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "下载地址"
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "description": "保存路径"
+        }
+      ],
+      "returns": "Promise<{ path: string }>",
+      "returnsDescription": "包含本地文件路径的对象"
+    }
+  ]
+}

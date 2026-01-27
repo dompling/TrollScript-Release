@@ -1,0 +1,300 @@
+{
+  "name": "file",
+  "description": "文件操作",
+  "icon": "folder",
+  "color": "cyan",
+  "daemonSupport": "full",
+  "methods": [
+    {
+      "name": "read",
+      "signature": "read(path)",
+      "description": "读取文件内容",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "文件绝对路径"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "文件内容"
+    },
+    {
+      "name": "write",
+      "signature": "write(path, content)",
+      "description": "写入文件内容",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "文件绝对路径"
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "description": "要写入的内容"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否写入成功"
+    },
+    {
+      "name": "append",
+      "signature": "append(path, content)",
+      "description": "追加文件内容",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "文件绝对路径"
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "description": "要追加的内容"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否追加成功"
+    },
+    {
+      "name": "exists",
+      "signature": "exists(path)",
+      "description": "检查文件是否存在",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "文件绝对路径"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "文件是否存在"
+    },
+    {
+      "name": "delete",
+      "signature": "delete(path)",
+      "description": "删除文件",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "文件绝对路径"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否删除成功"
+    },
+    {
+      "name": "move",
+      "signature": "move(from, to)",
+      "description": "移动文件",
+      "parameters": [
+        {
+          "name": "from",
+          "type": "string",
+          "description": "源路径"
+        },
+        {
+          "name": "to",
+          "type": "string",
+          "description": "目标路径"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否移动成功"
+    },
+    {
+      "name": "copy",
+      "signature": "copy(from, to)",
+      "description": "复制文件",
+      "parameters": [
+        {
+          "name": "from",
+          "type": "string",
+          "description": "源路径"
+        },
+        {
+          "name": "to",
+          "type": "string",
+          "description": "目标路径"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否复制成功"
+    },
+    {
+      "name": "list",
+      "signature": "list(path)",
+      "description": "列出目录内容",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "目录路径"
+        }
+      ],
+      "returns": "[string]",
+      "returnsDescription": "文件名列表数组"
+    },
+    {
+      "name": "mkdir",
+      "signature": "mkdir(path)",
+      "description": "创建目录",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "目录路径"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否创建成功"
+    },
+    {
+      "name": "stat",
+      "signature": "stat(path)",
+      "description": "获取文件信息",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "文件路径"
+        }
+      ],
+      "returns": "{ size: number, modificationDate: number, creationDate: number, type: string }",
+      "returnsDescription": "包含大小(字节)、修改时间(时间戳)、创建时间(时间戳)、类型(file/directory)的对象"
+    },
+    {
+      "name": "isDirectory",
+      "signature": "isDirectory(path)",
+      "description": "判断是否是目录",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "文件路径"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否是目录"
+    },
+    {
+      "name": "documentsPath",
+      "signature": "documentsPath()",
+      "description": "获取文档目录路径",
+      "returns": "string",
+      "returnsDescription": "Documents 目录的绝对路径"
+    },
+    {
+      "name": "cachePath",
+      "signature": "cachePath()",
+      "description": "获取缓存目录路径",
+      "returns": "string",
+      "returnsDescription": "Caches 目录的绝对路径"
+    },
+    {
+      "name": "tempPath",
+      "signature": "tempPath()",
+      "description": "获取临时目录路径",
+      "returns": "string",
+      "returnsDescription": "Temporary 目录的绝对路径"
+    },
+    {
+      "name": "debug",
+      "signature": "debug(path)",
+      "description": "调试路径访问权限详情",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "文件路径"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "调试信息字符串"
+    },
+    {
+      "name": "rootRead",
+      "signature": "rootRead(path)",
+      "description": "使用 Root 权限读取受保护文件（需要 TrollStore）",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "文件绝对路径"
+        }
+      ],
+      "returns": "string | null",
+      "returnsDescription": "文件内容，读取失败返回 null"
+    },
+    {
+      "name": "rootList",
+      "signature": "rootList(path)",
+      "description": "使用 Root 权限列出受保护目录（需要 TrollStore）",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "目录绝对路径"
+        }
+      ],
+      "returns": "[string] | null",
+      "returnsDescription": "文件名列表，失败返回 null"
+    },
+    {
+      "name": "rootCopy",
+      "signature": "rootCopy(src, dest)",
+      "description": "使用 Root 权限复制受保护文件（需要 TrollStore）",
+      "parameters": [
+        {
+          "name": "src",
+          "type": "string",
+          "description": "源文件路径"
+        },
+        {
+          "name": "dest",
+          "type": "string",
+          "description": "目标文件路径"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否复制成功"
+    },
+    {
+      "name": "rootCheck",
+      "signature": "rootCheck(path)",
+      "description": "使用 Root 权限检查路径信息（需要 TrollStore）",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "文件或目录路径"
+        }
+      ],
+      "returns": "{ readable: boolean, writable: boolean, exists: boolean, isDirectory: boolean }",
+      "returnsDescription": "包含读写权限、存在状态等调试信息的对象"
+    },
+    {
+      "name": "rootExists",
+      "signature": "rootExists(path)",
+      "description": "使用 Root 权限检查文件是否存在（需要 TrollStore）",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "文件路径"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否存在"
+    },
+    {
+      "name": "rootAvailable",
+      "signature": "rootAvailable()",
+      "description": "检查 Root Helper 是否可用",
+      "returns": "boolean",
+      "returnsDescription": "是否可用"
+    }
+  ]
+}

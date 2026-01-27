@@ -1,4 +1,4 @@
-# TrollScript API Reference (v1.0.0)
+# TrollScript API Reference (v1.2.0)
 
 TrollScript provides a powerful JavaScript environment with access to various system features. Below is the comprehensive API reference for all available modules.
 
@@ -8,9 +8,9 @@ The following icons indicate API compatibility when running in background trigge
 
 | Icon | Status | Description |
 |:----:|--------|-------------|
-| ✅ | **Full** | Fully supported in trigger mode |
-| ⚠️ | **Limited** | Partial support, some features may not work |
-| ❌ | **None** | Not supported in trigger mode, requires foreground |
+| ✅ | **Full** | Full Support - Functions correctly under triggers |
+| ⚠️ | **Limited** | Limited Support - Some features may be restricted or ineffective |
+| ❌ | **None** | No Support - Requires foreground execution; unavailable under triggers |
 
 ---
 
@@ -18,29 +18,30 @@ The following icons indicate API compatibility when running in background trigge
 
 - [console](#console) ✅ - Console output
 - [device](#device) ✅ - Device information
-- [clipboard](#clipboard) ✅ - Clipboard operations
-- [storage](#storage) ✅ - Local storage
+- [clipboard](#clipboard) ⚠️ - Clipboard operations
+- [storage](#storage) ✅ - Local key-value storage
 - [icloud](#icloud) ✅ - iCloud file operations
-- [file](#file) ✅ - File operations
+- [file](#file) ✅ - File system operations
 - [http](#http) ✅ - Network requests
-- [network](#network) ✅ - Network operations
-- [app](#app) ✅ - App operations
-- [haptic](#haptic) ✅ - Haptic feedback
-- [display](#display) ✅ - Display control
+- [network](#network) ⚠️ - Network operations
+- [app](#app) ⚠️ - App operations and management
+- [haptic](#haptic) ⚠️ - Haptic feedback
+- [display](#display) ⚠️ - Display and screen control
 - [util](#util) ✅ - Utility functions
-- [location](#location) ✅ - Location services
-- [calendar](#calendar) ✅ - System calendar
-- [reminder](#reminder) ✅ - Reminders
-- [contacts](#contacts) ✅ - Contacts operations
-- [notification](#notification) ✅ - Local notifications
-- [alarm](#alarm) ✅ - Alarms and Timers
-- [media](#media) ✅ - Music & Media control
-- [mail](#mail) ✅ - Mail operations
-- [sms](#sms) ✅ - SMS operations
-- [sql](#sql) ✅ - SQL Database Query
-- [shortcuts](#shortcuts) ✅ - Shortcuts operations
-- [bluetooth](#bluetooth) ✅ - Bluetooth operations
-- [memo](#memo) ✅ - Memo operations (iCloud Sync)
+- [location](#location) ⚠️ - Location services
+- [calendar](#calendar) ⚠️ - System calendar
+- [reminder](#reminder) ⚠️ - Reminders and checklists
+- [contacts](#contacts) ⚠️ - Contact management operations
+- [notification](#notification) ⚠️ - Local notifications
+- [alarm](#alarm) ⚠️ - Alarms and scheduled reminders
+- [media](#media) ⚠️ - Music and media controls
+- [mail](#mail) ❌ - Email operations
+- [sms](#sms) ✅ - SMS and messaging operations
+- [sql](#sql) ✅ - SQL database operations
+- [shortcuts](#shortcuts) ❌ - Shortcuts operations
+- [bluetooth](#bluetooth) ⚠️ - Bluetooth operations
+- [memo](#memo) ✅ - Memo operations (iCloud synchronized)
+- [system](#system) ✅ - System settings control
 
 ---
 
@@ -54,13 +55,13 @@ Console output
 
 **Signature:** `log(...args)`
 
-Output log information
+Output log messages
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `...args` | `any[]` | Content to output | No |
+| `...args` | `any[]` | Content to be logged | No |
 
 **Returns:** `void`
 
@@ -70,13 +71,13 @@ Output log information
 
 **Signature:** `error(...args)`
 
-Output error information
+Output error messages
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `...args` | `any[]` | Content to output | No |
+| `...args` | `any[]` | Content to be logged as an error | No |
 
 **Returns:** `void`
 
@@ -86,13 +87,13 @@ Output error information
 
 **Signature:** `warn(...args)`
 
-Output warning information
+Output warning messages
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `...args` | `any[]` | Content to output | No |
+| `...args` | `any[]` | Content to be logged as a warning | No |
 
 **Returns:** `void`
 
@@ -102,13 +103,13 @@ Output warning information
 
 **Signature:** `info(...args)`
 
-Output informational message
+Output informational messages
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `...args` | `any[]` | Content to output | No |
+| `...args` | `any[]` | Content to be logged as info | No |
 
 **Returns:** `void`
 
@@ -118,13 +119,13 @@ Output informational message
 
 **Signature:** `debug(...args)`
 
-Output debug information
+Output debug messages
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `...args` | `any[]` | Content to output | No |
+| `...args` | `any[]` | Content to be logged for debugging | No |
 
 **Returns:** `void`
 
@@ -134,13 +135,13 @@ Output debug information
 
 **Signature:** `table(data)`
 
-Output as a table
+Display data in tabular format
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `data` | `object \| array` | Table data to display | No |
+| `data` | `object \| array` | Tabular data to be displayed | No |
 
 **Returns:** `void`
 
@@ -150,7 +151,7 @@ Output as a table
 
 **Signature:** `clear()`
 
-Clear console
+Clear the console
 
 **Returns:** `void`
 
@@ -166,11 +167,11 @@ Device information
 
 **Signature:** `info()`
 
-Get device information
+Retrieve general device information
 
 **Returns:** `{ name: string, model: string, systemName: string, systemVersion: string, identifier: string }`
 
-*Object containing device name, model, system version, etc.*
+*An object containing device name, model, OS name, OS version, and identifier*
 
 ---
 
@@ -178,11 +179,11 @@ Get device information
 
 **Signature:** `battery()`
 
-Get battery information
+Get battery and power status
 
 **Returns:** `{ level: number, state: string, lowPowerMode: boolean }`
 
-*Object containing battery level (0-1), charging state, low power mode, etc.*
+*An object containing battery level (0-1), charging state, and Low Power Mode status*
 
 ---
 
@@ -190,17 +191,17 @@ Get battery information
 
 **Signature:** `screen()`
 
-Get screen information
+Retrieve screen and display metrics
 
 **Returns:** `{ width: number, height: number, scale: number, brightness: number }`
 
-*Object containing screen dimensions, scale factor, brightness, etc.*
+*An object containing screen dimensions, display scale (PPI factor), and brightness level*
 
 ---
 
 ## clipboard
 
-![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
 
 Clipboard operations
 
@@ -208,25 +209,27 @@ Clipboard operations
 
 **Signature:** `getText()`
 
-Get clipboard text
+Get text from the clipboard
 
 **Returns:** `string`
 
-*Text content from clipboard*
+*The text content currently in the clipboard*
 
 ---
 
 ### `clipboard.setText`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `setText(text)`
 
-Set clipboard text
+Set text to the clipboard
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `text` | `string` | Text content to set | No |
+| `text` | `string` | The text content to be set | No |
 
 **Returns:** `void`
 
@@ -234,9 +237,11 @@ Set clipboard text
 
 ### `clipboard.clear`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `clear()`
 
-Clear clipboard
+Clear the clipboard
 
 **Returns:** `void`
 
@@ -246,23 +251,23 @@ Clear clipboard
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
-Local storage
+Local key-value storage
 
 ### `storage.get`
 
 **Signature:** `get(key)`
 
-Get stored value
+Retrieve a stored value
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `key` | `string` | Key name | No |
+| `key` | `string` | The unique key for the stored data | No |
 
 **Returns:** `any`
 
-*Stored value, or undefined if not exists*
+*The stored value, or undefined if the key does not exist*
 
 ---
 
@@ -270,14 +275,14 @@ Get stored value
 
 **Signature:** `set(key, value)`
 
-Set stored value
+Store a value associated with a key
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `key` | `string` | Key name | No |
-| `value` | `any` | Value to store | No |
+| `key` | `string` | The key under which to store the value | No |
+| `value` | `any` | The data to be persisted | No |
 
 **Returns:** `void`
 
@@ -287,13 +292,13 @@ Set stored value
 
 **Signature:** `remove(key)`
 
-Remove stored value
+Delete a specific key and its associated value
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `key` | `string` | Key name | No |
+| `key` | `string` | The key to be removed | No |
 
 **Returns:** `void`
 
@@ -303,7 +308,7 @@ Remove stored value
 
 **Signature:** `clear()`
 
-Clear all storage
+Remove all stored keys and values
 
 **Returns:** `void`
 
@@ -313,13 +318,13 @@ Clear all storage
 
 **Signature:** `has(key)`
 
-Check if key exists
+Check if a specific key exists in storage
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `key` | `string` | Key name | No |
+| `key` | `string` | The key to check | No |
 
 **Returns:** `boolean`
 
@@ -341,7 +346,7 @@ Check if iCloud is available
 
 **Returns:** `boolean`
 
-*Availability status*
+*Whether iCloud service is available*
 
 ---
 
@@ -349,11 +354,11 @@ Check if iCloud is available
 
 **Signature:** `containerPath()`
 
-Get iCloud container path
+Get the iCloud container path
 
 **Returns:** `string \| null`
 
-*Local path of iCloud container, null if unavailable*
+*Local path of the iCloud container, or null if unavailable*
 
 ---
 
@@ -361,17 +366,17 @@ Get iCloud container path
 
 **Signature:** `read(path)`
 
-Read iCloud file
+Read a file from iCloud
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `path` | `string` | File path (relative to iCloud container) | No |
+| `path` | `string` | File path (relative to the iCloud container) | No |
 
 **Returns:** `string`
 
-*File content*
+*The content of the file*
 
 ---
 
@@ -379,18 +384,18 @@ Read iCloud file
 
 **Signature:** `write(path, content)`
 
-Write to iCloud file
+Write content to an iCloud file
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `path` | `string` | File path | No |
-| `content` | `string` | Content to write | No |
+| `content` | `string` | The content to be written | No |
 
 **Returns:** `boolean`
 
-*Whether write was successful*
+*Whether the write operation was successful*
 
 ---
 
@@ -398,7 +403,7 @@ Write to iCloud file
 
 **Signature:** `delete(path)`
 
-Delete iCloud file
+Delete a file from iCloud
 
 **Parameters:**
 
@@ -408,7 +413,7 @@ Delete iCloud file
 
 **Returns:** `boolean`
 
-*Whether deletion was successful*
+*Whether the deletion was successful*
 
 ---
 
@@ -416,17 +421,17 @@ Delete iCloud file
 
 **Signature:** `list(path?)`
 
-List iCloud directory
+List contents of an iCloud directory
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `path` | `string` | Directory path, defaults to root | Yes |
+| `path` | `string` | Directory path, defaults to the root directory | Yes |
 
 **Returns:** `[string]`
 
-*Array of filenames*
+*An array of file names*
 
 ---
 
@@ -434,7 +439,7 @@ List iCloud directory
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
-File operations
+File system operations
 
 ### `file.read`
 
@@ -450,7 +455,7 @@ Read file content
 
 **Returns:** `string`
 
-*File content*
+*The content of the file*
 
 ---
 
@@ -458,18 +463,18 @@ Read file content
 
 **Signature:** `write(path, content)`
 
-Write file content
+Write content to a file
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `path` | `string` | Absolute file path | No |
-| `content` | `string` | Content to write | No |
+| `content` | `string` | The content to be written | No |
 
 **Returns:** `boolean`
 
-*Whether write was successful*
+*Whether the write operation was successful*
 
 ---
 
@@ -477,18 +482,18 @@ Write file content
 
 **Signature:** `append(path, content)`
 
-Append to file
+Append content to a file
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `path` | `string` | Absolute file path | No |
-| `content` | `string` | Content to append | No |
+| `content` | `string` | The content to be appended | No |
 
 **Returns:** `boolean`
 
-*Whether append was successful*
+*Whether the append operation was successful*
 
 ---
 
@@ -496,7 +501,7 @@ Append to file
 
 **Signature:** `exists(path)`
 
-Check if file exists
+Check if a file exists
 
 **Parameters:**
 
@@ -506,7 +511,7 @@ Check if file exists
 
 **Returns:** `boolean`
 
-*Existence status*
+*Whether the file exists*
 
 ---
 
@@ -514,7 +519,7 @@ Check if file exists
 
 **Signature:** `delete(path)`
 
-Delete file
+Delete a file
 
 **Parameters:**
 
@@ -524,7 +529,7 @@ Delete file
 
 **Returns:** `boolean`
 
-*Whether deletion was successful*
+*Whether the deletion was successful*
 
 ---
 
@@ -532,7 +537,7 @@ Delete file
 
 **Signature:** `move(from, to)`
 
-Move file
+Move a file
 
 **Parameters:**
 
@@ -543,7 +548,7 @@ Move file
 
 **Returns:** `boolean`
 
-*Whether move was successful*
+*Whether the move operation was successful*
 
 ---
 
@@ -551,7 +556,7 @@ Move file
 
 **Signature:** `copy(from, to)`
 
-Copy file
+Copy a file
 
 **Parameters:**
 
@@ -562,7 +567,7 @@ Copy file
 
 **Returns:** `boolean`
 
-*Whether copy was successful*
+*Whether the copy operation was successful*
 
 ---
 
@@ -580,7 +585,7 @@ List directory contents
 
 **Returns:** `[string]`
 
-*Array of filenames*
+*An array of file names*
 
 ---
 
@@ -588,7 +593,7 @@ List directory contents
 
 **Signature:** `mkdir(path)`
 
-Create directory
+Create a new directory
 
 **Parameters:**
 
@@ -598,7 +603,7 @@ Create directory
 
 **Returns:** `boolean`
 
-*Whether creation was successful*
+*Whether the directory was successfully created*
 
 ---
 
@@ -606,7 +611,7 @@ Create directory
 
 **Signature:** `stat(path)`
 
-Get file statistics
+Retrieve file information
 
 **Parameters:**
 
@@ -616,7 +621,7 @@ Get file statistics
 
 **Returns:** `{ size: number, modificationDate: number, creationDate: number, type: string }`
 
-*Object containing size (bytes), modification timestamp, creation timestamp, type (file/directory)*
+*Object containing size (bytes), modification timestamp, creation timestamp, and type (file/directory)*
 
 ---
 
@@ -624,7 +629,7 @@ Get file statistics
 
 **Signature:** `isDirectory(path)`
 
-Check if path is a directory
+Check if the path is a directory
 
 **Parameters:**
 
@@ -634,7 +639,7 @@ Check if path is a directory
 
 **Returns:** `boolean`
 
-*Whether it is a directory*
+*Whether the path is a directory*
 
 ---
 
@@ -642,11 +647,11 @@ Check if path is a directory
 
 **Signature:** `documentsPath()`
 
-Get Documents path
+Get the Documents directory path
 
 **Returns:** `string`
 
-*Absolute path to Documents directory*
+*The absolute path of the Documents directory*
 
 ---
 
@@ -654,11 +659,11 @@ Get Documents path
 
 **Signature:** `cachePath()`
 
-Get Caches path
+Get the Caches directory path
 
 **Returns:** `string`
 
-*Absolute path to Caches directory*
+*The absolute path of the Caches directory*
 
 ---
 
@@ -666,11 +671,11 @@ Get Caches path
 
 **Signature:** `tempPath()`
 
-Get Temporary path
+Get the Temporary directory path
 
 **Returns:** `string`
 
-*Absolute path to Temporary directory*
+*The absolute path of the Temporary directory*
 
 ---
 
@@ -678,7 +683,7 @@ Get Temporary path
 
 **Signature:** `debug(path)`
 
-Debug path access permissions
+Debug access permission details for a path
 
 **Parameters:**
 
@@ -696,7 +701,7 @@ Debug path access permissions
 
 **Signature:** `rootRead(path)`
 
-Read protected file using Root (Requires TrollStore)
+Read protected files with Root privileges (requires TrollStore)
 
 **Parameters:**
 
@@ -706,7 +711,7 @@ Read protected file using Root (Requires TrollStore)
 
 **Returns:** `string \| null`
 
-*File content, or null on failure*
+*File content, or null if reading failed*
 
 ---
 
@@ -714,7 +719,7 @@ Read protected file using Root (Requires TrollStore)
 
 **Signature:** `rootList(path)`
 
-List protected directory using Root (Requires TrollStore)
+List protected directory contents with Root privileges (requires TrollStore)
 
 **Parameters:**
 
@@ -724,7 +729,7 @@ List protected directory using Root (Requires TrollStore)
 
 **Returns:** `[string] \| null`
 
-*List of filenames, or null on failure*
+*An array of file names, or null if it failed*
 
 ---
 
@@ -732,18 +737,18 @@ List protected directory using Root (Requires TrollStore)
 
 **Signature:** `rootCopy(src, dest)`
 
-Copy protected file using Root (Requires TrollStore)
+Copy protected files with Root privileges (requires TrollStore)
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `src` | `string` | Source path | No |
-| `dest` | `string` | Destination path | No |
+| `src` | `string` | Source file path | No |
+| `dest` | `string` | Destination file path | No |
 
 **Returns:** `boolean`
 
-*Whether copy was successful*
+*Whether the copy was successful*
 
 ---
 
@@ -751,7 +756,7 @@ Copy protected file using Root (Requires TrollStore)
 
 **Signature:** `rootCheck(path)`
 
-Check path info using Root (Requires TrollStore)
+Inspect path details with Root privileges (requires TrollStore)
 
 **Parameters:**
 
@@ -761,7 +766,7 @@ Check path info using Root (Requires TrollStore)
 
 **Returns:** `{ readable: boolean, writable: boolean, exists: boolean, isDirectory: boolean }`
 
-*Object containing R/W permissions, existence, and debugging info*
+*Object containing read/write permissions, existence, and other debug info*
 
 ---
 
@@ -769,7 +774,7 @@ Check path info using Root (Requires TrollStore)
 
 **Signature:** `rootExists(path)`
 
-Check file existence using Root (Requires TrollStore)
+Check file existence with Root privileges (requires TrollStore)
 
 **Parameters:**
 
@@ -779,7 +784,7 @@ Check file existence using Root (Requires TrollStore)
 
 **Returns:** `boolean`
 
-*Existence status*
+*Whether it exists*
 
 ---
 
@@ -787,11 +792,11 @@ Check file existence using Root (Requires TrollStore)
 
 **Signature:** `rootAvailable()`
 
-Check if Root Helper is available
+Check if the Root Helper is available
 
 **Returns:** `boolean`
 
-*Availability status*
+*Whether the helper is available*
 
 ---
 
@@ -805,18 +810,18 @@ Network requests
 
 **Signature:** `get(url, options?)`
 
-Send GET request
+Send a GET request
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `url` | `string` | Request URL | No |
+| `url` | `string` | Target URL | No |
 | `options` | `object` | Request options { headers, timeout } | Yes |
 
 **Returns:** `Promise<{ status: number, data: string, headers: object }>`
 
-*Object containing status code, response data, headers*
+*Object containing status code, response data, and response headers*
 
 ---
 
@@ -824,13 +829,13 @@ Send GET request
 
 **Signature:** `post(url, options?)`
 
-Send POST request
+Send a POST request
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `url` | `string` | Request URL | No |
+| `url` | `string` | Target URL | No |
 | `options` | `object` | Request options { body, headers, timeout } | Yes |
 
 **Returns:** `Promise<{ status: number, data: string, headers: object }>`
@@ -841,13 +846,13 @@ Send POST request
 
 **Signature:** `put(url, options?)`
 
-Send PUT request
+Send a PUT request
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `url` | `string` | Request URL | No |
+| `url` | `string` | Target URL | No |
 | `options` | `object` | Request options { body, headers, timeout } | Yes |
 
 **Returns:** `Promise<{ status: number, data: string, headers: object }>`
@@ -858,13 +863,13 @@ Send PUT request
 
 **Signature:** `delete(url, options?)`
 
-Send DELETE request
+Send a DELETE request
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `url` | `string` | Request URL | No |
+| `url` | `string` | Target URL | No |
 | `options` | `object` | Request options { headers, timeout } | Yes |
 
 **Returns:** `Promise<{ status: number, data: string, headers: object }>`
@@ -875,13 +880,13 @@ Send DELETE request
 
 **Signature:** `patch(url, options?)`
 
-Send PATCH request
+Send a PATCH request
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `url` | `string` | Request URL | No |
+| `url` | `string` | Target URL | No |
 | `options` | `object` | Request options { body, headers, timeout } | Yes |
 
 **Returns:** `Promise<{ status: number, data: string, headers: object }>`
@@ -892,13 +897,13 @@ Send PATCH request
 
 **Signature:** `head(url, options?)`
 
-Send HEAD request
+Send a HEAD request
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `url` | `string` | Request URL | No |
+| `url` | `string` | Target URL | No |
 | `options` | `object` | Request options { headers, timeout } | Yes |
 
 **Returns:** `Promise<{ status: number, data: string, headers: object }>`
@@ -909,13 +914,13 @@ Send HEAD request
 
 **Signature:** `request(url, options)`
 
-Send custom request
+Send a custom HTTP request
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `url` | `string` | Request URL | No |
+| `url` | `string` | Target URL | No |
 | `options` | `object` | Request options { method, body, headers, timeout } | No |
 
 **Returns:** `Promise<{ status: number, data: string, headers: object }>`
@@ -926,36 +931,38 @@ Send custom request
 
 **Signature:** `download(url, path)`
 
-Download file
+Download a file from a URL
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `url` | `string` | Download URL | No |
-| `path` | `string` | Save path | No |
+| `url` | `string` | Download source URL | No |
+| `path` | `string` | Local destination path to save the file | No |
 
 **Returns:** `Promise<{ path: string }>`
 
-*Object containing local file path*
+*Object containing the local file path*
 
 ---
 
 ## network
 
-![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
 
 Network operations
+
+> **Trigger Note:** The 'openSettings' method requires UI interaction and is unavailable in Daemon mode.
 
 ### `network.isReachable`
 
 **Signature:** `isReachable()`
 
-Check if network is reachable
+Check if the network is reachable
 
 **Returns:** `boolean`
 
-*Reachability status*
+*Whether the network is available*
 
 ---
 
@@ -963,7 +970,7 @@ Check if network is reachable
 
 **Signature:** `getConnectionType()`
 
-Get connection type
+Get current connection type
 
 **Returns:** `'wifi' \| 'cellular' \| 'none'`
 
@@ -975,11 +982,11 @@ Get connection type
 
 **Signature:** `getIPAddress()`
 
-Get device IP address
+Get the device's IP address
 
 **Returns:** `string \| null`
 
-*IP Address*
+*IP address string*
 
 ---
 
@@ -987,7 +994,7 @@ Get device IP address
 
 **Signature:** `getWiFiInfo()`
 
-Get WiFi information
+Retrieve current Wi-Fi network information
 
 **Returns:** `{ ssid: string, bssid: string } \| null`
 
@@ -999,13 +1006,13 @@ Get WiFi information
 
 **Signature:** `encodeURL(string)`
 
-URL encode
+Percent-encode a URL string
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `string` | `string` | String to encode | No |
+| `string` | `string` | The string to encode | No |
 
 **Returns:** `string`
 
@@ -1017,13 +1024,13 @@ URL encode
 
 **Signature:** `decodeURL(string)`
 
-URL decode
+Decode a percent-encoded URL string
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `string` | `string` | String to decode | No |
+| `string` | `string` | The string to decode | No |
 
 **Returns:** `string`
 
@@ -1035,13 +1042,13 @@ URL decode
 
 **Signature:** `parseURL(url)`
 
-Parse URL components
+Parse a URL into its components
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `url` | `string` | URL to parse | No |
+| `url` | `string` | The URL to parse | No |
 
 **Returns:** `{ scheme: string, host: string, path: string, query: string, params: object }`
 
@@ -1053,18 +1060,18 @@ Parse URL components
 
 **Signature:** `buildURL(baseURL, params?)`
 
-Build URL with parameters
+Construct a URL with query parameters
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `baseURL` | `string` | Base URL | No |
+| `baseURL` | `string` | The base URL | No |
 | `params` | `object` | Query parameters | Yes |
 
 **Returns:** `string`
 
-*Built URL string*
+*The constructed URL string*
 
 ---
 
@@ -1072,17 +1079,17 @@ Build URL with parameters
 
 **Signature:** `ping(host)`
 
-Ping host
+Ping a remote host
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `host` | `string` | Hostname or IP | No |
+| `host` | `string` | Hostname or IP address | No |
 
 **Returns:** `Promise<{ latency: number, success: boolean }>`
 
-*Object containing latency and success status*
+*Object containing latency (ms) and success status*
 
 ---
 
@@ -1090,18 +1097,18 @@ Ping host
 
 **Signature:** `download(url, filename?)`
 
-Download file
+Download a file from a URL
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `url` | `string` | Download URL | No |
-| `filename` | `string` | Save filename | Yes |
+| `url` | `string` | Download source URL | No |
+| `filename` | `string` | Local filename to save as | Yes |
 
 **Returns:** `Promise<{ path: string }>`
 
-*Object containing local file path*
+*Object containing the local file path*
 
 ---
 
@@ -1113,7 +1120,7 @@ Get Airplane Mode status
 
 **Returns:** `boolean`
 
-*Whether enabled*
+*Whether Airplane Mode is enabled*
 
 ---
 
@@ -1121,17 +1128,17 @@ Get Airplane Mode status
 
 **Signature:** `setAirplaneMode(enabled)`
 
-Set Airplane Mode
+Set Airplane Mode status
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `enabled` | `boolean` | Whether to enable | No |
+| `enabled` | `boolean` | True to enable, false to disable | No |
 
 **Returns:** `boolean`
 
-*Whether setting was successful*
+*Whether the setting was successfully updated*
 
 ---
 
@@ -1139,11 +1146,11 @@ Set Airplane Mode
 
 **Signature:** `listVPNs()`
 
-List VPN configurations
+List all VPN configurations
 
 **Returns:** `[{ name: string, active: boolean }]`
 
-*List of VPN configurations*
+*A list of VPN configuration objects*
 
 ---
 
@@ -1151,17 +1158,17 @@ List VPN configurations
 
 **Signature:** `connectVPN(name?)`
 
-Connect VPN
+Establish a VPN connection
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `name` | `string` | VPN name, defaults to first one | Yes |
+| `name` | `string` | VPN configuration name (defaults to the first one) | Yes |
 
 **Returns:** `boolean`
 
-*Whether connection initiation was successful*
+*Whether the connection request was successful*
 
 ---
 
@@ -1169,11 +1176,11 @@ Connect VPN
 
 **Signature:** `disconnectVPN()`
 
-Disconnect VPN
+Terminate the VPN connection
 
 **Returns:** `boolean`
 
-*Whether disconnection initiation was successful*
+*Whether the disconnection request was successful*
 
 ---
 
@@ -1181,11 +1188,11 @@ Disconnect VPN
 
 **Signature:** `getVPNStatus()`
 
-Get VPN status
+Get current VPN connection status
 
 **Returns:** `{ connected: boolean, name?: string }`
 
-*Object containing connection status and VPN name*
+*Object containing connection state and VPN name*
 
 ---
 
@@ -1193,11 +1200,11 @@ Get VPN status
 
 **Signature:** `getWiFiEnabled()`
 
-Get WiFi switch status
+Check if Wi-Fi is powered on
 
 **Returns:** `boolean`
 
-*Whether enabled*
+*Whether Wi-Fi is enabled*
 
 ---
 
@@ -1205,43 +1212,47 @@ Get WiFi switch status
 
 **Signature:** `setWiFi(enabled)`
 
-Set WiFi switch
+Toggle Wi-Fi power state
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `enabled` | `boolean` | Whether to enable | No |
+| `enabled` | `boolean` | True to enable, false to disable | No |
 
 **Returns:** `boolean`
 
-*Whether setting was successful*
+*Whether the state was successfully updated*
 
 ---
 
 ### `network.openSettings`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `openSettings(section?)`
 
-Open system settings
+Open system network settings
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `section` | `string` | Settings page (e.g., 'WIFI') | Yes |
+| `section` | `string` | Specific setting section (e.g., 'WIFI') | Yes |
 
 **Returns:** `boolean`
 
-*Whether opened successfully*
+*Whether the settings page was opened*
 
 ---
 
 ## app
 
-![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
 
-App operations
+App operations and management
+
+> **Trigger Note:** The 'open/launch' methods require the app to be in the foreground; 'vibrate' may not work in the background.
 
 ### `app.version`
 
@@ -1255,21 +1266,59 @@ Get app version
 
 ---
 
+### `app.build`
+
+**Signature:** `build()`
+
+Get app build number
+
+**Returns:** `string`
+
+*App build number (CFBundleVersion)*
+
+---
+
+### `app.bundleId`
+
+**Signature:** `bundleId()`
+
+Get app Bundle ID
+
+**Returns:** `string`
+
+*App's Bundle Identifier*
+
+---
+
+### `app.info`
+
+**Signature:** `info()`
+
+Get full app information
+
+**Returns:** `AppInfo`
+
+*App info object containing name, version, build, bundleId, language*
+
+---
+
 ### `app.open`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `open(url)`
 
-Open URL/Scheme
+Open a URL or URI Scheme
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `url` | `string` | URL to open | No |
+| `url` | `string` | The URL to open | No |
 
 **Returns:** `Promise<boolean>`
 
-*Whether opened successfully*
+*Whether the URL was opened successfully*
 
 ---
 
@@ -1277,17 +1326,17 @@ Open URL/Scheme
 
 **Signature:** `canOpen(url)`
 
-Check if URL can be opened
+Check if a URL can be opened
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `url` | `string` | URL to check | No |
+| `url` | `string` | The URL to check | No |
 
 **Returns:** `boolean`
 
-*Whether it can be opened*
+*Whether the URL can be opened*
 
 ---
 
@@ -1295,7 +1344,7 @@ Check if URL can be opened
 
 **Signature:** `vibrate()`
 
-Vibrate feedback
+Trigger haptic feedback
 
 **Returns:** `void`
 
@@ -1311,11 +1360,11 @@ Get app logs
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `limit` | `number` | Number of logs to return | Yes |
+| `limit` | `number` | Maximum number of log entries to return | Yes |
 
 **Returns:** `[LogMessage]`
 
-*Array of log objects*
+*Array of log message objects*
 
 ---
 
@@ -1323,7 +1372,7 @@ Get app logs
 
 **Signature:** `exportLogs()`
 
-Export logs as string
+Export logs as a string
 
 **Returns:** `string`
 
@@ -1347,11 +1396,11 @@ Get all crash reports
 
 **Signature:** `getLastCrash()`
 
-Get last crash report
+Get the most recent crash report
 
 **Returns:** `CrashReport \| null`
 
-*Last crash report*
+*The most recent crash report*
 
 ---
 
@@ -1365,23 +1414,169 @@ Clear all logs
 
 ---
 
-## haptic
+### `app.exit`
 
-![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+**Signature:** `exit(code?)`
 
-Haptic feedback
-
-### `haptic.impact`
-
-**Signature:** `impact(style?)`
-
-Impact feedback
+Exit the app (for debugging only)
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `style` | `string` | 'light' \| 'medium' \| 'heavy' \| 'soft' \| 'rigid' | Yes |
+| `code` | `number` | Exit code, defaults to 0 | Yes |
+
+**Returns:** `void`
+
+---
+
+### `app.openSettings`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
+**Signature:** `openSettings()`
+
+Open app settings page
+
+**Returns:** `boolean`
+
+*Whether settings was opened successfully*
+
+---
+
+### `app.list`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `list()`
+
+Get all installed apps (TrollStore privilege)
+
+**Returns:** `[AppInfo]`
+
+*Array of app info objects containing bundleIdentifier, name, version, type, etc.*
+
+---
+
+### `app.getAppInfo`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `getAppInfo(bundleId)`
+
+Get detailed info for a specific app (TrollStore privilege)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `bundleId` | `string` | The app's Bundle Identifier | No |
+
+**Returns:** `AppInfo \| null`
+
+*App info object containing bundleIdentifier, name, version, build, type, teamID, bundlePath, dataContainerPath, urlSchemes, etc.*
+
+---
+
+### `app.launch`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
+**Signature:** `launch(bundleId)`
+
+Launch a specific app (TrollStore privilege)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `bundleId` | `string` | The app's Bundle Identifier | No |
+
+**Returns:** `boolean`
+
+*Whether the app was launched successfully*
+
+---
+
+### `app.terminate`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `terminate(bundleId)`
+
+Terminate a specific app (TrollStore privilege, requires background permission)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `bundleId` | `string` | The app's Bundle Identifier | No |
+
+**Returns:** `boolean`
+
+*Whether the app was terminated successfully*
+
+---
+
+### `app.isInstalled`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `isInstalled(bundleId)`
+
+Check if an app is installed
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `bundleId` | `string` | The app's Bundle Identifier | No |
+
+**Returns:** `boolean`
+
+*Whether the app is installed*
+
+---
+
+### `app.getDataContainer`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `getDataContainer(bundleId)`
+
+Get the data container path for an app (TrollStore privilege)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `bundleId` | `string` | The app's Bundle Identifier | No |
+
+**Returns:** `string \| null`
+
+*Data container path, or null if not found*
+
+---
+
+## haptic
+
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
+
+Haptic feedback
+
+> **Trigger Note:** Haptic feedback may not function in background mode and requires hardware support.
+
+### `haptic.impact`
+
+**Signature:** `impact(style?)`
+
+Trigger impact feedback
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `style` | `string` | The intensity style: 'light' \| 'medium' \| 'heavy' \| 'soft' \| 'rigid' | Yes |
 
 **Returns:** `void`
 
@@ -1391,13 +1586,13 @@ Impact feedback
 
 **Signature:** `notification(type)`
 
-Notification feedback
+Trigger notification feedback
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `type` | `string` | 'success' \| 'warning' \| 'error' | No |
+| `type` | `string` | The notification type: 'success' \| 'warning' \| 'error' | No |
 
 **Returns:** `void`
 
@@ -1407,7 +1602,7 @@ Notification feedback
 
 **Signature:** `selection()`
 
-Selection feedback
+Trigger selection feedback (for picker changes, etc.)
 
 **Returns:** `void`
 
@@ -1417,7 +1612,7 @@ Selection feedback
 
 **Signature:** `vibrate()`
 
-Vibrate device
+Standard device vibration
 
 **Returns:** `void`
 
@@ -1427,7 +1622,7 @@ Vibrate device
 
 **Signature:** `light()`
 
-Light impact
+Light impact feedback
 
 **Returns:** `void`
 
@@ -1437,7 +1632,7 @@ Light impact
 
 **Signature:** `medium()`
 
-Medium impact
+Medium impact feedback
 
 **Returns:** `void`
 
@@ -1447,7 +1642,7 @@ Medium impact
 
 **Signature:** `heavy()`
 
-Heavy impact
+Heavy impact feedback
 
 **Returns:** `void`
 
@@ -1457,7 +1652,7 @@ Heavy impact
 
 **Signature:** `success()`
 
-Success feedback
+Success notification feedback
 
 **Returns:** `void`
 
@@ -1467,7 +1662,7 @@ Success feedback
 
 **Signature:** `warning()`
 
-Warning feedback
+Warning notification feedback
 
 **Returns:** `void`
 
@@ -1477,7 +1672,7 @@ Warning feedback
 
 **Signature:** `error()`
 
-Error feedback
+Error notification feedback
 
 **Returns:** `void`
 
@@ -1485,19 +1680,21 @@ Error feedback
 
 ## display
 
-![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
 
-Display control
+Display and screen control
+
+> **Trigger Note:** Brightness settings and 'keepAwake' may not function in the background; 'openSettings' requires UI interaction.
 
 ### `display.getBrightness`
 
 **Signature:** `getBrightness()`
 
-Get screen brightness
+Get current screen brightness
 
 **Returns:** `number`
 
-*Current brightness (0.0-1.0)*
+*Current brightness level (0.0 to 1.0)*
 
 ---
 
@@ -1511,7 +1708,7 @@ Set screen brightness
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `value` | `number` | Brightness value (0.0 - 1.0) | No |
+| `value` | `number` | Brightness value (0.0 to 1.0) | No |
 
 **Returns:** `void`
 
@@ -1521,13 +1718,13 @@ Set screen brightness
 
 **Signature:** `increaseBrightness(amount?)`
 
-Increase brightness
+Increase screen brightness
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `amount` | `number` | Amount to increase (default 0.1) | Yes |
+| `amount` | `number` | Amount to increase (defaults to 0.1) | Yes |
 
 **Returns:** `void`
 
@@ -1537,13 +1734,13 @@ Increase brightness
 
 **Signature:** `decreaseBrightness(amount?)`
 
-Decrease brightness
+Decrease screen brightness
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `amount` | `number` | Amount to decrease (default 0.1) | Yes |
+| `amount` | `number` | Amount to decrease (defaults to 0.1) | Yes |
 
 **Returns:** `void`
 
@@ -1553,11 +1750,11 @@ Decrease brightness
 
 **Signature:** `getScreenInfo()`
 
-Get screen info
+Get screen dimensions and scale
 
 **Returns:** `{ width: number, height: number, scale: number }`
 
-*Object containing width, height, and scale*
+*Object containing width, height, and display scale*
 
 ---
 
@@ -1565,11 +1762,11 @@ Get screen info
 
 **Signature:** `getOrientation()`
 
-Get screen orientation
+Get current screen orientation
 
 **Returns:** `'portrait' \| 'landscape'`
 
-*Screen orientation*
+*Screen orientation mode*
 
 ---
 
@@ -1577,11 +1774,11 @@ Get screen orientation
 
 **Signature:** `isLowPowerModeEnabled()`
 
-Is Low Power Mode enabled
+Check if Low Power Mode is enabled
 
 **Returns:** `boolean`
 
-*Whether enabled*
+*Whether the mode is active*
 
 ---
 
@@ -1589,29 +1786,17 @@ Is Low Power Mode enabled
 
 **Signature:** `setLowPowerMode(enabled)`
 
-Set Low Power Mode
+Toggle Low Power Mode
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `enabled` | `boolean` | Whether to enable | No |
+| `enabled` | `boolean` | Whether to enable Low Power Mode | No |
 
 **Returns:** `boolean`
 
-*Whether setting was successful*
-
----
-
-### `display.getNightShiftStatus`
-
-**Signature:** `getNightShiftStatus()`
-
-Get Night Shift status
-
-**Returns:** `boolean`
-
-*Whether enabled*
+*Whether the state was successfully updated*
 
 ---
 
@@ -1619,47 +1804,17 @@ Get Night Shift status
 
 **Signature:** `setNightShift(enabled)`
 
-Set Night Shift
+Toggle Night Shift
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `enabled` | `boolean` | Whether to enable | No |
+| `enabled` | `boolean` | Whether to enable Night Shift | No |
 
 **Returns:** `boolean`
 
-*Whether setting was successful*
-
----
-
-### `display.getTrueToneStatus`
-
-**Signature:** `getTrueToneStatus()`
-
-Get True Tone status
-
-**Returns:** `boolean`
-
-*Whether enabled*
-
----
-
-### `display.setTrueTone`
-
-**Signature:** `setTrueTone(enabled)`
-
-Set True Tone
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `enabled` | `boolean` | Whether to enable | No |
-
-**Returns:** `boolean`
-
-*Whether setting was successful*
+*Whether the update was successful*
 
 ---
 
@@ -1667,11 +1822,11 @@ Set True Tone
 
 **Signature:** `isAutoBrightnessEnabled()`
 
-Is Auto Brightness enabled
+Check if Auto-Brightness is enabled
 
 **Returns:** `boolean`
 
-*Whether enabled*
+*Whether Auto-Brightness is on*
 
 ---
 
@@ -1679,59 +1834,31 @@ Is Auto Brightness enabled
 
 **Signature:** `setAutoBrightness(enabled)`
 
-Set Auto Brightness
+Toggle Auto-Brightness
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `enabled` | `boolean` | Whether to enable | No |
+| `enabled` | `boolean` | Whether to enable Auto-Brightness | No |
 
 **Returns:** `boolean`
 
-*Whether setting was successful*
+*Whether the update was successful*
 
 ---
 
 ### `display.openSettings`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `openSettings()`
 
-Open display settings
+Open system display settings
 
 **Returns:** `boolean`
 
-*Whether opened successfully*
-
----
-
-### `display.getAutoLockTime`
-
-**Signature:** `getAutoLockTime()`
-
-Get auto-lock time
-
-**Returns:** `number`
-
-*Auto-lock time in seconds, 0 means never*
-
----
-
-### `display.setAutoLock`
-
-**Signature:** `setAutoLock(seconds)`
-
-Set auto-lock time
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `seconds` | `number` | Lock time in seconds, 0 means never | No |
-
-**Returns:** `boolean`
-
-*Whether setting was successful*
+*Whether the settings page was opened*
 
 ---
 
@@ -1739,13 +1866,13 @@ Set auto-lock time
 
 **Signature:** `keepAwake(enabled)`
 
-Keep screen awake
+Keep screen awake and prevent dimming
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `enabled` | `boolean` | Whether to keep awake | No |
+| `enabled` | `boolean` | Whether to keep the screen on | No |
 
 **Returns:** `void`
 
@@ -1761,11 +1888,11 @@ Utility functions
 
 **Signature:** `uuid()`
 
-Generate UUID
+Generate a unique UUID
 
 **Returns:** `string`
 
-*Generated UUID*
+*The generated UUID string*
 
 ---
 
@@ -1773,17 +1900,17 @@ Generate UUID
 
 **Signature:** `md5(string)`
 
-Calculate MD5
+Calculate the MD5 hash of a string
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `string` | `string` | String to calculate | No |
+| `string` | `string` | The input string to hash | No |
 
 **Returns:** `string`
 
-*MD5 hash value*
+*The resulting MD5 hash value*
 
 ---
 
@@ -1791,17 +1918,17 @@ Calculate MD5
 
 **Signature:** `base64Encode(string)`
 
-Base64 encode
+Encode a string to Base64 format
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `string` | `string` | String to encode | No |
+| `string` | `string` | The string to encode | No |
 
 **Returns:** `string`
 
-*Base64 encoded string*
+*The Base64 encoded string*
 
 ---
 
@@ -1809,17 +1936,17 @@ Base64 encode
 
 **Signature:** `base64Decode(string)`
 
-Base64 decode
+Decode a Base64 encoded string
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `string` | `string` | String to decode | No |
+| `string` | `string` | The Base64 string to decode | No |
 
 **Returns:** `string`
 
-*Decoded original string*
+*The decoded original string*
 
 ---
 
@@ -1827,32 +1954,36 @@ Base64 decode
 
 **Signature:** `formatDate(date, format)`
 
-Format date
+Format a Date object into a string
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `date` | `Date` | Date object | No |
-| `format` | `string` | Format string (e.g., 'yyyy-MM-dd') | No |
+| `date` | `Date` | The Date object to format | No |
+| `format` | `string` | The format pattern (e.g., 'yyyy-MM-dd') | No |
 
 **Returns:** `string`
 
-*Formatted date string*
+*The formatted date string*
 
 ---
 
 ## location
 
-![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
 
 Location services
 
+> **Trigger Note:** The 'requestAccess' method requires UI interaction; 'getCurrent' requires prior authorization.
+
 ### `location.requestAccess`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `requestAccess()`
 
-Request location access
+Request location access permissions
 
 **Returns:** `void`
 
@@ -1862,11 +1993,11 @@ Request location access
 
 **Signature:** `getAccessStatus()`
 
-Get access status
+Get current authorization status
 
 **Returns:** `'authorized' \| 'denied' \| 'restricted' \| 'notDetermined' \| 'unknown'`
 
-*Permission status*
+*Current permission status*
 
 ---
 
@@ -1874,11 +2005,11 @@ Get access status
 
 **Signature:** `isAuthorized()`
 
-Check if authorized
+Check if location access is granted
 
 **Returns:** `boolean`
 
-*Whether authorized*
+*Whether access is authorized*
 
 ---
 
@@ -1886,11 +2017,11 @@ Check if authorized
 
 **Signature:** `getCurrent()`
 
-Get current location
+Retrieve current geographic location
 
 **Returns:** `Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, timestamp: number }>`
 
-*Location object (including latitude, longitude, etc.)*
+*Location data object containing coordinates, altitude, etc.*
 
 ---
 
@@ -1898,11 +2029,11 @@ Get current location
 
 **Signature:** `current()`
 
-Get current location (alias)
+Get current location (Alias for getCurrent)
 
 **Returns:** `Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, timestamp: number }>`
 
-*Location object*
+*Location data object*
 
 ---
 
@@ -1910,20 +2041,20 @@ Get current location (alias)
 
 **Signature:** `distance(lat1, lng1, lat2, lng2)`
 
-Calculate distance between two points
+Calculate the distance between two points
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `lat1` | `number` | Point 1 Latitude | No |
-| `lng1` | `number` | Point 1 Longitude | No |
-| `lat2` | `number` | Point 2 Latitude | No |
-| `lng2` | `number` | Point 2 Longitude | No |
+| `lat1` | `number` | Latitude of point 1 | No |
+| `lng1` | `number` | Longitude of point 1 | No |
+| `lat2` | `number` | Latitude of point 2 | No |
+| `lng2` | `number` | Longitude of point 2 | No |
 
 **Returns:** `number`
 
-*Distance (meters)*
+*Distance in meters*
 
 ---
 
@@ -1931,17 +2062,17 @@ Calculate distance between two points
 
 **Signature:** `geocode(address)`
 
-Address to coordinates
+Geocoding: Address to coordinates
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `address` | `string` | Address string | No |
+| `address` | `string` | Target address string | No |
 
 **Returns:** `Promise<[{ lat: number, lng: number, name: string }]>`
 
-*Array of geographic location objects*
+*An array of geographic location objects*
 
 ---
 
@@ -1949,7 +2080,7 @@ Address to coordinates
 
 **Signature:** `reverseGeocode(lat, lng, locale?)`
 
-Coordinates to address
+Reverse Geocoding: Coordinates to address
 
 **Parameters:**
 
@@ -1957,11 +2088,11 @@ Coordinates to address
 |------|------|-------------|----------|
 | `lat` | `number` | Latitude | No |
 | `lng` | `number` | Longitude | No |
-| `locale` | `string` | Locale identifier (optional, e.g. 'zh_CN', 'en_US', defaults to system language) | Yes |
+| `locale` | `string` | Locale identifier (optional, e.g., 'en_US', defaults to system language) | Yes |
 
 **Returns:** `Promise<[{ name: string, country: string, locality: string, administrativeArea: string }]>`
 
-*Array of address information objects*
+*An array of address information objects*
 
 ---
 
@@ -1969,11 +2100,11 @@ Coordinates to address
 
 **Signature:** `isLocationServicesEnabled()`
 
-Is location services enabled
+Check if system-wide location services are enabled
 
 **Returns:** `boolean`
 
-*Whether enabled*
+*Whether services are enabled*
 
 ---
 
@@ -1981,55 +2112,61 @@ Is location services enabled
 
 **Signature:** `hasTrollStorePermission()`
 
-Check if TrollStore permission is available
+Check for TrollStore-specific permissions
 
 **Returns:** `boolean`
 
-*Whether has permission*
+*Whether permission is present*
 
 ---
 
 ### `location.setLocationServicesEnabled`
 
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
 **Signature:** `setLocationServicesEnabled(enabled)`
 
-Enable or disable system location services (requires TrollStore)
+Toggle system location services (Requires TrollStore)
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `enabled` | `boolean` | true to enable, false to disable | No |
+| `enabled` | `boolean` | True to enable, false to disable | No |
 
 **Returns:** `{ success: boolean, enabled?: boolean, message?: string }`
 
-*Result object (success indicates if operation succeeded, enabled is current state)*
+*Operation result (success status and current state)*
 
 ---
 
 ### `location.toggleLocationServices`
 
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
 **Signature:** `toggleLocationServices()`
 
-Toggle location services state (requires TrollStore)
+Switch location services state (Requires TrollStore)
 
 **Returns:** `{ success: boolean, enabled?: boolean, message?: string }`
 
-*Result object (success indicates if operation succeeded, enabled is state after toggle)*
+*Operation result (success status and new state)*
 
 ---
 
 ## calendar
 
-![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
 
 System calendar
+
+> **Trigger Note:** The 'requestAccess' method requires UI interaction; other operations require prior authorization.
 
 ### `calendar.isAuthorized`
 
 **Signature:** `isAuthorized()`
 
-Check authorization status
+Check current authorization status
 
 **Returns:** `boolean`
 
@@ -2037,13 +2174,15 @@ Check authorization status
 
 ### `calendar.requestAccess`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `requestAccess()`
 
-Request calendar access
+Request calendar access permissions
 
 **Returns:** `Promise<boolean>`
 
-*Whether authorization was successful*
+*Whether authorization was granted*
 
 ---
 
@@ -2051,11 +2190,11 @@ Request calendar access
 
 **Signature:** `getCalendars()`
 
-Get all calendars
+Retrieve all available calendars
 
 **Returns:** `Promise<[{ id: string, title: string, color: string }]>`
 
-*List of calendars*
+*An array of calendar objects*
 
 ---
 
@@ -2063,11 +2202,11 @@ Get all calendars
 
 **Signature:** `getToday()`
 
-Get events for today
+Fetch today's events
 
 **Returns:** `Promise<[{ id: string, title: string, startDate: number, endDate: number, calendar: string }]>`
 
-*Array of events for today*
+*An array of events for today*
 
 ---
 
@@ -2075,7 +2214,7 @@ Get events for today
 
 **Signature:** `getEvents(start, end, calendarId?)`
 
-Get calendar events
+Retrieve events within a specific time range
 
 **Parameters:**
 
@@ -2083,11 +2222,11 @@ Get calendar events
 |------|------|-------------|----------|
 | `start` | `number` | Start timestamp | No |
 | `end` | `number` | End timestamp | No |
-| `calendarId` | `string` | Calendar ID | Yes |
+| `calendarId` | `string` | Specific calendar ID to filter by | Yes |
 
 **Returns:** `Promise<[{ id: string, title: string, startDate: number, endDate: number, calendar: string }]>`
 
-*Array of events*
+*An array of event objects*
 
 ---
 
@@ -2095,20 +2234,20 @@ Get calendar events
 
 **Signature:** `create(title, start, end, options?)`
 
-Create calendar event
+Create a new calendar event
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `title` | `string` | Title | No |
+| `title` | `string` | Event title | No |
 | `start` | `number` | Start timestamp | No |
 | `end` | `number` | End timestamp | No |
 | `options` | `object` | Options { calendarId, notes, location, url, allDay } | Yes |
 
 **Returns:** `Promise<string>`
 
-*Created event ID*
+*ID of the newly created event*
 
 ---
 
@@ -2116,7 +2255,7 @@ Create calendar event
 
 **Signature:** `delete(id)`
 
-Delete calendar event
+Delete a specific calendar event
 
 **Parameters:**
 
@@ -2126,37 +2265,41 @@ Delete calendar event
 
 **Returns:** `Promise<boolean>`
 
-*Whether deletion was successful*
+*Whether the deletion was successful*
 
 ---
 
 ## reminder
 
-![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
 
-Reminders
+Reminders and checklists
+
+> **Trigger Note:** The 'requestAccess' method requires UI interaction; other operations require prior authorization.
 
 ### `reminder.isAuthorized`
 
 **Signature:** `isAuthorized()`
 
-Check authorization status
+Check current authorization status
 
 **Returns:** `boolean`
 
-*Whether authorized*
+*Whether access is granted*
 
 ---
 
 ### `reminder.requestAccess`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `requestAccess()`
 
-Request reminder access
+Request reminder access permissions
 
 **Returns:** `Promise<boolean>`
 
-*Whether authorization was successful*
+*Whether authorization was granted*
 
 ---
 
@@ -2164,11 +2307,11 @@ Request reminder access
 
 **Signature:** `getLists()`
 
-Get all reminder lists
+Retrieve all reminder lists
 
 **Returns:** `Promise<[{ id: string, title: string, color: string }]>`
 
-*Array of reminder lists*
+*An array of reminder list objects*
 
 ---
 
@@ -2176,17 +2319,17 @@ Get all reminder lists
 
 **Signature:** `getAll(listId?)`
 
-Get all reminders
+Retrieve all reminder items
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `listId` | `string` | List ID | Yes |
+| `listId` | `string` | Specific list ID to filter by | Yes |
 
 **Returns:** `Promise<[{ id: string, title: string, isCompleted: boolean, listId: string, dueDate?: number }]>`
 
-*Array of reminders*
+*An array of reminder items*
 
 ---
 
@@ -2194,18 +2337,18 @@ Get all reminders
 
 **Signature:** `create(title, options?)`
 
-Create reminder
+Create a new reminder
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `title` | `string` | Title | No |
-| `options` | `object` | Options { listId, notes, dueDate, priority, sortOrder, isPinned } | Yes |
+| `title` | `string` | Reminder title | No |
+| `options` | `object` | Options: { listId, notes, dueDate, priority, sortOrder, isPinned } | Yes |
 
 **Returns:** `Promise<string>`
 
-*Created reminder ID*
+*The unique ID of the created reminder*
 
 ---
 
@@ -2213,7 +2356,7 @@ Create reminder
 
 **Signature:** `complete(id)`
 
-Mark as completed
+Mark a reminder as completed
 
 **Parameters:**
 
@@ -2223,7 +2366,7 @@ Mark as completed
 
 **Returns:** `Promise<boolean>`
 
-*Whether successful*
+*Whether the operation was successful*
 
 ---
 
@@ -2231,7 +2374,7 @@ Mark as completed
 
 **Signature:** `delete(id)`
 
-Delete reminder
+Delete a specific reminder
 
 **Parameters:**
 
@@ -2241,7 +2384,7 @@ Delete reminder
 
 **Returns:** `Promise<boolean>`
 
-*Whether successful*
+*Whether the deletion was successful*
 
 ---
 
@@ -2249,7 +2392,7 @@ Delete reminder
 
 **Signature:** `getSorted(options)`
 
-Get sorted reminders
+Retrieve sorted reminders
 
 **Parameters:**
 
@@ -2259,7 +2402,7 @@ Get sorted reminders
 
 **Returns:** `Promise<[Reminder]>`
 
-*Sorted list of reminders*
+*A list of sorted reminder items*
 
 ---
 
@@ -2267,17 +2410,17 @@ Get sorted reminders
 
 **Signature:** `getUpcoming(days)`
 
-Get upcoming reminders
+Retrieve reminders due soon
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `days` | `number` | Upcoming days (default 7) | Yes |
+| `days` | `number` | Number of days in the future, defaults to 7 | Yes |
 
 **Returns:** `Promise<[Reminder]>`
 
-*List of upcoming reminders*
+*A list of upcoming reminders*
 
 ---
 
@@ -2285,11 +2428,11 @@ Get upcoming reminders
 
 **Signature:** `getOverdue()`
 
-Get overdue reminders
+Retrieve all overdue reminders
 
 **Returns:** `Promise<[Reminder]>`
 
-*List of overdue reminders*
+*A list of reminders past their due date*
 
 ---
 
@@ -2297,13 +2440,13 @@ Get overdue reminders
 
 **Signature:** `reorder(ids)`
 
-Batch reorder
+Batch reorder reminders
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `ids` | `string[]` | Array of IDs in order | No |
+| `ids` | `string[]` | An ordered array of reminder IDs | No |
 
 **Returns:** `Promise<object>`
 
@@ -2315,18 +2458,18 @@ Batch reorder
 
 **Signature:** `createSystemReminder(title, options?)`
 
-Create system reminder (supports location trigger)
+Create a system reminder with advanced features (e.g., location-based triggers)
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `title` | `string` | Title | No |
+| `title` | `string` | Reminder title | No |
 | `options` | `object` | { listId, notes, dueDate, priority, location: { latitude, longitude, radius, onArrive, name } } | Yes |
 
 **Returns:** `Promise<object>`
 
-*{ success: boolean, id: string, title: string, isSystemReminder: true }*
+*Object containing success status and system reminder details*
 
 ---
 
@@ -2334,29 +2477,33 @@ Create system reminder (supports location trigger)
 
 **Signature:** `getSystemLists()`
 
-Get system reminder lists
+Retrieve system-managed reminder lists
 
 **Returns:** `Promise<[{ id: string, title: string, isSystem: true }]>`
 
-*Array of system reminder lists*
+*An array of system reminder lists*
 
 ---
 
 ## contacts
 
-![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
 
-Contacts operations
+Contact management operations
+
+> **Trigger Note:** The 'requestAccess' method requires UI interaction; other operations require prior authorization.
 
 ### `contacts.requestAccess`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `requestAccess()`
 
-Request contacts access
+Request access permissions for contacts
 
 **Returns:** `{ granted: boolean, error?: string }`
 
-*Object containing authorization result*
+*An object containing the authorization result*
 
 ---
 
@@ -2364,11 +2511,11 @@ Request contacts access
 
 **Signature:** `getAccessStatus()`
 
-Get access status
+Get current permission status
 
 **Returns:** `'authorized' \| 'denied' \| 'restricted' \| 'notDetermined'`
 
-*Permission status*
+*The permission status string*
 
 ---
 
@@ -2376,11 +2523,11 @@ Get access status
 
 **Signature:** `isAuthorized()`
 
-Check if authorized
+Check if the app is already authorized
 
 **Returns:** `boolean`
 
-*Whether authorized*
+*Whether access is granted*
 
 ---
 
@@ -2388,18 +2535,18 @@ Check if authorized
 
 **Signature:** `getAll(offset?, limit?)`
 
-Get all contacts
+Retrieve all contacts with pagination
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `offset` | `number` | Number of records to skip (default 0) | Yes |
-| `limit` | `number` | Max number to return (default all) | Yes |
+| `offset` | `number` | Number of records to skip, defaults to 0 | Yes |
+| `limit` | `number` | Maximum number of records to return, defaults to all | Yes |
 
 **Returns:** `[Contact]`
 
-*Array of contact objects*
+*An array of contact objects*
 
 ---
 
@@ -2407,11 +2554,11 @@ Get all contacts
 
 **Signature:** `getCount()`
 
-Get total contact count
+Get the total number of contacts
 
 **Returns:** `number`
 
-*Total contacts*
+*Total count of contacts*
 
 ---
 
@@ -2425,11 +2572,11 @@ Search contacts by name
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `query` | `string` | Search keyword (matches name) | No |
+| `query` | `string` | Search keyword (matches name fields) | No |
 
 **Returns:** `[Contact]`
 
-*Array of contact objects*
+*An array of matching contact objects*
 
 ---
 
@@ -2437,17 +2584,17 @@ Search contacts by name
 
 **Signature:** `searchByPhone(phone)`
 
-Search contacts by phone
+Search contacts by phone number
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `phone` | `string` | Phone number (supports fuzzy match) | No |
+| `phone` | `string` | Phone number (supports fuzzy matching) | No |
 
 **Returns:** `[Contact]`
 
-*Array of contact objects*
+*An array of matching contact objects*
 
 ---
 
@@ -2455,17 +2602,17 @@ Search contacts by phone
 
 **Signature:** `searchByEmail(email)`
 
-Search contacts by email
+Search contacts by email address
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `email` | `string` | Email address (supports fuzzy match) | No |
+| `email` | `string` | Email address (supports fuzzy matching) | No |
 
 **Returns:** `[Contact]`
 
-*Array of contact objects*
+*An array of matching contact objects*
 
 ---
 
@@ -2473,17 +2620,17 @@ Search contacts by email
 
 **Signature:** `getById(id)`
 
-Get contact by ID
+Get a contact by its unique identifier
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `id` | `string` | Contact unique identifier | No |
+| `id` | `string` | Unique identifier of the contact | No |
 
 **Returns:** `Contact \| null`
 
-*Contact object*
+*The contact object or null if not found*
 
 ---
 
@@ -2491,17 +2638,17 @@ Get contact by ID
 
 **Signature:** `create(data)`
 
-Create contact
+Create a new contact
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `data` | `object` | Contact data { givenName, familyName, phoneNumbers?, emailAddresses?, ... } | No |
+| `data` | `object` | Contact data including givenName, familyName, phoneNumbers, emailAddresses, etc. | No |
 
 **Returns:** `{ success: boolean, id?: string, error?: string }`
 
-*Object containing success status and ID*
+*An object containing success status and the new contact ID*
 
 ---
 
@@ -2509,18 +2656,18 @@ Create contact
 
 **Signature:** `update(id, data)`
 
-Update contact
+Update an existing contact
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `id` | `string` | Contact unique identifier | No |
-| `data` | `object` | Fields to update | No |
+| `id` | `string` | Unique identifier of the contact | No |
+| `data` | `object` | Fields to be updated | No |
 
 **Returns:** `{ success: boolean, error?: string }`
 
-*Object containing success status*
+*An object containing the success status*
 
 ---
 
@@ -2528,17 +2675,17 @@ Update contact
 
 **Signature:** `delete(id)`
 
-Delete contact
+Delete a specific contact
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `id` | `string` | Contact unique identifier | No |
+| `id` | `string` | Unique identifier of the contact | No |
 
 **Returns:** `{ success: boolean, error?: string }`
 
-*Object containing success status*
+*An object containing the success status*
 
 ---
 
@@ -2546,11 +2693,11 @@ Delete contact
 
 **Signature:** `getGroups()`
 
-Get all groups
+Retrieve all contact groups
 
 **Returns:** `[{ id: string, name: string }]`
 
-*Array of groups*
+*An array of group objects*
 
 ---
 
@@ -2558,43 +2705,45 @@ Get all groups
 
 **Signature:** `getContactsInGroup(groupId)`
 
-Get contacts in group
+Retrieve contacts within a specific group
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `groupId` | `string` | Group unique identifier | No |
+| `groupId` | `string` | Unique identifier of the group | No |
 
 **Returns:** `[Contact]`
 
-*Array of contact objects*
+*An array of contact objects in the specified group*
 
 ---
 
 ## notification
 
-![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
 
 Local notifications
+
+> **Trigger Note:** The 'requestAccess' method requires UI interaction; other operations require prior authorization.
 
 ### `notification.send`
 
 **Signature:** `send(title, body, options?)`
 
-Send notification
+Send an immediate notification
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `title` | `string` | Notification title | No |
-| `body` | `string` | Notification body | No |
-| `options` | `object` | Options { url, userInfo, sound, badge } | Yes |
+| `body` | `string` | Notification body content | No |
+| `options` | `object` | Options: { url, userInfo, sound, badge } | Yes |
 
 **Returns:** `Promise<string>`
 
-*ID of sent notification*
+*The unique ID of the sent notification*
 
 ---
 
@@ -2602,7 +2751,7 @@ Send notification
 
 **Signature:** `cancel(id)`
 
-Cancel notification
+Cancel a specific notification
 
 **Parameters:**
 
@@ -2618,7 +2767,7 @@ Cancel notification
 
 **Signature:** `cancelAll()`
 
-Cancel all notifications
+Cancel all scheduled notifications
 
 **Returns:** `void`
 
@@ -2628,11 +2777,11 @@ Cancel all notifications
 
 **Signature:** `getPending()`
 
-Get pending notifications
+Retrieve all pending (scheduled) notifications
 
 **Returns:** `Promise<[{ id: string, title: string, body: string, date: number }]>`
 
-*List of pending notifications*
+*A list of notifications waiting to be triggered*
 
 ---
 
@@ -2640,35 +2789,49 @@ Get pending notifications
 
 **Signature:** `getDelivered()`
 
-Get delivered notifications
+Retrieve all delivered notifications
 
 **Returns:** `Promise<[{ id: string, title: string, body: string, date: number }]>`
 
-*List of delivered notifications*
+*A list of notifications currently displayed in the notification center*
 
 ---
 
-### `notification.requestPermission`
+### `notification.requestAccess`
 
-**Signature:** `requestPermission()`
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
-Request notification permission
+**Signature:** `requestAccess()`
 
-**Returns:** `Promise<boolean>`
+Request user permission for notifications
 
-*Whether authorized*
+**Returns:** `{ granted: boolean, error?: string }`
+
+*Authorization result object*
 
 ---
 
-### `notification.getPermissionStatus`
+### `notification.getAccessStatus`
 
-**Signature:** `getPermissionStatus()`
+**Signature:** `getAccessStatus()`
 
-Get permission status
+Get current authorization status
 
-**Returns:** `Promise<'authorized' \| 'denied' \| 'notDetermined' \| 'provisional' \| 'ephemeral' \| 'unknown'>`
+**Returns:** `'authorized' \| 'denied' \| 'notDetermined' \| 'provisional' \| 'ephemeral' \| 'unknown'`
 
-*Permission status*
+*Current permission status string*
+
+---
+
+### `notification.isAuthorized`
+
+**Signature:** `isAuthorized()`
+
+Check if notification permission is authorized
+
+**Returns:** `boolean`
+
+*Whether notifications are authorized*
 
 ---
 
@@ -2676,27 +2839,17 @@ Get permission status
 
 **Signature:** `setBadge(count)`
 
-Set badge count
+Set the application badge number
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `count` | `number` | Badge number | No |
+| `count` | `number` | The number to display on the badge | No |
 
-**Returns:** `void`
+**Returns:** `boolean`
 
----
-
-### `notification.getBadge`
-
-**Signature:** `getBadge()`
-
-Get badge count
-
-**Returns:** `Promise<number>`
-
-*Badge number*
+*Whether the operation was successful*
 
 ---
 
@@ -2704,9 +2857,11 @@ Get badge count
 
 **Signature:** `clearBadge()`
 
-Clear badge
+Clear the application badge
 
-**Returns:** `void`
+**Returns:** `boolean`
+
+*Whether the operation was successful*
 
 ---
 
@@ -2714,38 +2869,42 @@ Clear badge
 
 **Signature:** `schedule(title, body, date, options?)`
 
-Schedule notification
+Schedule a notification for a future date
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `title` | `string` | Notification title | No |
-| `body` | `string` | Notification body | No |
+| `body` | `string` | Notification body content | No |
 | `date` | `number` | Trigger timestamp | No |
-| `options` | `object` | Options { url, userInfo, sound, badge, repeat: 'daily'\|'weekly'\|'monthly' } | Yes |
+| `options` | `object` | Options: { url, userInfo, sound, badge, repeat: 'daily'\|'weekly'\|'monthly' } | Yes |
 
 **Returns:** `Promise<string>`
 
-*ID of scheduled notification*
+*The unique ID of the scheduled notification*
 
 ---
 
 ## alarm
 
-![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
 
-Alarms and Timers
+Alarms and scheduled reminders
+
+> **Trigger Note:** Methods for requestAccess and opening system apps require UI interaction
 
 ### `alarm.requestAccess`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `requestAccess()`
 
-Request notification access
+Request notification permissions
 
 **Returns:** `Promise<boolean>`
 
-*Whether authorized*
+*Whether authorization was successful*
 
 ---
 
@@ -2753,7 +2912,7 @@ Request notification access
 
 **Signature:** `getAccessStatus()`
 
-Get access status
+Get current permission status
 
 **Returns:** `Promise<'authorized' \| 'denied' \| 'notDetermined'>`
 
@@ -2765,7 +2924,7 @@ Get access status
 
 **Signature:** `createOnce(timestamp, title, options?)`
 
-Create one-time alarm
+Create a one-time alarm
 
 **Parameters:**
 
@@ -2785,7 +2944,7 @@ Create one-time alarm
 
 **Signature:** `createDaily(hour, minute, title, options?)`
 
-Create daily repeating alarm
+Create a daily recurring alarm
 
 **Parameters:**
 
@@ -2806,13 +2965,13 @@ Create daily repeating alarm
 
 **Signature:** `createWeekly(weekday, hour, minute, title, options?)`
 
-Create weekly repeating alarm
+Create a weekly recurring alarm
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `weekday` | `number` | Weekday (1-7, Sunday is 1) | No |
+| `weekday` | `number` | Day of the week (1-7, Sunday is 1) | No |
 | `hour` | `number` | Hour (0-23) | No |
 | `minute` | `number` | Minute (0-59) | No |
 | `title` | `string` | Title | No |
@@ -2828,13 +2987,13 @@ Create weekly repeating alarm
 
 **Signature:** `createCountdown(seconds, title, options?)`
 
-Create countdown timer
+Create a countdown reminder
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `seconds` | `number` | Seconds | No |
+| `seconds` | `number` | Duration in seconds | No |
 | `title` | `string` | Title | No |
 | `options` | `object` | Options { sound } | Yes |
 
@@ -2848,7 +3007,7 @@ Create countdown timer
 
 **Signature:** `getPending()`
 
-Get pending alarms
+Get all pending alarms
 
 **Returns:** `Promise<[{ id: string, title: string, date: number, repeat?: string }]>`
 
@@ -2860,7 +3019,7 @@ Get pending alarms
 
 **Signature:** `getCount()`
 
-Get alarm count
+Get total number of alarms
 
 **Returns:** `Promise<number>`
 
@@ -2872,7 +3031,7 @@ Get alarm count
 
 **Signature:** `cancel(id)`
 
-Cancel specific alarm
+Cancel a specific alarm
 
 **Parameters:**
 
@@ -2896,9 +3055,11 @@ Cancel all alarms
 
 ### `alarm.openClockApp`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `openClockApp()`
 
-Open Clock app
+Open the system Clock app
 
 **Returns:** `void`
 
@@ -2906,9 +3067,11 @@ Open Clock app
 
 ### `alarm.openTimer`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `openTimer()`
 
-Open Timer
+Open the timer
 
 **Returns:** `void`
 
@@ -2916,15 +3079,17 @@ Open Timer
 
 ## media
 
-![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
 
-Music & Media control
+Music and media controls
+
+> **Trigger Note:** The 'requestAccess' method requires UI interaction; media control requires prior authorization and a correctly configured Audio Session.
 
 ### `media.play`
 
 **Signature:** `play()`
 
-Play
+Start playback
 
 **Returns:** `void`
 
@@ -2934,7 +3099,7 @@ Play
 
 **Signature:** `pause()`
 
-Pause
+Pause playback
 
 **Returns:** `void`
 
@@ -2944,7 +3109,7 @@ Pause
 
 **Signature:** `stop()`
 
-Stop
+Stop playback
 
 **Returns:** `void`
 
@@ -2954,7 +3119,7 @@ Stop
 
 **Signature:** `togglePlayPause()`
 
-Toggle Play/Pause
+Toggle between play and pause states
 
 **Returns:** `void`
 
@@ -2964,7 +3129,7 @@ Toggle Play/Pause
 
 **Signature:** `next()`
 
-Next track
+Skip to the next track
 
 **Returns:** `void`
 
@@ -2974,7 +3139,7 @@ Next track
 
 **Signature:** `previous()`
 
-Previous track
+Skip to the previous track
 
 **Returns:** `void`
 
@@ -2984,7 +3149,7 @@ Previous track
 
 **Signature:** `skipToBeginning()`
 
-Skip to beginning
+Skip to the beginning of the current track
 
 **Returns:** `void`
 
@@ -2994,11 +3159,11 @@ Skip to beginning
 
 **Signature:** `getPlaybackState()`
 
-Get playback state
+Get current playback state
 
 **Returns:** `'playing' \| 'paused' \| 'stopped'`
 
-*Playback state*
+*Current playback status*
 
 ---
 
@@ -3006,11 +3171,11 @@ Get playback state
 
 **Signature:** `isPlaying()`
 
-Is currently playing
+Check if media is currently playing
 
 **Returns:** `boolean`
 
-*Whether playing*
+*Whether media is playing*
 
 ---
 
@@ -3018,11 +3183,11 @@ Is currently playing
 
 **Signature:** `getNowPlaying()`
 
-Get current playing info
+Get information about the currently playing item
 
 **Returns:** `{ title: string, artist: string, album: string, duration: number, artwork?: string }`
 
-*Current playback info object*
+*Object containing current track metadata*
 
 ---
 
@@ -3030,11 +3195,11 @@ Get current playing info
 
 **Signature:** `getVolume()`
 
-Get volume
+Get current output volume
 
 **Returns:** `number`
 
-*Current volume (0.0-1.0)*
+*Current volume level (0.0 to 1.0)*
 
 ---
 
@@ -3042,13 +3207,13 @@ Get volume
 
 **Signature:** `setVolume(volume)`
 
-Set volume
+Set output volume
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `volume` | `number` | Volume (0.0 - 1.0) | No |
+| `volume` | `number` | Volume level (0.0 to 1.0) | No |
 
 **Returns:** `void`
 
@@ -3058,11 +3223,11 @@ Set volume
 
 **Signature:** `getRepeatMode()`
 
-Get repeat mode
+Get the current repeat mode
 
 **Returns:** `'none' \| 'one' \| 'all'`
 
-*Repeat mode*
+*Repeat mode setting*
 
 ---
 
@@ -3070,13 +3235,13 @@ Get repeat mode
 
 **Signature:** `setRepeatMode(mode)`
 
-Set repeat mode
+Set the repeat mode
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `mode` | `string` | 'none' \| 'one' \| 'all' | No |
+| `mode` | `string` | Repeat mode: 'none' \| 'one' \| 'all' | No |
 
 **Returns:** `void`
 
@@ -3086,11 +3251,11 @@ Set repeat mode
 
 **Signature:** `getShuffleMode()`
 
-Get shuffle mode
+Get the current shuffle mode
 
 **Returns:** `'off' \| 'songs' \| 'albums'`
 
-*Shuffle mode*
+*Shuffle mode setting*
 
 ---
 
@@ -3098,13 +3263,13 @@ Get shuffle mode
 
 **Signature:** `setShuffleMode(mode)`
 
-Set shuffle mode
+Set the shuffle mode
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `mode` | `string` | 'off' \| 'songs' \| 'albums' | No |
+| `mode` | `string` | Shuffle mode: 'off' \| 'songs' \| 'albums' | No |
 
 **Returns:** `void`
 
@@ -3114,11 +3279,11 @@ Set shuffle mode
 
 **Signature:** `getCurrentTime()`
 
-Get current playback time
+Get the current playback time position
 
 **Returns:** `number`
 
-*Current time (seconds)*
+*Current playback position in seconds*
 
 ---
 
@@ -3126,13 +3291,13 @@ Get current playback time
 
 **Signature:** `setCurrentTime(time)`
 
-Set playback time
+Seek to a specific time position
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `time` | `number` | Time (seconds) | No |
+| `time` | `number` | Time position in seconds | No |
 
 **Returns:** `void`
 
@@ -3142,13 +3307,13 @@ Set playback time
 
 **Signature:** `seekForward(seconds?)`
 
-Seek forward
+Fast-forward by a specific duration
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `seconds` | `number` | Seconds (default 15) | Yes |
+| `seconds` | `number` | Duration in seconds (defaults to 15) | Yes |
 
 **Returns:** `void`
 
@@ -3158,13 +3323,13 @@ Seek forward
 
 **Signature:** `seekBackward(seconds?)`
 
-Seek backward
+Rewind by a specific duration
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `seconds` | `number` | Seconds (default 15) | Yes |
+| `seconds` | `number` | Duration in seconds (defaults to 15) | Yes |
 
 **Returns:** `void`
 
@@ -3172,13 +3337,15 @@ Seek backward
 
 ### `media.requestAccess`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `requestAccess()`
 
-Request music library access
+Request media library access permissions
 
 **Returns:** `Promise<boolean>`
 
-*Whether authorized*
+*Whether authorization was granted*
 
 ---
 
@@ -3186,7 +3353,7 @@ Request music library access
 
 **Signature:** `getAccessStatus()`
 
-Get access status
+Get current media library permission status
 
 **Returns:** `Promise<'authorized' \| 'denied' \| 'notDetermined' \| 'restricted'>`
 
@@ -3198,7 +3365,7 @@ Get access status
 
 **Signature:** `searchSongs(query)`
 
-Search music library
+Search the music library
 
 **Parameters:**
 
@@ -3208,7 +3375,7 @@ Search music library
 
 **Returns:** `Promise<[{ id: string, title: string, artist: string, album: string }]>`
 
-*Array of songs*
+*An array of song objects*
 
 ---
 
@@ -3216,13 +3383,13 @@ Search music library
 
 **Signature:** `playSong(persistentID)`
 
-Play specific song
+Play a specific song by ID
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `persistentID` | `string` | Song ID | No |
+| `persistentID` | `string` | Persistent song ID | No |
 
 **Returns:** `void`
 
@@ -3232,11 +3399,11 @@ Play specific song
 
 **Signature:** `getAllSongs()`
 
-Get all songs
+Retrieve all songs from the music library
 
 **Returns:** `Promise<[{ id: string, title: string, artist: string, album: string }]>`
 
-*Array of songs*
+*An array of all song objects*
 
 ---
 
@@ -3244,11 +3411,11 @@ Get all songs
 
 **Signature:** `getAlbums()`
 
-Get all albums
+Retrieve all albums from the music library
 
 **Returns:** `Promise<[{ id: string, title: string, artist: string }]>`
 
-*Array of albums*
+*An array of album objects*
 
 ---
 
@@ -3256,11 +3423,11 @@ Get all albums
 
 **Signature:** `getArtists()`
 
-Get all artists
+Retrieve all artists from the music library
 
 **Returns:** `Promise<[{ id: string, name: string }]>`
 
-*Array of artists*
+*An array of artist objects*
 
 ---
 
@@ -3268,11 +3435,11 @@ Get all artists
 
 **Signature:** `getPlaylists()`
 
-Get playlists
+Retrieve all playlists
 
 **Returns:** `Promise<[{ id: string, name: string }]>`
 
-*Array of playlists*
+*An array of playlist objects*
 
 ---
 
@@ -3280,7 +3447,7 @@ Get playlists
 
 **Signature:** `playAlbum(id)`
 
-Play album
+Play a specific album
 
 **Parameters:**
 
@@ -3296,7 +3463,7 @@ Play album
 
 **Signature:** `playArtist(id)`
 
-Play artist
+Play tracks from a specific artist
 
 **Parameters:**
 
@@ -3312,7 +3479,7 @@ Play artist
 
 **Signature:** `playPlaylist(id)`
 
-Play playlist
+Play a specific playlist
 
 **Parameters:**
 
@@ -3322,160 +3489,81 @@ Play playlist
 
 **Returns:** `void`
 
+*No return value*
+
 ---
 
 ## mail
 
-![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
-Mail operations
+Email operations
 
-### `mail.canSendMail`
+> **Trigger Note:** All email methods require UI interaction and are completely unavailable in Daemon mode
 
-**Signature:** `canSendMail()`
+### `mail.isAvailable`
 
-Check if can send mail
+**Signature:** `isAvailable()`
+
+Check if email functionality is available
 
 **Returns:** `boolean`
 
-*Whether capable*
+*Whether email can be sent*
 
 ---
 
-### `mail.getStatus`
+### `mail.compose`
 
-**Signature:** `getStatus()`
+**Signature:** `compose(options)`
 
-Get mail service status
+Open the mail composer
 
-**Returns:** `'available' \| 'unavailable'`
+**Parameters:**
 
-*Mail service status*
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `options` | `object` | Mail options { to: string\|string[], cc?: string\|string[], bcc?: string\|string[], subject?: string, body?: string, isHTML?: boolean, attachments?: [{path, mimeType?, filename?}] } | No |
+
+**Returns:** `{ success: boolean, error?: string }`
+
+*Object containing the send result*
 
 ---
 
 ### `mail.send`
 
-**Signature:** `send(to, subject, body)`
+**Signature:** `send(options)`
 
-Send simple email
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `to` | `string[]` | Recipients list | No |
-| `subject` | `string` | Subject | No |
-| `body` | `string` | Body | No |
-
-**Returns:** `Promise<boolean>`
-
-*Whether sent successfully*
-
----
-
-### `mail.sendAdvanced`
-
-**Signature:** `sendAdvanced(options)`
-
-Send email (advanced options)
+Send email via URL Scheme (alias for sendDirect)
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `options` | `object` | Options { to, cc, bcc, subject, body, isHtml, attachments } | No |
-
-**Returns:** `Promise<boolean>`
-
-*Whether sent successfully*
-
----
-
-### `mail.openMailApp`
-
-**Signature:** `openMailApp()`
-
-Open Mail app
-
-**Returns:** `void`
-
----
-
-### `mail.openSpecificMailApp`
-
-**Signature:** `openSpecificMailApp(appName)`
-
-Open specific mail app
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `appName` | `string` | App name | No |
-
-**Returns:** `void`
-
----
-
-### `mail.isValidEmail`
-
-**Signature:** `isValidEmail(email)`
-
-Validate email format
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `email` | `string` | Email address | No |
+| `options` | `object` | Mail options { to: string\|string[], cc?: string, bcc?: string, subject?: string, body?: string } | No |
 
 **Returns:** `boolean`
 
-*Whether valid*
+*Whether the mail client was successfully opened*
 
 ---
 
-### `mail.getInstalledMailApps`
+### `mail.sendDirect`
 
-**Signature:** `getInstalledMailApps()`
+**Signature:** `sendDirect(options)`
 
-Detect installed mail apps
-
-**Returns:** `string[]`
-
-*Array of installed mail app names*
-
----
-
-### `mail.fromTemplate`
-
-**Signature:** `fromTemplate(templateName, variables)`
-
-Generate email from template
+Send email via URL Scheme (opens default mail client)
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `templateName` | `string` | Template name | No |
-| `variables` | `object` | Variables dictionary | No |
+| `options` | `object` | Mail options { to: string\|string[], cc?: string, bcc?: string, subject?: string, body?: string } | No |
 
-**Returns:** `Promise<string>`
+**Returns:** `boolean`
 
-*Generated email content*
-
----
-
-### `mail.getTemplates`
-
-**Signature:** `getTemplates()`
-
-Get available templates
-
-**Returns:** `string[]`
-
-*Array of template names*
+*Whether the mail client was successfully opened*
 
 ---
 
@@ -3483,17 +3571,19 @@ Get available templates
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
-SMS operations
+SMS and messaging operations
+
+> **Trigger Note:** TrollStore Root privileges are required to access the system SMS database.
 
 ### `sms.checkAccess`
 
 **Signature:** `checkAccess()`
 
-Check SMS access
+Check SMS database access permissions
 
 **Returns:** `boolean`
 
-*Whether has permission*
+*Whether access is granted*
 
 ---
 
@@ -3501,11 +3591,11 @@ Check SMS access
 
 **Signature:** `tryAccess()`
 
-Try direct SMS database access (Debug)
+Attempt direct access to the SMS database (for debugging)
 
 **Returns:** `boolean`
 
-*Whether access successful*
+*Whether the access attempt was successful*
 
 ---
 
@@ -3513,17 +3603,17 @@ Try direct SMS database access (Debug)
 
 **Signature:** `read(limit?)`
 
-Read recent SMS
+Read recent SMS messages
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `limit` | `number` | Limit count (default 10) | Yes |
+| `limit` | `number` | Maximum number of messages to retrieve (defaults to 10) | Yes |
 
 **Returns:** `[{ id: string, content: string, sender: string, date: number }]`
 
-*Array of SMS objects*
+*An array of message objects*
 
 ---
 
@@ -3531,17 +3621,17 @@ Read recent SMS
 
 **Signature:** `getVerificationCode(minutes?)`
 
-Get verification code
+Extract a verification code from recent messages
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `minutes` | `number` | Look back minutes (default 5) | Yes |
+| `minutes` | `number` | Time window in minutes to search for a code (defaults to 5) | Yes |
 
 **Returns:** `string \| null`
 
-*Verification code or null*
+*The extracted code or null if not found*
 
 ---
 
@@ -3549,17 +3639,17 @@ Get verification code
 
 **Signature:** `search(keyword)`
 
-Search SMS
+Search messages by keyword
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `keyword` | `string` | Keyword | No |
+| `keyword` | `string` | Search keyword | No |
 
 **Returns:** `[{ id: string, content: string, sender: string, date: number }]`
 
-*Array of SMS objects*
+*An array of matching message objects*
 
 ---
 
@@ -3567,17 +3657,17 @@ Search SMS
 
 **Signature:** `getByAddress(address)`
 
-Get SMS by number
+Retrieve messages from a specific phone number
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `address` | `string` | Sender number | No |
+| `address` | `string` | Sender's phone number or address | No |
 
 **Returns:** `[{ id: string, content: string, sender: string, date: number }]`
 
-*Array of SMS objects*
+*An array of message objects*
 
 ---
 
@@ -3585,11 +3675,11 @@ Get SMS by number
 
 **Signature:** `getChats()`
 
-Get conversation list
+Retrieve a list of conversation threads
 
 **Returns:** `[{ id: string, name: string, lastMessage: string, date: number }]`
 
-*Array of conversation objects*
+*An array of chat session objects*
 
 ---
 
@@ -3597,11 +3687,11 @@ Get conversation list
 
 **Signature:** `getStatistics()`
 
-Get SMS statistics
+Get SMS usage statistics
 
 **Returns:** `{ total: number, unread: number, senders: number }`
 
-*Statistics object*
+*An object containing summary statistics*
 
 ---
 
@@ -3609,11 +3699,11 @@ Get SMS statistics
 
 **Signature:** `getLatest()`
 
-Get latest SMS
+Retrieve the most recent message
 
 **Returns:** `{ id: string, content: string, sender: string, date: number } \| null`
 
-*Latest SMS object or null*
+*The latest message object or null*
 
 ---
 
@@ -3621,11 +3711,11 @@ Get latest SMS
 
 **Signature:** `getUnread()`
 
-Get unread SMS
+Retrieve all unread messages
 
 **Returns:** `[{ id: string, content: string, sender: string, date: number }]`
 
-*Array of unread SMS objects*
+*An array of unread message objects*
 
 ---
 
@@ -3633,25 +3723,25 @@ Get unread SMS
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
-SQL Database Query
+SQL database operations
 
 ### `sql.query`
 
 **Signature:** `query(dbPath, sql, params?)`
 
-Execute SELECT query
+Execute a SELECT statement and return results
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `dbPath` | `string` | Database path | No |
-| `sql` | `string` | SQL statement | No |
-| `params` | `any[]` | Parameter list | Yes |
+| `dbPath` | `string` | Path to the database file | No |
+| `sql` | `string` | SQL query string | No |
+| `params` | `any[]` | List of parameters for prepared statement | Yes |
 
 **Returns:** `any[]`
 
-*Query result array*
+*An array of objects representing the query rows*
 
 ---
 
@@ -3659,19 +3749,19 @@ Execute SELECT query
 
 **Signature:** `execute(dbPath, sql, params?)`
 
-Execute INSERT/UPDATE/DELETE
+Execute INSERT, UPDATE, or DELETE statements
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `dbPath` | `string` | Database path | No |
-| `sql` | `string` | SQL statement | No |
-| `params` | `any[]` | Parameter list | Yes |
+| `dbPath` | `string` | Path to the database file | No |
+| `sql` | `string` | SQL execution string | No |
+| `params` | `any[]` | List of parameters for prepared statement | Yes |
 
 **Returns:** `{ changes: number, lastInsertRowId: number }`
 
-*Execution result object*
+*Result object containing affected rows and the last inserted ID*
 
 ---
 
@@ -3679,17 +3769,17 @@ Execute INSERT/UPDATE/DELETE
 
 **Signature:** `tables(dbPath)`
 
-List all tables in database
+List all tables in the database
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `dbPath` | `string` | Database path | No |
+| `dbPath` | `string` | Path to the database file | No |
 
 **Returns:** `string[]`
 
-*Array of table names*
+*An array of table names*
 
 ---
 
@@ -3697,108 +3787,76 @@ List all tables in database
 
 **Signature:** `schema(dbPath, tableName)`
 
-Get table schema
+Retrieve the schema (structure) of a specific table
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `dbPath` | `string` | Database path | No |
-| `tableName` | `string` | Table name | No |
+| `dbPath` | `string` | Path to the database file | No |
+| `tableName` | `string` | The name of the table | No |
 
 **Returns:** `string`
 
-*Table schema SQL*
+*The SQL statement used to create the table*
 
 ---
 
 ## shortcuts
 
-![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 Shortcuts operations
 
+> **Trigger Note:** Running shortcuts and opening apps require foreground UI interaction; completely unavailable in Daemon mode
+
 ### `shortcuts.run`
 
-**Signature:** `run(name)`
+**Signature:** `run(name, input?)`
 
-Run shortcut
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `name` | `string` | Shortcut name | No |
-
-**Returns:** `Promise<string>`
-
-*Execution result*
-
----
-
-### `shortcuts.runWithText`
-
-**Signature:** `runWithText(name, text)`
-
-Run shortcut (with text input)
+Run a shortcut
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `name` | `string` | Shortcut name | No |
-| `text` | `string` | Input text | No |
+| `input` | `string` | Input text (optional) | Yes |
 
-**Returns:** `Promise<string>`
+**Returns:** `boolean`
 
-*Execution result*
+*Whether the shortcut was successfully opened*
 
 ---
 
-### `shortcuts.runWithClipboard`
+### `shortcuts.runWithCallback`
 
-**Signature:** `runWithClipboard(name)`
+**Signature:** `runWithCallback(name, input?)`
 
-Run shortcut (clipboard input)
+Run a shortcut with x-callback-url support
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `name` | `string` | Shortcut name | No |
+| `input` | `string` | Input text (optional) | Yes |
 
-**Returns:** `Promise<string>`
+**Returns:** `boolean`
 
-*Execution result*
-
----
-
-### `shortcuts.runAdvanced`
-
-**Signature:** `runAdvanced(name, options)`
-
-Run shortcut (advanced options)
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `name` | `string` | Shortcut name | No |
-| `options` | `object` | Options { input, showOutput } | No |
-
-**Returns:** `Promise<any>`
-
-*Execution result*
+*Whether the shortcut was successfully opened*
 
 ---
 
-### `shortcuts.openApp`
+### `shortcuts.open`
 
-**Signature:** `openApp()`
+**Signature:** `open()`
 
-Open Shortcuts app
+Open the Shortcuts app
 
-**Returns:** `void`
+**Returns:** `boolean`
+
+*Whether the app was successfully opened*
 
 ---
 
@@ -3806,17 +3864,19 @@ Open Shortcuts app
 
 **Signature:** `openGallery()`
 
-Open Shortcuts Gallery
+Open the Shortcuts gallery
 
-**Returns:** `void`
+**Returns:** `boolean`
+
+*Whether the gallery was successfully opened*
 
 ---
 
-### `shortcuts.openShortcut`
+### `shortcuts.create`
 
-**Signature:** `openShortcut(name)`
+**Signature:** `create(name)`
 
-Open specific shortcut
+Create a new shortcut
 
 **Parameters:**
 
@@ -3824,25 +3884,17 @@ Open specific shortcut
 |------|------|-------------|----------|
 | `name` | `string` | Shortcut name | No |
 
-**Returns:** `void`
+**Returns:** `boolean`
+
+*Whether the creation interface was successfully opened*
 
 ---
 
-### `shortcuts.createNew`
+### `shortcuts.import`
 
-**Signature:** `createNew()`
+**Signature:** `import(url)`
 
-Create new shortcut
-
-**Returns:** `void`
-
----
-
-### `shortcuts.importFromUrl`
-
-**Signature:** `importFromUrl(url)`
-
-Import shortcut from URL
+Import a shortcut from URL
 
 **Parameters:**
 
@@ -3850,7 +3902,9 @@ Import shortcut from URL
 |------|------|-------------|----------|
 | `url` | `string` | Shortcut URL | No |
 
-**Returns:** `void`
+**Returns:** `boolean`
+
+*Whether the import interface was successfully opened*
 
 ---
 
@@ -3858,41 +3912,78 @@ Import shortcut from URL
 
 **Signature:** `isAvailable()`
 
-Check if Shortcuts installed
+Check if Shortcuts app is installed
 
 **Returns:** `boolean`
 
-*Availability status*
+*Whether Shortcuts is available*
 
 ---
 
-### `shortcuts.getCommonShortcuts`
+### `shortcuts.donateInteraction`
 
-**Signature:** `getCommonShortcuts()`
+**Signature:** `donateInteraction(title, identifier)`
 
-Get common shortcut templates
+Donate a Siri suggestion
 
-**Returns:** `string[]`
+**Parameters:**
 
-*List of templates*
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `title` | `string` | Suggestion title/invocation phrase | No |
+| `identifier` | `string` | Interaction identifier | No |
+
+**Returns:** `boolean`
+
+*Whether the donation was successful*
+
+---
+
+### `shortcuts.deleteInteraction`
+
+**Signature:** `deleteInteraction(identifier)`
+
+Delete a specific Siri suggestion
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `identifier` | `string` | Interaction identifier | No |
+
+**Returns:** `boolean`
+
+*Whether the deletion was successful*
+
+---
+
+### `shortcuts.deleteAllInteractions`
+
+**Signature:** `deleteAllInteractions()`
+
+Delete all Siri suggestions
+
+**Returns:** `boolean`
+
+*Whether the deletion was successful*
 
 ---
 
 ## bluetooth
 
-![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
 
 Bluetooth operations
+
+> **Trigger Note:** The 'openSettings' method requires UI interaction; scanning may require the app to be in the foreground.
 
 ### `bluetooth.isEnabled`
 
 **Signature:** `isEnabled()`
 
-Is Bluetooth enabled
+Check if Bluetooth is enabled
 
 **Returns:** `boolean`
-
-*Whether enabled*
 
 ---
 
@@ -3900,11 +3991,9 @@ Is Bluetooth enabled
 
 **Signature:** `getStatus()`
 
-Get Bluetooth status
+Get current Bluetooth adapter state
 
 **Returns:** `'poweredOn' \| 'poweredOff' \| 'unauthorized' \| 'unknown'`
-
-*Bluetooth status*
 
 ---
 
@@ -3912,15 +4001,17 @@ Get Bluetooth status
 
 **Signature:** `setEnabled(enabled)`
 
-Set Bluetooth switch
+Set Bluetooth power state
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `enabled` | `boolean` | Whether to enable | No |
+| `enabled` | `boolean` | Whether to enable Bluetooth | No |
 
 **Returns:** `void`
+
+*No return value*
 
 ---
 
@@ -3932,6 +4023,8 @@ Turn on Bluetooth
 
 **Returns:** `void`
 
+*No return value*
+
 ---
 
 ### `bluetooth.turnOff`
@@ -3942,17 +4035,17 @@ Turn off Bluetooth
 
 **Returns:** `void`
 
+*No return value*
+
 ---
 
 ### `bluetooth.getPairedDevices`
 
 **Signature:** `getPairedDevices()`
 
-Get paired devices
+Get a list of paired devices
 
 **Returns:** `Promise<[{ name: string, uuid: string, isConnected: boolean }]>`
-
-*List of paired devices*
 
 ---
 
@@ -3960,11 +4053,9 @@ Get paired devices
 
 **Signature:** `getConnectedDevices()`
 
-Get connected devices
+Get a list of currently connected devices
 
 **Returns:** `Promise<[{ name: string, uuid: string }]>`
-
-*List of connected devices*
 
 ---
 
@@ -3972,7 +4063,7 @@ Get connected devices
 
 **Signature:** `connectDevice(id)`
 
-Connect device
+Connect to a specific device
 
 **Parameters:**
 
@@ -3981,8 +4072,6 @@ Connect device
 | `id` | `string` | Device UUID | No |
 
 **Returns:** `Promise<boolean>`
-
-*Whether connection successful*
 
 ---
 
@@ -3990,7 +4079,7 @@ Connect device
 
 **Signature:** `disconnectDevice(id)`
 
-Disconnect device
+Disconnect from a specific device
 
 **Parameters:**
 
@@ -4000,17 +4089,17 @@ Disconnect device
 
 **Returns:** `Promise<boolean>`
 
-*Whether disconnection successful*
-
 ---
 
 ### `bluetooth.startScan`
 
 **Signature:** `startScan()`
 
-Start scanning
+Start scanning for nearby Bluetooth devices
 
 **Returns:** `void`
+
+*No return value*
 
 ---
 
@@ -4018,19 +4107,25 @@ Start scanning
 
 **Signature:** `stopScan()`
 
-Stop scanning
+Stop the ongoing Bluetooth scan
 
 **Returns:** `void`
+
+*No return value*
 
 ---
 
 ### `bluetooth.openSettings`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `openSettings()`
 
-Open Bluetooth settings
+Open system Bluetooth settings
 
 **Returns:** `void`
+
+*No return value*
 
 ---
 
@@ -4038,13 +4133,13 @@ Open Bluetooth settings
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
-Memo operations (iCloud Sync)
+Memo operations (iCloud synchronized)
 
 ### `memo.create`
 
 **Signature:** `create(title, content, tags?)`
 
-Create memo
+Create a new memo
 
 **Parameters:**
 
@@ -4064,11 +4159,11 @@ Create memo
 
 **Signature:** `getAll()`
 
-Get all memos
+Retrieve all memos
 
 **Returns:** `[object]`
 
-*Memo array [{ id, title, content, createdAt, updatedAt, tags }]*
+*Array of memo objects [{ id, title, content, createdAt, updatedAt, tags }]*
 
 ---
 
@@ -4076,7 +4171,7 @@ Get all memos
 
 **Signature:** `getById(id)`
 
-Get memo by ID
+Get a specific memo by ID
 
 **Parameters:**
 
@@ -4086,7 +4181,7 @@ Get memo by ID
 
 **Returns:** `object \| null`
 
-*Memo object or null*
+*Memo object or null if not found*
 
 ---
 
@@ -4094,7 +4189,7 @@ Get memo by ID
 
 **Signature:** `search(keyword)`
 
-Search memos (title and content)
+Search memos (matches title and content)
 
 **Parameters:**
 
@@ -4104,7 +4199,7 @@ Search memos (title and content)
 
 **Returns:** `[object]`
 
-*Array of matching memos*
+*Array of matching memo objects*
 
 ---
 
@@ -4112,7 +4207,7 @@ Search memos (title and content)
 
 **Signature:** `update(id, data)`
 
-Update memo
+Update an existing memo
 
 **Parameters:**
 
@@ -4131,7 +4226,7 @@ Update memo
 
 **Signature:** `delete(id)`
 
-Delete memo
+Delete a specific memo
 
 **Parameters:**
 
@@ -4141,7 +4236,7 @@ Delete memo
 
 **Returns:** `object`
 
-*{ success: boolean, id: string }*
+*{ success: boolean, id: string (of the deleted memo) }*
 
 ---
 
@@ -4149,7 +4244,7 @@ Delete memo
 
 **Signature:** `clear()`
 
-Clear all memos
+Delete all memos
 
 **Returns:** `object`
 
@@ -4161,11 +4256,359 @@ Clear all memos
 
 **Signature:** `count()`
 
-Get memo count
+Get the total number of memos
 
 **Returns:** `number`
 
 *Total count of memos*
+
+---
+
+## system
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+System settings control
+
+> **Trigger Note:** Most methods require TrollStore privileges to work properly
+
+### `system.isWiFiEnabled`
+
+**Signature:** `isWiFiEnabled()`
+
+Check if WiFi is enabled
+
+**Returns:** `boolean`
+
+*Whether WiFi is enabled*
+
+---
+
+### `system.setWiFi`
+
+**Signature:** `setWiFi(enabled)`
+
+Set WiFi enabled state (TrollStore privilege)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | Whether to enable WiFi | No |
+
+**Returns:** `boolean`
+
+*Whether the operation succeeded*
+
+---
+
+### `system.isBluetoothEnabled`
+
+**Signature:** `isBluetoothEnabled()`
+
+Check if Bluetooth is enabled
+
+**Returns:** `boolean`
+
+*Whether Bluetooth is enabled*
+
+---
+
+### `system.setBluetooth`
+
+**Signature:** `setBluetooth(enabled)`
+
+Set Bluetooth enabled state (TrollStore privilege)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | Whether to enable Bluetooth | No |
+
+**Returns:** `boolean`
+
+*Whether the operation succeeded*
+
+---
+
+### `system.isAirplaneModeEnabled`
+
+**Signature:** `isAirplaneModeEnabled()`
+
+Check if Airplane Mode is enabled
+
+**Returns:** `boolean`
+
+*Whether Airplane Mode is enabled*
+
+---
+
+### `system.setAirplaneMode`
+
+**Signature:** `setAirplaneMode(enabled)`
+
+Set Airplane Mode state (TrollStore privilege)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | Whether to enable Airplane Mode | No |
+
+**Returns:** `boolean`
+
+*Whether the operation succeeded*
+
+---
+
+### `system.isDoNotDisturbEnabled`
+
+**Signature:** `isDoNotDisturbEnabled()`
+
+Check if Do Not Disturb is enabled
+
+**Returns:** `boolean`
+
+*Whether Do Not Disturb is enabled*
+
+---
+
+### `system.setDoNotDisturb`
+
+**Signature:** `setDoNotDisturb(enabled)`
+
+Set Do Not Disturb state
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | Whether to enable Do Not Disturb | No |
+
+**Returns:** `boolean`
+
+*Whether the operation succeeded*
+
+---
+
+### `system.getVolume`
+
+**Signature:** `getVolume(category?)`
+
+Get system volume
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `category` | `string` | Volume category: 'System', 'Ringer', 'Media', defaults to 'Media' | Yes |
+
+**Returns:** `number`
+
+*Current volume level (0.0 - 1.0)*
+
+---
+
+### `system.setVolume`
+
+**Signature:** `setVolume(level, category?)`
+
+Set system volume
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `level` | `number` | Volume level (0.0 - 1.0) | No |
+| `category` | `string` | Volume category: 'System', 'Ringer', 'Media', defaults to 'Media' | Yes |
+
+**Returns:** `boolean`
+
+*Whether the operation succeeded*
+
+---
+
+### `system.hasFlashlight`
+
+**Signature:** `hasFlashlight()`
+
+Check if device has flashlight
+
+**Returns:** `boolean`
+
+*Whether device has flashlight*
+
+---
+
+### `system.isFlashlightOn`
+
+**Signature:** `isFlashlightOn()`
+
+Check if flashlight is on
+
+**Returns:** `boolean`
+
+*Whether flashlight is on*
+
+---
+
+### `system.setFlashlight`
+
+**Signature:** `setFlashlight(enabled, level?)`
+
+Set flashlight state
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | Whether to turn on flashlight | No |
+| `level` | `number` | Brightness level (0.0 - 1.0), defaults to 1.0 | Yes |
+
+**Returns:** `boolean`
+
+*Whether the operation succeeded*
+
+---
+
+### `system.isOrientationLockEnabled`
+
+**Signature:** `isOrientationLockEnabled()`
+
+Check if orientation lock is enabled
+
+**Returns:** `boolean`
+
+*Whether orientation lock is enabled*
+
+---
+
+### `system.setOrientationLock`
+
+**Signature:** `setOrientationLock(enabled)`
+
+Set orientation lock state
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | Whether to enable orientation lock | No |
+
+**Returns:** `boolean`
+
+*Whether the operation succeeded*
+
+---
+
+### `system.isLowPowerModeEnabled`
+
+**Signature:** `isLowPowerModeEnabled()`
+
+Check if Low Power Mode is enabled
+
+**Returns:** `boolean`
+
+*Whether Low Power Mode is enabled*
+
+---
+
+### `system.setLowPowerMode`
+
+**Signature:** `setLowPowerMode(enabled)`
+
+Set Low Power Mode state (TrollStore privilege)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | Whether to enable Low Power Mode | No |
+
+**Returns:** `boolean`
+
+*Whether the operation succeeded*
+
+---
+
+### `system.isLocationServicesEnabled`
+
+**Signature:** `isLocationServicesEnabled()`
+
+Check if Location Services are enabled
+
+**Returns:** `boolean`
+
+*Whether Location Services are enabled*
+
+---
+
+### `system.setLocationServices`
+
+**Signature:** `setLocationServices(enabled)`
+
+Set Location Services state (TrollStore privilege)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | Whether to enable Location Services | No |
+
+**Returns:** `boolean`
+
+*Whether the operation succeeded*
+
+---
+
+### `system.isCellularDataEnabled`
+
+**Signature:** `isCellularDataEnabled()`
+
+Check if Cellular Data is enabled
+
+**Returns:** `boolean`
+
+*Whether Cellular Data is enabled*
+
+---
+
+### `system.setCellularData`
+
+**Signature:** `setCellularData(enabled)`
+
+Set Cellular Data state (TrollStore privilege)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | Whether to enable Cellular Data | No |
+
+**Returns:** `boolean`
+
+*Whether the operation succeeded*
+
+---
+
+### `system.openSettings`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
+**Signature:** `openSettings(section?)`
+
+Open system settings
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `section` | `string` | Settings section: 'WIFI', 'BLUETOOTH', 'CELLULAR', 'VPN', 'GENERAL', 'DISPLAY', 'SOUND', 'NOTIFICATION', 'PRIVACY', 'BATTERY', 'STORAGE', 'WALLPAPER', 'SIRI', 'ACCESSIBILITY', 'DND', 'SCREEN_TIME', 'PASSWORDS' | Yes |
+
+**Returns:** `boolean`
+
+*Whether settings was opened successfully*
 
 ---
 

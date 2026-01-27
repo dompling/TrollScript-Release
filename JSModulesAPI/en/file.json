@@ -1,0 +1,300 @@
+{
+  "name": "file",
+  "description": "File system operations",
+  "icon": "folder",
+  "color": "cyan",
+  "daemonSupport": "full",
+  "methods": [
+    {
+      "name": "read",
+      "signature": "read(path)",
+      "description": "Read file content",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "Absolute file path"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "The content of the file"
+    },
+    {
+      "name": "write",
+      "signature": "write(path, content)",
+      "description": "Write content to a file",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "Absolute file path"
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "description": "The content to be written"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the write operation was successful"
+    },
+    {
+      "name": "append",
+      "signature": "append(path, content)",
+      "description": "Append content to a file",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "Absolute file path"
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "description": "The content to be appended"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the append operation was successful"
+    },
+    {
+      "name": "exists",
+      "signature": "exists(path)",
+      "description": "Check if a file exists",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "Absolute file path"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the file exists"
+    },
+    {
+      "name": "delete",
+      "signature": "delete(path)",
+      "description": "Delete a file",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "Absolute file path"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the deletion was successful"
+    },
+    {
+      "name": "move",
+      "signature": "move(from, to)",
+      "description": "Move a file",
+      "parameters": [
+        {
+          "name": "from",
+          "type": "string",
+          "description": "Source path"
+        },
+        {
+          "name": "to",
+          "type": "string",
+          "description": "Destination path"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the move operation was successful"
+    },
+    {
+      "name": "copy",
+      "signature": "copy(from, to)",
+      "description": "Copy a file",
+      "parameters": [
+        {
+          "name": "from",
+          "type": "string",
+          "description": "Source path"
+        },
+        {
+          "name": "to",
+          "type": "string",
+          "description": "Destination path"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the copy operation was successful"
+    },
+    {
+      "name": "list",
+      "signature": "list(path)",
+      "description": "List directory contents",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "Directory path"
+        }
+      ],
+      "returns": "[string]",
+      "returnsDescription": "An array of file names"
+    },
+    {
+      "name": "mkdir",
+      "signature": "mkdir(path)",
+      "description": "Create a new directory",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "Directory path"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the directory was successfully created"
+    },
+    {
+      "name": "stat",
+      "signature": "stat(path)",
+      "description": "Retrieve file information",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "File path"
+        }
+      ],
+      "returns": "{ size: number, modificationDate: number, creationDate: number, type: string }",
+      "returnsDescription": "Object containing size (bytes), modification timestamp, creation timestamp, and type (file/directory)"
+    },
+    {
+      "name": "isDirectory",
+      "signature": "isDirectory(path)",
+      "description": "Check if the path is a directory",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "File path"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the path is a directory"
+    },
+    {
+      "name": "documentsPath",
+      "signature": "documentsPath()",
+      "description": "Get the Documents directory path",
+      "returns": "string",
+      "returnsDescription": "The absolute path of the Documents directory"
+    },
+    {
+      "name": "cachePath",
+      "signature": "cachePath()",
+      "description": "Get the Caches directory path",
+      "returns": "string",
+      "returnsDescription": "The absolute path of the Caches directory"
+    },
+    {
+      "name": "tempPath",
+      "signature": "tempPath()",
+      "description": "Get the Temporary directory path",
+      "returns": "string",
+      "returnsDescription": "The absolute path of the Temporary directory"
+    },
+    {
+      "name": "debug",
+      "signature": "debug(path)",
+      "description": "Debug access permission details for a path",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "File path"
+        }
+      ],
+      "returns": "string",
+      "returnsDescription": "Debug information string"
+    },
+    {
+      "name": "rootRead",
+      "signature": "rootRead(path)",
+      "description": "Read protected files with Root privileges (requires TrollStore)",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "Absolute file path"
+        }
+      ],
+      "returns": "string | null",
+      "returnsDescription": "File content, or null if reading failed"
+    },
+    {
+      "name": "rootList",
+      "signature": "rootList(path)",
+      "description": "List protected directory contents with Root privileges (requires TrollStore)",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "Absolute directory path"
+        }
+      ],
+      "returns": "[string] | null",
+      "returnsDescription": "An array of file names, or null if it failed"
+    },
+    {
+      "name": "rootCopy",
+      "signature": "rootCopy(src, dest)",
+      "description": "Copy protected files with Root privileges (requires TrollStore)",
+      "parameters": [
+        {
+          "name": "src",
+          "type": "string",
+          "description": "Source file path"
+        },
+        {
+          "name": "dest",
+          "type": "string",
+          "description": "Destination file path"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the copy was successful"
+    },
+    {
+      "name": "rootCheck",
+      "signature": "rootCheck(path)",
+      "description": "Inspect path details with Root privileges (requires TrollStore)",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "File or directory path"
+        }
+      ],
+      "returns": "{ readable: boolean, writable: boolean, exists: boolean, isDirectory: boolean }",
+      "returnsDescription": "Object containing read/write permissions, existence, and other debug info"
+    },
+    {
+      "name": "rootExists",
+      "signature": "rootExists(path)",
+      "description": "Check file existence with Root privileges (requires TrollStore)",
+      "parameters": [
+        {
+          "name": "path",
+          "type": "string",
+          "description": "File path"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether it exists"
+    },
+    {
+      "name": "rootAvailable",
+      "signature": "rootAvailable()",
+      "description": "Check if the Root Helper is available",
+      "returns": "boolean",
+      "returnsDescription": "Whether the helper is available"
+    }
+  ]
+}

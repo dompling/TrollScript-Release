@@ -1,0 +1,161 @@
+{
+  "name": "http",
+  "description": "Network requests",
+  "icon": "network",
+  "color": "purple",
+  "daemonSupport": "full",
+  "methods": [
+    {
+      "name": "get",
+      "signature": "get(url, options?)",
+      "description": "Send a GET request",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "Target URL"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "Request options { headers, timeout }"
+        }
+      ],
+      "returns": "Promise<{ status: number, data: string, headers: object }>",
+      "returnsDescription": "Object containing status code, response data, and response headers"
+    },
+    {
+      "name": "post",
+      "signature": "post(url, options?)",
+      "description": "Send a POST request",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "Target URL"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "Request options { body, headers, timeout }"
+        }
+      ],
+      "returns": "Promise<{ status: number, data: string, headers: object }>"
+    },
+    {
+      "name": "put",
+      "signature": "put(url, options?)",
+      "description": "Send a PUT request",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "Target URL"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "Request options { body, headers, timeout }"
+        }
+      ],
+      "returns": "Promise<{ status: number, data: string, headers: object }>"
+    },
+    {
+      "name": "delete",
+      "signature": "delete(url, options?)",
+      "description": "Send a DELETE request",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "Target URL"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "Request options { headers, timeout }"
+        }
+      ],
+      "returns": "Promise<{ status: number, data: string, headers: object }>"
+    },
+    {
+      "name": "patch",
+      "signature": "patch(url, options?)",
+      "description": "Send a PATCH request",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "Target URL"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "Request options { body, headers, timeout }"
+        }
+      ],
+      "returns": "Promise<{ status: number, data: string, headers: object }>"
+    },
+    {
+      "name": "head",
+      "signature": "head(url, options?)",
+      "description": "Send a HEAD request",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "Target URL"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "Request options { headers, timeout }"
+        }
+      ],
+      "returns": "Promise<{ status: number, data: string, headers: object }>"
+    },
+    {
+      "name": "request",
+      "signature": "request(url, options)",
+      "description": "Send a custom HTTP request",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "Target URL"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "description": "Request options { method, body, headers, timeout }"
+        }
+      ],
+      "returns": "Promise<{ status: number, data: string, headers: object }>"
+    },
+    {
+      "name": "download",
+      "signature": "download(url, path)",
+      "description": "Download a file from a URL",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "Download source URL"
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "description": "Local destination path to save the file"
+        }
+      ],
+      "returns": "Promise<{ path: string }>",
+      "returnsDescription": "Object containing the local file path"
+    }
+  ]
+}

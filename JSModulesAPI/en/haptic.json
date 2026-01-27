@@ -1,0 +1,85 @@
+{
+  "name": "haptic",
+  "description": "Haptic feedback",
+  "icon": "waveform.path",
+  "color": "purple",
+  "daemonSupport": "limited",
+  "daemonNote": "Haptic feedback may not function in background mode and requires hardware support.",
+  "methods": [
+    {
+      "name": "impact",
+      "signature": "impact(style?)",
+      "description": "Trigger impact feedback",
+      "parameters": [
+        {
+          "name": "style",
+          "type": "string",
+          "optional": true,
+          "description": "The intensity style: 'light' | 'medium' | 'heavy' | 'soft' | 'rigid'"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "notification",
+      "signature": "notification(type)",
+      "description": "Trigger notification feedback",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "string",
+          "description": "The notification type: 'success' | 'warning' | 'error'"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "selection",
+      "signature": "selection()",
+      "description": "Trigger selection feedback (for picker changes, etc.)",
+      "returns": "void"
+    },
+    {
+      "name": "vibrate",
+      "signature": "vibrate()",
+      "description": "Standard device vibration",
+      "returns": "void"
+    },
+    {
+      "name": "light",
+      "signature": "light()",
+      "description": "Light impact feedback",
+      "returns": "void"
+    },
+    {
+      "name": "medium",
+      "signature": "medium()",
+      "description": "Medium impact feedback",
+      "returns": "void"
+    },
+    {
+      "name": "heavy",
+      "signature": "heavy()",
+      "description": "Heavy impact feedback",
+      "returns": "void"
+    },
+    {
+      "name": "success",
+      "signature": "success()",
+      "description": "Success notification feedback",
+      "returns": "void"
+    },
+    {
+      "name": "warning",
+      "signature": "warning()",
+      "description": "Warning notification feedback",
+      "returns": "void"
+    },
+    {
+      "name": "error",
+      "signature": "error()",
+      "description": "Error notification feedback",
+      "returns": "void"
+    }
+  ]
+}

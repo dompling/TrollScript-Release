@@ -1,0 +1,93 @@
+{
+  "name": "console",
+  "description": "Console output",
+  "icon": "terminal",
+  "color": "gray",
+  "daemonSupport": "full",
+  "methods": [
+    {
+      "name": "log",
+      "signature": "log(...args)",
+      "description": "Output log messages",
+      "parameters": [
+        {
+          "name": "...args",
+          "type": "any[]",
+          "description": "Content to be logged"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "error",
+      "signature": "error(...args)",
+      "description": "Output error messages",
+      "parameters": [
+        {
+          "name": "...args",
+          "type": "any[]",
+          "description": "Content to be logged as an error"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "warn",
+      "signature": "warn(...args)",
+      "description": "Output warning messages",
+      "parameters": [
+        {
+          "name": "...args",
+          "type": "any[]",
+          "description": "Content to be logged as a warning"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "info",
+      "signature": "info(...args)",
+      "description": "Output informational messages",
+      "parameters": [
+        {
+          "name": "...args",
+          "type": "any[]",
+          "description": "Content to be logged as info"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "debug",
+      "signature": "debug(...args)",
+      "description": "Output debug messages",
+      "parameters": [
+        {
+          "name": "...args",
+          "type": "any[]",
+          "description": "Content to be logged for debugging"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "table",
+      "signature": "table(data)",
+      "description": "Display data in tabular format",
+      "parameters": [
+        {
+          "name": "data",
+          "type": "object | array",
+          "description": "Tabular data to be displayed"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "clear",
+      "signature": "clear()",
+      "description": "Clear the console",
+      "returns": "void"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "name": "bluetooth",
+  "description": "蓝牙操作",
+  "icon": "antenna.radiowaves.left.and.right",
+  "color": "blue",
+  "daemonSupport": "limited",
+  "daemonNote": "openSettings 需要 UI 交互，扫描功能可能需要前台运行",
+  "methods": [
+    {
+      "name": "isEnabled",
+      "signature": "isEnabled()",
+      "description": "蓝牙是否开启",
+      "returns": "boolean"
+    },
+    {
+      "name": "getStatus",
+      "signature": "getStatus()",
+      "description": "获取蓝牙状态",
+      "returns": "'poweredOn' | 'poweredOff' | 'unauthorized' | 'unknown'"
+    },
+    {
+      "name": "setEnabled",
+      "signature": "setEnabled(enabled)",
+      "description": "设置蓝牙开关",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "是否开启"
+        }
+      ],
+      "returns": "void",
+      "returnsDescription": "无返回值"
+    },
+    {
+      "name": "turnOn",
+      "signature": "turnOn()",
+      "description": "打开蓝牙",
+      "returns": "void",
+      "returnsDescription": "无返回值"
+    },
+    {
+      "name": "turnOff",
+      "signature": "turnOff()",
+      "description": "关闭蓝牙",
+      "returns": "void",
+      "returnsDescription": "无返回值"
+    },
+    {
+      "name": "getPairedDevices",
+      "signature": "getPairedDevices()",
+      "description": "获取配对设备",
+      "returns": "Promise<[{ name: string, uuid: string, isConnected: boolean }]>"
+    },
+    {
+      "name": "getConnectedDevices",
+      "signature": "getConnectedDevices()",
+      "description": "获取已连接设备",
+      "returns": "Promise<[{ name: string, uuid: string }]>"
+    },
+    {
+      "name": "connectDevice",
+      "signature": "connectDevice(id)",
+      "description": "连接设备",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "设备 UUID"
+        }
+      ],
+      "returns": "Promise<boolean>"
+    },
+    {
+      "name": "disconnectDevice",
+      "signature": "disconnectDevice(id)",
+      "description": "断开设备",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "设备 UUID"
+        }
+      ],
+      "returns": "Promise<boolean>"
+    },
+    {
+      "name": "startScan",
+      "signature": "startScan()",
+      "description": "开始扫描",
+      "returns": "void",
+      "returnsDescription": "无返回值"
+    },
+    {
+      "name": "stopScan",
+      "signature": "stopScan()",
+      "description": "停止扫描",
+      "returns": "void",
+      "returnsDescription": "无返回值"
+    },
+    {
+      "name": "openSettings",
+      "signature": "openSettings()",
+      "description": "打开蓝牙设置",
+      "daemonSupport": "none",
+      "returns": "void",
+      "returnsDescription": "无返回值"
+    }
+  ]
+}

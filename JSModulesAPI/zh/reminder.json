@@ -1,0 +1,173 @@
+{
+  "name": "reminder",
+  "description": "提醒事项",
+  "icon": "checklist",
+  "color": "orange",
+  "daemonSupport": "limited",
+  "daemonNote": "requestAccess 需要 UI 交互，其他操作需要预先获得权限",
+  "methods": [
+    {
+      "name": "isAuthorized",
+      "signature": "isAuthorized()",
+      "description": "检查权限状态",
+      "returns": "boolean",
+      "returnsDescription": "是否已授权"
+    },
+    {
+      "name": "requestAccess",
+      "signature": "requestAccess()",
+      "description": "请求提醒事项权限",
+      "daemonSupport": "none",
+      "returns": "Promise<boolean>",
+      "returnsDescription": "是否授权成功"
+    },
+    {
+      "name": "getLists",
+      "signature": "getLists()",
+      "description": "获取所有提醒列表",
+      "returns": "Promise<[{ id: string, title: string, color: string }]>",
+      "returnsDescription": "提醒列表数组"
+    },
+    {
+      "name": "getAll",
+      "signature": "getAll(listId?)",
+      "description": "获取所有提醒事项",
+      "parameters": [
+        {
+          "name": "listId",
+          "type": "string",
+          "optional": true,
+          "description": "列表 ID"
+        }
+      ],
+      "returns": "Promise<[{ id: string, title: string, isCompleted: boolean, listId: string, dueDate?: number }]>",
+      "returnsDescription": "提醒事项数组"
+    },
+    {
+      "name": "create",
+      "signature": "create(title, options?)",
+      "description": "创建提醒事项",
+      "parameters": [
+        {
+          "name": "title",
+          "type": "string",
+          "description": "标题"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "选项 { listId, notes, dueDate, priority, sortOrder, isPinned }"
+        }
+      ],
+      "returns": "Promise<string>",
+      "returnsDescription": "创建的提醒 ID"
+    },
+    {
+      "name": "complete",
+      "signature": "complete(id)",
+      "description": "标记为已完成",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "提醒事项 ID"
+        }
+      ],
+      "returns": "Promise<boolean>",
+      "returnsDescription": "是否成功"
+    },
+    {
+      "name": "delete",
+      "signature": "delete(id)",
+      "description": "删除提醒事项",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "提醒事项 ID"
+        }
+      ],
+      "returns": "Promise<boolean>",
+      "returnsDescription": "是否成功"
+    },
+    {
+      "name": "getSorted",
+      "signature": "getSorted(options)",
+      "description": "获取排序后的提醒",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "{ sortBy: 'createdAt'|'dueDate'|'priority'|'title', ascending: boolean, completed: boolean }"
+        }
+      ],
+      "returns": "Promise<[Reminder]>",
+      "returnsDescription": "排序后的提醒列表"
+    },
+    {
+      "name": "getUpcoming",
+      "signature": "getUpcoming(days)",
+      "description": "获取即将到期的提醒",
+      "parameters": [
+        {
+          "name": "days",
+          "type": "number",
+          "optional": true,
+          "description": "未来几天，默认 7 天"
+        }
+      ],
+      "returns": "Promise<[Reminder]>",
+      "returnsDescription": "即将到期的提醒列表"
+    },
+    {
+      "name": "getOverdue",
+      "signature": "getOverdue()",
+      "description": "获取已过期的提醒",
+      "returns": "Promise<[Reminder]>",
+      "returnsDescription": "已过期的提醒列表"
+    },
+    {
+      "name": "reorder",
+      "signature": "reorder(ids)",
+      "description": "批量重排序",
+      "parameters": [
+        {
+          "name": "ids",
+          "type": "string[]",
+          "description": "按顺序排列的 ID 数组"
+        }
+      ],
+      "returns": "Promise<object>",
+      "returnsDescription": "{ success: boolean, count: number }"
+    },
+    {
+      "name": "createSystemReminder",
+      "signature": "createSystemReminder(title, options?)",
+      "description": "创建系统提醒（支持位置触发）",
+      "parameters": [
+        {
+          "name": "title",
+          "type": "string",
+          "description": "标题"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "{ listId, notes, dueDate, priority, location: { latitude, longitude, radius, onArrive, name } }"
+        }
+      ],
+      "returns": "Promise<object>",
+      "returnsDescription": "{ success: boolean, id: string, title: string, isSystemReminder: true }"
+    },
+    {
+      "name": "getSystemLists",
+      "signature": "getSystemLists()",
+      "description": "获取系统提醒列表",
+      "returns": "Promise<[{ id: string, title: string, isSystem: true }]>",
+      "returnsDescription": "系统提醒列表数组"
+    }
+  ]
+}

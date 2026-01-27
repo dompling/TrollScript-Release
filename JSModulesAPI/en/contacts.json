@@ -1,0 +1,184 @@
+{
+  "name": "contacts",
+  "description": "Contact management operations",
+  "icon": "person.crop.circle",
+  "color": "blue",
+  "daemonSupport": "limited",
+  "daemonNote": "The 'requestAccess' method requires UI interaction; other operations require prior authorization.",
+  "methods": [
+    {
+      "name": "requestAccess",
+      "signature": "requestAccess()",
+      "description": "Request access permissions for contacts",
+      "daemonSupport": "none",
+      "returns": "{ granted: boolean, error?: string }",
+      "returnsDescription": "An object containing the authorization result"
+    },
+    {
+      "name": "getAccessStatus",
+      "signature": "getAccessStatus()",
+      "description": "Get current permission status",
+      "returns": "'authorized' | 'denied' | 'restricted' | 'notDetermined'",
+      "returnsDescription": "The permission status string"
+    },
+    {
+      "name": "isAuthorized",
+      "signature": "isAuthorized()",
+      "description": "Check if the app is already authorized",
+      "returns": "boolean",
+      "returnsDescription": "Whether access is granted"
+    },
+    {
+      "name": "getAll",
+      "signature": "getAll(offset?, limit?)",
+      "description": "Retrieve all contacts with pagination",
+      "parameters": [
+        {
+          "name": "offset",
+          "type": "number",
+          "optional": true,
+          "description": "Number of records to skip, defaults to 0"
+        },
+        {
+          "name": "limit",
+          "type": "number",
+          "optional": true,
+          "description": "Maximum number of records to return, defaults to all"
+        }
+      ],
+      "returns": "[Contact]",
+      "returnsDescription": "An array of contact objects"
+    },
+    {
+      "name": "getCount",
+      "signature": "getCount()",
+      "description": "Get the total number of contacts",
+      "returns": "number",
+      "returnsDescription": "Total count of contacts"
+    },
+    {
+      "name": "search",
+      "signature": "search(query)",
+      "description": "Search contacts by name",
+      "parameters": [
+        {
+          "name": "query",
+          "type": "string",
+          "description": "Search keyword (matches name fields)"
+        }
+      ],
+      "returns": "[Contact]",
+      "returnsDescription": "An array of matching contact objects"
+    },
+    {
+      "name": "searchByPhone",
+      "signature": "searchByPhone(phone)",
+      "description": "Search contacts by phone number",
+      "parameters": [
+        {
+          "name": "phone",
+          "type": "string",
+          "description": "Phone number (supports fuzzy matching)"
+        }
+      ],
+      "returns": "[Contact]",
+      "returnsDescription": "An array of matching contact objects"
+    },
+    {
+      "name": "searchByEmail",
+      "signature": "searchByEmail(email)",
+      "description": "Search contacts by email address",
+      "parameters": [
+        {
+          "name": "email",
+          "type": "string",
+          "description": "Email address (supports fuzzy matching)"
+        }
+      ],
+      "returns": "[Contact]",
+      "returnsDescription": "An array of matching contact objects"
+    },
+    {
+      "name": "getById",
+      "signature": "getById(id)",
+      "description": "Get a contact by its unique identifier",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier of the contact"
+        }
+      ],
+      "returns": "Contact | null",
+      "returnsDescription": "The contact object or null if not found"
+    },
+    {
+      "name": "create",
+      "signature": "create(data)",
+      "description": "Create a new contact",
+      "parameters": [
+        {
+          "name": "data",
+          "type": "object",
+          "description": "Contact data including givenName, familyName, phoneNumbers, emailAddresses, etc."
+        }
+      ],
+      "returns": "{ success: boolean, id?: string, error?: string }",
+      "returnsDescription": "An object containing success status and the new contact ID"
+    },
+    {
+      "name": "update",
+      "signature": "update(id, data)",
+      "description": "Update an existing contact",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier of the contact"
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "description": "Fields to be updated"
+        }
+      ],
+      "returns": "{ success: boolean, error?: string }",
+      "returnsDescription": "An object containing the success status"
+    },
+    {
+      "name": "delete",
+      "signature": "delete(id)",
+      "description": "Delete a specific contact",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Unique identifier of the contact"
+        }
+      ],
+      "returns": "{ success: boolean, error?: string }",
+      "returnsDescription": "An object containing the success status"
+    },
+    {
+      "name": "getGroups",
+      "signature": "getGroups()",
+      "description": "Retrieve all contact groups",
+      "returns": "[{ id: string, name: string }]",
+      "returnsDescription": "An array of group objects"
+    },
+    {
+      "name": "getContactsInGroup",
+      "signature": "getContactsInGroup(groupId)",
+      "description": "Retrieve contacts within a specific group",
+      "parameters": [
+        {
+          "name": "groupId",
+          "type": "string",
+          "description": "Unique identifier of the group"
+        }
+      ],
+      "returns": "[Contact]",
+      "returnsDescription": "An array of contact objects in the specified group"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "name": "console",
+  "description": "控制台输出",
+  "icon": "terminal",
+  "color": "gray",
+  "daemonSupport": "full",
+  "methods": [
+    {
+      "name": "log",
+      "signature": "log(...args)",
+      "description": "输出日志信息",
+      "parameters": [
+        {
+          "name": "...args",
+          "type": "any[]",
+          "description": "要输出的内容"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "error",
+      "signature": "error(...args)",
+      "description": "输出错误信息",
+      "parameters": [
+        {
+          "name": "...args",
+          "type": "any[]",
+          "description": "要输出的内容"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "warn",
+      "signature": "warn(...args)",
+      "description": "输出警告信息",
+      "parameters": [
+        {
+          "name": "...args",
+          "type": "any[]",
+          "description": "要输出的内容"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "info",
+      "signature": "info(...args)",
+      "description": "输出提示信息",
+      "parameters": [
+        {
+          "name": "...args",
+          "type": "any[]",
+          "description": "要输出的内容"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "debug",
+      "signature": "debug(...args)",
+      "description": "输出调试信息",
+      "parameters": [
+        {
+          "name": "...args",
+          "type": "any[]",
+          "description": "要输出的内容"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "table",
+      "signature": "table(data)",
+      "description": "以表格形式输出",
+      "parameters": [
+        {
+          "name": "data",
+          "type": "object | array",
+          "description": "要显示的表格数据"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "clear",
+      "signature": "clear()",
+      "description": "清空控制台",
+      "returns": "void"
+    }
+  ]
+}

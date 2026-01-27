@@ -1,0 +1,62 @@
+{
+  "name": "mail",
+  "description": "Email operations",
+  "icon": "envelope",
+  "color": "blue",
+  "daemonSupport": "none",
+  "daemonNote": "All email methods require UI interaction and are completely unavailable in Daemon mode",
+  "methods": [
+    {
+      "name": "isAvailable",
+      "signature": "isAvailable()",
+      "description": "Check if email functionality is available",
+      "returns": "boolean",
+      "returnsDescription": "Whether email can be sent"
+    },
+    {
+      "name": "compose",
+      "signature": "compose(options)",
+      "description": "Open the mail composer",
+      "daemonSupport": "none",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "object",
+          "description": "Mail options { to: string|string[], cc?: string|string[], bcc?: string|string[], subject?: string, body?: string, isHTML?: boolean, attachments?: [{path, mimeType?, filename?}] }"
+        }
+      ],
+      "returns": "{ success: boolean, error?: string }",
+      "returnsDescription": "Object containing the send result"
+    },
+    {
+      "name": "send",
+      "signature": "send(options)",
+      "description": "Send email via URL Scheme (alias for sendDirect)",
+      "daemonSupport": "none",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "object",
+          "description": "Mail options { to: string|string[], cc?: string, bcc?: string, subject?: string, body?: string }"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the mail client was successfully opened"
+    },
+    {
+      "name": "sendDirect",
+      "signature": "sendDirect(options)",
+      "description": "Send email via URL Scheme (opens default mail client)",
+      "daemonSupport": "none",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "object",
+          "description": "Mail options { to: string|string[], cc?: string, bcc?: string, subject?: string, body?: string }"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the mail client was successfully opened"
+    }
+  ]
+}

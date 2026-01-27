@@ -1,0 +1,37 @@
+{
+  "version": "1.2.0",
+  "language": "zh",
+  "daemonSupportLegend": {
+    "full": "完全支持 - 在触发器下可正常运行",
+    "limited": "有限支持 - 部分功能可能受限或不生效",
+    "none": "不支持 - 需要前台运行，触发器下不可用"
+  },
+  "modules": [
+    "console",
+    "device",
+    "clipboard",
+    "storage",
+    "icloud",
+    "file",
+    "http",
+    "network",
+    "app",
+    "haptic",
+    "display",
+    "util",
+    "location",
+    "calendar",
+    "reminder",
+    "contacts",
+    "notification",
+    "alarm",
+    "media",
+    "mail",
+    "sms",
+    "sql",
+    "shortcuts",
+    "bluetooth",
+    "memo",
+    "system"
+  ]
+}

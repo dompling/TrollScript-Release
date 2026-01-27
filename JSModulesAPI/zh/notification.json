@@ -1,0 +1,141 @@
+{
+  "name": "notification",
+  "description": "本地通知",
+  "icon": "bell",
+  "color": "pink",
+  "daemonSupport": "limited",
+  "daemonNote": "requestPermission 需要 UI 交互，其他操作需要预先获得权限",
+  "methods": [
+    {
+      "name": "send",
+      "signature": "send(title, body, options?)",
+      "description": "发送通知",
+      "parameters": [
+        {
+          "name": "title",
+          "type": "string",
+          "description": "通知标题"
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "description": "通知内容"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "选项 { url, userInfo, sound, badge }"
+        }
+      ],
+      "returns": "Promise<string>",
+      "returnsDescription": "发送的通知 ID"
+    },
+    {
+      "name": "cancel",
+      "signature": "cancel(id)",
+      "description": "取消通知",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "通知 ID"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "cancelAll",
+      "signature": "cancelAll()",
+      "description": "取消所有通知",
+      "returns": "void"
+    },
+    {
+      "name": "getPending",
+      "signature": "getPending()",
+      "description": "获取待发送通知",
+      "returns": "Promise<[{ id: string, title: string, body: string, date: number }]>",
+      "returnsDescription": "待发送通知列表"
+    },
+    {
+      "name": "getDelivered",
+      "signature": "getDelivered()",
+      "description": "获取已发送通知",
+      "returns": "Promise<[{ id: string, title: string, body: string, date: number }]>",
+      "returnsDescription": "已发送通知列表"
+    },
+    {
+      "name": "requestAccess",
+      "signature": "requestAccess()",
+      "description": "请求通知权限",
+      "daemonSupport": "none",
+      "returns": "{ granted: boolean, error?: string }",
+      "returnsDescription": "授权结果对象"
+    },
+    {
+      "name": "getAccessStatus",
+      "signature": "getAccessStatus()",
+      "description": "获取权限状态",
+      "returns": "'authorized' | 'denied' | 'notDetermined' | 'provisional' | 'ephemeral' | 'unknown'",
+      "returnsDescription": "权限状态字符串"
+    },
+    {
+      "name": "isAuthorized",
+      "signature": "isAuthorized()",
+      "description": "检查是否已授权通知权限",
+      "returns": "boolean",
+      "returnsDescription": "是否已授权"
+    },
+    {
+      "name": "setBadge",
+      "signature": "setBadge(count)",
+      "description": "设置角标数字",
+      "parameters": [
+        {
+          "name": "count",
+          "type": "number",
+          "description": "角标数"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否成功"
+    },
+    {
+      "name": "clearBadge",
+      "signature": "clearBadge()",
+      "description": "清除角标",
+      "returns": "boolean",
+      "returnsDescription": "是否成功"
+    },
+    {
+      "name": "schedule",
+      "signature": "schedule(title, body, date, options?)",
+      "description": "定时通知",
+      "parameters": [
+        {
+          "name": "title",
+          "type": "string",
+          "description": "通知标题"
+        },
+        {
+          "name": "body",
+          "type": "string",
+          "description": "通知内容"
+        },
+        {
+          "name": "date",
+          "type": "number",
+          "description": "触发时间戳"
+        },
+        {
+          "name": "options",
+          "type": "object",
+          "optional": true,
+          "description": "选项 { url, userInfo, sound, badge, repeat: 'daily'|'weekly'|'monthly' }"
+        }
+      ],
+      "returns": "Promise<string>",
+      "returnsDescription": "发送的通知 ID"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "name": "haptic",
+  "description": "触觉反馈",
+  "icon": "waveform.path",
+  "color": "purple",
+  "daemonSupport": "limited",
+  "daemonNote": "触觉反馈在后台模式下可能不生效，需要设备支持",
+  "methods": [
+    {
+      "name": "impact",
+      "signature": "impact(style?)",
+      "description": "触觉冲击反馈",
+      "parameters": [
+        {
+          "name": "style",
+          "type": "string",
+          "optional": true,
+          "description": "'light' | 'medium' | 'heavy' | 'soft' | 'rigid'"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "notification",
+      "signature": "notification(type)",
+      "description": "通知触觉反馈",
+      "parameters": [
+        {
+          "name": "type",
+          "type": "string",
+          "description": "'success' | 'warning' | 'error'"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "selection",
+      "signature": "selection()",
+      "description": "选择触觉反馈",
+      "returns": "void"
+    },
+    {
+      "name": "vibrate",
+      "signature": "vibrate()",
+      "description": "设备振动",
+      "returns": "void"
+    },
+    {
+      "name": "light",
+      "signature": "light()",
+      "description": "轻度冲击",
+      "returns": "void"
+    },
+    {
+      "name": "medium",
+      "signature": "medium()",
+      "description": "中度冲击",
+      "returns": "void"
+    },
+    {
+      "name": "heavy",
+      "signature": "heavy()",
+      "description": "重度冲击",
+      "returns": "void"
+    },
+    {
+      "name": "success",
+      "signature": "success()",
+      "description": "成功反馈",
+      "returns": "void"
+    },
+    {
+      "name": "warning",
+      "signature": "warning()",
+      "description": "警告反馈",
+      "returns": "void"
+    },
+    {
+      "name": "error",
+      "signature": "error()",
+      "description": "错误反馈",
+      "returns": "void"
+    }
+  ]
+}

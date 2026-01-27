@@ -1,0 +1,284 @@
+{
+  "name": "system",
+  "description": "System settings control",
+  "icon": "gearshape.fill",
+  "color": "gray",
+  "daemonSupport": "full",
+  "daemonNote": "Most methods require TrollStore privileges to work properly",
+  "methods": [
+    {
+      "name": "isWiFiEnabled",
+      "signature": "isWiFiEnabled()",
+      "description": "Check if WiFi is enabled",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "Whether WiFi is enabled"
+    },
+    {
+      "name": "setWiFi",
+      "signature": "setWiFi(enabled)",
+      "description": "Set WiFi enabled state (TrollStore privilege)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Whether to enable WiFi"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the operation succeeded"
+    },
+    {
+      "name": "isBluetoothEnabled",
+      "signature": "isBluetoothEnabled()",
+      "description": "Check if Bluetooth is enabled",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "Whether Bluetooth is enabled"
+    },
+    {
+      "name": "setBluetooth",
+      "signature": "setBluetooth(enabled)",
+      "description": "Set Bluetooth enabled state (TrollStore privilege)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Whether to enable Bluetooth"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the operation succeeded"
+    },
+    {
+      "name": "isAirplaneModeEnabled",
+      "signature": "isAirplaneModeEnabled()",
+      "description": "Check if Airplane Mode is enabled",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "Whether Airplane Mode is enabled"
+    },
+    {
+      "name": "setAirplaneMode",
+      "signature": "setAirplaneMode(enabled)",
+      "description": "Set Airplane Mode state (TrollStore privilege)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Whether to enable Airplane Mode"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the operation succeeded"
+    },
+    {
+      "name": "isDoNotDisturbEnabled",
+      "signature": "isDoNotDisturbEnabled()",
+      "description": "Check if Do Not Disturb is enabled",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "Whether Do Not Disturb is enabled"
+    },
+    {
+      "name": "setDoNotDisturb",
+      "signature": "setDoNotDisturb(enabled)",
+      "description": "Set Do Not Disturb state",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Whether to enable Do Not Disturb"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the operation succeeded"
+    },
+    {
+      "name": "getVolume",
+      "signature": "getVolume(category?)",
+      "description": "Get system volume",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "category",
+          "type": "string",
+          "optional": true,
+          "description": "Volume category: 'System', 'Ringer', 'Media', defaults to 'Media'"
+        }
+      ],
+      "returns": "number",
+      "returnsDescription": "Current volume level (0.0 - 1.0)"
+    },
+    {
+      "name": "setVolume",
+      "signature": "setVolume(level, category?)",
+      "description": "Set system volume",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "level",
+          "type": "number",
+          "description": "Volume level (0.0 - 1.0)"
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "optional": true,
+          "description": "Volume category: 'System', 'Ringer', 'Media', defaults to 'Media'"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the operation succeeded"
+    },
+    {
+      "name": "hasFlashlight",
+      "signature": "hasFlashlight()",
+      "description": "Check if device has flashlight",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "Whether device has flashlight"
+    },
+    {
+      "name": "isFlashlightOn",
+      "signature": "isFlashlightOn()",
+      "description": "Check if flashlight is on",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "Whether flashlight is on"
+    },
+    {
+      "name": "setFlashlight",
+      "signature": "setFlashlight(enabled, level?)",
+      "description": "Set flashlight state",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Whether to turn on flashlight"
+        },
+        {
+          "name": "level",
+          "type": "number",
+          "optional": true,
+          "description": "Brightness level (0.0 - 1.0), defaults to 1.0"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the operation succeeded"
+    },
+    {
+      "name": "isOrientationLockEnabled",
+      "signature": "isOrientationLockEnabled()",
+      "description": "Check if orientation lock is enabled",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "Whether orientation lock is enabled"
+    },
+    {
+      "name": "setOrientationLock",
+      "signature": "setOrientationLock(enabled)",
+      "description": "Set orientation lock state",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Whether to enable orientation lock"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the operation succeeded"
+    },
+    {
+      "name": "isLowPowerModeEnabled",
+      "signature": "isLowPowerModeEnabled()",
+      "description": "Check if Low Power Mode is enabled",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "Whether Low Power Mode is enabled"
+    },
+    {
+      "name": "setLowPowerMode",
+      "signature": "setLowPowerMode(enabled)",
+      "description": "Set Low Power Mode state (TrollStore privilege)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Whether to enable Low Power Mode"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the operation succeeded"
+    },
+    {
+      "name": "isLocationServicesEnabled",
+      "signature": "isLocationServicesEnabled()",
+      "description": "Check if Location Services are enabled",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "Whether Location Services are enabled"
+    },
+    {
+      "name": "setLocationServices",
+      "signature": "setLocationServices(enabled)",
+      "description": "Set Location Services state (TrollStore privilege)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Whether to enable Location Services"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the operation succeeded"
+    },
+    {
+      "name": "isCellularDataEnabled",
+      "signature": "isCellularDataEnabled()",
+      "description": "Check if Cellular Data is enabled",
+      "daemonSupport": "full",
+      "returns": "boolean",
+      "returnsDescription": "Whether Cellular Data is enabled"
+    },
+    {
+      "name": "setCellularData",
+      "signature": "setCellularData(enabled)",
+      "description": "Set Cellular Data state (TrollStore privilege)",
+      "daemonSupport": "full",
+      "parameters": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "description": "Whether to enable Cellular Data"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether the operation succeeded"
+    },
+    {
+      "name": "openSettings",
+      "signature": "openSettings(section?)",
+      "description": "Open system settings",
+      "daemonSupport": "none",
+      "parameters": [
+        {
+          "name": "section",
+          "type": "string",
+          "optional": true,
+          "description": "Settings section: 'WIFI', 'BLUETOOTH', 'CELLULAR', 'VPN', 'GENERAL', 'DISPLAY', 'SOUND', 'NOTIFICATION', 'PRIVACY', 'BATTERY', 'STORAGE', 'WALLPAPER', 'SIRI', 'ACCESSIBILITY', 'DND', 'SCREEN_TIME', 'PASSWORDS'"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "Whether settings was opened successfully"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "name": "shortcuts",
+  "description": "快捷指令操作",
+  "icon": "bolt.square",
+  "color": "indigo",
+  "daemonSupport": "none",
+  "daemonNote": "运行快捷指令和打开 App 都需要前台 UI 交互，Daemon 模式下完全不可用",
+  "methods": [
+    {
+      "name": "run",
+      "signature": "run(name, input?)",
+      "description": "运行快捷指令",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "快捷指令名称"
+        },
+        {
+          "name": "input",
+          "type": "string",
+          "optional": true,
+          "description": "输入文本（可选）"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否成功打开快捷指令"
+    },
+    {
+      "name": "runWithCallback",
+      "signature": "runWithCallback(name, input?)",
+      "description": "运行快捷指令（带 x-callback-url 回调）",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "快捷指令名称"
+        },
+        {
+          "name": "input",
+          "type": "string",
+          "optional": true,
+          "description": "输入文本（可选）"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否成功打开快捷指令"
+    },
+    {
+      "name": "open",
+      "signature": "open()",
+      "description": "打开快捷指令 App",
+      "returns": "boolean",
+      "returnsDescription": "是否成功打开"
+    },
+    {
+      "name": "openGallery",
+      "signature": "openGallery()",
+      "description": "打开快捷指令中心/库",
+      "returns": "boolean",
+      "returnsDescription": "是否成功打开"
+    },
+    {
+      "name": "create",
+      "signature": "create(name)",
+      "description": "创建新快捷指令",
+      "parameters": [
+        {
+          "name": "name",
+          "type": "string",
+          "description": "快捷指令名称"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否成功打开创建界面"
+    },
+    {
+      "name": "import",
+      "signature": "import(url)",
+      "description": "通过链接导入快捷指令",
+      "parameters": [
+        {
+          "name": "url",
+          "type": "string",
+          "description": "快捷指令 URL"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否成功打开导入界面"
+    },
+    {
+      "name": "isAvailable",
+      "signature": "isAvailable()",
+      "description": "检查是否安装快捷指令 App",
+      "returns": "boolean",
+      "returnsDescription": "是否可用"
+    },
+    {
+      "name": "donateInteraction",
+      "signature": "donateInteraction(title, identifier)",
+      "description": "捐赠 Siri 建议",
+      "parameters": [
+        {
+          "name": "title",
+          "type": "string",
+          "description": "建议标题/调用短语"
+        },
+        {
+          "name": "identifier",
+          "type": "string",
+          "description": "交互标识符"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否成功捐赠"
+    },
+    {
+      "name": "deleteInteraction",
+      "signature": "deleteInteraction(identifier)",
+      "description": "删除指定的 Siri 建议",
+      "parameters": [
+        {
+          "name": "identifier",
+          "type": "string",
+          "description": "交互标识符"
+        }
+      ],
+      "returns": "boolean",
+      "returnsDescription": "是否成功删除"
+    },
+    {
+      "name": "deleteAllInteractions",
+      "signature": "deleteAllInteractions()",
+      "description": "删除所有 Siri 建议",
+      "returns": "boolean",
+      "returnsDescription": "是否成功删除"
+    }
+  ]
+}

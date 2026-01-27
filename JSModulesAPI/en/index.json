@@ -1,0 +1,37 @@
+{
+  "version": "1.2.0",
+  "language": "en",
+  "daemonSupportLegend": {
+    "full": "Full Support - Functions correctly under triggers",
+    "limited": "Limited Support - Some features may be restricted or ineffective",
+    "none": "No Support - Requires foreground execution; unavailable under triggers"
+  },
+  "modules": [
+    "console",
+    "device",
+    "clipboard",
+    "storage",
+    "icloud",
+    "file",
+    "http",
+    "network",
+    "app",
+    "haptic",
+    "display",
+    "util",
+    "location",
+    "calendar",
+    "reminder",
+    "contacts",
+    "notification",
+    "alarm",
+    "media",
+    "mail",
+    "sms",
+    "sql",
+    "shortcuts",
+    "bluetooth",
+    "memo",
+    "system"
+  ]
+}

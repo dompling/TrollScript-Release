@@ -1,0 +1,37 @@
+{
+  "name": "clipboard",
+  "description": "Clipboard operations",
+  "icon": "doc.on.clipboard",
+  "color": "orange",
+  "daemonSupport": "limited",
+  "methods": [
+    {
+      "name": "getText",
+      "signature": "getText()",
+      "description": "Get text from the clipboard",
+      "returns": "string",
+      "returnsDescription": "The text content currently in the clipboard"
+    },
+    {
+      "name": "setText",
+      "signature": "setText(text)",
+      "description": "Set text to the clipboard",
+      "daemonSupport": "none",
+      "parameters": [
+        {
+          "name": "text",
+          "type": "string",
+          "description": "The text content to be set"
+        }
+      ],
+      "returns": "void"
+    },
+    {
+      "name": "clear",
+      "signature": "clear()",
+      "description": "Clear the clipboard",
+      "returns": "void",
+      "daemonSupport": "none"
+    }
+  ]
+}

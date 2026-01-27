@@ -1,0 +1,116 @@
+{
+  "name": "memo",
+  "description": "Memo operations (iCloud synchronized)",
+  "icon": "note.text",
+  "color": "yellow",
+  "daemonSupport": "full",
+  "methods": [
+    {
+      "name": "create",
+      "signature": "create(title, content, tags?)",
+      "description": "Create a new memo",
+      "parameters": [
+        {
+          "name": "title",
+          "type": "string",
+          "description": "Memo title"
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "description": "Memo content"
+        },
+        {
+          "name": "tags",
+          "type": "[string]",
+          "optional": true,
+          "description": "List of tags"
+        }
+      ],
+      "returns": "object",
+      "returnsDescription": "{ success: boolean, id: string, memo: object }"
+    },
+    {
+      "name": "getAll",
+      "signature": "getAll()",
+      "description": "Retrieve all memos",
+      "returns": "[object]",
+      "returnsDescription": "Array of memo objects [{ id, title, content, createdAt, updatedAt, tags }]"
+    },
+    {
+      "name": "getById",
+      "signature": "getById(id)",
+      "description": "Get a specific memo by ID",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Memo ID"
+        }
+      ],
+      "returns": "object | null",
+      "returnsDescription": "Memo object or null if not found"
+    },
+    {
+      "name": "search",
+      "signature": "search(keyword)",
+      "description": "Search memos (matches title and content)",
+      "parameters": [
+        {
+          "name": "keyword",
+          "type": "string",
+          "description": "Search keyword"
+        }
+      ],
+      "returns": "[object]",
+      "returnsDescription": "Array of matching memo objects"
+    },
+    {
+      "name": "update",
+      "signature": "update(id, data)",
+      "description": "Update an existing memo",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Memo ID"
+        },
+        {
+          "name": "data",
+          "type": "object",
+          "description": "Update data { title?, content?, tags? }"
+        }
+      ],
+      "returns": "object",
+      "returnsDescription": "{ success: boolean, id: string }"
+    },
+    {
+      "name": "delete",
+      "signature": "delete(id)",
+      "description": "Delete a specific memo",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Memo ID"
+        }
+      ],
+      "returns": "object",
+      "returnsDescription": "{ success: boolean, id: string (of the deleted memo) }"
+    },
+    {
+      "name": "clear",
+      "signature": "clear()",
+      "description": "Delete all memos",
+      "returns": "object",
+      "returnsDescription": "{ success: boolean }"
+    },
+    {
+      "name": "count",
+      "signature": "count()",
+      "description": "Get the total number of memos",
+      "returns": "number",
+      "returnsDescription": "Total count of memos"
+    }
+  ]
+}
