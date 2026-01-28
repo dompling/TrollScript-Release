@@ -424,6 +424,7 @@
 "script.card.delete" = "Delete";
 "script.card.delete.title" = "Delete Script";
 "script.card.delete.message" = "Are you sure you want to delete \"%@\"?";
+"script.card.category" = "Move to Category";
 
 /* ErrorViews */
 "crash.title" = "App Crashed";
@@ -510,6 +511,7 @@
 "script.update.failed" = "Failed to update script";
 "script.delete.failed" = "Failed to delete script";
 "script.duplicate.failed" = "Failed to duplicate script";
+"script.reorder.failed" = "Failed to reorder scripts";
 
 /* PermissionManager */
 "permission.notifications" = "Notifications";

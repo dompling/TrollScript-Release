@@ -423,6 +423,7 @@
 "script.card.delete" = "删除";
 "script.card.delete.title" = "删除脚本";
 "script.card.delete.message" = "确定要删除「%@」吗？";
+"script.card.category" = "移动到分类";
 
 /* ErrorViews */
 "crash.title" = "应用异常退出";
@@ -509,6 +510,7 @@
 "script.update.failed" = "更新脚本失败";
 "script.delete.failed" = "删除脚本失败";
 "script.duplicate.failed" = "复制脚本失败";
+"script.reorder.failed" = "排序脚本失败";
 
 /* PermissionManager */
 "permission.notifications" = "通知";
