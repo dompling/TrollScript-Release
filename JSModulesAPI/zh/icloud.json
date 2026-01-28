@@ -6,13 +6,6 @@
   "daemonSupport": "full",
   "methods": [
     {
-      "name": "isAvailable",
-      "signature": "isAvailable()",
-      "description": "检查 iCloud 是否可用",
-      "returns": "boolean",
-      "returnsDescription": "是否可用"
-    },
-    {
       "name": "containerPath",
       "signature": "containerPath()",
       "description": "获取 iCloud 容器路径",

@@ -14,37 +14,31 @@ async function run() {
         return;
     }
 
-    const available = icloud.isAvailable();
-    console.log("iCloud Available:", available);
+    const testFile = "test_icloud.txt";
+    const content = "Hello iCloud";
 
-    if (available) {
-        const testFile = "test_icloud.txt";
-        const content = "Hello iCloud";
+    icloud.write(testFile, content);
 
-        icloud.write(testFile, content);
+    // Slight delay for sync simulation/IO
+    // await new Promise(r => setTimeout(r, 500));
 
-        // Slight delay for sync simulation/IO
-        // await new Promise(r => setTimeout(r, 500)); 
+    const read = icloud.read(testFile);
+    assert(read === content, "write/read works");
 
-        const read = icloud.read(testFile);
-        assert(read === content, "write/read works");
+    const list = icloud.list();
+    console.log("iCloud List:", JSON.stringify(list));
+    assert(Array.isArray(list) && list.includes(testFile), "list() contains created file");
 
-        const list = icloud.list();
-        console.log("iCloud List:", JSON.stringify(list));
-        assert(Array.isArray(list) && list.includes(testFile), "list() contains created file");
+    icloud.delete(testFile);
 
-        icloud.delete(testFile);
-
-        // Verify deletion
-        try {
-            const readAfterDelete = icloud.read(testFile);
-            assert(!readAfterDelete, "File should be deleted");
-        } catch (e) {
-            assert(true, "Read after delete threw error or returned null");
-        }
-    } else {
-        console.warn("⚠️ iCloud not available, skipping R/W tests");
+    // Verify deletion
+    try {
+        const readAfterDelete = icloud.read(testFile);
+        assert(!readAfterDelete, "File should be deleted");
+    } catch (e) {
+        assert(true, "Read after delete threw error or returned null");
     }
+
 
     console.log("--- iCloud Module Test Finished ---");
 }

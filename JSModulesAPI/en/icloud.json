@@ -6,13 +6,6 @@
   "daemonSupport": "full",
   "methods": [
     {
-      "name": "isAvailable",
-      "signature": "isAvailable()",
-      "description": "Check if iCloud is available",
-      "returns": "boolean",
-      "returnsDescription": "Whether iCloud service is available"
-    },
-    {
       "name": "containerPath",
       "signature": "containerPath()",
       "description": "Get the iCloud container path",
