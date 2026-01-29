@@ -34,7 +34,7 @@ jobs:
           cp API.md docs/API.md
           cp -r AppIcon.png docs/
           cp -r images docs/
-          echo "trollscript.qzz.io" > docs/CNAME
+          
 
       - name: Build and Deploy
         run: mkdocs gh-deploy --force
