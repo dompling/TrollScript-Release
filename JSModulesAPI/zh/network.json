@@ -28,13 +28,6 @@
       "returnsDescription": "IP 地址"
     },
     {
-      "name": "getWiFiInfo",
-      "signature": "getWiFiInfo()",
-      "description": "获取 WiFi 信息",
-      "returns": "{ ssid: string, bssid: string } | null",
-      "returnsDescription": "包含 SSID 和 BSSID 的对象"
-    },
-    {
       "name": "encodeURL",
       "signature": "encodeURL(string)",
       "description": "URL 编码",
@@ -131,27 +124,6 @@
       "returnsDescription": "包含本地文件路径的对象"
     },
     {
-      "name": "getAirplaneMode",
-      "signature": "getAirplaneMode()",
-      "description": "获取飞行模式状态",
-      "returns": "boolean",
-      "returnsDescription": "是否开启"
-    },
-    {
-      "name": "setAirplaneMode",
-      "signature": "setAirplaneMode(enabled)",
-      "description": "设置飞行模式",
-      "parameters": [
-        {
-          "name": "enabled",
-          "type": "boolean",
-          "description": "是否开启"
-        }
-      ],
-      "returns": "boolean",
-      "returnsDescription": "是否设置成功"
-    },
-    {
       "name": "listVPNs",
       "signature": "listVPNs()",
       "description": "列出 VPN 配置",
@@ -186,27 +158,6 @@
       "description": "获取 VPN 状态",
       "returns": "{ connected: boolean, name?: string }",
       "returnsDescription": "包含连接状态和 VPN 名称的对象"
-    },
-    {
-      "name": "getWiFiEnabled",
-      "signature": "getWiFiEnabled()",
-      "description": "获取 WiFi 开关状态",
-      "returns": "boolean",
-      "returnsDescription": "是否开启"
-    },
-    {
-      "name": "setWiFi",
-      "signature": "setWiFi(enabled)",
-      "description": "设置 WiFi 开关",
-      "parameters": [
-        {
-          "name": "enabled",
-          "type": "boolean",
-          "description": "是否开启"
-        }
-      ],
-      "returns": "boolean",
-      "returnsDescription": "是否设置成功"
     },
     {
       "name": "openSettings",

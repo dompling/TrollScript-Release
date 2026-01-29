@@ -64,40 +64,30 @@ TrollScript 内置丰富的原生模块，[查看完整中文 API 文档](API.md
 
 > [示例脚本 (TrollScript-Store)](https://github.com/dompling/TrollScript-Release/tree/main/templates/TestScripts)
 
-### 基础模块
+## 触发器
 
-| 模块 | 功能 |
-|------|------|
-| `http` | HTTP 请求 (GET/POST/PUT/DELETE) |
-| `console` | 控制台输出 |
-| `storage` | 数据持久化存储 |
-| `clipboard` | 剪贴板读写 |
-| `file` | 文件读写操作（沙盒内） |
-| `device` | 设备信息获取 |
+| 类型   | 说明                                                                        |
+|------|---------------------------------------------------------------------------|
+| 定时任务 | Cron 定时执行脚本                                                               |
+| 剪切板  | 复制了特定的文字内容之后触发脚本                                                          |
+| 文件监控 | 文件变化的时候触发                                                                 |
+| 通知监控 | APP 发送通知的时候，触发脚本（兼容性未知 作者的手机系统：IOS 16.3.1） |
 
-### 系统功能模块
+> 脚本同时触发，可能会发生崩溃或者其他未知问题，请注意使用。可以反馈修复。
 
-| 模块 | 功能 |
-|------|------|
-| `notification` | 本地通知发送与管理 |
-| `location` | 位置服务、地理编码 |
-| `app` | 应用管理、URL Scheme 调用 |
-| `alarm` | 闹钟与定时提醒（基于本地通知） |
+### 全局参数
 
-### 媒体与数据模块
-
-| 模块 | 功能 |
-|------|------|
-| `media` | 音乐库访问、播放控制、专辑/艺术家/播放列表管理 |
-| `contacts` | 通讯录读写、联系人搜索与分组 |
-| `weather` | 天气查询（wttr.in API） |
-
-### 扩展交互模块
-
-| 模块 | 功能 |
-|------|------|
-| `mail` | 邮件发送、模板管理 |
-| `shortcuts` | 快捷指令调用与集成 |
+1. **$triggerInput**
+   - 通知监控
+```
+  interface $triggerInput {
+    type: "notification";     // 触发类型
+    bundleId: string;         // 来源 App Bundle ID
+    title: string;            // 通知标题
+    message: string;          // 通知内容
+    timestamp: number;        // 时间戳 (毫秒)
+  }
+```
 
 ## 高级功能
 

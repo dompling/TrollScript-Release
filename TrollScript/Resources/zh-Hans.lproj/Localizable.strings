@@ -38,6 +38,7 @@
 "settings.download_tipa" = "下载 TIPA";
 "settings.install_trollstore" = "巨魔安装";
 "settings.view_on_github" = "在 GitHub 查看";
+"settings.view" = "查看";
 "settings.feedback" = "反馈问题";
 "settings.debug_mode" = "调试模式";
 "settings.enabled" = "已启用";
@@ -1017,6 +1018,8 @@
 "preset_path.sms_database.desc" = "SMS/iMessage 消息存储，收发短信时触发";
 "preset_path.sms_database_wal" = "短信数据库 (实时)";
 "preset_path.sms_database_wal.desc" = "WAL 日志文件，比主数据库更新更快";
+"preset_path.sms_face_icloud_database_wal" = "短信数据库 (实时静音)";
+"preset_path.sms_face_icloud_database_wal.desc" = "WAL 日志文件，比短信数据库 (实时)更新更安静";
 "preset_path.call_history" = "通话记录";
 "preset_path.call_history.desc" = "来电/去电/未接来电记录";
 "preset_path.safari_history" = "Safari 历史记录";
@@ -1065,3 +1068,24 @@
 /* Notification Copy on Tap */
 "notification.copy_success_title" = "已复制";
 "notification.copy_success_body" = "已复制内容: %@";
+
+/* Notification Trigger */
+"trigger.type.notification" = "通知监控";
+"trigger.hint.notification" = "当收到匹配的系统通知时自动触发执行。";
+"trigger.notification.config" = "通知监控设置";
+"trigger.notification.config_footer" = "监控指定 App 的系统通知。需要 TrollStore 环境。";
+"trigger.notification.bundle_id" = "App Bundle ID (正则)";
+"trigger.notification.bundle_id_placeholder" = "例如 com.apple.MobileSMS";
+"trigger.notification.title_filter" = "标题过滤 (正则)";
+"trigger.notification.title_filter_placeholder" = "可选的正则表达式...";
+"trigger.notification.message_filter" = "内容过滤 (正则)";
+"trigger.notification.message_filter_placeholder" = "可选的正则表达式...";
+"trigger.notification.debounce" = "防抖间隔";
+"trigger.notification.ignore_script" = "忽略脚本通知";
+"trigger.notification.ignore_script_footer" = "防止脚本发送通知时造成死循环。";
+"trigger.notification.selected_apps" = "已选应用";
+"trigger.notification.search_apps" = "搜索应用...";
+"trigger.notification.app_list" = "可选应用";
+"trigger.notification.no_apps" = "未找到应用";
+"trigger.notification.no_search_results" = "无搜索结果";
+"trigger.notification.more_apps" = "还有 %d 个应用，请使用搜索";

@@ -973,18 +973,6 @@ iCloud 文件操作
 
 ---
 
-### `network.getWiFiInfo`
-
-**Signature:** `getWiFiInfo()`
-
-获取 WiFi 信息
-
-**Returns:** `{ ssid: string, bssid: string } \| null`
-
-*包含 SSID 和 BSSID 的对象*
-
----
-
 ### `network.encodeURL`
 
 **Signature:** `encodeURL(string)`
@@ -1095,36 +1083,6 @@ Ping 主机
 
 ---
 
-### `network.getAirplaneMode`
-
-**Signature:** `getAirplaneMode()`
-
-获取飞行模式状态
-
-**Returns:** `boolean`
-
-*是否开启*
-
----
-
-### `network.setAirplaneMode`
-
-**Signature:** `setAirplaneMode(enabled)`
-
-设置飞行模式
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `enabled` | `boolean` | 是否开启 | No |
-
-**Returns:** `boolean`
-
-*是否设置成功*
-
----
-
 ### `network.listVPNs`
 
 **Signature:** `listVPNs()`
@@ -1176,36 +1134,6 @@ Ping 主机
 **Returns:** `{ connected: boolean, name?: string }`
 
 *包含连接状态和 VPN 名称的对象*
-
----
-
-### `network.getWiFiEnabled`
-
-**Signature:** `getWiFiEnabled()`
-
-获取 WiFi 开关状态
-
-**Returns:** `boolean`
-
-*是否开启*
-
----
-
-### `network.setWiFi`
-
-**Signature:** `setWiFi(enabled)`
-
-设置 WiFi 开关
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `enabled` | `boolean` | 是否开启 | No |
-
-**Returns:** `boolean`
-
-*是否设置成功*
 
 ---
 

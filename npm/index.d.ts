@@ -164,7 +164,7 @@ interface Icloud {
      * @param path 目录路径，默认为根目录
      * @returns 文件名列表数组
      */
-    list(path: string): any;
+    list(path?: string): any;
 
 }
 
@@ -330,42 +330,42 @@ interface Http {
      * @param options 请求选项 { headers, timeout }
      * @returns 包含状态码、响应数据、响应头的对象
      */
-    get(url: string, options: Record<string, any>): any;
+    get(url: string, options?: Record<string, any>): any;
 
     /**
      * 发送 POST 请求
      * @param url 请求地址
      * @param options 请求选项 { body, headers, timeout }
      */
-    post(url: string, options: Record<string, any>): any;
+    post(url: string, options?: Record<string, any>): any;
 
     /**
      * 发送 PUT 请求
      * @param url 请求地址
      * @param options 请求选项 { body, headers, timeout }
      */
-    put(url: string, options: Record<string, any>): any;
+    put(url: string, options?: Record<string, any>): any;
 
     /**
      * 发送 DELETE 请求
      * @param url 请求地址
      * @param options 请求选项 { headers, timeout }
      */
-    delete(url: string, options: Record<string, any>): any;
+    delete(url: string, options?: Record<string, any>): any;
 
     /**
      * 发送 PATCH 请求
      * @param url 请求地址
      * @param options 请求选项 { body, headers, timeout }
      */
-    patch(url: string, options: Record<string, any>): any;
+    patch(url: string, options?: Record<string, any>): any;
 
     /**
      * 发送 HEAD 请求
      * @param url 请求地址
      * @param options 请求选项 { headers, timeout }
      */
-    head(url: string, options: Record<string, any>): any;
+    head(url: string, options?: Record<string, any>): any;
 
     /**
      * 发送自定义请求
@@ -406,12 +406,6 @@ interface Network {
     getIPAddress(): any;
 
     /**
-     * 获取 WiFi 信息
-     * @returns 包含 SSID 和 BSSID 的对象
-     */
-    getWiFiInfo(): any;
-
-    /**
      * URL 编码
      * @param string 要编码的字符串
      * @returns 编码后的 URL 字符串
@@ -438,7 +432,7 @@ interface Network {
      * @param params 查询参数
      * @returns 构建的 URL 字符串
      */
-    buildURL(baseURL: string, params: Record<string, any>): string;
+    buildURL(baseURL: string, params?: Record<string, any>): string;
 
     /**
      * Ping 主机
@@ -453,20 +447,7 @@ interface Network {
      * @param filename 保存文件名
      * @returns 包含本地文件路径的对象
      */
-    download(url: string, filename: string): any;
-
-    /**
-     * 获取飞行模式状态
-     * @returns 是否开启
-     */
-    getAirplaneMode(): boolean;
-
-    /**
-     * 设置飞行模式
-     * @param enabled 是否开启
-     * @returns 是否设置成功
-     */
-    setAirplaneMode(enabled: boolean): boolean;
+    download(url: string, filename?: string): any;
 
     /**
      * 列出 VPN 配置
@@ -479,7 +460,7 @@ interface Network {
      * @param name VPN 名称，默认第一个
      * @returns 是否发起连接成功
      */
-    connectVPN(name: string): boolean;
+    connectVPN(name?: string): boolean;
 
     /**
      * 断开 VPN
@@ -494,24 +475,11 @@ interface Network {
     getVPNStatus(): any;
 
     /**
-     * 获取 WiFi 开关状态
-     * @returns 是否开启
-     */
-    getWiFiEnabled(): boolean;
-
-    /**
-     * 设置 WiFi 开关
-     * @param enabled 是否开启
-     * @returns 是否设置成功
-     */
-    setWiFi(enabled: boolean): boolean;
-
-    /**
      * 打开系统设置
      * @param section 设置页面（如 'WIFI'）
      * @returns 是否成功打开
      */
-    openSettings(section: string): boolean;
+    openSettings(section?: string): boolean;
 
 }
 
@@ -566,7 +534,7 @@ interface App {
      * @param limit 返回的日志条数
      * @returns 日志对象数组
      */
-    getLogs(limit: number): any;
+    getLogs(limit?: number): any;
 
     /**
      * 导出日志为字符串
@@ -595,7 +563,7 @@ interface App {
      * 退出应用（仅用于调试）
      * @param code 退出码，默认为 0
      */
-    exit(code: number): void;
+    exit(code?: number): void;
 
     /**
      * 打开应用设置页面
@@ -653,7 +621,7 @@ interface Haptic {
      * 触觉冲击反馈
      * @param style 'light' | 'medium' | 'heavy' | 'soft' | 'rigid'
      */
-    impact(style: string): void;
+    impact(style?: string): void;
 
     /**
      * 通知触觉反馈
@@ -722,13 +690,13 @@ interface Display {
      * 增加亮度
      * @param amount 增加量 (默认 0.1)
      */
-    increaseBrightness(amount: number): void;
+    increaseBrightness(amount?: number): void;
 
     /**
      * 降低亮度
      * @param amount 减少量 (默认 0.1)
      */
-    decreaseBrightness(amount: number): void;
+    decreaseBrightness(amount?: number): void;
 
     /**
      * 获取屏幕信息
@@ -878,7 +846,7 @@ interface Location {
      * @param locale 语言区域标识(可选，如 'zh_CN'、'en_US'，默认使用系统语言)
      * @returns 地址信息对象数组
      */
-    reverseGeocode(lat: number, lng: number, locale: string): any;
+    reverseGeocode(lat: number, lng: number, locale?: string): any;
 
     /**
      * 定位服务是否开启
@@ -940,7 +908,7 @@ interface Calendar {
      * @param calendarId 日历 ID
      * @returns 事件数组
      */
-    getEvents(start: number, end: number, calendarId: string): any;
+    getEvents(start: number, end: number, calendarId?: string): any;
 
     /**
      * 创建日历事件
@@ -950,7 +918,7 @@ interface Calendar {
      * @param options 选项 { calendarId, notes, location, url, allDay }
      * @returns 创建的事件 ID
      */
-    create(title: string, start: number, end: number, options: Record<string, any>): any;
+    create(title: string, start: number, end: number, options?: Record<string, any>): any;
 
     /**
      * 删除日历事件
@@ -987,7 +955,7 @@ interface Reminder {
      * @param listId 列表 ID
      * @returns 提醒事项数组
      */
-    getAll(listId: string): any;
+    getAll(listId?: string): any;
 
     /**
      * 创建提醒事项
@@ -995,7 +963,7 @@ interface Reminder {
      * @param options 选项 { listId, notes, dueDate, priority, sortOrder, isPinned }
      * @returns 创建的提醒 ID
      */
-    create(title: string, options: Record<string, any>): any;
+    create(title: string, options?: Record<string, any>): any;
 
     /**
      * 标记为已完成
@@ -1016,14 +984,14 @@ interface Reminder {
      * @param options { sortBy: 'createdAt'|'dueDate'|'priority'|'title', ascending: boolean, completed: boolean }
      * @returns 排序后的提醒列表
      */
-    getSorted(options: Record<string, any>): any;
+    getSorted(options?: Record<string, any>): any;
 
     /**
      * 获取即将到期的提醒
      * @param days 未来几天，默认 7 天
      * @returns 即将到期的提醒列表
      */
-    getUpcoming(days: number): any;
+    getUpcoming(days?: number): any;
 
     /**
      * 获取已过期的提醒
@@ -1044,7 +1012,7 @@ interface Reminder {
      * @param options { listId, notes, dueDate, priority, location: { latitude, longitude, radius, onArrive, name } }
      * @returns { success: boolean, id: string, title: string, isSystemReminder: true }
      */
-    createSystemReminder(title: string, options: Record<string, any>): any;
+    createSystemReminder(title: string, options?: Record<string, any>): any;
 
     /**
      * 获取系统提醒列表
@@ -1081,7 +1049,7 @@ interface Contacts {
      * @param limit 返回的最大数量，默认全部
      * @returns 联系人对象数组
      */
-    getAll(offset: number, limit: number): any;
+    getAll(offset?: number, limit?: number): any;
 
     /**
      * 获取联系人总数
@@ -1164,7 +1132,7 @@ interface Notification {
      * @param options 选项 { url, userInfo, sound, badge }
      * @returns 发送的通知 ID
      */
-    send(title: string, body: string, options: Record<string, any>): any;
+    send(title: string, body: string, options?: Record<string, any>): any;
 
     /**
      * 取消通知
@@ -1228,7 +1196,7 @@ interface Notification {
      * @param options 选项 { url, userInfo, sound, badge, repeat: 'daily'|'weekly'|'monthly' }
      * @returns 发送的通知 ID
      */
-    schedule(title: string, body: string, date: number, options: Record<string, any>): any;
+    schedule(title: string, body: string, date: number, options?: Record<string, any>): any;
 
 }
 
@@ -1252,14 +1220,14 @@ interface Sms {
      * @param limit 限制条数 (默认 10)
      * @returns 短信对象数组
      */
-    read(limit: number): any;
+    read(limit?: number): any;
 
     /**
      * 获取验证码
      * @param minutes 查找最近几分钟内的验证码 (默认 5)
      * @returns 验证码或 null
      */
-    getVerificationCode(minutes: number): any;
+    getVerificationCode(minutes?: number): any;
 
     /**
      * 搜索短信
@@ -1311,7 +1279,7 @@ interface Sql {
      * @param params 参数列表
      * @returns 查询结果数组
      */
-    query(dbPath: string, sql: string, params: any[]): any[];
+    query(dbPath: string, sql: string, params?: any[]): any[];
 
     /**
      * 执行 INSERT/UPDATE/DELETE
@@ -1320,7 +1288,7 @@ interface Sql {
      * @param params 参数列表
      * @returns 执行结果对象
      */
-    execute(dbPath: string, sql: string, params: any[]): any;
+    execute(dbPath: string, sql: string, params?: any[]): any;
 
     /**
      * 列出数据库中的所有表
@@ -1348,7 +1316,7 @@ interface Shortcuts {
      * @param input 输入文本（可选）
      * @returns 是否成功打开快捷指令
      */
-    run(name: string, input: string): boolean;
+    run(name: string, input?: string): boolean;
 
     /**
      * 运行快捷指令（带 x-callback-url 回调）
@@ -1356,7 +1324,7 @@ interface Shortcuts {
      * @param input 输入文本（可选）
      * @returns 是否成功打开快捷指令
      */
-    runWithCallback(name: string, input: string): boolean;
+    runWithCallback(name: string, input?: string): boolean;
 
     /**
      * 打开快捷指令 App
@@ -1473,7 +1441,7 @@ interface System {
      * @param category 音量类别: 'System', 'Ringer', 'Media'，默认 'Media'
      * @returns 当前音量 (0.0 - 1.0)
      */
-    getVolume(category: string): number;
+    getVolume(category?: string): number;
 
     /**
      * 设置系统音量
@@ -1481,7 +1449,7 @@ interface System {
      * @param category 音量类别: 'System', 'Ringer', 'Media'，默认 'Media'
      * @returns 是否设置成功
      */
-    setVolume(level: number, category: string): boolean;
+    setVolume(level: number, category?: string): boolean;
 
     /**
      * 检查设备是否有闪光灯
@@ -1501,7 +1469,7 @@ interface System {
      * @param level 亮度级别 (0.0 - 1.0)，默认 1.0
      * @returns 是否设置成功
      */
-    setFlashlight(enabled: boolean, level: number): boolean;
+    setFlashlight(enabled: boolean, level?: number): boolean;
 
     /**
      * 检查方向锁定是否开启
@@ -1560,7 +1528,7 @@ interface System {
      * @param section 设置页面: 'WIFI', 'BLUETOOTH', 'CELLULAR', 'VPN', 'GENERAL', 'DISPLAY', 'SOUND', 'NOTIFICATION', 'PRIVACY', 'BATTERY', 'STORAGE', 'WALLPAPER', 'SIRI', 'ACCESSIBILITY', 'DND', 'SCREEN_TIME', 'PASSWORDS'
      * @returns 是否成功打开
      */
-    openSettings(section: string): boolean;
+    openSettings(section?: string): boolean;
 
 }
 

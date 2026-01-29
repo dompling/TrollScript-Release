@@ -131,27 +131,6 @@
       "returnsDescription": "Object containing the local file path"
     },
     {
-      "name": "getAirplaneMode",
-      "signature": "getAirplaneMode()",
-      "description": "Get Airplane Mode status",
-      "returns": "boolean",
-      "returnsDescription": "Whether Airplane Mode is enabled"
-    },
-    {
-      "name": "setAirplaneMode",
-      "signature": "setAirplaneMode(enabled)",
-      "description": "Set Airplane Mode status",
-      "parameters": [
-        {
-          "name": "enabled",
-          "type": "boolean",
-          "description": "True to enable, false to disable"
-        }
-      ],
-      "returns": "boolean",
-      "returnsDescription": "Whether the setting was successfully updated"
-    },
-    {
       "name": "listVPNs",
       "signature": "listVPNs()",
       "description": "List all VPN configurations",
@@ -186,27 +165,6 @@
       "description": "Get current VPN connection status",
       "returns": "{ connected: boolean, name?: string }",
       "returnsDescription": "Object containing connection state and VPN name"
-    },
-    {
-      "name": "getWiFiEnabled",
-      "signature": "getWiFiEnabled()",
-      "description": "Check if Wi-Fi is powered on",
-      "returns": "boolean",
-      "returnsDescription": "Whether Wi-Fi is enabled"
-    },
-    {
-      "name": "setWiFi",
-      "signature": "setWiFi(enabled)",
-      "description": "Toggle Wi-Fi power state",
-      "parameters": [
-        {
-          "name": "enabled",
-          "type": "boolean",
-          "description": "True to enable, false to disable"
-        }
-      ],
-      "returns": "boolean",
-      "returnsDescription": "Whether the state was successfully updated"
     },
     {
       "name": "openSettings",

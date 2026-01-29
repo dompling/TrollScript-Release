@@ -1095,36 +1095,6 @@ Download a file from a URL
 
 ---
 
-### `network.getAirplaneMode`
-
-**Signature:** `getAirplaneMode()`
-
-Get Airplane Mode status
-
-**Returns:** `boolean`
-
-*Whether Airplane Mode is enabled*
-
----
-
-### `network.setAirplaneMode`
-
-**Signature:** `setAirplaneMode(enabled)`
-
-Set Airplane Mode status
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `enabled` | `boolean` | True to enable, false to disable | No |
-
-**Returns:** `boolean`
-
-*Whether the setting was successfully updated*
-
----
-
 ### `network.listVPNs`
 
 **Signature:** `listVPNs()`
@@ -1176,36 +1146,6 @@ Get current VPN connection status
 **Returns:** `{ connected: boolean, name?: string }`
 
 *Object containing connection state and VPN name*
-
----
-
-### `network.getWiFiEnabled`
-
-**Signature:** `getWiFiEnabled()`
-
-Check if Wi-Fi is powered on
-
-**Returns:** `boolean`
-
-*Whether Wi-Fi is enabled*
-
----
-
-### `network.setWiFi`
-
-**Signature:** `setWiFi(enabled)`
-
-Toggle Wi-Fi power state
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `enabled` | `boolean` | True to enable, false to disable | No |
-
-**Returns:** `boolean`
-
-*Whether the state was successfully updated*
 
 ---
 

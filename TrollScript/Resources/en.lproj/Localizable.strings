@@ -37,6 +37,7 @@
 "settings.download_tipa" = "Download TIPA";
 "settings.install_trollstore" = "Install via TrollStore";
 "settings.view_on_github" = "View on GitHub";
+"settings.view" = "View";
 "settings.feedback" = "Feedback";
 "settings.debug_mode" = "Debug Mode";
 "settings.enabled" = "Enabled";
@@ -1040,6 +1041,8 @@
 "preset_path.sms_database.desc" = "SMS/iMessage storage, triggers on send/receive";
 "preset_path.sms_database_wal" = "SMS Database (Real-time)";
 "preset_path.sms_database_wal.desc" = "WAL log file, updates faster than main database";
+"preset_path.sms_face_icloud_database_wal" = "SMS Database (Real-time Silent)";
+"preset_path.sms_face_icloud_database_wal.desc" = "WAL log file; updates are quieter than the SMS Database (Real-time).";
 "preset_path.call_history" = "Call History";
 "preset_path.call_history.desc" = "Incoming/outgoing/missed calls";
 "preset_path.safari_history" = "Safari History";
@@ -1088,3 +1091,24 @@
 /* Notification Copy on Tap */
 "notification.copy_success_title" = "Copied";
 "notification.copy_success_body" = "Content copied: %@";
+
+/* Notification Trigger */
+"trigger.type.notification" = "Notification";
+"trigger.hint.notification" = "Trigger when a matching system notification is received.";
+"trigger.notification.config" = "Notification Settings";
+"trigger.notification.config_footer" = "Monitor system notifications from specified apps. Requires TrollStore environment.";
+"trigger.notification.bundle_id" = "App Bundle ID (Regex)";
+"trigger.notification.bundle_id_placeholder" = "e.g. com.apple.MobileSMS";
+"trigger.notification.title_filter" = "Title Filter (Regex)";
+"trigger.notification.title_filter_placeholder" = "Optional regex pattern...";
+"trigger.notification.message_filter" = "Content Filter (Regex)";
+"trigger.notification.message_filter_placeholder" = "Optional regex pattern...";
+"trigger.notification.debounce" = "Debounce Interval";
+"trigger.notification.ignore_script" = "Ignore Script Notifications";
+"trigger.notification.ignore_script_footer" = "Prevent infinite loops when scripts send notifications.";
+"trigger.notification.selected_apps" = "Selected Apps";
+"trigger.notification.search_apps" = "Search apps...";
+"trigger.notification.app_list" = "Available Apps";
+"trigger.notification.no_apps" = "No apps found";
+"trigger.notification.no_search_results" = "No results found";
+"trigger.notification.more_apps" = "+%d more apps, use search to find";
