@@ -1,0 +1,1329 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="API/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>TrollScript Release</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#trollscript" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="." title="TrollScript Release" class="md-header__button md-logo" aria-label="TrollScript Release" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TrollScript Release
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              介绍
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+  
+    
+  
+  介绍
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="API/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API ZH 文档
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="API.en/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API Document
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="TrollScript Release" class="md-nav__button md-logo" aria-label="TrollScript Release" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TrollScript Release
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        简介
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        功能特性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统要求
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装方式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="安装方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方式一：直接下载
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方式二：URL Scheme 安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#javascript-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JavaScript API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        触发器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="触发器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全局参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        高级功能
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="高级功能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#icloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        iCloud 同步
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        脚本导入/导出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        脚本商店
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url-scheme_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        URL Scheme
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="URL Scheme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装脚本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        商店安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        运行脚本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        导入脚本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        打开应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        添加商店订阅
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#npm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPM 支持
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        截图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        更新日志
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反馈问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        免责声明
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        致谢
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API ZH 文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        简介
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        功能特性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统要求
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装方式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="安装方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方式一：直接下载
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方式二：URL Scheme 安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#javascript-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JavaScript API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        触发器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="触发器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全局参数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        高级功能
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="高级功能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#icloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        iCloud 同步
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        脚本导入/导出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        脚本商店
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url-scheme_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        URL Scheme
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="URL Scheme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装脚本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        商店安装
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        运行脚本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        导入脚本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        打开应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        添加商店订阅
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#npm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NPM 支持
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        截图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        更新日志
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反馈问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        免责声明
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        致谢
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="trollscript">TrollScript</h1>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/dompling/TrollScript-Release/main/AppIcon.png" width="128" height="128" alt="TrollScript Logo">
+</p>
+
+<p align="center">
+  <strong>基于 TrollStore 的 iOS JavaScript 脚本执行器</strong>
+</p>
+
+<p align="center">
+  <a href="https://github.com/dompling/TrollScript-Release/releases/latest">
+    <img src="https://img.shields.io/github/v/release/dompling/TrollScript-Release?style=flat-square" alt="Release">
+  </a>
+  <img src="https://img.shields.io/badge/iOS-16.0%2B-blue?style=flat-square" alt="iOS 16.0+">
+  <img src="https://img.shields.io/badge/TrollStore-Required-orange?style=flat-square" alt="TrollStore Required">
+  <a href="https://github.com/dompling/TrollScript-Release/releases">
+    <img src="https://img.shields.io/github/downloads/dompling/TrollScript-Release/total?style=flat-square" alt="Downloads">
+  </a>
+</p>
+
+<hr />
+<h2 id="_1">简介</h2>
+<p>TrollScript 是一款利用 TrollStore 特权的 iOS JavaScript 脚本执行器。通过内置的 JavaScript 运行时，你可以编写和执行各种自动化脚本，访问系统级 API，实现普通 App 无法完成的功能。</p>
+<h2 id="_2">功能特性</h2>
+<ul>
+<li><strong>脚本管理</strong> - 创建、编辑、删除、导入导出脚本</li>
+<li><strong>语法高亮</strong> - 内置代码编辑器，支持 JavaScript 语法高亮</li>
+<li><strong>丰富的 API</strong> - 15+ 原生模块，覆盖网络、位置、通知、媒体等功能</li>
+<li><strong>通知触发</strong> - 监听指定 App 通知，自动执行脚本</li>
+<li><strong>iCloud 同步</strong> - 支持 CloudKit 数据库和 iCloud Drive 两种同步模式</li>
+<li><strong>快捷指令</strong> - 完整 App Intents 支持，可在快捷指令中运行脚本</li>
+<li><strong>版本更新</strong> - 应用内检测新版本</li>
+<li><strong>崩溃恢复</strong> - 内置崩溃捕获与恢复机制</li>
+<li><strong>性能监控</strong> - 实时内存、CPU、FPS 监控</li>
+</ul>
+<h2 id="_3">系统要求</h2>
+<ul>
+<li>iOS 16.0 或更高版本</li>
+<li>已安装 <a href="https://github.com/opa334/TrollStore">TrollStore</a></li>
+</ul>
+<h2 id="_4">安装方式</h2>
+<h3 id="_5">方式一：直接下载</h3>
+<ol>
+<li>前往 <a href="https://github.com/dompling/TrollScript-Release/releases/latest">Releases</a> 页面</li>
+<li>下载最新的 <code>.tipa</code> 文件</li>
+<li>在 TrollStore 中安装</li>
+</ol>
+<h3 id="url-scheme">方式二：URL Scheme 安装</h3>
+<p>如果已安装 TrollStore，可以点击以下链接直接安装:</p>
+<pre><code>apple-magnifier://install?url=https://github.com/dompling/TrollScript-Release/releases/latest/download/TrollScript_latest.tipa
+</code></pre>
+<h2 id="javascript-api">JavaScript API</h2>
+<p>TrollScript 内置丰富的原生模块，<a href="API/">查看完整中文 API 文档</a> <a href="API.en/">查看完整 English API 文档</a>。</p>
+<blockquote>
+<p><a href="https://github.com/dompling/TrollScript-Release/tree/main/templates/TestScripts">示例脚本 (TrollScript-Store)</a></p>
+</blockquote>
+<h2 id="_6">触发器</h2>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>定时任务</td>
+<td>Cron 定时执行脚本</td>
+</tr>
+<tr>
+<td>剪切板</td>
+<td>复制了特定的文字内容之后触发脚本</td>
+</tr>
+<tr>
+<td>文件监控</td>
+<td>文件变化的时候触发</td>
+</tr>
+<tr>
+<td>通知监控</td>
+<td>APP 发送通知的时候，触发脚本（兼容性未知 作者的手机系统：IOS 16.3.1）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>脚本同时触发，可能会发生崩溃或者其他未知问题，请注意使用。可以反馈修复。</p>
+</blockquote>
+<h3 id="_7">全局参数</h3>
+<ol>
+<li><strong>$triggerInput</strong></li>
+<li>通知监控</li>
+</ol>
+<pre><code>  interface $triggerInput {
+    type: &quot;notification&quot;;     // 触发类型
+    bundleId: string;         // 来源 App Bundle ID
+    title: string;            // 通知标题
+    message: string;          // 通知内容
+    timestamp: number;        // 时间戳 (毫秒)
+  }
+</code></pre>
+<h2 id="_8">高级功能</h2>
+<h3 id="icloud">iCloud 同步</h3>
+<p>TrollScript 支持两种 iCloud 同步模式：</p>
+<ol>
+<li><strong>文件目录模式</strong>（推荐）</li>
+<li>脚本存储在 <code>iCloud Drive/TrollScript/Scripts/</code> 目录</li>
+<li>可在「文件」App 中直接查看和编辑</li>
+<li>
+<p>支持 <code>.trollscript</code> 和 <code>.js</code> 格式</p>
+</li>
+<li>
+<p><strong>数据库模式</strong></p>
+</li>
+<li>使用 CloudKit + CoreData 同步</li>
+<li>自动后台同步，无需手动操作</li>
+</ol>
+<h3 id="_9">脚本导入/导出</h3>
+<p>支持两种导出格式：
+- <code>.trollscript</code> - 完整格式，包含代码和元数据
+- <code>.js</code> - 纯 JavaScript 代码</p>
+<p>导入支持：<code>.trollscript</code>、<code>.js</code>、<code>.json</code>、<code>.txt</code> 格式</p>
+<h3 id="_10">脚本商店</h3>
+<p>TrollScript 支持脚本商店功能，通过脚本商店可以方便地获取和分享脚本。</p>
+<p><a href="https://github.com/dompling/TrollScript-Store">默认商店 (TrollScript-Store)</a></p>
+<h3 id="url-scheme_1">URL Scheme</h3>
+<p>TrollScript 支持多种 URL Scheme，可用于从其他应用快速操作：</p>
+<h4 id="_11">安装脚本</h4>
+<p>从 URL 下载并导入脚本：</p>
+<pre><code>trollscript://install?url=https://example.com/script.js
+</code></pre>
+<h4 id="_12">商店安装</h4>
+<p>从脚本商店直接安装脚本（用于商店一键安装）：</p>
+<pre><code>trollscript://store?id=脚本ID&amp;name=脚本名称&amp;url=https://example.com/script.js
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>脚本唯一标识（用于版本追踪）</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>脚本显示名称</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>脚本下载地址</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_13">运行脚本</h4>
+<p>通过脚本 ID 或名称运行已安装的脚本：</p>
+<pre><code>trollscript://run?id=脚本UUID
+trollscript://run?name=脚本名称
+</code></pre>
+<h4 id="_14">导入脚本</h4>
+<p>通过 Base64 编码的内容导入脚本：</p>
+<pre><code>trollscript://import?content=Base64编码内容&amp;name=脚本名称
+</code></pre>
+<h4 id="_15">打开应用</h4>
+<p>仅打开 TrollScript 应用：</p>
+<pre><code>trollscript://open
+</code></pre>
+<h4 id="_16">添加商店订阅</h4>
+<p>通过 URL 添加脚本商店订阅源：</p>
+<pre><code>trollscript://subscribe?name=订阅源名称&amp;url=https://example.com/store.json
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>订阅源显示名称</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>订阅源 JSON 地址</td>
+</tr>
+</tbody>
+</table>
+<h3 id="npm">NPM 支持</h3>
+<p>为了方便开发者编写脚本，提供了 TypeScript 定义包：</p>
+<p><a href="https://www.npmjs.com/package/@dompling/trollscript-types"><img alt="npm version" src="https://badge.fury.io/js/%40dompling%2Ftrollscript-types.svg" /></a></p>
+<pre><code class="language-bash">npm install --save-dev @dompling/trollscript-types
+</code></pre>
+<h2 id="_17">截图</h2>
+<p align="center">
+  <img src="images/2781768272086_.pic_hd-portrait.png" width="35%" alt="Screenshot 3">
+  <img src="images/2791768272087_.pic_hd-portrait.png" width="35%" alt="Screenshot 4">
+</p>
+<p align="center">
+  <img src="images/2761768272084_.pic_hd-left.png" width="35%" alt="Screenshot 1">
+  <img src="images/2771768272085_.pic_hd-left.png" width="35%" alt="Screenshot 2">
+</p>
+
+<h2 id="_18">更新日志</h2>
+<p>查看 <a href="https://github.com/dompling/TrollScript-Release/releases">Releases</a> 获取完整更新日志。</p>
+<h2 id="_19">反馈问题</h2>
+<p>如遇问题，请在 <a href="https://github.com/dompling/TrollScript-Release/issues">Issues</a> 中反馈。</p>
+<h2 id="_20">免责声明</h2>
+<ul>
+<li>本项目仅供学习研究使用</li>
+<li>请勿用于非法用途</li>
+<li>使用本软件产生的任何后果由用户自行承担</li>
+</ul>
+<h2 id="_21">致谢</h2>
+<ul>
+<li><a href="https://github.com/opa334/TrollStore">TrollStore</a></li>
+<li><a href="https://github.com/raspu/Highlightr">Highlightr</a></li>
+</ul>
+<hr />
+<p align="center">
+  Made with ❤️
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
