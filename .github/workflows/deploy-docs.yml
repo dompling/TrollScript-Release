@@ -31,6 +31,7 @@ jobs:
           mkdir -p docs
           cp README.md docs/index.md
           cp API.md docs/API.md
+          cp API.en.md docs/API.en.md
           cp -r AppIcon.png docs/
           cp -r images docs/
           
