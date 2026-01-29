@@ -31,8 +31,8 @@ theme:
 
 nav:
   - 介绍: index.md      # 默认会将仓库的 README.md 链接到这里（见下方说明）
-  - API ZH 文档: API.md    # 链接你的 API.md
-  - API Document: API.en.md    # 链接你的 API.md
+  - 中文文档: API.md    # 链接你的 API.md
+  - English Document: API.en.md    # 链接你的 API.md
 
 markdown_extensions:
   - admonition                # 警告/提示框
