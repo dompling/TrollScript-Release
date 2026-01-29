@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="TrollScript 官方文档与 API 参考">
       
+      
+      
+        <link rel="canonical" href="https://trollscript.qzz.io/">
       
       
       
@@ -21,11 +25,14 @@
     
     
       
-        <title>TrollScript Release</title>
+        <title>TrollScript</title>
       
     
     
       <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,7 +60,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -76,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="." title="TrollScript Release" class="md-header__button md-logo" aria-label="TrollScript Release" data-md-component="logo">
+    <a href="." title="TrollScript" class="md-header__button md-logo" aria-label="TrollScript" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -90,7 +104,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            TrollScript Release
+            TrollScript
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -102,6 +116,32 @@
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -132,6 +172,8 @@
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -196,7 +238,7 @@
   
     
   
-  API ZH 文档
+  中文文档
 
       </a>
     </li>
@@ -209,13 +251,13 @@
   
   
     <li class="md-tabs__item">
-      <a href="API.en/" class="md-tabs__link">
+      <a href="API.en.md" class="md-tabs__link">
         
   
   
     
   
-  API Document
+  English Document
 
       </a>
     </li>
@@ -244,13 +286,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="TrollScript Release" class="md-nav__button md-logo" aria-label="TrollScript Release" data-md-component="logo">
+    <a href="." title="TrollScript" class="md-nav__button md-logo" aria-label="TrollScript" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    TrollScript Release
+    TrollScript
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -653,7 +695,7 @@
   <span class="md-ellipsis">
     
   
-    API ZH 文档
+    中文文档
   
 
     
@@ -673,14 +715,14 @@
   
   
     <li class="md-nav__item">
-      <a href="API.en/" class="md-nav__link">
+      <a href="API.en.md" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    API Document
+    English Document
   
 
     
@@ -1095,10 +1137,10 @@
 </ol>
 <h3 id="url-scheme">方式二：URL Scheme 安装</h3>
 <p>如果已安装 TrollStore，可以点击以下链接直接安装:</p>
-<pre><code>apple-magnifier://install?url=https://github.com/dompling/TrollScript-Release/releases/latest/download/TrollScript_latest.tipa
-</code></pre>
+<div class="highlight"><pre><span></span><code>apple-magnifier://install?url=https://github.com/dompling/TrollScript-Release/releases/latest/download/TrollScript_latest.tipa
+</code></pre></div>
 <h2 id="javascript-api">JavaScript API</h2>
-<p>TrollScript 内置丰富的原生模块，<a href="API/">查看完整中文 API 文档</a> <a href="API.en/">查看完整 English API 文档</a>。</p>
+<p>TrollScript 内置丰富的原生模块，<a href="API/">查看完整中文 API 文档</a> <a href="API.en.md">查看完整 English API 文档</a>。</p>
 <blockquote>
 <p><a href="https://github.com/dompling/TrollScript-Release/tree/main/templates/TestScripts">示例脚本 (TrollScript-Store)</a></p>
 </blockquote>
@@ -1135,16 +1177,16 @@
 <h3 id="_7">全局参数</h3>
 <ol>
 <li><strong>$triggerInput</strong></li>
-<li>通知监控</li>
-</ol>
-<pre><code>  interface $triggerInput {
+<li>通知监控
+<div class="highlight"><pre><span></span><code>  interface $triggerInput {
     type: &quot;notification&quot;;     // 触发类型
     bundleId: string;         // 来源 App Bundle ID
     title: string;            // 通知标题
     message: string;          // 通知内容
     timestamp: number;        // 时间戳 (毫秒)
   }
-</code></pre>
+</code></pre></div></li>
+</ol>
 <h2 id="_8">高级功能</h2>
 <h3 id="icloud">iCloud 同步</h3>
 <p>TrollScript 支持两种 iCloud 同步模式：</p>
@@ -1173,12 +1215,12 @@
 <p>TrollScript 支持多种 URL Scheme，可用于从其他应用快速操作：</p>
 <h4 id="_11">安装脚本</h4>
 <p>从 URL 下载并导入脚本：</p>
-<pre><code>trollscript://install?url=https://example.com/script.js
-</code></pre>
+<div class="highlight"><pre><span></span><code>trollscript://install?url=https://example.com/script.js
+</code></pre></div>
 <h4 id="_12">商店安装</h4>
 <p>从脚本商店直接安装脚本（用于商店一键安装）：</p>
-<pre><code>trollscript://store?id=脚本ID&amp;name=脚本名称&amp;url=https://example.com/script.js
-</code></pre>
+<div class="highlight"><pre><span></span><code>trollscript://store?id=脚本ID&amp;name=脚本名称&amp;url=https://example.com/script.js
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1203,21 +1245,21 @@
 </table>
 <h4 id="_13">运行脚本</h4>
 <p>通过脚本 ID 或名称运行已安装的脚本：</p>
-<pre><code>trollscript://run?id=脚本UUID
+<div class="highlight"><pre><span></span><code>trollscript://run?id=脚本UUID
 trollscript://run?name=脚本名称
-</code></pre>
+</code></pre></div>
 <h4 id="_14">导入脚本</h4>
 <p>通过 Base64 编码的内容导入脚本：</p>
-<pre><code>trollscript://import?content=Base64编码内容&amp;name=脚本名称
-</code></pre>
+<div class="highlight"><pre><span></span><code>trollscript://import?content=Base64编码内容&amp;name=脚本名称
+</code></pre></div>
 <h4 id="_15">打开应用</h4>
 <p>仅打开 TrollScript 应用：</p>
-<pre><code>trollscript://open
-</code></pre>
+<div class="highlight"><pre><span></span><code>trollscript://open
+</code></pre></div>
 <h4 id="_16">添加商店订阅</h4>
 <p>通过 URL 添加脚本商店订阅源：</p>
-<pre><code>trollscript://subscribe?name=订阅源名称&amp;url=https://example.com/store.json
-</code></pre>
+<div class="highlight"><pre><span></span><code>trollscript://subscribe?name=订阅源名称&amp;url=https://example.com/store.json
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1239,8 +1281,8 @@ trollscript://run?name=脚本名称
 <h3 id="npm">NPM 支持</h3>
 <p>为了方便开发者编写脚本，提供了 TypeScript 定义包：</p>
 <p><a href="https://www.npmjs.com/package/@dompling/trollscript-types"><img alt="npm version" src="https://badge.fury.io/js/%40dompling%2Ftrollscript-types.svg" /></a></p>
-<pre><code class="language-bash">npm install --save-dev @dompling/trollscript-types
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>@dompling/trollscript-types
+</code></pre></div>
 <h2 id="_17">截图</h2>
 <p align="center">
   <img src="images/2781768272086_.pic_hd-portrait.png" width="35%" alt="Screenshot 3">
@@ -1319,7 +1361,7 @@ trollscript://run?name=脚本名称
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
