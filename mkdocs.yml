@@ -1,12 +1,42 @@
-site_name: TrollScript Release
+site_name: TrollScript
+site_url: https://dompling.github.io/TrollScript-Release
+site_description: TrollScript 官方文档与 API 参考
+
 theme:
   name: material
-  language: zh  # 设置界面为中文
+  language: zh
+  palette:
+    # 自动切换深色/浅色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: 切换至深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: 切换至浅色模式
   features:
-    - navigation.tabs # 顶部导航栏模式
-    - content.code.copy # 代码复制按钮
+    - navigation.instant      # 页面即时加载 (SPA 体验)
+    - navigation.tabs         # 顶部标签页导航
+    - navigation.tracking     # 锚点跟随
+    - content.code.copy       # 代码块一键复制
+    - search.suggest          # 搜索建议
+    - search.highlight        # 搜索关键词高亮
 
 nav:
   - 介绍: index.md      # 默认会将仓库的 README.md 链接到这里（见下方说明）
   - API ZH 文档: API.md    # 链接你的 API.md
   - API Document: API.en.md    # 链接你的 API.md
+
+markdown_extensions:
+  - admonition                # 警告/提示框
+  - pymdownx.details          # 折叠详情
+  - pymdownx.superfences      # 嵌套代码块
+  - pymdownx.tabbed:          # 选项卡
+      alternate_style: true

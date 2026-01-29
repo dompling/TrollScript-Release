@@ -1,8 +1,9 @@
-name: Deploy Docs
+name: Deploy Documentation
+
 on:
   push:
     branches:
-      - main # 只有在推送到 main 分支时触发
+      - main  # 监听主分支推送
 
 permissions:
   contents: write
@@ -11,26 +12,28 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: 3.x
+          cache: 'pip' # 开启 pip 依赖缓存
 
       - name: Install dependencies
         run: |
           pip install mkdocs-material
 
-      # 如果你不想移动文件，可以在这里用命令准备 docs 目录
-      - name: Prepare docs folder
+      - name: Prepare Workspace
         run: |
           mkdir -p docs
           cp README.md docs/index.md
           cp API.md docs/API.md
-          cp API.en.md docs/API.en.md
+          cp -r AppIcon.png docs/
+          cp -r images docs/
 
       - name: Build and Deploy
         run: mkdocs gh-deploy --force
