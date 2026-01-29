@@ -1,0 +1,12 @@
+site_name: TrollScript Release
+theme:
+  name: material
+  language: zh  # 设置界面为中文
+  features:
+    - navigation.tabs # 顶部导航栏模式
+    - content.code.copy # 代码复制按钮
+
+nav:
+  - 介绍: index.md      # 默认会将仓库的 README.md 链接到这里（见下方说明）
+  - API ZH 文档: API.md    # 链接你的 API.md
+  - API Document: API.en.md    # 链接你的 API.md
