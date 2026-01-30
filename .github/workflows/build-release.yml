@@ -2,6 +2,8 @@ name: Build and Release TrollScript
 
 on:
   workflow_dispatch:  # 手动触发
+  repository_dispatch:
+    types: [build_release]
 
 jobs:
   build:
