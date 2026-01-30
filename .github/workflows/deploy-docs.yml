@@ -34,6 +34,7 @@ jobs:
           cp API.en.md docs/API.en.md
           cp -r AppIcon.png docs/
           cp -r images docs/
+          cp -r CNAME docs/
           
 
       - name: Build and Deploy
