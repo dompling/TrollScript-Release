@@ -36,14 +36,11 @@ theme:
 
 nav:
   - 介绍: README.md             # 对应 docs/index.md
-  - 快速开始:
-      - 安装指南: INSTALL.md    # 二级菜单示例
-      - 环境要求: requirements.md
-  - API 手册: 
-      - 中文文档: API.md       # 链接到你的 API.md
-      - English: API.en.md    # 链接到你的 API.en.md
-  - 更多:
-      - 常见问题: FAQ.md
+  - 安装指南: INSTALL.md    # 二级菜单示例
+  - 环境要求: requirements.md
+  - 中文文档: API.md       # 链接到你的 API.md
+  - English: API.en.md    # 链接到你的 API.en.md
+  - 常见问题: FAQ.md
 
 markdown_extensions:
   - toc:
