@@ -62,8 +62,8 @@ TrollScript 内置丰富的原生模块，[查看完整中文 API 文档](API.md
 
 ### 全局参数
 
-1. **$triggerInput**
-    - 通知监控参数
+**$triggerInput**
+- 通知监控参数
 
 ```typescript
 interface $triggerInput {
@@ -75,8 +75,8 @@ interface $triggerInput {
 }
 ```
 
-2. **$args**
-    - 快捷指令参数
+**$args**
+- 快捷指令参数
 
 ```typescript
 interface $args {
@@ -85,9 +85,11 @@ interface $args {
 }
 ```
 
-3. **脚本返回值**
-   - 控制台显示返回值
-   - 返回给快捷指令
+**脚本返回值**
+
+- 控制台显示返回值
+- 返回给快捷指令
+
 ```javascript
 const test = "123"
 return test;
