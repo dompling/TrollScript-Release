@@ -3,13 +3,9 @@ name: Build and Release TrollScript
 on:
   workflow_dispatch:  # 手动触发
 
-env:
-  XCODE_VERSION: '16.2'
-
 jobs:
   build:
-    runs-on: macos-latest
-    
+    runs-on: macos-15
     steps:
       # 1. 拉取当前 Release 仓库
       - name: Checkout Release Repository
@@ -26,19 +22,76 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           path: TrollScript-Private
           fetch-depth: 0
-      
-      # 3. 设置 Xcode 环境
-      - name: Select Xcode Version
+
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '16.0'
+
+      - name: Show Xcode version
         run: |
-          sudo xcode-select -s /Applications/Xcode_${{ env.XCODE_VERSION }}.app/Contents/Developer
           xcodebuild -version
-      
-      - name: Install Dependencies
+          xcode-select -p
+
+      - name: Cache Swift Package Manager
+        uses: actions/cache@v4
+        with:
+          path: |
+            build/SourcePackages
+            ~/Library/Caches/org.swift.swiftpm
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+      - name: Install ldid (iOS signing tool)
         run: |
           brew install ldid
-          brew install make
+          ldid -h || true
+          echo "ldid installed successfully"
       
-      # 4. 进入私有仓库目录，运行 build-tipa.sh
+      # 4. 从私有仓库 tag 更新版本号
+      - name: Update version from tag
+        working-directory: TrollScript-Private
+        run: |
+          INFO_PLIST="TrollScript/Info.plist"
+
+          # 获取最新 tag
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          
+          if [ -n "$LATEST_TAG" ]; then
+            # 从 tag 提取版本号，去掉 v 前缀
+            VERSION="${LATEST_TAG#v}"
+            echo "✅ 从 tag 提取版本号: $VERSION"
+          else
+            # 尝试获取当前 commit 的 tag
+            CURRENT_TAG=$(git describe --tags --exact-match 2>/dev/null || echo "")
+            if [ -n "$CURRENT_TAG" ]; then
+              VERSION="${CURRENT_TAG#v}"
+              echo "✅ 从当前 commit tag 提取版本号: $VERSION"
+            else
+              # 没有 tag，保持 Info.plist 中的版本不变
+              echo "⚠️ 无 tag，保持原版本号不变"
+              exit 0
+            fi
+          fi
+
+          # 生成构建号（使用时间戳）
+          BUILD_NUMBER=$(date +'%Y%m%d%H%M')
+
+          # 更新 Info.plist
+          echo "📝 更新 Info.plist:"
+          echo "   CFBundleShortVersionString: $VERSION"
+          echo "   CFBundleVersion: $BUILD_NUMBER"
+
+          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" "$INFO_PLIST"
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $BUILD_NUMBER" "$INFO_PLIST"
+
+          # 验证更新
+          echo "✅ 更新后的版本信息:"
+          /usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" "$INFO_PLIST"
+          /usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "$INFO_PLIST"
+      
+      # 5. 进入私有仓库目录，运行 build-tipa.sh
       - name: Build TrollScript
         working-directory: TrollScript-Private
         run: |
