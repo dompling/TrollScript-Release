@@ -5,8 +5,6 @@ site_description: TrollScript 官方文档与 API 参考
 theme:
   name: material
   language: zh
-  logo: AppIcon.png    # 导航栏左上角的图标
-  favicon: AppIcon.png # 浏览器标签页的小图标
   palette:
     # 自动切换深色/浅色模式
     - media: "(prefers-color-scheme: light)"
