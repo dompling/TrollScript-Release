@@ -1,0 +1,1114 @@
+/* Settings */
+"settings.title" = "Settings";
+"settings.keep_alive" = "Background Keep Alive";
+"settings.category_management" = "Category Management";
+"settings.script_execution" = "Script Execution";
+"settings.crash_reports" = "Crash Reports";
+"settings.performance_stats" = "Performance Stats";
+"settings.log_viewer" = "Log Viewer";
+"settings.permissions" = "Permissions";
+"settings.storage_manager" = "Storage Manager";
+"settings.data_management" = "Data Management";
+"settings.developer" = "Developer";
+"settings.about" = "About";
+"settings.version" = "Version";
+"settings.check_update" = "Check for Updates";
+"settings.checking_update" = "Checking...";
+"settings.update_now" = "Update Now";
+"settings.update_available" = "New Version Available";
+"settings.up_to_date" = "Up to Date";
+"settings.up_to_date_message" = "Current version: %@\nLatest version: %@";
+"settings.update_check_failed" = "Update Check Failed";
+"settings.clear_cache" = "Clear Cache";
+"settings.clear_cache_confirm" = "Are you sure you want to clear all cache?";
+"settings.cancel" = "Cancel";
+"settings.confirm" = "Confirm";
+"settings.ok" = "OK";
+"settings.got_it" = "Got it";
+"settings.daily_tips" = "Daily Tips";
+"settings.appearance" = "Appearance";
+"settings.app_icon" = "App Icon";
+"settings.theme_color" = "Theme Color";
+"settings.close" = "Close";
+"settings.current_version" = "Current Version";
+"settings.latest_version" = "Latest Version";
+"settings.release_notes" = "Release Notes";
+"settings.no_release_notes" = "No release notes available";
+"settings.download_tipa" = "Download TIPA";
+"settings.install_trollstore" = "Install via TrollStore";
+"settings.view_on_github" = "View on GitHub";
+"settings.view" = "View";
+"settings.feedback" = "Feedback";
+"settings.debug_mode" = "Debug Mode";
+"settings.enabled" = "Enabled";
+"settings.editor_theme" = "Editor theme";
+"settings.github_token" = "GitHub API Token";
+"settings.github_token.description" = "Configure a GitHub API Token to increase the API rate limit for update checks, preventing detection failures due to rate limiting.";
+"settings.github_token.footer" = "The token is only used for update checks and will not be sent to any third-party servers.";
+"settings.github_token.generate" = "Generate New Token";
+"settings.github_token.scope_hint" = "No scopes are required when generating the token. Public repository access doesn't need additional permissions.";
+"settings.github_token.clear" = "Clear Token";
+"settings.configured" = "Configured";
+
+/* Tabs */
+"tab.scripts" = "Scripts";
+"tab.store" = "Store";
+"tab.settings" = "Settings";
+
+/* Home */
+"home.title" = "Shortcuts";
+"home.new_script" = "New Script";
+"home.import_script" = "Import Script";
+"home.search_placeholder" = "Search scripts...";
+"home.empty_title" = "No Scripts Yet";
+"home.empty_message" = "Tap + to create your first script";
+"home.create_script_button" = "Create Script";
+"home.no_results_title" = "No scripts found";
+"home.no_results_message" = "Try searching with different keywords";
+
+/* Category */
+"category.management" = "Category Management";
+"category.predefined" = "Predefined Categories";
+"category.predefined_footer" = "Predefined categories can be renamed but not deleted";
+"category.custom" = "Custom Categories";
+"category.add" = "Add Category";
+"category.custom_footer" = "Scripts in deleted categories will be moved to 'Other'";
+"category.delete_title" = "Delete Category";
+"category.delete_message" = "Are you sure you want to delete '%@'?";
+"category.delete_message_with_count" = "'%@' contains %d scripts. They will be moved to 'Other' after deletion.";
+"category.script_count" = "%d Scripts";
+
+/* Keep Alive */
+"keepalive.title" = "Keep Alive";
+"keepalive.enable" = "Enable Keep Alive";
+"keepalive.status" = "Status";
+"keepalive.running" = "Running";
+"keepalive.paused" = "Paused";
+"keepalive.uptime" = "Uptime";
+"keepalive.state_section_header" = "Status";
+"keepalive.state_section_footer" = "App will keep running in background when enabled. Useful for scheduled scripts and notifications.";
+"keepalive.strategy" = "Strategy";
+"keepalive.strategy_section_header" = "Strategy Settings";
+"keepalive.strategy_info_header" = "Strategy Info";
+"keepalive.select_strategy" = "Select Strategy";
+"keepalive.notes_header" = "Notes";
+"keepalive.note.battery" = "Keep Alive will slightly increase battery usage";
+"keepalive.note.low_power" = "Recommended to whitelist in Low Power Mode";
+"keepalive.note.kill" = "System may kill background apps in extreme conditions";
+
+/* Process Management */
+"settings.process_management" = "Process Management";
+"process.title" = "Process Management";
+"process.running_count" = "%d Running";
+
+/* HUD Indicator */
+"hud.section_header" = "HUD Indicator";
+"hud.section_footer" = "Display a floating indicator when scripts are running. Requires TrollStore environment.";
+"hud.enable" = "Enable HUD Indicator";
+"hud.status" = "Status";
+"hud.running" = "Running";
+"hud.stopped" = "Stopped";
+
+/* Safe Mode */
+"safemode.title" = "Safe Mode Active";
+"safemode.exit" = "Exit Safe Mode";
+"safemode.section_header" = "Safe Mode";
+"safemode.section_footer" = "Safe mode is enabled to prevent crash loops. The daemon will not auto-restart until you manually exit safe mode.";
+
+/* Process Notes */
+"process.notes_header" = "Notes";
+"process.note.daemon" = "Background daemon provides persistent execution";
+"process.note.keepalive" = "Auto-restart ensures continuous operation";
+"process.note.safemode" = "Safe mode protects against crash loops";
+
+/* Keep Alive Strategies */
+"keepalive.strategy.silent_audio" = "Silent Audio";
+"keepalive.strategy.location" = "Location Updates";
+"keepalive.strategy.combined" = "Combined Mode";
+"keepalive.strategy.silent_audio.desc" = "Plays silent audio to keep running";
+"keepalive.strategy.location.desc" = "Uses location updates to keep running";
+"keepalive.strategy.combined.desc" = "Uses both audio and location";
+"keepalive.strategy.silent_audio.pros" = "Lowest battery usage, stable";
+"keepalive.strategy.silent_audio.cons" = "Interrupted by other audio";
+"keepalive.strategy.location.pros" = "Not affected by audio";
+"keepalive.strategy.location.cons" = "Requires permission, more battery";
+"keepalive.strategy.combined.pros" = "Most reliable";
+"keepalive.strategy.combined.cons" = "Higher battery usage";
+
+/* Script Execution Settings */
+"script.settings.title" = "Execution Settings";
+"script.settings.execution_section" = "Execution";
+"script.settings.show_runtime" = "Show Execution Time";
+"script.settings.timeout" = "Execution Timeout";
+"script.settings.timeout_seconds" = "%d Seconds";
+"script.settings.timeout_unlimited" = "Unlimited";
+"script.settings.autosave_section" = "Auto Save";
+"script.settings.autosave" = "Auto Save";
+"script.settings.autosave_footer" = "Automatically save changes when editing";
+"script.settings.autosave_interval" = "Save Interval";
+"script.settings.log_section" = "Logs";
+"script.settings.log_keep_count" = "Keep Logs";
+"script.settings.count_suffix" = "%d Logs";
+"script.settings.log_footer" = "Older logs will be automatically deleted";
+"script.settings.memory_section" = "Memory Management";
+"script.settings.memory_limit" = "Memory Limit";
+"script.settings.stack_size" = "Stack Size";
+"script.settings.auto_gc" = "Auto GC After Execution";
+"script.settings.unlimited" = "Unlimited";
+"script.settings.memory_footer" = "Limit script memory usage to prevent crashes from memory overflow";
+
+/* Store */
+"store.title" = "Script Store";
+"store.loading" = "Loading Store...";
+"store.load_failed" = "Load Failed";
+"store.unknown_error" = "Unknown Error";
+"store.retry" = "Retry";
+"store.empty_title" = "No Content";
+"store.empty_message" = "Tap + to add a subscription";
+"store.add_subscription" = "Add Subscription";
+"store.no_search_results" = "No scripts found";
+"store.try_other_keywords" = "Try different keywords";
+"store.search_placeholder" = "Search scripts...";
+"store.import_success" = "Import Successful";
+"store.import_success_message" = "Script '%@' imported successfully";
+"store.sub.name_placeholder" = "Name (Optional)";
+"store.sub.url_placeholder" = "Subscription JSON URL";
+"store.sub.info_header" = "Subscription Info";
+"store.sub.info_footer" = "Please enter a valid store JSON URL";
+"store.sub.add_button" = "Add Subscription";
+"store.sub.verifying" = "Verifying...";
+"store.sub.list_header" = "Subscriptions";
+"store.sub.list_footer" = "Swipe to delete custom subscriptions. Official store cannot be deleted.";
+"store.clear_cache" = "Clear Store Cache";
+"store.cache_management" = "Cache Management";
+"store.cache_footer" = "Clearing cache will force a reload from the server.";
+"store.sub.management_title" = "Subscription Management";
+"store.sub.delete_confirm_title" = "Confirm Delete";
+"store.sub.delete_confirm_message" = "Are you sure you want to delete '%@'? All scripts from this subscription will be removed from the store.";
+"store.author.script_count" = "%d Scripts";
+"store.script.version" = "v%@";
+"store.script.local_version" = "Local v%@";
+
+"settings.language" = "Language";
+"language.system" = "Follow System";
+"settings.theme" = "Appearance";
+"settings.theme.auto" = "System";
+"settings.theme.light" = "Light";
+"settings.theme.dark" = "Dark";
+"settings.theme_color" = "Theme Color";
+
+// MARK: - Permissions Settings
+"settings.permissions.title" = "Permission Management";
+"settings.permissions.header" = "App Permissions";
+"settings.permissions.footer" = "Tap denied permissions to request access. Denied permissions must be enabled in System Settings.";
+"settings.permissions.open_settings" = "Open System Settings";
+"settings.permissions.system_settings_footer" = "Manage all app permissions in System Settings.";
+"settings.permissions.alert.title" = "Enable in Settings";
+"settings.permissions.alert.message" = "\"%@\" permission is denied. Please enable it manually in System Settings.";
+"settings.permissions.go_to_settings" = "Go to Settings";
+
+// MARK: - Data Management
+"settings.data.title" = "Data Management";
+"settings.data.icloud_sync" = "iCloud Sync";
+"settings.data.select_sync_method" = "Select a sync method to enable iCloud Sync";
+"settings.data.sync_method" = "Sync Method";
+"settings.data.recommended" = "Recommended";
+"settings.data.select_folder" = "Select Folder";
+"settings.data.storage_info" = "Storage Info";
+"settings.data.storage_location" = "Location";
+"settings.data.icloud_path" = "iCloud Path";
+"settings.data.local_path" = "Local Path";
+"settings.data.script_count" = "Script Count";
+"settings.data.count_suffix" = "%d Items";
+"settings.data.actions" = "Actions";
+"settings.data.open_in_files" = "Open in Files";
+"settings.data.clear_bookmark" = "Clear Folder Selection";
+
+// MARK: - Log Viewer
+"logs.title" = "Log Viewer";
+"logs.export" = "Export Logs";
+"logs.clear" = "Clear Logs";
+"logs.clear_confirm_title" = "Clear all logs?";
+"logs.clear_confirm_message" = "This action cannot be undone.";
+"logs.clear_action" = "Clear";
+"logs.search_placeholder" = "Search logs...";
+"logs.filter.all" = "All";
+"logs.count_suffix" = "%d Entries";
+"logs.empty" = "No Logs";
+"logs.empty_filters" = "Try changing filters";
+
+// MARK: - Script Logs
+"script_logs.title" = "Script Execution Logs";
+"script_logs.empty" = "No Script Logs";
+"script_logs.empty_hint" = "Run a script and logs will be recorded here";
+"script_logs.refresh" = "Refresh";
+"script_logs.clear_all" = "Clear All Logs";
+"script_logs.clear_confirm_title" = "Clear all script logs?";
+"script_logs.clear_confirm_message" = "This action cannot be undone. All script execution logs will be deleted.";
+"script_logs.clear_action" = "Clear";
+"script_logs.total_size" = "Total Log Size";
+"script_logs.content_empty" = "Log content is empty";
+"script_logs.copy" = "Copy Content";
+"script_logs.share" = "Share";
+"settings.script_logs" = "Script Execution Logs";
+
+// MARK: - Performance Stats
+"stats.title" = "Performance Stats";
+"stats.realtime" = "Real-time Monitoring";
+"stats.memory" = "Memory Usage";
+"stats.cpu" = "CPU Usage";
+"stats.fps" = "Frame Rate";
+"stats.status" = "Status";
+"stats.monitoring" = "Monitoring";
+"stats.recent_executions" = "Recent Executions";
+"stats.no_records" = "No Execution Records";
+"stats.count_suffix" = "%d Records";
+"stats.summary" = "Summary";
+"stats.clear_history" = "Clear History";
+"stats.clear_confirm_title" = "Clear history?";
+"stats.clear_confirm_message" = "This action cannot be undone.";
+"stats.clear_action" = "Clear";
+"stats.status.critical" = "Critical";
+"stats.status.warning" = "Warning";
+"stats.status.normal" = "Normal";
+"stats.about" = "About";
+"stats.description" = "Performance stats monitor the real-time status of the app. Warnings are shown when memory usage exceeds 200MB or CPU usage exceeds 80%.";
+
+// MARK: - Script Detail & Editor
+"script.detail.title" = "Script Details";
+"script.detail.new_script" = "New Script";
+"script.detail.name_placeholder" = "Script Name";
+"script.detail.rename" = "Rename";
+"script.detail.select_icon" = "Select Icon";
+"script.detail.category" = "Category: %@";
+"script.detail.copy_code" = "Copy Code";
+"script.detail.share" = "Share";
+"script.detail.delete" = "Delete Script";
+"script.detail.delete_confirm_title" = "Delete Script";
+"script.detail.delete_confirm_message" = "Are you sure you want to delete '%@'? This action cannot be undone.";
+"script.detail.delete_action" = "Delete";
+"script.detail.discard_title" = "Discard Changes?";
+"script.detail.discard_message" = "You have unsaved changes";
+"script.detail.discard_action" = "Discard";
+"script.detail.continue_editing" = "Continue Editing";
+"script.detail.save_done" = "Done";
+"script.editor.title" = "Edit Code";
+
+// MARK: - Script Running
+"script.run.title" = "Run Script";
+"script.run.close" = "Close";
+"script.run.stop" = "Stop";
+"script.run.status.executing" = "Executing...";
+"script.run.status.success" = "Execution Successful";
+"script.run.status.failed" = "Execution Failed";
+"script.run.status.ready" = "Ready";
+"script.run.status.preparing" = "Preparing...";
+"script.run.status.idle" = "Idle";
+"script.run.time_cost" = "Time: %dms";
+"script.run.tab.console" = "Console";
+"script.run.tab.return_value" = "Return Value";
+"script.run.copy_return" = "Copy";
+"script.run.no_return" = "No Return Value";
+"script.run.hint" = "Tap play button to run script";
+"script.run.error_banner" = "Execution Error";
+
+// MARK: - Script Info
+"script.info.title" = "Script Details";
+"script.info.basic_info" = "Basic Info";
+"script.info.created_at" = "Created At";
+"script.info.updated_at" = "Updated At";
+"script.info.run_count" = "Run Count";
+"script.info.last_run" = "Last Run";
+"script.info.stats" = "Statistics";
+"script.info.line_count" = "Lines of Code";
+"script.info.char_count" = "Character Count";
+
+// MARK: - API Picker
+"script.api.search_placeholder" = "Search API";
+"script.api.title" = "API Reference";
+"script.api.daemon_filter" = "Trigger Compatible Only";
+"script.api.daemon_filter_hint" = "Filter enabled";
+"script.api.daemon_full" = "Full";
+"script.api.daemon_limited" = "Limited";
+"script.api.daemon_none" = "Trigger None";
+
+// MARK: - Script Import/Export
+"export.title" = "Export Script";
+"export.format" = "Export Format";
+"export.format.desc" = "TrollScript format contains full info, JavaScript format only contains code";
+"export.preview" = "Preview";
+"export.filename" = "Filename";
+"export.contains" = "Contains";
+"export.contains.full" = "Code + Metadata";
+"export.method" = "Export Method";
+"export.share_file" = "Share File";
+"export.copy_clipboard" = "Copy to Clipboard";
+"export.copy_success" = "Copied";
+"export.save_files" = "Save to Files";
+"import.title" = "Import Script";
+"import.source" = "Import Source";
+"import.from_file" = "Import from File";
+"import.from_url" = "Import from URL";
+"import.from_clipboard" = "Import from Clipboard";
+"import.source.footer" = "Supports .trollscript, .js files and raw code URL";
+"import.url.title" = "Import from URL";
+"import.url.placeholder" = "Enter Script URL";
+"import.url.button" = "Download and Import";
+"import.url.footer" = "Supports GitHub Raw, Gist etc.";
+"import.formats" = "Supported Formats";
+"import.format.trollscript.desc" = "TrollScript full format, including code and metadata";
+"import.format.js.desc" = "Pure JavaScript file";
+"import.format.url.desc" = "Download script directly from network";
+"import.confirm.title" = "Confirm Import";
+"import.info" = "Import Info";
+"import.original_file" = "Original File";
+"import.format" = "Format";
+"import.script_info" = "Script Info";
+"import.preview" = "Code Preview";
+"import.action" = "Import";
+"import.error.empty_clipboard" = "Clipboard is empty";
+"import.error.invalid_url" = "Invalid URL";
+"import.error.download_failed" = "Download failed, check URL";
+"import.error.parse_failed" = "Cannot parse file content";
+"import.quick_share.trollscript" = "Share as TrollScript";
+"import.quick_share.js" = "Share as JavaScript";
+
+// MARK: - Editor & API
+"editor.autocomplete.keyword" = "Keyword";
+"api.console.description" = "Console Output";
+"api.console.log.description" = "Log message";
+"api.console.error.description" = "Log error";
+"api.console.warn.description" = "Log warning";
+
+/* Phase 5: Additional Components */
+
+/* SFSymbolsPicker */
+"sfsymbols.search.prompt" = "Search Icons";
+"sfsymbols.title" = "Select Icon";
+"sfsymbols.done" = "Done";
+"sfsymbols.tap_for_custom" = "Tap to use custom image";
+"sfsymbols.preset.blue" = "Blue";
+"sfsymbols.preset.purple" = "Purple";
+"sfsymbols.preset.pink" = "Pink";
+"sfsymbols.preset.red" = "Red";
+"sfsymbols.preset.orange" = "Orange";
+"sfsymbols.preset.yellow" = "Yellow";
+"sfsymbols.preset.green" = "Green";
+"sfsymbols.preset.mint" = "Mint";
+"sfsymbols.preset.cyan" = "Cyan";
+"sfsymbols.preset.indigo" = "Indigo";
+"sfsymbols.preset.brown" = "Brown";
+"sfsymbols.preset.gray" = "Gray";
+"sfsymbols.category.common" = "Common";
+"sfsymbols.category.communication" = "Communication";
+"sfsymbols.category.security" = "Security";
+"sfsymbols.category.devices" = "Devices";
+"sfsymbols.category.network" = "Network";
+"sfsymbols.category.files" = "Files";
+"sfsymbols.category.media" = "Media";
+"sfsymbols.category.arrows" = "Arrows";
+"sfsymbols.category.editing" = "Editing";
+"sfsymbols.category.tools" = "Tools";
+"sfsymbols.category.symbols" = "Symbols";
+"sfsymbols.category.weather" = "Weather";
+"sfsymbols.category.people" = "People";
+"sfsymbols.category.time" = "Time";
+"sfsymbols.category.maps" = "Maps";
+"sfsymbols.category.shapes" = "Shapes";
+"sfsymbols.category.numbers" = "Numbers";
+
+/* ScriptCard */
+"script.card.run" = "Run";
+"script.card.edit" = "Edit";
+"script.card.duplicate" = "Duplicate Script";
+"script.card.share" = "Share";
+"script.card.delete" = "Delete";
+"script.card.delete.title" = "Delete Script";
+"script.card.delete.message" = "Are you sure you want to delete \"%@\"?";
+"script.card.category" = "Move to Category";
+
+/* ErrorViews */
+"crash.title" = "App Crashed";
+"crash.message" = "An error occurred during the last run";
+"crash.continue" = "Continue";
+"crash.details" = "View Details";
+"crash.report" = "Report Issue";
+"crash.detail.title" = "Crash Details";
+"crash.basic_info" = "Basic Info";
+"crash.type" = "Type";
+"crash.device_info" = "Device Info";
+"crash.reason" = "Reason";
+"crash.stack_trace" = "Stack Trace";
+"script.error.title" = "Script Execution Failed";
+"error.retry" = "Retry";
+"error.close" = "Close";
+"memory.warning.title" = "High Memory Usage";
+"performance.title.critical" = "Critical Performance Issue";
+"performance.title.warning" = "Performance Degraded";
+
+"generic.done" = "Done";
+"generic.cancel" = "Cancel";
+"generic.back" = "Back";
+"generic.confirm" = "Confirm";
+"generic.ok" = "OK";
+"crash.name" = "Name";
+
+"crash.time" = "Time";
+"crash.app_version" = "App Version";
+"crash.system_version" = "System Version";
+"crash.device_model" = "Device Model";
+"crash.memory_usage" = "Memory Usage";
+"crash.additional_info" = "Additional Info";
+"crash.clear" = "Clear";
+"crash.clear_all_title" = "Clear All Reports?";
+"crash.clear_all_message" = "This action cannot be undone.";
+"crash.list.empty.title" = "No Crash Reports";
+"crash.list.empty.message" = "App is running normally";
+"crash.list.title" = "Crash Reports";
+
+/* ScriptEditorSheet */
+"editor.new_script" = "New Script";
+"editor.discard" = "Discard";
+"editor.keep_editing" = "Keep Editing";
+"editor.unsaved_changes" = "You have unsaved changes";
+"editor.discard_changes" = "Discard Changes?";
+"editor.tab.code" = "Code";
+"editor.tab.console" = "Console";
+"editor.tab.settings" = "Settings";
+"editor.field.name" = "Script Name";
+"editor.field.description" = "Description";
+"editor.section.basic" = "Basic Info";
+"editor.section.info" = "Script Info";
+"editor.snippets" = "Snippets";
+
+/* FileImportSheet */
+"import.parsing" = "Parsing file...";
+"import.failed" = "Import Failed";
+"import.file_info" = "File Info";
+"import.script_settings" = "Script Settings";
+"import.code_preview" = "Code Preview";
+"import.file.name" = "Filename";
+"import.file.type" = "File Type";
+"import.file.size" = "File Size";
+"import.truncated" = "Showing first %d chars...";
+
+/* StorageManager */
+"storage.title" = "Data Storage";
+"storage.search" = "Search key or value";
+"storage.location" = "Storage Location";
+"storage.empty" = "No Stored Data";
+"storage.empty.desc" = "Data stored via storage.set() will appear here";
+"storage.clear_all" = "Clear All";
+"storage.refresh" = "Refresh";
+"storage.delete.title" = "Confirm Delete";
+"storage.delete.message" = "Are you sure you want to delete \"%@\"? This action cannot be undone.";
+"storage.edit.title" = "Edit Storage Item";
+"storage.key" = "Key";
+"storage.value" = "Value";
+"storage.supports_json" = "Supports JSON objects and arrays";
+
+/* ScriptListViewModel */
+"script.save.failed" = "Failed to save script";
+"script.update.failed" = "Failed to update script";
+"script.delete.failed" = "Failed to delete script";
+"script.duplicate.failed" = "Failed to duplicate script";
+"script.reorder.failed" = "Failed to reorder scripts";
+
+/* PermissionManager */
+"permission.notifications" = "Notifications";
+"permission.location_in_use" = "Location (When In Use)";
+"permission.location_always" = "Location (Always)";
+"permission.camera" = "Camera";
+"permission.microphone" = "Microphone";
+"permission.photo_library" = "Photo Library";
+"permission.contacts" = "Contacts";
+"permission.calendar" = "Calendar";
+"permission.reminders" = "Reminders";
+
+"permission.desc.notifications" = "Receive execution results and automation alerts";
+"permission.desc.location_in_use" = "Required for location triggers";
+"permission.desc.location_always" = "Required for background location triggers";
+"permission.desc.camera" = "Scanning and photography";
+"permission.desc.microphone" = "Voice input";
+"permission.desc.photo_library" = "Save images and select photos";
+"permission.desc.contacts" = "Read contacts for scripts";
+"permission.desc.calendar" = "Read/Write calendar events";
+"permission.desc.reminders" = "Read/Write reminders";
+
+"permission.status.authorized" = "Authorized";
+"permission.status.denied" = "Denied";
+"permission.status.not_determined" = "Not Requested";
+"permission.status.restricted" = "Restricted";
+/* iCloud Sync */
+"icloud.method.system" = "System iCloud Path";
+"icloud.method.picker" = "Folder Picker";
+"icloud.desc.system" = "Use the system iCloud Drive CloudDocs path. No container authorization needed. Recommended for TrollStore.";
+"icloud.desc.picker" = "Manually select any folder in iCloud Drive and use security-scoped bookmarks for persistent access.";
+"icloud.error.unavailable" = "iCloud Unavailable";
+"icloud.error.bookmark" = "Failed to save bookmark";
+"icloud.error.migration" = "Data migration failed";
+
+/* File Import Handler */
+"import.type.javascript" = "JavaScript";
+"import.type.trollscript" = "TrollScript Package";
+"import.type.unknown" = "Unknown Format";
+"import.error.file_not_found" = "File not found";
+"import.error.access" = "Access denied, please grant permission";
+"import.error.format" = "Unsupported file format";
+"import.error.decoding" = "File decoding failed: %@";
+"import.error.read" = "File read failed: %@";
+
+/* KeepAlive Service */
+"keepalive.error.audio" = "Audio start failed: %@";
+"keepalive.error.audio_engine" = "Audio engine start failed: %@";
+"keepalive.error.location" = "Location permission denied";
+"keepalive.strategy.silent_audio" = "Silent Audio";
+"keepalive.strategy.location" = "Location Updates";
+"keepalive.strategy.combined" = "Combined Strategy";
+"keepalive.strategy.silent_audio.desc" = "Plays silent audio in background (Most Stable)";
+"keepalive.strategy.location.desc" = "Uses location updates to keep alive (Backup)";
+/* App Alerts */
+"app.alert.confirm" = "OK";
+"app.import.success.title" = "Import Successful";
+"app.import.success.message" = "Script \"%@\" imported successfully";
+"app.import.failure.title" = "Import Failed";
+"app.import.unsupported.title" = "Unsupported File Format";
+"app.import.unsupported.message" = "Only support .js, .trollscript or .tsp files";
+"app.install.success.title" = "Installation Successful";
+"app.store.install.success.title" = "Store Installation Successful";
+"app.install.success.message" = "Script \"%@\" added successfully";
+
+/* ICloudSyncManager */
+"icloud.method.system" = "System iCloud Path";
+"icloud.method.picker" = "Folder Picker";
+"icloud.desc.system" = "Use system iCloud Drive CloudDocs path, no container permission needed, recommended for TrollStore.";
+"icloud.desc.picker" = "Manually select any iCloud Drive folder and use security scoped bookmark.";
+
+/* FileImportHandler */
+"import.error.not_found" = "File not found";
+"import.error.access_denied" = "Access denied, please grant permission";
+"import.error.unsupported_format" = "Unsupported file format";
+"import.error.parsing_failed" = "File parsing failed: %@";
+"import.error.read_failed" = "File read failed: %@";
+"import.error.decoding_failed" = "Unable to decode file content";
+
+/* Store Errors */
+"store.error.invalid_url" = "Invalid Subscription URL";
+"store.error.network" = "Network Error";
+"store.error.invalid_data" = "Invalid Data";
+
+/* App Alerts */
+"app.import.success" = "Import Success";
+"app.import.message" = "Script \"%@\" imported successfully";
+"app.install.success" = "Install Success";
+"app.store_install.success" = "Store Install Success";
+
+"generic.save" = "Save";
+"generic.copy" = "Copy";
+"generic.search" = "Search";
+"generic.edit" = "Edit";
+
+/* Editor Console & Info */
+"editor.console.logs" = "Logs";
+"editor.console.result" = "Result";
+"editor.console.running" = "Running...";
+"editor.console.stop" = "Stop";
+"editor.console.success" = "Success";
+"editor.console.failed" = "Failed";
+"editor.console.duration" = "Duration: %dms";
+"editor.console.empty" = "Run script to see output";
+"editor.clear" = "Clear";
+"editor.running" = "Running";
+"editor.field.icon" = "Icon";
+"editor.info.created" = "Created";
+"editor.info.updated" = "Updated";
+"editor.info.run_count" = "Run Count";
+
+/* File Import */
+"import.title" = "Import Script";
+"import.button" = "Import";
+
+/* Storage Manager Types */
+"storage.type.string" = "String";
+"storage.type.number" = "Number";
+"storage.type.bool" = "Bool";
+"storage.type.object" = "Object";
+"storage.type.array" = "Array";
+"storage.type.data" = "Data";
+"storage.type.unknown" = "Unknown";
+"storage.count" = "%d Items";
+"storage.footer.swipe" = "Swipe left to delete, tap to view/edit";
+
+/* Snippets Groups */
+"snippets.group.sms" = "SMS";
+"snippets.group.network" = "Network";
+"snippets.group.file" = "File";
+"snippets.group.icloud" = "iCloud";
+"snippets.group.location" = "Location";
+"snippets.group.reminders" = "Reminders";
+"snippets.group.calendar" = "Calendar";
+"snippets.group.device" = "Device";
+/* FileImportSheet Details */
+"import.parsing" = "Parsing file...";
+"import.failed" = "Import Failed";
+"import.file_info" = "File Info";
+"import.script_settings" = "Script Settings";
+"import.code_preview" = "Code Preview";
+"import.file.name" = "Filename";
+"import.file.type" = "File Type";
+"import.file.size" = "File Size";
+"import.truncated" = "Showing first %d chars...";
+
+/* StorageManager Details */
+"storage.title" = "Data Storage";
+"storage.search" = "Search key or value";
+"storage.location" = "Storage Location";
+"storage.empty" = "No Stored Data";
+"storage.empty.desc" = "Data stored via storage.set() will appear here";
+"storage.clear_all" = "Clear All";
+"storage.refresh" = "Refresh";
+"storage.delete.title" = "Confirm Delete";
+"storage.delete.message" = "Are you sure you want to delete \"%@\"? This action cannot be undone.";
+"storage.edit.title" = "Edit Storage Item";
+"storage.key" = "Key";
+"storage.value" = "Value";
+"storage.supports_json" = "Supports JSON objects and arrays";
+
+/* Common Module Errors */
+"error.permission.denied" = "Permission denied";
+"error.permission.notification" = "Notification permission not authorized";
+"error.permission.calendar" = "Calendar permission not authorized";
+"error.operation_cancelled" = "Operation cancelled";
+"error.not_found" = "Target not found";
+
+/* Bluetooth Module */
+"error.bluetooth.unavailable" = "Bluetooth unavailable";
+"error.bluetooth.powered_off" = "Bluetooth is off";
+"error.bluetooth.private_api" = "BluetoothManager unavailable, requires TrollStore environment";
+"error.bluetooth.device_not_found" = "Device not found: %@";
+"error.bluetooth.connect_failed" = "Connection failed";
+"error.bluetooth.method_missing" = "Cannot control Bluetooth: missing required method";
+
+/* Alarm Module */
+"weekday.sun" = "Sun";
+"weekday.mon" = "Mon";
+"weekday.tue" = "Tue";
+"weekday.wed" = "Wed";
+"weekday.thu" = "Thu";
+"weekday.fri" = "Fri";
+"weekday.sat" = "Sat";
+
+/* Calendar Module */
+"error.calendar.event_not_found" = "Event not found";
+
+/* CoreData Errors */
+"error.coredata.load_failed" = "Database load failed: %@";
+"error.coredata.save_failed" = "Data save failed: %@";
+"error.coredata.fetch_failed" = "Data fetch failed: %@";
+"error.coredata.delete_failed" = "Data delete failed: %@";
+"error.coredata.migration_failed" = "Data migration failed: %@";
+"error.coredata.store_corrupted" = "Database corrupted";
+"error.coredata.cloud_sync_failed" = "Cloud sync failed: %@";
+
+/* CoreData Actions */
+"action.coredata.restart" = "Please restart the app. If the issue persists, reinstall.";
+"action.coredata.reinstall" = "Please backup data and reinstall the app";
+"action.coredata.reset" = "Please reset app data or reinstall";
+"action.retry_later" = "Please try again later";
+"action.check_network" = "Please check iCloud login and network connection";
+
+/* JSON Errors */
+"error.json.encoding_failed" = "Encoding %@ failed: %@";
+"error.json.decoding_failed" = "Decoding %@ failed: %@";
+"error.json.invalid_format" = "Invalid JSON format: %@";
+"error.json.missing_key" = "Missing required field: %@";
+"error.json.type_mismatch" = "Type mismatch: expected %@, got %@";
+"error.json.utf8_conversion_failed" = "Cannot convert string to UTF-8 data";
+"error.json.utf8_string_conversion_failed" = "Cannot convert data to UTF-8 string";
+
+/* JSON Actions */
+"action.check_format" = "Please check data/JSON format is correct";
+"action.provide_field" = "Please provide '%@' field";
+"action.check_type" = "Please check field types are correct";
+
+/* Script Execution Errors */
+"error.script.syntax_line" = "Syntax error (line %d): %@";
+"error.script.syntax" = "Syntax error: %@";
+"error.script.runtime" = "Runtime error: %@";
+"error.script.timeout" = "Script execution timeout (%d seconds)";
+"error.script.cancelled" = "Script execution cancelled";
+"error.script.module_not_found" = "Module '%@' not found";
+"error.script.permission_denied" = "No permission to access '%@'";
+
+/* Script Execution Actions */
+"action.check_syntax" = "Please check script syntax";
+"action.check_logic" = "Please check script logic";
+"action.optimize_script" = "Please optimize script or increase timeout";
+"action.check_module" = "Please confirm module name is correct: %@";
+"action.check_permission" = "Please check app permission settings";
+
+/* Network Errors */
+"error.network.no_connection" = "No network connection";
+"error.network.timeout" = "Network request timeout";
+"error.network.server_error" = "Server error (%d)";
+"error.network.invalid_url" = "Invalid URL: %@";
+"error.network.invalid_response" = "Invalid server response";
+"error.network.request_failed" = "Request failed: %@";
+
+/* Network Actions */
+"action.check_network_simple" = "Please check network connection";
+"action.check_url" = "Please check URL format";
+"action.check_network_retry" = "Please check network and try again";
+
+/* UI Module */
+"ui.placeholder.input" = "Enter...";
+"ui.loading" = "Loading...";
+"error.webview.create" = "Failed to create WebView";
+"error.webview.not_open" = "WebView not open";
+
+/* Contacts Module */
+"error.contacts.permission_denied" = "Contacts permission not authorized";
+
+/* Memo Module */
+"error.memo.invalid_id" = "Invalid ID";
+"error.memo.not_found" = "Memo not found";
+
+/* Reminder Module */
+"reminder.default_list" = "Default List";
+"error.reminder.invalid_id" = "Invalid ID";
+"error.reminder.not_found" = "Reminder not found";
+"reminder.location_trigger" = "Location Reminder";
+"error.permission.reminders" = "Reminders permission not authorized";
+
+/* Shortcuts Module - Common */
+"shortcuts.common.music" = "Play Music";
+"shortcuts.common.music.desc" = "Control music playback";
+"shortcuts.common.timer" = "Set Timer";
+"shortcuts.common.timer.desc" = "Quickly set countdown";
+"shortcuts.common.message" = "Send Message";
+"shortcuts.common.message.desc" = "Send SMS or iMessage";
+"shortcuts.common.weather" = "Get Weather";
+"shortcuts.common.weather.desc" = "View weather info";
+"shortcuts.common.open_app" = "Open App";
+"shortcuts.common.open_app.desc" = "Quickly launch app";
+"shortcuts.common.nav_home" = "Navigate Home";
+"shortcuts.common.nav_home.desc" = "Navigate to home address";
+"shortcuts.common.call" = "Make Call";
+"shortcuts.common.call.desc" = "Quickly make a call";
+"shortcuts.common.scan" = "Scan Document";
+"shortcuts.common.scan.desc" = "Scan document with camera";
+"shortcuts.common.reminders" = "Create Reminder";
+"shortcuts.common.reminders.desc" = "Add reminder";
+"shortcuts.common.calendar" = "Add Calendar Event";
+"shortcuts.common.calendar.desc" = "Create new event";
+
+/* Shortcuts Module - Triggers */
+"shortcuts.trigger.time.desc" = "Trigger at specific time";
+"shortcuts.trigger.alarm.desc" = "Trigger after alarm stops";
+"shortcuts.trigger.arrive.desc" = "Trigger when arriving at location";
+"shortcuts.trigger.leave.desc" = "Trigger when leaving location";
+"shortcuts.trigger.wifi.desc" = "Trigger on WiFi connect/disconnect";
+"shortcuts.trigger.bluetooth.desc" = "Trigger on Bluetooth connect/disconnect";
+"shortcuts.trigger.nfc.desc" = "Trigger on NFC tag scan";
+"shortcuts.trigger.app.desc" = "Trigger on app open/close";
+"shortcuts.trigger.carplay.desc" = "Trigger on CarPlay connect/disconnect";
+"shortcuts.trigger.workout.desc" = "Trigger on workout start/end";
+"shortcuts.trigger.low_power.desc" = "Trigger on Low Power Mode toggle";
+"shortcuts.trigger.charger.desc" = "Trigger on charger connect/disconnect";
+"shortcuts.trigger.sleep.desc" = "Trigger on sleep mode enter/exit";
+"shortcuts.trigger.email.desc" = "Trigger on specific email";
+"shortcuts.trigger.message.desc" = "Trigger on specific message";
+
+/* Scheduler */
+"scheduler.title" = "Scheduled Tasks";
+"scheduler.triggers" = "Triggers";
+"scheduler.enable" = "Enable Triggers";
+"scheduler.enable_footer" = "When disabled, all TrollScript LaunchDaemons will be unloaded and the daemon will be stopped.";
+"scheduler.empty_title" = "No Scheduled Tasks";
+"scheduler.empty_message" = "Tap + to add a scheduled task";
+"scheduler.add_task" = "Add Task";
+"scheduler.edit_task" = "Edit Task";
+"scheduler.delete_confirm_title" = "Confirm Delete";
+"scheduler.delete_confirm" = "Are you sure you want to delete %d selected task(s)?";
+"scheduler.delete_selected" = "Delete Selected";
+"scheduler.basic_info" = "Basic Info";
+"scheduler.task_name" = "Task Name";
+"scheduler.select_script" = "Select Script";
+"scheduler.search_script" = "Search Script";
+"scheduler.no_script" = "Not Selected";
+"scheduler.schedule" = "Schedule";
+"scheduler.cron_expression" = "Cron Expression";
+"scheduler.next_run" = "Next Run";
+"scheduler.options" = "Options";
+"scheduler.enabled" = "Enabled";
+"scheduler.show_notification" = "Show Notification";
+
+/* Cron Picker */
+"cron.presets" = "Presets";
+"cron.custom" = "Custom";
+"cron.custom_hint" = "Use standard Cron expression format (minute hour day month weekday)";
+"cron.custom_placeholder" = "Enter Cron expression";
+"cron.invalid" = "Invalid expression";
+
+/* Cron Presets */
+"cron.preset.every_minute" = "Every Minute";
+"cron.preset.every_5_minutes" = "Every 5 Minutes";
+"cron.preset.every_15_minutes" = "Every 15 Minutes";
+"cron.preset.every_30_minutes" = "Every 30 Minutes";
+"cron.preset.every_hour" = "Every Hour";
+"cron.preset.every_day_9am" = "Daily at 9:00 AM";
+"cron.preset.every_day_6pm" = "Daily at 6:00 PM";
+"cron.preset.every_monday" = "Every Monday at 9:00 AM";
+"cron.preset.custom" = "Custom";
+
+/* Manual Trigger */
+"scheduler.trigger_mode" = "Trigger Mode";
+"scheduler.manual_trigger" = "Manual Trigger";
+"scheduler.manual_trigger_hint" = "When enabled, the task can only be triggered manually via the HUD floating button.";
+"scheduler.cron_trigger_hint" = "The task will be executed automatically according to the Cron schedule.";
+"scheduler.manual_trigger_desc" = "Tap the floating button in the HUD to execute";
+
+/* Trigger Types */
+"trigger.type.scheduled" = "Scheduled";
+"trigger.type.manual" = "Manual";
+"trigger.type.clipboard" = "Clipboard";
+"trigger.type.file_monitor" = "File Monitor";
+
+/* Trigger Hints */
+"trigger.hint.scheduled" = "Execute automatically based on Cron expression schedule.";
+"trigger.hint.manual" = "Manually trigger via HUD floating button.";
+"trigger.hint.clipboard" = "Trigger when clipboard content changes.";
+"trigger.hint.file_monitor" = "Trigger when monitored files change.";
+
+/* Clipboard Trigger Config */
+"trigger.clipboard.config" = "Clipboard Settings";
+"trigger.clipboard.config_footer" = "Configure clipboard monitoring behavior.";
+"trigger.clipboard.ignore_script_updates" = "Ignore Script Updates";
+"trigger.clipboard.check_interval" = "Check Interval";
+"trigger.clipboard.content_filter" = "Content Filter (Regex)";
+"trigger.clipboard.filter_placeholder" = "Optional regex pattern...";
+
+/* File Monitor Config */
+"trigger.file_monitor.config" = "File Monitor Settings";
+"trigger.file_monitor.config_footer" = "Add file paths to monitor. Requires TrollStore permissions for system paths.";
+"trigger.file_monitor.add_path" = "Add Path";
+"trigger.file_monitor.debounce" = "Debounce Interval";
+"trigger.file_monitor.debounce_disabled" = "Disabled";
+"trigger.file_monitor.paths_count" = "paths monitored";
+"trigger.file_monitor.path_not_exist" = "Path does not exist";
+"trigger.file_monitor.path_placeholder" = "Enter file path...";
+
+"generic.select" = "Select";
+"generic.select_all" = "Select All";
+"generic.deselect_all" = "Deselect All";
+"generic.done" = "Done";
+"generic.delete" = "Delete";
+
+/* Home - Edit Mode */
+"home.selected_count" = "%d selected";
+"home.delete_confirm_title" = "Delete Scripts";
+"home.delete_confirm_message" = "Are you sure you want to delete %d scripts? This action cannot be undone.";
+"home.no_description" = "No description";
+
+/* Background Settings */
+"background.title" = "Background Running";
+"background.hud_style" = "HUD Style";
+"background.hud_size" = "Indicator Size";
+"background.hud_size.small" = "Small (20pt)";
+"background.hud_size.medium" = "Medium (24pt)";
+"background.hud_size.large" = "Large (32pt)";
+"background.breathing_effect" = "Breathing Effect";
+"background.breathing_footer" = "Enable for smooth pulsing glow animation effect";
+"background.process_info" = "Process Info";
+"background.daemon_status" = "Daemon Status";
+
+/* Trigger Button Style */
+"background.trigger_style" = "Trigger Button Style";
+"background.trigger_style_footer" = "Adjust the appearance of manual trigger floating button";
+"background.trigger_width" = "Button Width";
+"background.trigger_height" = "Button Height";
+"background.trigger_corner_radius" = "Corner Radius";
+"background.trigger_icon_size" = "Icon Size";
+"background.trigger_reset" = "Reset to Default";
+
+/* HUD Color Settings */
+"background.hud_color" = "HUD Indicator Colors";
+"background.hud_color_footer" = "Customize indicator colors for different states";
+"background.color_normal" = "Normal State";
+"background.color_running" = "Running";
+"background.color_error" = "Error";
+"background.color_reset" = "Reset Colors";
+
+/* Daemon Status */
+"daemon.section_header" = "Daemon Status";
+"daemon.section_footer" = "View HUD daemon details and process status";
+"daemon.no_installed" = "No LaunchDaemons Installed";
+"daemon.process_status" = "Daemon Process";
+"daemon.running" = "Running";
+"daemon.stopped" = "Stopped";
+"daemon.refresh" = "Refresh Status";
+"daemon.process_name" = "Process Name";
+"daemon.process_state" = "Process State";
+"daemon.uptime" = "Uptime";
+"daemon.start_time" = "Start Time";
+
+/* Process Status */
+"process.status.idle" = "Idle";
+"process.status.running" = "Running";
+"process.status.sleeping" = "Sleeping";
+"process.status.stopped" = "Stopped";
+"process.status.zombie" = "Zombie";
+"process.status.unknown" = "Unknown";
+
+/* WebDAV Settings */
+"webdav.title" = "Web Console";
+"webdav.status.running" = "Running";
+"webdav.status.stopped" = "Stopped";
+"webdav.section.status" = "Service Status";
+"webdav.footer.running" = "Tap address to copy. Open in browser to access console.";
+"webdav.footer.stopped" = "Start HTTP server to manage scripts remotely via browser.";
+"webdav.section.network" = "Network Configuration";
+"webdav.port" = "Port";
+"webdav.address" = "Address";
+"webdav.copied" = "Copied";
+"webdav.apply_port" = "Apply Port Change";
+"webdav.port_footer" = "Restart service after changing port. Default: 8080";
+"webdav.section.features" = "Features";
+"webdav.feature.list" = "View all scripts";
+"webdav.feature.run" = "Run scripts with one click";
+"webdav.feature.logs" = "View real-time logs";
+"webdav.feature.refresh" = "Auto refresh status";
+"webdav.section.security" = "Security Notice";
+"webdav.security.network" = "Use this feature only on trusted networks";
+"webdav.security.vpn" = "Recommended for local network or VPN only";
+"webdav.security.noauth" = "No authentication enabled, anyone can access";
+"webdav.security.firewall" = "Do not enable on public Wi-Fi networks";
+"webdav.security.autostop" = "Remember to stop the service when not in use";
+"webdav.security.stacksize" = "If scripts report stack overflow, increase 'Stack Size Limit' in settings";
+"webdav.section.error" = "Error";
+"webdav.alert.invalid_port" = "Invalid Port";
+"webdav.alert.invalid_port_message" = "Please enter a valid port number (1-65535)";
+"webdav.ip.unknown" = "Unknown";
+"webdav.ip.loading" = "Loading...";
+
+/* HUD Settings */
+"hud.settings.title" = "Floating Widget";
+"hud.settings.scheduler_section" = "Trigger Actions";
+"hud.settings.scheduler_toggle" = "Enable Trigger Tasks";
+"hud.settings.scheduler_footer" = "Enabling Trigger tasks will automatically start the floating widget";
+"hud.settings.hud_toggle" = "Enable Floating Widget";
+
+"hud.settings.indicator_section" = "Status Indicator";
+"hud.settings.indicator_size" = "Indicator Size";
+"hud.settings.indicator_reset_position" = "Reset Position";
+
+"hud.settings.trigger_section" = "Quick Action Button";
+"hud.settings.trigger_scale" = "Button Scale";
+"hud.settings.trigger_bg" = "Background Color";
+"hud.settings.trigger_reset" = "Reset to Default";
+
+"hud.settings.color_section" = "Indicator Colors";
+"hud.settings.color_idle" = "Idle";
+"hud.settings.color_running" = "Running";
+"hud.settings.color_error" = "Error";
+"hud.settings.color_warning" = "Warning";
+"hud.settings.color_reset" = "Reset Colors";
+
+"hud.settings.background_section" = "Background Colors";
+"hud.settings.light_background" = "Light Mode Background";
+"hud.settings.dark_background" = "Dark Mode Background";
+
+/* Scheduler Errors */
+"scheduler.error.load_failed" = "Failed to load tasks: %@";
+"scheduler.error.save_failed" = "Failed to save tasks: %@";
+"scheduler.error.task_not_found" = "Task not found: %@";
+"scheduler.error.script_not_found" = "Script file not found";
+
+/* Scheduler Notifications */
+"scheduler.notification.started" = "Task '%@' started";
+"scheduler.notification.success" = "Task '%@' completed successfully";
+"scheduler.notification.failed" = "Task '%@' failed: %@";
+
+/* File Monitor Path Input */
+"trigger.file_monitor.path_hint" = "Enter an absolute path starting with /";
+"trigger.file_monitor.error.empty_path" = "Path cannot be empty";
+"trigger.file_monitor.error.invalid_path" = "Path must start with /";
+"trigger.file_monitor.error.duplicate_path" = "This path is already being monitored";
+"trigger.file_monitor.preset_paths" = "Preset Paths";
+
+/* Preset File Paths */
+"preset_path.sms_database" = "SMS Database";
+"preset_path.sms_database.desc" = "SMS/iMessage storage, triggers on send/receive";
+"preset_path.sms_database_wal" = "SMS Database (Real-time)";
+"preset_path.sms_database_wal.desc" = "WAL log file, updates faster than main database";
+"preset_path.sms_face_icloud_database_wal" = "SMS Database (Real-time Silent)";
+"preset_path.sms_face_icloud_database_wal.desc" = "WAL log file; updates are quieter than the SMS Database (Real-time).";
+"preset_path.call_history" = "Call History";
+"preset_path.call_history.desc" = "Incoming/outgoing/missed calls";
+"preset_path.safari_history" = "Safari History";
+"preset_path.safari_history.desc" = "Browse history, triggers on page visits";
+"preset_path.safari_bookmarks" = "Safari Bookmarks";
+"preset_path.safari_bookmarks.desc" = "Bookmarks and favorites changes";
+"preset_path.preferences" = "System Preferences";
+"preset_path.preferences.desc" = "Global system settings changes";
+"preset_path.health_database" = "Health Database";
+"preset_path.health_database.desc" = "Health app data, triggers on new records";
+"preset_path.location_cache" = "Location Cache";
+"preset_path.location_cache.desc" = "Location data cache, triggers on location change";
+"preset_path.address_book" = "Address Book";
+"preset_path.address_book.desc" = "Contact data, triggers on add/modify contacts";
+"preset_path.calendar" = "Calendar";
+"preset_path.calendar.desc" = "Calendar events, triggers on add/modify events";
+"preset_path.notes" = "Notes";
+"preset_path.notes.desc" = "Notes data, triggers on note editing";
+"preset_path.reminders" = "Reminders";
+"preset_path.reminders.desc" = "Reminders data, triggers on add/complete reminders";
+"preset_path.appstore_queue" = "App Store Queue";
+"preset_path.appstore_queue.desc" = "App download/update queue changes";
+"preset_path.system_log" = "System Log";
+"preset_path.system_log.desc" = "Diagnostic and crash logs";
+
+/* Generic */
+"generic.error" = "Error";
+"generic.add" = "Add";
+
+/* Auto Collapse (Floating Ball) */
+"hud.settings.auto_collapse" = "Auto Collapse";
+"hud.settings.auto_collapse_section" = "Floating Ball";
+"hud.settings.auto_collapse_footer" = "After idle, side buttons collapse into a floating ball. Tap to expand.";
+"hud.settings.collapse_delay" = "Collapse Delay";
+"hud.settings.floating_ball_size" = "Ball Size";
+"hud.settings.floating_ball_image" = "Custom Image";
+"hud.settings.floating_ball_image_select" = "Select Image";
+"hud.settings.floating_ball_image_clear" = "Clear Image";
+
+/* Script Icon */
+"editor.icon.sf_symbol" = "SF Symbol";
+"editor.icon.custom_image" = "Custom Image";
+"editor.icon.clear_custom" = "Clear Custom Icon";
+"editor.icon.crop_hint" = "Pinch to zoom and drag to adjust crop area";
+
+/* Notification Copy on Tap */
+"notification.copy_success_title" = "Copied";
+"notification.copy_success_body" = "Content copied: %@";
+
+/* Notification Trigger */
+"trigger.type.notification" = "Notification";
+"trigger.hint.notification" = "Trigger when a matching system notification is received.";
+"trigger.notification.config" = "Notification Settings";
+"trigger.notification.config_footer" = "Monitor system notifications from specified apps. Requires TrollStore environment.";
+"trigger.notification.bundle_id" = "App Bundle ID (Regex)";
+"trigger.notification.bundle_id_placeholder" = "e.g. com.apple.MobileSMS";
+"trigger.notification.title_filter" = "Title Filter (Regex)";
+"trigger.notification.title_filter_placeholder" = "Optional regex pattern...";
+"trigger.notification.message_filter" = "Content Filter (Regex)";
+"trigger.notification.message_filter_placeholder" = "Optional regex pattern...";
+"trigger.notification.debounce" = "Debounce Interval";
+"trigger.notification.ignore_script" = "Ignore Script Notifications";
+"trigger.notification.ignore_script_footer" = "Prevent infinite loops when scripts send notifications.";
+"trigger.notification.selected_apps" = "Selected Apps";
+"trigger.notification.search_apps" = "Search apps...";
+"trigger.notification.app_list" = "Available Apps";
+"trigger.notification.no_apps" = "No apps found";
+"trigger.notification.no_search_results" = "No results found";
+"trigger.notification.more_apps" = "+%d more apps, use search to find";

@@ -1,0 +1,1091 @@
+/* Settings */
+"settings.title" = "设置";
+"settings.keep_alive" = "后台保活";
+"settings.process_management" = "进程管理";
+"settings.category_management" = "分类管理";
+"settings.script_execution" = "脚本执行";
+"settings.crash_reports" = "崩溃日志";
+"settings.performance_stats" = "性能统计";
+"settings.log_viewer" = "日志查看";
+"settings.permissions" = "权限管理";
+"settings.storage_manager" = "存储管理";
+"settings.data_management" = "数据管理";
+"settings.developer" = "开发者工具";
+"settings.about" = "关于";
+"settings.version" = "版本";
+"settings.check_update" = "检查更新";
+"settings.checking_update" = "正在检查...";
+"settings.update_now" = "立即更新";
+"settings.update_available" = "发现新版本";
+"settings.up_to_date" = "已是最新版本";
+"settings.up_to_date_message" = "当前版本: %@\n最新版本: %@";
+"settings.update_check_failed" = "检查更新失败";
+"settings.clear_cache" = "清理缓存";
+"settings.clear_cache_confirm" = "确定要清理所有缓存数据吗？";
+"settings.cancel" = "取消";
+"settings.confirm" = "确认";
+"settings.ok" = "好的";
+"settings.got_it" = "知道了";
+"settings.daily_tips" = "每日一言";
+"settings.appearance" = "外观设置";
+"settings.app_icon" = "应用图标";
+"settings.theme_color" = "主题颜色";
+"settings.close" = "关闭";
+"settings.current_version" = "当前版本";
+"settings.latest_version" = "最新版本";
+"settings.release_notes" = "更新说明";
+"settings.no_release_notes" = "暂无更新说明";
+"settings.download_tipa" = "下载 TIPA";
+"settings.install_trollstore" = "巨魔安装";
+"settings.view_on_github" = "在 GitHub 查看";
+"settings.view" = "查看";
+"settings.feedback" = "反馈问题";
+"settings.debug_mode" = "调试模式";
+"settings.enabled" = "已启用";
+"settings.disabled" = "已禁用";
+"settings.editor_theme" = "编辑器主题";
+"settings.github_token" = "GitHub API Token";
+"settings.github_token.description" = "配置 GitHub API Token 可以提高更新检测的 API 请求限额，避免因请求频率过高导致检测失败。";
+"settings.github_token.footer" = "Token 仅用于检测更新，不会上传到任何第三方服务器。";
+"settings.github_token.generate" = "生成新 Token";
+"settings.github_token.scope_hint" = "生成 Token 时无需选择任何权限范围 (Scopes)，公开仓库访问不需要额外权限。";
+"settings.github_token.clear" = "清除 Token";
+"settings.configured" = "已配置";
+
+/* Tabs */
+"tab.scripts" = "脚本";
+"tab.store" = "商店";
+"tab.settings" = "设置";
+
+/* Home */
+"home.title" = "快捷脚本";
+"home.new_script" = "新建脚本";
+"home.import_script" = "导入脚本";
+"home.search_placeholder" = "搜索脚本...";
+"home.empty_title" = "还没有脚本";
+"home.empty_message" = "点击右上角 + 创建你的第一个脚本";
+"home.create_script_button" = "创建脚本";
+"home.no_results_title" = "未找到匹配的脚本";
+"home.no_results_message" = "尝试使用其他关键词搜索";
+
+/* Category */
+"category.management" = "分类管理";
+"category.predefined" = "预定义分类";
+"category.predefined_footer" = "预定义分类可以编辑名称和图标，但不能删除";
+"category.custom" = "自定义分类";
+"category.add" = "添加分类";
+"category.custom_footer" = "删除自定义分类后，其中的脚本将移至「其他」分类";
+"category.delete_title" = "删除分类";
+"category.delete_message" = "确定要删除「%@」分类吗？";
+"category.delete_message_with_count" = "「%@」分类下有 %d 个脚本，删除后将移至「其他」分类";
+"category.script_count" = "%d 个脚本";
+
+/* Keep Alive */
+"keepalive.title" = "永久保活";
+"process.title" = "进程管理";
+"process.running_count" = "%d 运行中";
+"keepalive.enable" = "启用保活";
+"keepalive.status" = "状态";
+"keepalive.running" = "运行中";
+"keepalive.paused" = "已暂停";
+"keepalive.uptime" = "运行时长";
+"keepalive.state_section_header" = "保活状态";
+"keepalive.state_section_footer" = "启用后，App 将在后台保持运行，可用于执行定时脚本、监听通知等功能。";
+"keepalive.strategy" = "保活策略";
+"keepalive.strategy_section_header" = "策略设置";
+"keepalive.strategy_info_header" = "策略说明";
+"keepalive.select_strategy" = "选择保活策略";
+"keepalive.notes_header" = "注意事项";
+"keepalive.note.battery" = "保活功能会略微增加电量消耗";
+"keepalive.note.low_power" = "建议配合「低电量模式」白名单使用";
+"keepalive.note.kill" = "系统可能在极端情况下终止后台 App";
+
+/* HUD Indicator */
+"hud.section_header" = "悬浮指示器";
+"hud.section_footer" = "脚本运行时显示悬浮指示器，可在所有界面显示。需要 TrollStore 环境。";
+"hud.enable" = "启用悬浮指示器";
+"hud.status" = "状态";
+"hud.running" = "运行中";
+"hud.stopped" = "已停止";
+
+/* Safe Mode */
+"safemode.title" = "安全模式已激活";
+"safemode.exit" = "退出安全模式";
+"safemode.section_header" = "安全模式";
+"safemode.section_footer" = "安全模式已启用以防止崩溃循环。守护进程将不会自动重启，直到您手动退出安全模式。";
+
+/* Process Notes */
+"process.notes_header" = "说明";
+"process.note.daemon" = "后台守护进程提供持久化执行";
+"process.note.keepalive" = "自动重启确保持续运行";
+"process.note.safemode" = "安全模式防止崩溃循环";
+
+/* Keep Alive Strategies */
+"keepalive.strategy.silent_audio" = "静音音频";
+"keepalive.strategy.location" = "位置更新";
+"keepalive.strategy.combined" = "组合模式";
+"keepalive.strategy.silent_audio.desc" = "通过播放无声音频保持后台运行";
+"keepalive.strategy.location.desc" = "通过持续获取位置保持后台运行";
+"keepalive.strategy.combined.desc" = "同时使用音频和位置双重保活";
+"keepalive.strategy.silent_audio.pros" = "耗电最低、最稳定";
+"keepalive.strategy.silent_audio.cons" = "可能被音频中断打断";
+"keepalive.strategy.location.pros" = "不受音频影响";
+"keepalive.strategy.location.cons" = "需要位置权限、略耗电";
+"keepalive.strategy.combined.pros" = "最稳定可靠";
+"keepalive.strategy.combined.cons" = "耗电稍高";
+
+/* Script Execution Settings */
+"script.settings.title" = "脚本执行";
+"script.settings.execution_section" = "执行";
+"script.settings.show_runtime" = "显示执行时间";
+"script.settings.timeout" = "执行超时";
+"script.settings.timeout_seconds" = "%d 秒";
+"script.settings.timeout_unlimited" = "无限制";
+"script.settings.autosave_section" = "自动保存";
+"script.settings.autosave" = "自动保存";
+"script.settings.autosave_footer" = "编辑脚本时自动保存修改";
+"script.settings.autosave_interval" = "保存间隔";
+"script.settings.log_section" = "日志";
+"script.settings.log_keep_count" = "保留日志数";
+"script.settings.count_suffix" = "%d 条";
+"script.settings.log_footer" = "超出数量后自动清理旧日志";
+"script.settings.memory_section" = "内存管理";
+"script.settings.memory_limit" = "内存限制";
+"script.settings.stack_size" = "栈大小";
+"script.settings.auto_gc" = "执行后自动释放";
+"script.settings.unlimited" = "无限制";
+"script.settings.memory_footer" = "限制脚本可使用的内存，防止内存溢出导致崩溃";
+
+/* Store */
+"store.title" = "脚本商店";
+"store.loading" = "正在加载商店...";
+"store.load_failed" = "加载失败";
+"store.unknown_error" = "未知错误";
+"store.retry" = "重试";
+"store.empty_title" = "商店暂无内容";
+"store.empty_message" = "点击右上角 + 添加订阅源";
+"store.add_subscription" = "添加订阅源";
+"store.no_search_results" = "未找到匹配的脚本";
+"store.try_other_keywords" = "尝试其他关键词搜索";
+"store.search_placeholder" = "搜索脚本...";
+"store.import_success" = "导入成功";
+"store.import_success_message" = "脚本「%@」已成功导入";
+"store.sub.name_placeholder" = "订阅源名称（可选）";
+"store.sub.url_placeholder" = "订阅源 JSON 地址";
+"store.sub.info_header" = "订阅源信息";
+"store.sub.info_footer" = "请输入有效的商店 JSON 地址，格式需符合商店规范";
+"store.sub.add_button" = "添加订阅";
+"store.sub.verifying" = "验证中...";
+"store.sub.list_header" = "订阅源列表";
+"store.sub.list_footer" = "滑动可删除自定义订阅源，官方商店无法删除";
+"store.clear_cache" = "清除商店缓存";
+"store.cache_management" = "缓存管理";
+"store.cache_footer" = "清除缓存后将重新从服务器获取数据";
+"store.sub.management_title" = "订阅管理";
+"store.sub.delete_confirm_title" = "确认删除";
+"store.sub.delete_confirm_message" = "确定要删除订阅源「%@」吗？该订阅源下的所有脚本将从商店列表中移除。";
+"store.author.script_count" = "%d 个脚本";
+"store.script.version" = "v%@";
+"store.script.local_version" = "本地 v%@";
+
+"settings.language" = "语言";
+"language.system" = "跟随系统";
+"settings.theme" = "外观";
+"settings.theme.auto" = "跟随系统";
+"settings.theme.light" = "浅色";
+"settings.theme.dark" = "深色";
+"settings.theme_color" = "主题色";
+
+// MARK: - Permissions Settings
+"settings.permissions.title" = "权限管理";
+"settings.permissions.header" = "App 权限";
+"settings.permissions.footer" = "点击未授权的权限可请求授权，已拒绝的权限需前往系统设置开启";
+"settings.permissions.open_settings" = "打开系统设置";
+"settings.permissions.system_settings_footer" = "在系统设置中可以管理所有 App 权限";
+"settings.permissions.alert.title" = "需要在设置中开启";
+"settings.permissions.alert.message" = "「%@」权限已被拒绝，请在系统设置中手动开启";
+"settings.permissions.go_to_settings" = "前往设置";
+
+// MARK: - Data Management
+"settings.data.title" = "数据管理";
+"settings.data.icloud_sync" = "iCloud 同步";
+"settings.data.select_sync_method" = "请选择同步方式以启用 iCloud 同步";
+"settings.data.sync_method" = "同步方式";
+"settings.data.recommended" = "推荐";
+"settings.data.select_folder" = "选择文件夹";
+"settings.data.storage_info" = "存储信息";
+"settings.data.storage_location" = "存储位置";
+"settings.data.icloud_path" = "iCloud 路径";
+"settings.data.local_path" = "本地路径";
+"settings.data.script_count" = "脚本数量";
+"settings.data.count_suffix" = "%d 个";
+"settings.data.actions" = "操作";
+"settings.data.open_in_files" = "在「文件」中打开";
+"settings.data.clear_bookmark" = "取消文件夹选择";
+
+// MARK: - Log Viewer
+"logs.title" = "日志查看器";
+"logs.export" = "导出日志";
+"logs.clear" = "清除日志";
+"logs.clear_confirm_title" = "清除所有日志?";
+"logs.clear_confirm_message" = "此操作无法撤销";
+"logs.clear_action" = "清除";
+"logs.search_placeholder" = "搜索日志...";
+"logs.filter.all" = "全部";
+"logs.count_suffix" = "%d 条";
+"logs.empty" = "暂无日志";
+"logs.empty_filters" = "尝试更改过滤条件";
+
+// MARK: - Script Logs
+"script_logs.title" = "脚本执行日志";
+"script_logs.empty" = "暂无脚本日志";
+"script_logs.empty_hint" = "运行脚本后，日志将自动记录在这里";
+"script_logs.refresh" = "刷新";
+"script_logs.clear_all" = "清除所有日志";
+"script_logs.clear_confirm_title" = "清除所有脚本日志？";
+"script_logs.clear_confirm_message" = "此操作无法撤销，所有脚本的执行日志都将被删除";
+"script_logs.clear_action" = "清除";
+"script_logs.total_size" = "日志总大小";
+"script_logs.content_empty" = "日志内容为空";
+"script_logs.copy" = "复制内容";
+"script_logs.share" = "分享";
+"settings.script_logs" = "脚本执行日志";
+
+// MARK: - Performance Stats
+"stats.title" = "性能统计";
+"stats.realtime" = "实时监控";
+"stats.memory" = "内存使用";
+"stats.cpu" = "CPU 使用";
+"stats.fps" = "帧率";
+"stats.status" = "状态";
+"stats.monitoring" = "监控中";
+"stats.recent_executions" = "最近执行";
+"stats.no_records" = "暂无执行记录";
+"stats.count_suffix" = "%d 条";
+"stats.summary" = "统计摘要";
+"stats.clear_history" = "清除历史记录";
+"stats.clear_confirm_title" = "清除记录？";
+"stats.clear_confirm_message" = "此操作无法撤销";
+"stats.clear_action" = "清除";
+"stats.status.critical" = "性能严重下降";
+"stats.status.warning" = "性能警告";
+"stats.status.normal" = "正常";
+"stats.about" = "说明";
+"stats.description" = "性能统计用于监控应用的实时运行状态。内存使用超过 200MB 或 CPU 使用超过 80% 时会显示警告。";
+
+// MARK: - Script Detail & Editor
+"script.detail.title" = "脚本详情";
+"script.detail.new_script" = "新脚本";
+"script.detail.name_placeholder" = "脚本名称";
+"script.detail.rename" = "重新命名";
+"script.detail.select_icon" = "选取图标";
+"script.detail.category" = "分类: %@";
+"script.detail.copy_code" = "复制代码";
+"script.detail.share" = "分享";
+"script.detail.delete" = "删除脚本";
+"script.detail.delete_confirm_title" = "删除脚本";
+"script.detail.delete_confirm_message" = "确定要删除「%@」吗？此操作无法撤销。";
+"script.detail.delete_action" = "删除";
+"script.detail.discard_title" = "放弃更改？";
+"script.detail.discard_message" = "你有未保存的更改";
+"script.detail.discard_action" = "放弃";
+"script.detail.continue_editing" = "继续编辑";
+"script.detail.save_done" = "完成";
+"script.editor.title" = "编辑代码";
+
+// MARK: - Script Running
+"script.run.title" = "运行脚本";
+"script.run.close" = "关闭";
+"script.run.stop" = "停止";
+"script.run.status.executing" = "执行中...";
+"script.run.status.success" = "执行成功";
+"script.run.status.failed" = "执行失败";
+"script.run.status.ready" = "准备就绪";
+"script.run.status.preparing" = "准备运行...";
+"script.run.status.idle" = "空闲";
+"script.run.time_cost" = "耗时 %dms";
+"script.run.tab.console" = "控制台";
+"script.run.tab.return_value" = "返回值";
+"script.run.copy_return" = "复制";
+"script.run.no_return" = "暂无返回值";
+"script.run.hint" = "点击运行按钮执行脚本";
+"script.run.error_banner" = "执行错误";
+
+// MARK: - Script Info
+"script.info.title" = "脚本详情";
+"script.info.basic_info" = "基本信息";
+"script.info.created_at" = "创建时间";
+"script.info.updated_at" = "修改时间";
+"script.info.run_count" = "运行次数";
+"script.info.last_run" = "上次运行";
+"script.info.stats" = "统计";
+"script.info.line_count" = "代码行数";
+"script.info.char_count" = "字符数";
+
+// MARK: - API Picker
+"script.api.search_placeholder" = "搜索 API";
+"script.api.title" = "API 文档";
+"script.api.daemon_filter" = "仅显示触发器兼容";
+"script.api.daemon_filter_hint" = "已启用筛选";
+"script.api.daemon_full" = "完全支持";
+"script.api.daemon_limited" = "有限支持";
+"script.api.daemon_none" = "不支持触发器";
+
+// MARK: - Script Import/Export
+"export.title" = "导出脚本";
+"export.format" = "导出格式";
+"export.format.desc" = "TrollScript 格式包含完整信息，JavaScript 格式仅包含代码";
+"export.preview" = "预览";
+"export.filename" = "文件名";
+"export.contains" = "包含";
+"export.contains.full" = "代码 + 元数据";
+"export.method" = "导出方式";
+"export.share_file" = "分享文件";
+"export.copy_clipboard" = "复制到剪贴板";
+"export.copy_success" = "已复制";
+"export.save_files" = "保存到文件";
+"import.title" = "导入脚本";
+"import.source" = "导入来源";
+"import.from_file" = "从文件导入";
+"import.from_url" = "从 URL 导入";
+"import.from_clipboard" = "从剪贴板导入";
+"import.source.footer" = "支持 .trollscript、.js 文件和原始代码 URL";
+"import.url.title" = "从 URL 导入";
+"import.url.placeholder" = "输入脚本 URL";
+"import.url.button" = "下载并导入";
+"import.url.footer" = "支持 GitHub Raw、Gist 等直接代码链接";
+"import.formats" = "支持的格式";
+"import.format.trollscript.desc" = "TrollScript 完整格式，包含代码和元数据";
+"import.format.js.desc" = "纯 JavaScript 文件";
+"import.format.url.desc" = "从网络直接下载脚本";
+"import.confirm.title" = "确认导入";
+"import.info" = "导入信息";
+"import.original_file" = "原文件";
+"import.format" = "格式";
+"import.script_info" = "脚本信息";
+"import.preview" = "代码预览";
+"import.action" = "导入";
+"import.error.empty_clipboard" = "剪贴板为空";
+"import.error.invalid_url" = "无效的 URL";
+"import.error.download_failed" = "下载失败，请检查 URL";
+"import.error.parse_failed" = "无法解析文件内容";
+"import.quick_share.trollscript" = "分享为 TrollScript";
+"import.quick_share.js" = "分享为 JavaScript";
+
+// MARK: - Editor & API
+"editor.autocomplete.keyword" = "关键字";
+"api.console.description" = "控制台输出";
+"api.console.log.description" = "输出日志信息";
+"api.console.error.description" = "输出错误信息";
+"api.console.warn.description" = "输出警告信息";
+
+/* Phase 5: Additional Components */
+
+/* SFSymbolsPicker */
+"sfsymbols.search.prompt" = "搜索图标";
+"sfsymbols.title" = "选择图标";
+"sfsymbols.done" = "完成";
+"sfsymbols.tap_for_custom" = "点击使用自定义图片";
+"sfsymbols.preset.blue" = "蓝色";
+"sfsymbols.preset.purple" = "紫色";
+"sfsymbols.preset.pink" = "粉色";
+"sfsymbols.preset.red" = "红色";
+"sfsymbols.preset.orange" = "橙色";
+"sfsymbols.preset.yellow" = "黄色";
+"sfsymbols.preset.green" = "绿色";
+"sfsymbols.preset.mint" = "薄荷";
+"sfsymbols.preset.cyan" = "青色";
+"sfsymbols.preset.indigo" = "靛蓝";
+"sfsymbols.preset.brown" = "棕色";
+"sfsymbols.preset.gray" = "灰色";
+"sfsymbols.category.common" = "常用";
+"sfsymbols.category.communication" = "通讯";
+"sfsymbols.category.security" = "安全";
+"sfsymbols.category.devices" = "设备";
+"sfsymbols.category.network" = "网络";
+"sfsymbols.category.files" = "文件";
+"sfsymbols.category.media" = "媒体";
+"sfsymbols.category.arrows" = "箭头";
+"sfsymbols.category.editing" = "编辑";
+"sfsymbols.category.tools" = "工具";
+"sfsymbols.category.symbols" = "符号";
+"sfsymbols.category.weather" = "天气";
+"sfsymbols.category.people" = "人物";
+"sfsymbols.category.time" = "时间";
+"sfsymbols.category.maps" = "地图";
+"sfsymbols.category.shapes" = "形状";
+"sfsymbols.category.numbers" = "数字";
+
+/* ScriptCard */
+"script.card.run" = "运行";
+"script.card.edit" = "编辑";
+"script.card.duplicate" = "复制脚本";
+"script.card.share" = "分享";
+"script.card.delete" = "删除";
+"script.card.delete.title" = "删除脚本";
+"script.card.delete.message" = "确定要删除「%@」吗？";
+"script.card.category" = "移动到分类";
+
+/* ErrorViews */
+"crash.title" = "应用异常退出";
+"crash.message" = "上次运行时发生了错误";
+"crash.continue" = "继续使用";
+"crash.details" = "查看详情";
+"crash.report" = "反馈问题";
+"crash.detail.title" = "崩溃详情";
+"crash.basic_info" = "基本信息";
+"crash.type" = "类型";
+"crash.device_info" = "设备信息";
+"crash.reason" = "错误原因";
+"crash.stack_trace" = "堆栈跟踪";
+"script.error.title" = "脚本执行失败";
+"error.retry" = "重试";
+"error.close" = "关闭";
+"memory.warning.title" = "内存使用较高";
+"performance.title.critical" = "性能严重下降";
+"performance.title.warning" = "性能下降";
+
+"generic.done" = "完成";
+"generic.cancel" = "取消";
+"generic.back" = "返回";
+"generic.confirm" = "确认";
+"generic.ok" = "确定";
+"crash.name" = "名称";
+
+"crash.time" = "发生时间";
+"crash.app_version" = "App 版本";
+"crash.system_version" = "系统版本";
+"crash.device_model" = "设备型号";
+"crash.memory_usage" = "内存使用";
+"crash.additional_info" = "附加信息";
+"crash.clear" = "清除";
+"crash.clear_all_title" = "清除所有记录？";
+"crash.clear_all_message" = "此操作无法撤销";
+"crash.list.empty.title" = "暂无崩溃记录";
+"crash.list.empty.message" = "应用运行正常";
+"crash.list.title" = "崩溃记录";
+
+/* ScriptEditorSheet */
+"editor.new_script" = "新建脚本";
+"editor.discard" = "放弃";
+"editor.keep_editing" = "继续编辑";
+"editor.unsaved_changes" = "你有未保存的更改";
+"editor.discard_changes" = "放弃更改？";
+"editor.tab.code" = "代码";
+"editor.tab.console" = "控制台";
+"editor.tab.settings" = "设置";
+"editor.field.name" = "脚本名称";
+"editor.field.description" = "描述";
+"editor.section.basic" = "基本信息";
+"editor.section.info" = "脚本信息";
+"editor.snippets" = "片段";
+
+/* FileImportSheet */
+"import.parsing" = "正在解析文件...";
+"import.failed" = "导入失败";
+"import.file_info" = "文件信息";
+"import.script_settings" = "脚本设置";
+"import.code_preview" = "代码预览";
+"import.file.name" = "文件名";
+"import.file.type" = "文件类型";
+"import.file.size" = "文件大小";
+"import.truncated" = "仅显示前 %d 字符...";
+
+/* StorageManager */
+"storage.title" = "数据存储";
+"storage.search" = "搜索键名或值";
+"storage.location" = "存储位置";
+"storage.empty" = "暂无存储数据";
+"storage.empty.desc" = "脚本通过 storage.set() 存储的数据将显示在这里";
+"storage.clear_all" = "清空所有";
+"storage.refresh" = "刷新";
+"storage.delete.title" = "确认删除";
+"storage.delete.message" = "确定要删除 \"%@\" 吗？此操作无法撤销。";
+"storage.edit.title" = "编辑存储项";
+"storage.key" = "键名";
+"storage.value" = "值";
+"storage.supports_json" = "支持 JSON 格式的对象和数组";
+
+/* ScriptListViewModel */
+"script.save.failed" = "保存脚本失败";
+"script.update.failed" = "更新脚本失败";
+"script.delete.failed" = "删除脚本失败";
+"script.duplicate.failed" = "复制脚本失败";
+"script.reorder.failed" = "排序脚本失败";
+
+/* PermissionManager */
+"permission.notifications" = "通知";
+"permission.location_in_use" = "使用时定位";
+"permission.location_always" = "始终定位";
+"permission.camera" = "相机";
+"permission.microphone" = "麦克风";
+"permission.photo_library" = "照片图库";
+"permission.contacts" = "通讯录";
+"permission.calendar" = "日历";
+"permission.reminders" = "提醒事项";
+
+"permission.desc.notifications" = "接收脚本执行结果和自动化提醒";
+"permission.desc.location_in_use" = "位置触发器需要此权限";
+"permission.desc.location_always" = "后台位置触发器需要始终定位权限";
+"permission.desc.camera" = "扫码和拍照功能";
+"permission.desc.microphone" = "语音输入功能";
+"permission.desc.photo_library" = "保存图片和选择照片";
+"permission.desc.contacts" = "读取通讯录用于脚本";
+"permission.desc.calendar" = "读写日历事件";
+"permission.desc.reminders" = "读写提醒事项";
+
+"permission.status.authorized" = "已授权";
+"permission.status.denied" = "已拒绝";
+"permission.status.not_determined" = "未请求";
+"permission.status.restricted" = "受限制";
+/* iCloud Sync */
+"icloud.method.system" = "系统 iCloud 路径";
+"icloud.method.picker" = "文件夹选择器";
+"icloud.desc.system" = "使用系统 iCloud Drive 的 CloudDocs 路径，无需容器授权，TrollStore 推荐。";
+"icloud.desc.picker" = "手动选择 iCloud Drive 中的任意文件夹，并使用安全作用域书签持久化访问。";
+"icloud.error.unavailable" = "iCloud 不可用";
+"icloud.error.bookmark" = "保存书签失败";
+"icloud.error.migration" = "数据迁移失败";
+
+/* File Import Handler */
+"import.type.javascript" = "JavaScript";
+"import.type.trollscript" = "TrollScript 包";
+"import.type.unknown" = "未知格式";
+"import.error.file_not_found" = "文件不存在";
+"import.error.access" = "无法访问文件，请授予权限";
+"import.error.format" = "不支持的文件格式";
+"import.error.decoding" = "文件解析失败: %@";
+"import.error.read" = "文件读取失败: %@";
+
+/* KeepAlive Service */
+"keepalive.error.audio" = "音频启动失败: %@";
+"keepalive.error.audio_engine" = "音频引擎启动失败: %@";
+"keepalive.error.location" = "位置权限被拒绝";
+"keepalive.strategy.silent_audio" = "静音音频";
+"keepalive.strategy.location" = "位置更新";
+"keepalive.strategy.combined" = "组合策略";
+"keepalive.strategy.silent_audio.desc" = "后台播放静音音频（最稳定）";
+"keepalive.strategy.location.desc" = "使用位置更新保持活跃（备用）";
+
+/* App Alerts */
+"app.alert.confirm" = "确定";
+"app.import.success.title" = "导入成功";
+"app.import.success.message" = "脚本「%@」已成功导入";
+"app.import.failure.title" = "导入失败";
+"app.import.unsupported.title" = "不支持的文件格式";
+"app.import.unsupported.message" = "仅支持导入 .js、.trollscript 或 .tsp 文件";
+"app.install.success.title" = "安装成功";
+"app.store.install.success.title" = "商店安装成功";
+"app.install.success.message" = "脚本「%@」已成功添加";
+
+/* ICloudSyncManager */
+"icloud.method.system" = "系统 iCloud 路径";
+"icloud.method.picker" = "文件夹选择器";
+"icloud.desc.system" = "使用系统 iCloud Drive 的 CloudDocs 路径，无需容器授权，TrollStore 推荐。";
+"icloud.desc.picker" = "手动选择 iCloud Drive 中的任意文件夹，并使用安全作用域书签持久化访问。";
+
+/* FileImportHandler */
+"import.error.not_found" = "文件不存在";
+"import.error.access_denied" = "无法访问文件，请授予权限";
+"import.error.unsupported_format" = "不支持的文件格式";
+"import.error.parsing_failed" = "文件解析失败: %@";
+"import.error.read_failed" = "文件读取失败: %@";
+"import.error.decoding_failed" = "无法解码文件内容";
+
+/* Store Errors */
+"store.error.invalid_url" = "无效的订阅地址";
+"store.error.network" = "无法访问订阅源";
+"store.error.invalid_data" = "无效的数据";
+
+/* App Alerts */
+"app.import.success" = "导入成功";
+"app.import.message" = "脚本「%@」已成功导入";
+"app.install.success" = "安装成功";
+"app.store_install.success" = "商店安装成功";
+
+"generic.save" = "保存";
+"generic.copy" = "复制";
+"generic.search" = "搜索";
+"generic.edit" = "编辑";
+"generic.category" = "分类";
+"generic.lines" = "行";
+
+/* Editor Console & Info */
+"editor.console.logs" = "日志";
+"editor.console.result" = "返回值";
+"editor.console.running" = "执行中";
+"editor.console.stop" = "停止";
+"editor.console.success" = "执行成功";
+"editor.console.failed" = "执行失败";
+"editor.console.duration" = "耗时 %dms";
+"editor.console.empty" = "运行脚本查看输出";
+"editor.clear" = "清除";
+"editor.running" = "运行中";
+"editor.field.icon" = "图标";
+"editor.info.created" = "创建时间";
+"editor.info.updated" = "修改时间";
+"editor.info.run_count" = "运行次数";
+
+/* File Import */
+"import.title" = "导入脚本";
+"import.button" = "导入";
+
+/* Storage Manager Types */
+"storage.type.string" = "字符串";
+"storage.type.number" = "数字";
+"storage.type.bool" = "布尔值";
+"storage.type.object" = "对象";
+"storage.type.array" = "数组";
+"storage.type.data" = "数据";
+"storage.type.unknown" = "未知";
+"storage.count" = "共 %d 项";
+"storage.footer.swipe" = "左滑可删除存储项，点击可查看详情和编辑";
+
+/* Snippets Groups */
+"snippets.group.sms" = "短信";
+"snippets.group.network" = "网络";
+"snippets.group.file" = "文件";
+"snippets.group.icloud" = "iCloud";
+"snippets.group.location" = "定位";
+"snippets.group.reminders" = "提醒事项";
+"snippets.group.calendar" = "日历";
+"snippets.group.device" = "设备";
+
+/* Common Module Errors */
+"error.permission.denied" = "权限被拒绝";
+"error.permission.notification" = "通知权限未授权";
+"error.permission.calendar" = "日历权限未授权";
+"error.operation_cancelled" = "操作已取消";
+"error.not_found" = "未找到目标";
+
+/* Bluetooth Module */
+"error.bluetooth.unavailable" = "蓝牙不可用";
+"error.bluetooth.powered_off" = "蓝牙未开启";
+"error.bluetooth.private_api" = "BluetoothManager 不可用，需要 TrollStore 环境";
+"error.bluetooth.device_not_found" = "未找到设备: %@";
+"error.bluetooth.connect_failed" = "连接失败";
+"error.bluetooth.method_missing" = "无法控制蓝牙：缺少必要方法";
+
+/* Alarm Module */
+"weekday.sun" = "周日";
+"weekday.mon" = "周一";
+"weekday.tue" = "周二";
+"weekday.wed" = "周三";
+"weekday.thu" = "周四";
+"weekday.fri" = "周五";
+"weekday.sat" = "周六";
+
+/* Calendar Module */
+"error.calendar.event_not_found" = "未找到该事件";
+
+/* CoreData Errors */
+"error.coredata.load_failed" = "数据库加载失败: %@";
+"error.coredata.save_failed" = "数据保存失败: %@";
+"error.coredata.fetch_failed" = "数据查询失败: %@";
+"error.coredata.delete_failed" = "数据删除失败: %@";
+"error.coredata.migration_failed" = "数据迁移失败: %@";
+"error.coredata.store_corrupted" = "数据库已损坏";
+"error.coredata.cloud_sync_failed" = "云同步失败: %@";
+
+/* CoreData Actions */
+"action.coredata.restart" = "请尝试重启应用，如问题持续请重新安装";
+"action.coredata.reinstall" = "请备份数据后重新安装应用";
+"action.coredata.reset" = "请重置应用数据或重新安装";
+"action.retry_later" = "请稍后重试";
+"action.check_network" = "请检查 iCloud 登录状态和网络连接";
+
+/* JSON Errors */
+"error.json.encoding_failed" = "编码 %@ 失败: %@";
+"error.json.decoding_failed" = "解码 %@ 失败: %@";
+"error.json.invalid_format" = "JSON 格式无效: %@";
+"error.json.missing_key" = "缺少必需字段: %@";
+"error.json.type_mismatch" = "类型不匹配: 期望 %@, 实际 %@";
+"error.json.utf8_conversion_failed" = "无法将字符串转换为 UTF-8 数据";
+"error.json.utf8_string_conversion_failed" = "无法将数据转换为 UTF-8 字符串";
+
+/* JSON Actions */
+"action.check_format" = "请检查数据格式/JSON 格式是否正确";
+"action.provide_field" = "请提供 '%@' 字段";
+"action.check_type" = "请检查字段类型是否正确";
+
+/* Script Execution Errors */
+"error.script.syntax_line" = "语法错误 (第 %d 行): %@";
+"error.script.syntax" = "语法错误: %@";
+"error.script.runtime" = "运行时错误: %@";
+"error.script.timeout" = "脚本执行超时 (%d 秒)";
+"error.script.cancelled" = "脚本执行已取消";
+"error.script.module_not_found" = "模块 '%@' 不存在";
+"error.script.permission_denied" = "没有访问 '%@' 的权限";
+
+/* Script Execution Actions */
+"action.check_syntax" = "请检查脚本语法";
+"action.check_logic" = "请检查脚本逻辑";
+"action.optimize_script" = "请优化脚本性能或增加超时时间";
+"action.check_module" = "请确认模块名称是否正确: %@";
+"action.check_permission" = "请检查 App 权限设置";
+
+/* Network Errors */
+"error.network.no_connection" = "无网络连接";
+"error.network.timeout" = "网络请求超时";
+"error.network.server_error" = "服务器错误 (%d)";
+"error.network.invalid_url" = "无效的 URL: %@";
+"error.network.invalid_response" = "服务器响应无效";
+"error.network.request_failed" = "请求失败: %@";
+
+/* Network Actions */
+"action.check_network_simple" = "请检查网络连接";
+"action.check_url" = "请检查 URL 格式";
+"action.check_network_retry" = "请检查网络连接后重试";
+
+/* UI Module */
+"ui.placeholder.input" = "请输入...";
+"ui.loading" = "加载中...";
+"error.webview.create" = "无法创建 WebView";
+"error.webview.not_open" = "WebView 未打开";
+
+/* Contacts Module */
+"error.contacts.permission_denied" = "通讯录权限未授权";
+
+/* Memo Module */
+"error.memo.invalid_id" = "无效的 ID";
+"error.memo.not_found" = "备忘录不存在";
+
+/* Reminder Module */
+"reminder.default_list" = "默认列表";
+"error.reminder.invalid_id" = "无效的 ID";
+"error.reminder.not_found" = "提醒不存在";
+"reminder.location_trigger" = "位置提醒";
+"error.permission.reminders" = "提醒事项权限未授权";
+
+/* Shortcuts Module - Common */
+"shortcuts.common.music" = "播放音乐";
+"shortcuts.common.music.desc" = "控制音乐播放";
+"shortcuts.common.timer" = "设置计时器";
+"shortcuts.common.timer.desc" = "快速设置倒计时";
+"shortcuts.common.message" = "发送消息";
+"shortcuts.common.message.desc" = "发送短信或 iMessage";
+"shortcuts.common.weather" = "获取当前天气";
+"shortcuts.common.weather.desc" = "查看天气信息";
+"shortcuts.common.open_app" = "打开应用";
+"shortcuts.common.open_app.desc" = "快速启动应用";
+"shortcuts.common.nav_home" = "导航回家";
+"shortcuts.common.nav_home.desc" = "导航到家庭地址";
+"shortcuts.common.call" = "拨打电话";
+"shortcuts.common.call.desc" = "快速拨打电话";
+"shortcuts.common.scan" = "扫描文档";
+"shortcuts.common.scan.desc" = "使用相机扫描文档";
+"shortcuts.common.reminders" = "创建提醒";
+"shortcuts.common.reminders.desc" = "添加提醒事项";
+"shortcuts.common.calendar" = "添加日历事件";
+"shortcuts.common.calendar.desc" = "创建新日程";
+
+/* Shortcuts Module - Triggers */
+"shortcuts.trigger.time.desc" = "特定时间触发";
+"shortcuts.trigger.alarm.desc" = "闹钟停止后触发";
+"shortcuts.trigger.arrive.desc" = "到达某地点时触发";
+"shortcuts.trigger.leave.desc" = "离开某地点时触发";
+"shortcuts.trigger.wifi.desc" = "连接/断开 WiFi 时触发";
+"shortcuts.trigger.bluetooth.desc" = "连接/断开蓝牙时触发";
+"shortcuts.trigger.nfc.desc" = "扫描 NFC 标签时触发";
+"shortcuts.trigger.app.desc" = "打开/关闭应用时触发";
+"shortcuts.trigger.carplay.desc" = "连接/断开 CarPlay 时触发";
+"shortcuts.trigger.workout.desc" = "开始/结束锻炼时触发";
+"shortcuts.trigger.low_power.desc" = "低电量模式切换时触发";
+"shortcuts.trigger.charger.desc" = "连接/断开充电器时触发";
+"shortcuts.trigger.sleep.desc" = "进入/离开睡眠模式时触发";
+"shortcuts.trigger.email.desc" = "收到特定邮件时触发";
+"shortcuts.trigger.message.desc" = "收到特定消息时触发";
+
+/* Scheduler */
+"scheduler.title" = "定时任务";
+"scheduler.triggers" = "触发器";
+"scheduler.enable" = "启用触发器";
+"scheduler.enable_footer" = "关闭后将卸载所有 TrollScript 相关的 LaunchDaemons 并停止守护进程。";
+"scheduler.empty_title" = "暂无定时任务";
+"scheduler.empty_message" = "点击右上角添加定时任务";
+"scheduler.add_task" = "添加任务";
+"scheduler.edit_task" = "编辑任务";
+"scheduler.delete_confirm_title" = "确认删除";
+"scheduler.delete_confirm" = "确定要删除选中的 %d 个任务吗？";
+"scheduler.delete_selected" = "删除选中";
+"scheduler.basic_info" = "基本信息";
+"scheduler.task_name" = "任务名称";
+"scheduler.select_script" = "选择脚本";
+"scheduler.search_script" = "搜索脚本";
+"scheduler.no_script" = "未选择";
+"scheduler.schedule" = "执行计划";
+"scheduler.cron_expression" = "Cron 表达式";
+"scheduler.next_run" = "下次执行";
+"scheduler.options" = "选项";
+"scheduler.enabled" = "启用";
+"scheduler.show_notification" = "显示通知";
+
+/* Cron Picker */
+"cron.presets" = "预设";
+"cron.custom" = "自定义";
+"cron.custom_hint" = "使用标准 Cron 表达式格式（分钟 小时 日期 月份 星期）";
+"cron.custom_placeholder" = "输入 Cron 表达式";
+"cron.invalid" = "无效的表达式";
+
+/* Cron Presets */
+"cron.preset.every_minute" = "每分钟";
+"cron.preset.every_5_minutes" = "每 5 分钟";
+"cron.preset.every_15_minutes" = "每 15 分钟";
+"cron.preset.every_30_minutes" = "每 30 分钟";
+"cron.preset.every_hour" = "每小时";
+"cron.preset.every_day_9am" = "每天 9:00";
+"cron.preset.every_day_6pm" = "每天 18:00";
+"cron.preset.every_monday" = "每周一 9:00";
+"cron.preset.custom" = "自定义";
+
+/* Manual Trigger */
+"scheduler.trigger_mode" = "触发方式";
+"scheduler.manual_trigger" = "手动触发";
+"scheduler.manual_trigger_hint" = "开启后，任务只能通过 HUD 悬浮按钮手动执行。";
+"scheduler.cron_trigger_hint" = "任务将按照 Cron 表达式自动定时执行。";
+"scheduler.manual_trigger_desc" = "点击 HUD 悬浮按钮执行脚本";
+
+/* Trigger Types */
+"trigger.type.scheduled" = "定时触发";
+"trigger.type.manual" = "手动触发";
+"trigger.type.clipboard" = "剪贴板触发";
+"trigger.type.file_monitor" = "文件监控";
+
+/* Trigger Hints */
+"trigger.hint.scheduled" = "根据 Cron 表达式自动定时执行脚本。";
+"trigger.hint.manual" = "通过 HUD 悬浮按钮手动触发执行。";
+"trigger.hint.clipboard" = "当剪贴板内容变化时自动触发执行。";
+"trigger.hint.file_monitor" = "当监控的文件发生变化时自动触发执行。";
+
+/* Clipboard Trigger Config */
+"trigger.clipboard.config" = "剪贴板设置";
+"trigger.clipboard.config_footer" = "配置剪贴板监控行为。";
+"trigger.clipboard.ignore_script_updates" = "忽略脚本更新";
+"trigger.clipboard.check_interval" = "检查间隔";
+"trigger.clipboard.content_filter" = "内容过滤 (正则)";
+"trigger.clipboard.filter_placeholder" = "可选的正则表达式...";
+
+/* File Monitor Config */
+"trigger.file_monitor.config" = "文件监控设置";
+"trigger.file_monitor.config_footer" = "添加要监控的文件路径。访问系统路径需要 TrollStore 权限。";
+"trigger.file_monitor.add_path" = "添加路径";
+"trigger.file_monitor.debounce" = "防抖间隔";
+"trigger.file_monitor.debounce_disabled" = "禁用";
+"trigger.file_monitor.paths_count" = "个文件监控中";
+"trigger.file_monitor.path_not_exist" = "路径不存在";
+"trigger.file_monitor.path_placeholder" = "输入文件路径...";
+
+"generic.select" = "选择";
+"generic.select_all" = "全选";
+"generic.deselect_all" = "取消全选";
+"generic.done" = "完成";
+"generic.delete" = "删除";
+
+/* Home - Edit Mode */
+"home.selected_count" = "已选择 %d 个";
+"home.delete_confirm_title" = "删除脚本";
+"home.delete_confirm_message" = "确定要删除选中的 %d 个脚本吗？此操作无法撤销。";
+"home.no_description" = "暂无描述";
+
+/* Background Settings */
+"background.title" = "后台运行";
+"background.hud_style" = "HUD 样式";
+"background.hud_size" = "指示器尺寸";
+"background.hud_size.small" = "小 (20pt)";
+"background.hud_size.medium" = "中 (24pt)";
+"background.hud_size.large" = "大 (32pt)";
+"background.breathing_effect" = "呼吸灯效果";
+"background.breathing_footer" = "启用后指示器将有柔和的明暗渐变动画和发光效果";
+"background.process_info" = "进程信息";
+"background.daemon_status" = "守护进程";
+
+/* Trigger Button Style */
+"background.trigger_style" = "触发按钮样式";
+"background.trigger_style_footer" = "调整手动触发悬浮按钮的外观尺寸";
+"background.trigger_width" = "按钮宽度";
+"background.trigger_height" = "按钮高度";
+"background.trigger_corner_radius" = "圆角半径";
+"background.trigger_icon_size" = "图标尺寸";
+"background.trigger_reset" = "恢复默认设置";
+
+/* HUD Color Settings */
+"background.hud_color" = "HUD 指示器颜色";
+"background.hud_color_footer" = "自定义指示器在不同状态下的颜色显示";
+"background.color_normal" = "正常状态";
+"background.color_running" = "运行中";
+"background.color_error" = "出错";
+"background.color_reset" = "恢复默认颜色";
+
+/* Daemon Status */
+"daemon.section_header" = "守护进程状态";
+"daemon.section_footer" = "查看 HUD 守护进程详细信息和运行状态";
+"daemon.no_installed" = "未安装 LaunchDaemons";
+"daemon.process_status" = "守护进程";
+"daemon.running" = "运行中";
+"daemon.stopped" = "已停止";
+"daemon.refresh" = "刷新状态";
+"daemon.process_name" = "进程名称";
+"daemon.process_state" = "进程状态";
+"daemon.uptime" = "运行时间";
+"daemon.start_time" = "启动时间";
+
+/* Process Status */
+"process.status.idle" = "空闲";
+"process.status.running" = "运行中";
+"process.status.sleeping" = "睡眠";
+"process.status.stopped" = "已停止";
+"process.status.zombie" = "僵尸";
+"process.status.unknown" = "未知";
+
+/* WebDAV Settings */
+"webdav.title" = "Web 控制台";
+"webdav.status.running" = "运行中";
+"webdav.status.stopped" = "已停止";
+"webdav.section.status" = "服务状态";
+"webdav.footer.running" = "点击地址可复制到剪贴板，在浏览器中打开即可访问控制台";
+"webdav.footer.stopped" = "启动 HTTP 服务器后，可在浏览器中远程管理脚本";
+"webdav.section.network" = "网络配置";
+"webdav.port" = "端口号";
+"webdav.address" = "访问地址";
+"webdav.copied" = "已复制";
+"webdav.apply_port" = "应用端口更改";
+"webdav.port_footer" = "修改端口后需要重启服务才能生效。默认端口: 8080";
+"webdav.section.features" = "功能特性";
+"webdav.feature.list" = "查看所有脚本列表";
+"webdav.feature.run" = "一键执行脚本";
+"webdav.feature.logs" = "实时查看运行日志";
+"webdav.feature.refresh" = "自动刷新状态";
+"webdav.section.security" = "安全提示";
+"webdav.security.network" = "请确保在受信任的网络环境中使用此功能";
+"webdav.security.vpn" = "建议仅在本地网络或 VPN 环境下启用";
+"webdav.security.noauth" = "当前未启用身份验证，任何人都可访问";
+"webdav.security.firewall" = "公共 Wi-Fi 下请勿开启此服务";
+"webdav.security.autostop" = "不使用时请及时关闭服务";
+"webdav.security.stacksize" = "若脚本报 stack overflow 错误，请增大「栈大小限制」设置";
+"webdav.section.error" = "错误信息";
+"webdav.alert.invalid_port" = "端口号无效";
+"webdav.alert.invalid_port_message" = "请输入有效的端口号 (1-65535)";
+"webdav.ip.unknown" = "未知";
+"webdav.ip.loading" = "正在获取...";
+
+/* HUD Settings */
+"hud.settings.title" = "悬浮组件";
+"hud.settings.scheduler_section" = "快捷操作";
+"hud.settings.scheduler_toggle" = "启用触发器";
+"hud.settings.scheduler_footer" = "启用触发器将自动启动悬浮组件";
+"hud.settings.hud_toggle" = "启用悬浮组件";
+
+"hud.settings.indicator_section" = "状态指示器";
+"hud.settings.indicator_size" = "指示器大小";
+"hud.settings.indicator_reset_position" = "重置位置";
+
+"hud.settings.trigger_section" = "快捷按钮样式";
+"hud.settings.trigger_scale" = "按钮缩放";
+"hud.settings.trigger_bg" = "背景颜色";
+"hud.settings.trigger_reset" = "恢复默认设置";
+
+"hud.settings.color_section" = "指示器颜色";
+"hud.settings.color_idle" = "空闲状态";
+"hud.settings.color_running" = "运行中";
+"hud.settings.color_error" = "错误状态";
+"hud.settings.color_warning" = "警告状态";
+"hud.settings.color_reset" = "恢复默认颜色";
+
+"hud.settings.background_section" = "背景颜色";
+"hud.settings.light_background" = "浅色模式背景";
+"hud.settings.dark_background" = "深色模式背景";
+
+/* Scheduler Errors */
+"scheduler.error.load_failed" = "加载任务失败: %@";
+"scheduler.error.save_failed" = "保存任务失败: %@";
+"scheduler.error.task_not_found" = "任务未找到: %@";
+"scheduler.error.script_not_found" = "脚本文件未找到";
+
+/* Scheduler Notifications */
+"scheduler.notification.started" = "任务「%@」已开始";
+"scheduler.notification.success" = "任务「%@」执行成功";
+"scheduler.notification.failed" = "任务「%@」执行失败: %@";
+
+/* File Monitor Path Input */
+"trigger.file_monitor.path_hint" = "输入以 / 开头的绝对路径";
+"trigger.file_monitor.error.empty_path" = "路径不能为空";
+"trigger.file_monitor.error.invalid_path" = "路径必须以 / 开头";
+"trigger.file_monitor.error.duplicate_path" = "该路径已在监控列表中";
+"trigger.file_monitor.preset_paths" = "常用路径";
+
+/* Preset File Paths */
+"preset_path.sms_database" = "短信数据库";
+"preset_path.sms_database.desc" = "SMS/iMessage 消息存储，收发短信时触发";
+"preset_path.sms_database_wal" = "短信数据库 (实时)";
+"preset_path.sms_database_wal.desc" = "WAL 日志文件，比主数据库更新更快";
+"preset_path.sms_face_icloud_database_wal" = "短信数据库 (实时静音)";
+"preset_path.sms_face_icloud_database_wal.desc" = "WAL 日志文件，比短信数据库 (实时)更新更安静";
+"preset_path.call_history" = "通话记录";
+"preset_path.call_history.desc" = "来电/去电/未接来电记录";
+"preset_path.safari_history" = "Safari 历史记录";
+"preset_path.safari_history.desc" = "网页浏览历史，访问新页面时触发";
+"preset_path.safari_bookmarks" = "Safari 书签";
+"preset_path.safari_bookmarks.desc" = "书签和收藏夹变更";
+"preset_path.preferences" = "系统偏好设置";
+"preset_path.preferences.desc" = "全局系统设置变更";
+"preset_path.health_database" = "健康数据库";
+"preset_path.health_database.desc" = "健康 App 数据，新增健康记录时触发";
+"preset_path.location_cache" = "位置服务缓存";
+"preset_path.location_cache.desc" = "定位信息缓存，位置变更时触发";
+"preset_path.address_book" = "通讯录";
+"preset_path.address_book.desc" = "联系人数据，新增/修改联系人时触发";
+"preset_path.calendar" = "日历";
+"preset_path.calendar.desc" = "日历事件数据，新增/修改事件时触发";
+"preset_path.notes" = "备忘录";
+"preset_path.notes.desc" = "备忘录数据，编辑笔记时触发";
+"preset_path.reminders" = "提醒事项";
+"preset_path.reminders.desc" = "提醒事项数据，新增/完成提醒时触发";
+"preset_path.appstore_queue" = "App Store 下载队列";
+"preset_path.appstore_queue.desc" = "应用下载/更新队列变更";
+"preset_path.system_log" = "系统日志";
+"preset_path.system_log.desc" = "诊断和崩溃日志";
+
+/* Generic */
+"generic.error" = "错误";
+"generic.add" = "添加";
+
+/* Auto Collapse (Floating Ball) */
+"hud.settings.auto_collapse" = "自动收起";
+"hud.settings.auto_collapse_section" = "悬浮球设置";
+"hud.settings.auto_collapse_footer" = "闲置一段时间后，侧边按钮将自动收起为悬浮球，点击可展开";
+"hud.settings.collapse_delay" = "收起延时";
+"hud.settings.floating_ball_size" = "悬浮球大小";
+"hud.settings.floating_ball_image" = "自定义图片";
+"hud.settings.floating_ball_image_select" = "选择图片";
+"hud.settings.floating_ball_image_clear" = "清除图片";
+
+/* Script Icon */
+"editor.icon.sf_symbol" = "系统图标";
+"editor.icon.custom_image" = "自定义图片";
+"editor.icon.clear_custom" = "清除自定义图标";
+"editor.icon.crop_hint" = "双指缩放和拖动来调整裁剪区域";
+
+/* Notification Copy on Tap */
+"notification.copy_success_title" = "已复制";
+"notification.copy_success_body" = "已复制内容: %@";
+
+/* Notification Trigger */
+"trigger.type.notification" = "通知监控";
+"trigger.hint.notification" = "当收到匹配的系统通知时自动触发执行。";
+"trigger.notification.config" = "通知监控设置";
+"trigger.notification.config_footer" = "监控指定 App 的系统通知。需要 TrollStore 环境。";
+"trigger.notification.bundle_id" = "App Bundle ID (正则)";
+"trigger.notification.bundle_id_placeholder" = "例如 com.apple.MobileSMS";
+"trigger.notification.title_filter" = "标题过滤 (正则)";
+"trigger.notification.title_filter_placeholder" = "可选的正则表达式...";
+"trigger.notification.message_filter" = "内容过滤 (正则)";
+"trigger.notification.message_filter_placeholder" = "可选的正则表达式...";
+"trigger.notification.debounce" = "防抖间隔";
+"trigger.notification.ignore_script" = "忽略脚本通知";
+"trigger.notification.ignore_script_footer" = "防止脚本发送通知时造成死循环。";
+"trigger.notification.selected_apps" = "已选应用";
+"trigger.notification.search_apps" = "搜索应用...";
+"trigger.notification.app_list" = "可选应用";
+"trigger.notification.no_apps" = "未找到应用";
+"trigger.notification.no_search_results" = "无搜索结果";
+"trigger.notification.more_apps" = "还有 %d 个应用，请使用搜索";

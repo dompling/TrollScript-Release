@@ -1,0 +1,16 @@
+/* Localized versions of Info.plist keys */
+
+"CFBundleDisplayName" = "TrollScript";
+"CFBundleName" = "TrollScript";
+
+"NSAppleMusicUsageDescription" = "TrollScript needs access to media library for music-related script functions";
+"NSCalendarsUsageDescription" = "TrollScript needs access to calendar for calendar-related script functions";
+"NSCameraUsageDescription" = "TrollScript needs access to camera for photo-related script functions";
+"NSContactsUsageDescription" = "TrollScript needs access to contacts for contact-related script functions";
+"NSFaceIDUsageDescription" = "TrollScript needs Face ID to protect sensitive scripts";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "TrollScript needs access to location for location-related script functions";
+"NSLocationWhenInUseUsageDescription" = "TrollScript needs access to location for location-related script functions";
+"NSMicrophoneUsageDescription" = "TrollScript needs access to microphone for recording-related script functions";
+"NSPhotoLibraryUsageDescription" = "TrollScript needs access to photo library for photo-related script functions";
+"NSRemindersUsageDescription" = "TrollScript needs access to reminders for reminder-related script functions";
+"NSSpeechRecognitionUsageDescription" = "TrollScript needs speech recognition for speech-related script functions";

@@ -1,0 +1,19 @@
+--- !tapi-tbd-v3
+archs:                 [ armv7, armv7s, arm64, arm64e ]
+platform:              ios
+flags:                 [ flat_namespace ]
+install-name:          /System/Library/PrivateFrameworks/BluetoothManager.framework/BluetoothManager
+current-version:       1
+compatibility-version: 1
+objc-constraint:       retain_release
+
+exports:
+  - archs:                [ armv7, armv7s, arm64, arm64e ]
+    re-exports:           [ /System/Library/PrivateFrameworks/BluetoothManager.framework/BluetoothManager ]
+    symbols:              [ _OBJC_CLASS_$_BluetoothManager,
+                            _OBJC_METACLASS_$_BluetoothManager
+                          ]
+    objc-classes:         [ BluetoothManager
+                          ]
+    objc-ivars:     [ ]
+...
