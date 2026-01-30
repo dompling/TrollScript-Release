@@ -29,8 +29,7 @@ theme:
     - search.highlight        # 搜索关键词高亮
     - navigation.sections      # 使左侧菜单以“分组”形式显示，层级感更强
     - navigation.expand        # 默认展开所有左侧菜单项
-    - navigation.index         # 点击父级菜单时直接跳转到该目录下的索引页
-    - toc.integrate
+    - toc.integrate            # 将页面目录(TOC)整合到左侧导航栏
 
 nav:
   - 介绍: README.md             # 对应 docs/index.md
