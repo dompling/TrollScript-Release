@@ -1,0 +1,177 @@
+name: Build and Release TrollScript
+
+on:
+  workflow_dispatch:  # 手动触发
+
+env:
+  XCODE_VERSION: '16.2'
+
+jobs:
+  build:
+    runs-on: macos-latest
+    
+    steps:
+      # 1. 拉取当前 Release 仓库
+      - name: Checkout Release Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_TOKEN }}
+      
+      # 2. 使用 GH_TOKEN 拉取私有仓库 TROLLSTORE
+      - name: Checkout Private TrollScript Repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ secrets.TROLLSTORE }}
+          token: ${{ secrets.GH_TOKEN }}
+          path: TrollScript-Private
+          fetch-depth: 0
+      
+      # 3. 设置 Xcode 环境
+      - name: Select Xcode Version
+        run: |
+          sudo xcode-select -s /Applications/Xcode_${{ env.XCODE_VERSION }}.app/Contents/Developer
+          xcodebuild -version
+      
+      - name: Install Dependencies
+        run: |
+          brew install ldid
+          brew install make
+      
+      # 4. 进入私有仓库目录，运行 build-tipa.sh
+      - name: Build TrollScript
+        working-directory: TrollScript-Private
+        run: |
+          chmod +x scripts/build-tipa.sh
+          ./scripts/build-tipa.sh
+      
+      # 5. 复制 release 文件夹到本项目
+      - name: Copy Build Artifacts to Release Repository
+        run: |
+          mkdir -p release
+          cp -r TrollScript-Private/release/* release/
+          
+          echo "📦 Build artifacts:"
+          ls -la release/
+      
+      # 6. 获取私有仓库最后 tag 的 commit 信息
+      - name: Get Version Info from Private Repository
+        id: version
+        working-directory: TrollScript-Private
+        run: |
+          # 获取最新 tag
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$LATEST_TAG" ]; then
+            LATEST_TAG="v0.0.0-$(git rev-parse --short HEAD)"
+            echo "⚠️ No tag found, using: $LATEST_TAG"
+          fi
+          
+          # 获取 tag 对应的 commit 信息
+          if git rev-parse "$LATEST_TAG" >/dev/null 2>&1; then
+            COMMIT_MSG=$(git log -1 --pretty=format:"%B" "$LATEST_TAG" 2>/dev/null || echo "New release")
+          else
+            COMMIT_MSG=$(git log -1 --pretty=format:"%B" 2>/dev/null || echo "New release")
+          fi
+          
+          COMMIT_SHORT=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
+          COMMIT_HASH=$(git rev-parse HEAD 2>/dev/null || echo "")
+          
+          echo "release_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+          echo "commit_short=$COMMIT_SHORT" >> $GITHUB_OUTPUT
+          echo "commit_hash=$COMMIT_HASH" >> $GITHUB_OUTPUT
+          
+          # 处理多行 commit 消息
+          EOF_MARKER=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "commit_msg<<$EOF_MARKER" >> $GITHUB_OUTPUT
+          echo "$COMMIT_MSG" >> $GITHUB_OUTPUT
+          echo "$EOF_MARKER" >> $GITHUB_OUTPUT
+          
+          echo "📌 Release Tag: $LATEST_TAG"
+          echo "📌 Commit: $COMMIT_SHORT"
+          echo "📌 Commit Message:"
+          echo "$COMMIT_MSG"
+      
+      # 7. 创建 Release Notes
+      - name: Create Release Notes
+        run: |
+          RELEASE_TAG="${{ steps.version.outputs.release_tag }}"
+          COMMIT_MSG="${{ steps.version.outputs.commit_msg }}"
+          COMMIT_SHORT="${{ steps.version.outputs.commit_short }}"
+          
+          cat > release-notes.md << EOF
+          **TrollScript $RELEASE_TAG**
+          
+          ## 📋 $(date -u '+%Y-%m-%d %H:%M:%S UTC') 更新内容
+          
+          $COMMIT_MSG
+          
+          ---
+          
+          > Commit: \`$COMMIT_SHORT\`
+          EOF
+          
+          echo "📝 Release Notes:"
+          cat release-notes.md
+      
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: TrollScript-${{ steps.version.outputs.release_tag }}
+          path: release/*.tipa
+          retention-days: 30
+      
+      # 8. 在本项目创建 Tag 并提交到 Release
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RELEASE_TAG="${{ steps.version.outputs.release_tag }}"
+          
+          # 查找 TIPA 文件
+          TIPA_FILE=$(find ./release -name "*.tipa" ! -name "*_latest.tipa" 2>/dev/null | head -1 || echo "")
+          LATEST_FILE="./release/TrollScript_latest.tipa"
+          
+          if [ -z "$TIPA_FILE" ]; then
+            echo "❌ No TIPA file found"
+            exit 1
+          fi
+          
+          echo "📦 Found TIPA: $TIPA_FILE"
+          
+          # 准备上传文件
+          UPLOAD_FILES="$TIPA_FILE"
+          [ -f "$LATEST_FILE" ] && UPLOAD_FILES="$UPLOAD_FILES $LATEST_FILE"
+          
+          # 删除已存在的 release（如果有）
+          if gh release view "$RELEASE_TAG" &>/dev/null; then
+            echo "⚠️ Release $RELEASE_TAG exists, deleting..."
+            gh release delete "$RELEASE_TAG" --yes || true
+            # 删除对应的 tag
+            git push origin :refs/tags/$RELEASE_TAG 2>/dev/null || true
+          fi
+          
+          # 创建新 release（会自动创建 tag）
+          gh release create "$RELEASE_TAG" \
+            $UPLOAD_FILES \
+            --title "🧙 TrollScript $RELEASE_TAG" \
+            --notes-file release-notes.md \
+            --draft=false \
+            --prerelease=false
+          
+          echo "✅ Release $RELEASE_TAG created!"
+          
+          # 更新 latest release
+          echo "📌 Updating latest release..."
+          if gh release view "latest" &>/dev/null; then
+            gh release delete "latest" --yes || true
+            git push origin :refs/tags/latest 2>/dev/null || true
+          fi
+          
+          gh release create "latest" \
+            "$LATEST_FILE" \
+            --title "🧙 TrollScript Latest $RELEASE_TAG" \
+            --notes-file release-notes.md \
+            --draft=false \
+            --prerelease=false
+          
+          echo "✅ Latest release updated!"
