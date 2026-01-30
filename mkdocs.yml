@@ -5,6 +5,8 @@ site_description: TrollScript 官方文档与 API 参考
 theme:
   name: material
   language: zh
+  logo: AppIcon.png    # 导航栏左上角的图标
+  favicon: AppIcon.png # 浏览器标签页的小图标
   palette:
     # 自动切换深色/浅色模式
     - media: "(prefers-color-scheme: light)"
@@ -23,7 +25,6 @@ theme:
         name: 切换至浅色模式     
   features:
     - navigation.instant      # 页面即时加载 (SPA 体验)
-    - navigation.tabs         # 顶部标签页导航
     - navigation.tracking     # 锚点跟随
     - content.code.copy       # 代码块一键复制
     - search.suggest          # 搜索建议
@@ -31,6 +32,7 @@ theme:
     - navigation.sections      # 使左侧菜单以“分组”形式显示，层级感更强
     - navigation.expand        # 默认展开所有左侧菜单项
     - navigation.index         # 点击父级菜单时直接跳转到该目录下的索引页
+    - toc.integrate
 
 nav:
   - 介绍: README.md             # 对应 docs/index.md
@@ -44,6 +46,8 @@ nav:
       - 常见问题: FAQ.md
 
 markdown_extensions:
+  - toc:
+      permalink: true
   - admonition                # 警告/提示框
   - pymdownx.details          # 折叠详情
   - pymdownx.superfences      # 嵌套代码块
