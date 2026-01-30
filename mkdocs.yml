@@ -20,7 +20,7 @@ theme:
       accent: cyan
       toggle:
         icon: material/brightness-4
-        name: 切换至浅色模式
+        name: 切换至浅色模式     
   features:
     - navigation.instant      # 页面即时加载 (SPA 体验)
     - navigation.tabs         # 顶部标签页导航
@@ -28,11 +28,20 @@ theme:
     - content.code.copy       # 代码块一键复制
     - search.suggest          # 搜索建议
     - search.highlight        # 搜索关键词高亮
+    - navigation.sections      # 使左侧菜单以“分组”形式显示，层级感更强
+    - navigation.expand        # 默认展开所有左侧菜单项
+    - navigation.index         # 点击父级菜单时直接跳转到该目录下的索引页
 
 nav:
-  - 介绍: index.md      # 默认会将仓库的 README.md 链接到这里（见下方说明）
-  - 中文文档: API.md    # 链接你的 API.md
-  - English Document: API.en.md    # 链接你的 API.md
+  - 介绍: index.md             # 对应 docs/index.md
+  - 快速开始:
+      - 安装指南: install.md    # 二级菜单示例
+      - 环境要求: requirements.md
+  - API 手册: 
+      - 中文文档: API.md       # 链接到你的 API.md
+      - English: API.en.md    # 链接到你的 API.en.md
+  - 更多:
+      - 常见问题: faq.md
 
 markdown_extensions:
   - admonition                # 警告/提示框
