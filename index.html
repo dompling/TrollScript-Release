@@ -1143,12 +1143,8 @@ API，实现普通 App 无法完成的功能。</p>
 <p>脚本同时触发，可能会发生崩溃或者其他未知问题，请注意使用。可以反馈修复。</p>
 </blockquote>
 <h3 id="_5">全局参数</h3>
-<ol>
-<li><strong>$triggerInput</strong><ul>
-<li>通知监控参数</li>
-</ul>
-</li>
-</ol>
+<p><strong>$triggerInput</strong>
+- 通知监控参数</p>
 <div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">$triggerInput</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;notification&quot;</span><span class="p">;</span><span class="w">     </span><span class="c1">// 触发类型</span>
 <span class="w">    </span><span class="nx">bundleId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w">         </span><span class="c1">// 来源 App Bundle ID</span>
@@ -1157,25 +1153,21 @@ API，实现普通 App 无法完成的功能。</p>
 <span class="w">    </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w">        </span><span class="c1">// 时间戳 (毫秒)</span>
 <span class="p">}</span>
 </code></pre></div>
-<ol>
-<li><strong>$args</strong><ul>
-<li>快捷指令参数</li>
-</ul>
-</li>
-</ol>
+<p><strong>$args</strong>
+- 快捷指令参数</p>
 <div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">$args</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">text?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w">           </span><span class="c1">// 输入内容</span>
 <span class="w">    </span><span class="nx">json?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w">           </span><span class="c1">// 输入JSON</span>
 <span class="p">}</span>
 </code></pre></div>
-<ol>
-<li><strong>脚本返回值</strong></li>
+<p><strong>脚本返回值</strong></p>
+<ul>
 <li>控制台显示返回值</li>
-<li>返回给快捷指令
+<li>返回给快捷指令</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;123&quot;</span>
 <span class="k">return</span><span class="w"> </span><span class="nx">test</span><span class="p">;</span>
-</code></pre></div></li>
-</ol>
+</code></pre></div>
 <h2 id="_6">安装方式</h2>
 <h3 id="_7">方式一：直接下载</h3>
 <ol>
