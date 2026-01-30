@@ -12,4 +12,16 @@
          <loc>https://trollscript.qzz.io/API/</loc>
          <lastmod>2026-01-30</lastmod>
     </url>
+    <url>
+         <loc>https://trollscript.qzz.io/FAQ/</loc>
+         <lastmod>2026-01-30</lastmod>
+    </url>
+    <url>
+         <loc>https://trollscript.qzz.io/INSTALL/</loc>
+         <lastmod>2026-01-30</lastmod>
+    </url>
+    <url>
+         <loc>https://trollscript.qzz.io/requirements/</loc>
+         <lastmod>2026-01-30</lastmod>
+    </url>
 </urlset>
