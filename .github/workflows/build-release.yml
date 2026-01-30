@@ -5,6 +5,9 @@ on:
   repository_dispatch:
     types: [build_release]
 
+permissions:
+  contents: write  # 允许创建 Release 和 Tag
+
 jobs:
   build:
     runs-on: macos-15
