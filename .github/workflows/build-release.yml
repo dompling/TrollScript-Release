@@ -222,8 +222,10 @@ jobs:
           echo "📌 Updating latest release..."
           if gh release view "latest" &>/dev/null; then
             gh release delete "latest" --yes || true
-            git push origin :refs/tags/latest 2>/dev/null || true
           fi
+          # 删除远程和本地的 latest tag
+          git push origin :refs/tags/latest 2>/dev/null || true
+          git tag -d latest 2>/dev/null || true
           
           gh release create "latest" \
             "$LATEST_FILE" \
