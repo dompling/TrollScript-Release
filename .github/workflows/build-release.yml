@@ -195,11 +195,7 @@ jobs:
           fi
           
           echo "📦 Found TIPA: $TIPA_FILE"
-          
-          # 准备上传文件
-          UPLOAD_FILES="$TIPA_FILE"
-          [ -f "$LATEST_FILE" ] && UPLOAD_FILES="$UPLOAD_FILES $LATEST_FILE"
-          
+
           # 删除已存在的 release（如果有）
           if gh release view "$RELEASE_TAG" &>/dev/null; then
             echo "⚠️ Release $RELEASE_TAG exists, deleting..."
@@ -207,10 +203,10 @@ jobs:
             # 删除对应的 tag
             git push origin :refs/tags/$RELEASE_TAG 2>/dev/null || true
           fi
-          
-          # 创建新 release（会自动创建 tag）
+
+          # 创建新 release（只上传版本号文件）
           gh release create "$RELEASE_TAG" \
-            $UPLOAD_FILES \
+            "$TIPA_FILE" \
             --title "🧙 TrollScript $RELEASE_TAG" \
             --notes-file release-notes.md \
             --draft=false \
