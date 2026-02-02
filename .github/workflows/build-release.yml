@@ -159,7 +159,7 @@ jobs:
           cat > release-notes.md << EOF
           **TrollScript $RELEASE_TAG**
           
-          ## 📋 $(date -u '+%Y-%m-%d %H:%M:%S UTC') 更新内容
+          ## 📋 $(TZ='Asia/Shanghai' date '+%Y-%m-%d %H:%M:%S CST') 更新内容
           
           $COMMIT_MSG
           
