@@ -16,13 +16,6 @@ const messages = sms.read(20);
 messages.forEach(msg => {
   console.log(`${msg.address}: ${msg.text}`);
 });
-
-// 提取验证码
-const code = sms.getVerificationCode();
-if (code) {
-  console.log('验证码:', code);
-  clipboard.setText(code);
-}
 ```
 
 ---
@@ -102,30 +95,6 @@ console.log(`找到 ${results.length} 条相关短信`);
 // 获取某个号码的所有短信
 const messages = sms.getByAddress('10086', 50);
 console.log(`与 10086 的短信记录: ${messages.length} 条`);
-```
-
----
-
-### 验证码提取
-
-#### `sms.getVerificationCode(seconds?)`
-从最近的短信中提取验证码。**参数:** `seconds` (number, 可选，默认 60) **返回:** `string | null`
-
-自动识别常见的验证码格式（4-8 位数字）。
-
-```javascript
-// 提取最近 60 秒内的验证码
-const code = sms.getVerificationCode();
-if (code) {
-  console.log('验证码:', code);
-  clipboard.setText(code);
-  notification.send('验证码', code);
-} else {
-  console.log('未找到验证码');
-}
-
-// 提取最近 2 分钟内的验证码
-const code2 = sms.getVerificationCode(120);
 ```
 
 ---
