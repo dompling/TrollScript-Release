@@ -20,10 +20,132 @@ jobs:
         with:
           fetch-depth: 0
 
+      # 2. 使用 GH_TOKEN 拉取私有仓库 TROLLSTORE
+      - name: Checkout Private TrollScript Repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ secrets.TROLLSTORE }}
+          token: ${{ secrets.GH_TOKEN }}
+          path: TrollScript-Private
+          fetch-depth: 0
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: 3.x
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      # 3. 生成 API 文档和 NPM 包
+      - name: Generate API Documentation and NPM Package
+        run: |
+          echo "📋 Generating API documentation..."
+
+          if [ -f "TrollScript-Private/scripts/generate_api_docs.py" ] && [ -f "TrollScript-Private/TrollScript/Resources/JSModulesAPI.zh.json" ]; then
+            # Generate API.md
+            python3 TrollScript-Private/scripts/generate_api_docs.py TrollScript-Private/TrollScript/Resources/JSModulesAPI.zh.json ./API.md
+            python3 TrollScript-Private/scripts/generate_api_docs.py TrollScript-Private/TrollScript/Resources/JSModulesAPI.en.json ./API.en.md
+            echo "✅ Generated API.md and API.en.md"
+          else
+            echo "⚠️ API generation scripts or data files not found"
+          fi
+
+          if [ -f "TrollScript-Private/scripts/generate_npm_package.py" ]; then
+            # Generate NPM Package
+            mkdir -p npm
+            PACKAGE_VERSION="1.0.${{ github.run_number }}"
+            python3 TrollScript-Private/scripts/generate_npm_package.py TrollScript-Private/TrollScript/Resources/JSModulesAPI.zh.json ./npm $PACKAGE_VERSION
+            echo "✅ Generated NPM package (v$PACKAGE_VERSION) in npm/"
+          else
+            echo "⚠️ NPM package generation script not found"
+          fi
+
+      # 检查 API 是否有变化
+      - name: Check if API changed
+        id: check_api
+        run: |
+          API_CHANGED="false"
+
+          # Check if API.md exists and has changes
+          if [ -f "API.md" ]; then
+            # Compare with git to see if there are changes
+            if ! git diff --quiet API.md 2>/dev/null; then
+              API_CHANGED="true"
+            fi
+          else
+            # If API.md doesn't exist yet, consider it as changed
+            API_CHANGED="true"
+          fi
+
+          echo "api_changed=$API_CHANGED" >> $GITHUB_OUTPUT
+          echo "📋 API changed: $API_CHANGED"
+
+      # 发布 NPM 包（仅在 API 有变化时）
+      - name: Publish NPM Package
+        if: success() && steps.check_api.outputs.api_changed == 'true'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ ! -d "npm" ]; then
+             echo "⚠️ Skipping NPM publish: Directory npm/ not found"
+             exit 0
+          fi
+
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+             echo "⚠️ Skipping NPM publish: NODE_AUTH_TOKEN is empty. Please check if NPM_TOKEN secret is set correctly."
+             exit 0
+          fi
+
+          cd npm
+          echo "📦 Publishing to NPM..."
+          npm publish --access public
+          echo "✅ Published successfully"
+
+      # 4. 复制私有仓库的文件到当前仓库
+      - name: Copy files from Private Repository
+        run: |
+          echo "📋 Starting file sync from private repository..."
+
+          # Sync templates directory
+          if [ -d "TrollScript-Private/templates" ]; then
+            rm -rf templates
+            cp -r TrollScript-Private/templates ./
+            echo "✅ Synced templates/"
+          else
+            echo "⚠️ templates/ not found in private repository"
+          fi
+
+          # Sync README.md
+          if [ -f "TrollScript-Private/templates/README.md" ]; then
+            cp TrollScript-Private/templates/README.md ./
+            echo "✅ Synced README.md"
+          else
+            echo "⚠️ README.md not found in private repository"
+          fi
+
+      # 5. 提交更改到当前仓库
+      - name: Commit and Push changes
+        if: success()
+        run: |
+          echo "📋 Checking for changes..."
+
+          # Check if there are changes
+          if [ -n "$(git status --porcelain)" ]; then
+            git config --local user.email "github-actions[bot]@users.noreply.github.com"
+            git config --local user.name "github-actions[bot]"
+
+            git add -A
+            git commit -m "🔄 Sync from private repository - $(date '+%Y-%m-%d %H:%M:%S')"
+            git push
+
+            echo "✅ Changes committed and pushed"
+          else
+            echo "ℹ️ No changes to commit"
+          fi
 
       - name: Install dependencies
         run: |
@@ -34,6 +156,7 @@ jobs:
           mkdir -p docs
           cp *.md docs/
           cp templates/*.md docs/
+          cp templates/API/*.md docs/
           cp -r AppIcon.png docs/
           cp -r images docs/
           cp -r CNAME docs/
