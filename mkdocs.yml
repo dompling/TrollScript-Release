@@ -2,7 +2,6 @@ site_name: TrollScript
 site_url: https://trollscript.qzz.io
 site_description: TrollScript 官方文档与 API 参考
 repo_url: https://github.com/dompling/TrollScript-Release
-repo_name: GitHub
 
 theme:
   name: material
@@ -37,6 +36,7 @@ nav:
   - 介绍: README.md             # 对应 docs/index.md
   - 安装指南: INSTALL.md    # 二级菜单示例
   - 环境要求: requirements.md
+  - 测试示例脚本: TestScripts.md
   - API 参考:
     - App: App.md
     - 日历: Calendar.md
