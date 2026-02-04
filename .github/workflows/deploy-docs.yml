@@ -45,23 +45,19 @@ jobs:
         run: |
           echo "📋 Generating API documentation..."
 
-          if [ -f "TrollScript-Private/scripts/generate_api_docs.py" ] && [ -f "TrollScript-Private/TrollScript/Resources/JSModulesAPI.zh.json" ]; then
-            # Generate API.md
-            python3 TrollScript-Private/scripts/generate_api_docs.py TrollScript-Private/TrollScript/Resources/JSModulesAPI.zh.json ./API.md
-            python3 TrollScript-Private/scripts/generate_api_docs.py TrollScript-Private/TrollScript/Resources/JSModulesAPI.en.json ./API.en.md
+          if [ -d "TrollScript-Private/JSModulesAPI" ]; then
+            # Generate API.md from split module directories
+            python3 TrollScript-Private/scripts/generate_api_docs.py TrollScript-Private/JSModulesAPI/zh ./API.md
+            python3 TrollScript-Private/scripts/generate_api_docs.py TrollScript-Private/JSModulesAPI/en ./API.en.md
             echo "✅ Generated API.md and API.en.md"
-          else
-            echo "⚠️ API generation scripts or data files not found"
-          fi
 
-          if [ -f "TrollScript-Private/scripts/generate_npm_package.py" ]; then
             # Generate NPM Package
             mkdir -p npm
             PACKAGE_VERSION="1.0.${{ github.run_number }}"
-            python3 TrollScript-Private/scripts/generate_npm_package.py TrollScript-Private/TrollScript/Resources/JSModulesAPI.zh.json ./npm $PACKAGE_VERSION
+            python3 TrollScript-Private/scripts/generate_npm_package.py TrollScript-Private/JSModulesAPI/zh ./npm $PACKAGE_VERSION
             echo "✅ Generated NPM package (v$PACKAGE_VERSION) in npm/"
           else
-            echo "⚠️ NPM package generation script not found"
+            echo "⚠️ JSModulesAPI directory not found"
           fi
 
       # 检查 API 是否有变化
