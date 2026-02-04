@@ -22,7 +22,7 @@ The following icons indicate API compatibility when running in background trigge
 - [storage](#storage) ✅ - Local key-value storage
 - [icloud](#icloud) ✅ - iCloud file operations
 - [file](#file) ✅ - File system operations
-- [http](#http) ✅ - Network requests
+- [http](#http) ✅ - Network requests (Async Promise-based)
 - [network](#network) ⚠️ - Network operations
 - [app](#app) ⚠️ - App operations and management
 - [haptic](#haptic) ⚠️ - Haptic feedback
@@ -796,24 +796,24 @@ Check if the Root Helper is available
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
-Network requests
+Network requests (Async Promise-based)
 
 ### `http.get`
 
 **Signature:** `get(url, options?)`
 
-Send a GET request
+Send a GET request (async, returns Promise)
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | Target URL | No |
-| `options` | `object` | Request options { headers, timeout } | Yes |
+| `options` | `object` | Request options { headers, timeout, insecure, sync } | Yes |
 
-**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
+**Returns:** `Promise<{ success: boolean, status?: number, data?: string, headers?: object, error?: string }>`
 
-*Object containing success status, status code, response data, and response headers*
+*Returns a Promise that resolves with success status, status code, response data, and headers. Set sync: true for synchronous mode*
 
 ---
 
@@ -821,16 +821,18 @@ Send a GET request
 
 **Signature:** `post(url, options?)`
 
-Send a POST request
+Send a POST request (async, returns Promise)
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | Target URL | No |
-| `options` | `object` | Request options { body, headers, timeout, insecure } | Yes |
+| `options` | `object` | Request options { body, headers, timeout, insecure, sync } | Yes |
 
-**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
+**Returns:** `Promise<{ success: boolean, status?: number, data?: string, headers?: object, error?: string }>`
+
+*Returns a Promise that resolves with the response. Set sync: true for synchronous mode*
 
 ---
 
@@ -838,16 +840,18 @@ Send a POST request
 
 **Signature:** `put(url, options?)`
 
-Send a PUT request
+Send a PUT request (async, returns Promise)
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | Target URL | No |
-| `options` | `object` | Request options { body, headers, timeout, insecure } | Yes |
+| `options` | `object` | Request options { body, headers, timeout, insecure, sync } | Yes |
 
-**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
+**Returns:** `Promise<{ success: boolean, status?: number, data?: string, headers?: object, error?: string }>`
+
+*Returns a Promise that resolves with the response*
 
 ---
 
@@ -855,16 +859,18 @@ Send a PUT request
 
 **Signature:** `delete(url, options?)`
 
-Send a DELETE request
+Send a DELETE request (async, returns Promise)
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | Target URL | No |
-| `options` | `object` | Request options { headers, timeout, insecure } | Yes |
+| `options` | `object` | Request options { headers, timeout, insecure, sync } | Yes |
 
-**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
+**Returns:** `Promise<{ success: boolean, status?: number, data?: string, headers?: object, error?: string }>`
+
+*Returns a Promise that resolves with the response*
 
 ---
 
@@ -872,16 +878,18 @@ Send a DELETE request
 
 **Signature:** `patch(url, options?)`
 
-Send a PATCH request
+Send a PATCH request (async, returns Promise)
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | Target URL | No |
-| `options` | `object` | Request options { body, headers, timeout, insecure } | Yes |
+| `options` | `object` | Request options { body, headers, timeout, insecure, sync } | Yes |
 
-**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
+**Returns:** `Promise<{ success: boolean, status?: number, data?: string, headers?: object, error?: string }>`
+
+*Returns a Promise that resolves with the response*
 
 ---
 
@@ -889,16 +897,18 @@ Send a PATCH request
 
 **Signature:** `head(url, options?)`
 
-Send a HEAD request
+Send a HEAD request (async, returns Promise)
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | Target URL | No |
-| `options` | `object` | Request options { headers, timeout, insecure } | Yes |
+| `options` | `object` | Request options { headers, timeout, insecure, sync } | Yes |
 
-**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
+**Returns:** `Promise<{ success: boolean, status?: number, data?: string, headers?: object, error?: string }>`
+
+*Returns a Promise that resolves with the response (data is typically empty for HEAD requests)*
 
 ---
 
@@ -906,16 +916,18 @@ Send a HEAD request
 
 **Signature:** `request(url, options)`
 
-Send a custom HTTP request
+Send a custom HTTP request (async, returns Promise)
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | Target URL | No |
-| `options` | `object` | Request options { method, body, headers, timeout, insecure } | No |
+| `options` | `object` | Request options { method, body, headers, timeout, insecure, sync } | No |
 
-**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
+**Returns:** `Promise<{ success: boolean, status?: number, data?: string, headers?: object, error?: string }>`
+
+*Returns a Promise that resolves with the response*
 
 ---
 
@@ -923,7 +935,7 @@ Send a custom HTTP request
 
 **Signature:** `download(url, path, options?)`
 
-Download a file from a URL
+Download a file (async, returns Promise)
 
 **Parameters:**
 
@@ -931,11 +943,11 @@ Download a file from a URL
 |------|------|-------------|----------|
 | `url` | `string` | Download source URL | No |
 | `path` | `string` | Local destination path to save the file | No |
-| `options` | `object` | Request options { insecure } | Yes |
+| `options` | `object` | Request options { insecure, sync } | Yes |
 
-**Returns:** `{ success: boolean, path?: string, error?: string }`
+**Returns:** `Promise<{ success: boolean, path?: string, error?: string }>`
 
-*Object containing success status and the local file path*
+*Returns a Promise that resolves with success status and local file path*
 
 ---
 

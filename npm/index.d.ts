@@ -331,61 +331,67 @@ declare const file: File;
 
 interface Http {
     /**
-     * 发送 GET 请求
+     * 发送 GET 请求（异步，返回 Promise）
      * @param url 请求地址
-     * @param options 请求选项 { headers, timeout, insecure }
-     * @returns 包含成功状态、状态码、响应数据、响应头的对象
+     * @param options 请求选项 { headers, timeout, insecure, sync }
+     * @returns 返回 Promise，resolve 时包含成功状态、状态码、响应数据、响应头的对象。设置 sync: true 可使用同步模式
      */
     get(url: string, options?: Record<string, any>): any;
 
     /**
-     * 发送 POST 请求
+     * 发送 POST 请求（异步，返回 Promise）
      * @param url 请求地址
-     * @param options 请求选项 { body, headers, timeout, insecure }
+     * @param options 请求选项 { body, headers, timeout, insecure, sync }
+     * @returns 返回 Promise，resolve 时包含响应结果。设置 sync: true 可使用同步模式
      */
     post(url: string, options?: Record<string, any>): any;
 
     /**
-     * 发送 PUT 请求
+     * 发送 PUT 请求（异步，返回 Promise）
      * @param url 请求地址
-     * @param options 请求选项 { body, headers, timeout, insecure }
+     * @param options 请求选项 { body, headers, timeout, insecure, sync }
+     * @returns 返回 Promise，resolve 时包含响应结果
      */
     put(url: string, options?: Record<string, any>): any;
 
     /**
-     * 发送 DELETE 请求
+     * 发送 DELETE 请求（异步，返回 Promise）
      * @param url 请求地址
-     * @param options 请求选项 { headers, timeout, insecure }
+     * @param options 请求选项 { headers, timeout, insecure, sync }
+     * @returns 返回 Promise，resolve 时包含响应结果
      */
     delete(url: string, options?: Record<string, any>): any;
 
     /**
-     * 发送 PATCH 请求
+     * 发送 PATCH 请求（异步，返回 Promise）
      * @param url 请求地址
-     * @param options 请求选项 { body, headers, timeout, insecure }
+     * @param options 请求选项 { body, headers, timeout, insecure, sync }
+     * @returns 返回 Promise，resolve 时包含响应结果
      */
     patch(url: string, options?: Record<string, any>): any;
 
     /**
-     * 发送 HEAD 请求
+     * 发送 HEAD 请求（异步，返回 Promise）
      * @param url 请求地址
-     * @param options 请求选项 { headers, timeout, insecure }
+     * @param options 请求选项 { headers, timeout, insecure, sync }
+     * @returns 返回 Promise，resolve 时包含响应结果（HEAD 请求通常 data 为空）
      */
     head(url: string, options?: Record<string, any>): any;
 
     /**
-     * 发送自定义请求
+     * 发送自定义 HTTP 请求（异步，返回 Promise）
      * @param url 请求地址
-     * @param options 请求选项 { method, body, headers, timeout, insecure }
+     * @param options 请求选项 { method, body, headers, timeout, insecure, sync }
+     * @returns 返回 Promise，resolve 时包含响应结果
      */
     request(url: string, options: Record<string, any>): any;
 
     /**
-     * 下载文件
+     * 下载文件（异步，返回 Promise）
      * @param url 下载地址
      * @param path 保存路径
-     * @param options 请求选项 { insecure }
-     * @returns 包含成功状态和本地文件路径的对象
+     * @param options 请求选项 { insecure, sync }
+     * @returns 返回 Promise，resolve 时包含成功状态和本地文件路径
      */
     download(url: string, path: string, options?: Record<string, any>): any;
 

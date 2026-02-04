@@ -22,7 +22,7 @@ The following icons indicate API compatibility when running in background trigge
 - [storage](#storage) ✅ - 本地存储
 - [icloud](#icloud) ✅ - iCloud 文件操作
 - [file](#file) ✅ - 文件操作
-- [http](#http) ✅ - 网络请求
+- [http](#http) ✅ - 网络请求（异步 Promise 模式）
 - [network](#network) ⚠️ - 网络操作
 - [app](#app) ⚠️ - 应用操作与管理
 - [haptic](#haptic) ⚠️ - 触觉反馈
@@ -795,24 +795,24 @@ iCloud 文件操作
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
-网络请求
+网络请求（异步 Promise 模式）
 
 ### `http.get`
 
 **Signature:** `get(url, options?)`
 
-发送 GET 请求
+发送 GET 请求（异步，返回 Promise）
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | 请求地址 | No |
-| `options` | `object` | 请求选项 { headers, timeout, insecure } | Yes |
+| `options` | `object` | 请求选项 { headers, timeout, insecure, sync } | Yes |
 
-**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
+**Returns:** `Promise<{ success: boolean, status?: number, data?: string, headers?: object, error?: string }>`
 
-*包含成功状态、状态码、响应数据、响应头的对象*
+*返回 Promise，resolve 时包含成功状态、状态码、响应数据、响应头的对象。设置 sync: true 可使用同步模式*
 
 ---
 
@@ -820,16 +820,18 @@ iCloud 文件操作
 
 **Signature:** `post(url, options?)`
 
-发送 POST 请求
+发送 POST 请求（异步，返回 Promise）
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | 请求地址 | No |
-| `options` | `object` | 请求选项 { body, headers, timeout, insecure } | Yes |
+| `options` | `object` | 请求选项 { body, headers, timeout, insecure, sync } | Yes |
 
-**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
+**Returns:** `Promise<{ success: boolean, status?: number, data?: string, headers?: object, error?: string }>`
+
+*返回 Promise，resolve 时包含响应结果。设置 sync: true 可使用同步模式*
 
 ---
 
@@ -837,16 +839,18 @@ iCloud 文件操作
 
 **Signature:** `put(url, options?)`
 
-发送 PUT 请求
+发送 PUT 请求（异步，返回 Promise）
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | 请求地址 | No |
-| `options` | `object` | 请求选项 { body, headers, timeout, insecure } | Yes |
+| `options` | `object` | 请求选项 { body, headers, timeout, insecure, sync } | Yes |
 
-**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
+**Returns:** `Promise<{ success: boolean, status?: number, data?: string, headers?: object, error?: string }>`
+
+*返回 Promise，resolve 时包含响应结果*
 
 ---
 
@@ -854,16 +858,18 @@ iCloud 文件操作
 
 **Signature:** `delete(url, options?)`
 
-发送 DELETE 请求
+发送 DELETE 请求（异步，返回 Promise）
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | 请求地址 | No |
-| `options` | `object` | 请求选项 { headers, timeout, insecure } | Yes |
+| `options` | `object` | 请求选项 { headers, timeout, insecure, sync } | Yes |
 
-**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
+**Returns:** `Promise<{ success: boolean, status?: number, data?: string, headers?: object, error?: string }>`
+
+*返回 Promise，resolve 时包含响应结果*
 
 ---
 
@@ -871,16 +877,18 @@ iCloud 文件操作
 
 **Signature:** `patch(url, options?)`
 
-发送 PATCH 请求
+发送 PATCH 请求（异步，返回 Promise）
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | 请求地址 | No |
-| `options` | `object` | 请求选项 { body, headers, timeout, insecure } | Yes |
+| `options` | `object` | 请求选项 { body, headers, timeout, insecure, sync } | Yes |
 
-**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
+**Returns:** `Promise<{ success: boolean, status?: number, data?: string, headers?: object, error?: string }>`
+
+*返回 Promise，resolve 时包含响应结果*
 
 ---
 
@@ -888,16 +896,18 @@ iCloud 文件操作
 
 **Signature:** `head(url, options?)`
 
-发送 HEAD 请求
+发送 HEAD 请求（异步，返回 Promise）
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | 请求地址 | No |
-| `options` | `object` | 请求选项 { headers, timeout, insecure } | Yes |
+| `options` | `object` | 请求选项 { headers, timeout, insecure, sync } | Yes |
 
-**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
+**Returns:** `Promise<{ success: boolean, status?: number, data?: string, headers?: object, error?: string }>`
+
+*返回 Promise，resolve 时包含响应结果（HEAD 请求通常 data 为空）*
 
 ---
 
@@ -905,16 +915,18 @@ iCloud 文件操作
 
 **Signature:** `request(url, options)`
 
-发送自定义请求
+发送自定义 HTTP 请求（异步，返回 Promise）
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | 请求地址 | No |
-| `options` | `object` | 请求选项 { method, body, headers, timeout, insecure } | No |
+| `options` | `object` | 请求选项 { method, body, headers, timeout, insecure, sync } | No |
 
-**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
+**Returns:** `Promise<{ success: boolean, status?: number, data?: string, headers?: object, error?: string }>`
+
+*返回 Promise，resolve 时包含响应结果*
 
 ---
 
@@ -922,7 +934,7 @@ iCloud 文件操作
 
 **Signature:** `download(url, path, options?)`
 
-下载文件
+下载文件（异步，返回 Promise）
 
 **Parameters:**
 
@@ -930,11 +942,11 @@ iCloud 文件操作
 |------|------|-------------|----------|
 | `url` | `string` | 下载地址 | No |
 | `path` | `string` | 保存路径 | No |
-| `options` | `object` | 请求选项 { insecure } | Yes |
+| `options` | `object` | 请求选项 { insecure, sync } | Yes |
 
-**Returns:** `{ success: boolean, path?: string, error?: string }`
+**Returns:** `Promise<{ success: boolean, path?: string, error?: string }>`
 
-*包含成功状态和本地文件路径的对象*
+*返回 Promise，resolve 时包含成功状态和本地文件路径*
 
 ---
 
