@@ -1021,34 +1021,6 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        验证码提取
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="验证码提取">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#smsgetverificationcodeseconds" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms.getVerificationCode(seconds?)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         聊天管理
       
     </span>
@@ -1074,7 +1046,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         统计信息
@@ -1168,7 +1140,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         完整示例
@@ -1240,7 +1212,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         注意事项
@@ -1494,13 +1466,6 @@
 <span class="nx">messages</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">msg</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">address</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">text</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="p">});</span>
-
-<span class="c1">// 提取验证码</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getVerificationCode</span><span class="p">();</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">code</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;验证码:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span>
-<span class="p">}</span>
 </code></pre></div>
 <hr />
 <h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
@@ -1560,25 +1525,7 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`与 10086 的短信记录: </span><span class="si">${</span><span class="nx">messages</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条`</span><span class="p">);</span>
 </code></pre></div>
 <hr />
-<h3 id="_4">验证码提取<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="smsgetverificationcodeseconds"><code>sms.getVerificationCode(seconds?)</code><a class="headerlink" href="#smsgetverificationcodeseconds" title="Permanent link">&para;</a></h4>
-<p>从最近的短信中提取验证码。<strong>参数:</strong> <code>seconds</code> (number, 可选，默认 60) <strong>返回:</strong> <code>string | null</code></p>
-<p>自动识别常见的验证码格式（4-8 位数字）。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 提取最近 60 秒内的验证码</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getVerificationCode</span><span class="p">();</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">code</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;验证码:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;验证码&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">);</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;未找到验证码&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="c1">// 提取最近 2 分钟内的验证码</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">code2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getVerificationCode</span><span class="p">(</span><span class="mf">120</span><span class="p">);</span>
-</code></pre></div>
-<hr />
-<h3 id="_5">聊天管理<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_4">聊天管理<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="smsgetchats"><code>sms.getChats()</code><a class="headerlink" href="#smsgetchats" title="Permanent link">&para;</a></h4>
 <p>获取短信聊天列表。<strong>返回:</strong> <code>Chat[]</code></p>
 <p><strong>Chat 对象结构:</strong>
@@ -1596,7 +1543,7 @@
 <span class="p">});</span>
 </code></pre></div>
 <hr />
-<h3 id="_6">统计信息<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_5">统计信息<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="smsgetstatistics"><code>sms.getStatistics()</code><a class="headerlink" href="#smsgetstatistics" title="Permanent link">&para;</a></h4>
 <p>获取短信统计信息。<strong>返回:</strong> <code>{ totalMessages, unreadCount, chatCount, isMockData }</code></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">stats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getStatistics</span><span class="p">();</span>
@@ -1629,7 +1576,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <hr />
-<h2 id="_7">完整示例<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_6">完整示例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <h3 id="1">示例 1: 短信备份<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">backupMessages</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">sms</span><span class="p">.</span><span class="nx">isRealDataAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
@@ -1792,7 +1739,7 @@
 <span class="nx">exportChat</span><span class="p">(</span><span class="s1">&#39;10086&#39;</span><span class="p">);</span>
 </code></pre></div>
 <hr />
-<h2 id="_8">注意事项<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_7">注意事项<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Root 权限</strong>: 读取真实短信需要 TrollStore 环境和 Root Helper</li>
 <li><strong>模拟数据</strong>: 无权限时自动使用模拟数据，<code>isMockData</code> 字段标识数据来源</li>
