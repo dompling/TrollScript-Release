@@ -536,352 +536,352 @@ async function run() {
     win9.remove();
     console.log("");
 
-    // // ========== Test 12: ScrollView ==========
-    // console.log("--- Test 12: ScrollView ---");
-    // const win10 = hud.createWindow({
-    //     width: 280,
-    //     height: 220,
-    //     draggable: true,
-    //     style: { backgroundColor: '#1C1C1EF0', cornerRadius: 16 }
-    // });
-    //
-    // win10.addText({
-    //     text: 'ScrollView Test',
-    //     style: { textColor: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }
-    // });
-    // win10.addSpacer({ height: 8 });
-    //
-    // // Test addScrollView
-    // console.log("Testing addScrollView()...");
-    // const scroll = win10.addScrollView({
-    //     direction: 'vertical',
-    //     height: 150,
-    //     spacing: 8
-    // });
-    // assert(scroll !== null, "addScrollView() returns scroll view");
-    //
-    // // Add content to scroll view
-    // for (let i = 1; i <= 10; i++) {
-    //     scroll.addText({
-    //         text: `Scroll Item ${i}`,
-    //         style: { textColor: '#FFFFFF', fontSize: 14 }
-    //     });
-    // }
-    // console.log("Added 10 items to scroll view");
-    //
-    // win10.show();
-    // await sleep(1500);
-    //
-    // // Test setDirection
-    // console.log("Testing scroll.setDirection()...");
-    // scroll.setDirection('vertical');
-    // assert(true, "scroll.setDirection() called successfully");
-    //
-    // // Test setSpacing
-    // console.log("Testing scroll.setSpacing()...");
-    // scroll.setSpacing(12);
-    // assert(true, "scroll.setSpacing() called successfully");
-    // await sleep(500);
-    //
-    // // Test getContentSize
-    // console.log("Testing scroll.getContentSize()...");
-    // const contentSize = scroll.getContentSize();
-    // console.log("Content Size:", JSON.stringify(contentSize));
-    // assert(contentSize && contentSize.height > 0, "getContentSize() returns valid size");
-    //
-    // // Test getOffset
-    // console.log("Testing scroll.getOffset()...");
-    // const offset = scroll.getOffset();
-    // console.log("Current Offset:", JSON.stringify(offset));
-    // assert(offset !== null, "getOffset() returns offset");
-    //
-    // // Test scrollTo
-    // console.log("Testing scroll.scrollTo()...");
-    // scroll.scrollTo(0, 100);
-    // assert(true, "scroll.scrollTo() called successfully");
-    // await sleep(500);
-    //
-    // // Test scrollToTop
-    // console.log("Testing scroll.scrollToTop()...");
-    // scroll.scrollToTop();
-    // assert(true, "scroll.scrollToTop() called successfully");
-    // await sleep(500);
-    //
-    // // Test scrollToBottom
-    // console.log("Testing scroll.scrollToBottom()...");
-    // scroll.scrollToBottom();
-    // assert(true, "scroll.scrollToBottom() called successfully");
-    // await sleep(500);
-    //
-    // // Test onScroll
-    // console.log("Testing scroll.onScroll()...");
-    // scroll.onScroll((pos) => {
-    //     console.log("Scroll position:", pos.x, pos.y);
-    // });
-    // assert(true, "scroll.onScroll() registered successfully");
-    //
-    // await sleep(1500);
-    // win10.remove();
-    // console.log("");
-    //
-    // // ========== Test 13: List View ==========
-    // console.log("--- Test 13: List View ---");
-    // const win11 = hud.createWindow({
-    //     width: 300,
-    //     height: 280,
-    //     draggable: true,
-    //     style: { backgroundColor: '#1C1C1EF0', cornerRadius: 16 }
-    // });
-    //
-    // win11.addText({
-    //     text: 'List View Test',
-    //     style: { textColor: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }
-    // });
-    // win11.addSpacer({ height: 8 });
-    //
-    // // Test addList
-    // console.log("Testing addList()...");
-    // const list = win11.addList({
-    //     layout: 'list',
-    //     height: 200,
-    //     itemHeight: 50,
-    //     separatorStyle: 'line',
-    //     items: [
-    //         { id: '1', title: 'Settings', systemIcon: 'gear', accessory: 'disclosure' },
-    //         { id: '2', title: 'Notifications', systemIcon: 'bell', subtitle: 'Enabled' },
-    //         { id: '3', title: 'About', systemIcon: 'info.circle' }
-    //     ]
-    // });
-    // assert(list !== null, "addList() returns list view");
-    //
-    // win11.show();
-    // await sleep(1000);
-    //
-    // // Test getItemCount
-    // console.log("Testing list.getItemCount()...");
-    // let itemCount = list.getItemCount();
-    // console.log("Initial item count:", itemCount);
-    // assert(itemCount === 3, "getItemCount() returns correct count");
-    //
-    // // Test addItem
-    // console.log("Testing list.addItem()...");
-    // list.addItem({
-    //     id: '4',
-    //     title: 'Privacy',
-    //     systemIcon: 'lock.shield',
-    //     subtitle: 'Protected'
-    // });
-    // await sleep(500);
-    // itemCount = list.getItemCount();
-    // console.log("After addItem count:", itemCount);
-    // assert(itemCount === 4, "addItem() increases count");
-    //
-    // // Test insertItem
-    // console.log("Testing list.insertItem()...");
-    // list.insertItem({
-    //     id: '5',
-    //     title: 'Inserted Item',
-    //     systemIcon: 'plus.circle'
-    // }, 1);
-    // await sleep(500);
-    // itemCount = list.getItemCount();
-    // console.log("After insertItem count:", itemCount);
-    // assert(itemCount === 5, "insertItem() increases count");
-    //
-    // // Test getItem
-    // console.log("Testing list.getItem()...");
-    // const firstItem = list.getItem(0);
-    // console.log("First item:", JSON.stringify(firstItem));
-    // assert(firstItem && firstItem.id === '1', "getItem() returns correct item");
-    //
-    // // Test removeItem
-    // console.log("Testing list.removeItem()...");
-    // list.removeItem(1);
-    // await sleep(500);
-    // itemCount = list.getItemCount();
-    // console.log("After removeItem count:", itemCount);
-    // assert(itemCount === 4, "removeItem() decreases count");
-    //
-    // // Test setItemHeight
-    // console.log("Testing list.setItemHeight()...");
-    // list.setItemHeight(60);
-    // assert(true, "list.setItemHeight() called successfully");
-    // await sleep(500);
-    //
-    // // Test setSeparatorStyle
-    // console.log("Testing list.setSeparatorStyle()...");
-    // list.setSeparatorStyle('none');
-    // assert(true, "list.setSeparatorStyle() called successfully");
-    // await sleep(500);
-    //
-    // // Test scrollToItem
-    // console.log("Testing list.scrollToItem()...");
-    // list.scrollToItem(3);
-    // assert(true, "list.scrollToItem() called successfully");
-    // await sleep(500);
-    //
-    // // Test onSelect
-    // console.log("Testing list.onSelect()...");
-    // list.onSelect((item, index) => {
-    //     console.log(`Selected item ${index}:`, item.title);
-    // });
-    // assert(true, "list.onSelect() registered successfully");
-    //
-    // await sleep(2000);
-    //
-    // // Test setItems (replace all)
-    // console.log("Testing list.setItems()...");
-    // list.setItems([
-    //     { id: 'a', title: 'Apple', systemIcon: 'applelogo' },
-    //     { id: 'b', title: 'Banana', systemIcon: 'leaf' },
-    //     { id: 'c', title: 'Cherry', systemIcon: 'heart.fill' }
-    // ]);
-    // await sleep(500);
-    // itemCount = list.getItemCount();
-    // console.log("After setItems count:", itemCount);
-    // assert(itemCount === 3, "setItems() replaces all items");
-    //
-    // // Test removeAllItems
-    // console.log("Testing list.removeAllItems()...");
-    // list.removeAllItems();
-    // await sleep(500);
-    // itemCount = list.getItemCount();
-    // console.log("After removeAllItems count:", itemCount);
-    // assert(itemCount === 0, "removeAllItems() clears all items");
-    //
-    // await sleep(1000);
-    // win11.remove();
-    // console.log("");
-    //
-    // // ========== Test 14: List Grid Layout ==========
-    // console.log("--- Test 14: List Grid Layout ---");
-    // const win12 = hud.createWindow({
-    //     width: 300,
-    //     height: 250,
-    //     draggable: true,
-    //     style: { backgroundColor: '#1C1C1EF0', cornerRadius: 16 }
-    // });
-    //
-    // win12.addText({
-    //     text: 'Grid Layout Test',
-    //     style: { textColor: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }
-    // });
-    // win12.addSpacer({ height: 8 });
-    //
-    // // Test grid layout
-    // console.log("Testing grid layout...");
-    // const gridList = win12.addList({
-    //     layout: 'grid',
-    //     height: 180,
-    //     columns: 3,
-    //     itemHeight: 80,
-    //     items: [
-    //         { id: '1', title: 'Photos', systemIcon: 'photo' },
-    //         { id: '2', title: 'Camera', systemIcon: 'camera' },
-    //         { id: '3', title: 'Music', systemIcon: 'music.note' },
-    //         { id: '4', title: 'Videos', systemIcon: 'video' },
-    //         { id: '5', title: 'Files', systemIcon: 'folder' },
-    //         { id: '6', title: 'Notes', systemIcon: 'note.text' }
-    //     ]
-    // });
-    // assert(gridList !== null, "Grid list created successfully");
-    //
-    // gridList.onSelect((item, index) => {
-    //     console.log(`Grid item ${index} selected:`, item.title);
-    // });
-    //
-    // win12.show();
-    // await sleep(2000);
-    //
-    // // Test setColumns
-    // console.log("Testing list.setColumns()...");
-    // gridList.setColumns(2);
-    // assert(true, "list.setColumns() called successfully");
-    // await sleep(1000);
-    //
-    // // Test setLayout (switch to list)
-    // console.log("Testing list.setLayout()...");
-    // gridList.setLayout('list');
-    // assert(true, "list.setLayout() called successfully");
-    // await sleep(1000);
-    //
-    // win12.remove();
-    // console.log("");
-    //
-    // // ========== Test 15: Complex Layout ==========
-    // console.log("--- Test 15: Complex Layout ---");
-    // const win13 = hud.createWindow({
-    //     width: 300,
-    //     height: 200,
-    //     draggable: true,
-    //     style: {
-    //         backgroundColor: '#1C1C1EF0',
-    //         cornerRadius: 16,
-    //         shadow: true
-    //     }
-    // });
-    //
-    // // Header
-    // const headerStack = win13.addStack({ axis: 'horizontal', spacing: 8, alignment: 'center' });
-    // headerStack.addImage({ systemName: 'cpu', width: 20, height: 20 });
-    // headerStack.addText({
-    //     text: 'System Monitor',
-    //     style: { textColor: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }
-    // });
-    //
-    // win13.addSpacer({ height: 12 });
-    //
-    // // Stats with loading
-    // const statsStack = win13.addStack({ axis: 'horizontal', spacing: 20 });
-    //
-    // // CPU Stats
-    // const cpuStack = statsStack.addStack({ axis: 'vertical', spacing: 4, alignment: 'center' });
-    // cpuStack.addText({ text: 'CPU', style: { textColor: '#8E8E93', fontSize: 12 } });
-    // const cpuLoading = cpuStack.addLoading({ style: 'small', color: '#00FF00' });
-    // const cpuValue = cpuStack.addText({
-    //     text: '45%',
-    //     style: { textColor: '#00FF00', fontSize: 18, fontWeight: 'bold' }
-    // });
-    //
-    // // Memory Stats
-    // const memStack = statsStack.addStack({ axis: 'vertical', spacing: 4, alignment: 'center' });
-    // memStack.addText({ text: 'MEM', style: { textColor: '#8E8E93', fontSize: 12 } });
-    // const memLoading = memStack.addLoading({ style: 'small', color: '#007AFF' });
-    // const memValue = memStack.addText({
-    //     text: '2.1GB',
-    //     style: { textColor: '#007AFF', fontSize: 18, fontWeight: 'bold' }
-    // });
-    //
-    // win13.addSpacer({ height: 12 });
-    //
-    // // Close button
-    // const closeBtn = win13.addButton({
-    //     title: 'Close Monitor',
-    //     style: { backgroundColor: '#3A3A3C', textColor: '#FFFFFF', cornerRadius: 8 },
-    //     onClick: () => win13.remove()
-    // });
-    //
-    // win13.show();
-    // console.log("Complex layout window created");
-    //
-    // // Simulate updates
-    // await sleep(1000);
-    // cpuLoading.stop();
-    // memLoading.stop();
-    // cpuValue.setText('52%');
-    // memValue.setText('2.3GB');
-    // console.log("Values updated dynamically");
-    //
-    // await sleep(2000);
-    // win13.remove();
-    // console.log("");
-    //
-    // // ========== Cleanup ==========
-    // console.log("--- Cleanup ---");
-    // hud.clearAll();
-    // console.log("All windows cleared");
-    //
-    // console.log("\n=== HUD Module Test Completed ===");
+    // ========== Test 12: ScrollView ==========
+    console.log("--- Test 12: ScrollView ---");
+    const win10 = hud.createWindow({
+        width: 280,
+        height: 220,
+        draggable: true,
+        style: { backgroundColor: '#1C1C1EF0', cornerRadius: 16 }
+    });
+
+    win10.addText({
+        text: 'ScrollView Test',
+        style: { textColor: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }
+    });
+    win10.addSpacer({ height: 8 });
+
+    // Test addScrollView
+    console.log("Testing addScrollView()...");
+    const scroll = win10.addScrollView({
+        direction: 'vertical',
+        height: 150,
+        spacing: 8
+    });
+    assert(scroll !== null, "addScrollView() returns scroll view");
+
+    // Add content to scroll view
+    for (let i = 1; i <= 10; i++) {
+        scroll.addText({
+            text: `Scroll Item ${i}`,
+            style: { textColor: '#FFFFFF', fontSize: 14 }
+        });
+    }
+    console.log("Added 10 items to scroll view");
+
+    win10.show();
+    await sleep(1500);
+
+    // Test setDirection
+    console.log("Testing scroll.setDirection()...");
+    scroll.setDirection('vertical');
+    assert(true, "scroll.setDirection() called successfully");
+
+    // Test setSpacing
+    console.log("Testing scroll.setSpacing()...");
+    scroll.setSpacing(12);
+    assert(true, "scroll.setSpacing() called successfully");
+    await sleep(500);
+
+    // Test getContentSize
+    console.log("Testing scroll.getContentSize()...");
+    const contentSize = scroll.getContentSize();
+    console.log("Content Size:", JSON.stringify(contentSize));
+    assert(contentSize && contentSize.height > 0, "getContentSize() returns valid size");
+
+    // Test getOffset
+    console.log("Testing scroll.getOffset()...");
+    const offset = scroll.getOffset();
+    console.log("Current Offset:", JSON.stringify(offset));
+    assert(offset !== null, "getOffset() returns offset");
+
+    // Test scrollTo
+    console.log("Testing scroll.scrollTo()...");
+    scroll.scrollTo(0, 100);
+    assert(true, "scroll.scrollTo() called successfully");
+    await sleep(500);
+
+    // Test scrollToTop
+    console.log("Testing scroll.scrollToTop()...");
+    scroll.scrollToTop();
+    assert(true, "scroll.scrollToTop() called successfully");
+    await sleep(500);
+
+    // Test scrollToBottom
+    console.log("Testing scroll.scrollToBottom()...");
+    scroll.scrollToBottom();
+    assert(true, "scroll.scrollToBottom() called successfully");
+    await sleep(500);
+
+    // Test onScroll
+    console.log("Testing scroll.onScroll()...");
+    scroll.onScroll((pos) => {
+        console.log("Scroll position:", pos.x, pos.y);
+    });
+    assert(true, "scroll.onScroll() registered successfully");
+
+    await sleep(1500);
+    win10.remove();
+    console.log("");
+
+    // ========== Test 13: List View ==========
+    console.log("--- Test 13: List View ---");
+    const win11 = hud.createWindow({
+        width: 300,
+        height: 280,
+        draggable: true,
+        style: { backgroundColor: '#1C1C1EF0', cornerRadius: 16 }
+    });
+
+    win11.addText({
+        text: 'List View Test',
+        style: { textColor: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }
+    });
+    win11.addSpacer({ height: 8 });
+
+    // Test addList
+    console.log("Testing addList()...");
+    const list = win11.addList({
+        layout: 'list',
+        height: 200,
+        itemHeight: 50,
+        separatorStyle: 'line',
+        items: [
+            { id: '1', title: 'Settings', systemIcon: 'gear', accessory: 'disclosure' },
+            { id: '2', title: 'Notifications', systemIcon: 'bell', subtitle: 'Enabled' },
+            { id: '3', title: 'About', systemIcon: 'info.circle' }
+        ]
+    });
+    assert(list !== null, "addList() returns list view");
+
+    win11.show();
+    await sleep(1000);
+
+    // Test getItemCount
+    console.log("Testing list.getItemCount()...");
+    let itemCount = list.getItemCount();
+    console.log("Initial item count:", itemCount);
+    assert(itemCount === 3, "getItemCount() returns correct count");
+
+    // Test addItem
+    console.log("Testing list.addItem()...");
+    list.addItem({
+        id: '4',
+        title: 'Privacy',
+        systemIcon: 'lock.shield',
+        subtitle: 'Protected'
+    });
+    await sleep(500);
+    itemCount = list.getItemCount();
+    console.log("After addItem count:", itemCount);
+    assert(itemCount === 4, "addItem() increases count");
+
+    // Test insertItem
+    console.log("Testing list.insertItem()...");
+    list.insertItem({
+        id: '5',
+        title: 'Inserted Item',
+        systemIcon: 'plus.circle'
+    }, 1);
+    await sleep(500);
+    itemCount = list.getItemCount();
+    console.log("After insertItem count:", itemCount);
+    assert(itemCount === 5, "insertItem() increases count");
+
+    // Test getItem
+    console.log("Testing list.getItem()...");
+    const firstItem = list.getItem(0);
+    console.log("First item:", JSON.stringify(firstItem));
+    assert(firstItem && firstItem.id === '1', "getItem() returns correct item");
+
+    // Test removeItem
+    console.log("Testing list.removeItem()...");
+    list.removeItem(1);
+    await sleep(500);
+    itemCount = list.getItemCount();
+    console.log("After removeItem count:", itemCount);
+    assert(itemCount === 4, "removeItem() decreases count");
+
+    // Test setItemHeight
+    console.log("Testing list.setItemHeight()...");
+    list.setItemHeight(60);
+    assert(true, "list.setItemHeight() called successfully");
+    await sleep(500);
+
+    // Test setSeparatorStyle
+    console.log("Testing list.setSeparatorStyle()...");
+    list.setSeparatorStyle('none');
+    assert(true, "list.setSeparatorStyle() called successfully");
+    await sleep(500);
+
+    // Test scrollToItem
+    console.log("Testing list.scrollToItem()...");
+    list.scrollToItem(3);
+    assert(true, "list.scrollToItem() called successfully");
+    await sleep(500);
+
+    // Test onSelect
+    console.log("Testing list.onSelect()...");
+    list.onSelect((item, index) => {
+        console.log(`Selected item ${index}:`, item.title);
+    });
+    assert(true, "list.onSelect() registered successfully");
+
+    await sleep(2000);
+
+    // Test setItems (replace all)
+    console.log("Testing list.setItems()...");
+    list.setItems([
+        { id: 'a', title: 'Apple', systemIcon: 'applelogo' },
+        { id: 'b', title: 'Banana', systemIcon: 'leaf' },
+        { id: 'c', title: 'Cherry', systemIcon: 'heart.fill' }
+    ]);
+    await sleep(500);
+    itemCount = list.getItemCount();
+    console.log("After setItems count:", itemCount);
+    assert(itemCount === 3, "setItems() replaces all items");
+
+    // Test removeAllItems
+    console.log("Testing list.removeAllItems()...");
+    list.removeAllItems();
+    await sleep(500);
+    itemCount = list.getItemCount();
+    console.log("After removeAllItems count:", itemCount);
+    assert(itemCount === 0, "removeAllItems() clears all items");
+
+    await sleep(1000);
+    win11.remove();
+    console.log("");
+
+    // ========== Test 14: List Grid Layout ==========
+    console.log("--- Test 14: List Grid Layout ---");
+    const win12 = hud.createWindow({
+        width: 300,
+        height: 250,
+        draggable: true,
+        style: { backgroundColor: '#1C1C1EF0', cornerRadius: 16 }
+    });
+
+    win12.addText({
+        text: 'Grid Layout Test',
+        style: { textColor: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }
+    });
+    win12.addSpacer({ height: 8 });
+
+    // Test grid layout
+    console.log("Testing grid layout...");
+    const gridList = win12.addList({
+        layout: 'grid',
+        height: 180,
+        columns: 3,
+        itemHeight: 80,
+        items: [
+            { id: '1', title: 'Photos', systemIcon: 'photo' },
+            { id: '2', title: 'Camera', systemIcon: 'camera' },
+            { id: '3', title: 'Music', systemIcon: 'music.note' },
+            { id: '4', title: 'Videos', systemIcon: 'video' },
+            { id: '5', title: 'Files', systemIcon: 'folder' },
+            { id: '6', title: 'Notes', systemIcon: 'note.text' }
+        ]
+    });
+    assert(gridList !== null, "Grid list created successfully");
+
+    gridList.onSelect((item, index) => {
+        console.log(`Grid item ${index} selected:`, item.title);
+    });
+
+    win12.show();
+    await sleep(2000);
+
+    // Test setColumns
+    console.log("Testing list.setColumns()...");
+    gridList.setColumns(2);
+    assert(true, "list.setColumns() called successfully");
+    await sleep(1000);
+
+    // Test setLayout (switch to list)
+    console.log("Testing list.setLayout()...");
+    gridList.setLayout('list');
+    assert(true, "list.setLayout() called successfully");
+    await sleep(1000);
+
+    win12.remove();
+    console.log("");
+
+    // ========== Test 15: Complex Layout ==========
+    console.log("--- Test 15: Complex Layout ---");
+    const win13 = hud.createWindow({
+        width: 300,
+        height: 200,
+        draggable: true,
+        style: {
+            backgroundColor: '#1C1C1EF0',
+            cornerRadius: 16,
+            shadow: true
+        }
+    });
+
+    // Header
+    const headerStack = win13.addStack({ axis: 'horizontal', spacing: 8, alignment: 'center' });
+    headerStack.addImage({ systemName: 'cpu', width: 20, height: 20 });
+    headerStack.addText({
+        text: 'System Monitor',
+        style: { textColor: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }
+    });
+
+    win13.addSpacer({ height: 12 });
+
+    // Stats with loading
+    const statsStack = win13.addStack({ axis: 'horizontal', spacing: 20 });
+
+    // CPU Stats
+    const cpuStack = statsStack.addStack({ axis: 'vertical', spacing: 4, alignment: 'center' });
+    cpuStack.addText({ text: 'CPU', style: { textColor: '#8E8E93', fontSize: 12 } });
+    const cpuLoading = cpuStack.addLoading({ style: 'small', color: '#00FF00' });
+    const cpuValue = cpuStack.addText({
+        text: '45%',
+        style: { textColor: '#00FF00', fontSize: 18, fontWeight: 'bold' }
+    });
+
+    // Memory Stats
+    const memStack = statsStack.addStack({ axis: 'vertical', spacing: 4, alignment: 'center' });
+    memStack.addText({ text: 'MEM', style: { textColor: '#8E8E93', fontSize: 12 } });
+    const memLoading = memStack.addLoading({ style: 'small', color: '#007AFF' });
+    const memValue = memStack.addText({
+        text: '2.1GB',
+        style: { textColor: '#007AFF', fontSize: 18, fontWeight: 'bold' }
+    });
+
+    win13.addSpacer({ height: 12 });
+
+    // Close button
+    const closeBtn = win13.addButton({
+        title: 'Close Monitor',
+        style: { backgroundColor: '#3A3A3C', textColor: '#FFFFFF', cornerRadius: 8 },
+        onClick: () => win13.remove()
+    });
+
+    win13.show();
+    console.log("Complex layout window created");
+
+    // Simulate updates
+    await sleep(1000);
+    cpuLoading.stop();
+    memLoading.stop();
+    cpuValue.setText('52%');
+    memValue.setText('2.3GB');
+    console.log("Values updated dynamically");
+
+    await sleep(2000);
+    win13.remove();
+    console.log("");
+
+    // ========== Cleanup ==========
+    console.log("--- Cleanup ---");
+    hud.clearAll();
+    console.log("All windows cleared");
+
+    console.log("\n=== HUD Module Test Completed ===");
 }
 
 run();
