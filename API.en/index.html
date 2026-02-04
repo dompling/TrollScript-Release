@@ -1124,7 +1124,7 @@
 <li><a href="#storage">storage</a> ✅ - Local key-value storage</li>
 <li><a href="#icloud">icloud</a> ✅ - iCloud file operations</li>
 <li><a href="#file">file</a> ✅ - File system operations</li>
-<li><a href="#http">http</a> ✅ - Network requests</li>
+<li><a href="#http">http</a> ✅ - Network requests (Async Promise-based)</li>
 <li><a href="#network">network</a> ⚠️ - Network operations</li>
 <li><a href="#app">app</a> ⚠️ - App operations and management</li>
 <li><a href="#haptic">haptic</a> ⚠️ - Haptic feedback</li>
@@ -2054,10 +2054,10 @@
 <hr />
 <h2 id="http">http<a class="headerlink" href="#http" title="Permanent link">&para;</a></h2>
 <p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
-<p>Network requests</p>
+<p>Network requests (Async Promise-based)</p>
 <h3 id="httpget"><code>http.get</code><a class="headerlink" href="#httpget" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>get(url, options?)</code></p>
-<p>Send a GET request</p>
+<p>Send a GET request (async, returns Promise)</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -2078,17 +2078,17 @@
 <tr>
 <td><code>options</code></td>
 <td><code>object</code></td>
-<td>Request options { headers, timeout }</td>
+<td>Request options { headers, timeout, insecure, sync }</td>
 <td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code>{ success: boolean, status?: number, data?: string, headers?: object, error?: string }</code></p>
-<p><em>Object containing success status, status code, response data, and response headers</em></p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, status?: number, data?: string, headers?: object, error?: string }&gt;</code></p>
+<p><em>Returns a Promise that resolves with success status, status code, response data, and headers. Set sync: true for synchronous mode</em></p>
 <hr />
 <h3 id="httppost"><code>http.post</code><a class="headerlink" href="#httppost" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>post(url, options?)</code></p>
-<p>Send a POST request</p>
+<p>Send a POST request (async, returns Promise)</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -2109,16 +2109,17 @@
 <tr>
 <td><code>options</code></td>
 <td><code>object</code></td>
-<td>Request options { body, headers, timeout, insecure }</td>
+<td>Request options { body, headers, timeout, insecure, sync }</td>
 <td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code>{ success: boolean, status?: number, data?: string, headers?: object, error?: string }</code></p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, status?: number, data?: string, headers?: object, error?: string }&gt;</code></p>
+<p><em>Returns a Promise that resolves with the response. Set sync: true for synchronous mode</em></p>
 <hr />
 <h3 id="httpput"><code>http.put</code><a class="headerlink" href="#httpput" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>put(url, options?)</code></p>
-<p>Send a PUT request</p>
+<p>Send a PUT request (async, returns Promise)</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -2139,16 +2140,17 @@
 <tr>
 <td><code>options</code></td>
 <td><code>object</code></td>
-<td>Request options { body, headers, timeout, insecure }</td>
+<td>Request options { body, headers, timeout, insecure, sync }</td>
 <td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code>{ success: boolean, status?: number, data?: string, headers?: object, error?: string }</code></p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, status?: number, data?: string, headers?: object, error?: string }&gt;</code></p>
+<p><em>Returns a Promise that resolves with the response</em></p>
 <hr />
 <h3 id="httpdelete"><code>http.delete</code><a class="headerlink" href="#httpdelete" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>delete(url, options?)</code></p>
-<p>Send a DELETE request</p>
+<p>Send a DELETE request (async, returns Promise)</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -2169,16 +2171,17 @@
 <tr>
 <td><code>options</code></td>
 <td><code>object</code></td>
-<td>Request options { headers, timeout, insecure }</td>
+<td>Request options { headers, timeout, insecure, sync }</td>
 <td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code>{ success: boolean, status?: number, data?: string, headers?: object, error?: string }</code></p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, status?: number, data?: string, headers?: object, error?: string }&gt;</code></p>
+<p><em>Returns a Promise that resolves with the response</em></p>
 <hr />
 <h3 id="httppatch"><code>http.patch</code><a class="headerlink" href="#httppatch" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>patch(url, options?)</code></p>
-<p>Send a PATCH request</p>
+<p>Send a PATCH request (async, returns Promise)</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -2199,16 +2202,17 @@
 <tr>
 <td><code>options</code></td>
 <td><code>object</code></td>
-<td>Request options { body, headers, timeout, insecure }</td>
+<td>Request options { body, headers, timeout, insecure, sync }</td>
 <td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code>{ success: boolean, status?: number, data?: string, headers?: object, error?: string }</code></p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, status?: number, data?: string, headers?: object, error?: string }&gt;</code></p>
+<p><em>Returns a Promise that resolves with the response</em></p>
 <hr />
 <h3 id="httphead"><code>http.head</code><a class="headerlink" href="#httphead" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>head(url, options?)</code></p>
-<p>Send a HEAD request</p>
+<p>Send a HEAD request (async, returns Promise)</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -2229,16 +2233,17 @@
 <tr>
 <td><code>options</code></td>
 <td><code>object</code></td>
-<td>Request options { headers, timeout, insecure }</td>
+<td>Request options { headers, timeout, insecure, sync }</td>
 <td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code>{ success: boolean, status?: number, data?: string, headers?: object, error?: string }</code></p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, status?: number, data?: string, headers?: object, error?: string }&gt;</code></p>
+<p><em>Returns a Promise that resolves with the response (data is typically empty for HEAD requests)</em></p>
 <hr />
 <h3 id="httprequest"><code>http.request</code><a class="headerlink" href="#httprequest" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>request(url, options)</code></p>
-<p>Send a custom HTTP request</p>
+<p>Send a custom HTTP request (async, returns Promise)</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -2259,16 +2264,17 @@
 <tr>
 <td><code>options</code></td>
 <td><code>object</code></td>
-<td>Request options { method, body, headers, timeout, insecure }</td>
+<td>Request options { method, body, headers, timeout, insecure, sync }</td>
 <td>No</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code>{ success: boolean, status?: number, data?: string, headers?: object, error?: string }</code></p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, status?: number, data?: string, headers?: object, error?: string }&gt;</code></p>
+<p><em>Returns a Promise that resolves with the response</em></p>
 <hr />
 <h3 id="httpdownload"><code>http.download</code><a class="headerlink" href="#httpdownload" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>download(url, path, options?)</code></p>
-<p>Download a file from a URL</p>
+<p>Download a file (async, returns Promise)</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -2295,13 +2301,13 @@
 <tr>
 <td><code>options</code></td>
 <td><code>object</code></td>
-<td>Request options { insecure }</td>
+<td>Request options { insecure, sync }</td>
 <td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code>{ success: boolean, path?: string, error?: string }</code></p>
-<p><em>Object containing success status and the local file path</em></p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, path?: string, error?: string }&gt;</code></p>
+<p><em>Returns a Promise that resolves with success status and local file path</em></p>
 <hr />
 <h2 id="network">network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h2>
 <p><img alt="Limited Support" src="https://img.shields.io/badge/Trigger-Limited-orange" /></p>

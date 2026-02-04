@@ -1124,7 +1124,7 @@
 <li><a href="#storage">storage</a> ✅ - 本地存储</li>
 <li><a href="#icloud">icloud</a> ✅ - iCloud 文件操作</li>
 <li><a href="#file">file</a> ✅ - 文件操作</li>
-<li><a href="#http">http</a> ✅ - 网络请求</li>
+<li><a href="#http">http</a> ✅ - 网络请求（异步 Promise 模式）</li>
 <li><a href="#network">network</a> ⚠️ - 网络操作</li>
 <li><a href="#app">app</a> ⚠️ - 应用操作与管理</li>
 <li><a href="#haptic">haptic</a> ⚠️ - 触觉反馈</li>
@@ -2053,10 +2053,10 @@
 <hr />
 <h2 id="http">http<a class="headerlink" href="#http" title="Permanent link">&para;</a></h2>
 <p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
-<p>网络请求</p>
+<p>网络请求（异步 Promise 模式）</p>
 <h3 id="httpget"><code>http.get</code><a class="headerlink" href="#httpget" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>get(url, options?)</code></p>
-<p>发送 GET 请求</p>
+<p>发送 GET 请求（异步，返回 Promise）</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -2077,17 +2077,17 @@
 <tr>
 <td><code>options</code></td>
 <td><code>object</code></td>
-<td>请求选项 { headers, timeout, insecure }</td>
+<td>请求选项 { headers, timeout, insecure, sync }</td>
 <td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code>{ success: boolean, status?: number, data?: string, headers?: object, error?: string }</code></p>
-<p><em>包含成功状态、状态码、响应数据、响应头的对象</em></p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, status?: number, data?: string, headers?: object, error?: string }&gt;</code></p>
+<p><em>返回 Promise，resolve 时包含成功状态、状态码、响应数据、响应头的对象。设置 sync: true 可使用同步模式</em></p>
 <hr />
 <h3 id="httppost"><code>http.post</code><a class="headerlink" href="#httppost" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>post(url, options?)</code></p>
-<p>发送 POST 请求</p>
+<p>发送 POST 请求（异步，返回 Promise）</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -2108,16 +2108,17 @@
 <tr>
 <td><code>options</code></td>
 <td><code>object</code></td>
-<td>请求选项 { body, headers, timeout, insecure }</td>
+<td>请求选项 { body, headers, timeout, insecure, sync }</td>
 <td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code>{ success: boolean, status?: number, data?: string, headers?: object, error?: string }</code></p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, status?: number, data?: string, headers?: object, error?: string }&gt;</code></p>
+<p><em>返回 Promise，resolve 时包含响应结果。设置 sync: true 可使用同步模式</em></p>
 <hr />
 <h3 id="httpput"><code>http.put</code><a class="headerlink" href="#httpput" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>put(url, options?)</code></p>
-<p>发送 PUT 请求</p>
+<p>发送 PUT 请求（异步，返回 Promise）</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -2138,16 +2139,17 @@
 <tr>
 <td><code>options</code></td>
 <td><code>object</code></td>
-<td>请求选项 { body, headers, timeout, insecure }</td>
+<td>请求选项 { body, headers, timeout, insecure, sync }</td>
 <td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code>{ success: boolean, status?: number, data?: string, headers?: object, error?: string }</code></p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, status?: number, data?: string, headers?: object, error?: string }&gt;</code></p>
+<p><em>返回 Promise，resolve 时包含响应结果</em></p>
 <hr />
 <h3 id="httpdelete"><code>http.delete</code><a class="headerlink" href="#httpdelete" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>delete(url, options?)</code></p>
-<p>发送 DELETE 请求</p>
+<p>发送 DELETE 请求（异步，返回 Promise）</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -2168,16 +2170,17 @@
 <tr>
 <td><code>options</code></td>
 <td><code>object</code></td>
-<td>请求选项 { headers, timeout, insecure }</td>
+<td>请求选项 { headers, timeout, insecure, sync }</td>
 <td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code>{ success: boolean, status?: number, data?: string, headers?: object, error?: string }</code></p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, status?: number, data?: string, headers?: object, error?: string }&gt;</code></p>
+<p><em>返回 Promise，resolve 时包含响应结果</em></p>
 <hr />
 <h3 id="httppatch"><code>http.patch</code><a class="headerlink" href="#httppatch" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>patch(url, options?)</code></p>
-<p>发送 PATCH 请求</p>
+<p>发送 PATCH 请求（异步，返回 Promise）</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -2198,16 +2201,17 @@
 <tr>
 <td><code>options</code></td>
 <td><code>object</code></td>
-<td>请求选项 { body, headers, timeout, insecure }</td>
+<td>请求选项 { body, headers, timeout, insecure, sync }</td>
 <td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code>{ success: boolean, status?: number, data?: string, headers?: object, error?: string }</code></p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, status?: number, data?: string, headers?: object, error?: string }&gt;</code></p>
+<p><em>返回 Promise，resolve 时包含响应结果</em></p>
 <hr />
 <h3 id="httphead"><code>http.head</code><a class="headerlink" href="#httphead" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>head(url, options?)</code></p>
-<p>发送 HEAD 请求</p>
+<p>发送 HEAD 请求（异步，返回 Promise）</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -2228,16 +2232,17 @@
 <tr>
 <td><code>options</code></td>
 <td><code>object</code></td>
-<td>请求选项 { headers, timeout, insecure }</td>
+<td>请求选项 { headers, timeout, insecure, sync }</td>
 <td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code>{ success: boolean, status?: number, data?: string, headers?: object, error?: string }</code></p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, status?: number, data?: string, headers?: object, error?: string }&gt;</code></p>
+<p><em>返回 Promise，resolve 时包含响应结果（HEAD 请求通常 data 为空）</em></p>
 <hr />
 <h3 id="httprequest"><code>http.request</code><a class="headerlink" href="#httprequest" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>request(url, options)</code></p>
-<p>发送自定义请求</p>
+<p>发送自定义 HTTP 请求（异步，返回 Promise）</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -2258,16 +2263,17 @@
 <tr>
 <td><code>options</code></td>
 <td><code>object</code></td>
-<td>请求选项 { method, body, headers, timeout, insecure }</td>
+<td>请求选项 { method, body, headers, timeout, insecure, sync }</td>
 <td>No</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code>{ success: boolean, status?: number, data?: string, headers?: object, error?: string }</code></p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, status?: number, data?: string, headers?: object, error?: string }&gt;</code></p>
+<p><em>返回 Promise，resolve 时包含响应结果</em></p>
 <hr />
 <h3 id="httpdownload"><code>http.download</code><a class="headerlink" href="#httpdownload" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>download(url, path, options?)</code></p>
-<p>下载文件</p>
+<p>下载文件（异步，返回 Promise）</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -2294,13 +2300,13 @@
 <tr>
 <td><code>options</code></td>
 <td><code>object</code></td>
-<td>请求选项 { insecure }</td>
+<td>请求选项 { insecure, sync }</td>
 <td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code>{ success: boolean, path?: string, error?: string }</code></p>
-<p><em>包含成功状态和本地文件路径的对象</em></p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, path?: string, error?: string }&gt;</code></p>
+<p><em>返回 Promise，resolve 时包含成功状态和本地文件路径</em></p>
 <hr />
 <h2 id="network">network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h2>
 <p><img alt="Limited Support" src="https://img.shields.io/badge/Trigger-Limited-orange" /></p>
