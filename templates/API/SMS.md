@@ -11,17 +11,6 @@ SMS 模块提供了短信读取和管理功能。你可以使用它来读取短�
 ## 快速开始
 
 ```javascript
-// 检查数据访问权限
-const access = sms.checkAccess();
-console.log('访问状态:', access);
-
-// 检查是否为真实数据
-if (sms.isRealDataAvailable()) {
-  console.log('可以访问真实短信数据');
-} else {
-  console.log('当前使用模拟数据');
-}
-
 // 读取最近的短信
 const messages = sms.read(20);
 messages.forEach(msg => {
@@ -39,51 +28,6 @@ if (code) {
 ---
 
 ## API 参考
-
-### 权限管理
-
-#### `sms.checkAccess()`
-检查短信访问权限。**返回:** `'available'` | `'needsCopy'` | `'unavailable'`
-
-**返回值说明:**
-- `'available'` - 可以访问真实数据
-- `'needsCopy'` - 需要复制数据库文件（需要 Root Helper）
-- `'unavailable'` - 无法访问，将使用模拟数据
-
-```javascript
-const status = sms.checkAccess();
-if (status === 'available') {
-  console.log('可以直接访问短信');
-} else if (status === 'needsCopy') {
-  console.log('需要复制数据库');
-  sms.tryAccess();
-}
-```
-
-#### `sms.tryAccess()`
-尝试获取短信访问权限（通过 Root Helper 复制数据库）。**返回:** `boolean`
-
-```javascript
-if (sms.checkAccess() === 'needsCopy') {
-  const success = sms.tryAccess();
-  if (success) {
-    console.log('访问权限获取成功');
-  }
-}
-```
-
-#### `sms.isRealDataAvailable()`
-检查当前是否使用真实数据。**返回:** `boolean`
-
-```javascript
-if (sms.isRealDataAvailable()) {
-  console.log('正在使用真实短信数据');
-} else {
-  console.log('正在使用模拟数据（用于测试）');
-}
-```
-
----
 
 ### 读取短信
 
@@ -433,59 +377,6 @@ function exportChat(address) {
 }
 
 exportChat('10086');
-```
-
----
-
-## 最佳实践
-
-### 1. 检查数据可用性
-
-```javascript
-// ✅ 正确
-if (sms.isRealDataAvailable()) {
-  const messages = sms.read();
-  processMessages(messages);
-} else {
-  console.log('当前使用模拟数据');
-}
-
-// ❌ 错误 - 不检查
-const messages = sms.read();  // 可能是模拟数据
-```
-
-### 2. 处理权限问题
-
-```javascript
-// ✅ 正确
-const access = sms.checkAccess();
-if (access === 'needsCopy') {
-  if (sms.helperAvailable()) {
-    sms.tryAccess();
-  } else {
-    console.log('需要 Root 权限');
-  }
-}
-```
-
-### 3. 限制读取数量
-
-```javascript
-// ✅ 正确 - 限制数量
-const recent = sms.read(100);
-
-// ❌ 错误 - 读取所有（可能很慢）
-const all = sms.read(999999);
-```
-
-### 4. 验证码时效性
-
-```javascript
-// ✅ 正确 - 指定时间范围
-const code = sms.getVerificationCode(60);  // 最近 60 秒
-
-// ❌ 错误 - 可能获取到旧验证码
-const code = sms.getVerificationCode(3600);
 ```
 
 ---
