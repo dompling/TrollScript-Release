@@ -2866,6 +2866,80 @@
 <p><strong>Returns:</strong> <code>string \| null</code></p>
 <p><em>Data container path, or null if not found</em></p>
 <hr />
+<h3 id="appcpuusage"><code>app.cpuUsage</code><a class="headerlink" href="#appcpuusage" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>cpuUsage()</code></p>
+<p>Get CPU usage (process-level + system-level)</p>
+<p><strong>Returns:</strong> <code>CPUUsage</code></p>
+<p><em>Object containing process (process CPU %) and system (system CPU object with total/user/system/idle/nice/cores)</em></p>
+<hr />
+<h3 id="appmemoryusage"><code>app.memoryUsage</code><a class="headerlink" href="#appmemoryusage" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>memoryUsage()</code></p>
+<p>Get memory usage information</p>
+<p><strong>Returns:</strong> <code>MemoryUsage</code></p>
+<p><em>Object containing usage (current MB), peak (peak MB), unit (unit string)</em></p>
+<hr />
+<h3 id="appfps"><code>app.fps</code><a class="headerlink" href="#appfps" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>fps()</code></p>
+<p>Get current frame rate</p>
+<p><strong>Returns:</strong> <code>FPSInfo</code></p>
+<p><em>Object containing fps (frame rate), isWarning (warning state), isCritical (critical state)</em></p>
+<hr />
+<h3 id="appperformancesnapshot"><code>app.performanceSnapshot</code><a class="headerlink" href="#appperformancesnapshot" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>performanceSnapshot()</code></p>
+<p>Get complete performance metrics snapshot</p>
+<p><strong>Returns:</strong> <code>PerformanceSnapshot</code></p>
+<p><em>Complete performance snapshot containing cpu, memory, fps, isMonitoring, timestamp</em></p>
+<hr />
+<h3 id="appstartmonitoring"><code>app.startMonitoring</code><a class="headerlink" href="#appstartmonitoring" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>startMonitoring()</code></p>
+<p>Start performance monitoring (FPS sampling, metrics recording)</p>
+<p><strong>Returns:</strong> <code>boolean</code></p>
+<p><em>Whether monitoring started successfully</em></p>
+<hr />
+<h3 id="appstopmonitoring"><code>app.stopMonitoring</code><a class="headerlink" href="#appstopmonitoring" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>stopMonitoring()</code></p>
+<p>Stop performance monitoring</p>
+<p><strong>Returns:</strong> <code>boolean</code></p>
+<p><em>Whether monitoring stopped successfully</em></p>
+<hr />
+<h3 id="appperformancerecords"><code>app.performanceRecords</code><a class="headerlink" href="#appperformancerecords" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>performanceRecords(limit?)</code></p>
+<p>Get historical performance records</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>limit</code></td>
+<td><code>number</code></td>
+<td>Number of records to return, defaults to 50</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>[PerformanceRecord]</code></p>
+<p><em>Array of performance records containing id, scriptName, executionTime, peakMemory, averageCPU, timestamp, success</em></p>
+<hr />
+<h3 id="appclearperformancerecords"><code>app.clearPerformanceRecords</code><a class="headerlink" href="#appclearperformancerecords" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>clearPerformanceRecords()</code></p>
+<p>Clear all performance records</p>
+<p><strong>Returns:</strong> <code>void</code></p>
+<hr />
 <h2 id="haptic">haptic<a class="headerlink" href="#haptic" title="Permanent link">&para;</a></h2>
 <p><img alt="Limited Support" src="https://img.shields.io/badge/Trigger-Limited-orange" /></p>
 <p>Haptic feedback</p>

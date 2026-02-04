@@ -759,6 +759,111 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        性能监控
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="性能监控">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appcpuusage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        app.cpuUsage()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appmemoryusage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        app.memoryUsage()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appfps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        app.fps()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appperformancesnapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        app.performanceSnapshot()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appstartmonitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        app.startMonitoring()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appstopmonitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        app.stopMonitoring()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appperformancerecordslimit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        app.performanceRecords(limit?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appclearperformancerecords" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        app.clearPerformanceRecords()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#api_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -847,7 +952,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         完整示例
@@ -919,7 +1024,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         最佳实践
@@ -980,7 +1085,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         注意事项
@@ -1655,6 +1760,7 @@
 <li><a href="#url-操作">URL 操作</a></li>
 <li><a href="#日志管理">日志管理</a></li>
 <li><a href="#崩溃报告">崩溃报告</a></li>
+<li><a href="#性能监控">性能监控</a></li>
 <li><a href="#应用管理私有-api">应用管理（私有 API）</a></li>
 <li><a href="#完整示例">完整示例</a></li>
 </ul>
@@ -1745,6 +1851,106 @@
 <h4 id="appgetlastcrash"><code>app.getLastCrash()</code><a class="headerlink" href="#appgetlastcrash" title="Permanent link">&para;</a></h4>
 <p>获取最近一次崩溃报告。<strong>返回:</strong> <code>object | null</code></p>
 <hr />
+<h3 id="_7">性能监控<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="appcpuusage"><code>app.cpuUsage()</code><a class="headerlink" href="#appcpuusage" title="Permanent link">&para;</a></h4>
+<p>获取 CPU 使用率（进程级 + 系统级）。<strong>返回:</strong> <code>object</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">cpu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">cpuUsage</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`进程 CPU: </span><span class="si">${</span><span class="nx">cpu</span><span class="p">.</span><span class="nx">process</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`系统 CPU: </span><span class="si">${</span><span class="nx">cpu</span><span class="p">.</span><span class="nx">system</span><span class="p">.</span><span class="nx">total</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`用户态: </span><span class="si">${</span><span class="nx">cpu</span><span class="p">.</span><span class="nx">system</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`系统态: </span><span class="si">${</span><span class="nx">cpu</span><span class="p">.</span><span class="nx">system</span><span class="p">.</span><span class="nx">system</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`空闲: </span><span class="si">${</span><span class="nx">cpu</span><span class="p">.</span><span class="nx">system</span><span class="p">.</span><span class="nx">idle</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`CPU 核心数: </span><span class="si">${</span><span class="nx">cpu</span><span class="p">.</span><span class="nx">system</span><span class="p">.</span><span class="nx">cores</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div>
+<p>返回对象结构:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">process</span><span class="o">:</span><span class="w"> </span><span class="mf">12.5</span><span class="p">,</span><span class="w">           </span><span class="c1">// 当前进程 CPU 使用率 (%)</span>
+<span class="w">  </span><span class="nx">system</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">total</span><span class="o">:</span><span class="w"> </span><span class="mf">45.2</span><span class="p">,</span><span class="w">           </span><span class="c1">// 系统总 CPU 使用率 (%)</span>
+<span class="w">    </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="mf">30.1</span><span class="p">,</span><span class="w">            </span><span class="c1">// 用户态 CPU (%)</span>
+<span class="w">    </span><span class="nx">system</span><span class="o">:</span><span class="w"> </span><span class="mf">15.1</span><span class="p">,</span><span class="w">          </span><span class="c1">// 系统态 CPU (%)</span>
+<span class="w">    </span><span class="nx">idle</span><span class="o">:</span><span class="w"> </span><span class="mf">54.8</span><span class="p">,</span><span class="w">            </span><span class="c1">// 空闲 CPU (%)</span>
+<span class="w">    </span><span class="nx">nice</span><span class="o">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">             </span><span class="c1">// Nice 优先级 CPU (%)</span>
+<span class="w">    </span><span class="nx">cores</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="w">               </span><span class="c1">// CPU 核心数</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h4 id="appmemoryusage"><code>app.memoryUsage()</code><a class="headerlink" href="#appmemoryusage" title="Permanent link">&para;</a></h4>
+<p>获取内存使用情况。<strong>返回:</strong> <code>object</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">mem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">memoryUsage</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`当前内存: </span><span class="si">${</span><span class="nx">mem</span><span class="p">.</span><span class="nx">usage</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">mem</span><span class="p">.</span><span class="nx">unit</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`峰值内存: </span><span class="si">${</span><span class="nx">mem</span><span class="p">.</span><span class="nx">peak</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">mem</span><span class="p">.</span><span class="nx">unit</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div>
+<p>返回对象结构:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">usage</span><span class="o">:</span><span class="w"> </span><span class="mf">156.8</span><span class="p">,</span><span class="w">    </span><span class="c1">// 当前内存使用量</span>
+<span class="w">  </span><span class="nx">peak</span><span class="o">:</span><span class="w"> </span><span class="mf">189.2</span><span class="p">,</span><span class="w">     </span><span class="c1">// 峰值内存使用量</span>
+<span class="w">  </span><span class="nx">unit</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;MB&quot;</span><span class="w">       </span><span class="c1">// 单位</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h4 id="appfps"><code>app.fps()</code><a class="headerlink" href="#appfps" title="Permanent link">&para;</a></h4>
+<p>获取当前帧率。<strong>返回:</strong> <code>object</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">fpsInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">fps</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`FPS: </span><span class="si">${</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">fpsInfo</span><span class="p">.</span><span class="nx">fps</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">fpsInfo</span><span class="p">.</span><span class="nx">isCritical</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s1">&#39;帧率过低！&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>返回对象结构:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">fps</span><span class="o">:</span><span class="w"> </span><span class="mf">60.0</span><span class="p">,</span><span class="w">          </span><span class="c1">// 当前帧率</span>
+<span class="w">  </span><span class="nx">isWarning</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">   </span><span class="c1">// 是否处于警告状态 (内存&gt;200MB 或 CPU&gt;80% 或 FPS&lt;30)</span>
+<span class="w">  </span><span class="nx">isCritical</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w">   </span><span class="c1">// 是否处于危险状态 (内存&gt;400MB 或 CPU&gt;95% 或 FPS&lt;15)</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h4 id="appperformancesnapshot"><code>app.performanceSnapshot()</code><a class="headerlink" href="#appperformancesnapshot" title="Permanent link">&para;</a></h4>
+<p>获取完整性能指标快照。<strong>返回:</strong> <code>object</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">snapshot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">performanceSnapshot</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">snapshot</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">));</span>
+</code></pre></div>
+<p>返回完整的性能数据，包含 CPU、内存、FPS 和时间戳。</p>
+<h4 id="appstartmonitoring"><code>app.startMonitoring()</code><a class="headerlink" href="#appstartmonitoring" title="Permanent link">&para;</a></h4>
+<p>开启性能监控（FPS 采样、指标记录）。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">startMonitoring</span><span class="p">();</span>
+<span class="c1">// 监控中...</span>
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">fps</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`当前 FPS: </span><span class="si">${</span><span class="nx">fps</span><span class="p">.</span><span class="nx">fps</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">2000</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong>: 开启监控后才能获取准确的 FPS 数据。</p>
+</blockquote>
+<h4 id="appstopmonitoring"><code>app.stopMonitoring()</code><a class="headerlink" href="#appstopmonitoring" title="Permanent link">&para;</a></h4>
+<p>停止性能监控。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">stopMonitoring</span><span class="p">();</span>
+</code></pre></div>
+<h4 id="appperformancerecordslimit"><code>app.performanceRecords(limit?)</code><a class="headerlink" href="#appperformancerecordslimit" title="Permanent link">&para;</a></h4>
+<p>获取历史性能记录。<strong>参数:</strong> <code>limit</code> (number, 默认 50) <strong>返回:</strong> <code>array</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">performanceRecords</span><span class="p">(</span><span class="mf">10</span><span class="p">);</span>
+<span class="nx">records</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">record</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`脚本: </span><span class="si">${</span><span class="nx">record</span><span class="p">.</span><span class="nx">scriptName</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`执行时间: </span><span class="si">${</span><span class="nx">record</span><span class="p">.</span><span class="nx">executionTime</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="si">}</span><span class="sb">ms`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`峰值内存: </span><span class="si">${</span><span class="nx">record</span><span class="p">.</span><span class="nx">peakMemory</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span><span class="si">}</span><span class="sb">MB`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`成功: </span><span class="si">${</span><span class="nx">record</span><span class="p">.</span><span class="nx">success</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>返回数组元素结构:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;uuid-string&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">scriptName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;MyScript&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">executionTime</span><span class="o">:</span><span class="w"> </span><span class="mf">123.45</span><span class="p">,</span><span class="w">      </span><span class="c1">// 执行时间 (ms)</span>
+<span class="w">  </span><span class="nx">peakMemory</span><span class="o">:</span><span class="w"> </span><span class="mf">156.8</span><span class="p">,</span><span class="w">          </span><span class="c1">// 峰值内存 (MB)</span>
+<span class="w">  </span><span class="nx">averageCPU</span><span class="o">:</span><span class="w"> </span><span class="mf">25.3</span><span class="p">,</span><span class="w">           </span><span class="c1">// 平均 CPU (%)</span>
+<span class="w">  </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="mf">1704067200.0</span><span class="p">,</span><span class="w">    </span><span class="c1">// 时间戳</span>
+<span class="w">  </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w">               </span><span class="c1">// 是否成功</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h4 id="appclearperformancerecords"><code>app.clearPerformanceRecords()</code><a class="headerlink" href="#appclearperformancerecords" title="Permanent link">&para;</a></h4>
+<p>清除所有性能记录。<strong>返回:</strong> <code>void</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">clearPerformanceRecords</span><span class="p">();</span>
+</code></pre></div>
+<hr />
 <h3 id="api_1">应用管理（私有 API）<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h3>
 <h4 id="applist"><code>app.list()</code><a class="headerlink" href="#applist" title="Permanent link">&para;</a></h4>
 <p>获取所有已安装应用列表。<strong>返回:</strong> <code>array</code></p>
@@ -1766,7 +1972,7 @@
 <h4 id="appgetdatacontainerbundleid"><code>app.getDataContainer(bundleId)</code><a class="headerlink" href="#appgetdatacontainerbundleid" title="Permanent link">&para;</a></h4>
 <p>获取应用数据容器路径。<strong>参数:</strong> <code>bundleId</code> (string) <strong>返回:</strong> <code>string | null</code></p>
 <hr />
-<h2 id="_7">完整示例<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_8">完整示例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <h3 id="1">示例 1: 应用信息显示<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">info</span><span class="p">();</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;=== 应用信息 ===&#39;</span><span class="p">);</span>
@@ -1842,7 +2048,7 @@
 <span class="nx">manager</span><span class="p">.</span><span class="nx">launchByName</span><span class="p">(</span><span class="s1">&#39;Safari&#39;</span><span class="p">);</span>
 </code></pre></div>
 <hr />
-<h2 id="_8">最佳实践<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_9">最佳实践<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <h3 id="1_1">1. 检查应用是否安装<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">isInstalled</span><span class="p">(</span><span class="s1">&#39;com.apple.mobilesafari&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
@@ -1875,7 +2081,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <hr />
-<h2 id="_9">注意事项<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_10">注意事项<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>私有 API</strong>: 应用管理功能使用私有 API，需要 TrollStore 权限</li>
 <li><strong>Daemon 限制</strong>: <code>openSettings</code> 在 Daemon 模式下不可用</li>

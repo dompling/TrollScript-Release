@@ -2865,6 +2865,80 @@
 <p><strong>Returns:</strong> <code>string \| null</code></p>
 <p><em>数据容器路径，未找到返回 null</em></p>
 <hr />
+<h3 id="appcpuusage"><code>app.cpuUsage</code><a class="headerlink" href="#appcpuusage" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>cpuUsage()</code></p>
+<p>获取 CPU 使用率（进程级 + 系统级）</p>
+<p><strong>Returns:</strong> <code>CPUUsage</code></p>
+<p><em>包含 process (进程 CPU %) 和 system (系统 CPU 对象，含 total/user/system/idle/nice/cores) 的对象</em></p>
+<hr />
+<h3 id="appmemoryusage"><code>app.memoryUsage</code><a class="headerlink" href="#appmemoryusage" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>memoryUsage()</code></p>
+<p>获取内存使用情况</p>
+<p><strong>Returns:</strong> <code>MemoryUsage</code></p>
+<p><em>包含 usage (当前使用 MB), peak (峰值 MB), unit (单位) 的对象</em></p>
+<hr />
+<h3 id="appfps"><code>app.fps</code><a class="headerlink" href="#appfps" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>fps()</code></p>
+<p>获取当前帧率</p>
+<p><strong>Returns:</strong> <code>FPSInfo</code></p>
+<p><em>包含 fps (帧率), isWarning (警告状态), isCritical (危险状态) 的对象</em></p>
+<hr />
+<h3 id="appperformancesnapshot"><code>app.performanceSnapshot</code><a class="headerlink" href="#appperformancesnapshot" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>performanceSnapshot()</code></p>
+<p>获取完整性能指标快照</p>
+<p><strong>Returns:</strong> <code>PerformanceSnapshot</code></p>
+<p><em>包含 cpu, memory, fps, isMonitoring, timestamp 的完整性能快照</em></p>
+<hr />
+<h3 id="appstartmonitoring"><code>app.startMonitoring</code><a class="headerlink" href="#appstartmonitoring" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>startMonitoring()</code></p>
+<p>开启性能监控（FPS 采样、指标记录）</p>
+<p><strong>Returns:</strong> <code>boolean</code></p>
+<p><em>是否成功开启</em></p>
+<hr />
+<h3 id="appstopmonitoring"><code>app.stopMonitoring</code><a class="headerlink" href="#appstopmonitoring" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>stopMonitoring()</code></p>
+<p>停止性能监控</p>
+<p><strong>Returns:</strong> <code>boolean</code></p>
+<p><em>是否成功停止</em></p>
+<hr />
+<h3 id="appperformancerecords"><code>app.performanceRecords</code><a class="headerlink" href="#appperformancerecords" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>performanceRecords(limit?)</code></p>
+<p>获取历史性能记录</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>limit</code></td>
+<td><code>number</code></td>
+<td>返回的记录数量，默认 50</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>[PerformanceRecord]</code></p>
+<p><em>性能记录数组，包含 id, scriptName, executionTime, peakMemory, averageCPU, timestamp, success</em></p>
+<hr />
+<h3 id="appclearperformancerecords"><code>app.clearPerformanceRecords</code><a class="headerlink" href="#appclearperformancerecords" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>clearPerformanceRecords()</code></p>
+<p>清除所有性能记录</p>
+<p><strong>Returns:</strong> <code>void</code></p>
+<hr />
 <h2 id="haptic">haptic<a class="headerlink" href="#haptic" title="Permanent link">&para;</a></h2>
 <p><img alt="Limited Support" src="https://img.shields.io/badge/Trigger-Limited-orange" /></p>
 <p>触觉反馈</p>
