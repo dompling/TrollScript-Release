@@ -932,56 +932,6 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        权限管理
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="权限管理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#smscheckaccess" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms.checkAccess()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smstryaccess" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms.tryAccess()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smsisrealdataavailable" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms.isRealDataAvailable()
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         读取短信
       
     </span>
@@ -1029,7 +979,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         搜索短信
@@ -1068,7 +1018,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         验证码提取
@@ -1096,7 +1046,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         聊天管理
@@ -1124,7 +1074,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         统计信息
@@ -1218,7 +1168,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         完整示例
@@ -1290,68 +1240,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        最佳实践
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="最佳实践">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 检查数据可用性
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 处理权限问题
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 限制读取数量
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 验证码时效性
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         注意事项
@@ -1600,18 +1489,7 @@
 </blockquote>
 <hr />
 <h2 id="_1">快速开始<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1">// 检查数据访问权限</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">checkAccess</span><span class="p">();</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;访问状态:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">access</span><span class="p">);</span>
-
-<span class="c1">// 检查是否为真实数据</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sms</span><span class="p">.</span><span class="nx">isRealDataAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;可以访问真实短信数据&#39;</span><span class="p">);</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;当前使用模拟数据&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="c1">// 读取最近的短信</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 读取最近的短信</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mf">20</span><span class="p">);</span>
 <span class="nx">messages</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">msg</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">address</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">text</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
@@ -1626,40 +1504,7 @@
 </code></pre></div>
 <hr />
 <h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
-<h3 id="_2">权限管理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="smscheckaccess"><code>sms.checkAccess()</code><a class="headerlink" href="#smscheckaccess" title="Permanent link">&para;</a></h4>
-<p>检查短信访问权限。<strong>返回:</strong> <code>'available'</code> | <code>'needsCopy'</code> | <code>'unavailable'</code></p>
-<p><strong>返回值说明:</strong>
-- <code>'available'</code> - 可以访问真实数据
-- <code>'needsCopy'</code> - 需要复制数据库文件（需要 Root Helper）
-- <code>'unavailable'</code> - 无法访问，将使用模拟数据</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">checkAccess</span><span class="p">();</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;available&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;可以直接访问短信&#39;</span><span class="p">);</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;needsCopy&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;需要复制数据库&#39;</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">sms</span><span class="p">.</span><span class="nx">tryAccess</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="smstryaccess"><code>sms.tryAccess()</code><a class="headerlink" href="#smstryaccess" title="Permanent link">&para;</a></h4>
-<p>尝试获取短信访问权限（通过 Root Helper 复制数据库）。<strong>返回:</strong> <code>boolean</code></p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sms</span><span class="p">.</span><span class="nx">checkAccess</span><span class="p">()</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;needsCopy&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">tryAccess</span><span class="p">();</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;访问权限获取成功&#39;</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="smsisrealdataavailable"><code>sms.isRealDataAvailable()</code><a class="headerlink" href="#smsisrealdataavailable" title="Permanent link">&para;</a></h4>
-<p>检查当前是否使用真实数据。<strong>返回:</strong> <code>boolean</code></p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sms</span><span class="p">.</span><span class="nx">isRealDataAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;正在使用真实短信数据&#39;</span><span class="p">);</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;正在使用模拟数据（用于测试）&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h3 id="_3">读取短信<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_2">读取短信<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="smsreadlimit"><code>sms.read(limit?)</code><a class="headerlink" href="#smsreadlimit" title="Permanent link">&para;</a></h4>
 <p>读取短信列表。<strong>参数:</strong> <code>limit</code> (number, 可选，默认 100) <strong>返回:</strong> <code>Message[]</code></p>
 <p><strong>Message 对象结构:</strong>
@@ -1701,7 +1546,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <hr />
-<h3 id="_4">搜索短信<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_3">搜索短信<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="smssearchkeyword-limit"><code>sms.search(keyword, limit?)</code><a class="headerlink" href="#smssearchkeyword-limit" title="Permanent link">&para;</a></h4>
 <p>搜索包含关键词的短信。<strong>参数:</strong> <code>keyword</code> (string), <code>limit</code> (number, 可选，默认 100) <strong>返回:</strong> <code>Message[]</code></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 搜索包含&quot;验证码&quot;的短信</span>
@@ -1715,7 +1560,7 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`与 10086 的短信记录: </span><span class="si">${</span><span class="nx">messages</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条`</span><span class="p">);</span>
 </code></pre></div>
 <hr />
-<h3 id="_5">验证码提取<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_4">验证码提取<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="smsgetverificationcodeseconds"><code>sms.getVerificationCode(seconds?)</code><a class="headerlink" href="#smsgetverificationcodeseconds" title="Permanent link">&para;</a></h4>
 <p>从最近的短信中提取验证码。<strong>参数:</strong> <code>seconds</code> (number, 可选，默认 60) <strong>返回:</strong> <code>string | null</code></p>
 <p>自动识别常见的验证码格式（4-8 位数字）。</p>
@@ -1733,7 +1578,7 @@
 <span class="kd">const</span><span class="w"> </span><span class="nx">code2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getVerificationCode</span><span class="p">(</span><span class="mf">120</span><span class="p">);</span>
 </code></pre></div>
 <hr />
-<h3 id="_6">聊天管理<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_5">聊天管理<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="smsgetchats"><code>sms.getChats()</code><a class="headerlink" href="#smsgetchats" title="Permanent link">&para;</a></h4>
 <p>获取短信聊天列表。<strong>返回:</strong> <code>Chat[]</code></p>
 <p><strong>Chat 对象结构:</strong>
@@ -1751,7 +1596,7 @@
 <span class="p">});</span>
 </code></pre></div>
 <hr />
-<h3 id="_7">统计信息<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_6">统计信息<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="smsgetstatistics"><code>sms.getStatistics()</code><a class="headerlink" href="#smsgetstatistics" title="Permanent link">&para;</a></h4>
 <p>获取短信统计信息。<strong>返回:</strong> <code>{ totalMessages, unreadCount, chatCount, isMockData }</code></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">stats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getStatistics</span><span class="p">();</span>
@@ -1784,7 +1629,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <hr />
-<h2 id="_8">完整示例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_7">完整示例<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <h3 id="1">示例 1: 短信备份<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">backupMessages</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">sms</span><span class="p">.</span><span class="nx">isRealDataAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
@@ -1947,46 +1792,7 @@
 <span class="nx">exportChat</span><span class="p">(</span><span class="s1">&#39;10086&#39;</span><span class="p">);</span>
 </code></pre></div>
 <hr />
-<h2 id="_9">最佳实践<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<h3 id="1_1">1. 检查数据可用性<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sms</span><span class="p">.</span><span class="nx">isRealDataAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">read</span><span class="p">();</span>
-<span class="w">  </span><span class="nx">processMessages</span><span class="p">(</span><span class="nx">messages</span><span class="p">);</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;当前使用模拟数据&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="c1">// ❌ 错误 - 不检查</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">read</span><span class="p">();</span><span class="w">  </span><span class="c1">// 可能是模拟数据</span>
-</code></pre></div>
-<h3 id="2_1">2. 处理权限问题<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">checkAccess</span><span class="p">();</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">access</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;needsCopy&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sms</span><span class="p">.</span><span class="nx">helperAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">sms</span><span class="p">.</span><span class="nx">tryAccess</span><span class="p">();</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;需要 Root 权限&#39;</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="3_1">3. 限制读取数量<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 限制数量</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">recent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mf">100</span><span class="p">);</span>
-
-<span class="c1">// ❌ 错误 - 读取所有（可能很慢）</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mf">999999</span><span class="p">);</span>
-</code></pre></div>
-<h3 id="4_1">4. 验证码时效性<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 指定时间范围</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getVerificationCode</span><span class="p">(</span><span class="mf">60</span><span class="p">);</span><span class="w">  </span><span class="c1">// 最近 60 秒</span>
-
-<span class="c1">// ❌ 错误 - 可能获取到旧验证码</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getVerificationCode</span><span class="p">(</span><span class="mf">3600</span><span class="p">);</span>
-</code></pre></div>
-<hr />
-<h2 id="_10">注意事项<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h2 id="_8">注意事项<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Root 权限</strong>: 读取真实短信需要 TrollStore 环境和 Root Helper</li>
 <li><strong>模拟数据</strong>: 无权限时自动使用模拟数据，<code>isMockData</code> 字段标识数据来源</li>
