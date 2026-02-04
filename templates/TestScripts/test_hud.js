@@ -20,424 +20,424 @@ function sleep(ms) {
 async function run() {
     console.log("=== Testing HUD Module ===\n");
 
-    // // Check module availability
-    // if (typeof hud === 'undefined') {
-    //     console.error("❌ HUD module not found");
-    //     return;
-    // }
-    // console.log("✅ HUD module is available\n");
-    //
-    // // ========== Test 1: getScreenSize ==========
-    // console.log("--- Test 1: getScreenSize ---");
-    // const screen = hud.getScreenSize();
-    // console.log("Screen Size:", JSON.stringify(screen));
-    // assert(screen && screen.width > 0, "getScreenSize() returns valid width");
-    // assert(screen && screen.height > 0, "getScreenSize() returns valid height");
-    // assert(screen && screen.scale > 0, "getScreenSize() returns valid scale");
-    // console.log("");
-    //
-    // // ========== Test 2: createWindow Basic ==========
-    // console.log("--- Test 2: createWindow Basic ---");
-    // const win1 = hud.createWindow({
-    //     width: 250,
-    //     height: 80,
-    //     draggable: true,
-    //     style: {
-    //         backgroundColor: '#000000DD',
-    //         cornerRadius: 12,
-    //         padding: 16
-    //     }
-    // });
-    // assert(win1 !== null && win1 !== undefined, "createWindow() returns window object");
-    //
-    // // Test addText
-    // console.log("Testing addText...");
-    // const titleText = win1.addText({
-    //     text: 'HUD Test Window',
-    //     style: { textColor: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }
-    // });
-    // assert(titleText !== null, "addText() returns text element");
-    //
-    // const subtitleText = win1.addText({
-    //     text: 'Basic functionality test',
-    //     style: { textColor: '#8E8E93', fontSize: 12 }
-    // });
-    // assert(subtitleText !== null, "addText() works multiple times");
-    //
-    // // Test show
-    // console.log("Testing show()...");
-    // win1.show();
-    // assert(true, "show() called successfully");
-    // await sleep(1000);
-    //
-    // // Test isVisible
-    // console.log("Testing isVisible()...");
-    // const visible = win1.isVisible();
-    // console.log("Is Visible:", visible);
-    // assert(visible === true, "isVisible() returns true after show()");
-    //
-    // // Test getBounds
-    // console.log("Testing getBounds()...");
-    // const bounds = win1.getBounds();
-    // console.log("Window Bounds:", JSON.stringify(bounds));
-    // assert(bounds && bounds.width === 250, "getBounds() returns correct width");
-    // assert(bounds && bounds.height === 80, "getBounds() returns correct height");
-    //
-    // // Test setText
-    // console.log("Testing setText()...");
-    // titleText.setText('Updated Title');
-    // assert(true, "setText() called successfully");
-    //
-    // await sleep(1000);
-    //
-    // // Test hide
-    // console.log("Testing hide()...");
-    // win1.hide();
-    // await sleep(500);
-    // const hiddenVisible = win1.isVisible();
-    // console.log("Is Visible after hide:", hiddenVisible);
-    // assert(hiddenVisible === false, "isVisible() returns false after hide()");
-    //
-    // // Test remove
-    // console.log("Testing remove()...");
-    // win1.remove();
-    // assert(true, "remove() called successfully");
-    // console.log("");
-    //
-    // // ========== Test 3: Window with Buttons ==========
-    // console.log("--- Test 3: Window with Buttons ---");
-    // const win2 = hud.createWindow({
-    //     width: 280,
-    //     height: 140,
-    //     draggable: true,
-    //     style: {
-    //         backgroundColor: '#1C1C1EF0',
-    //         cornerRadius: 16
-    //     }
-    // });
-    // console.log("win2 Created");
-    // const statusText = win2.addText({
-    //     text: 'Confirm Action?',
-    //     style: { textColor: '#FFFFFF', fontSize: 18 }
-    // });
-    // win2.addSpacer({ height: 16 });
-    //
-    // // Test addStack
-    // console.log("Testing addStack()...");
-    // const buttonStack = win2.addStack({ axis: 'horizontal', spacing: 12 });
-    // assert(buttonStack !== null, "addStack() returns stack object");
-    //
-    // // Test addButton
-    // console.log("Testing addButton()...");
-    // let cancelClicked = false;
-    // const cancelBtn = buttonStack.addButton({
-    //     title: 'Cancel',
-    //     style: { backgroundColor: '#3A3A3C', textColor: '#FFFFFF', cornerRadius: 8 },
-    //     onClick: () => {
-    //         console.log("Cancel button clicked");
-    //         cancelClicked = true;
-    //         cancelBtn.setStyle({ backgroundColor: '#FF3B30' });
-    //         statusText.setText('❌ Cancelled!');
-    //     }
-    // });
-    // assert(cancelBtn !== null, "addButton() returns button element");
-    //
-    // let confirmClicked = false;
-    // const confirmBtn = buttonStack.addButton({
-    //     title: 'Confirm',
-    //     style: { backgroundColor: '#007AFF', textColor: '#FFFFFF', cornerRadius: 8 },
-    //     onClick: () => {
-    //         console.log("Confirm button clicked");
-    //         confirmClicked = true;
-    //         confirmBtn.setStyle({ backgroundColor: '#34C759' });
-    //         statusText.setText('✅ Confirmed!');
-    //     }
-    // });
-    // assert(confirmBtn !== null, "addButton() works multiple times");
-    //
-    // win2.show();
-    // await sleep(2000);
-    //
-    // // Test button methods
-    // console.log("Testing button setTitle()...");
-    // confirmBtn.setTitle('OK');
-    // assert(true, "button setTitle() called successfully");
-    //
-    // console.log("Testing button setStyle()...");
-    // cancelBtn.setStyle({ backgroundColor: '#FF3B30' });
-    // assert(true, "button setStyle() called successfully");
-    //
-    // await sleep(1000);
-    // win2.remove();
-    // console.log("");
-    //
-    // // ========== Test 4: Window with Image ==========
-    // console.log("--- Test 4: Window with Image ---");
-    // const win3 = hud.createWindow({
-    //     width: 200,
-    //     height: 100,
-    //     style: {
-    //         backgroundColor: '#2C2C2EF0',
-    //         cornerRadius: 14
-    //     }
-    // });
-    //
-    // const row = win3.addStack({ axis: 'horizontal', spacing: 12, alignment: 'center' });
-    //
-    // // Test addImage with SF Symbol
-    // console.log("Testing addImage() with SF Symbol...");
-    // const icon = row.addImage({
-    //     systemName: 'checkmark.circle.fill',
-    //     width: 32,
-    //     height: 32
-    // });
-    // assert(icon !== null, "addImage() returns image element");
-    //
-    // const infoStack = row.addStack({ axis: 'vertical', spacing: 4 });
-    // infoStack.addText({
-    //     text: 'Success!',
-    //     style: { textColor: '#34C759', fontSize: 16, fontWeight: 'bold' }
-    // });
-    // infoStack.addText({
-    //     text: 'Operation completed',
-    //     style: { textColor: '#8E8E93', fontSize: 12 }
-    // });
-    //
-    // win3.show();
-    // await sleep(1500);
-    //
-    // // Test image methods
-    // console.log("Testing image update()...");
-    // icon.update({ width: 36, height: 36 });
-    // assert(true, "image update() called successfully");
-    //
-    // console.log("Testing image setSize()...");
-    // icon.setSize(40, 40);
-    // assert(true, "image setSize() called successfully");
-    //
-    // await sleep(1000);
-    // win3.remove();
-    // console.log("");
-    //
-    // // ========== Test 5: Window Position and Size ==========
-    // console.log("--- Test 5: Window Position and Size ---");
-    // const win4 = hud.createWindow({
-    //     width: 150,
-    //     height: 60,
-    //     x: 50,
-    //     y: 100,
-    //     style: {
-    //         backgroundColor: '#007AFFCC',
-    //         cornerRadius: 10
-    //     }
-    // });
-    // win4.addText({
-    //     text: 'Position Test',
-    //     style: { textColor: '#FFFFFF' }
-    // });
-    // win4.show();
-    // await sleep(500);
-    //
-    // // Test setPosition
-    // console.log("Testing setPosition()...");
-    // win4.setPosition(screen.width - 200, 100);
-    // assert(true, "setPosition() called successfully");
-    // await sleep(500);
-    //
-    // // Test setSize
-    // console.log("Testing setSize()...");
-    // win4.setSize(180, 80);
-    // assert(true, "setSize() called successfully");
-    // await sleep(500);
-    //
-    // // Test setStyle
-    // console.log("Testing setStyle()...");
-    // win4.setStyle({
-    //     backgroundColor: '#FF9500CC',
-    //     cornerRadius: 20
-    // });
-    // assert(true, "setStyle() called successfully");
-    // await sleep(1000);
-    //
-    // win4.remove();
-    // console.log("");
-    //
-    // // ========== Test 6: AutoClear Window ==========
-    // console.log("--- Test 6: AutoClear Window ---");
-    // const win5 = hud.createWindow({
-    //     width: 200,
-    //     height: 60,
-    //     autoClear: 2, // Auto remove after 2 seconds
-    //     style: {
-    //         backgroundColor: '#34C759DD',
-    //         cornerRadius: 10
-    //     }
-    // });
-    // win5.addText({
-    //     text: 'Auto clear in 2s...',
-    //     style: { textColor: '#FFFFFF', fontSize: 14 }
-    // });
-    // win5.show();
-    // assert(true, "Window with autoClear created");
-    // console.log("Waiting for auto clear...");
-    // await sleep(2500);
-    // console.log("AutoClear test completed");
-    // console.log("");
-    //
-    // // ========== Test 7: getAllWindows and clearAll ==========
-    // console.log("--- Test 7: getAllWindows and clearAll ---");
-    //
-    // // Create multiple windows
-    // const testWin1 = hud.createWindow({ width: 100, height: 50, x: 20, y: 200 });
-    // testWin1.addText({ text: 'Win 1' });
-    // testWin1.show();
-    //
-    // const testWin2 = hud.createWindow({ width: 100, height: 50, x: 130, y: 200 });
-    // testWin2.addText({ text: 'Win 2' });
-    // testWin2.show();
-    //
-    // const testWin3 = hud.createWindow({ width: 100, height: 50, x: 240, y: 200 });
-    // testWin3.addText({ text: 'Win 3' });
-    // testWin3.show();
-    //
-    // await sleep(500);
-    //
-    // // Test getAllWindows
-    // console.log("Testing getAllWindows()...");
-    // const allWindows = hud.getAllWindows();
-    // console.log("All Windows:", JSON.stringify(allWindows));
-    // assert(Array.isArray(allWindows), "getAllWindows() returns array");
-    // assert(allWindows.length >= 3, "getAllWindows() returns created windows");
-    //
-    // await sleep(1000);
-    //
-    // // Test clearAll
-    // console.log("Testing clearAll()...");
-    // hud.clearAll();
-    // assert(true, "clearAll() called successfully");
-    //
-    // await sleep(500);
-    //
-    // const remainingWindows = hud.getAllWindows();
-    // console.log("Remaining Windows:", remainingWindows.length);
-    // assert(remainingWindows.length === 0, "clearAll() removes all windows");
-    // console.log("");
-    //
-    // // ========== Test 8: Element Remove ==========
-    // console.log("--- Test 8: Element Remove ---");
-    // const win6 = hud.createWindow({
-    //     width: 200,
-    //     height: 100,
-    //     style: { backgroundColor: '#000000DD', cornerRadius: 12 }
-    // });
-    //
-    // const removeText = win6.addText({
-    //     text: 'This will be removed',
-    //     style: { textColor: '#FFFFFF' }
-    // });
-    // win6.addText({
-    //     text: 'This stays',
-    //     style: { textColor: '#00FF00' }
-    // });
-    // win6.show();
-    // await sleep(1000);
-    //
-    // console.log("Testing element remove()...");
-    // removeText.remove();
-    // win6.refresh();
-    // assert(true, "Element remove() and window refresh() called");
-    //
-    // await sleep(1000);
-    // win6.remove();
-    // console.log("");
-    //
-    // // ========== Test 9: Spacer ==========
-    // console.log("--- Test 9: Spacer ---");
-    // const win7 = hud.createWindow({
-    //     width: 200,
-    //     height: 120,
-    //     style: { backgroundColor: '#000000DD', cornerRadius: 12 }
-    // });
-    //
-    // win7.addText({ text: 'Top', style: { textColor: '#FFFFFF' } });
-    //
-    // console.log("Testing addSpacer()...");
-    // const spacer = win7.addSpacer({ height: 30 });
-    // assert(spacer !== null, "addSpacer() returns spacer element");
-    //
-    // win7.addText({ text: 'Bottom', style: { textColor: '#FFFFFF' } });
-    // win7.show();
-    // await sleep(1000);
-    //
-    // console.log("Testing spacer setHeight()...");
-    // spacer.setHeight(10);
-    // win7.refresh();
-    // assert(true, "spacer setHeight() called successfully");
-    //
-    // await sleep(1000);
-    // win7.remove();
-    // console.log("");
-    //
-    // // ========== Test 10: Loading Element ==========
-    // console.log("--- Test 10: Loading Element ---");
-    // const win8 = hud.createWindow({
-    //     width: 200,
-    //     height: 120,
-    //     style: { backgroundColor: '#1C1C1EF0', cornerRadius: 14 }
-    // });
-    //
-    // const loadingText = win8.addText({
-    //     text: 'Loading...',
-    //     style: { textColor: '#FFFFFF', fontSize: 14 }
-    // });
-    // win8.addSpacer({ height: 12 });
-    //
-    // // Test addLoading
-    // console.log("Testing addLoading()...");
-    // const loading = win8.addLoading({
-    //     style: 'large',
-    //     color: '#007AFF'
-    // });
-    // assert(loading !== null, "addLoading() returns loading element");
-    //
-    // win8.show();
-    // await sleep(1000);
-    //
-    // // Test isAnimating
-    // console.log("Testing loading.isAnimating()...");
-    // const animating = loading.isAnimating();
-    // console.log("Is Animating:", animating);
-    // assert(animating === true, "isAnimating() returns true by default");
-    //
-    // // Test stop
-    // console.log("Testing loading.stop()...");
-    // loading.stop();
-    // loadingText.setText('Stopped');
-    // assert(true, "loading.stop() called successfully");
-    // await sleep(1000);
-    //
-    // // Test start
-    // console.log("Testing loading.start()...");
-    // loading.start();
-    // loadingText.setText('Started again');
-    // assert(true, "loading.start() called successfully");
-    // await sleep(1000);
-    //
-    // // Test setStyle
-    // console.log("Testing loading.setStyle()...");
-    // loading.setStyle('medium');
-    // assert(true, "loading.setStyle() called successfully");
-    // await sleep(500);
-    //
-    // // Test setColor
-    // console.log("Testing loading.setColor()...");
-    // loading.setColor('#FF9500');
-    // assert(true, "loading.setColor() called successfully");
-    // await sleep(1000);
-    //
-    // win8.remove();
-    // console.log("");
-    //
+    // Check module availability
+    if (typeof hud === 'undefined') {
+        console.error("❌ HUD module not found");
+        return;
+    }
+    console.log("✅ HUD module is available\n");
+
+    // ========== Test 1: getScreenSize ==========
+    console.log("--- Test 1: getScreenSize ---");
+    const screen = hud.getScreenSize();
+    console.log("Screen Size:", JSON.stringify(screen));
+    assert(screen && screen.width > 0, "getScreenSize() returns valid width");
+    assert(screen && screen.height > 0, "getScreenSize() returns valid height");
+    assert(screen && screen.scale > 0, "getScreenSize() returns valid scale");
+    console.log("");
+
+    // ========== Test 2: createWindow Basic ==========
+    console.log("--- Test 2: createWindow Basic ---");
+    const win1 = hud.createWindow({
+        width: 250,
+        height: 80,
+        draggable: true,
+        style: {
+            backgroundColor: '#000000DD',
+            cornerRadius: 12,
+            padding: 16
+        }
+    });
+    assert(win1 !== null && win1 !== undefined, "createWindow() returns window object");
+
+    // Test addText
+    console.log("Testing addText...");
+    const titleText = win1.addText({
+        text: 'HUD Test Window',
+        style: { textColor: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }
+    });
+    assert(titleText !== null, "addText() returns text element");
+
+    const subtitleText = win1.addText({
+        text: 'Basic functionality test',
+        style: { textColor: '#8E8E93', fontSize: 12 }
+    });
+    assert(subtitleText !== null, "addText() works multiple times");
+
+    // Test show
+    console.log("Testing show()...");
+    win1.show();
+    assert(true, "show() called successfully");
+    await sleep(1000);
+
+    // Test isVisible
+    console.log("Testing isVisible()...");
+    const visible = win1.isVisible();
+    console.log("Is Visible:", visible);
+    assert(visible === true, "isVisible() returns true after show()");
+
+    // Test getBounds
+    console.log("Testing getBounds()...");
+    const bounds = win1.getBounds();
+    console.log("Window Bounds:", JSON.stringify(bounds));
+    assert(bounds && bounds.width === 250, "getBounds() returns correct width");
+    assert(bounds && bounds.height === 80, "getBounds() returns correct height");
+
+    // Test setText
+    console.log("Testing setText()...");
+    titleText.setText('Updated Title');
+    assert(true, "setText() called successfully");
+
+    await sleep(1000);
+
+    // Test hide
+    console.log("Testing hide()...");
+    win1.hide();
+    await sleep(500);
+    const hiddenVisible = win1.isVisible();
+    console.log("Is Visible after hide:", hiddenVisible);
+    assert(hiddenVisible === false, "isVisible() returns false after hide()");
+
+    // Test remove
+    console.log("Testing remove()...");
+    win1.remove();
+    assert(true, "remove() called successfully");
+    console.log("");
+
+    // ========== Test 3: Window with Buttons ==========
+    console.log("--- Test 3: Window with Buttons ---");
+    const win2 = hud.createWindow({
+        width: 280,
+        height: 140,
+        draggable: true,
+        style: {
+            backgroundColor: '#1C1C1EF0',
+            cornerRadius: 16
+        }
+    });
+    console.log("win2 Created");
+    const statusText = win2.addText({
+        text: 'Confirm Action?',
+        style: { textColor: '#FFFFFF', fontSize: 18 }
+    });
+    win2.addSpacer({ height: 16 });
+
+    // Test addStack
+    console.log("Testing addStack()...");
+    const buttonStack = win2.addStack({ axis: 'horizontal', spacing: 12 });
+    assert(buttonStack !== null, "addStack() returns stack object");
+
+    // Test addButton
+    console.log("Testing addButton()...");
+    let cancelClicked = false;
+    const cancelBtn = buttonStack.addButton({
+        title: 'Cancel',
+        style: { backgroundColor: '#3A3A3C', textColor: '#FFFFFF', cornerRadius: 8 },
+        onClick: () => {
+            console.log("Cancel button clicked");
+            cancelClicked = true;
+            cancelBtn.setStyle({ backgroundColor: '#FF3B30' });
+            statusText.setText('❌ Cancelled!');
+        }
+    });
+    assert(cancelBtn !== null, "addButton() returns button element");
+
+    let confirmClicked = false;
+    const confirmBtn = buttonStack.addButton({
+        title: 'Confirm',
+        style: { backgroundColor: '#007AFF', textColor: '#FFFFFF', cornerRadius: 8 },
+        onClick: () => {
+            console.log("Confirm button clicked");
+            confirmClicked = true;
+            confirmBtn.setStyle({ backgroundColor: '#34C759' });
+            statusText.setText('✅ Confirmed!');
+        }
+    });
+    assert(confirmBtn !== null, "addButton() works multiple times");
+
+    win2.show();
+    await sleep(2000);
+
+    // Test button methods
+    console.log("Testing button setTitle()...");
+    confirmBtn.setTitle('OK');
+    assert(true, "button setTitle() called successfully");
+
+    console.log("Testing button setStyle()...");
+    cancelBtn.setStyle({ backgroundColor: '#FF3B30' });
+    assert(true, "button setStyle() called successfully");
+
+    await sleep(1000);
+    win2.remove();
+    console.log("");
+
+    // ========== Test 4: Window with Image ==========
+    console.log("--- Test 4: Window with Image ---");
+    const win3 = hud.createWindow({
+        width: 200,
+        height: 100,
+        style: {
+            backgroundColor: '#2C2C2EF0',
+            cornerRadius: 14
+        }
+    });
+
+    const row = win3.addStack({ axis: 'horizontal', spacing: 12, alignment: 'center' });
+
+    // Test addImage with SF Symbol
+    console.log("Testing addImage() with SF Symbol...");
+    const icon = row.addImage({
+        systemName: 'checkmark.circle.fill',
+        width: 32,
+        height: 32
+    });
+    assert(icon !== null, "addImage() returns image element");
+
+    const infoStack = row.addStack({ axis: 'vertical', spacing: 4 });
+    infoStack.addText({
+        text: 'Success!',
+        style: { textColor: '#34C759', fontSize: 16, fontWeight: 'bold' }
+    });
+    infoStack.addText({
+        text: 'Operation completed',
+        style: { textColor: '#8E8E93', fontSize: 12 }
+    });
+
+    win3.show();
+    await sleep(1500);
+
+    // Test image methods
+    console.log("Testing image update()...");
+    icon.update({ width: 36, height: 36 });
+    assert(true, "image update() called successfully");
+
+    console.log("Testing image setSize()...");
+    icon.setSize(40, 40);
+    assert(true, "image setSize() called successfully");
+
+    await sleep(1000);
+    win3.remove();
+    console.log("");
+
+    // ========== Test 5: Window Position and Size ==========
+    console.log("--- Test 5: Window Position and Size ---");
+    const win4 = hud.createWindow({
+        width: 150,
+        height: 60,
+        x: 50,
+        y: 100,
+        style: {
+            backgroundColor: '#007AFFCC',
+            cornerRadius: 10
+        }
+    });
+    win4.addText({
+        text: 'Position Test',
+        style: { textColor: '#FFFFFF' }
+    });
+    win4.show();
+    await sleep(500);
+
+    // Test setPosition
+    console.log("Testing setPosition()...");
+    win4.setPosition(screen.width - 200, 100);
+    assert(true, "setPosition() called successfully");
+    await sleep(500);
+
+    // Test setSize
+    console.log("Testing setSize()...");
+    win4.setSize(180, 80);
+    assert(true, "setSize() called successfully");
+    await sleep(500);
+
+    // Test setStyle
+    console.log("Testing setStyle()...");
+    win4.setStyle({
+        backgroundColor: '#FF9500CC',
+        cornerRadius: 20
+    });
+    assert(true, "setStyle() called successfully");
+    await sleep(1000);
+
+    win4.remove();
+    console.log("");
+
+    // ========== Test 6: AutoClear Window ==========
+    console.log("--- Test 6: AutoClear Window ---");
+    const win5 = hud.createWindow({
+        width: 200,
+        height: 60,
+        autoClear: 2, // Auto remove after 2 seconds
+        style: {
+            backgroundColor: '#34C759DD',
+            cornerRadius: 10
+        }
+    });
+    win5.addText({
+        text: 'Auto clear in 2s...',
+        style: { textColor: '#FFFFFF', fontSize: 14 }
+    });
+    win5.show();
+    assert(true, "Window with autoClear created");
+    console.log("Waiting for auto clear...");
+    await sleep(2500);
+    console.log("AutoClear test completed");
+    console.log("");
+
+    // ========== Test 7: getAllWindows and clearAll ==========
+    console.log("--- Test 7: getAllWindows and clearAll ---");
+
+    // Create multiple windows
+    const testWin1 = hud.createWindow({ width: 100, height: 50, x: 20, y: 200 });
+    testWin1.addText({ text: 'Win 1' });
+    testWin1.show();
+
+    const testWin2 = hud.createWindow({ width: 100, height: 50, x: 130, y: 200 });
+    testWin2.addText({ text: 'Win 2' });
+    testWin2.show();
+
+    const testWin3 = hud.createWindow({ width: 100, height: 50, x: 240, y: 200 });
+    testWin3.addText({ text: 'Win 3' });
+    testWin3.show();
+
+    await sleep(500);
+
+    // Test getAllWindows
+    console.log("Testing getAllWindows()...");
+    const allWindows = hud.getAllWindows();
+    console.log("All Windows:", JSON.stringify(allWindows));
+    assert(Array.isArray(allWindows), "getAllWindows() returns array");
+    assert(allWindows.length >= 3, "getAllWindows() returns created windows");
+
+    await sleep(1000);
+
+    // Test clearAll
+    console.log("Testing clearAll()...");
+    hud.clearAll();
+    assert(true, "clearAll() called successfully");
+
+    await sleep(500);
+
+    const remainingWindows = hud.getAllWindows();
+    console.log("Remaining Windows:", remainingWindows.length);
+    assert(remainingWindows.length === 0, "clearAll() removes all windows");
+    console.log("");
+
+    // ========== Test 8: Element Remove ==========
+    console.log("--- Test 8: Element Remove ---");
+    const win6 = hud.createWindow({
+        width: 200,
+        height: 100,
+        style: { backgroundColor: '#000000DD', cornerRadius: 12 }
+    });
+
+    const removeText = win6.addText({
+        text: 'This will be removed',
+        style: { textColor: '#FFFFFF' }
+    });
+    win6.addText({
+        text: 'This stays',
+        style: { textColor: '#00FF00' }
+    });
+    win6.show();
+    await sleep(1000);
+
+    console.log("Testing element remove()...");
+    removeText.remove();
+    win6.refresh();
+    assert(true, "Element remove() and window refresh() called");
+
+    await sleep(1000);
+    win6.remove();
+    console.log("");
+
+    // ========== Test 9: Spacer ==========
+    console.log("--- Test 9: Spacer ---");
+    const win7 = hud.createWindow({
+        width: 200,
+        height: 120,
+        style: { backgroundColor: '#000000DD', cornerRadius: 12 }
+    });
+
+    win7.addText({ text: 'Top', style: { textColor: '#FFFFFF' } });
+
+    console.log("Testing addSpacer()...");
+    const spacer = win7.addSpacer({ height: 30 });
+    assert(spacer !== null, "addSpacer() returns spacer element");
+
+    win7.addText({ text: 'Bottom', style: { textColor: '#FFFFFF' } });
+    win7.show();
+    await sleep(1000);
+
+    console.log("Testing spacer setHeight()...");
+    spacer.setHeight(10);
+    win7.refresh();
+    assert(true, "spacer setHeight() called successfully");
+
+    await sleep(1000);
+    win7.remove();
+    console.log("");
+
+    // ========== Test 10: Loading Element ==========
+    console.log("--- Test 10: Loading Element ---");
+    const win8 = hud.createWindow({
+        width: 200,
+        height: 120,
+        style: { backgroundColor: '#1C1C1EF0', cornerRadius: 14 }
+    });
+
+    const loadingText = win8.addText({
+        text: 'Loading...',
+        style: { textColor: '#FFFFFF', fontSize: 14 }
+    });
+    win8.addSpacer({ height: 12 });
+
+    // Test addLoading
+    console.log("Testing addLoading()...");
+    const loading = win8.addLoading({
+        style: 'large',
+        color: '#007AFF'
+    });
+    assert(loading !== null, "addLoading() returns loading element");
+
+    win8.show();
+    await sleep(1000);
+
+    // Test isAnimating
+    console.log("Testing loading.isAnimating()...");
+    const animating = loading.isAnimating();
+    console.log("Is Animating:", animating);
+    assert(animating === true, "isAnimating() returns true by default");
+
+    // Test stop
+    console.log("Testing loading.stop()...");
+    loading.stop();
+    loadingText.setText('Stopped');
+    assert(true, "loading.stop() called successfully");
+    await sleep(1000);
+
+    // Test start
+    console.log("Testing loading.start()...");
+    loading.start();
+    loadingText.setText('Started again');
+    assert(true, "loading.start() called successfully");
+    await sleep(1000);
+
+    // Test setStyle
+    console.log("Testing loading.setStyle()...");
+    loading.setStyle('medium');
+    assert(true, "loading.setStyle() called successfully");
+    await sleep(500);
+
+    // Test setColor
+    console.log("Testing loading.setColor()...");
+    loading.setColor('#FF9500');
+    assert(true, "loading.setColor() called successfully");
+    await sleep(1000);
+
+    win8.remove();
+    console.log("");
+
     // ========== Test 11: onClick for Text, Image, Stack ==========
     console.log("--- Test 11: onClick for Text, Image, Stack ---");
     const existingWin = hud.getWindow('win9');
