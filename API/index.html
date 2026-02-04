@@ -13,10 +13,6 @@
         <link rel="canonical" href="https://trollscript.qzz.io/API/">
       
       
-        <link rel="prev" href="../requirements/">
-      
-      
-        <link rel="next" href="../API.en/">
       
       
         
@@ -27,7 +23,7 @@
     
     
       
-        <title>中文文档 - TrollScript</title>
+        <title>TrollScript API Reference (v1.2.0) - TrollScript</title>
       
     
     
@@ -114,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              中文文档
+              TrollScript API Reference (v1.2.0)
             
           </span>
         </div>
@@ -195,6 +191,18 @@
       
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/dompling/TrollScript-Release" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
   </nav>
   
 </header>
@@ -230,6 +238,18 @@
     </a>
     TrollScript
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dompling/TrollScript-Release" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -318,26 +338,35 @@
       
   
   
+  
+  
     
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
+    
+    
+    
       
         
+        
       
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
   
   
   <span class="md-ellipsis">
     
   
-    中文文档
+    API 参考
   
 
     
@@ -345,2885 +374,35 @@
   
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
   
-  
-  <span class="md-ellipsis">
-    
-  
-    中文文档
+    API 参考
   
 
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#trigger-compatibility-legend" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Trigger Compatibility Legend
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#table-of-contents" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Table of Contents
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#console" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        console
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="console">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#consolelog" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        console.log
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#consoleerror" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        console.error
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#consolewarn" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        console.warn
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#consoleinfo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        console.info
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#consoledebug" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        console.debug
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#consoleclear" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        console.clear
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#device" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        device
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="device">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deviceinfo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        device.info
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#devicebattery" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        device.battery
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#devicescreen" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        device.screen
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#clipboard" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        clipboard
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="clipboard">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clipboardgettext" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        clipboard.getText
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clipboardsettext" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        clipboard.setText
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clipboardclear" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        clipboard.clear
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clipboardhastext" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        clipboard.hasText
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#storage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        storage
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="storage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#storageget" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        storage.get
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#storageset" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        storage.set
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#storageremove" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        storage.remove
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#storageclear" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        storage.clear
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#storagehas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        storage.has
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#storagekeys" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        storage.keys
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#icloud" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        icloud
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="icloud">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#icloudcontainerpath" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        icloud.containerPath
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#icloudread" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        icloud.read
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#icloudwrite" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        icloud.write
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iclouddelete" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        icloud.delete
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#icloudlist" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        icloud.list
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#file" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="file">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fileread" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.read
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filewrite" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.write
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fileappend" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.append
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fileexists" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.exists
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filedelete" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.delete
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filemove" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.move
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filecopy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.copy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filelist" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.list
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filemkdir" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.mkdir
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filestat" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.stat
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fileisdirectory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.isDirectory
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filedocumentspath" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.documentsPath
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filecachepath" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.cachePath
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filetemppath" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.tempPath
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filedebug" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.debug
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filerootread" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.rootRead
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filerootlist" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.rootList
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filerootcopy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.rootCopy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filerootcheck" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.rootCheck
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filerootexists" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.rootExists
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#filerootavailable" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        file.rootAvailable
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        http
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="http">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#httpget" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        http.get
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#httppost" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        http.post
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#httpput" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        http.put
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#httpdelete" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        http.delete
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#httppatch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        http.patch
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#httphead" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        http.head
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#httprequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        http.request
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#httpdownload" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        http.download
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#network" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        network
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="network">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#networkisreachable" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        network.isReachable
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#networkgetconnectiontype" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        network.getConnectionType
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#networkgetipaddress" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        network.getIPAddress
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#networkencodeurl" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        network.encodeURL
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#networkdecodeurl" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        network.decodeURL
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#networkparseurl" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        network.parseURL
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#networkbuildurl" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        network.buildURL
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#networkping" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        network.ping
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#networkdownload" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        network.download
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#networklistvpns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        network.listVPNs
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#networkconnectvpn" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        network.connectVPN
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#networkdisconnectvpn" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        network.disconnectVPN
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#networkgetvpnstatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        network.getVPNStatus
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#networkopensettings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        network.openSettings
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#app" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="app">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#appversion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.version
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appbuild" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.build
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appbundleid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.bundleId
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appinfo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.info
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appopen" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.open
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appcanopen" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.canOpen
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appvibrate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.vibrate
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appgetlogs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.getLogs
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appexportlogs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.exportLogs
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appgetcrashreports" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.getCrashReports
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appgetlastcrash" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.getLastCrash
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appclearlogs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.clearLogs
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appexit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.exit
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appopensettings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.openSettings
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#applist" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.list
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appgetappinfo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.getAppInfo
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#applaunch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.launch
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appterminate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.terminate
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appisinstalled" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.isInstalled
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appgetdatacontainer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        app.getDataContainer
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#haptic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        haptic
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="haptic">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hapticimpact" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        haptic.impact
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hapticnotification" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        haptic.notification
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hapticselection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        haptic.selection
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hapticvibrate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        haptic.vibrate
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hapticlight" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        haptic.light
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hapticmedium" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        haptic.medium
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hapticheavy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        haptic.heavy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hapticsuccess" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        haptic.success
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hapticwarning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        haptic.warning
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hapticerror" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        haptic.error
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#display" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        display
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="display">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#displaygetbrightness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        display.getBrightness
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#displaysetbrightness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        display.setBrightness
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#displayincreasebrightness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        display.increaseBrightness
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#displaydecreasebrightness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        display.decreaseBrightness
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#displaygetscreeninfo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        display.getScreenInfo
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#displaygetorientation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        display.getOrientation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#displayislowpowermodeenabled" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        display.isLowPowerModeEnabled
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#displaysetlowpowermode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        display.setLowPowerMode
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#displayisautobrightnessenabled" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        display.isAutoBrightnessEnabled
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#displaysetautobrightness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        display.setAutoBrightness
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#displayopensettings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        display.openSettings
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#displaykeepawake" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        display.keepAwake
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hud" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        hud
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="hud">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hudcreatewindow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        hud.createWindow
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hudgetwindow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        hud.getWindow
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hudgetscreensize" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        hud.getScreenSize
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hudclearall" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        hud.clearAll
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hudgetallwindows" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        hud.getAllWindows
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#util" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        util
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="util">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#utiluuid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        util.uuid
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#utilmd5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        util.md5
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#utilbase64encode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        util.base64Encode
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#utilbase64decode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        util.base64Decode
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#utilsha256" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        util.sha256
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#utilformatdate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        util.formatDate
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#utilnow" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        util.now
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#utilsleep" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        util.sleep
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#location" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        location
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="location">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#locationrequestaccess" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        location.requestAccess
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#locationgetaccessstatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        location.getAccessStatus
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#locationisauthorized" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        location.isAuthorized
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#locationgetcurrent" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        location.getCurrent
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#locationcurrent" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        location.current
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#locationdistance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        location.distance
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#locationgeocode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        location.geocode
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#locationreversegeocode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        location.reverseGeocode
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#locationislocationservicesenabled" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        location.isLocationServicesEnabled
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#locationhastrollstorepermission" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        location.hasTrollStorePermission
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#locationsetlocationservicesenabled" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        location.setLocationServicesEnabled
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#locationtogglelocationservices" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        location.toggleLocationServices
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#calendar" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        calendar
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="calendar">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#calendarisauthorized" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        calendar.isAuthorized
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#calendarrequestaccess" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        calendar.requestAccess
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#calendargetcalendars" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        calendar.getCalendars
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#calendargettoday" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        calendar.getToday
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#calendargetevents" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        calendar.getEvents
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#calendarcreate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        calendar.create
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#calendardelete" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        calendar.delete
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reminder" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        reminder
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="reminder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#reminderisauthorized" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        reminder.isAuthorized
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reminderrequestaccess" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        reminder.requestAccess
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#remindergetlists" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        reminder.getLists
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#remindergetall" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        reminder.getAll
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#remindercreate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        reminder.create
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#remindercomplete" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        reminder.complete
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reminderdelete" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        reminder.delete
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#remindergetsorted" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        reminder.getSorted
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#remindergetupcoming" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        reminder.getUpcoming
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#remindergetoverdue" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        reminder.getOverdue
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reminderreorder" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        reminder.reorder
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#remindercreatesystemreminder" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        reminder.createSystemReminder
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#remindergetsystemlists" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        reminder.getSystemLists
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contacts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        contacts
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="contacts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#contactsrequestaccess" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        contacts.requestAccess
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#contactsgetaccessstatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        contacts.getAccessStatus
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#contactsisauthorized" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        contacts.isAuthorized
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#contactsgetall" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        contacts.getAll
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#contactsgetcount" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        contacts.getCount
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#contactssearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        contacts.search
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#contactssearchbyphone" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        contacts.searchByPhone
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#contactsgetbyid" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        contacts.getById
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#contactscreate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        contacts.create
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#contactsdelete" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        contacts.delete
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#contactsgetgroups" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        contacts.getGroups
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sms" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="sms">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#smsisrealdataavailable" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms.isRealDataAvailable
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smsread" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms.read
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smssearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms.search
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smsgetbyaddress" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms.getByAddress
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smsgetchats" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms.getChats
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smsgetstatistics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms.getStatistics
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smsgetlatest" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms.getLatest
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smsgetunread" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms.getUnread
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smshelpercheck" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms.helperCheck
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smshelpercopy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms.helperCopy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smshelperlist" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms.helperList
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smshelperavailable" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sms.helperAvailable
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sql
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="sql">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sqlopen" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sql.open
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sqlclose" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sql.close
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sqlexecute" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sql.execute
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sqlexec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sql.exec
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sqlquery" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sql.query
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sqlqueryone" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sql.queryOne
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sqltableexists" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sql.tableExists
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sqlgettables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sql.getTables
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sqlgettableinfo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sql.getTableInfo
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sqlbegintransaction" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sql.beginTransaction
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sqlcommit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sql.commit
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sqlrollback" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sql.rollback
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sqlvacuum" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        sql.vacuum
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#shortcuts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        shortcuts
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="shortcuts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#shortcutsrun" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        shortcuts.run
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shortcutsrunwithcallback" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        shortcuts.runWithCallback
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shortcutsopen" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        shortcuts.open
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shortcutsopengallery" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        shortcuts.openGallery
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shortcutscreate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        shortcuts.create
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shortcutsimport" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        shortcuts.import
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shortcutsisavailable" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        shortcuts.isAvailable
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shortcutsdonateinteraction" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        shortcuts.donateInteraction
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shortcutsdeleteinteraction" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        shortcuts.deleteInteraction
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shortcutsdeleteallinteractions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        shortcuts.deleteAllInteractions
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#system" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="system">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#systemiswifienabled" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.isWiFiEnabled
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemsetwifi" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.setWiFi
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemisbluetoothenabled" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.isBluetoothEnabled
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemsetbluetooth" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.setBluetooth
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemisairplanemodeenabled" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.isAirplaneModeEnabled
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemsetairplanemode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.setAirplaneMode
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemisdonotdisturbenabled" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.isDoNotDisturbEnabled
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemsetdonotdisturb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.setDoNotDisturb
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemgetvolume" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.getVolume
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemsetvolume" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.setVolume
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemhasflashlight" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.hasFlashlight
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemisflashlighton" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.isFlashlightOn
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemsetflashlight" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.setFlashlight
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemisorientationlockenabled" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.isOrientationLockEnabled
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemsetorientationlock" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.setOrientationLock
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemislowpowermodeenabled" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.isLowPowerModeEnabled
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemsetlowpowermode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.setLowPowerMode
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemislocationservicesenabled" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.isLocationServicesEnabled
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemsetlocationservices" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.setLocationServices
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemiscellulardataenabled" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.isCellularDataEnabled
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemsetcellulardata" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.setCellularData
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#systemopensettings" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        system.openSettings
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-    
-      
-      
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="../API.en/" class="md-nav__link">
+      <a href="../App/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    English
+    App
   
 
     
@@ -3232,6 +411,602 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Calendar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    日历
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Clipboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    剪切板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Console
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Contacts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    联系人
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    设备
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Display/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    显示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../File/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTTP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HUD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HUD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Haptic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    触觉反馈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Location/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网络信息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Notification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通知
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reminder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    提醒
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SMS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    短信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快捷指令
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    本地存储
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Util/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Util
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iCloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    iCloud
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -3278,6 +1053,9 @@
                 
                   
 
+
+  
+  
 
 
 <h1 id="trollscript-api-reference-v120">TrollScript API Reference (v1.2.0)<a class="headerlink" href="#trollscript-api-reference-v120" title="Permanent link">&para;</a></h1>
