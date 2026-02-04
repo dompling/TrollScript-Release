@@ -14,6 +14,7 @@ App 模块提供了应用相关的操作功能，包括获取应用信息、打�
   - [URL 操作](#url-操作)
   - [日志管理](#日志管理)
   - [崩溃报告](#崩溃报告)
+  - [性能监控](#性能监控)
   - [应用管理（私有 API）](#应用管理私有-api)
 - [完整示例](#完整示例)
 
@@ -142,6 +143,140 @@ crashes.forEach(crash => {
 
 #### `app.getLastCrash()`
 获取最近一次崩溃报告。**返回:** `object | null`
+
+---
+
+### 性能监控
+
+#### `app.cpuUsage()`
+获取 CPU 使用率（进程级 + 系统级）。**返回:** `object`
+
+```javascript
+const cpu = app.cpuUsage();
+console.log(`进程 CPU: ${cpu.process.toFixed(1)}%`);
+console.log(`系统 CPU: ${cpu.system.total.toFixed(1)}%`);
+console.log(`用户态: ${cpu.system.user.toFixed(1)}%`);
+console.log(`系统态: ${cpu.system.system.toFixed(1)}%`);
+console.log(`空闲: ${cpu.system.idle.toFixed(1)}%`);
+console.log(`CPU 核心数: ${cpu.system.cores}`);
+```
+
+返回对象结构:
+```javascript
+{
+  process: 12.5,           // 当前进程 CPU 使用率 (%)
+  system: {
+    total: 45.2,           // 系统总 CPU 使用率 (%)
+    user: 30.1,            // 用户态 CPU (%)
+    system: 15.1,          // 系统态 CPU (%)
+    idle: 54.8,            // 空闲 CPU (%)
+    nice: 0.0,             // Nice 优先级 CPU (%)
+    cores: 6               // CPU 核心数
+  }
+}
+```
+
+#### `app.memoryUsage()`
+获取内存使用情况。**返回:** `object`
+
+```javascript
+const mem = app.memoryUsage();
+console.log(`当前内存: ${mem.usage.toFixed(1)} ${mem.unit}`);
+console.log(`峰值内存: ${mem.peak.toFixed(1)} ${mem.unit}`);
+```
+
+返回对象结构:
+```javascript
+{
+  usage: 156.8,    // 当前内存使用量
+  peak: 189.2,     // 峰值内存使用量
+  unit: "MB"       // 单位
+}
+```
+
+#### `app.fps()`
+获取当前帧率。**返回:** `object`
+
+```javascript
+const fpsInfo = app.fps();
+console.log(`FPS: ${Math.round(fpsInfo.fps)}`);
+if (fpsInfo.isCritical) {
+  console.warn('帧率过低！');
+}
+```
+
+返回对象结构:
+```javascript
+{
+  fps: 60.0,          // 当前帧率
+  isWarning: false,   // 是否处于警告状态 (内存>200MB 或 CPU>80% 或 FPS<30)
+  isCritical: false   // 是否处于危险状态 (内存>400MB 或 CPU>95% 或 FPS<15)
+}
+```
+
+#### `app.performanceSnapshot()`
+获取完整性能指标快照。**返回:** `object`
+
+```javascript
+const snapshot = app.performanceSnapshot();
+console.log(JSON.stringify(snapshot, null, 2));
+```
+
+返回完整的性能数据，包含 CPU、内存、FPS 和时间戳。
+
+#### `app.startMonitoring()`
+开启性能监控（FPS 采样、指标记录）。**返回:** `boolean`
+
+```javascript
+app.startMonitoring();
+// 监控中...
+setTimeout(() => {
+  const fps = app.fps();
+  console.log(`当前 FPS: ${fps.fps}`);
+}, 2000);
+```
+
+> **注意**: 开启监控后才能获取准确的 FPS 数据。
+
+#### `app.stopMonitoring()`
+停止性能监控。**返回:** `boolean`
+
+```javascript
+app.stopMonitoring();
+```
+
+#### `app.performanceRecords(limit?)`
+获取历史性能记录。**参数:** `limit` (number, 默认 50) **返回:** `array`
+
+```javascript
+const records = app.performanceRecords(10);
+records.forEach(record => {
+  console.log(`脚本: ${record.scriptName}`);
+  console.log(`执行时间: ${record.executionTime.toFixed(2)}ms`);
+  console.log(`峰值内存: ${record.peakMemory.toFixed(1)}MB`);
+  console.log(`成功: ${record.success}`);
+});
+```
+
+返回数组元素结构:
+```javascript
+{
+  id: "uuid-string",
+  scriptName: "MyScript",
+  executionTime: 123.45,      // 执行时间 (ms)
+  peakMemory: 156.8,          // 峰值内存 (MB)
+  averageCPU: 25.3,           // 平均 CPU (%)
+  timestamp: 1704067200.0,    // 时间戳
+  success: true               // 是否成功
+}
+```
+
+#### `app.clearPerformanceRecords()`
+清除所有性能记录。**返回:** `void`
+
+```javascript
+app.clearPerformanceRecords();
+```
 
 ---
 

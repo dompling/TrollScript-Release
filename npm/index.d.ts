@@ -625,6 +625,54 @@ interface App {
      */
     getDataContainer(bundleId: string): any;
 
+    /**
+     * 获取 CPU 使用率（进程级 + 系统级）
+     * @returns 包含 process (进程 CPU %) 和 system (系统 CPU 对象，含 total/user/system/idle/nice/cores) 的对象
+     */
+    cpuUsage(): any;
+
+    /**
+     * 获取内存使用情况
+     * @returns 包含 usage (当前使用 MB), peak (峰值 MB), unit (单位) 的对象
+     */
+    memoryUsage(): any;
+
+    /**
+     * 获取当前帧率
+     * @returns 包含 fps (帧率), isWarning (警告状态), isCritical (危险状态) 的对象
+     */
+    fps(): any;
+
+    /**
+     * 获取完整性能指标快照
+     * @returns 包含 cpu, memory, fps, isMonitoring, timestamp 的完整性能快照
+     */
+    performanceSnapshot(): any;
+
+    /**
+     * 开启性能监控（FPS 采样、指标记录）
+     * @returns 是否成功开启
+     */
+    startMonitoring(): boolean;
+
+    /**
+     * 停止性能监控
+     * @returns 是否成功停止
+     */
+    stopMonitoring(): boolean;
+
+    /**
+     * 获取历史性能记录
+     * @param limit 返回的记录数量，默认 50
+     * @returns 性能记录数组，包含 id, scriptName, executionTime, peakMemory, averageCPU, timestamp, success
+     */
+    performanceRecords(limit?: number): any;
+
+    /**
+     * 清除所有性能记录
+     */
+    clearPerformanceRecords(): void;
+
 }
 
 declare const app: App;

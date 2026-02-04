@@ -1490,6 +1490,122 @@ Ping 主机
 
 ---
 
+### `app.cpuUsage`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `cpuUsage()`
+
+获取 CPU 使用率（进程级 + 系统级）
+
+**Returns:** `CPUUsage`
+
+*包含 process (进程 CPU %) 和 system (系统 CPU 对象，含 total/user/system/idle/nice/cores) 的对象*
+
+---
+
+### `app.memoryUsage`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `memoryUsage()`
+
+获取内存使用情况
+
+**Returns:** `MemoryUsage`
+
+*包含 usage (当前使用 MB), peak (峰值 MB), unit (单位) 的对象*
+
+---
+
+### `app.fps`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `fps()`
+
+获取当前帧率
+
+**Returns:** `FPSInfo`
+
+*包含 fps (帧率), isWarning (警告状态), isCritical (危险状态) 的对象*
+
+---
+
+### `app.performanceSnapshot`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `performanceSnapshot()`
+
+获取完整性能指标快照
+
+**Returns:** `PerformanceSnapshot`
+
+*包含 cpu, memory, fps, isMonitoring, timestamp 的完整性能快照*
+
+---
+
+### `app.startMonitoring`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `startMonitoring()`
+
+开启性能监控（FPS 采样、指标记录）
+
+**Returns:** `boolean`
+
+*是否成功开启*
+
+---
+
+### `app.stopMonitoring`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `stopMonitoring()`
+
+停止性能监控
+
+**Returns:** `boolean`
+
+*是否成功停止*
+
+---
+
+### `app.performanceRecords`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `performanceRecords(limit?)`
+
+获取历史性能记录
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `limit` | `number` | 返回的记录数量，默认 50 | Yes |
+
+**Returns:** `[PerformanceRecord]`
+
+*性能记录数组，包含 id, scriptName, executionTime, peakMemory, averageCPU, timestamp, success*
+
+---
+
+### `app.clearPerformanceRecords`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `clearPerformanceRecords()`
+
+清除所有性能记录
+
+**Returns:** `void`
+
+---
+
 ## haptic
 
 ![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)

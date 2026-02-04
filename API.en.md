@@ -1491,6 +1491,122 @@ Get the data container path for an app (TrollStore privilege)
 
 ---
 
+### `app.cpuUsage`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `cpuUsage()`
+
+Get CPU usage (process-level + system-level)
+
+**Returns:** `CPUUsage`
+
+*Object containing process (process CPU %) and system (system CPU object with total/user/system/idle/nice/cores)*
+
+---
+
+### `app.memoryUsage`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `memoryUsage()`
+
+Get memory usage information
+
+**Returns:** `MemoryUsage`
+
+*Object containing usage (current MB), peak (peak MB), unit (unit string)*
+
+---
+
+### `app.fps`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `fps()`
+
+Get current frame rate
+
+**Returns:** `FPSInfo`
+
+*Object containing fps (frame rate), isWarning (warning state), isCritical (critical state)*
+
+---
+
+### `app.performanceSnapshot`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `performanceSnapshot()`
+
+Get complete performance metrics snapshot
+
+**Returns:** `PerformanceSnapshot`
+
+*Complete performance snapshot containing cpu, memory, fps, isMonitoring, timestamp*
+
+---
+
+### `app.startMonitoring`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `startMonitoring()`
+
+Start performance monitoring (FPS sampling, metrics recording)
+
+**Returns:** `boolean`
+
+*Whether monitoring started successfully*
+
+---
+
+### `app.stopMonitoring`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `stopMonitoring()`
+
+Stop performance monitoring
+
+**Returns:** `boolean`
+
+*Whether monitoring stopped successfully*
+
+---
+
+### `app.performanceRecords`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `performanceRecords(limit?)`
+
+Get historical performance records
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `limit` | `number` | Number of records to return, defaults to 50 | Yes |
+
+**Returns:** `[PerformanceRecord]`
+
+*Array of performance records containing id, scriptName, executionTime, peakMemory, averageCPU, timestamp, success*
+
+---
+
+### `app.clearPerformanceRecords`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `clearPerformanceRecords()`
+
+Clear all performance records
+
+**Returns:** `void`
+
+---
+
 ## haptic
 
 ![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
