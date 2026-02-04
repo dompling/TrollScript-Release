@@ -1,0 +1,1133 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TrollScript 官方文档与 API 参考">
+      
+      
+      
+        <link rel="canonical" href="https://trollscript.qzz.io/Storage/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Storage 本地存储 - TrollScript</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#storage" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="TrollScript" class="md-header__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TrollScript
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Storage 本地存储
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TrollScript" class="md-nav__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TrollScript
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="storage">Storage 本地存储<a class="headerlink" href="#storage" title="Permanent link">&para;</a></h1>
+<p>Storage 模块提供了简单易用的本地存储功能。你可以使用它来保存和读取各种类型的数据，包括字符串、数字、布尔值、对象和数组。</p>
+<blockquote>
+<p><strong>守护进程支持</strong>: 完全支持。在触发器模式下可正常运行，与主应用共享存储数据。</p>
+</blockquote>
+<hr />
+<h2 id="_1">目录<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#快速开始">快速开始</a></li>
+<li><a href="#api-参考">API 参考</a></li>
+<li><a href="#storageget">storage.get()</a></li>
+<li><a href="#storageset">storage.set()</a></li>
+<li><a href="#storageremove">storage.remove()</a></li>
+<li><a href="#storageclear">storage.clear()</a></li>
+<li><a href="#storagehas">storage.has()</a></li>
+<li><a href="#storagekeys">storage.keys()</a></li>
+<li><a href="#完整示例">完整示例</a></li>
+<li><a href="#最佳实践">最佳实践</a></li>
+</ul>
+<hr />
+<h2 id="_2">快速开始<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>使用 Storage 模块非常简单：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 保存数据</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Alice&#39;</span><span class="p">);</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">25</span><span class="p">);</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;settings&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">theme</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;dark&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">language</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;zh&#39;</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// 读取数据</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;用户名:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">username</span><span class="p">);</span><span class="w">  </span><span class="c1">// 输出: 用户名: Alice</span>
+
+<span class="c1">// 检查键是否存在</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">storage</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;用户名已设置&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 删除数据</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">);</span>
+
+<span class="c1">// 清空所有数据</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="storagegetkey"><code>storage.get(key)</code><a class="headerlink" href="#storagegetkey" title="Permanent link">&para;</a></h3>
+<p>获取存储的值。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>存储键名</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>any</code> — 存储的值，如果键不存在则返回 <code>undefined</code></p>
+<p><strong>支持的数据类型:</strong>
+- <code>string</code> - 字符串
+- <code>number</code> - 数字（整数或浮点数）
+- <code>boolean</code> - 布尔值
+- <code>object</code> - 对象
+- <code>array</code> - 数组</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 读取字符串</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">);</span>
+
+<span class="c1">// 读取数字</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">);</span>
+
+<span class="c1">// 读取对象</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+
+<span class="c1">// 读取数组</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">tags</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span>
+
+<span class="c1">// 键不存在时返回 undefined</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">notExist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;not_exist&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">notExist</span><span class="p">);</span><span class="w">  </span><span class="c1">// undefined</span>
+</code></pre></div>
+<hr />
+<h3 id="storagesetkey-value"><code>storage.set(key, value)</code><a class="headerlink" href="#storagesetkey-value" title="Permanent link">&para;</a></h3>
+<p>设置存储值。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>存储键名</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><code>any</code></td>
+<td>是</td>
+<td>要存储的值</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>void</code></p>
+<p><strong>支持的值类型:</strong>
+- 字符串、数字、布尔值
+- 对象和数组（会自动序列化）
+- <code>null</code> 或 <code>undefined</code> 会删除该键</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 保存字符串</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Alice&#39;</span><span class="p">);</span>
+
+<span class="c1">// 保存数字</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">25</span><span class="p">);</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">99.99</span><span class="p">);</span>
+
+<span class="c1">// 保存布尔值</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;isActive&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+
+<span class="c1">// 保存对象</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">30</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bob@example.com&#39;</span>
+<span class="p">});</span>
+
+<span class="c1">// 保存数组</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;tags&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;javascript&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ios&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;automation&#39;</span><span class="p">]);</span>
+
+<span class="c1">// 保存嵌套结构</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;config&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">theme</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;dark&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">notifications</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">enabled</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">sound</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;default&#39;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">recentFiles</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;file1.js&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;file2.js&#39;</span><span class="p">]</span>
+<span class="p">});</span>
+
+<span class="c1">// 设置为 null 或 undefined 会删除该键</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span><span class="w">  </span><span class="c1">// 等同于 storage.remove(&#39;temp&#39;)</span>
+</code></pre></div>
+<hr />
+<h3 id="storageremovekey"><code>storage.remove(key)</code><a class="headerlink" href="#storageremovekey" title="Permanent link">&para;</a></h3>
+<p>删除指定的存储项。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>要删除的键名</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>void</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">storage</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">));</span><span class="w">  </span><span class="c1">// undefined</span>
+</code></pre></div>
+<hr />
+<h3 id="storageclear"><code>storage.clear()</code><a class="headerlink" href="#storageclear" title="Permanent link">&para;</a></h3>
+<p>清空所有存储数据。</p>
+<p><strong>返回:</strong> <code>void</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">storage</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">storage</span><span class="p">.</span><span class="nx">keys</span><span class="p">());</span><span class="w">  </span><span class="c1">// []</span>
+</code></pre></div>
+<p><strong>警告:</strong> 此操作会删除所有存储的数据，无法恢复！</p>
+<hr />
+<h3 id="storagehaskey"><code>storage.has(key)</code><a class="headerlink" href="#storagehaskey" title="Permanent link">&para;</a></h3>
+<p>检查指定的键是否存在。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>key</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>要检查的键名</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>boolean</code> — 如果键存在返回 <code>true</code>，否则返回 <code>false</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Alice&#39;</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">storage</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;用户名已设置&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;用户名未设置&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="storagekeys"><code>storage.keys()</code><a class="headerlink" href="#storagekeys" title="Permanent link">&para;</a></h3>
+<p>获取所有存储的键名列表。</p>
+<p><strong>返回:</strong> <code>string[]</code> — 所有键名的数组</p>
+<div class="highlight"><pre><span></span><code><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Alice&#39;</span><span class="p">);</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">25</span><span class="p">);</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;city&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Beijing&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">keys</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">keys</span><span class="p">);</span><span class="w">  </span><span class="c1">// [&#39;name&#39;, &#39;age&#39;, &#39;city&#39;]</span>
+
+<span class="c1">// 遍历所有存储项</span>
+<span class="nx">keys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">value</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="_3">完整示例<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1">示例 1: 用户配置管理<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 保存用户配置</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">saveUserConfig</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;user_config&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;配置已保存&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 读取用户配置</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">getUserConfig</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">defaultConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">theme</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;light&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">language</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;zh&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">notifications</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;user_config&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">defaultConfig</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 更新单个配置项</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">updateConfigItem</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getUserConfig</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">config</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">saveUserConfig</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="nx">saveUserConfig</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">theme</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;dark&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">language</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;en&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">notifications</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getUserConfig</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;当前主题:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">theme</span><span class="p">);</span>
+
+<span class="nx">updateConfigItem</span><span class="p">(</span><span class="s1">&#39;theme&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;light&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="2">示例 2: 数据缓存<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 缓存 API 响应数据</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">cacheApiResponse</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">ttl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3600</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cacheKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`cache_</span><span class="si">${</span><span class="nx">endpoint</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cacheData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+<span class="w">    </span><span class="nx">ttl</span><span class="o">:</span><span class="w"> </span><span class="nx">ttl</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="w">  </span><span class="c1">// 转换为毫秒</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">,</span><span class="w"> </span><span class="nx">cacheData</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`已缓存: </span><span class="si">${</span><span class="nx">endpoint</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 获取缓存数据</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">getCachedData</span><span class="p">(</span><span class="nx">endpoint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cacheKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`cache_</span><span class="si">${</span><span class="nx">endpoint</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cached</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">cached</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 检查是否过期</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">now</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">cached</span><span class="p">.</span><span class="nx">timestamp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">cached</span><span class="p">.</span><span class="nx">ttl</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">storage</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">cacheKey</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;缓存已过期&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;使用缓存数据&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">cached</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">apiData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">users</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Bob&#39;</span><span class="p">],</span><span class="w"> </span><span class="nx">count</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">};</span>
+<span class="nx">cacheApiResponse</span><span class="p">(</span><span class="s1">&#39;/api/users&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">apiData</span><span class="p">,</span><span class="w"> </span><span class="mf">1800</span><span class="p">);</span>
+
+<span class="c1">// 稍后获取</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getCachedData</span><span class="p">(</span><span class="s1">&#39;/api/users&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;用户列表:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">users</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;需要重新获取数据&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="3">示例 3: 计数器和统计<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 增加计数器</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">incrementCounter</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">newValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">newValue</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">newValue</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 获取计数器值</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">getCounter</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 重置计数器</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">resetCounter</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">storage</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">scriptRuns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">incrementCounter</span><span class="p">(</span><span class="s1">&#39;script_runs&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`脚本已运行 </span><span class="si">${</span><span class="nx">scriptRuns</span><span class="si">}</span><span class="sb"> 次`</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">errorCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">incrementCounter</span><span class="p">(</span><span class="s1">&#39;error_count&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`错误次数: </span><span class="si">${</span><span class="nx">errorCount</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="c1">// 重置错误计数</span>
+<span class="nx">resetCounter</span><span class="p">(</span><span class="s1">&#39;error_count&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="4">示例 4: 历史记录管理<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 添加历史记录</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">addToHistory</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span><span class="w"> </span><span class="nx">maxItems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">history</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;history&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">  </span><span class="c1">// 避免重复</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">history</span><span class="p">.</span><span class="nx">findIndex</span><span class="p">(</span><span class="nx">h</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">h</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">index</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">history</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 添加到开头</span>
+<span class="w">  </span><span class="nx">history</span><span class="p">.</span><span class="nx">unshift</span><span class="p">({</span>
+<span class="w">    </span><span class="p">...</span><span class="nx">item</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// 限制数量</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">history</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">maxItems</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">history</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;history&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">history</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 获取历史记录</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">getHistory</span><span class="p">(</span><span class="nx">limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">history</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;history&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">history</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">limit</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 清空历史记录</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">clearHistory</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">storage</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;history&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 搜索历史记录</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">searchHistory</span><span class="p">(</span><span class="nx">keyword</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">history</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;history&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">history</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">item</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">    </span><span class="nx">item</span><span class="p">.</span><span class="nx">title</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">keyword</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">    </span><span class="nx">item</span><span class="p">.</span><span class="nx">content</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">keyword</span><span class="p">)</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="nx">addToHistory</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;测试脚本&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;console.log(&quot;Hello&quot;)&#39;</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">recent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getHistory</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;最近的历史记录:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">recent</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">searchHistory</span><span class="p">(</span><span class="s1">&#39;测试&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;搜索结果:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">results</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="5">示例 5: 应用状态管理<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 保存应用状态</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">saveAppState</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;app_state&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">lastUpdated</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// 恢复应用状态</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">restoreAppState</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;app_state&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">state</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">getDefaultState</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;恢复应用状态，上次更新:&#39;</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="nx">state</span><span class="p">.</span><span class="nx">lastUpdated</span><span class="p">));</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">state</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 默认状态</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">getDefaultState</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">currentPage</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;home&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">filters</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="nx">sortBy</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;date&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">viewMode</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;list&#39;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">restoreAppState</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;当前页面:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">currentPage</span><span class="p">);</span>
+
+<span class="c1">// 更新状态</span>
+<span class="nx">state</span><span class="p">.</span><span class="nx">currentPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;settings&#39;</span><span class="p">;</span>
+<span class="nx">state</span><span class="p">.</span><span class="nx">viewMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;grid&#39;</span><span class="p">;</span>
+<span class="nx">saveAppState</span><span class="p">(</span><span class="nx">state</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="6">示例 6: 数据导出和导入<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 导出所有数据</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">exportAllData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">keys</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+
+<span class="w">  </span><span class="nx">keys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">data</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;数据已导出到剪贴板&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">json</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 导入数据</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">importData</span><span class="p">(</span><span class="nx">jsonString</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">jsonString</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">[</span><span class="nx">key</span><span class="p">]);</span>
+<span class="w">      </span><span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`已导入 </span><span class="si">${</span><span class="nx">count</span><span class="si">}</span><span class="sb"> 个数据项`</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;导入失败:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 备份数据</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">backupData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">backup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exportAllData</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;yyyyMMdd_HHmmss&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`backup_</span><span class="si">${</span><span class="nx">timestamp</span><span class="si">}</span><span class="sb">.json`</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">file</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="sb">`/var/mobile/Documents/</span><span class="si">${</span><span class="nx">filename</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="nx">backup</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;备份已保存:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">filename</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="nx">backupData</span><span class="p">();</span>
+
+<span class="c1">// 从剪贴板导入</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">jsonData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+<span class="nx">importData</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="7">示例 7: 键值对管理工具<a class="headerlink" href="#7" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 列出所有存储项</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">listAllStorage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">keys</span><span class="p">();</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`=== 存储项列表 (共 </span><span class="si">${</span><span class="nx">keys</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 项) ===`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">keys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">preview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">substring</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb"> [</span><span class="si">${</span><span class="nx">type</span><span class="si">}</span><span class="sb">]: </span><span class="si">${</span><span class="nx">preview</span><span class="si">}</span><span class="sb">...`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// 查找包含关键词的键</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">findKeys</span><span class="p">(</span><span class="nx">keyword</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">keys</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">keys</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">key</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">keyword</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// 批量删除</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">removeByPrefix</span><span class="p">(</span><span class="nx">prefix</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">keys</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">keys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">key</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="nx">prefix</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">storage</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`已删除 </span><span class="si">${</span><span class="nx">count</span><span class="si">}</span><span class="sb"> 个以 &quot;</span><span class="si">${</span><span class="nx">prefix</span><span class="si">}</span><span class="sb">&quot; 开头的项`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="nx">listAllStorage</span><span class="p">();</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">cacheKeys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">findKeys</span><span class="p">(</span><span class="s1">&#39;cache_&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;缓存键:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">cacheKeys</span><span class="p">);</span>
+
+<span class="nx">removeByPrefix</span><span class="p">(</span><span class="s1">&#39;temp_&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_4">最佳实践<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 使用有意义的键名<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p>使用清晰、描述性的键名，避免冲突：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 使用命名空间</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;user_settings&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">);</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;app_cache_users&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;script_run_count&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">count</span><span class="p">);</span>
+
+<span class="c1">// ❌ 错误 - 键名不清晰</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">);</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">count</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="2_1">2. 提供默认值<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p>读取数据时提供默认值，避免 undefined：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;config&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">theme</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;light&#39;</span><span class="w"> </span><span class="p">};</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="c1">// ❌ 错误 - 没有处理 undefined</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;config&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">theme</span><span class="p">);</span><span class="w">  </span><span class="c1">// 如果不存在会报错</span>
+</code></pre></div>
+<h3 id="3_1">3. 检查键是否存在<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>在读取前检查键是否存在：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">storage</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="s1">&#39;user_data&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;user_data&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">processData</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;数据不存在&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 较差</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;user_data&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 如果值为 0 或 false 会误判</span>
+<span class="w">  </span><span class="nx">processData</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="4_1">4. 避免存储敏感信息<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<p>不要在 Storage 中存储密码、密钥等敏感信息：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 只存储非敏感信息</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;alice&#39;</span><span class="p">);</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;last_login&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">());</span>
+
+<span class="c1">// ❌ 错误 - 存储敏感信息</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;123456&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// 不安全！</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;api_key&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;secret_key&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// 不安全！</span>
+</code></pre></div>
+<h3 id="5_1">5. 定期清理过期数据<a class="headerlink" href="#5_1" title="Permanent link">&para;</a></h3>
+<p>实现数据过期机制，避免存储空间浪费：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 带过期时间的存储</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">setWithExpiry</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">ttl</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">expiry</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">ttl</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">item</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">getWithExpiry</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">expiry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">storage</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="6_1">6. 使用命名空间避免冲突<a class="headerlink" href="#6_1" title="Permanent link">&para;</a></h3>
+<p>为不同功能使用不同的键前缀：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 使用前缀</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">CACHE_PREFIX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cache_&#39;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">CONFIG_PREFIX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;config_&#39;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">TEMP_PREFIX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;temp_&#39;</span><span class="p">;</span>
+
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">CACHE_PREFIX</span><span class="si">}</span><span class="sb">users`</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">CONFIG_PREFIX</span><span class="si">}</span><span class="sb">theme`</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;dark&#39;</span><span class="p">);</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">TEMP_PREFIX</span><span class="si">}</span><span class="sb">download`</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="7_1">7. 批量操作要谨慎<a class="headerlink" href="#7_1" title="Permanent link">&para;</a></h3>
+<p>批量操作时要考虑性能：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 批量操作后一次性保存</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;bulk_data&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">{};</span>
+<span class="nx">data</span><span class="p">.</span><span class="nx">item1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;value1&#39;</span><span class="p">;</span>
+<span class="nx">data</span><span class="p">.</span><span class="nx">item2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;value2&#39;</span><span class="p">;</span>
+<span class="nx">data</span><span class="p">.</span><span class="nx">item3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;value3&#39;</span><span class="p">;</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;bulk_data&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+
+<span class="c1">// ❌ 错误 - 频繁写入</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;item1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;value1&#39;</span><span class="p">);</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;item2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;value2&#39;</span><span class="p">);</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;item3&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;value3&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_5">注意事项<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>数据持久化</strong>: 存储的数据会持久保存，即使应用重启也不会丢失</li>
+<li><strong>数据共享</strong>: 在 Daemon 模式和主应用之间共享存储数据</li>
+<li><strong>数据类型</strong>: 支持字符串、数字、布尔值、对象和数组，会自动序列化和反序列化</li>
+<li><strong>存储限制</strong>: 虽然没有硬性限制，但不建议存储过大的数据（如大文件）</li>
+<li><strong>线程安全</strong>: Storage 操作是线程安全的，可以在任何线程调用</li>
+<li><strong>性能考虑</strong>: 频繁的读写操作可能影响性能，建议批量操作</li>
+<li><strong>数据安全</strong>: 存储的数据未加密，不要存储敏感信息</li>
+<li><strong>键名规范</strong>: 键名区分大小写，建议使用小写字母和下划线</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,745 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TrollScript 官方文档与 API 参考">
+      
+      
+      
+        <link rel="canonical" href="https://trollscript.qzz.io/Network/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Network 网络操作 - TrollScript</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#network" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="TrollScript" class="md-header__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TrollScript
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Network 网络操作
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TrollScript" class="md-nav__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TrollScript
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="network">Network 网络操作<a class="headerlink" href="#network" title="Permanent link">&para;</a></h1>
+<p>Network 模块提供了网络状态检测、URL 处理、网络工具和 VPN 管理等功能。</p>
+<blockquote>
+<p><strong>守护进程支持</strong>: 有限支持。openSettings 方法需要 UI 交互，Daemon 模式下不可用。</p>
+</blockquote>
+<hr />
+<h2 id="_1">快速开始<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// 检查网络状态</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">network</span><span class="p">.</span><span class="nx">isReachable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">getConnectionType</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;网络类型:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="p">);</span><span class="w">  </span><span class="c1">// wifi 或 cellular</span>
+<span class="p">}</span>
+
+<span class="c1">// URL 编码</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">encoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">encodeURL</span><span class="p">(</span><span class="s1">&#39;你好 世界&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">encoded</span><span class="p">);</span><span class="w">  </span><span class="c1">// %E4%BD%A0%E5%A5%BD%20%E4%B8%96%E7%95%8C</span>
+
+<span class="c1">// Ping 测试</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">ping</span><span class="p">(</span><span class="s1">&#39;google.com&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`延迟: </span><span class="si">${</span><span class="nx">result</span><span class="p">.</span><span class="nx">latency</span><span class="si">}</span><span class="sb">ms`</span><span class="p">);</span>
+
+<span class="c1">// VPN 管理</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">vpns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">listVPNs</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;VPN 列表:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">vpns</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="_2">网络状态<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="networkisreachable"><code>network.isReachable()</code><a class="headerlink" href="#networkisreachable" title="Permanent link">&para;</a></h4>
+<p>检查网络是否可用。<strong>返回:</strong> <code>boolean</code></p>
+<h4 id="networkgetconnectiontype"><code>network.getConnectionType()</code><a class="headerlink" href="#networkgetconnectiontype" title="Permanent link">&para;</a></h4>
+<p>获取连接类型。<strong>返回:</strong> <code>'wifi'</code> | <code>'cellular'</code> | <code>'none'</code></p>
+<h4 id="networkgetipaddress"><code>network.getIPAddress()</code><a class="headerlink" href="#networkgetipaddress" title="Permanent link">&para;</a></h4>
+<p>获取设备 IP 地址。<strong>返回:</strong> <code>string | null</code></p>
+<hr />
+<h3 id="url">URL 操作<a class="headerlink" href="#url" title="Permanent link">&para;</a></h3>
+<h4 id="networkencodeurlstring"><code>network.encodeURL(string)</code><a class="headerlink" href="#networkencodeurlstring" title="Permanent link">&para;</a></h4>
+<p>URL 编码。<strong>参数:</strong> <code>string</code> <strong>返回:</strong> <code>string</code></p>
+<h4 id="networkdecodeurlstring"><code>network.decodeURL(string)</code><a class="headerlink" href="#networkdecodeurlstring" title="Permanent link">&para;</a></h4>
+<p>URL 解码。<strong>参数:</strong> <code>string</code> <strong>返回:</strong> <code>string</code></p>
+<h4 id="networkparseurlurl"><code>network.parseURL(url)</code><a class="headerlink" href="#networkparseurlurl" title="Permanent link">&para;</a></h4>
+<p>解析 URL 组件。<strong>返回:</strong> <code>{ scheme, host, port, path, query, fragment, params }</code></p>
+<h4 id="networkbuildurlbaseurl-params"><code>network.buildURL(baseURL, params?)</code><a class="headerlink" href="#networkbuildurlbaseurl-params" title="Permanent link">&para;</a></h4>
+<p>构建带参数的 URL。<strong>参数:</strong> <code>baseURL</code> (string), <code>params</code> (object) <strong>返回:</strong> <code>string</code></p>
+<hr />
+<h3 id="_3">网络工具<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="networkpinghost"><code>network.ping(host)</code><a class="headerlink" href="#networkpinghost" title="Permanent link">&para;</a></h4>
+<p>Ping 主机。<strong>参数:</strong> <code>host</code> (string) <strong>返回:</strong> <code>{ success, latency }</code></p>
+<h4 id="networkdownloadurl-filename"><code>network.download(url, filename?)</code><a class="headerlink" href="#networkdownloadurl-filename" title="Permanent link">&para;</a></h4>
+<p>下载文件到 Documents 目录。<strong>参数:</strong> <code>url</code> (string), <code>filename</code> (string) <strong>返回:</strong> <code>{ success, path, error }</code></p>
+<hr />
+<h3 id="vpn">VPN 管理<a class="headerlink" href="#vpn" title="Permanent link">&para;</a></h3>
+<h4 id="networklistvpns"><code>network.listVPNs()</code><a class="headerlink" href="#networklistvpns" title="Permanent link">&para;</a></h4>
+<p>列出 VPN 配置。<strong>返回:</strong> <code>[{ name, active }]</code></p>
+<h4 id="networkconnectvpnname"><code>network.connectVPN(name?)</code><a class="headerlink" href="#networkconnectvpnname" title="Permanent link">&para;</a></h4>
+<p>连接 VPN。<strong>参数:</strong> <code>name</code> (string, 可选) <strong>返回:</strong> <code>boolean</code></p>
+<h4 id="networkdisconnectvpn"><code>network.disconnectVPN()</code><a class="headerlink" href="#networkdisconnectvpn" title="Permanent link">&para;</a></h4>
+<p>断开 VPN。<strong>返回:</strong> <code>boolean</code></p>
+<h4 id="networkgetvpnstatus"><code>network.getVPNStatus()</code><a class="headerlink" href="#networkgetvpnstatus" title="Permanent link">&para;</a></h4>
+<p>获取 VPN 状态。<strong>返回:</strong> <code>{ connected, name? }</code></p>
+<hr />
+<h3 id="_4">系统设置<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="networkopensettingssection"><code>network.openSettings(section?)</code><a class="headerlink" href="#networkopensettingssection" title="Permanent link">&para;</a></h4>
+<p>打开系统设置。<strong>参数:</strong> <code>section</code> (string, 可选) <strong>返回:</strong> <code>boolean</code></p>
+<p><strong>支持的 section:</strong>
+- <code>'WIFI'</code> - Wi-Fi 设置
+- <code>'BLUETOOTH'</code> - 蓝牙设置
+- <code>'CELLULAR'</code> - 蜂窝网络设置
+- <code>'VPN'</code> - VPN 设置
+- <code>'GENERAL'</code> - 通用设置
+- <code>'PRIVACY'</code> - 隐私设置
+- <code>'NOTIFICATION'</code> - 通知设置</p>
+<hr />
+<h2 id="_5">完整示例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="1">示例 1: 网络状态检测<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">checkNetwork</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">network</span><span class="p">.</span><span class="nx">isReachable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;网络不可用&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">getConnectionType</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">getIPAddress</span><span class="p">();</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;网络类型:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;IP 地址:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">ip</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;cellular&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;当前使用蜂窝网络，注意流量消耗&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">checkNetwork</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="2-url">示例 2: URL 处理<a class="headerlink" href="#2-url" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 构建 API URL</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;https://api.example.com/search&#39;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">q</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;搜索关键词&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">page</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">limit</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">buildURL</span><span class="p">(</span><span class="nx">baseUrl</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;完整 URL:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">url</span><span class="p">);</span>
+
+<span class="c1">// 解析 URL</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">parsed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">parseURL</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;主机:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">parsed</span><span class="p">.</span><span class="nx">host</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;路径:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">parsed</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;参数:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">parsed</span><span class="p">.</span><span class="nx">params</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="3">示例 3: 网络延迟测试<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">testLatency</span><span class="p">(</span><span class="nx">hosts</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">  </span><span class="nx">hosts</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">host</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">ping</span><span class="p">(</span><span class="nx">host</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">results</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="nx">host</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">success</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">latency</span><span class="o">:</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">latency</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// 排序</span>
+<span class="w">  </span><span class="nx">results</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">latency</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">latency</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;=== 延迟测试结果 ===&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">results</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">r</span><span class="p">.</span><span class="nx">host</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">r</span><span class="p">.</span><span class="nx">latency</span><span class="si">}</span><span class="sb">ms`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">r</span><span class="p">.</span><span class="nx">host</span><span class="si">}</span><span class="sb">: 失败`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">results</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">testLatency</span><span class="p">([</span><span class="s1">&#39;google.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;baidu.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;github.com&#39;</span><span class="p">]);</span>
+</code></pre></div>
+<h3 id="4-vpn">示例 4: VPN 自动连接<a class="headerlink" href="#4-vpn" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">autoConnectVPN</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">getVPNStatus</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">status</span><span class="p">.</span><span class="nx">connected</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;VPN 已连接:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">vpns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">listVPNs</span><span class="p">();</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">vpns</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;没有配置 VPN&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;正在连接 VPN...&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">connectVPN</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;VPN 连接成功&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">haptic</span><span class="p">.</span><span class="nx">success</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;VPN 连接失败&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">haptic</span><span class="p">.</span><span class="nx">error</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">success</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">autoConnectVPN</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="5">示例 5: 文件下载<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">downloadFile</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">filename</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">network</span><span class="p">.</span><span class="nx">isReachable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;网络不可用&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;开始下载:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">url</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">download</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">filename</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;下载成功:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">file</span><span class="p">.</span><span class="nx">stat</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">path</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;文件大小:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">stat</span><span class="p">.</span><span class="nx">size</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;字节&#39;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;下载完成&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">filename</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;下载失败:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;下载失败&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">downloadFile</span><span class="p">(</span><span class="s1">&#39;https://example.com/file.zip&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;download.zip&#39;</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="6">示例 6: 网络监控<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">monitorNetwork</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">lastType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">getConnectionType</span><span class="p">();</span>
+
+<span class="w">  </span><span class="nx">setInterval</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">currentType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">getConnectionType</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">currentType</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">lastType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`网络变化: </span><span class="si">${</span><span class="nx">lastType</span><span class="si">}</span><span class="sb"> -&gt; </span><span class="si">${</span><span class="nx">currentType</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">currentType</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;none&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;网络断开&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;网络连接已断开&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">lastType</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;none&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;网络恢复&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`已连接到 </span><span class="si">${</span><span class="nx">currentType</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;网络切换&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`从 </span><span class="si">${</span><span class="nx">lastType</span><span class="si">}</span><span class="sb"> 切换到 </span><span class="si">${</span><span class="nx">currentType</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="w">      </span><span class="nx">lastType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">currentType</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">5000</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">monitorNetwork</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="_6">最佳实践<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 检查网络状态<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">network</span><span class="p">.</span><span class="nx">isReachable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 不检查网络</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span><span class="w">  </span><span class="c1">// 可能失败</span>
+</code></pre></div>
+<h3 id="2-url_1">2. URL 编码<a class="headerlink" href="#2-url_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 编码特殊字符</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">keyword</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">encodeURL</span><span class="p">(</span><span class="s1">&#39;搜索 关键词&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`https://api.example.com/search?q=</span><span class="si">${</span><span class="nx">keyword</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+
+<span class="c1">// ❌ 错误 - 不编码</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`https://api.example.com/search?q=搜索 关键词`</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="3_1">3. 处理网络类型<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 根据网络类型调整行为</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">getConnectionType</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;cellular&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 使用低质量设置</span>
+<span class="w">  </span><span class="nx">downloadLowQuality</span><span class="p">();</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;wifi&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 使用高质量设置</span>
+<span class="w">  </span><span class="nx">downloadHighQuality</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="4-vpn_1">4. VPN 状态检查<a class="headerlink" href="#4-vpn_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">network</span><span class="p">.</span><span class="nx">getVPNStatus</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">status</span><span class="p">.</span><span class="nx">connected</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">network</span><span class="p">.</span><span class="nx">connectVPN</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 不检查状态</span>
+<span class="nx">network</span><span class="p">.</span><span class="nx">connectVPN</span><span class="p">();</span><span class="w">  </span><span class="c1">// 可能已经连接</span>
+</code></pre></div>
+<hr />
+<h2 id="_7">注意事项<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>网络权限</strong>: 不需要特殊权限</li>
+<li><strong>VPN 管理</strong>: 需要用户在系统中配置 VPN</li>
+<li><strong>下载路径</strong>: download 方法下载到 Documents 目录</li>
+<li><strong>Ping 超时</strong>: ping 方法超时时间为 5 秒</li>
+<li><strong>IP 地址</strong>: 仅返回 Wi-Fi 接口的 IP 地址</li>
+<li><strong>URL 编码</strong>: 使用标准的百分号编码</li>
+<li><strong>系统设置</strong>: openSettings 在某些 iOS 版本上可能不可用</li>
+<li><strong>线程安全</strong>: 所有操作都是线程安全的</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

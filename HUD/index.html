@@ -1,0 +1,2356 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TrollScript 官方文档与 API 参考">
+      
+      
+      
+        <link rel="canonical" href="https://trollscript.qzz.io/HUD/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>HUD 浮窗系统 - TrollScript</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hud" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="TrollScript" class="md-header__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TrollScript
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HUD 浮窗系统
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TrollScript" class="md-nav__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TrollScript
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="hud">HUD 浮窗系统<a class="headerlink" href="#hud" title="Permanent link">&para;</a></h1>
+<p>HUD（Heads-Up Display）模块提供了创建系统级悬浮窗口的能力。你可以使用它来构建自定义浮窗界面，包括文本显示、按钮交互、图片展示等丰富的 UI 元素。</p>
+<blockquote>
+<p><strong>守护进程支持</strong>: 完全支持。在触发器模式下可正常运行，能够创建系统级悬浮窗口。</p>
+</blockquote>
+<hr />
+<h2 id="_1">目录<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#快速开始">快速开始</a></li>
+<li><a href="#api-参考">API 参考</a></li>
+<li><a href="#hud-模块方法">hud 模块方法</a></li>
+<li><a href="#window-窗口对象">Window 窗口对象</a></li>
+<li><a href="#stack-堆栈容器">Stack 堆栈容器</a></li>
+<li><a href="#text-文本元素">Text 文本元素</a></li>
+<li><a href="#button-按钮元素">Button 按钮元素</a></li>
+<li><a href="#image-图片元素">Image 图片元素</a></li>
+<li><a href="#spacer-间距元素">Spacer 间距元素</a></li>
+<li><a href="#loading-加载指示器">Loading 加载指示器</a></li>
+<li><a href="#scrollview-滚动视图">ScrollView 滚动视图</a></li>
+<li><a href="#list-列表视图">List 列表视图</a></li>
+<li><a href="#样式配置">样式配置</a></li>
+<li><a href="#完整示例">完整示例</a></li>
+<li><a href="#最佳实践">最佳实践</a></li>
+</ul>
+<hr />
+<h2 id="_2">快速开始<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>创建一个简单的 HUD 浮窗只需要三步：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1. 创建窗口</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">win</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">createWindow</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">80</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">draggable</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#000000CC&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// 2. 添加内容</span>
+<span class="nx">win</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Hello HUD!&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// 3. 显示窗口</span>
+<span class="nx">win</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="hud_1">hud 模块方法<a class="headerlink" href="#hud_1" title="Permanent link">&para;</a></h3>
+<h4 id="hudcreatewindowconfig"><code>hud.createWindow(config)</code><a class="headerlink" href="#hudcreatewindowconfig" title="Permanent link">&para;</a></h4>
+<p>创建一个 HUD 窗口。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config</code></td>
+<td><code>object</code></td>
+<td>是</td>
+<td>窗口配置对象</td>
+</tr>
+</tbody>
+</table>
+<p><strong>config 配置项:</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>-</td>
+<td>窗口ID</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><code>number</code></td>
+<td>200</td>
+<td>窗口宽度</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><code>number</code></td>
+<td>100</td>
+<td>窗口高度</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><code>number</code></td>
+<td>居中</td>
+<td>窗口 X 坐标</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><code>number</code></td>
+<td>居中</td>
+<td>窗口 Y 坐标</td>
+</tr>
+<tr>
+<td><code>draggable</code></td>
+<td><code>boolean</code></td>
+<td>false</td>
+<td>是否可拖拽</td>
+</tr>
+<tr>
+<td><code>dismissible</code></td>
+<td><code>boolean</code></td>
+<td>true</td>
+<td>是否可通过手势关闭</td>
+</tr>
+<tr>
+<td><code>autoClear</code></td>
+<td><code>number</code></td>
+<td>-</td>
+<td>自动关闭时间（秒），不设置则不自动关闭</td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td><code>object</code></td>
+<td>-</td>
+<td>窗口样式，详见 <a href="#样式配置">样式配置</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>Window</code> — 窗口对象</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">win</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">createWindow</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">280</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">120</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">draggable</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">dismissible</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">autoClear</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#1C1C1EF0&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">shadow</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="hudgetwindowid"><code>hud.getWindow(id)</code><a class="headerlink" href="#hudgetwindowid" title="Permanent link">&para;</a></h4>
+<p>获取窗口是否被创建。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">existingWin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">getWindow</span><span class="p">(</span><span class="s1">&#39;win9&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">existingWin</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Window already exists!&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="hudgetscreensize"><code>hud.getScreenSize()</code><a class="headerlink" href="#hudgetscreensize" title="Permanent link">&para;</a></h4>
+<p>获取当前设备的屏幕尺寸信息。</p>
+<p><strong>返回:</strong> <code>{ width: number, height: number, scale: number }</code></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><code>number</code></td>
+<td>屏幕宽度（逻辑像素）</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><code>number</code></td>
+<td>屏幕高度（逻辑像素）</td>
+</tr>
+<tr>
+<td><code>scale</code></td>
+<td><code>number</code></td>
+<td>屏幕缩放比例（如 2x、3x）</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">screen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">getScreenSize</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`屏幕: </span><span class="si">${</span><span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="si">}</span><span class="sb">x</span><span class="si">${</span><span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="si">}</span><span class="sb"> @</span><span class="si">${</span><span class="nx">screen</span><span class="p">.</span><span class="nx">scale</span><span class="si">}</span><span class="sb">x`</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h4 id="hudclearall"><code>hud.clearAll()</code><a class="headerlink" href="#hudclearall" title="Permanent link">&para;</a></h4>
+<p>清除所有已创建的 HUD 窗口。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">hud</span><span class="p">.</span><span class="nx">clearAll</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h4 id="hudgetallwindows"><code>hud.getAllWindows()</code><a class="headerlink" href="#hudgetallwindows" title="Permanent link">&para;</a></h4>
+<p>获取所有已创建窗口的 ID 列表。</p>
+<p><strong>返回:</strong> <code>[string]</code> — 窗口 ID 数组</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">windowIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">getAllWindows</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;当前窗口数量:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">windowIds</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="window">Window 窗口对象<a class="headerlink" href="#window" title="Permanent link">&para;</a></h3>
+<p><code>Window</code> 对象由 <code>hud.createWindow()</code> 返回，用于管理窗口内容和状态。</p>
+<h4 id="winaddtextconfig"><code>win.addText(config)</code><a class="headerlink" href="#winaddtextconfig" title="Permanent link">&para;</a></h4>
+<p>向窗口添加文本元素。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config.text</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>文本内容</td>
+</tr>
+<tr>
+<td><code>config.style</code></td>
+<td><code>object</code></td>
+<td>否</td>
+<td>文本样式，详见 <a href="#样式配置">样式配置</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>Text</code> — 文本元素对象</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">win</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;当前温度: 26°C&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#00FF00&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">18</span><span class="p">,</span><span class="w"> </span><span class="nx">fontWeight</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bold&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="winaddbuttonconfig"><code>win.addButton(config)</code><a class="headerlink" href="#winaddbuttonconfig" title="Permanent link">&para;</a></h4>
+<p>向窗口添加按钮元素。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config.title</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>按钮标题</td>
+</tr>
+<tr>
+<td><code>config.style</code></td>
+<td><code>object</code></td>
+<td>否</td>
+<td>按钮样式</td>
+</tr>
+<tr>
+<td><code>config.onClick</code></td>
+<td><code>function</code></td>
+<td>否</td>
+<td>点击回调函数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>Button</code> — 按钮元素对象</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">win</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;点击我&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#007AFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;按钮被点击了！&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="winaddimageconfig"><code>win.addImage(config)</code><a class="headerlink" href="#winaddimageconfig" title="Permanent link">&para;</a></h4>
+<p>向窗口添加图片元素。支持两种图片来源，选择其中一种即可。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config.path</code></td>
+<td><code>string</code></td>
+<td>二选一</td>
+<td>本地图片文件路径</td>
+</tr>
+<tr>
+<td><code>config.systemName</code></td>
+<td><code>string</code></td>
+<td>二选一</td>
+<td>SF Symbol 图标名称</td>
+</tr>
+<tr>
+<td><code>config.width</code></td>
+<td><code>number</code></td>
+<td>否</td>
+<td>图片宽度</td>
+</tr>
+<tr>
+<td><code>config.height</code></td>
+<td><code>number</code></td>
+<td>否</td>
+<td>图片高度</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>Image</code> — 图片元素对象</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// SF Symbol 图标</span>
+<span class="nx">win</span><span class="p">.</span><span class="nx">addImage</span><span class="p">({</span><span class="w"> </span><span class="nx">systemName</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;checkmark.circle.fill&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">32</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">32</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// 本地文件</span>
+<span class="nx">win</span><span class="p">.</span><span class="nx">addImage</span><span class="p">({</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/var/mobile/Documents/photo.png&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="winaddstackconfig"><code>win.addStack(config?)</code><a class="headerlink" href="#winaddstackconfig" title="Permanent link">&para;</a></h4>
+<p>向窗口添加堆栈容器。堆栈容器可以包含多个子元素，支持水平和垂直排列。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config.axis</code></td>
+<td><code>string</code></td>
+<td><code>'vertical'</code></td>
+<td>排列方向: <code>'horizontal'</code> | <code>'vertical'</code></td>
+</tr>
+<tr>
+<td><code>config.spacing</code></td>
+<td><code>number</code></td>
+<td>8</td>
+<td>子元素间距</td>
+</tr>
+<tr>
+<td><code>config.alignment</code></td>
+<td><code>string</code></td>
+<td><code>'center'</code></td>
+<td>对齐方式: <code>'leading'</code> | <code>'center'</code> | <code>'trailing'</code> | <code>'fill'</code></td>
+</tr>
+<tr>
+<td><code>config.style</code></td>
+<td><code>object</code></td>
+<td>-</td>
+<td>堆栈样式</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>Stack</code> — 堆栈容器对象</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 水平排列的按钮组</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">buttonRow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">win</span><span class="p">.</span><span class="nx">addStack</span><span class="p">({</span><span class="w"> </span><span class="nx">axis</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">spacing</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">buttonRow</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;取消&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#3A3A3C&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">buttonRow</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;确认&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#007AFF&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="winaddspacerconfig"><code>win.addSpacer(config?)</code><a class="headerlink" href="#winaddspacerconfig" title="Permanent link">&para;</a></h4>
+<p>向窗口添加间距元素，用于调整元素之间的间隔。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config.height</code></td>
+<td><code>number</code></td>
+<td>8</td>
+<td>间距高度</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>Spacer</code> — 间距元素对象</p>
+<div class="highlight"><pre><span></span><code><span class="nx">win</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;标题&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">win</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">({</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">win</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;内容&#39;</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="winshow"><code>win.show()</code><a class="headerlink" href="#winshow" title="Permanent link">&para;</a></h4>
+<p>显示窗口，带有淡入动画效果。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">win</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h4 id="winhide"><code>win.hide()</code><a class="headerlink" href="#winhide" title="Permanent link">&para;</a></h4>
+<p>隐藏窗口，带有淡出动画效果。窗口不会被销毁，可以通过 <code>show()</code> 重新显示。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">win</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h4 id="windismiss"><code>win.dismiss()</code><a class="headerlink" href="#windismiss" title="Permanent link">&para;</a></h4>
+<p>关闭并销毁窗口。窗口被销毁后不可再使用。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">win</span><span class="p">.</span><span class="nx">dismiss</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h4 id="winrefresh"><code>win.refresh()</code><a class="headerlink" href="#winrefresh" title="Permanent link">&para;</a></h4>
+<p>刷新窗口布局。在动态修改元素后调用此方法可重新计算布局。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">label</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;新的文本内容&#39;</span><span class="p">);</span>
+<span class="nx">win</span><span class="p">.</span><span class="nx">refresh</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h4 id="winsetpositionx-y"><code>win.setPosition(x, y)</code><a class="headerlink" href="#winsetpositionx-y" title="Permanent link">&para;</a></h4>
+<p>设置窗口在屏幕上的位置。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>number</code></td>
+<td>X 坐标</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><code>number</code></td>
+<td>Y 坐标</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nx">win</span><span class="p">.</span><span class="nx">setPosition</span><span class="p">(</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">200</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h4 id="winsetsizewidth-height"><code>win.setSize(width, height)</code><a class="headerlink" href="#winsetsizewidth-height" title="Permanent link">&para;</a></h4>
+<p>设置窗口大小。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><code>number</code></td>
+<td>宽度</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><code>number</code></td>
+<td>高度</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nx">win</span><span class="p">.</span><span class="nx">setSize</span><span class="p">(</span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="mf">150</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h4 id="winsetstylestyle"><code>win.setStyle(style)</code><a class="headerlink" href="#winsetstylestyle" title="Permanent link">&para;</a></h4>
+<p>更新窗口样式，详见 <a href="#样式配置">样式配置</a>。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">win</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FF0000AA&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">shadow</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="wingetbounds"><code>win.getBounds()</code><a class="headerlink" href="#wingetbounds" title="Permanent link">&para;</a></h4>
+<p>获取窗口的当前位置和大小。</p>
+<p><strong>返回:</strong> <code>{ x: number, y: number, width: number, height: number }</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">bounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">win</span><span class="p">.</span><span class="nx">getBounds</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`窗口位置: (</span><span class="si">${</span><span class="nx">bounds</span><span class="p">.</span><span class="nx">x</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="nx">bounds</span><span class="p">.</span><span class="nx">y</span><span class="si">}</span><span class="sb">), 大小: </span><span class="si">${</span><span class="nx">bounds</span><span class="p">.</span><span class="nx">width</span><span class="si">}</span><span class="sb">x</span><span class="si">${</span><span class="nx">bounds</span><span class="p">.</span><span class="nx">height</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h4 id="winisvisible"><code>win.isVisible()</code><a class="headerlink" href="#winisvisible" title="Permanent link">&para;</a></h4>
+<p>检查窗口是否当前可见。</p>
+<p><strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">win</span><span class="p">.</span><span class="nx">isVisible</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;窗口正在显示&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="stack">Stack 堆栈容器<a class="headerlink" href="#stack" title="Permanent link">&para;</a></h3>
+<p><code>Stack</code> 对象由 <code>win.addStack()</code> 或其他堆栈的 <code>addStack()</code> 返回。堆栈容器类似于 iOS WidgetStack，可以包含文本、按钮、图片等子元素。</p>
+<h4 id="stackaddtextconfig"><code>stack.addText(config)</code><a class="headerlink" href="#stackaddtextconfig" title="Permanent link">&para;</a></h4>
+<p>向堆栈添加文本元素。参数同 <code>win.addText()</code>。</p>
+<p><strong>返回:</strong> <code>Text</code></p>
+<hr />
+<h4 id="stackaddbuttonconfig"><code>stack.addButton(config)</code><a class="headerlink" href="#stackaddbuttonconfig" title="Permanent link">&para;</a></h4>
+<p>向堆栈添加按钮元素。参数同 <code>win.addButton()</code>。</p>
+<p><strong>返回:</strong> <code>Button</code></p>
+<hr />
+<h4 id="stackaddimageconfig"><code>stack.addImage(config)</code><a class="headerlink" href="#stackaddimageconfig" title="Permanent link">&para;</a></h4>
+<p>向堆栈添加图片元素。参数同 <code>win.addImage()</code>。</p>
+<p><strong>返回:</strong> <code>Image</code></p>
+<hr />
+<h4 id="stackaddspacerconfig"><code>stack.addSpacer(config?)</code><a class="headerlink" href="#stackaddspacerconfig" title="Permanent link">&para;</a></h4>
+<p>向堆栈添加间距元素。参数同 <code>win.addSpacer()</code>。</p>
+<p><strong>返回:</strong> <code>Spacer</code></p>
+<hr />
+<h4 id="stacksetstylestyle"><code>stack.setStyle(style)</code><a class="headerlink" href="#stacksetstylestyle" title="Permanent link">&para;</a></h4>
+<p>更新堆栈样式。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>backgroundColor</code></td>
+<td><code>string</code></td>
+<td>背景颜色（十六进制）</td>
+</tr>
+<tr>
+<td><code>cornerRadius</code></td>
+<td><code>number</code></td>
+<td>圆角半径</td>
+</tr>
+<tr>
+<td><code>padding</code></td>
+<td><code>number</code></td>
+<td>内边距</td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><code>number</code></td>
+<td>不透明度 (0-1)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="stacksetspacingspacing"><code>stack.setSpacing(spacing)</code><a class="headerlink" href="#stacksetspacingspacing" title="Permanent link">&para;</a></h4>
+<p>设置堆栈内子元素的间距。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spacing</code></td>
+<td><code>number</code></td>
+<td>间距值</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="stacksetalignmentalignment"><code>stack.setAlignment(alignment)</code><a class="headerlink" href="#stacksetalignmentalignment" title="Permanent link">&para;</a></h4>
+<p>设置堆栈内子元素的对齐方式。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alignment</code></td>
+<td><code>string</code></td>
+<td>对齐方式: <code>'leading'</code> | <code>'center'</code> | <code>'trailing'</code> | <code>'fill'</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="stackremove"><code>stack.remove()</code><a class="headerlink" href="#stackremove" title="Permanent link">&para;</a></h4>
+<p>从父容器中移除该堆栈。</p>
+<hr />
+<h3 id="text">Text 文本元素<a class="headerlink" href="#text" title="Permanent link">&para;</a></h3>
+<p><code>Text</code> 对象由 <code>addText()</code> 返回，用于显示和控制文本内容。</p>
+<h4 id="textsettexttext"><code>text.setText(text)</code><a class="headerlink" href="#textsettexttext" title="Permanent link">&para;</a></h4>
+<p>设置文本内容。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td><code>string</code></td>
+<td>文本内容</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nx">label</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;更新后的文本&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h4 id="textsetstylestyle"><code>text.setStyle(style)</code><a class="headerlink" href="#textsetstylestyle" title="Permanent link">&para;</a></h4>
+<p>更新文本样式。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>textColor</code></td>
+<td><code>string</code></td>
+<td>文字颜色（十六进制）</td>
+</tr>
+<tr>
+<td><code>fontSize</code></td>
+<td><code>number</code></td>
+<td>字体大小</td>
+</tr>
+<tr>
+<td><code>fontWeight</code></td>
+<td><code>string</code></td>
+<td>字体粗细（如 <code>'bold'</code>、<code>'medium'</code>）</td>
+</tr>
+<tr>
+<td><code>backgroundColor</code></td>
+<td><code>string</code></td>
+<td>背景颜色</td>
+</tr>
+<tr>
+<td><code>cornerRadius</code></td>
+<td><code>number</code></td>
+<td>圆角半径</td>
+</tr>
+<tr>
+<td><code>padding</code></td>
+<td><code>number</code></td>
+<td>内边距</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="textupdateconfig"><code>text.update(config)</code><a class="headerlink" href="#textupdateconfig" title="Permanent link">&para;</a></h4>
+<p>同时更新文本内容和样式。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config.text</code></td>
+<td><code>string</code></td>
+<td>否</td>
+<td>新的文本内容</td>
+</tr>
+<tr>
+<td><code>config.style</code></td>
+<td><code>object</code></td>
+<td>否</td>
+<td>新的样式配置</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nx">label</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;状态: 在线&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#00FF00&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="textremove"><code>text.remove()</code><a class="headerlink" href="#textremove" title="Permanent link">&para;</a></h4>
+<p>从父容器中移除该文本元素。</p>
+<hr />
+<h3 id="button">Button 按钮元素<a class="headerlink" href="#button" title="Permanent link">&para;</a></h3>
+<p><code>Button</code> 对象由 <code>addButton()</code> 返回，提供交互式按钮功能。</p>
+<h4 id="btnsettitletitle"><code>btn.setTitle(title)</code><a class="headerlink" href="#btnsettitletitle" title="Permanent link">&para;</a></h4>
+<p>设置按钮标题。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>按钮标题</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="btnsetstylestyle"><code>btn.setStyle(style)</code><a class="headerlink" href="#btnsetstylestyle" title="Permanent link">&para;</a></h4>
+<p>更新按钮样式。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>backgroundColor</code></td>
+<td><code>string</code></td>
+<td>背景颜色</td>
+</tr>
+<tr>
+<td><code>textColor</code></td>
+<td><code>string</code></td>
+<td>文字颜色</td>
+</tr>
+<tr>
+<td><code>fontSize</code></td>
+<td><code>number</code></td>
+<td>字体大小</td>
+</tr>
+<tr>
+<td><code>cornerRadius</code></td>
+<td><code>number</code></td>
+<td>圆角半径</td>
+</tr>
+<tr>
+<td><code>padding</code></td>
+<td><code>number</code></td>
+<td>内边距</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="btnonclickcallback"><code>btn.onClick(callback)</code><a class="headerlink" href="#btnonclickcallback" title="Permanent link">&para;</a></h4>
+<p>设置或更新按钮的点击回调函数。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>callback</code></td>
+<td><code>function</code></td>
+<td>点击回调函数</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nx">btn</span><span class="p">.</span><span class="nx">onClick</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;按钮被点击&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">win</span><span class="p">.</span><span class="nx">dismiss</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="btnupdateconfig"><code>btn.update(config)</code><a class="headerlink" href="#btnupdateconfig" title="Permanent link">&para;</a></h4>
+<p>同时更新按钮标题和样式。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config.title</code></td>
+<td><code>string</code></td>
+<td>否</td>
+<td>新的标题</td>
+</tr>
+<tr>
+<td><code>config.style</code></td>
+<td><code>object</code></td>
+<td>否</td>
+<td>新的样式配置</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="btnremove"><code>btn.remove()</code><a class="headerlink" href="#btnremove" title="Permanent link">&para;</a></h4>
+<p>从父容器中移除该按钮元素。</p>
+<hr />
+<h3 id="image">Image 图片元素<a class="headerlink" href="#image" title="Permanent link">&para;</a></h3>
+<p><code>Image</code> 对象由 <code>addImage()</code> 返回，用于展示图片内容。</p>
+<h4 id="imgsetpathpath"><code>img.setPath(path)</code><a class="headerlink" href="#imgsetpathpath" title="Permanent link">&para;</a></h4>
+<p>从本地文件路径加载图片。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>图片文件路径</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="imgsetsizewidth-height"><code>img.setSize(width, height)</code><a class="headerlink" href="#imgsetsizewidth-height" title="Permanent link">&para;</a></h4>
+<p>设置图片显示尺寸。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><code>number</code></td>
+<td>宽度</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><code>number</code></td>
+<td>高度</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="imgupdateconfig"><code>img.update(config)</code><a class="headerlink" href="#imgupdateconfig" title="Permanent link">&para;</a></h4>
+<p>更新图片配置。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config.path</code></td>
+<td><code>string</code></td>
+<td>否</td>
+<td>新的图片路径</td>
+</tr>
+<tr>
+<td><code>config.width</code></td>
+<td><code>number</code></td>
+<td>否</td>
+<td>新的宽度</td>
+</tr>
+<tr>
+<td><code>config.height</code></td>
+<td><code>number</code></td>
+<td>否</td>
+<td>新的高度</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nx">img</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/new/path.png&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">64</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">64</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="imgremove"><code>img.remove()</code><a class="headerlink" href="#imgremove" title="Permanent link">&para;</a></h4>
+<p>从父容器中移除该图片元素。</p>
+<hr />
+<h3 id="spacer">Spacer 间距元素<a class="headerlink" href="#spacer" title="Permanent link">&para;</a></h3>
+<p><code>Spacer</code> 对象由 <code>addSpacer()</code> 返回，用于在元素之间创建空白间隔。</p>
+<h4 id="spacersetheightheight"><code>spacer.setHeight(height)</code><a class="headerlink" href="#spacersetheightheight" title="Permanent link">&para;</a></h4>
+<p>设置间距高度。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>height</code></td>
+<td><code>number</code></td>
+<td>高度值</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="spacerremove"><code>spacer.remove()</code><a class="headerlink" href="#spacerremove" title="Permanent link">&para;</a></h4>
+<p>从父容器中移除该间距元素。</p>
+<hr />
+<h3 id="loading">Loading 加载指示器<a class="headerlink" href="#loading" title="Permanent link">&para;</a></h3>
+<p><code>Loading</code> 对象由 <code>addLoading()</code> 返回，用于显示加载动画。</p>
+<h4 id="winaddloadingconfig"><code>win.addLoading(config?)</code><a class="headerlink" href="#winaddloadingconfig" title="Permanent link">&para;</a></h4>
+<p>向窗口添加加载指示器。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config.style</code></td>
+<td><code>string</code></td>
+<td><code>'medium'</code></td>
+<td>样式: <code>'large'</code> | <code>'medium'</code> | <code>'small'</code></td>
+</tr>
+<tr>
+<td><code>config.color</code></td>
+<td><code>string</code></td>
+<td><code>'#FFFFFF'</code></td>
+<td>指示器颜色</td>
+</tr>
+<tr>
+<td><code>config.hidesWhenStopped</code></td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>停止时是否隐藏</td>
+</tr>
+<tr>
+<td><code>config.isAnimating</code></td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>是否自动开始动画</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>Loading</code> — 加载指示器对象</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">loading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">win</span><span class="p">.</span><span class="nx">addLoading</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;large&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#007AFF&#39;</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="loadingstart"><code>loading.start()</code><a class="headerlink" href="#loadingstart" title="Permanent link">&para;</a></h4>
+<p>开始加载动画。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">loading</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h4 id="loadingstop"><code>loading.stop()</code><a class="headerlink" href="#loadingstop" title="Permanent link">&para;</a></h4>
+<p>停止加载动画。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">loading</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h4 id="loadingisanimating"><code>loading.isAnimating()</code><a class="headerlink" href="#loadingisanimating" title="Permanent link">&para;</a></h4>
+<p>检查是否正在动画。</p>
+<p><strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">loading</span><span class="p">.</span><span class="nx">isAnimating</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;正在加载...&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h4 id="loadingsetstylestylename"><code>loading.setStyle(styleName)</code><a class="headerlink" href="#loadingsetstylestylename" title="Permanent link">&para;</a></h4>
+<p>设置加载指示器样式。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>styleName</code></td>
+<td><code>string</code></td>
+<td>样式名: <code>'large'</code> | <code>'medium'</code> | <code>'small'</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="loadingsetcolorcolor"><code>loading.setColor(color)</code><a class="headerlink" href="#loadingsetcolorcolor" title="Permanent link">&para;</a></h4>
+<p>设置加载指示器颜色。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><code>string</code></td>
+<td>颜色值（十六进制）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="loadingremove"><code>loading.remove()</code><a class="headerlink" href="#loadingremove" title="Permanent link">&para;</a></h4>
+<p>从父容器中移除该加载指示器。</p>
+<hr />
+<h3 id="scrollview">ScrollView 滚动视图<a class="headerlink" href="#scrollview" title="Permanent link">&para;</a></h3>
+<p><code>ScrollView</code> 对象由 <code>addScrollView()</code> 返回，用于创建可滚动的内容区域。</p>
+<h4 id="winaddscrollviewconfig"><code>win.addScrollView(config?)</code><a class="headerlink" href="#winaddscrollviewconfig" title="Permanent link">&para;</a></h4>
+<p>向窗口添加滚动视图。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config.direction</code></td>
+<td><code>string</code></td>
+<td><code>'vertical'</code></td>
+<td>滚动方向: <code>'vertical'</code> | <code>'horizontal'</code> | <code>'both'</code></td>
+</tr>
+<tr>
+<td><code>config.width</code></td>
+<td><code>number</code></td>
+<td>-</td>
+<td>视图宽度</td>
+</tr>
+<tr>
+<td><code>config.height</code></td>
+<td><code>number</code></td>
+<td>-</td>
+<td>视图高度</td>
+</tr>
+<tr>
+<td><code>config.spacing</code></td>
+<td><code>number</code></td>
+<td><code>8</code></td>
+<td>内容元素间距</td>
+</tr>
+<tr>
+<td><code>config.showsHorizontalIndicator</code></td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>显示水平滚动条</td>
+</tr>
+<tr>
+<td><code>config.showsVerticalIndicator</code></td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>显示垂直滚动条</td>
+</tr>
+<tr>
+<td><code>config.isPagingEnabled</code></td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>启用分页滚动</td>
+</tr>
+<tr>
+<td><code>config.bounces</code></td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>启用弹性效果</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>ScrollView</code> — 滚动视图对象</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">scroll</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">win</span><span class="p">.</span><span class="nx">addScrollView</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">direction</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">spacing</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span>
+<span class="p">});</span>
+
+<span class="c1">// 添加内容</span>
+<span class="nx">scroll</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Item 1&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">scroll</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Item 2&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">scroll</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Item 3&#39;</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="scrolladdtextconfig-scrolladdbuttonconfig-scrolladdimageconfig"><code>scroll.addText(config)</code> / <code>scroll.addButton(config)</code> / <code>scroll.addImage(config)</code><a class="headerlink" href="#scrolladdtextconfig-scrolladdbuttonconfig-scrolladdimageconfig" title="Permanent link">&para;</a></h4>
+<p>向滚动视图添加元素。参数同 Window 的对应方法。</p>
+<hr />
+<h4 id="scrolladdstackconfig-scrolladdspacerconfig-scrolladdloadingconfig"><code>scroll.addStack(config?)</code> / <code>scroll.addSpacer(config?)</code> / <code>scroll.addLoading(config?)</code><a class="headerlink" href="#scrolladdstackconfig-scrolladdspacerconfig-scrolladdloadingconfig" title="Permanent link">&para;</a></h4>
+<p>向滚动视图添加容器和辅助元素。</p>
+<hr />
+<h4 id="scrollsetdirectiondirection"><code>scroll.setDirection(direction)</code><a class="headerlink" href="#scrollsetdirectiondirection" title="Permanent link">&para;</a></h4>
+<p>设置滚动方向。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>direction</code></td>
+<td><code>string</code></td>
+<td>方向: <code>'vertical'</code> | <code>'horizontal'</code> | <code>'both'</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="scrollsetspacingspacing"><code>scroll.setSpacing(spacing)</code><a class="headerlink" href="#scrollsetspacingspacing" title="Permanent link">&para;</a></h4>
+<p>设置内容元素间距。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spacing</code></td>
+<td><code>number</code></td>
+<td>间距值</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="scrollscrolltox-y"><code>scroll.scrollTo(x, y)</code><a class="headerlink" href="#scrollscrolltox-y" title="Permanent link">&para;</a></h4>
+<p>滚动到指定位置。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>number</code></td>
+<td>X 偏移量</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><code>number</code></td>
+<td>Y 偏移量</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="scrollscrolltotop-scrollscrolltobottom"><code>scroll.scrollToTop()</code> / <code>scroll.scrollToBottom()</code><a class="headerlink" href="#scrollscrolltotop-scrollscrolltobottom" title="Permanent link">&para;</a></h4>
+<p>滚动到顶部或底部。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">scroll</span><span class="p">.</span><span class="nx">scrollToTop</span><span class="p">();</span>
+<span class="c1">// 或</span>
+<span class="nx">scroll</span><span class="p">.</span><span class="nx">scrollToBottom</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h4 id="scrollgetoffset"><code>scroll.getOffset()</code><a class="headerlink" href="#scrollgetoffset" title="Permanent link">&para;</a></h4>
+<p>获取当前滚动偏移量。</p>
+<p><strong>返回:</strong> <code>{ x: number, y: number }</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">scroll</span><span class="p">.</span><span class="nx">getOffset</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`当前滚动位置: (</span><span class="si">${</span><span class="nx">offset</span><span class="p">.</span><span class="nx">x</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="nx">offset</span><span class="p">.</span><span class="nx">y</span><span class="si">}</span><span class="sb">)`</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h4 id="scrollgetcontentsize"><code>scroll.getContentSize()</code><a class="headerlink" href="#scrollgetcontentsize" title="Permanent link">&para;</a></h4>
+<p>获取内容区域大小。</p>
+<p><strong>返回:</strong> <code>{ width: number, height: number }</code></p>
+<hr />
+<h4 id="scrollonscrollcallback"><code>scroll.onScroll(callback)</code><a class="headerlink" href="#scrollonscrollcallback" title="Permanent link">&para;</a></h4>
+<p>设置滚动事件回调。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>callback</code></td>
+<td><code>function</code></td>
+<td>回调函数，参数为 <code>{ x, y }</code> 偏移量</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nx">scroll</span><span class="p">.</span><span class="nx">onScroll</span><span class="p">((</span><span class="nx">offset</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;滚动到:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">offset</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">offset</span><span class="p">.</span><span class="nx">y</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="scrollremove"><code>scroll.remove()</code><a class="headerlink" href="#scrollremove" title="Permanent link">&para;</a></h4>
+<p>从父容器中移除该滚动视图。</p>
+<hr />
+<h3 id="list">List 列表视图<a class="headerlink" href="#list" title="Permanent link">&para;</a></h3>
+<p><code>List</code> 对象由 <code>addList()</code> 返回，用于显示数据列表或网格。基于 UICollectionView 实现，支持列表和网格两种布局。</p>
+<h4 id="winaddlistconfig"><code>win.addList(config?)</code><a class="headerlink" href="#winaddlistconfig" title="Permanent link">&para;</a></h4>
+<p>向窗口添加列表视图。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config.layout</code></td>
+<td><code>string</code></td>
+<td><code>'list'</code></td>
+<td>布局模式: <code>'list'</code> | <code>'grid'</code></td>
+</tr>
+<tr>
+<td><code>config.width</code></td>
+<td><code>number</code></td>
+<td>-</td>
+<td>视图宽度</td>
+</tr>
+<tr>
+<td><code>config.height</code></td>
+<td><code>number</code></td>
+<td>-</td>
+<td>视图高度</td>
+</tr>
+<tr>
+<td><code>config.itemHeight</code></td>
+<td><code>number</code></td>
+<td><code>44</code></td>
+<td>列表项高度</td>
+</tr>
+<tr>
+<td><code>config.columns</code></td>
+<td><code>number</code></td>
+<td><code>2</code></td>
+<td>网格列数（仅 grid 模式）</td>
+</tr>
+<tr>
+<td><code>config.separatorStyle</code></td>
+<td><code>string</code></td>
+<td><code>'line'</code></td>
+<td>分隔线样式: <code>'none'</code> | <code>'line'</code></td>
+</tr>
+<tr>
+<td><code>config.items</code></td>
+<td><code>array</code></td>
+<td><code>[]</code></td>
+<td>初始数据项</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>List</code> — 列表视图对象</p>
+<p><strong>数据项格式:</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>唯一标识符</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>否</td>
+<td>标题文本</td>
+</tr>
+<tr>
+<td><code>subtitle</code></td>
+<td><code>string</code></td>
+<td>否</td>
+<td>副标题文本</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td><code>string</code></td>
+<td>否</td>
+<td>图标路径</td>
+</tr>
+<tr>
+<td><code>systemIcon</code></td>
+<td><code>string</code></td>
+<td>否</td>
+<td>SF Symbol 图标名</td>
+</tr>
+<tr>
+<td><code>accessory</code></td>
+<td><code>string</code></td>
+<td>否</td>
+<td>右侧附件: <code>'none'</code> | <code>'disclosure'</code> | <code>'checkmark'</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">win</span><span class="p">.</span><span class="nx">addList</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">layout</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;list&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">itemHeight</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">items</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;设置&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">systemIcon</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;gear&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">accessory</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;disclosure&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;通知&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">systemIcon</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bell&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">subtitle</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;已开启&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;关于&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">systemIcon</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;info.circle&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">});</span>
+
+<span class="nx">list</span><span class="p">.</span><span class="nx">onSelect</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;选中:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">title</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="listsetitemsitems"><code>list.setItems(items)</code><a class="headerlink" href="#listsetitemsitems" title="Permanent link">&para;</a></h4>
+<p>设置列表数据。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>items</code></td>
+<td><code>array</code></td>
+<td>数据项数组</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nx">list</span><span class="p">.</span><span class="nx">setItems</span><span class="p">([</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Apple&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Banana&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Cherry&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">]);</span>
+</code></pre></div>
+<hr />
+<h4 id="listadditemitem"><code>list.addItem(item)</code><a class="headerlink" href="#listadditemitem" title="Permanent link">&para;</a></h4>
+<p>添加单个数据项到末尾。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>item</code></td>
+<td><code>object</code></td>
+<td>数据项</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="listinsertitemitem-index"><code>list.insertItem(item, index)</code><a class="headerlink" href="#listinsertitemitem-index" title="Permanent link">&para;</a></h4>
+<p>在指定位置插入数据项。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>item</code></td>
+<td><code>object</code></td>
+<td>数据项</td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td><code>number</code></td>
+<td>插入位置</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="listremoveitemindex"><code>list.removeItem(index)</code><a class="headerlink" href="#listremoveitemindex" title="Permanent link">&para;</a></h4>
+<p>移除指定位置的数据项。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><code>number</code></td>
+<td>数据项索引</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="listremoveallitems"><code>list.removeAllItems()</code><a class="headerlink" href="#listremoveallitems" title="Permanent link">&para;</a></h4>
+<p>移除所有数据项。</p>
+<hr />
+<h4 id="listgetitemindex"><code>list.getItem(index)</code><a class="headerlink" href="#listgetitemindex" title="Permanent link">&para;</a></h4>
+<p>获取指定位置的数据项。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><code>number</code></td>
+<td>数据项索引</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>object | null</code> — 数据项或 null</p>
+<hr />
+<h4 id="listgetitemcount"><code>list.getItemCount()</code><a class="headerlink" href="#listgetitemcount" title="Permanent link">&para;</a></h4>
+<p>获取数据项数量。</p>
+<p><strong>返回:</strong> <code>number</code></p>
+<hr />
+<h4 id="listscrolltoitemindex"><code>list.scrollToItem(index)</code><a class="headerlink" href="#listscrolltoitemindex" title="Permanent link">&para;</a></h4>
+<p>滚动到指定数据项。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><code>number</code></td>
+<td>数据项索引</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="listsetlayoutlayout"><code>list.setLayout(layout)</code><a class="headerlink" href="#listsetlayoutlayout" title="Permanent link">&para;</a></h4>
+<p>设置布局模式。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>layout</code></td>
+<td><code>string</code></td>
+<td>布局: <code>'list'</code> | <code>'grid'</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="listsetcolumnscolumns"><code>list.setColumns(columns)</code><a class="headerlink" href="#listsetcolumnscolumns" title="Permanent link">&para;</a></h4>
+<p>设置网格列数（仅 grid 模式）。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>columns</code></td>
+<td><code>number</code></td>
+<td>列数</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="listsetitemheightheight"><code>list.setItemHeight(height)</code><a class="headerlink" href="#listsetitemheightheight" title="Permanent link">&para;</a></h4>
+<p>设置列表项高度。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>height</code></td>
+<td><code>number</code></td>
+<td>高度值</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="listsetseparatorstylestyle"><code>list.setSeparatorStyle(style)</code><a class="headerlink" href="#listsetseparatorstylestyle" title="Permanent link">&para;</a></h4>
+<p>设置分隔线样式。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>style</code></td>
+<td><code>string</code></td>
+<td>样式: <code>'none'</code> | <code>'line'</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="listonselectcallback"><code>list.onSelect(callback)</code><a class="headerlink" href="#listonselectcallback" title="Permanent link">&para;</a></h4>
+<p>设置选中事件回调。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>callback</code></td>
+<td><code>function</code></td>
+<td>回调函数，参数为 <code>(item, index)</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nx">list</span><span class="p">.</span><span class="nx">onSelect</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`选中第 </span><span class="si">${</span><span class="nx">index</span><span class="si">}</span><span class="sb"> 项: </span><span class="si">${</span><span class="nx">item</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="listremove"><code>list.remove()</code><a class="headerlink" href="#listremove" title="Permanent link">&para;</a></h4>
+<p>从父容器中移除该列表视图。</p>
+<hr />
+<h2 id="_3">样式配置<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="window-style">窗口样式 (Window Style)<a class="headerlink" href="#window-style" title="Permanent link">&para;</a></h3>
+<p>在 <code>createWindow</code> 的 <code>style</code> 参数或 <code>setStyle()</code> 中使用：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>backgroundColor</code></td>
+<td><code>string</code></td>
+<td>背景颜色，支持 RGBA 十六进制</td>
+<td><code>'#000000CC'</code></td>
+</tr>
+<tr>
+<td><code>textColor</code></td>
+<td><code>string</code></td>
+<td>默认文字颜色</td>
+<td><code>'#FFFFFF'</code></td>
+</tr>
+<tr>
+<td><code>fontSize</code></td>
+<td><code>number</code></td>
+<td>默认字体大小</td>
+<td><code>14</code></td>
+</tr>
+<tr>
+<td><code>fontWeight</code></td>
+<td><code>string</code></td>
+<td>默认字体粗细</td>
+<td><code>'bold'</code></td>
+</tr>
+<tr>
+<td><code>cornerRadius</code></td>
+<td><code>number</code></td>
+<td>圆角半径</td>
+<td><code>12</code></td>
+</tr>
+<tr>
+<td><code>padding</code></td>
+<td><code>number</code></td>
+<td>内边距</td>
+<td><code>16</code></td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><code>number</code></td>
+<td>不透明度 (0-1)</td>
+<td><code>0.9</code></td>
+</tr>
+<tr>
+<td><code>shadow</code></td>
+<td><code>boolean</code></td>
+<td>是否显示阴影</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">颜色格式<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>支持以下十六进制颜色格式：
+- <code>#RGB</code> — 3 位简写，如 <code>#FFF</code>
+- <code>#RRGGBB</code> — 6 位标准，如 <code>#FF5733</code>
+- <code>#RRGGBBAA</code> — 8 位含透明度，如 <code>#000000CC</code>（CC = 80% 不透明）</p>
+<h3 id="_5">常用透明度参考<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Alpha 值</th>
+<th>不透明度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FF</code></td>
+<td>100% 完全不透明</td>
+</tr>
+<tr>
+<td><code>F0</code></td>
+<td>94%</td>
+</tr>
+<tr>
+<td><code>DD</code></td>
+<td>87%</td>
+</tr>
+<tr>
+<td><code>CC</code></td>
+<td>80%</td>
+</tr>
+<tr>
+<td><code>AA</code></td>
+<td>67%</td>
+</tr>
+<tr>
+<td><code>88</code></td>
+<td>53%</td>
+</tr>
+<tr>
+<td><code>66</code></td>
+<td>40%</td>
+</tr>
+<tr>
+<td><code>44</code></td>
+<td>27%</td>
+</tr>
+<tr>
+<td><code>22</code></td>
+<td>13%</td>
+</tr>
+<tr>
+<td><code>00</code></td>
+<td>0% 完全透明</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_6">完整示例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="1">示例 1: 简单通知<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>创建一个自动消失的通知窗口：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">win</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">createWindow</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">250</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">60</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">autoClear</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#000000DD&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">win</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;操作成功！&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">win</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h3 id="2">示例 2: 带按钮的交互窗口<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>创建一个带有确认和取消按钮的对话框：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">win</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">createWindow</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">280</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">120</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">draggable</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#1C1C1EF0&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">win</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;确认删除？&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">18</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">win</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">({</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">buttonStack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">win</span><span class="p">.</span><span class="nx">addStack</span><span class="p">({</span><span class="w"> </span><span class="nx">axis</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">spacing</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="p">});</span>
+
+<span class="nx">buttonStack</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;取消&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#3A3A3C&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">win</span><span class="p">.</span><span class="nx">dismiss</span><span class="p">()</span>
+<span class="p">});</span>
+
+<span class="nx">buttonStack</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;删除&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FF3B30&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已删除&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">win</span><span class="p">.</span><span class="nx">dismiss</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">win</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h3 id="3">示例 3: 状态监控面板<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>创建一个可拖拽的实时状态监控面板：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">screen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">getScreenSize</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">win</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">createWindow</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">180</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">190</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">draggable</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#000000CC&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">cpuText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">win</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;CPU: --&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#00FF00&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">14</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">memText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">win</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;MEM: --&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#00FF00&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">14</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">timeText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">win</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;TIME: --&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#888888&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">win</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+
+<span class="c1">// 定时更新数据</span>
+<span class="nx">setInterval</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">timeText</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;TIME: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">now</span><span class="p">.</span><span class="nx">toLocaleTimeString</span><span class="p">());</span>
+<span class="w">  </span><span class="nx">cpuText</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;CPU: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;%&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">memText</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;MEM: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">8000</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;MB&#39;</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="4">示例 4: 带图标的信息卡片<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>使用堆栈布局和 SF Symbol 图标创建信息卡片：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">win</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">createWindow</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">260</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">80</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">draggable</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#1C1C1EF0&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">14</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">win</span><span class="p">.</span><span class="nx">addStack</span><span class="p">({</span><span class="w"> </span><span class="nx">axis</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">spacing</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="nx">alignment</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;center&#39;</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// 图标</span>
+<span class="nx">row</span><span class="p">.</span><span class="nx">addImage</span><span class="p">({</span><span class="w"> </span><span class="nx">systemName</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;wifi&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">28</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">28</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// 文字信息</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">infoStack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">row</span><span class="p">.</span><span class="nx">addStack</span><span class="p">({</span><span class="w"> </span><span class="nx">axis</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">spacing</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">infoStack</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Wi-Fi 已连接&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">fontWeight</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bold&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">infoStack</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;MyNetwork-5G&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#8E8E93&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">13</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">win</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h3 id="5">示例 5: 多窗口管理<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>创建和管理多个窗口：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 创建多个窗口</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">toast1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">createWindow</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">autoClear</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#34C759DD&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">toast1</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;下载完成&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFF&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">toast1</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">toast2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">createWindow</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">160</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">autoClear</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#007AFFDD&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">toast2</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;同步成功&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFF&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">toast2</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+
+<span class="c1">// 查看所有窗口</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">allWindows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">getAllWindows</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;当前窗口数量:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">allWindows</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+
+<span class="c1">// 一键清除所有窗口</span>
+<span class="c1">// hud.clearAll();</span>
+</code></pre></div>
+<hr />
+<h2 id="_7">最佳实践<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="1-autoclear">1. 合理设置 autoClear<a class="headerlink" href="#1-autoclear" title="Permanent link">&para;</a></h3>
+<p>对于通知类窗口，建议设置 <code>autoClear</code> 让窗口自动消失，避免长时间遮挡屏幕：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">win</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">createWindow</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">autoClear</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="c1">// 3 秒后自动消失</span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="2_1">2. 使用半透明背景<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p>推荐使用带透明度的背景色，使浮窗不会完全遮挡下方内容：</p>
+<div class="highlight"><pre><span></span><code><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#000000CC&#39;</span><span class="w"> </span><span class="c1">// 80% 不透明的黑色</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="3-draggable">3. 使用 draggable 提升体验<a class="headerlink" href="#3-draggable" title="Permanent link">&para;</a></h3>
+<p>对于需要长时间显示的面板（如监控面板），启用拖拽功能让用户可以自由移动：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">win</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">createWindow</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">draggable</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="4_1">4. 及时清理窗口<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<p>当窗口不再需要时，调用 <code>remove()</code> 销毁窗口，避免内存泄漏：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 单个窗口</span>
+<span class="nx">win</span><span class="p">.</span><span class="nx">remove</span><span class="p">();</span>
+
+<span class="c1">// 清除所有窗口</span>
+<span class="nx">hud</span><span class="p">.</span><span class="nx">clearAll</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="5_1">5. 屏幕适配<a class="headerlink" href="#5_1" title="Permanent link">&para;</a></h3>
+<p>使用 <code>getScreenSize()</code> 获取屏幕信息，动态计算窗口位置，确保在不同设备上显示正确：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">screen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">getScreenSize</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">win</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">createWindow</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">80</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">200</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w">  </span><span class="c1">// 水平居中</span>
+<span class="w">  </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">150</span><span class="p">,</span><span class="w">        </span><span class="c1">// 底部偏上</span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="6">6. 动态更新内容<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<p>保存元素引用以便后续更新，避免重复创建窗口：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">statusText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">win</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;加载中...&#39;</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// 后续更新</span>
+<span class="nx">statusText</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;加载完成！&#39;</span><span class="p">);</span>
+<span class="nx">statusText</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">({</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#34C759&#39;</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

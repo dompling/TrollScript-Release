@@ -1,0 +1,1217 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TrollScript 官方文档与 API 参考">
+      
+      
+      
+        <link rel="canonical" href="https://trollscript.qzz.io/Display/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Display 显示控制 - TrollScript</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#display" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="TrollScript" class="md-header__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TrollScript
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Display 显示控制
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TrollScript" class="md-nav__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TrollScript
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="display">Display 显示控制<a class="headerlink" href="#display" title="Permanent link">&para;</a></h1>
+<p>Display 模块提供了显示相关的控制功能，包括屏幕亮度调节、屏幕信息获取、低电量模式控制、自动亮度设置等。</p>
+<blockquote>
+<p><strong>守护进程支持</strong>: 有限支持。亮度设置和 keepAwake 后台可能不生效，openSettings 需要 UI 交互。</p>
+</blockquote>
+<hr />
+<h2 id="_1">目录<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#快速开始">快速开始</a></li>
+<li><a href="#api-参考">API 参考</a></li>
+<li><a href="#亮度控制">亮度控制</a><ul>
+<li><a href="#displaygetbrightness">display.getBrightness()</a></li>
+<li><a href="#displaysetbrightness">display.setBrightness()</a></li>
+<li><a href="#displayincreasebrightness">display.increaseBrightness()</a></li>
+<li><a href="#displaydecreasebrightness">display.decreaseBrightness()</a></li>
+</ul>
+</li>
+<li><a href="#屏幕信息">屏幕信息</a><ul>
+<li><a href="#displaygetscreeninfo">display.getScreenInfo()</a></li>
+<li><a href="#displaygetorientation">display.getOrientation()</a></li>
+</ul>
+</li>
+<li><a href="#电源管理">电源管理</a><ul>
+<li><a href="#displayislowpowermodeenabled">display.isLowPowerModeEnabled()</a></li>
+<li><a href="#displaysetlowpowermode">display.setLowPowerMode()</a></li>
+<li><a href="#displaykeepawake">display.keepAwake()</a></li>
+</ul>
+</li>
+<li><a href="#自动亮度">自动亮度</a><ul>
+<li><a href="#displayisautobrightnessenabl">display.isAutoBrightnessEnabled()</a></li>
+<li><a href="#displaysetautobrightness">display.setAutoBrightness()</a></li>
+</ul>
+</li>
+<li><a href="#其他">其他</a><ul>
+<li><a href="#displayopensettings">display.openSettings()</a></li>
+</ul>
+</li>
+<li><a href="#完整示例">完整示例</a></li>
+<li><a href="#最佳实践">最佳实践</a></li>
+</ul>
+<hr />
+<h2 id="_2">快速开始<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>使用 Display 模块控制屏幕非常简单：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 获取当前亮度</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">getBrightness</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;当前亮度:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">brightness</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;%&#39;</span><span class="p">);</span>
+
+<span class="c1">// 设置亮度</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="mf">0.8</span><span class="p">);</span><span class="w">  </span><span class="c1">// 设置为 80%</span>
+
+<span class="c1">// 增加亮度</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">increaseBrightness</span><span class="p">(</span><span class="mf">0.1</span><span class="p">);</span><span class="w">  </span><span class="c1">// 增加 10%</span>
+
+<span class="c1">// 获取屏幕信息</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">screen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">getScreenInfo</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`屏幕: </span><span class="si">${</span><span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="si">}</span><span class="sb">x</span><span class="si">${</span><span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="si">}</span><span class="sb"> @</span><span class="si">${</span><span class="nx">screen</span><span class="p">.</span><span class="nx">scale</span><span class="si">}</span><span class="sb">x`</span><span class="p">);</span>
+
+<span class="c1">// 开启低电量模式</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">setLowPowerMode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="_3">亮度控制<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="displaygetbrightness"><code>display.getBrightness()</code><a class="headerlink" href="#displaygetbrightness" title="Permanent link">&para;</a></h4>
+<p>获取当前屏幕亮度。</p>
+<p><strong>返回:</strong> <code>number</code> — 亮度值（0.0 - 1.0）</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">getBrightness</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;当前亮度:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">brightness</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;%&#39;</span><span class="p">);</span>
+<span class="c1">// 输出: 当前亮度: 75%</span>
+</code></pre></div>
+<p><strong>注意:</strong>
+- 优先使用 BackBoardServices 私有 API，在 Daemon 模式下也能正常工作
+- 如果私有 API 不可用，会降级使用 UIScreen.main.brightness</p>
+<hr />
+<h4 id="displaysetbrightnessvalue"><code>display.setBrightness(value)</code><a class="headerlink" href="#displaysetbrightnessvalue" title="Permanent link">&para;</a></h4>
+<p>设置屏幕亮度。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td><code>number</code></td>
+<td>是</td>
+<td>亮度值（0.0 - 1.0）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>boolean</code> — 设置是否成功</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 设置为 50% 亮度</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>
+
+<span class="c1">// 设置为最大亮度</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
+
+<span class="c1">// 设置为最小亮度</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>注意:</strong>
+- 值会自动限制在 0.0 - 1.0 范围内
+- 优先使用 BackBoardServices 私有 API
+- 在 Daemon 模式下也能正常工作</p>
+<hr />
+<h4 id="displayincreasebrightnessamount"><code>display.increaseBrightness(amount?)</code><a class="headerlink" href="#displayincreasebrightnessamount" title="Permanent link">&para;</a></h4>
+<p>增加屏幕亮度。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>amount</code></td>
+<td><code>number</code></td>
+<td>否</td>
+<td><code>0.1</code></td>
+<td>增加的亮度值（0.0 - 1.0）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>boolean</code> — 设置是否成功</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 增加 10% 亮度（默认）</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">increaseBrightness</span><span class="p">();</span>
+
+<span class="c1">// 增加 20% 亮度</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">increaseBrightness</span><span class="p">(</span><span class="mf">0.2</span><span class="p">);</span>
+
+<span class="c1">// 增加 5% 亮度</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">increaseBrightness</span><span class="p">(</span><span class="mf">0.05</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>注意:</strong> 亮度不会超过 1.0（100%）</p>
+<hr />
+<h4 id="displaydecreasebrightnessamount"><code>display.decreaseBrightness(amount?)</code><a class="headerlink" href="#displaydecreasebrightnessamount" title="Permanent link">&para;</a></h4>
+<p>降低屏幕亮度。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>amount</code></td>
+<td><code>number</code></td>
+<td>否</td>
+<td><code>0.1</code></td>
+<td>降低的亮度值（0.0 - 1.0）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>boolean</code> — 设置是否成功</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 降低 10% 亮度（默认）</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">decreaseBrightness</span><span class="p">();</span>
+
+<span class="c1">// 降低 20% 亮度</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">decreaseBrightness</span><span class="p">(</span><span class="mf">0.2</span><span class="p">);</span>
+
+<span class="c1">// 降低 5% 亮度</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">decreaseBrightness</span><span class="p">(</span><span class="mf">0.05</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>注意:</strong> 亮度不会低于 0.0（0%）</p>
+<hr />
+<h3 id="_4">屏幕信息<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="displaygetscreeninfo"><code>display.getScreenInfo()</code><a class="headerlink" href="#displaygetscreeninfo" title="Permanent link">&para;</a></h4>
+<p>获取屏幕信息。</p>
+<p><strong>返回:</strong> <code>object</code> — 屏幕信息对象</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code></td>
+<td><code>number</code></td>
+<td>屏幕宽度（逻辑像素）</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><code>number</code></td>
+<td>屏幕高度（逻辑像素）</td>
+</tr>
+<tr>
+<td><code>scale</code></td>
+<td><code>number</code></td>
+<td>屏幕缩放比例（如 2.0、3.0）</td>
+</tr>
+<tr>
+<td><code>nativeWidth</code></td>
+<td><code>number</code></td>
+<td>原生宽度（物理像素）</td>
+</tr>
+<tr>
+<td><code>nativeHeight</code></td>
+<td><code>number</code></td>
+<td>原生高度（物理像素）</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">screen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">getScreenInfo</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`逻辑分辨率: </span><span class="si">${</span><span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="si">}</span><span class="sb">x</span><span class="si">${</span><span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`物理分辨率: </span><span class="si">${</span><span class="nx">screen</span><span class="p">.</span><span class="nx">nativeWidth</span><span class="si">}</span><span class="sb">x</span><span class="si">${</span><span class="nx">screen</span><span class="p">.</span><span class="nx">nativeHeight</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`缩放比例: @</span><span class="si">${</span><span class="nx">screen</span><span class="p">.</span><span class="nx">scale</span><span class="si">}</span><span class="sb">x`</span><span class="p">);</span>
+
+<span class="c1">// 输出:</span>
+<span class="c1">// 逻辑分辨率: 393x852</span>
+<span class="c1">// 物理分辨率: 1179x2556</span>
+<span class="c1">// 缩放比例: @3x</span>
+</code></pre></div>
+<hr />
+<h4 id="displaygetorientation"><code>display.getOrientation()</code><a class="headerlink" href="#displaygetorientation" title="Permanent link">&para;</a></h4>
+<p>获取屏幕方向。</p>
+<p><strong>返回:</strong> <code>string</code> — 屏幕方向: <code>'portrait'</code> | <code>'landscape'</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">orientation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">getOrientation</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;屏幕方向:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">orientation</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">orientation</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;portrait&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;竖屏模式&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">orientation</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;landscape&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;横屏模式&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="_5">电源管理<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="displayislowpowermodeenabled"><code>display.isLowPowerModeEnabled()</code><a class="headerlink" href="#displayislowpowermodeenabled" title="Permanent link">&para;</a></h4>
+<p>检查低电量模式是否开启。</p>
+<p><strong>返回:</strong> <code>boolean</code> — 如果开启返回 <code>true</code>，否则返回 <code>false</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">isLowPower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">isLowPowerModeEnabled</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;低电量模式:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">isLowPower</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;开启&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;关闭&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h4 id="displaysetlowpowermodeenabled"><code>display.setLowPowerMode(enabled)</code><a class="headerlink" href="#displaysetlowpowermodeenabled" title="Permanent link">&para;</a></h4>
+<p>设置低电量模式。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enabled</code></td>
+<td><code>boolean</code></td>
+<td>是</td>
+<td><code>true</code> 开启，<code>false</code> 关闭</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>boolean</code> — 设置是否成功</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 开启低电量模式</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">setLowPowerMode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;低电量模式已开启&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 关闭低电量模式</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">setLowPowerMode</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>注意:</strong> 需要使用私有 API，可能在某些系统版本上不可用</p>
+<hr />
+<h4 id="displaykeepawakeenabled"><code>display.keepAwake(enabled)</code><a class="headerlink" href="#displaykeepawakeenabled" title="Permanent link">&para;</a></h4>
+<p>设置屏幕保持常亮（禁用自动锁屏）。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enabled</code></td>
+<td><code>boolean</code></td>
+<td>是</td>
+<td><code>true</code> 保持常亮，<code>false</code> 恢复自动锁屏</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>boolean</code> — 设置是否成功</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 保持屏幕常亮</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">keepAwake</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;屏幕将保持常亮&#39;</span><span class="p">);</span>
+
+<span class="c1">// 恢复自动锁屏</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">keepAwake</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;屏幕将自动锁定&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>注意:</strong>
+- 在 Daemon 模式下不可用，会返回 <code>false</code>
+- 仅在主应用运行时有效</p>
+<hr />
+<h3 id="_6">自动亮度<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="displayisautobrightnessenabled"><code>display.isAutoBrightnessEnabled()</code><a class="headerlink" href="#displayisautobrightnessenabled" title="Permanent link">&para;</a></h4>
+<p>检查自动亮度是否开启。</p>
+<p><strong>返回:</strong> <code>boolean</code> — 如果开启返回 <code>true</code>，否则返回 <code>false</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">isAuto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">isAutoBrightnessEnabled</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;自动亮度:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">isAuto</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;开启&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;关闭&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h4 id="displaysetautobrightnessenabled"><code>display.setAutoBrightness(enabled)</code><a class="headerlink" href="#displaysetautobrightnessenabled" title="Permanent link">&para;</a></h4>
+<p>设置自动亮度。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enabled</code></td>
+<td><code>boolean</code></td>
+<td>是</td>
+<td><code>true</code> 开启，<code>false</code> 关闭</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>boolean</code> — 设置是否成功</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 开启自动亮度</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">setAutoBrightness</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;自动亮度已开启&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 关闭自动亮度</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">setAutoBrightness</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>注意:</strong> 需要使用私有 API，可能在某些系统版本上不可用</p>
+<hr />
+<h3 id="_7">其他<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="displayopensettings"><code>display.openSettings()</code><a class="headerlink" href="#displayopensettings" title="Permanent link">&para;</a></h4>
+<p>打开显示设置页面。</p>
+<p><strong>返回:</strong> <code>boolean</code> — 是否成功打开</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">openSettings</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已打开显示设置&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;无法打开设置&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>注意:</strong>
+- 在 Daemon 模式下不可用，会返回 <code>false</code>
+- 会尝试打开显示设置，如果失败则打开应用设置</p>
+<hr />
+<h2 id="_8">完整示例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="1">示例 1: 智能亮度调节<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 根据时间自动调节亮度</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">autoAdjustBrightness</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">getHours</span><span class="p">();</span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">targetBrightness</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hour</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">6</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">hour</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">8</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 早晨：逐渐增加亮度</span>
+<span class="w">    </span><span class="nx">targetBrightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hour</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">8</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">hour</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">18</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 白天：较高亮度</span>
+<span class="w">    </span><span class="nx">targetBrightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.8</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hour</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">18</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">hour</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">22</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 傍晚：中等亮度</span>
+<span class="w">    </span><span class="nx">targetBrightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.6</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 夜间：低亮度</span>
+<span class="w">    </span><span class="nx">targetBrightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">getBrightness</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`当前亮度: </span><span class="si">${</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">current</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`目标亮度: </span><span class="si">${</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">targetBrightness</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="nx">targetBrightness</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">haptic</span><span class="p">.</span><span class="nx">light</span><span class="p">();</span>
+
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;亮度已调节&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`已设置为 </span><span class="si">${</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">targetBrightness</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">autoAdjustBrightness</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h3 id="2">示例 2: 阅读模式<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 开启阅读模式：降低亮度，关闭自动亮度</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">enableReadingMode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;开启阅读模式...&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 保存当前设置</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">currentBrightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">getBrightness</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">currentAutoBrightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">isAutoBrightnessEnabled</span><span class="p">();</span>
+
+<span class="w">  </span><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;reading_mode_backup&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">brightness</span><span class="o">:</span><span class="w"> </span><span class="nx">currentBrightness</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">autoBrightness</span><span class="o">:</span><span class="w"> </span><span class="nx">currentAutoBrightness</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// 设置阅读模式</span>
+<span class="w">  </span><span class="nx">display</span><span class="p">.</span><span class="nx">setAutoBrightness</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="mf">0.4</span><span class="p">);</span><span class="w">  </span><span class="c1">// 40% 亮度</span>
+
+<span class="w">  </span><span class="nx">haptic</span><span class="p">.</span><span class="nx">success</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;阅读模式&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;已开启，亮度已调低&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 关闭阅读模式：恢复之前的设置</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">disableReadingMode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;关闭阅读模式...&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">backup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;reading_mode_backup&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">backup</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="nx">backup</span><span class="p">.</span><span class="nx">brightness</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">display</span><span class="p">.</span><span class="nx">setAutoBrightness</span><span class="p">(</span><span class="nx">backup</span><span class="p">.</span><span class="nx">autoBrightness</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">storage</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;reading_mode_backup&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">haptic</span><span class="p">.</span><span class="nx">success</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;阅读模式&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;已关闭，设置已恢复&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="nx">enableReadingMode</span><span class="p">();</span>
+
+<span class="c1">// 30分钟后自动关闭</span>
+<span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">disableReadingMode</span><span class="p">();</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">30</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="3">示例 3: 省电模式<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 开启省电模式</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">enablePowerSavingMode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;开启省电模式...&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 降低亮度</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">getBrightness</span><span class="p">();</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">current</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="mf">0.3</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;亮度已降低至 30%&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 开启低电量模式</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">setLowPowerMode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;低电量模式已开启&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 关闭自动亮度</span>
+<span class="w">  </span><span class="nx">display</span><span class="p">.</span><span class="nx">setAutoBrightness</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;省电模式&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;已开启，亮度已降低&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 检查电量并自动开启省电模式</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">checkBatteryAndSave</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">battery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">device</span><span class="p">.</span><span class="nx">battery</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">battery</span><span class="p">.</span><span class="nx">level</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`当前电量: </span><span class="si">${</span><span class="nx">level</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">level</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">battery</span><span class="p">.</span><span class="nx">state</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;unplugged&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;电量不足，开启省电模式&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">enablePowerSavingMode</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">checkBatteryAndSave</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h3 id="4">示例 4: 屏幕信息显示<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 显示详细的屏幕信息</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">showScreenInfo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">screen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">getScreenInfo</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">orientation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">getOrientation</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">getBrightness</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">isAuto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">isAutoBrightnessEnabled</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">isLowPower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">isLowPowerModeEnabled</span><span class="p">();</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;=== 屏幕信息 ===&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`逻辑分辨率: </span><span class="si">${</span><span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="si">}</span><span class="sb">x</span><span class="si">${</span><span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`物理分辨率: </span><span class="si">${</span><span class="nx">screen</span><span class="p">.</span><span class="nx">nativeWidth</span><span class="si">}</span><span class="sb">x</span><span class="si">${</span><span class="nx">screen</span><span class="p">.</span><span class="nx">nativeHeight</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`缩放比例: @</span><span class="si">${</span><span class="nx">screen</span><span class="p">.</span><span class="nx">scale</span><span class="si">}</span><span class="sb">x`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`屏幕方向: </span><span class="si">${</span><span class="nx">orientation</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`当前亮度: </span><span class="si">${</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">brightness</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`自动亮度: </span><span class="si">${</span><span class="nx">isAuto</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;开启&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;关闭&#39;</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`低电量模式: </span><span class="si">${</span><span class="nx">isLowPower</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;开启&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;关闭&#39;</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 计算 PPI</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">diagonal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span><span class="p">(</span>
+<span class="w">    </span><span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">nativeWidth</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">nativeHeight</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">screenSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6.1</span><span class="p">;</span><span class="w">  </span><span class="c1">// 假设屏幕尺寸</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ppi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">diagonal</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">screenSize</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`估算 PPI: </span><span class="si">${</span><span class="nx">ppi</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">showScreenInfo</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h3 id="5">示例 5: 亮度快捷调节<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 创建亮度快捷调节菜单</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">showBrightnessMenu</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">getBrightness</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">currentPercent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">current</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`当前亮度: </span><span class="si">${</span><span class="nx">currentPercent</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;选择亮度:&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;1. 最低 (10%)&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;2. 较低 (30%)&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;3. 中等 (50%)&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;4. 较高 (70%)&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;5. 最高 (100%)&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 这里可以配合 HUD 创建交互式菜单</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">win</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">createWindow</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">draggable</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">win</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="sb">`当前: </span><span class="si">${</span><span class="nx">currentPercent</span><span class="si">}</span><span class="sb">%`</span><span class="w"> </span><span class="p">});</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">levels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;最低 10%&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;较低 30%&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="mf">0.3</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;中等 50%&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;较高 70%&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="mf">0.7</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;最高 100%&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">];</span>
+
+<span class="w">  </span><span class="nx">levels</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">level</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">win</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">level</span><span class="p">.</span><span class="nx">label</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="nx">level</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">haptic</span><span class="p">.</span><span class="nx">light</span><span class="p">();</span>
+<span class="w">        </span><span class="nx">win</span><span class="p">.</span><span class="nx">dismiss</span><span class="p">();</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">win</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nx">showBrightnessMenu</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h3 id="6">示例 6: 自适应亮度<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 根据环境光自适应调节亮度（模拟）</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">adaptiveBrightness</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 注意：iOS 不提供环境光传感器 API</span>
+<span class="w">  </span><span class="c1">// 这里使用时间和电量作为参考</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">getHours</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">battery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">device</span><span class="p">.</span><span class="nx">battery</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">isCharging</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">battery</span><span class="p">.</span><span class="nx">state</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;charging&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">battery</span><span class="p">.</span><span class="nx">level</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">brightness</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isCharging</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 充电时可以使用较高亮度</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hour</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">6</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">hour</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">22</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.8</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 未充电时根据电量调节</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">level</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3</span><span class="p">;</span><span class="w">  </span><span class="c1">// 低电量时降低亮度</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">level</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">brightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.7</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 夜间进一步降低</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hour</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">6</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">hour</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">22</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">brightness</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mf">0.6</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`自适应亮度: </span><span class="si">${</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">brightness</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="nx">brightness</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 每5分钟调整一次</span>
+<span class="nx">setInterval</span><span class="p">(</span><span class="nx">adaptiveBrightness</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="nx">adaptiveBrightness</span><span class="p">();</span><span class="w">  </span><span class="c1">// 立即执行一次</span>
+</code></pre></div>
+<hr />
+<h3 id="7">示例 7: 屏幕方向监控<a class="headerlink" href="#7" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 监控屏幕方向变化</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">lastOrientation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">getOrientation</span><span class="p">();</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">checkOrientationChange</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">getOrientation</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">current</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">lastOrientation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`屏幕方向变化: </span><span class="si">${</span><span class="nx">lastOrientation</span><span class="si">}</span><span class="sb"> -&gt; </span><span class="si">${</span><span class="nx">current</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 根据方向调整布局</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">current</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;landscape&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;切换到横屏布局&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="c1">// 调整 HUD 窗口位置</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">current</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;portrait&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;切换到竖屏布局&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="c1">// 调整 HUD 窗口位置</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">lastOrientation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">current</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">haptic</span><span class="p">.</span><span class="nx">selection</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 每秒检查一次</span>
+<span class="nx">setInterval</span><span class="p">(</span><span class="nx">checkOrientationChange</span><span class="p">,</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_9">最佳实践<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 保存用户设置<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p>在修改亮度前保存原始设置：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 保存原始设置</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">originalBrightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">getBrightness</span><span class="p">();</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>
+
+<span class="c1">// 稍后恢复</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="nx">originalBrightness</span><span class="p">);</span>
+
+<span class="c1">// ❌ 错误 - 没有保存原始设置</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>
+<span class="c1">// 无法恢复到原始亮度</span>
+</code></pre></div>
+<h3 id="2_1">2. 渐进式调节亮度<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p>避免突然改变亮度，使用渐进式调节：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 渐进式调节</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">smoothSetBrightness</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span><span class="w"> </span><span class="nx">steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">delay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">getBrightness</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">target</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">current</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">steps</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">steps</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">newBrightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">step</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="nx">newBrightness</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="nx">delay</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">i</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">smoothSetBrightness</span><span class="p">(</span><span class="mf">0.8</span><span class="p">);</span>
+
+<span class="c1">// ❌ 错误 - 突然改变</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="mf">0.8</span><span class="p">);</span><span class="w">  </span><span class="c1">// 可能刺眼</span>
+</code></pre></div>
+<h3 id="3_1">3. 检查操作结果<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>检查设置操作是否成功：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">setLowPowerMode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;低电量模式已开启&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;无法开启低电量模式&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 不检查结果</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">setLowPowerMode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="c1">// 不知道是否成功</span>
+</code></pre></div>
+<h3 id="4_1">4. 考虑用户偏好<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<p>尊重用户的亮度设置：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 提供选项</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">autoAdjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;auto_adjust_brightness&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">autoAdjust</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">adjustBrightness</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 强制调节</span>
+<span class="nx">adjustBrightness</span><span class="p">();</span><span class="w">  </span><span class="c1">// 没有考虑用户偏好</span>
+</code></pre></div>
+<h3 id="5_1">5. 避免频繁调节<a class="headerlink" href="#5_1" title="Permanent link">&para;</a></h3>
+<p>不要过于频繁地调节亮度：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 限制调节频率</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">lastAdjustTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">MIN_INTERVAL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5000</span><span class="p">;</span><span class="w">  </span><span class="c1">// 5秒</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">adjustBrightnessIfNeeded</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">now</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">lastAdjustTime</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">MIN_INTERVAL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="mf">0.7</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">lastAdjustTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">now</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 频繁调节</span>
+<span class="nx">setInterval</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="mf">0.7</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span><span class="w">  </span><span class="c1">// 每100ms调节一次，太频繁</span>
+</code></pre></div>
+<h3 id="6-daemon">6. 处理 Daemon 模式限制<a class="headerlink" href="#6-daemon" title="Permanent link">&para;</a></h3>
+<p>检查是否在 Daemon 模式下：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 检查环境</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">display</span><span class="p">.</span><span class="nx">keepAwake</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;keepAwake 在 Daemon 模式下不可用&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 不检查环境</span>
+<span class="nx">display</span><span class="p">.</span><span class="nx">keepAwake</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="c1">// 在 Daemon 模式下会失败</span>
+</code></pre></div>
+<hr />
+<h2 id="_10">注意事项<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>私有 API</strong>: 部分功能使用 BackBoardServices 私有 API，在某些系统版本上可能不可用</li>
+<li><strong>Daemon 模式</strong>: <code>keepAwake</code> 和 <code>openSettings</code> 在 Daemon 模式下不可用</li>
+<li><strong>权限要求</strong>: 控制亮度和低电量模式需要 TrollStore 提供的特殊权限</li>
+<li><strong>用户体验</strong>: 突然改变亮度可能影响用户体验，建议渐进式调节</li>
+<li><strong>电量消耗</strong>: 高亮度会增加电量消耗</li>
+<li><strong>自动亮度</strong>: 关闭自动亮度后，系统不会根据环境光自动调节</li>
+<li><strong>线程安全</strong>: 亮度控制使用 MainThreadHelper 确保线程安全</li>
+<li><strong>系统限制</strong>: 某些设置（如低电量模式）可能受系统限制</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

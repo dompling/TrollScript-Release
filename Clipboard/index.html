@@ -1,0 +1,887 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TrollScript 官方文档与 API 参考">
+      
+      
+      
+        <link rel="canonical" href="https://trollscript.qzz.io/Clipboard/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Clipboard 剪贴板 - TrollScript</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#clipboard" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="TrollScript" class="md-header__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TrollScript
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Clipboard 剪贴板
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TrollScript" class="md-nav__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TrollScript
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="clipboard">Clipboard 剪贴板<a class="headerlink" href="#clipboard" title="Permanent link">&para;</a></h1>
+<p>Clipboard 模块提供了剪贴板操作功能。你可以使用它来读取、写入和清空系统剪贴板内容。</p>
+<blockquote>
+<p><strong>守护进程支持</strong>: 有限支持。getText() 和 hasText() 在 Daemon 模式下可用，setText() 和 clear() 需要 UI 交互。</p>
+</blockquote>
+<hr />
+<h2 id="_1">目录<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#快速开始">快速开始</a></li>
+<li><a href="#api-参考">API 参考</a></li>
+<li><a href="#clipboardgettext">clipboard.getText()</a></li>
+<li><a href="#clipboardsettext">clipboard.setText()</a></li>
+<li><a href="#clipboardclear">clipboard.clear()</a></li>
+<li><a href="#clipboardhastext">clipboard.hasText()</a></li>
+<li><a href="#完整示例">完整示例</a></li>
+<li><a href="#最佳实践">最佳实践</a></li>
+</ul>
+<hr />
+<h2 id="_2">快速开始<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>使用剪贴板非常简单：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 读取剪贴板内容</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板内容:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">);</span>
+
+<span class="c1">// 写入剪贴板</span>
+<span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;Hello TrollScript!&#39;</span><span class="p">);</span>
+
+<span class="c1">// 检查是否有文本</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">hasText</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板中有文本&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 清空剪贴板</span>
+<span class="nx">clipboard</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="clipboardgettext"><code>clipboard.getText()</code><a class="headerlink" href="#clipboardgettext" title="Permanent link">&para;</a></h3>
+<p>获取剪贴板中的文本内容。</p>
+<p><strong>返回:</strong> <code>string</code> — 剪贴板文本内容，如果没有文本则返回空字符串</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板内容:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">);</span>
+
+<span class="c1">// 输出: 剪贴板内容: Hello World</span>
+</code></pre></div>
+<p><strong>注意事项:</strong>
+- 在 App 模式下，直接使用 <code>UIPasteboard</code> 读取
+- 在 Daemon 模式下，使用特殊的缓存机制读取，以避免权限问题
+- 只能读取纯文本内容，不支持图片、文件等其他类型</p>
+<hr />
+<h3 id="clipboardsettexttext"><code>clipboard.setText(text)</code><a class="headerlink" href="#clipboardsettexttext" title="Permanent link">&para;</a></h3>
+<p>将文本写入剪贴板。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>要写入的文本内容</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>void</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;Hello TrollScript!&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;文本已写入剪贴板&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>注意事项:</strong>
+- 会覆盖剪贴板中的现有内容
+- <strong>Daemon 模式不可用</strong> - 此方法需要 UI 交互
+- 写入后，其他应用可以立即读取到新内容</p>
+<hr />
+<h3 id="clipboardclear"><code>clipboard.clear()</code><a class="headerlink" href="#clipboardclear" title="Permanent link">&para;</a></h3>
+<p>清空剪贴板内容。</p>
+<p><strong>返回:</strong> <code>void</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">clipboard</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板已清空&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>注意事项:</strong>
+- 清空后，<code>clipboard.getText()</code> 将返回空字符串
+- <strong>Daemon 模式不可用</strong> - 此方法需要 UI 交互</p>
+<hr />
+<h3 id="clipboardhastext"><code>clipboard.hasText()</code><a class="headerlink" href="#clipboardhastext" title="Permanent link">&para;</a></h3>
+<p>检查剪贴板中是否有文本内容。</p>
+<p><strong>返回:</strong> <code>boolean</code> — 如果有文本返回 <code>true</code>，否则返回 <code>false</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">hasText</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板中有文本:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板为空&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="_3">完整示例<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1">示例 1: 剪贴板内容转换<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 读取剪贴板内容并转换为大写</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">upperText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">text</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="nx">upperText</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已将剪贴板内容转换为大写&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板为空&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="2-url">示例 2: URL 提取和处理<a class="headerlink" href="#2-url" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 从剪贴板中提取 URL</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">urlRegex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/(https?:\/\/[^\s]+)/g</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">urls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">text</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">urlRegex</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">urls</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">urls</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;找到 URL:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">urls</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 处理第一个 URL</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">firstUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">urls</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;正在处理:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">firstUrl</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 可以进行进一步处理，如发送 HTTP 请求</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">firstUrl</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;响应状态:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板中没有找到 URL&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="3">示例 3: 剪贴板历史记录<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 保存剪贴板历史</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">saveClipboardHistory</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 读取历史记录</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">history</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="s1">&#39;clipboard_history&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">  </span><span class="c1">// 避免重复</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">history</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">history</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">text</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 添加新记录</span>
+<span class="w">  </span><span class="nx">history</span><span class="p">.</span><span class="nx">unshift</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">text</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">()</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// 只保留最近 50 条</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">history</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">50</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">history</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">storage</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;clipboard_history&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">history</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板历史已更新&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 每 5 秒检查一次剪贴板变化</span>
+<span class="nx">setInterval</span><span class="p">(</span><span class="nx">saveClipboardHistory</span><span class="p">,</span><span class="w"> </span><span class="mf">5000</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="4">示例 4: 文本格式化工具<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 剪贴板文本格式化工具</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">formatClipboardText</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板为空&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 移除多余空格</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">formatted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\s+/g</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">).</span><span class="nx">trim</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// 移除空行</span>
+<span class="w">  </span><span class="nx">formatted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">formatted</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\n\s*\n/g</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 写回剪贴板</span>
+<span class="w">  </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="nx">formatted</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;文本已格式化&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 显示通知</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;格式化完成&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;剪贴板文本已格式化&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">formatClipboardText</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h3 id="5">示例 5: 剪贴板内容加密<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 简单的 Base64 加密/解密</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">encryptClipboard</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板为空&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 检查是否已加密（Base64 格式）</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">isEncrypted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/^[A-Za-z0-9+/]+=*$/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isEncrypted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 解密</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">decrypted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">base64Decode</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="nx">decrypted</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已解密&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;解密成功&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;剪贴板内容已解密&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;解密失败:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 加密</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">encrypted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">base64Encode</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="nx">encrypted</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已加密&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;加密成功&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;剪贴板内容已加密&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">encryptClipboard</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h3 id="6">示例 6: 剪贴板监控触发器<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 监控剪贴板变化并自动处理</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">lastClipboard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">monitorClipboard</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// 检查是否有变化</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">current</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">lastClipboard</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">lastClipboard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">current</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板内容已变化:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">current</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 自动处理特定内容</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">current</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s1">&#39;http://&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">current</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s1">&#39;https://&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;检测到 URL，正在处理...&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="c1">// 处理 URL</span>
+<span class="w">      </span><span class="nx">processUrl</span><span class="p">(</span><span class="nx">current</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="sr">/^\d{11}$/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">current</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;检测到手机号码&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="c1">// 处理手机号</span>
+<span class="w">      </span><span class="nx">processPhoneNumber</span><span class="p">(</span><span class="nx">current</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="sr">/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">current</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;检测到邮箱地址&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="c1">// 处理邮箱</span>
+<span class="w">      </span><span class="nx">processEmail</span><span class="p">(</span><span class="nx">current</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">processUrl</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;检测到 URL&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">url</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">processPhoneNumber</span><span class="p">(</span><span class="nx">phone</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;检测到手机号&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">phone</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">processEmail</span><span class="p">(</span><span class="nx">email</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;检测到邮箱&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 每 2 秒检查一次</span>
+<span class="nx">setInterval</span><span class="p">(</span><span class="nx">monitorClipboard</span><span class="p">,</span><span class="w"> </span><span class="mf">2000</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="7">示例 7: 多语言翻译快捷工具<a class="headerlink" href="#7" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 剪贴板内容翻译（需要配合 HTTP 模块和翻译 API）</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">translateClipboard</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板为空&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;正在翻译:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 调用翻译 API（示例）</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;https://api.example.com/translate&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/json&#39;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">text</span><span class="p">,</span>
+<span class="w">        </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;zh&#39;</span>
+<span class="w">      </span><span class="p">})</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">translated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">translation</span><span class="p">;</span>
+
+<span class="w">      </span><span class="c1">// 将翻译结果写回剪贴板</span>
+<span class="w">      </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="nx">translated</span><span class="p">);</span>
+
+<span class="w">      </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;翻译完成&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">translated</span><span class="p">);</span>
+
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;翻译结果:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">translated</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;翻译失败:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;翻译出错:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">translateClipboard</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="_4">最佳实践<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 检查剪贴板是否为空<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p>在处理剪贴板内容前，先检查是否有内容：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">hasText</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+<span class="w">  </span><span class="c1">// 处理文本</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板为空&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 没有检查</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">upper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">text</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span><span class="w">  </span><span class="c1">// 如果为空会出错</span>
+</code></pre></div>
+<h3 id="2">2. 避免频繁读写<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>剪贴板操作有一定开销，避免在循环中频繁调用：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 使用 text 变量</span>
+<span class="w">  </span><span class="nx">processText</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 频繁读取</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span><span class="w">  </span><span class="c1">// 不必要的重复调用</span>
+<span class="w">  </span><span class="nx">processText</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="3-daemon">3. 在 Daemon 模式下避免死循环<a class="headerlink" href="#3-daemon" title="Permanent link">&para;</a></h3>
+<p>在剪贴板触发器中修改剪贴板时要小心：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 模块会自动处理</span>
+<span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;processed: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">text</span><span class="p">);</span>
+
+<span class="c1">// ⚠️ 注意 - 在剪贴板触发器中修改剪贴板</span>
+<span class="c1">// 模块已经内置了防死循环机制，但仍需谨慎使用</span>
+</code></pre></div>
+<h3 id="4_1">4. 处理特殊字符<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<p>剪贴板内容可能包含特殊字符，需要适当处理：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">escaped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[&lt;&gt;&amp;&quot;&#39;]/g</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kr">char</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">escapeMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s1">&#39;&lt;&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;lt;&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;&gt;&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;gt;&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;&amp;&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;amp;&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;&quot;&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;quot;&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;&#39;&quot;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&amp;#39;&#39;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">escapeMap</span><span class="p">[</span><span class="kr">char</span><span class="p">];</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="5_1">5. 保护用户隐私<a class="headerlink" href="#5_1" title="Permanent link">&para;</a></h3>
+<p>不要记录敏感的剪贴板内容：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 过滤敏感信息</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">logClipboard</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// 检查是否包含敏感信息</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">text</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">text</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;密码&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板包含敏感信息，不记录&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板内容:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 无条件记录</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">);</span><span class="w">  </span><span class="c1">// 可能泄露密码等敏感信息</span>
+</code></pre></div>
+<h3 id="6_1">6. 提供用户反馈<a class="headerlink" href="#6_1" title="Permanent link">&para;</a></h3>
+<p>剪贴板操作后给用户明确的反馈：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
+<span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;处理后的文本&#39;</span><span class="p">);</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;操作成功&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;内容已复制到剪贴板&#39;</span><span class="p">);</span>
+<span class="nx">haptic</span><span class="p">.</span><span class="nx">success</span><span class="p">();</span>
+
+<span class="c1">// ❌ 错误 - 没有反馈</span>
+<span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;处理后的文本&#39;</span><span class="p">);</span>
+<span class="c1">// 用户不知道操作是否成功</span>
+</code></pre></div>
+<hr />
+<h2 id="_5">注意事项<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>权限要求</strong>: 读写剪贴板不需要特殊权限</li>
+<li><strong>Daemon 模式</strong>: 在 Daemon 模式下，读取剪贴板使用特殊的缓存机制，可能有轻微延迟</li>
+<li><strong>内容类型</strong>: 目前只支持纯文本，不支持图片、文件等其他类型</li>
+<li><strong>死循环防护</strong>: 在剪贴板触发器中修改剪贴板时，模块会自动标记避免死循环</li>
+<li><strong>性能影响</strong>: 剪贴板操作开销较小，但仍应避免过于频繁的调用</li>
+<li><strong>跨应用</strong>: 剪贴板内容在所有应用间共享，修改后其他应用可以立即看到</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

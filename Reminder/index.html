@@ -1,0 +1,943 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TrollScript 官方文档与 API 参考">
+      
+      
+      
+        <link rel="canonical" href="https://trollscript.qzz.io/Reminder/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Reminder 提醒事项 - TrollScript</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reminder" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="TrollScript" class="md-header__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TrollScript
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reminder 提醒事项
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TrollScript" class="md-nav__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TrollScript
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="reminder">Reminder 提醒事项<a class="headerlink" href="#reminder" title="Permanent link">&para;</a></h1>
+<p>Reminder 模块提供了提醒事项管理功能。你可以使用它来创建、查询、完成和删除提醒事项，支持时间提醒和位置提醒。</p>
+<blockquote>
+<p><strong>守护进程支持</strong>: 完全支持。在触发器模式下可正常运行。</p>
+</blockquote>
+<hr />
+<h2 id="_1">快速开始<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// 请求提醒权限</span>
+<span class="nx">reminder</span><span class="p">.</span><span class="nx">requestAccess</span><span class="p">();</span>
+
+<span class="c1">// 检查权限</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">reminder</span><span class="p">.</span><span class="nx">isAuthorized</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 获取所有提醒列表</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">lists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getLists</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;提醒列表:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">lists</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 创建提醒</span>
+<span class="w">  </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;买牛奶&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">notes</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;记得买低脂牛奶&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">dueDate</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">3600000</span><span class="p">,</span><span class="w">  </span><span class="c1">// 1小时后</span>
+<span class="w">    </span><span class="nx">priority</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// 获取即将到期的提醒</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">upcoming</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getUpcoming</span><span class="p">(</span><span class="mf">7</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;未来7天的提醒:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">upcoming</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="_2">权限管理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="reminderisauthorized"><code>reminder.isAuthorized()</code><a class="headerlink" href="#reminderisauthorized" title="Permanent link">&para;</a></h4>
+<p>检查是否已授权访问提醒。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">reminder</span><span class="p">.</span><span class="nx">isAuthorized</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已授权访问提醒&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="reminderrequestaccess"><code>reminder.requestAccess()</code><a class="headerlink" href="#reminderrequestaccess" title="Permanent link">&para;</a></h4>
+<p>请求提醒访问权限。<strong>返回:</strong> <code>boolean</code> - 是否授权成功</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">granted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">requestAccess</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">granted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;提醒权限已授予&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;提醒权限被拒绝&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="_3">提醒列表管理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="remindergetlists"><code>reminder.getLists()</code><a class="headerlink" href="#remindergetlists" title="Permanent link">&para;</a></h4>
+<p>获取所有提醒列表。<strong>返回:</strong> <code>List[]</code></p>
+<p><strong>List 对象结构:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">              </span><span class="c1">// 列表 ID</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">           </span><span class="c1">// 列表名称</span>
+<span class="w">  </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">           </span><span class="c1">// 列表颜色</span>
+<span class="w">  </span><span class="nx">isSystem</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span><span class="w">        </span><span class="c1">// 是否系统列表</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">lists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getLists</span><span class="p">();</span>
+<span class="nx">lists</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">list</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`列表: </span><span class="si">${</span><span class="nx">list</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb"> (</span><span class="si">${</span><span class="nx">list</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">)`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h3 id="_4">获取提醒<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="remindergetalllistid"><code>reminder.getAll(listId?)</code><a class="headerlink" href="#remindergetalllistid" title="Permanent link">&para;</a></h4>
+<p>获取所有提醒。<strong>参数:</strong> <code>listId</code> (string, 可选) <strong>返回:</strong> <code>Reminder[]</code></p>
+<p><strong>Reminder 对象结构:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">              </span><span class="c1">// 提醒 ID</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">           </span><span class="c1">// 标题</span>
+<span class="w">  </span><span class="nx">notes</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">           </span><span class="c1">// 备注</span>
+<span class="w">  </span><span class="nx">isCompleted</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span><span class="p">,</span><span class="w">    </span><span class="c1">// 是否已完成</span>
+<span class="w">  </span><span class="nx">listId</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">          </span><span class="c1">// 所属列表 ID</span>
+<span class="w">  </span><span class="nx">listTitle</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">       </span><span class="c1">// 所属列表名称</span>
+<span class="w">  </span><span class="nx">priority</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w">        </span><span class="c1">// 优先级 (0-9, 0=无)</span>
+<span class="w">  </span><span class="nx">creationDate</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w">    </span><span class="c1">// 创建时间戳（毫秒）</span>
+<span class="w">  </span><span class="nx">dueDate</span><span class="o">?:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w">        </span><span class="c1">// 到期时间戳（毫秒，可选）</span>
+<span class="w">  </span><span class="nx">isOverdue</span><span class="o">?:</span><span class="w"> </span><span class="kr">boolean</span><span class="w">      </span><span class="c1">// 是否已过期（可选）</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 获取所有提醒</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getAll</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`共有 </span><span class="si">${</span><span class="nx">all</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 个提醒`</span><span class="p">);</span>
+
+<span class="c1">// 获取指定列表的提醒</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">listReminders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getAll</span><span class="p">(</span><span class="s1">&#39;list-id-123&#39;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="remindergetsortedby-listid"><code>reminder.getSorted(by, listId?)</code><a class="headerlink" href="#remindergetsortedby-listid" title="Permanent link">&para;</a></h4>
+<p>获取排序后的提醒。<strong>参数:</strong> <code>by</code> (string), <code>listId</code> (string, 可选) <strong>返回:</strong> <code>Reminder[]</code></p>
+<p><strong>排序方式:</strong>
+- <code>'title'</code> - 按标题排序
+- <code>'priority'</code> - 按优先级排序
+- <code>'dueDate'</code> - 按到期时间排序
+- <code>'createdAt'</code> - 按创建时间排序</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 按优先级排序</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">byPriority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getSorted</span><span class="p">(</span><span class="s1">&#39;priority&#39;</span><span class="p">);</span>
+
+<span class="c1">// 按到期时间排序（指定列表）</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">byDueDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getSorted</span><span class="p">(</span><span class="s1">&#39;dueDate&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;list-id-123&#39;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="remindergetupcomingdays-listid"><code>reminder.getUpcoming(days?, listId?)</code><a class="headerlink" href="#remindergetupcomingdays-listid" title="Permanent link">&para;</a></h4>
+<p>获取即将到期的提醒。<strong>参数:</strong> <code>days</code> (number, 可选，默认 7), <code>listId</code> (string, 可选) <strong>返回:</strong> <code>Reminder[]</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 获取未来7天的提醒</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">upcoming</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getUpcoming</span><span class="p">();</span>
+
+<span class="c1">// 获取未来3天的提醒</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">soon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getUpcoming</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span>
+
+<span class="c1">// 获取指定列表未来7天的提醒</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">listUpcoming</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getUpcoming</span><span class="p">(</span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;list-id-123&#39;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="remindergetoverduelistid"><code>reminder.getOverdue(listId?)</code><a class="headerlink" href="#remindergetoverduelistid" title="Permanent link">&para;</a></h4>
+<p>获取已过期的提醒。<strong>参数:</strong> <code>listId</code> (string, 可选) <strong>返回:</strong> <code>Reminder[]</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">overdue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getOverdue</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">overdue</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`有 </span><span class="si">${</span><span class="nx">overdue</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 个过期提醒`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;过期提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`您有 </span><span class="si">${</span><span class="nx">overdue</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 个过期提醒`</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="_5">创建和管理<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="remindercreatetitle-options"><code>reminder.create(title, options?)</code><a class="headerlink" href="#remindercreatetitle-options" title="Permanent link">&para;</a></h4>
+<p>创建新提醒。<strong>参数:</strong> <code>title</code> (string), <code>options</code> (object, 可选) <strong>返回:</strong> <code>string | object</code> - 返回提醒 ID，位置提醒返回详细对象</p>
+<p><strong>options 参数结构:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">listId</span><span class="o">?:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">         </span><span class="c1">// 列表 ID（默认为默认列表）</span>
+<span class="w">  </span><span class="nx">notes</span><span class="o">?:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">          </span><span class="c1">// 备注</span>
+<span class="w">  </span><span class="nx">dueDate</span><span class="o">?:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w">        </span><span class="c1">// 到期时间戳（毫秒）</span>
+<span class="w">  </span><span class="nx">priority</span><span class="o">?:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w">       </span><span class="c1">// 优先级 (0-9, 0=无)</span>
+<span class="w">  </span><span class="nx">location</span><span class="o">?:</span><span class="w"> </span><span class="p">{</span><span class="w">             </span><span class="c1">// 位置提醒</span>
+<span class="w">    </span><span class="nx">latitude</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">longitude</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w">        </span><span class="c1">// 半径（米）</span>
+<span class="w">    </span><span class="nx">onArrive</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span><span class="p">,</span><span class="w">     </span><span class="c1">// 到达时提醒</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="w">           </span><span class="c1">// 位置名称</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 创建简单提醒</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;买牛奶&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;提醒 ID:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="p">);</span>
+
+<span class="c1">// 创建带时间的提醒</span>
+<span class="nx">reminder</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;开会&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">notes</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;项目进度会议&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">dueDate</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">3600000</span><span class="p">,</span><span class="w">  </span><span class="c1">// 1小时后</span>
+<span class="w">  </span><span class="nx">priority</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span>
+<span class="p">});</span>
+
+<span class="c1">// 创建位置提醒</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;到家后记得关灯&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">location</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">latitude</span><span class="o">:</span><span class="w"> </span><span class="mf">39.9</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">longitude</span><span class="o">:</span><span class="w"> </span><span class="mf">116.4</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">onArrive</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;家&#39;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;位置提醒:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="remindercompleteid"><code>reminder.complete(id)</code><a class="headerlink" href="#remindercompleteid" title="Permanent link">&para;</a></h4>
+<p>标记提醒为已完成。<strong>参数:</strong> <code>id</code> (string) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">complete</span><span class="p">(</span><span class="s1">&#39;reminder-id-123&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;提醒已完成&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">haptic</span><span class="p">.</span><span class="nx">success</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="reminderdeleteid"><code>reminder.delete(id)</code><a class="headerlink" href="#reminderdeleteid" title="Permanent link">&para;</a></h4>
+<p>删除提醒。<strong>参数:</strong> <code>id</code> (string) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s1">&#39;reminder-id-123&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;提醒已删除&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="reminderreorderid-newindex"><code>reminder.reorder(id, newIndex)</code><a class="headerlink" href="#reminderreorderid-newindex" title="Permanent link">&para;</a></h4>
+<p>重新排序提醒。<strong>参数:</strong> <code>id</code> (string), <code>newIndex</code> (number) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 将提醒移动到第一位</span>
+<span class="nx">reminder</span><span class="p">.</span><span class="nx">reorder</span><span class="p">(</span><span class="s1">&#39;reminder-id-123&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_6">完整示例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="1">示例 1: 待办事项管理<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">setupTodoList</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">reminder</span><span class="p">.</span><span class="nx">isAuthorized</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;请先授权访问提醒&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">requestAccess</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 创建今日待办</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">todos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;回复邮件&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">priority</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;完成报告&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">priority</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;健身&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">priority</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;买菜&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">priority</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">];</span>
+
+<span class="w">  </span><span class="nx">todos</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">todo</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">todo</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">priority</span><span class="o">:</span><span class="w"> </span><span class="nx">todo</span><span class="p">.</span><span class="nx">priority</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">dueDate</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="w">  </span><span class="c1">// 今天结束前</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;今日待办已创建&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">setupTodoList</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="2">示例 2: 每日提醒检查<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">checkDailyReminders</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">reminder</span><span class="p">.</span><span class="nx">isAuthorized</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 检查过期提醒</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">overdue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getOverdue</span><span class="p">();</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">overdue</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`⚠️ 有 </span><span class="si">${</span><span class="nx">overdue</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 个过期提醒:`</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">overdue</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`- </span><span class="si">${</span><span class="nx">r</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;过期提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`您有 </span><span class="si">${</span><span class="nx">overdue</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 个过期提醒`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 检查今日提醒</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">today</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getUpcoming</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">today</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`📅 今天有 </span><span class="si">${</span><span class="nx">today</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 个提醒:`</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">today</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">dueDate</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;HH:mm&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`- [</span><span class="si">${</span><span class="nx">time</span><span class="si">}</span><span class="sb">] </span><span class="si">${</span><span class="nx">r</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 统计未完成提醒</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getAll</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">incomplete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">all</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="o">!</span><span class="nx">r</span><span class="p">.</span><span class="nx">isCompleted</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`📝 共有 </span><span class="si">${</span><span class="nx">incomplete</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 个未完成提醒`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">checkDailyReminders</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="3">示例 3: 位置提醒<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">createLocationReminders</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 到家提醒</span>
+<span class="w">  </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;到家后记得关灯&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">location</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">latitude</span><span class="o">:</span><span class="w"> </span><span class="mf">39.9</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">longitude</span><span class="o">:</span><span class="w"> </span><span class="mf">116.4</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;家&#39;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// 到公司提醒</span>
+<span class="w">  </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;到公司后打卡&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">location</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">latitude</span><span class="o">:</span><span class="w"> </span><span class="mf">39.95</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">longitude</span><span class="o">:</span><span class="w"> </span><span class="mf">116.45</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;公司&#39;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// 到超市提醒</span>
+<span class="w">  </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;买牛奶、面包、鸡蛋&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">notes</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;记得用会员卡&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">location</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">latitude</span><span class="o">:</span><span class="w"> </span><span class="mf">39.92</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">longitude</span><span class="o">:</span><span class="w"> </span><span class="mf">116.42</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;超市&#39;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;位置提醒已创建&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">createLocationReminders</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="4">示例 4: 提醒统计分析<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">analyzeReminders</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getAll</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// 按状态统计</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">completed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">all</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">isCompleted</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">incomplete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">all</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="o">!</span><span class="nx">r</span><span class="p">.</span><span class="nx">isCompleted</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;=== 提醒统计 ===&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`总数: </span><span class="si">${</span><span class="nx">all</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`已完成: </span><span class="si">${</span><span class="nx">completed</span><span class="si">}</span><span class="sb"> (</span><span class="si">${</span><span class="p">(</span><span class="nx">completed</span><span class="o">/</span><span class="nx">all</span><span class="p">.</span><span class="nx">length</span><span class="o">*</span><span class="mf">100</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span><span class="si">}</span><span class="sb">%)`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`未完成: </span><span class="si">${</span><span class="nx">incomplete</span><span class="si">}</span><span class="sb"> (</span><span class="si">${</span><span class="p">(</span><span class="nx">incomplete</span><span class="o">/</span><span class="nx">all</span><span class="p">.</span><span class="nx">length</span><span class="o">*</span><span class="mf">100</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span><span class="si">}</span><span class="sb">%)`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 按优先级统计</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">highPriority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">all</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">priority</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">7</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mediumPriority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">all</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">priority</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">4</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">priority</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">7</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">lowPriority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">all</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">priority</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">4</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;\n=== 优先级分布 ===&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`高优先级: </span><span class="si">${</span><span class="nx">highPriority</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`中优先级: </span><span class="si">${</span><span class="nx">mediumPriority</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`低优先级: </span><span class="si">${</span><span class="nx">lowPriority</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 时间分析</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">overdue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getOverdue</span><span class="p">().</span><span class="nx">length</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">today</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getUpcoming</span><span class="p">(</span><span class="mf">1</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">thisWeek</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getUpcoming</span><span class="p">(</span><span class="mf">7</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;\n=== 时间分布 ===&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`已过期: </span><span class="si">${</span><span class="nx">overdue</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`今天: </span><span class="si">${</span><span class="nx">today</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`本周: </span><span class="si">${</span><span class="nx">thisWeek</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">analyzeReminders</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="5">示例 5: 批量操作<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">batchOperations</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 完成所有低优先级的提醒</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getAll</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">lowPriority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">all</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">priority</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="nx">r</span><span class="p">.</span><span class="nx">isCompleted</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`找到 </span><span class="si">${</span><span class="nx">lowPriority</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 个低优先级提醒`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">lowPriority</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">complete</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`已完成: </span><span class="si">${</span><span class="nx">r</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// 删除已完成的旧提醒</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">completed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">all</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">isCompleted</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">oldCompleted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">completed</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">createdAt</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">30</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span><span class="w">  </span><span class="c1">// 30天前</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`找到 </span><span class="si">${</span><span class="nx">oldCompleted</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 个旧的已完成提醒`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">oldCompleted</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">reminder</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`已删除: </span><span class="si">${</span><span class="nx">r</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="nx">batchOperations</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="6">示例 6: 智能提醒助手<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">smartReminderAssistant</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">reminder</span><span class="p">.</span><span class="nx">isAuthorized</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">requestAccess</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 检查过期提醒并重新安排</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">overdue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getOverdue</span><span class="p">();</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">overdue</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;发现过期提醒，重新安排...&#39;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">overdue</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// 重新创建为明天的提醒</span>
+<span class="w">      </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">notes</span><span class="o">:</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">notes</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;\n(重新安排)&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">priority</span><span class="o">:</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">priority</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">dueDate</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span>
+<span class="w">      </span><span class="p">});</span>
+
+<span class="w">      </span><span class="c1">// 完成旧的提醒</span>
+<span class="w">      </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">complete</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`已重新安排: </span><span class="si">${</span><span class="nx">r</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 检查高优先级提醒</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">highPriority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getSorted</span><span class="p">(</span><span class="s1">&#39;priority&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="o">!</span><span class="nx">r</span><span class="p">.</span><span class="nx">isCompleted</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">priority</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">7</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">highPriority</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`\n⚠️ 有 </span><span class="si">${</span><span class="nx">highPriority</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 个高优先级提醒:`</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">highPriority</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`- </span><span class="si">${</span><span class="nx">r</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb"> (优先级: </span><span class="si">${</span><span class="nx">r</span><span class="p">.</span><span class="nx">priority</span><span class="si">}</span><span class="sb">)`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;高优先级提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`您有 </span><span class="si">${</span><span class="nx">highPriority</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 个重要提醒`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 每日总结</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">today</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getUpcoming</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">completed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getAll</span><span class="p">().</span><span class="nx">filter</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">isCompleted</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;\n=== 每日总结 ===&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`今日待办: </span><span class="si">${</span><span class="nx">today</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`已完成: </span><span class="si">${</span><span class="nx">completed</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`完成率: </span><span class="si">${</span><span class="p">(</span><span class="nx">completed</span><span class="p">.</span><span class="nx">length</span><span class="o">/</span><span class="p">(</span><span class="nx">completed</span><span class="p">.</span><span class="nx">length</span><span class="o">+</span><span class="nx">today</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="o">*</span><span class="mf">100</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">smartReminderAssistant</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="_7">最佳实践<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 检查权限<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">reminder</span><span class="p">.</span><span class="nx">isAuthorized</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reminders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getAll</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 不检查权限</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">reminders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getAll</span><span class="p">();</span><span class="w">  </span><span class="c1">// 可能返回空数组</span>
+</code></pre></div>
+<h3 id="2_1">2. 设置合理的优先级<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 使用 0-9 范围</span>
+<span class="nx">reminder</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;重要会议&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">priority</span><span class="o">:</span><span class="w"> </span><span class="mf">9</span><span class="w">  </span><span class="c1">// 最高优先级</span>
+<span class="p">});</span>
+
+<span class="c1">// ❌ 错误 - 超出范围</span>
+<span class="nx">reminder</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;任务&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">priority</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="w">  </span><span class="c1">// 无效</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="3_1">3. 处理时间戳<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 使用毫秒时间戳</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">tomorrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
+<span class="nx">reminder</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;明天的任务&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">dueDate</span><span class="o">:</span><span class="w"> </span><span class="nx">tomorrow</span>
+<span class="p">});</span>
+
+<span class="c1">// ❌ 错误 - 使用秒时间戳</span>
+<span class="nx">reminder</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;任务&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">dueDate</span><span class="o">:</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="p">)</span><span class="w">  </span><span class="c1">// 错误的时间</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="4_1">4. 位置提醒半径<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 合理的半径</span>
+<span class="nx">reminder</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;到家提醒&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">location</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">latitude</span><span class="o">:</span><span class="w"> </span><span class="mf">39.9</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">longitude</span><span class="o">:</span><span class="w"> </span><span class="mf">116.4</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w">  </span><span class="c1">// 100米</span>
+<span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;家&#39;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// ❌ 错误 - 半径太小或太大</span>
+<span class="nx">reminder</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;提醒&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">location</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w">  </span><span class="c1">// 太小，容易误触发</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="_8">注意事项<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>权限要求</strong>: 首次使用需要请求提醒访问权限</li>
+<li><strong>iOS 17+</strong>: iOS 17 及以上使用 <code>requestFullAccessToReminders</code> API</li>
+<li><strong>优先级范围</strong>: 优先级为 0-9，0 表示无优先级</li>
+<li><strong>时间戳</strong>: 所有时间戳为毫秒级 Unix 时间戳</li>
+<li><strong>位置提醒</strong>: 需要定位权限，半径单位为米</li>
+<li><strong>列表 ID</strong>: 如果不指定 listId，提醒会添加到默认列表</li>
+<li><strong>完成状态</strong>: 完成的提醒不会被删除，仍可查询</li>
+<li><strong>线程安全</strong>: 所有操作都是线程安全的</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,941 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TrollScript 官方文档与 API 参考">
+      
+      
+      
+        <link rel="canonical" href="https://trollscript.qzz.io/SQL/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>SQL 数据库操作 - TrollScript</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sql" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="TrollScript" class="md-header__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TrollScript
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SQL 数据库操作
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TrollScript" class="md-nav__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TrollScript
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="sql">SQL 数据库操作<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h1>
+<p>SQL 模块提供了 SQLite 数据库操作功能。你可以使用它来创建、查询、更新数据库，支持事务、参数化查询等高级特性。</p>
+<blockquote>
+<p><strong>守护进程支持</strong>: 完全支持。在触发器模式下可正常运行。</p>
+</blockquote>
+<hr />
+<h2 id="_1">快速开始<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// 打开数据库</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+
+<span class="c1">// 创建表</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">  CREATE TABLE IF NOT EXISTS users (</span>
+<span class="sb">    id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="sb">    name TEXT NOT NULL,</span>
+<span class="sb">    age INTEGER,</span>
+<span class="sb">    email TEXT</span>
+<span class="sb">  )</span>
+<span class="sb">`</span><span class="p">);</span>
+
+<span class="c1">// 插入数据</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;INSERT INTO users (name, age, email) VALUES (?, ?, ?)&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">[</span><span class="s1">&#39;张三&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">25</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;zhangsan@example.com&#39;</span><span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// 查询数据</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;SELECT * FROM users&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;用户列表:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">users</span><span class="p">);</span>
+
+<span class="c1">// 关闭数据库</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="_2">数据库管理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="sqlopenname"><code>sql.open(name)</code><a class="headerlink" href="#sqlopenname" title="Permanent link">&para;</a></h4>
+<p>打开或创建数据库。<strong>参数:</strong> <code>name</code> (string) <strong>返回:</strong> <code>boolean</code></p>
+<p>数据库文件存储在 Documents 目录，扩展名为 <code>.sqlite</code>。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;数据库已打开&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="sqlclosename"><code>sql.close(name)</code><a class="headerlink" href="#sqlclosename" title="Permanent link">&para;</a></h4>
+<p>关闭数据库连接。<strong>参数:</strong> <code>name</code> (string) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">sql</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_3">执行操作<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="sqlexecutename-sql-params"><code>sql.execute(name, sql, params?)</code><a class="headerlink" href="#sqlexecutename-sql-params" title="Permanent link">&para;</a></h4>
+<p>执行 SQL 语句（INSERT、UPDATE、DELETE、CREATE 等）。<strong>参数:</strong> <code>name</code> (string), <code>sql</code> (string), <code>params</code> (array, 可选) <strong>返回:</strong> <code>boolean</code></p>
+<p><strong>支持参数化查询</strong>，使用 <code>?</code> 占位符防止 SQL 注入。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 创建表</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">  CREATE TABLE IF NOT EXISTS products (</span>
+<span class="sb">    id INTEGER PRIMARY KEY,</span>
+<span class="sb">    name TEXT,</span>
+<span class="sb">    price REAL</span>
+<span class="sb">  )</span>
+<span class="sb">`</span><span class="p">);</span>
+
+<span class="c1">// 插入数据（参数化）</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;INSERT INTO products (name, price) VALUES (?, ?)&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">[</span><span class="s1">&#39;iPhone&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">5999.00</span><span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// 更新数据</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;UPDATE products SET price = ? WHERE name = ?&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">[</span><span class="mf">4999.00</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;iPhone&#39;</span><span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// 删除数据</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;DELETE FROM products WHERE price &lt; ?&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">[</span><span class="mf">1000</span><span class="p">]</span>
+<span class="p">);</span>
+</code></pre></div>
+<h4 id="sqlqueryname-sql-params"><code>sql.query(name, sql, params?)</code><a class="headerlink" href="#sqlqueryname-sql-params" title="Permanent link">&para;</a></h4>
+<p>查询数据，返回所有结果。<strong>参数:</strong> <code>name</code> (string), <code>sql</code> (string), <code>params</code> (array, 可选) <strong>返回:</strong> <code>array</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 查询所有</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;SELECT * FROM users&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;所有用户:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">all</span><span class="p">);</span>
+
+<span class="c1">// 条件查询（参数化）</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">adults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;SELECT * FROM users WHERE age &gt;= ?&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">[</span><span class="mf">18</span><span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// 复杂查询</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">  SELECT name, age, email</span>
+<span class="sb">  FROM users</span>
+<span class="sb">  WHERE age BETWEEN ? AND ?</span>
+<span class="sb">  ORDER BY age DESC</span>
+<span class="sb">  LIMIT ?</span>
+<span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">30</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">]);</span>
+</code></pre></div>
+<h4 id="sqlqueryonename-sql-params"><code>sql.queryOne(name, sql, params?)</code><a class="headerlink" href="#sqlqueryonename-sql-params" title="Permanent link">&para;</a></h4>
+<p>查询单条数据。<strong>参数:</strong> <code>name</code> (string), <code>sql</code> (string), <code>params</code> (array, 可选) <strong>返回:</strong> <code>object | null</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 查询单个用户</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">queryOne</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;SELECT * FROM users WHERE id = ?&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">[</span><span class="mf">1</span><span class="p">]</span>
+<span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;用户名:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 统计查询</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">queryOne</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;SELECT COUNT(*) as total FROM users&#39;</span>
+<span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;总用户数:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">count</span><span class="p">.</span><span class="nx">total</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_4">表管理<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="sqltableexistsname-tablename"><code>sql.tableExists(name, tableName)</code><a class="headerlink" href="#sqltableexistsname-tablename" title="Permanent link">&para;</a></h4>
+<p>检查表是否存在。<strong>参数:</strong> <code>name</code> (string), <code>tableName</code> (string) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sql</span><span class="p">.</span><span class="nx">tableExists</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;users&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;users 表存在&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="sqlgettablesname"><code>sql.getTables(name)</code><a class="headerlink" href="#sqlgettablesname" title="Permanent link">&para;</a></h4>
+<p>获取所有表名。<strong>参数:</strong> <code>name</code> (string) <strong>返回:</strong> <code>string[]</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">tables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">getTables</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;数据库中的表:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">tables</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="sqlgettableinfoname-tablename"><code>sql.getTableInfo(name, tableName)</code><a class="headerlink" href="#sqlgettableinfoname-tablename" title="Permanent link">&para;</a></h4>
+<p>获取表结构信息。<strong>参数:</strong> <code>name</code> (string), <code>tableName</code> (string) <strong>返回:</strong> <code>array</code></p>
+<p>返回列信息数组，每个元素包含：
+- <code>cid</code> - 列 ID
+- <code>name</code> - 列名
+- <code>type</code> - 数据类型
+- <code>notnull</code> - 是否非空 (0/1)
+- <code>dflt_value</code> - 默认值
+- <code>pk</code> - 是否主键 (0/1)</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">getTableInfo</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;users&#39;</span><span class="p">);</span>
+<span class="nx">info</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">col</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">col</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">col</span><span class="p">.</span><span class="nx">type</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">col</span><span class="p">.</span><span class="nx">pk</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;(主键)&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h3 id="_5">优化与维护<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="sqlvacuumname"><code>sql.vacuum(name)</code><a class="headerlink" href="#sqlvacuumname" title="Permanent link">&para;</a></h4>
+<p>优化数据库，回收空间。<strong>参数:</strong> <code>name</code> (string) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">sql</span><span class="p">.</span><span class="nx">vacuum</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;数据库已优化&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_6">事务管理<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="sqlbegintransactionname"><code>sql.beginTransaction(name)</code><a class="headerlink" href="#sqlbegintransactionname" title="Permanent link">&para;</a></h4>
+<p>开始事务。<strong>参数:</strong> <code>name</code> (string) <strong>返回:</strong> <code>boolean</code></p>
+<h4 id="sqlcommitname"><code>sql.commit(name)</code><a class="headerlink" href="#sqlcommitname" title="Permanent link">&para;</a></h4>
+<p>提交事务。<strong>参数:</strong> <code>name</code> (string) <strong>返回:</strong> <code>boolean</code></p>
+<h4 id="sqlrollbackname"><code>sql.rollback(name)</code><a class="headerlink" href="#sqlrollbackname" title="Permanent link">&para;</a></h4>
+<p>回滚事务。<strong>参数:</strong> <code>name</code> (string) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 使用事务确保数据一致性</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">beginTransaction</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;UPDATE accounts SET balance = balance - ? WHERE id = ?&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">]);</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;UPDATE accounts SET balance = balance + ? WHERE id = ?&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">]);</span>
+
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">commit</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;转账成功&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">rollback</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;转账失败，已回滚&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="_7">完整示例<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="1">示例 1: 用户管理系统<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 初始化数据库</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">initDatabase</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">    CREATE TABLE IF NOT EXISTS users (</span>
+<span class="sb">      id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="sb">      username TEXT UNIQUE NOT NULL,</span>
+<span class="sb">      password TEXT NOT NULL,</span>
+<span class="sb">      email TEXT,</span>
+<span class="sb">      created_at INTEGER</span>
+<span class="sb">    )</span>
+<span class="sb">  `</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;数据库初始化完成&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 创建用户</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">createUser</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;INSERT INTO users (username, password, email, created_at) VALUES (?, ?, ?, ?)&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">timestamp</span><span class="p">]</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;用户创建成功:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">username</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;用户创建失败&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 查询用户</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">getUser</span><span class="p">(</span><span class="nx">username</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">queryOne</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;SELECT * FROM users WHERE username = ?&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="nx">username</span><span class="p">]</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="nx">initDatabase</span><span class="p">();</span>
+<span class="nx">createUser</span><span class="p">(</span><span class="s1">&#39;alice&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;pass123&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;alice@example.com&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getUser</span><span class="p">(</span><span class="s1">&#39;alice&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;用户信息:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="2">示例 2: 日志记录系统<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">setupLogDatabase</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;logs&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;logs&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">    CREATE TABLE IF NOT EXISTS app_logs (</span>
+<span class="sb">      id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="sb">      level TEXT,</span>
+<span class="sb">      message TEXT,</span>
+<span class="sb">      timestamp INTEGER</span>
+<span class="sb">    )</span>
+<span class="sb">  `</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">log</span><span class="p">(</span><span class="nx">level</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;logs&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;INSERT INTO app_logs (level, message, timestamp) VALUES (?, ?, ?)&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="nx">level</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()]</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">getLogs</span><span class="p">(</span><span class="nx">level</span><span class="p">,</span><span class="w"> </span><span class="nx">limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">level</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">&#39;logs&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;SELECT * FROM app_logs WHERE level = ? ORDER BY timestamp DESC LIMIT ?&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">[</span><span class="nx">level</span><span class="p">,</span><span class="w"> </span><span class="nx">limit</span><span class="p">]</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">&#39;logs&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;SELECT * FROM app_logs ORDER BY timestamp DESC LIMIT ?&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">[</span><span class="nx">limit</span><span class="p">]</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">clearOldLogs</span><span class="p">(</span><span class="nx">daysOld</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">7</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cutoff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="nx">daysOld</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;logs&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;DELETE FROM app_logs WHERE timestamp &lt; ?&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="nx">cutoff</span><span class="p">]</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">vacuum</span><span class="p">(</span><span class="s1">&#39;logs&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="nx">setupLogDatabase</span><span class="p">();</span>
+<span class="nx">log</span><span class="p">(</span><span class="s1">&#39;INFO&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;应用启动&#39;</span><span class="p">);</span>
+<span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;网络连接失败&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">errors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getLogs</span><span class="p">(</span><span class="s1">&#39;ERROR&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;错误日志:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">errors</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="3">示例 3: 数据统计分析<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">analyzeData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;analytics&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 按日期统计</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">dailyStats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">&#39;analytics&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">    SELECT</span>
+<span class="sb">      DATE(timestamp/1000, &#39;unixepoch&#39;) as date,</span>
+<span class="sb">      COUNT(*) as count,</span>
+<span class="sb">      AVG(value) as avg_value</span>
+<span class="sb">    FROM events</span>
+<span class="sb">    GROUP BY date</span>
+<span class="sb">    ORDER BY date DESC</span>
+<span class="sb">    LIMIT 30</span>
+<span class="sb">  `</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;每日统计:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">dailyStats</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 按类型统计</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">typeStats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">&#39;analytics&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">    SELECT</span>
+<span class="sb">      type,</span>
+<span class="sb">      COUNT(*) as count,</span>
+<span class="sb">      SUM(value) as total</span>
+<span class="sb">    FROM events</span>
+<span class="sb">    GROUP BY type</span>
+<span class="sb">    ORDER BY count DESC</span>
+<span class="sb">  `</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;类型统计:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">typeStats</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 获取最近记录</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">recent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">&#39;analytics&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">    SELECT * FROM events</span>
+<span class="sb">    ORDER BY timestamp DESC</span>
+<span class="sb">    LIMIT 10</span>
+<span class="sb">  `</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;最近事件:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">recent</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">analyzeData</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="4">示例 4: 数据迁移<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">migrateDatabase</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 检查版本</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">sql</span><span class="p">.</span><span class="nx">tableExists</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;schema_version&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">      CREATE TABLE schema_version (</span>
+<span class="sb">        version INTEGER PRIMARY KEY</span>
+<span class="sb">      )</span>
+<span class="sb">    `</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;INSERT INTO schema_version VALUES (0)&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">versionRow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">queryOne</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;SELECT version FROM schema_version&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">currentVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">versionRow</span><span class="p">.</span><span class="nx">version</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;当前数据库版本:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">currentVersion</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 执行迁移</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">currentVersion</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;执行迁移到版本 1...&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ALTER TABLE users ADD COLUMN phone TEXT&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;UPDATE schema_version SET version = 1&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">currentVersion</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;执行迁移到版本 2...&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">      CREATE TABLE user_settings (</span>
+<span class="sb">        user_id INTEGER,</span>
+<span class="sb">        key TEXT,</span>
+<span class="sb">        value TEXT,</span>
+<span class="sb">        PRIMARY KEY (user_id, key)</span>
+<span class="sb">      )</span>
+<span class="sb">    `</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;UPDATE schema_version SET version = 2&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;数据库迁移完成&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">migrateDatabase</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="5">示例 5: 批量操作<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">batchInsert</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">beginTransaction</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">failed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nx">data</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">item</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">&#39;INSERT INTO products (name, price, category) VALUES (?, ?, ?)&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">[</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">price</span><span class="p">,</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">category</span><span class="p">]</span>
+<span class="w">      </span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">success</span><span class="o">++</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">failed</span><span class="o">++</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">sql</span><span class="p">.</span><span class="nx">commit</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`批量插入完成: 成功 </span><span class="si">${</span><span class="nx">success</span><span class="si">}</span><span class="sb">, 失败 </span><span class="si">${</span><span class="nx">failed</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">sql</span><span class="p">.</span><span class="nx">rollback</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;批量插入失败，已回滚&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">products</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;iPhone&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="o">:</span><span class="w"> </span><span class="mf">5999</span><span class="p">,</span><span class="w"> </span><span class="nx">category</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;手机&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;iPad&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="o">:</span><span class="w"> </span><span class="mf">3999</span><span class="p">,</span><span class="w"> </span><span class="nx">category</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;平板&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;MacBook&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="o">:</span><span class="w"> </span><span class="mf">9999</span><span class="p">,</span><span class="w"> </span><span class="nx">category</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;电脑&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">];</span>
+
+<span class="nx">batchInsert</span><span class="p">(</span><span class="nx">products</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_8">最佳实践<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 使用参数化查询<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 使用参数化查询</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">&#39;SELECT * FROM users WHERE name = ?&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">[</span><span class="nx">userName</span><span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c1">// ❌ 错误 - 字符串拼接（SQL 注入风险）</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="sb">`SELECT * FROM users WHERE name = &#39;</span><span class="si">${</span><span class="nx">userName</span><span class="si">}</span><span class="sb">&#39;`</span>
+<span class="p">);</span>
+</code></pre></div>
+<h3 id="2_1">2. 使用事务保证一致性<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 使用事务</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">beginTransaction</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;UPDATE ...&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;INSERT ...&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">commit</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">rollback</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 不使用事务</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;UPDATE ...&#39;</span><span class="p">);</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;INSERT ...&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// 可能不一致</span>
+</code></pre></div>
+<h3 id="3_1">3. 检查表是否存在<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">sql</span><span class="p">.</span><span class="nx">tableExists</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;users&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;CREATE TABLE users (...)&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 不检查</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;CREATE TABLE users (...)&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// 可能报错</span>
+</code></pre></div>
+<h3 id="4_1">4. 及时关闭数据库<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+<span class="c1">// ... 操作</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+
+<span class="c1">// ❌ 错误 - 不关闭</span>
+<span class="nx">sql</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+<span class="c1">// ... 操作</span>
+<span class="c1">// 忘记关闭</span>
+</code></pre></div>
+<h3 id="5_1">5. 定期优化数据库<a class="headerlink" href="#5_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 定期清理和优化</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">maintenance</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;DELETE FROM logs WHERE timestamp &lt; ?&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">cutoff</span><span class="p">]);</span>
+<span class="w">  </span><span class="nx">sql</span><span class="p">.</span><span class="nx">vacuum</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="_9">注意事项<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>数据库位置</strong>: 数据库文件存储在 Documents 目录，文件名为 <code>{name}.sqlite</code></li>
+<li><strong>SQL 注入</strong>: 必须使用参数化查询（<code>?</code> 占位符）防止 SQL 注入</li>
+<li><strong>表名验证</strong>: 表名会进行正则验证，仅允许字母、数字、下划线</li>
+<li><strong>事务支持</strong>: 支持 BEGIN、COMMIT、ROLLBACK 事务操作</li>
+<li><strong>数据类型</strong>: SQLite 支持 INTEGER、REAL、TEXT、BLOB、NULL</li>
+<li><strong>并发访问</strong>: 同一数据库可以被多次打开，但建议使用事务控制并发</li>
+<li><strong>错误处理</strong>: 操作失败返回 false，成功返回 true 或结果数据</li>
+<li><strong>线程安全</strong>: 所有操作都是线程安全的</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

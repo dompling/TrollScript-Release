@@ -1,0 +1,996 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TrollScript 官方文档与 API 参考">
+      
+      
+      
+        <link rel="canonical" href="https://trollscript.qzz.io/System/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>System 系统设置控制 - TrollScript</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#system" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="TrollScript" class="md-header__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TrollScript
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              System 系统设置控制
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TrollScript" class="md-nav__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TrollScript
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="system">System 系统设置控制<a class="headerlink" href="#system" title="Permanent link">&para;</a></h1>
+<p>System 模块提供了系统设置控制功能。你可以使用它来控制 WiFi、蓝牙、飞行模式、音量、闪光灯等系统设置。</p>
+<blockquote>
+<p><strong>守护进程支持</strong>: 完全支持。在触发器模式下可正常运行。</p>
+<p><strong>重要提示</strong>: 大部分功能需要 <strong>TrollStore 权限</strong>才能使用。</p>
+</blockquote>
+<hr />
+<h2 id="_1">快速开始<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// 检查 WiFi 状态</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">isWiFiEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;WiFi 已开启&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 切换 WiFi</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setWiFi</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w">  </span><span class="c1">// 关闭 WiFi</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setWiFi</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">   </span><span class="c1">// 开启 WiFi</span>
+
+<span class="c1">// 设置音量</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setVolume</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span><span class="w">  </span><span class="c1">// 设置为 50%</span>
+
+<span class="c1">// 开启闪光灯</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setFlashlight</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span><span class="w">  </span><span class="c1">// 最大亮度</span>
+
+<span class="c1">// 打开系统设置</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">openSettings</span><span class="p">(</span><span class="s1">&#39;WIFI&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// 打开 WiFi 设置页面</span>
+</code></pre></div>
+<hr />
+<h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="wifi">WiFi 控制<a class="headerlink" href="#wifi" title="Permanent link">&para;</a></h3>
+<h4 id="systemiswifienabled"><code>system.isWiFiEnabled()</code><a class="headerlink" href="#systemiswifienabled" title="Permanent link">&para;</a></h4>
+<p>检查 WiFi 是否开启。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">isWiFiEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;WiFi 已开启&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="systemsetwifienabled"><code>system.setWiFi(enabled)</code><a class="headerlink" href="#systemsetwifienabled" title="Permanent link">&para;</a></h4>
+<p>设置 WiFi 开关。<strong>参数:</strong> <code>enabled</code> (boolean) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 关闭 WiFi</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">system</span><span class="p">.</span><span class="nx">setWiFi</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;WiFi 已关闭&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 开启 WiFi</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setWiFi</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_2">蓝牙控制<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="systemisbluetoothenabled"><code>system.isBluetoothEnabled()</code><a class="headerlink" href="#systemisbluetoothenabled" title="Permanent link">&para;</a></h4>
+<p>检查蓝牙是否开启。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">isBluetoothEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;蓝牙已开启&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="systemsetbluetoothenabled"><code>system.setBluetooth(enabled)</code><a class="headerlink" href="#systemsetbluetoothenabled" title="Permanent link">&para;</a></h4>
+<p>设置蓝牙开关。<strong>参数:</strong> <code>enabled</code> (boolean) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 关闭蓝牙</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setBluetooth</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
+<span class="c1">// 开启蓝牙</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setBluetooth</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_3">飞行模式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="systemisairplanemodeenabled"><code>system.isAirplaneModeEnabled()</code><a class="headerlink" href="#systemisairplanemodeenabled" title="Permanent link">&para;</a></h4>
+<p>检查飞行模式是否开启。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">isAirplaneModeEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;飞行模式已开启&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="systemsetairplanemodeenabled"><code>system.setAirplaneMode(enabled)</code><a class="headerlink" href="#systemsetairplanemodeenabled" title="Permanent link">&para;</a></h4>
+<p>设置飞行模式。<strong>参数:</strong> <code>enabled</code> (boolean) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 开启飞行模式</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setAirplaneMode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="c1">// 关闭飞行模式</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setAirplaneMode</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_4">勿扰模式<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="systemisdonotdisturbenabled"><code>system.isDoNotDisturbEnabled()</code><a class="headerlink" href="#systemisdonotdisturbenabled" title="Permanent link">&para;</a></h4>
+<p>检查勿扰模式是否开启。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">isDoNotDisturbEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;勿扰模式已开启&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="systemsetdonotdisturbenabled"><code>system.setDoNotDisturb(enabled)</code><a class="headerlink" href="#systemsetdonotdisturbenabled" title="Permanent link">&para;</a></h4>
+<p>设置勿扰模式。<strong>参数:</strong> <code>enabled</code> (boolean) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 开启勿扰模式</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setDoNotDisturb</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="c1">// 关闭勿扰模式</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setDoNotDisturb</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_5">音量控制<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="systemgetvolumecategory"><code>system.getVolume(category?)</code><a class="headerlink" href="#systemgetvolumecategory" title="Permanent link">&para;</a></h4>
+<p>获取系统音量。<strong>参数:</strong> <code>category</code> (string, 可选，默认 "Media") <strong>返回:</strong> <code>number</code> (0.0-1.0)</p>
+<p><strong>支持的类别:</strong>
+- <code>"Media"</code> - 媒体音量（默认）
+- <code>"Ringtone"</code> - 铃声音量
+- <code>"Alarm"</code> - 闹钟音量
+- <code>"VoiceCall"</code> - 通话音量</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 获取媒体音量</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">volume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">system</span><span class="p">.</span><span class="nx">getVolume</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`当前音量: </span><span class="si">${</span><span class="p">(</span><span class="nx">volume</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+
+<span class="c1">// 获取铃声音量</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ringtone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">system</span><span class="p">.</span><span class="nx">getVolume</span><span class="p">(</span><span class="s1">&#39;Ringtone&#39;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="systemsetvolumelevel-category"><code>system.setVolume(level, category?)</code><a class="headerlink" href="#systemsetvolumelevel-category" title="Permanent link">&para;</a></h4>
+<p>设置系统音量。<strong>参数:</strong> <code>level</code> (number, 0.0-1.0), <code>category</code> (string, 可选) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 设置媒体音量为 50%</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setVolume</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>
+
+<span class="c1">// 设置铃声音量为 80%</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setVolume</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ringtone&#39;</span><span class="p">);</span>
+
+<span class="c1">// 静音</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setVolume</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+
+<span class="c1">// 最大音量</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setVolume</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_6">闪光灯控制<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="systemhasflashlight"><code>system.hasFlashlight()</code><a class="headerlink" href="#systemhasflashlight" title="Permanent link">&para;</a></h4>
+<p>检查设备是否有闪光灯。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">hasFlashlight</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;设备支持闪光灯&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="systemisflashlighton"><code>system.isFlashlightOn()</code><a class="headerlink" href="#systemisflashlighton" title="Permanent link">&para;</a></h4>
+<p>检查闪光灯是否开启。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">isFlashlightOn</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;闪光灯已开启&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="systemsetflashlightenabled-level"><code>system.setFlashlight(enabled, level?)</code><a class="headerlink" href="#systemsetflashlightenabled-level" title="Permanent link">&para;</a></h4>
+<p>设置闪光灯。<strong>参数:</strong> <code>enabled</code> (boolean), <code>level</code> (number, 0.0-1.0, 可选，默认 1.0) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 开启闪光灯（最大亮度）</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setFlashlight</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="c1">// 开启闪光灯（50% 亮度）</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setFlashlight</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span>
+
+<span class="c1">// 关闭闪光灯</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setFlashlight</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_7">方向锁定<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="systemisorientationlockenabled"><code>system.isOrientationLockEnabled()</code><a class="headerlink" href="#systemisorientationlockenabled" title="Permanent link">&para;</a></h4>
+<p>检查方向锁定是否开启。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">isOrientationLockEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;方向锁定已开启&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="systemsetorientationlockenabled"><code>system.setOrientationLock(enabled)</code><a class="headerlink" href="#systemsetorientationlockenabled" title="Permanent link">&para;</a></h4>
+<p>设置方向锁定。<strong>参数:</strong> <code>enabled</code> (boolean) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 开启方向锁定</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setOrientationLock</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="c1">// 关闭方向锁定</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setOrientationLock</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_8">低电量模式<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="systemislowpowermodeenabled"><code>system.isLowPowerModeEnabled()</code><a class="headerlink" href="#systemislowpowermodeenabled" title="Permanent link">&para;</a></h4>
+<p>检查低电量模式是否开启。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">isLowPowerModeEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;低电量模式已开启&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="systemsetlowpowermodeenabled"><code>system.setLowPowerMode(enabled)</code><a class="headerlink" href="#systemsetlowpowermodeenabled" title="Permanent link">&para;</a></h4>
+<p>设置低电量模式。<strong>参数:</strong> <code>enabled</code> (boolean) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 开启低电量模式</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setLowPowerMode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="c1">// 关闭低电量模式</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setLowPowerMode</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_9">位置服务<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="systemislocationservicesenabled"><code>system.isLocationServicesEnabled()</code><a class="headerlink" href="#systemislocationservicesenabled" title="Permanent link">&para;</a></h4>
+<p>检查位置服务是否开启。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">isLocationServicesEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;位置服务已开启&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="systemsetlocationservicesenabled"><code>system.setLocationServices(enabled)</code><a class="headerlink" href="#systemsetlocationservicesenabled" title="Permanent link">&para;</a></h4>
+<p>设置位置服务。<strong>参数:</strong> <code>enabled</code> (boolean) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 开启位置服务</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setLocationServices</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="c1">// 关闭位置服务</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setLocationServices</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_10">蜂窝数据<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="systemiscellulardataenabled"><code>system.isCellularDataEnabled()</code><a class="headerlink" href="#systemiscellulardataenabled" title="Permanent link">&para;</a></h4>
+<p>检查蜂窝数据是否开启。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">isCellularDataEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;蜂窝数据已开启&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="systemsetcellulardataenabled"><code>system.setCellularData(enabled)</code><a class="headerlink" href="#systemsetcellulardataenabled" title="Permanent link">&para;</a></h4>
+<p>设置蜂窝数据。<strong>参数:</strong> <code>enabled</code> (boolean) <strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 开启蜂窝数据</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setCellularData</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="c1">// 关闭蜂窝数据</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setCellularData</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_11">打开系统设置<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="systemopensettingssection"><code>system.openSettings(section?)</code><a class="headerlink" href="#systemopensettingssection" title="Permanent link">&para;</a></h4>
+<p>打开系统设置。<strong>参数:</strong> <code>section</code> (string, 可选) <strong>返回:</strong> <code>boolean</code></p>
+<p><strong>注意:</strong> 在 Daemon 模式下不可用。</p>
+<p><strong>支持的设置页面:</strong>
+- <code>"WIFI"</code> - WiFi 设置
+- <code>"BLUETOOTH"</code> - 蓝牙设置
+- <code>"CELLULAR"</code> / <code>"MOBILE_DATA"</code> - 蜂窝网络设置
+- <code>"VPN"</code> - VPN 设置
+- <code>"GENERAL"</code> - 通用设置
+- <code>"DISPLAY"</code> / <code>"BRIGHTNESS"</code> - 显示与亮度
+- <code>"SOUND"</code> / <code>"SOUNDS"</code> - 声音设置
+- <code>"NOTIFICATION"</code> / <code>"NOTIFICATIONS"</code> - 通知设置
+- <code>"PRIVACY"</code> - 隐私设置
+- <code>"BATTERY"</code> - 电池设置
+- <code>"STORAGE"</code> - 存储设置
+- <code>"WALLPAPER"</code> - 壁纸设置
+- <code>"SIRI"</code> - Siri 设置
+- <code>"ACCESSIBILITY"</code> - 辅助功能
+- <code>"DO_NOT_DISTURB"</code> / <code>"DND"</code> - 勿扰模式设置
+- <code>"SCREEN_TIME"</code> - 屏幕使用时间
+- <code>"PASSWORDS"</code> - 密码设置</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 打开主设置页面</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">openSettings</span><span class="p">();</span>
+
+<span class="c1">// 打开 WiFi 设置</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">openSettings</span><span class="p">(</span><span class="s1">&#39;WIFI&#39;</span><span class="p">);</span>
+
+<span class="c1">// 打开蓝牙设置</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">openSettings</span><span class="p">(</span><span class="s1">&#39;BLUETOOTH&#39;</span><span class="p">);</span>
+
+<span class="c1">// 打开隐私设置</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">openSettings</span><span class="p">(</span><span class="s1">&#39;PRIVACY&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_12">完整示例<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h3 id="1">示例 1: 智能场景切换<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">switchToSleepMode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;切换到睡眠模式...&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 开启勿扰模式</span>
+<span class="w">  </span><span class="nx">system</span><span class="p">.</span><span class="nx">setDoNotDisturb</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 降低音量</span>
+<span class="w">  </span><span class="nx">system</span><span class="p">.</span><span class="nx">setVolume</span><span class="p">(</span><span class="mf">0.2</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 开启低电量模式</span>
+<span class="w">  </span><span class="nx">system</span><span class="p">.</span><span class="nx">setLowPowerMode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 关闭 WiFi（可选）</span>
+<span class="w">  </span><span class="nx">system</span><span class="p">.</span><span class="nx">setWiFi</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;睡眠模式已启用&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;睡眠模式&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;已切换到睡眠模式&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">switchToWorkMode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;切换到工作模式...&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 关闭勿扰模式</span>
+<span class="w">  </span><span class="nx">system</span><span class="p">.</span><span class="nx">setDoNotDisturb</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 设置正常音量</span>
+<span class="w">  </span><span class="nx">system</span><span class="p">.</span><span class="nx">setVolume</span><span class="p">(</span><span class="mf">0.7</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 开启 WiFi</span>
+<span class="w">  </span><span class="nx">system</span><span class="p">.</span><span class="nx">setWiFi</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 关闭低电量模式</span>
+<span class="w">  </span><span class="nx">system</span><span class="p">.</span><span class="nx">setLowPowerMode</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;工作模式已启用&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;工作模式&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;已切换到工作模式&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="nx">switchToSleepMode</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="2">示例 2: 自动飞行模式<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">autoAirplaneMode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 检查时间，晚上 11 点到早上 7 点自动开启飞行模式</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">now</span><span class="p">.</span><span class="nx">getHours</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hour</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">23</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">hour</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">7</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">system</span><span class="p">.</span><span class="nx">isAirplaneModeEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">system</span><span class="p">.</span><span class="nx">setAirplaneMode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已自动开启飞行模式&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;飞行模式&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;已自动开启飞行模式（夜间）&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">isAirplaneModeEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">system</span><span class="p">.</span><span class="nx">setAirplaneMode</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已自动关闭飞行模式&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;飞行模式&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;已自动关闭飞行模式（白天）&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">autoAirplaneMode</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="3">示例 3: 音量管理器<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">volumeManager</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">currentVolume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">system</span><span class="p">.</span><span class="nx">getVolume</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`当前音量: </span><span class="si">${</span><span class="p">(</span><span class="nx">currentVolume</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 根据时间调整音量</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">getHours</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hour</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">22</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">hour</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">8</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 夜间：低音量</span>
+<span class="w">    </span><span class="nx">system</span><span class="p">.</span><span class="nx">setVolume</span><span class="p">(</span><span class="mf">0.2</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已切换到夜间音量&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hour</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">8</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">hour</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">18</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 白天：正常音量</span>
+<span class="w">    </span><span class="nx">system</span><span class="p">.</span><span class="nx">setVolume</span><span class="p">(</span><span class="mf">0.7</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已切换到白天音量&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 晚上：中等音量</span>
+<span class="w">    </span><span class="nx">system</span><span class="p">.</span><span class="nx">setVolume</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已切换到晚间音量&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">volumeManager</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="4-sos">示例 4: 闪光灯 SOS 信号<a class="headerlink" href="#4-sos" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">flashlightSOS</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">system</span><span class="p">.</span><span class="nx">hasFlashlight</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;设备不支持闪光灯&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// SOS 摩尔斯电码: ... --- ...</span>
+<span class="w">  </span><span class="c1">// 短闪 = 200ms, 长闪 = 600ms, 间隔 = 200ms</span>
+
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">shortFlash</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">system</span><span class="p">.</span><span class="nx">setFlashlight</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">system</span><span class="p">.</span><span class="nx">setFlashlight</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">longFlash</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">system</span><span class="p">.</span><span class="nx">setFlashlight</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">600</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">system</span><span class="p">.</span><span class="nx">setFlashlight</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;发送 SOS 信号...&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// S (...)</span>
+<span class="w">  </span><span class="nx">shortFlash</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">shortFlash</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">shortFlash</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">400</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// O (---)</span>
+<span class="w">  </span><span class="nx">longFlash</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">longFlash</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">longFlash</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">400</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// S (...)</span>
+<span class="w">  </span><span class="nx">shortFlash</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">shortFlash</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">shortFlash</span><span class="p">();</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;SOS 信号发送完成&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">flashlightSOS</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="5">示例 5: 省电模式<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">enablePowerSavingMode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;启用省电模式...&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">changes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">  </span><span class="c1">// 开启低电量模式</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">system</span><span class="p">.</span><span class="nx">isLowPowerModeEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">system</span><span class="p">.</span><span class="nx">setLowPowerMode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">changes</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;低电量模式&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 关闭 WiFi</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">isWiFiEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">system</span><span class="p">.</span><span class="nx">setWiFi</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">changes</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;WiFi&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 关闭蓝牙</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">isBluetoothEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">system</span><span class="p">.</span><span class="nx">setBluetooth</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">changes</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;蓝牙&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 关闭位置服务</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">isLocationServicesEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">system</span><span class="p">.</span><span class="nx">setLocationServices</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">changes</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;位置服务&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 降低亮度</span>
+<span class="w">  </span><span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="mf">0.3</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">changes</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;屏幕亮度&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`省电模式已启用，已调整: </span><span class="si">${</span><span class="nx">changes</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;省电模式&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`已启用省电模式\n调整了 </span><span class="si">${</span><span class="nx">changes</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 项设置`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">disablePowerSavingMode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;关闭省电模式...&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">system</span><span class="p">.</span><span class="nx">setLowPowerMode</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">system</span><span class="p">.</span><span class="nx">setWiFi</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">system</span><span class="p">.</span><span class="nx">setBluetooth</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">system</span><span class="p">.</span><span class="nx">setLocationServices</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">display</span><span class="p">.</span><span class="nx">setBrightness</span><span class="p">(</span><span class="mf">0.7</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;省电模式已关闭&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;省电模式&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;已关闭省电模式&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 根据电量自动切换</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">battery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">device</span><span class="p">.</span><span class="nx">battery</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">battery</span><span class="p">.</span><span class="nx">level</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">enablePowerSavingMode</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="6">示例 6: 系统状态监控<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">monitorSystemStatus</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;=== 系统状态 ===&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 网络状态</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;\n网络:&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`WiFi: </span><span class="si">${</span><span class="nx">system</span><span class="p">.</span><span class="nx">isWiFiEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;开启&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;关闭&#39;</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`蓝牙: </span><span class="si">${</span><span class="nx">system</span><span class="p">.</span><span class="nx">isBluetoothEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;开启&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;关闭&#39;</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`蜂窝数据: </span><span class="si">${</span><span class="nx">system</span><span class="p">.</span><span class="nx">isCellularDataEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;开启&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;关闭&#39;</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`飞行模式: </span><span class="si">${</span><span class="nx">system</span><span class="p">.</span><span class="nx">isAirplaneModeEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;开启&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;关闭&#39;</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 系统设置</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;\n系统:&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`勿扰模式: </span><span class="si">${</span><span class="nx">system</span><span class="p">.</span><span class="nx">isDoNotDisturbEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;开启&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;关闭&#39;</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`低电量模式: </span><span class="si">${</span><span class="nx">system</span><span class="p">.</span><span class="nx">isLowPowerModeEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;开启&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;关闭&#39;</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`方向锁定: </span><span class="si">${</span><span class="nx">system</span><span class="p">.</span><span class="nx">isOrientationLockEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;开启&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;关闭&#39;</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`位置服务: </span><span class="si">${</span><span class="nx">system</span><span class="p">.</span><span class="nx">isLocationServicesEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;开启&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;关闭&#39;</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 音量</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">volume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">system</span><span class="p">.</span><span class="nx">getVolume</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`\n音量: </span><span class="si">${</span><span class="p">(</span><span class="nx">volume</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 闪光灯</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">system</span><span class="p">.</span><span class="nx">hasFlashlight</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`闪光灯: </span><span class="si">${</span><span class="nx">system</span><span class="p">.</span><span class="nx">isFlashlightOn</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;开启&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;关闭&#39;</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 设备信息</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">deviceInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">device</span><span class="p">.</span><span class="nx">info</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">battery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">device</span><span class="p">.</span><span class="nx">battery</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;\n设备:&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`型号: </span><span class="si">${</span><span class="nx">deviceInfo</span><span class="p">.</span><span class="nx">model</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`系统: iOS </span><span class="si">${</span><span class="nx">deviceInfo</span><span class="p">.</span><span class="nx">systemVersion</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`电量: </span><span class="si">${</span><span class="p">(</span><span class="nx">battery</span><span class="p">.</span><span class="nx">level</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`充电: </span><span class="si">${</span><span class="nx">battery</span><span class="p">.</span><span class="nx">isCharging</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;是&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;否&#39;</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">monitorSystemStatus</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="_13">最佳实践<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 检查当前状态<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 先检查再切换</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">system</span><span class="p">.</span><span class="nx">isWiFiEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">system</span><span class="p">.</span><span class="nx">setWiFi</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 不检查直接切换</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setWiFi</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">  </span><span class="c1">// 可能已经开启</span>
+</code></pre></div>
+<h3 id="2_1">2. 音量范围验证<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 确保在有效范围内</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">volume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">userInput</span><span class="p">));</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setVolume</span><span class="p">(</span><span class="nx">volume</span><span class="p">);</span>
+
+<span class="c1">// ❌ 错误 - 不验证范围</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setVolume</span><span class="p">(</span><span class="nx">userInput</span><span class="p">);</span><span class="w">  </span><span class="c1">// 可能超出 0-1 范围</span>
+</code></pre></div>
+<h3 id="3_1">3. 闪光灯亮度控制<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 指定亮度级别</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setFlashlight</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span><span class="w">  </span><span class="c1">// 50% 亮度</span>
+
+<span class="c1">// ❌ 错误 - 总是最大亮度</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setFlashlight</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">  </span><span class="c1">// 可能太亮</span>
+</code></pre></div>
+<h3 id="4">4. 场景恢复<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 保存原始状态</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">originalWiFi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">system</span><span class="p">.</span><span class="nx">isWiFiEnabled</span><span class="p">();</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setWiFi</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="c1">// ... 执行操作</span>
+<span class="nx">system</span><span class="p">.</span><span class="nx">setWiFi</span><span class="p">(</span><span class="nx">originalWiFi</span><span class="p">);</span><span class="w">  </span><span class="c1">// 恢复原状态</span>
+</code></pre></div>
+<hr />
+<h2 id="_14">注意事项<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>TrollStore 权限</strong>: 大部分功能需要 TrollStore 环境才能使用</li>
+<li><strong>私有 API</strong>: 使用 TSSystemSettings 私有 API，可能在未来 iOS 版本中失效</li>
+<li><strong>Daemon 限制</strong>: openSettings 在 Daemon 模式下不可用</li>
+<li><strong>音量范围</strong>: 音量值范围为 0.0-1.0，超出范围会被自动限制</li>
+<li><strong>闪光灯亮度</strong>: 亮度级别范围为 0.0-1.0</li>
+<li><strong>设置页面</strong>: openSettings 的 URL Scheme 可能在不同 iOS 版本中有差异</li>
+<li><strong>权限要求</strong>: 某些功能可能需要用户授权</li>
+<li><strong>线程安全</strong>: 所有操作都是线程安全的</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

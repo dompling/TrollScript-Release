@@ -1,0 +1,872 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TrollScript 官方文档与 API 参考">
+      
+      
+      
+        <link rel="canonical" href="https://trollscript.qzz.io/SMS/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>SMS 短信管理 - TrollScript</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sms" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="TrollScript" class="md-header__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TrollScript
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SMS 短信管理
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TrollScript" class="md-nav__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TrollScript
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="sms">SMS 短信管理<a class="headerlink" href="#sms" title="Permanent link">&para;</a></h1>
+<p>SMS 模块提供了短信读取和管理功能。你可以使用它来读取短信、搜索短信、提取验证码等。</p>
+<blockquote>
+<p><strong>守护进程支持</strong>: 完全支持。在触发器模式下可正常运行。</p>
+<p><strong>重要提示</strong>: 读取真实短信数据需要 <strong>Root 权限</strong>（TrollStore）。如果没有权限，模块会返回模拟数据用于测试。</p>
+</blockquote>
+<hr />
+<h2 id="_1">快速开始<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// 检查数据访问权限</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">checkAccess</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;访问状态:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">access</span><span class="p">);</span>
+
+<span class="c1">// 检查是否为真实数据</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sms</span><span class="p">.</span><span class="nx">isRealDataAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;可以访问真实短信数据&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;当前使用模拟数据&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 读取最近的短信</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mf">20</span><span class="p">);</span>
+<span class="nx">messages</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">msg</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">address</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">text</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// 提取验证码</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getVerificationCode</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">code</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;验证码:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="_2">权限管理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="smscheckaccess"><code>sms.checkAccess()</code><a class="headerlink" href="#smscheckaccess" title="Permanent link">&para;</a></h4>
+<p>检查短信访问权限。<strong>返回:</strong> <code>'available'</code> | <code>'needsCopy'</code> | <code>'unavailable'</code></p>
+<p><strong>返回值说明:</strong>
+- <code>'available'</code> - 可以访问真实数据
+- <code>'needsCopy'</code> - 需要复制数据库文件（需要 Root Helper）
+- <code>'unavailable'</code> - 无法访问，将使用模拟数据</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">checkAccess</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;available&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;可以直接访问短信&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;needsCopy&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;需要复制数据库&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">sms</span><span class="p">.</span><span class="nx">tryAccess</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="smstryaccess"><code>sms.tryAccess()</code><a class="headerlink" href="#smstryaccess" title="Permanent link">&para;</a></h4>
+<p>尝试获取短信访问权限（通过 Root Helper 复制数据库）。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sms</span><span class="p">.</span><span class="nx">checkAccess</span><span class="p">()</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;needsCopy&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">tryAccess</span><span class="p">();</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;访问权限获取成功&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="smsisrealdataavailable"><code>sms.isRealDataAvailable()</code><a class="headerlink" href="#smsisrealdataavailable" title="Permanent link">&para;</a></h4>
+<p>检查当前是否使用真实数据。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sms</span><span class="p">.</span><span class="nx">isRealDataAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;正在使用真实短信数据&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;正在使用模拟数据（用于测试）&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="_3">读取短信<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="smsreadlimit"><code>sms.read(limit?)</code><a class="headerlink" href="#smsreadlimit" title="Permanent link">&para;</a></h4>
+<p>读取短信列表。<strong>参数:</strong> <code>limit</code> (number, 可选，默认 100) <strong>返回:</strong> <code>Message[]</code></p>
+<p><strong>Message 对象结构:</strong>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w">              </span><span class="c1">// 短信 ID</span>
+<span class="w">    </span><span class="nx">guid</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">            </span><span class="c1">// 短信 GUID</span>
+<span class="w">    </span><span class="nx">address</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">         </span><span class="c1">// 发件人/收件人号码</span>
+<span class="w">    </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">            </span><span class="c1">// 短信内容</span>
+<span class="w">    </span><span class="nx">date</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">            </span><span class="c1">// 日期时间</span>
+<span class="w">    </span><span class="nx">dateRead</span><span class="o">?:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">       </span><span class="c1">// 已读时间</span>
+<span class="w">    </span><span class="nx">isFromMe</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span><span class="p">,</span><span class="w">       </span><span class="c1">// 是否为自己发送的短信</span>
+<span class="w">    </span><span class="nx">isRead</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span><span class="p">,</span><span class="w">         </span><span class="c1">// 是否已读</span>
+<span class="w">    </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">         </span><span class="c1">// 服务类型（SMS/iMessage/unknown）</span>
+<span class="w">    </span><span class="nx">hasAttachments</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span><span class="p">,</span><span class="w"> </span><span class="c1">// 是否有附件</span>
+<span class="w">    </span><span class="nx">chatIdentifier</span><span class="o">?:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="c1">// 聊天标识符（可选）</span>
+<span class="w">    </span><span class="nx">simCard</span><span class="o">?:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">        </span><span class="c1">// SIM 卡信息（可选）</span>
+<span class="w">    </span><span class="nx">account</span><span class="o">?:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">        </span><span class="c1">// 账户信息（可选）</span>
+<span class="w">    </span><span class="nx">accountGuid</span><span class="o">?:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">    </span><span class="c1">// 账户 GUID（可选）</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 读取最近 50 条短信</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mf">50</span><span class="p">);</span>
+<span class="nx">messages</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">msg</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">date</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yyyy-MM-dd HH:mm&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`[</span><span class="si">${</span><span class="nx">time</span><span class="si">}</span><span class="sb">] </span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">address</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">text</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<h4 id="smsgetlatestcount"><code>sms.getLatest(count?)</code><a class="headerlink" href="#smsgetlatestcount" title="Permanent link">&para;</a></h4>
+<p>获取最新的短信。<strong>参数:</strong> <code>count</code> (number, 可选，默认 10) <strong>返回:</strong> <code>Message[]</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">latest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getLatest</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;最新 5 条短信:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">latest</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="smsgetunreadlimit"><code>sms.getUnread(limit?)</code><a class="headerlink" href="#smsgetunreadlimit" title="Permanent link">&para;</a></h4>
+<p>获取未读短信。<strong>参数:</strong> <code>limit</code> (number, 可选，默认 100) <strong>返回:</strong> <code>Message[]</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">unread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getUnread</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">unread</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`有 </span><span class="si">${</span><span class="nx">unread</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条未读短信`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;未读短信&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`您有 </span><span class="si">${</span><span class="nx">unread</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条未读短信`</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="_4">搜索短信<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="smssearchkeyword-limit"><code>sms.search(keyword, limit?)</code><a class="headerlink" href="#smssearchkeyword-limit" title="Permanent link">&para;</a></h4>
+<p>搜索包含关键词的短信。<strong>参数:</strong> <code>keyword</code> (string), <code>limit</code> (number, 可选，默认 100) <strong>返回:</strong> <code>Message[]</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 搜索包含&quot;验证码&quot;的短信</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="s1">&#39;验证码&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`找到 </span><span class="si">${</span><span class="nx">results</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条相关短信`</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="smsgetbyaddressaddress-limit"><code>sms.getByAddress(address, limit?)</code><a class="headerlink" href="#smsgetbyaddressaddress-limit" title="Permanent link">&para;</a></h4>
+<p>获取指定号码的短信。<strong>参数:</strong> <code>address</code> (string), <code>limit</code> (number, 可选，默认 100) <strong>返回:</strong> <code>Message[]</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 获取某个号码的所有短信</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getByAddress</span><span class="p">(</span><span class="s1">&#39;10086&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`与 10086 的短信记录: </span><span class="si">${</span><span class="nx">messages</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条`</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_5">验证码提取<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="smsgetverificationcodeseconds"><code>sms.getVerificationCode(seconds?)</code><a class="headerlink" href="#smsgetverificationcodeseconds" title="Permanent link">&para;</a></h4>
+<p>从最近的短信中提取验证码。<strong>参数:</strong> <code>seconds</code> (number, 可选，默认 60) <strong>返回:</strong> <code>string | null</code></p>
+<p>自动识别常见的验证码格式（4-8 位数字）。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 提取最近 60 秒内的验证码</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getVerificationCode</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">code</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;验证码:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;验证码&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;未找到验证码&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 提取最近 2 分钟内的验证码</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">code2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getVerificationCode</span><span class="p">(</span><span class="mf">120</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_6">聊天管理<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="smsgetchats"><code>sms.getChats()</code><a class="headerlink" href="#smsgetchats" title="Permanent link">&para;</a></h4>
+<p>获取短信聊天列表。<strong>返回:</strong> <code>Chat[]</code></p>
+<p><strong>Chat 对象结构:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">address</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">         </span><span class="c1">// 联系人号码</span>
+<span class="w">  </span><span class="nx">lastMessage</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">     </span><span class="c1">// 最后一条消息</span>
+<span class="w">  </span><span class="nx">lastDate</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w">        </span><span class="c1">// 最后消息时间戳</span>
+<span class="w">  </span><span class="nx">unreadCount</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w">     </span><span class="c1">// 未读数量</span>
+<span class="w">  </span><span class="nx">messageCount</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="w">     </span><span class="c1">// 总消息数</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">chats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getChats</span><span class="p">();</span>
+<span class="nx">chats</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">chat</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">chat</span><span class="p">.</span><span class="nx">address</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">chat</span><span class="p">.</span><span class="nx">messageCount</span><span class="si">}</span><span class="sb"> 条消息, </span><span class="si">${</span><span class="nx">chat</span><span class="p">.</span><span class="nx">unreadCount</span><span class="si">}</span><span class="sb"> 条未读`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h3 id="_7">统计信息<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="smsgetstatistics"><code>sms.getStatistics()</code><a class="headerlink" href="#smsgetstatistics" title="Permanent link">&para;</a></h4>
+<p>获取短信统计信息。<strong>返回:</strong> <code>{ totalMessages, unreadCount, chatCount, isMockData }</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">stats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getStatistics</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;=== 短信统计 ===&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`总消息数: </span><span class="si">${</span><span class="nx">stats</span><span class="p">.</span><span class="nx">totalMessages</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`未读消息: </span><span class="si">${</span><span class="nx">stats</span><span class="p">.</span><span class="nx">unreadCount</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`聊天数量: </span><span class="si">${</span><span class="nx">stats</span><span class="p">.</span><span class="nx">chatCount</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`数据类型: </span><span class="si">${</span><span class="nx">stats</span><span class="p">.</span><span class="nx">isMockData</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;模拟&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;真实&#39;</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="root-helper">Root Helper 方法<a class="headerlink" href="#root-helper" title="Permanent link">&para;</a></h3>
+<h4 id="smshelperavailable"><code>sms.helperAvailable()</code><a class="headerlink" href="#smshelperavailable" title="Permanent link">&para;</a></h4>
+<p>检查 Root Helper 是否可用。<strong>返回:</strong> <code>boolean</code></p>
+<h4 id="smshelpercheck"><code>sms.helperCheck()</code><a class="headerlink" href="#smshelpercheck" title="Permanent link">&para;</a></h4>
+<p>检查短信数据库文件是否存在。<strong>返回:</strong> <code>boolean</code></p>
+<h4 id="smshelpercopy"><code>sms.helperCopy()</code><a class="headerlink" href="#smshelpercopy" title="Permanent link">&para;</a></h4>
+<p>使用 Root Helper 复制短信数据库。<strong>返回:</strong> <code>boolean</code></p>
+<h4 id="smshelperlist"><code>sms.helperList()</code><a class="headerlink" href="#smshelperlist" title="Permanent link">&para;</a></h4>
+<p>列出短信数据库目录内容。<strong>返回:</strong> <code>string[]</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sms</span><span class="p">.</span><span class="nx">helperAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Root Helper 可用&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sms</span><span class="p">.</span><span class="nx">helperCheck</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;短信数据库存在&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">helperCopy</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;数据库复制成功&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="_8">完整示例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="1">示例 1: 短信备份<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">backupMessages</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">sms</span><span class="p">.</span><span class="nx">isRealDataAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;无法访问真实短信数据&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mf">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">backup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">exportDate</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+<span class="w">    </span><span class="nx">totalCount</span><span class="o">:</span><span class="w"> </span><span class="nx">messages</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="nx">messages</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">msg</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">      </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">text</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">date</span><span class="o">:</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">date</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yyyy-MM-dd HH:mm:ss&#39;</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">isRead</span><span class="o">:</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">isRead</span>
+<span class="w">    </span><span class="p">}))</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">backup</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`sms_backup_</span><span class="si">${</span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;yyyyMMdd&#39;</span><span class="p">)</span><span class="si">}</span><span class="sb">.json`</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">file</span><span class="p">.</span><span class="nx">documentsPath</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">filename</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">file</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span><span class="w"> </span><span class="nx">json</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`已备份 </span><span class="si">${</span><span class="nx">messages</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条短信到 </span><span class="si">${</span><span class="nx">filename</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;备份完成&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`已备份 </span><span class="si">${</span><span class="nx">messages</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条短信`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">backupMessages</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="2">示例 2: 短信统计分析<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">analyzeMessages</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mf">500</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 按发件人统计</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">senderStats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">  </span><span class="nx">messages</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">msg</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">senderStats</span><span class="p">[</span><span class="nx">msg</span><span class="p">.</span><span class="nx">address</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">senderStats</span><span class="p">[</span><span class="nx">msg</span><span class="p">.</span><span class="nx">address</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">senderStats</span><span class="p">[</span><span class="nx">msg</span><span class="p">.</span><span class="nx">address</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// 排序</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">sorted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">senderStats</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">b</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">a</span><span class="p">[</span><span class="mf">1</span><span class="p">])</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;=== 短信来源 TOP 10 ===&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">sorted</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(([</span><span class="nx">address</span><span class="p">,</span><span class="w"> </span><span class="nx">count</span><span class="p">],</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="si">}</span><span class="sb">. </span><span class="si">${</span><span class="nx">address</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">count</span><span class="si">}</span><span class="sb"> 条`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// 按日期统计</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">today</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">today</span><span class="p">.</span><span class="nx">setHours</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">todayTimestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">today</span><span class="p">.</span><span class="nx">getTime</span><span class="p">();</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">todayCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">messages</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">msg</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">todayTimestamp</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">weekCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">messages</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">msg</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">todayTimestamp</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">7</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;\n=== 时间统计 ===&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`今天: </span><span class="si">${</span><span class="nx">todayCount</span><span class="si">}</span><span class="sb"> 条`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`本周: </span><span class="si">${</span><span class="nx">weekCount</span><span class="si">}</span><span class="sb"> 条`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`总计: </span><span class="si">${</span><span class="nx">messages</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">analyzeMessages</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="3">示例 3: 未读短信提醒<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">checkUnreadMessages</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">unread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getUnread</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">unread</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;没有未读短信&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`有 </span><span class="si">${</span><span class="nx">unread</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条未读短信:`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">unread</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">msg</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">date</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;HH:mm&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="si">}</span><span class="sb">. [</span><span class="si">${</span><span class="nx">time</span><span class="si">}</span><span class="sb">] </span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">address</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">30</span><span class="p">)</span><span class="si">}</span><span class="sb">...`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// 发送通知</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">unread</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">unread</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+<span class="w">    </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">text</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;未读短信&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`您有 </span><span class="si">${</span><span class="nx">unread</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条未读短信`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">haptic</span><span class="p">.</span><span class="nx">notification</span><span class="p">(</span><span class="s1">&#39;warning&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">checkUnreadMessages</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="4">示例 4: 验证码历史记录<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">getVerificationCodeHistory</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 验证码正则</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">codePattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/\b\d{4,8}\b/</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">codes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">messages</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">msg</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">codePattern</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">match</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="nx">msg</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;验证码&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">      </span><span class="nx">msg</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">      </span><span class="nx">msg</span><span class="p">.</span><span class="nx">text</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;Code&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">codes</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">code</span><span class="o">:</span><span class="w"> </span><span class="nx">match</span><span class="p">[</span><span class="mf">0</span><span class="p">],</span>
+<span class="w">        </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">date</span><span class="o">:</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">date</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">text</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`找到 </span><span class="si">${</span><span class="nx">codes</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条验证码短信:`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">codes</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">date</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;MM-dd HH:mm&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="si">}</span><span class="sb">. [</span><span class="si">${</span><span class="nx">time</span><span class="si">}</span><span class="sb">] </span><span class="si">${</span><span class="nx">item</span><span class="p">.</span><span class="kr">from</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">item</span><span class="p">.</span><span class="nx">code</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">codes</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">history</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getVerificationCodeHistory</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="5">示例 5: 聊天记录导出<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">exportChat</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getByAddress</span><span class="p">(</span><span class="nx">address</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">messages</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;没有找到聊天记录&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`导出与 </span><span class="si">${</span><span class="nx">address</span><span class="si">}</span><span class="sb"> 的 </span><span class="si">${</span><span class="nx">messages</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条消息`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`=== 与 </span><span class="si">${</span><span class="nx">address</span><span class="si">}</span><span class="sb"> 的聊天记录 ===\n\n`</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">messages</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">msg</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">date</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yyyy-MM-dd HH:mm:ss&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">isSent</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;我&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">address</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">text</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="sb">`[</span><span class="si">${</span><span class="nx">time</span><span class="si">}</span><span class="sb">] </span><span class="si">${</span><span class="nx">direction</span><span class="si">}</span><span class="sb">:\n</span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">text</span><span class="si">}</span><span class="sb">\n\n`</span><span class="p">;</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`chat_</span><span class="si">${</span><span class="nx">address</span><span class="si">}</span><span class="sb">_</span><span class="si">${</span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;yyyyMMdd&#39;</span><span class="p">)</span><span class="si">}</span><span class="sb">.txt`</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">file</span><span class="p">.</span><span class="nx">documentsPath</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">filename</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">file</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`聊天记录已导出到 </span><span class="si">${</span><span class="nx">filename</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">exportChat</span><span class="p">(</span><span class="s1">&#39;10086&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_9">最佳实践<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 检查数据可用性<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sms</span><span class="p">.</span><span class="nx">isRealDataAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">read</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">processMessages</span><span class="p">(</span><span class="nx">messages</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;当前使用模拟数据&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 不检查</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">read</span><span class="p">();</span><span class="w">  </span><span class="c1">// 可能是模拟数据</span>
+</code></pre></div>
+<h3 id="2_1">2. 处理权限问题<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">checkAccess</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">access</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;needsCopy&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sms</span><span class="p">.</span><span class="nx">helperAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">sms</span><span class="p">.</span><span class="nx">tryAccess</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;需要 Root 权限&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="3_1">3. 限制读取数量<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 限制数量</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">recent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mf">100</span><span class="p">);</span>
+
+<span class="c1">// ❌ 错误 - 读取所有（可能很慢）</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mf">999999</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="4_1">4. 验证码时效性<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 指定时间范围</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getVerificationCode</span><span class="p">(</span><span class="mf">60</span><span class="p">);</span><span class="w">  </span><span class="c1">// 最近 60 秒</span>
+
+<span class="c1">// ❌ 错误 - 可能获取到旧验证码</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getVerificationCode</span><span class="p">(</span><span class="mf">3600</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_10">注意事项<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Root 权限</strong>: 读取真实短信需要 TrollStore 环境和 Root Helper</li>
+<li><strong>模拟数据</strong>: 无权限时自动使用模拟数据，<code>isMockData</code> 字段标识数据来源</li>
+<li><strong>数据库访问</strong>: 短信数据来自系统数据库 <code>/var/mobile/Library/SMS/sms.db</code></li>
+<li><strong>只读操作</strong>: 只能读取短信，不能发送或删除</li>
+<li><strong>验证码识别</strong>: 自动识别 4-8 位数字验证码</li>
+<li><strong>时间戳</strong>: 所有时间戳为毫秒级 Unix 时间戳</li>
+<li><strong>隐私保护</strong>: 请遵守隐私法规，不要滥用短信数据</li>
+<li><strong>线程安全</strong>: 所有操作都是线程安全的</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

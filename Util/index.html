@@ -1,0 +1,1219 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TrollScript 官方文档与 API 参考">
+      
+      
+      
+        <link rel="canonical" href="https://trollscript.qzz.io/Util/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Util 工具函数 - TrollScript</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#util" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="TrollScript" class="md-header__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TrollScript
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Util 工具函数
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TrollScript" class="md-nav__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TrollScript
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="util">Util 工具函数<a class="headerlink" href="#util" title="Permanent link">&para;</a></h1>
+<p>Util 模块提供了一系列实用的工具函数，包括 UUID 生成、哈希计算、Base64 编解码、日期格式化等常用功能。</p>
+<blockquote>
+<p><strong>守护进程支持</strong>: 完全支持。在触发器模式下可正常运行，所有工具函数都可以正常使用。</p>
+</blockquote>
+<hr />
+<h2 id="_1">目录<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#快速开始">快速开始</a></li>
+<li><a href="#api-参考">API 参考</a></li>
+<li><a href="#utiluuid">util.uuid()</a></li>
+<li><a href="#utilmd5">util.md5()</a></li>
+<li><a href="#utilsha256">util.sha256()</a></li>
+<li><a href="#utilbase64encode">util.base64Encode()</a></li>
+<li><a href="#utilbase64decode">util.base64Decode()</a></li>
+<li><a href="#utilformatdate">util.formatDate()</a></li>
+<li><a href="#utilnow">util.now()</a></li>
+<li><a href="#utilsleep">util.sleep()</a></li>
+<li><a href="#完整示例">完整示例</a></li>
+<li><a href="#最佳实践">最佳实践</a></li>
+</ul>
+<hr />
+<h2 id="_2">快速开始<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>使用 Util 模块的工具函数非常简单：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 生成 UUID</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">uuid</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;UUID:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="p">);</span>
+
+<span class="c1">// 计算 MD5</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">md5</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;MD5:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">hash</span><span class="p">);</span>
+
+<span class="c1">// Base64 编码</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">encoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">base64Encode</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;编码:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">encoded</span><span class="p">);</span>
+
+<span class="c1">// 格式化日期</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">formatted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;yyyy-MM-dd HH:mm:ss&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;时间:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">formatted</span><span class="p">);</span>
+
+<span class="c1">// 延迟执行</span>
+<span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">1000</span><span class="p">);</span><span class="w">  </span><span class="c1">// 暂停 1 秒</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;1秒后执行&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="utiluuid"><code>util.uuid()</code><a class="headerlink" href="#utiluuid" title="Permanent link">&para;</a></h3>
+<p>生成一个随机的 UUID（通用唯一识别码）。</p>
+<p><strong>返回:</strong> <code>string</code> — UUID 字符串（格式：XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX）</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">uuid</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="c1">// 输出: 550E8400-E29B-41D4-A716-446655440000</span>
+
+<span class="c1">// 用作唯一标识符</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">taskId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">uuid</span><span class="p">();</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="sb">`task_</span><span class="si">${</span><span class="nx">taskId</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;任务1&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;pending&#39;</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h3 id="utilmd5string"><code>util.md5(string)</code><a class="headerlink" href="#utilmd5string" title="Permanent link">&para;</a></h3>
+<p>计算字符串的 MD5 哈希值。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>string</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>要计算哈希的字符串</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>string</code> — 32 位小写十六进制 MD5 哈希值</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">md5</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hash</span><span class="p">);</span>
+<span class="c1">// 输出: b10a8db164e0754105b7a99be72e3fe5</span>
+
+<span class="c1">// 用于数据校验</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;important data&#39;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">checksum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">md5</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;data_checksum&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">checksum</span><span class="p">);</span>
+
+<span class="c1">// 后续验证</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">storedChecksum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;data_checksum&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">util</span><span class="p">.</span><span class="nx">md5</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">storedChecksum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;数据完整&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;数据已被修改&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>注意:</strong> MD5 不适合用于安全敏感场景，建议使用 SHA256。</p>
+<hr />
+<h3 id="utilsha256string"><code>util.sha256(string)</code><a class="headerlink" href="#utilsha256string" title="Permanent link">&para;</a></h3>
+<p>计算字符串的 SHA256 哈希值。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>string</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>要计算哈希的字符串</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>string</code> — 64 位小写十六进制 SHA256 哈希值</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">sha256</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hash</span><span class="p">);</span>
+<span class="c1">// 输出: a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e</span>
+
+<span class="c1">// 用于安全校验</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;user_password&#39;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">hashedPassword</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">sha256</span><span class="p">(</span><span class="nx">password</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;密码哈希:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">hashedPassword</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="utilbase64encodestring"><code>util.base64Encode(string)</code><a class="headerlink" href="#utilbase64encodestring" title="Permanent link">&para;</a></h3>
+<p>将字符串编码为 Base64 格式。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>string</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>要编码的字符串</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>string</code> — Base64 编码后的字符串</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">encoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">base64Encode</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">encoded</span><span class="p">);</span>
+<span class="c1">// 输出: SGVsbG8gV29ybGQ=</span>
+
+<span class="c1">// 编码中文</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">chineseEncoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">base64Encode</span><span class="p">(</span><span class="s1">&#39;你好世界&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chineseEncoded</span><span class="p">);</span>
+<span class="c1">// 输出: 5L2g5aW95LiW55WM</span>
+
+<span class="c1">// 用于数据传输</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">25</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">encodedData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">base64Encode</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="nx">encodedData</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="utilbase64decodestring"><code>util.base64Decode(string)</code><a class="headerlink" href="#utilbase64decodestring" title="Permanent link">&para;</a></h3>
+<p>将 Base64 编码的字符串解码为原始字符串。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>string</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>Base64 编码的字符串</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>string</code> — 解码后的原始字符串</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">base64Decode</span><span class="p">(</span><span class="s1">&#39;SGVsbG8gV29ybGQ=&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">decoded</span><span class="p">);</span>
+<span class="c1">// 输出: Hello World</span>
+
+<span class="c1">// 解码中文</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">chineseDecoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">base64Decode</span><span class="p">(</span><span class="s1">&#39;5L2g5aW95LiW55WM&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chineseDecoded</span><span class="p">);</span>
+<span class="c1">// 输出: 你好世界</span>
+
+<span class="c1">// 解码数据</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">encodedData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">decodedData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">base64Decode</span><span class="p">(</span><span class="nx">encodedData</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">decodedData</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;解码成功:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;解码失败:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="utilformatdatetimestamp-format"><code>util.formatDate(timestamp, format?)</code><a class="headerlink" href="#utilformatdatetimestamp-format" title="Permanent link">&para;</a></h3>
+<p>将时间戳格式化为指定格式的日期字符串。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>timestamp</code></td>
+<td><code>number</code></td>
+<td>是</td>
+<td>-</td>
+<td>时间戳（毫秒）</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td><code>string</code></td>
+<td>否</td>
+<td><code>'yyyy-MM-dd HH:mm:ss'</code></td>
+<td>日期格式</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>string</code> — 格式化后的日期字符串</p>
+<p><strong>常用格式:</strong>
+- <code>yyyy-MM-dd HH:mm:ss</code> - 完整日期时间（默认）
+- <code>yyyy-MM-dd</code> - 仅日期
+- <code>HH:mm:ss</code> - 仅时间
+- <code>HH:mm:ss.SSS</code> - 带毫秒的时间
+- 自定义格式（如 <code>yyyy年MM月dd日</code>）</p>
+<p><strong>格式占位符:</strong>
+- <code>yyyy</code> - 四位年份
+- <code>MM</code> - 两位月份（01-12）
+- <code>dd</code> - 两位日期（01-31）
+- <code>HH</code> - 两位小时（00-23）
+- <code>mm</code> - 两位分钟（00-59）
+- <code>ss</code> - 两位秒（00-59）
+- <code>SSS</code> - 三位毫秒（000-999）</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+
+<span class="c1">// 默认格式</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">formatted1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">now</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatted1</span><span class="p">);</span>
+<span class="c1">// 输出: 2024-01-15 14:30:45</span>
+
+<span class="c1">// 仅日期</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">formatted2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">now</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yyyy-MM-dd&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatted2</span><span class="p">);</span>
+<span class="c1">// 输出: 2024-01-15</span>
+
+<span class="c1">// 仅时间</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">formatted3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">now</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;HH:mm:ss&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatted3</span><span class="p">);</span>
+<span class="c1">// 输出: 14:30:45</span>
+
+<span class="c1">// 带毫秒</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">formatted4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">now</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;HH:mm:ss.SSS&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatted4</span><span class="p">);</span>
+<span class="c1">// 输出: 14:30:45.123</span>
+
+<span class="c1">// 中文格式</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">formatted5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">now</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yyyy年MM月dd日 HH:mm&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatted5</span><span class="p">);</span>
+<span class="c1">// 输出: 2024年01月15日 14:30</span>
+
+<span class="c1">// 自定义格式</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">formatted6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">now</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yyyy/MM/dd HH:mm&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">formatted6</span><span class="p">);</span>
+<span class="c1">// 输出: 2024/01/15 14:30</span>
+</code></pre></div>
+<hr />
+<h3 id="utilnow"><code>util.now()</code><a class="headerlink" href="#utilnow" title="Permanent link">&para;</a></h3>
+<p>获取当前时间戳（毫秒）。</p>
+<p><strong>返回:</strong> <code>number</code> — 当前时间戳（毫秒）</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;当前时间戳:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">timestamp</span><span class="p">);</span>
+<span class="c1">// 输出: 1705305045123</span>
+
+<span class="c1">// 等同于</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">timestamp2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+
+<span class="c1">// 用于计时</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">startTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+<span class="c1">// 执行一些操作</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">endTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">endTime</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">startTime</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`耗时: </span><span class="si">${</span><span class="nx">duration</span><span class="si">}</span><span class="sb">ms`</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="utilsleepms"><code>util.sleep(ms)</code><a class="headerlink" href="#utilsleepms" title="Permanent link">&para;</a></h3>
+<p>暂停执行指定的毫秒数。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ms</code></td>
+<td><code>number</code></td>
+<td>是</td>
+<td>暂停的毫秒数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>void</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;开始&#39;</span><span class="p">);</span>
+<span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">1000</span><span class="p">);</span><span class="w">  </span><span class="c1">// 暂停 1 秒</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;1秒后&#39;</span><span class="p">);</span>
+
+<span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">2000</span><span class="p">);</span><span class="w">  </span><span class="c1">// 暂停 2 秒</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;再过2秒&#39;</span><span class="p">);</span>
+
+<span class="c1">// 用于延迟执行</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">delayedAction</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;准备执行...&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">500</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;执行！&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>注意:</strong> <code>sleep</code> 会阻塞当前线程，不建议在需要响应的场景中使用过长的延迟。</p>
+<hr />
+<h2 id="_3">完整示例<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1">示例 1: 生成唯一文件名<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">generateUniqueFilename</span><span class="p">(</span><span class="nx">extension</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">uuid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">uuid</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">util</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;yyyyMMdd_HHmmss&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="sb">`file_</span><span class="si">${</span><span class="nx">timestamp</span><span class="si">}</span><span class="sb">_</span><span class="si">${</span><span class="nx">uuid</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">8</span><span class="p">)</span><span class="si">}</span><span class="sb">.</span><span class="si">${</span><span class="nx">extension</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">generateUniqueFilename</span><span class="p">(</span><span class="s1">&#39;txt&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;文件名:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">filename</span><span class="p">);</span>
+<span class="c1">// 输出: file_20240115_143045_550e8400.txt</span>
+</code></pre></div>
+<hr />
+<h3 id="2">示例 2: 数据完整性校验<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 保存数据并计算校验和</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">saveDataWithChecksum</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">jsonData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">checksum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">sha256</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">_checksum`</span><span class="p">,</span><span class="w"> </span><span class="nx">checksum</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;数据已保存，校验和:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">checksum</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 读取数据并验证完整性</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">loadDataWithVerification</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">storedChecksum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">_checksum`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">storedChecksum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;数据不存在&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">jsonData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">currentChecksum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">sha256</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">currentChecksum</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">storedChecksum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;数据完整性验证失败！&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;数据完整性验证通过&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">data</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="nx">saveDataWithChecksum</span><span class="p">(</span><span class="s1">&#39;user_data&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">25</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;alice@example.com&#39;</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">userData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">loadDataWithVerification</span><span class="p">(</span><span class="s1">&#39;user_data&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;用户数据:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">userData</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="3">示例 3: 简单的加密/解密<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 简单的 Base64 &quot;加密&quot;（仅用于混淆，不安全）</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">simpleEncrypt</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">base64Encode</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">simpleDecrypt</span><span class="p">(</span><span class="nx">encrypted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">base64Decode</span><span class="p">(</span><span class="nx">encrypted</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;解密失败:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">secret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;这是一个秘密消息&#39;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">encrypted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">simpleEncrypt</span><span class="p">(</span><span class="nx">secret</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;加密后:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">encrypted</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">decrypted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">simpleDecrypt</span><span class="p">(</span><span class="nx">encrypted</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;解密后:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">decrypted</span><span class="p">);</span>
+
+<span class="c1">// 注意：这不是真正的加密，只是编码！</span>
+</code></pre></div>
+<hr />
+<h3 id="4">示例 4: 日志记录系统<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 带时间戳的日志记录</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">log</span><span class="p">(</span><span class="nx">level</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">util</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;yyyy-MM-dd HH:mm:ss.SSS&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">logEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`[</span><span class="si">${</span><span class="nx">timestamp</span><span class="si">}</span><span class="sb">] [</span><span class="si">${</span><span class="nx">level</span><span class="si">}</span><span class="sb">] </span><span class="si">${</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">logEntry</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 保存到存储</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">logs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;app_logs&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">logs</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+<span class="w">    </span><span class="nx">level</span><span class="o">:</span><span class="w"> </span><span class="nx">level</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="nx">message</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// 只保留最近 1000 条</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">logs</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">logs</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;app_logs&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">logs</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="nx">log</span><span class="p">(</span><span class="s1">&#39;INFO&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;应用启动&#39;</span><span class="p">);</span>
+<span class="nx">log</span><span class="p">(</span><span class="s1">&#39;DEBUG&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;正在加载配置&#39;</span><span class="p">);</span>
+<span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ERROR&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;连接失败&#39;</span><span class="p">);</span>
+
+<span class="c1">// 导出日志</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">exportLogs</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">logs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;app_logs&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">logText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">logs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">log</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">log</span><span class="p">.</span><span class="nx">timestamp</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yyyy-MM-dd HH:mm:ss&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">logText</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="sb">`[</span><span class="si">${</span><span class="nx">timestamp</span><span class="si">}</span><span class="sb">] [</span><span class="si">${</span><span class="nx">log</span><span class="p">.</span><span class="nx">level</span><span class="si">}</span><span class="sb">] </span><span class="si">${</span><span class="nx">log</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="sb">\n`</span><span class="p">;</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">logText</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">logContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">exportLogs</span><span class="p">();</span>
+<span class="nx">file</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;/var/mobile/Documents/app.log&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">logContent</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="5">示例 5: 性能监控<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 性能计时器</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">PerformanceTimer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">startTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">lap</span><span class="p">(</span><span class="nx">label</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">startTime</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`[</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">] </span><span class="si">${</span><span class="nx">label</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">duration</span><span class="si">}</span><span class="sb">ms`</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">duration</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">end</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">lap</span><span class="p">(</span><span class="s1">&#39;总耗时&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">duration</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PerformanceTimer</span><span class="p">(</span><span class="s1">&#39;数据处理&#39;</span><span class="p">);</span>
+
+<span class="c1">// 步骤 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;开始读取数据...&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;large_data&#39;</span><span class="p">);</span>
+<span class="nx">timer</span><span class="p">.</span><span class="nx">lap</span><span class="p">(</span><span class="s1">&#39;读取数据&#39;</span><span class="p">);</span>
+
+<span class="c1">// 步骤 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;开始处理数据...&#39;</span><span class="p">);</span>
+<span class="c1">// 处理数据...</span>
+<span class="nx">timer</span><span class="p">.</span><span class="nx">lap</span><span class="p">(</span><span class="s1">&#39;处理数据&#39;</span><span class="p">);</span>
+
+<span class="c1">// 步骤 3</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;开始保存结果...&#39;</span><span class="p">);</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;result&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+<span class="nx">timer</span><span class="p">.</span><span class="nx">lap</span><span class="p">(</span><span class="s1">&#39;保存结果&#39;</span><span class="p">);</span>
+
+<span class="nx">timer</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h3 id="6">示例 6: 重试机制<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 带延迟的重试函数</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">retryWithDelay</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span><span class="w"> </span><span class="nx">maxRetries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">delayMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">attempt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">attempt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">maxRetries</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`尝试 </span><span class="si">${</span><span class="nx">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">maxRetries</span><span class="si">}</span><span class="sb">...`</span><span class="p">);</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fn</span><span class="p">();</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;成功！&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">attempt</span><span class="o">++</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`失败: </span><span class="si">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">attempt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">maxRetries</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`等待 </span><span class="si">${</span><span class="nx">delayMs</span><span class="si">}</span><span class="sb">ms 后重试...`</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="nx">delayMs</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;已达到最大重试次数&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">unreliableOperation</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 模拟可能失败的操作</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.7</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;操作失败&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;操作成功&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">retryWithDelay</span><span class="p">(</span><span class="nx">unreliableOperation</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;结果:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;最终失败:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="7">示例 7: 缓存系统<a class="headerlink" href="#7" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 带过期时间和校验的缓存</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">Cache</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cache_&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prefix</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">set</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">ttlSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3600</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">fullKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">prefix</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">key</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">checksum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">md5</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cacheEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">checksum</span><span class="o">:</span><span class="w"> </span><span class="nx">checksum</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+<span class="w">      </span><span class="nx">ttl</span><span class="o">:</span><span class="w"> </span><span class="nx">ttlSeconds</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">fullKey</span><span class="p">,</span><span class="w"> </span><span class="nx">cacheEntry</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">get</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">fullKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">prefix</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">key</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">entry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">fullKey</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">entry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 检查是否过期</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">now</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">entry</span><span class="p">.</span><span class="nx">timestamp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">entry</span><span class="p">.</span><span class="nx">ttl</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">storage</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">fullKey</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;缓存已过期&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 验证数据完整性</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">entry</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">checksum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">md5</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">checksum</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">entry</span><span class="p">.</span><span class="nx">checksum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;缓存数据已损坏&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">storage</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">fullKey</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">entry</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">clear</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">keys</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">keys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">key</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">prefix</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">storage</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Cache</span><span class="p">(</span><span class="s1">&#39;api_&#39;</span><span class="p">);</span>
+
+<span class="c1">// 缓存 API 响应</span>
+<span class="nx">cache</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Alice&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Bob&#39;</span><span class="w"> </span><span class="p">}],</span><span class="w"> </span><span class="mf">1800</span><span class="p">);</span>
+
+<span class="c1">// 获取缓存</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cache</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">users</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;使用缓存:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">users</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;缓存未命中，需要重新获取&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="8">示例 8: 批处理工具<a class="headerlink" href="#8" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 批量处理数据，带进度显示</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">batchProcess</span><span class="p">(</span><span class="nx">items</span><span class="p">,</span><span class="w"> </span><span class="nx">processor</span><span class="p">,</span><span class="w"> </span><span class="nx">batchSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">delayMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">startTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`开始处理 </span><span class="si">${</span><span class="nx">total</span><span class="si">}</span><span class="sb"> 个项目...`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">processor</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`处理项目 </span><span class="si">${</span><span class="nx">i</span><span class="si">}</span><span class="sb"> 失败:`</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 每处理一批后暂停</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">batchSize</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">elapsed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">startTime</span><span class="p">;</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">avgTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">elapsed</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">remaining</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">avgTime</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">total</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">));</span>
+
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`进度: </span><span class="si">${</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">total</span><span class="si">}</span><span class="sb"> (</span><span class="si">${</span><span class="nx">progress</span><span class="si">}</span><span class="sb">%), 预计剩余: </span><span class="si">${</span><span class="nx">remaining</span><span class="si">}</span><span class="sb">ms`</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="nx">delayMs</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">totalTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">startTime</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`处理完成！总耗时: </span><span class="si">${</span><span class="nx">totalTime</span><span class="si">}</span><span class="sb">ms`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Array</span><span class="p">.</span><span class="kr">from</span><span class="p">({</span><span class="w"> </span><span class="nx">length</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">(</span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">i</span><span class="p">);</span>
+
+<span class="nx">batchProcess</span><span class="p">(</span><span class="nx">items</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">item</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 处理每个项目</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">item</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`处理项目 </span><span class="si">${</span><span class="nx">index</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">item</span><span class="si">}</span><span class="sb"> -&gt; </span><span class="si">${</span><span class="nx">result</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_4">最佳实践<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="1-uuid">1. 使用 UUID 作为唯一标识符<a class="headerlink" href="#1-uuid" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 使用 UUID</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">taskId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">uuid</span><span class="p">();</span>
+<span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="sb">`task_</span><span class="si">${</span><span class="nx">taskId</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="nx">taskData</span><span class="p">);</span>
+
+<span class="c1">// ❌ 错误 - 使用时间戳（可能重复）</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">taskId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="2_1">2. 选择合适的哈希算法<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 安全场景使用 SHA256</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">passwordHash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">sha256</span><span class="p">(</span><span class="nx">password</span><span class="p">);</span>
+
+<span class="c1">// ✅ 正确 - 非安全场景使用 MD5（更快）</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">cacheKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">md5</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+
+<span class="c1">// ❌ 错误 - 安全场景使用 MD5</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">passwordHash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">md5</span><span class="p">(</span><span class="nx">password</span><span class="p">);</span><span class="w">  </span><span class="c1">// 不安全！</span>
+</code></pre></div>
+<h3 id="3-base64">3. Base64 不是加密<a class="headerlink" href="#3-base64" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 用于编码传输</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">encoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">base64Encode</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="nx">http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">encoded</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// ❌ 错误 - 用于&quot;加密&quot;敏感信息</span>
+<span class="kd">const</span><span class="w"> </span><span class="s2">&quot;encrypted&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">base64Encode</span><span class="p">(</span><span class="nx">password</span><span class="p">);</span><span class="w">  </span><span class="c1">// 这不是加密！</span>
+</code></pre></div>
+<h3 id="4_1">4. 使用预定义的日期格式<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 使用常用格式（性能更好）</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">date1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">now</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yyyy-MM-dd HH:mm:ss&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">date2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">now</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yyyy-MM-dd&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">date3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">now</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;HH:mm:ss&#39;</span><span class="p">);</span>
+
+<span class="c1">// ⚠️ 可以但较慢 - 自定义格式</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">date4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">now</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yyyy年MM月dd日&#39;</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="5-sleep">5. 避免过长的 sleep<a class="headerlink" href="#5-sleep" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 短暂延迟</span>
+<span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">100</span><span class="p">);</span><span class="w">  </span><span class="c1">// 100ms</span>
+
+<span class="c1">// ❌ 错误 - 过长延迟会阻塞</span>
+<span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">60000</span><span class="p">);</span><span class="w">  </span><span class="c1">// 1分钟，太长了！</span>
+</code></pre></div>
+<h3 id="6_1">6. 组合使用工具函数<a class="headerlink" href="#6_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 组合使用</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">uuid</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">formatted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="nx">timestamp</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yyyy-MM-dd&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">sha256</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">_</span><span class="si">${</span><span class="nx">timestamp</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">record</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">id</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">date</span><span class="o">:</span><span class="w"> </span><span class="nx">formatted</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">checksum</span><span class="o">:</span><span class="w"> </span><span class="nx">hash</span>
+<span class="p">};</span>
+</code></pre></div>
+<hr />
+<h2 id="_5">注意事项<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>UUID 格式</strong>: 生成的 UUID 符合标准格式，可以用作唯一标识符</li>
+<li><strong>哈希算法</strong>: MD5 适合非安全场景，SHA256 适合安全场景</li>
+<li><strong>Base64 编码</strong>: 只是编码方式，不是加密，不要用于保护敏感信息</li>
+<li><strong>日期格式</strong>: 支持常用格式和自定义格式，常用格式性能更好</li>
+<li><strong>时间戳单位</strong>: <code>util.now()</code> 返回毫秒，<code>util.formatDate()</code> 接受毫秒</li>
+<li><strong>Sleep 阻塞</strong>: <code>util.sleep()</code> 会阻塞当前线程，不适合长时间延迟</li>
+<li><strong>性能考虑</strong>: 哈希计算和 Base64 编解码有一定开销，避免在循环中频繁调用</li>
+<li><strong>错误处理</strong>: Base64 解码可能失败，需要使用 try-catch 处理</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

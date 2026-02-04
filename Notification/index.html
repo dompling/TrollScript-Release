@@ -1,0 +1,1303 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TrollScript 官方文档与 API 参考">
+      
+      
+      
+        <link rel="canonical" href="https://trollscript.qzz.io/Notification/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Notification 本地通知 - TrollScript</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#notification" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="TrollScript" class="md-header__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TrollScript
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notification 本地通知
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TrollScript" class="md-nav__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TrollScript
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    中文文档
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="notification">Notification 本地通知<a class="headerlink" href="#notification" title="Permanent link">&para;</a></h1>
+<p>Notification 模块提供了本地通知功能。你可以使用它来发送通知、管理通知权限、设置应用角标等。</p>
+<blockquote>
+<p><strong>守护进程支持</strong>: 完全支持。在触发器模式下可正常运行，可以在后台发送通知。</p>
+</blockquote>
+<hr />
+<h2 id="_1">目录<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#快速开始">快速开始</a></li>
+<li><a href="#api-参考">API 参考</a></li>
+<li><a href="#权限管理">权限管理</a><ul>
+<li><a href="#notificationrequestaccess">notification.requestAccess()</a></li>
+<li><a href="#notificationgetaccessstatus">notification.getAccessStatus()</a></li>
+<li><a href="#notificationisauthorized">notification.isAuthorized()</a></li>
+</ul>
+</li>
+<li><a href="#通知操作">通知操作</a><ul>
+<li><a href="#notificationschedule">notification.schedule()</a></li>
+<li><a href="#notificationsend">notification.send()</a></li>
+<li><a href="#notificationcancel">notification.cancel()</a></li>
+<li><a href="#notificationcancelall">notification.cancelAll()</a></li>
+</ul>
+</li>
+<li><a href="#查询">查询</a><ul>
+<li><a href="#notificationgetpending">notification.getPending()</a></li>
+<li><a href="#notificationgetdelivered">notification.getDelivered()</a></li>
+</ul>
+</li>
+<li><a href="#角标管理">角标管理</a><ul>
+<li><a href="#notificationsetbadge">notification.setBadge()</a></li>
+<li><a href="#notificationclearbadge">notification.clearBadge()</a></li>
+</ul>
+</li>
+<li><a href="#完整示例">完整示例</a></li>
+<li><a href="#最佳实践">最佳实践</a></li>
+</ul>
+<hr />
+<h2 id="_2">快速开始<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>使用 Notification 模块发送通知非常简单：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 请求通知权限</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">requestAccess</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">granted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;通知权限已授予&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 发送立即通知</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;标题&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;这是通知内容&#39;</span><span class="p">);</span>
+
+<span class="c1">// 发送延迟通知</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;5秒后的通知&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">delay</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span>
+<span class="p">});</span>
+
+<span class="c1">// 设置角标</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">setBadge</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="_3">权限管理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="notificationrequestaccess"><code>notification.requestAccess()</code><a class="headerlink" href="#notificationrequestaccess" title="Permanent link">&para;</a></h4>
+<p>请求通知权限。</p>
+<p><strong>返回:</strong> <code>object</code> — 权限请求结果</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>granted</code></td>
+<td><code>boolean</code></td>
+<td>是否授予权限</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td><code>string</code></td>
+<td>错误信息（如果有）</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">requestAccess</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">granted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;通知权限已授予&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;通知权限被拒绝:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>注意:</strong>
+- 首次调用会弹出系统权限请求对话框
+- 如果用户之前已拒绝，需要引导用户到设置中手动开启</p>
+<hr />
+<h4 id="notificationgetaccessstatus"><code>notification.getAccessStatus()</code><a class="headerlink" href="#notificationgetaccessstatus" title="Permanent link">&para;</a></h4>
+<p>获取当前通知权限状态。</p>
+<p><strong>返回:</strong> <code>string</code> — 权限状态</p>
+<p>可能的值：
+- <code>'authorized'</code> - 已授权
+- <code>'denied'</code> - 已拒绝
+- <code>'notDetermined'</code> - 未决定
+- <code>'provisional'</code> - 临时授权
+- <code>'ephemeral'</code> - 短暂授权
+- <code>'unknown'</code> - 未知状态</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">getAccessStatus</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;通知权限状态:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;denied&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;请到设置中开启通知权限&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h4 id="notificationisauthorized"><code>notification.isAuthorized()</code><a class="headerlink" href="#notificationisauthorized" title="Permanent link">&para;</a></h4>
+<p>检查是否已授权通知权限。</p>
+<p><strong>返回:</strong> <code>boolean</code> — 如果已授权返回 <code>true</code>，否则返回 <code>false</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">notification</span><span class="p">.</span><span class="nx">isAuthorized</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;可以发送通知&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;测试&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;通知内容&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;需要先请求通知权限&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">requestAccess</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="_4">通知操作<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="notificationscheduletitle-body-options"><code>notification.schedule(title, body, options?)</code><a class="headerlink" href="#notificationscheduletitle-body-options" title="Permanent link">&para;</a></h4>
+<p>调度一个通知（可以立即发送或延迟发送）。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>通知标题</td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>通知内容</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><code>object</code></td>
+<td>否</td>
+<td>通知选项</td>
+</tr>
+</tbody>
+</table>
+<p><strong>options 配置项:</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>subtitle</code></td>
+<td><code>string</code></td>
+<td>-</td>
+<td>副标题</td>
+</tr>
+<tr>
+<td><code>badge</code></td>
+<td><code>number</code></td>
+<td>-</td>
+<td>角标数字</td>
+</tr>
+<tr>
+<td><code>delay</code></td>
+<td><code>number</code></td>
+<td>-</td>
+<td>延迟时间（秒）</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td><code>number</code></td>
+<td>-</td>
+<td>指定时间戳（毫秒）</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>自动生成</td>
+<td>通知 ID</td>
+</tr>
+<tr>
+<td><code>userInfo</code></td>
+<td><code>object</code></td>
+<td>-</td>
+<td>自定义数据</td>
+</tr>
+<tr>
+<td><code>copyOnTap</code></td>
+<td><code>string\|boolean</code></td>
+<td>-</td>
+<td>点击时复制内容</td>
+</tr>
+</tbody>
+</table>
+<p><strong>copyOnTap 说明:</strong>
+- <code>string</code> - 点击通知时复制指定的字符串
+- <code>true</code> 或 <code>1</code> - 点击通知时复制通知的 body 内容
+- <code>false</code>、<code>0</code> 或不设置 - 不复制</p>
+<p><strong>返回:</strong> <code>string</code> — 通知 ID（成功时）或包含错误信息的对象（失败时）</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 立即发送</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">schedule</span><span class="p">(</span><span class="s1">&#39;标题&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;内容&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;通知 ID:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="p">);</span>
+
+<span class="c1">// 5秒后发送</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">schedule</span><span class="p">(</span><span class="s1">&#39;提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;5秒后的通知&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">delay</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span>
+<span class="p">});</span>
+
+<span class="c1">// 指定时间发送</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">tomorrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">schedule</span><span class="p">(</span><span class="s1">&#39;明日提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;这是明天的通知&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">date</span><span class="o">:</span><span class="w"> </span><span class="nx">tomorrow</span>
+<span class="p">});</span>
+
+<span class="c1">// 带副标题和角标</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">schedule</span><span class="p">(</span><span class="s1">&#39;新消息&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;你有3条未读消息&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">subtitle</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;来自好友&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">badge</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span>
+<span class="p">});</span>
+
+<span class="c1">// 点击时复制内容</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">schedule</span><span class="p">(</span><span class="s1">&#39;验证码&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;123456&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">copyOnTap</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c1">// 点击时复制 &quot;123456&quot;</span>
+<span class="p">});</span>
+
+<span class="c1">// 点击时复制自定义内容</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">schedule</span><span class="p">(</span><span class="s1">&#39;链接&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;点击复制链接&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">copyOnTap</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://example.com&#39;</span>
+<span class="p">});</span>
+
+<span class="c1">// 自定义 ID</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">schedule</span><span class="p">(</span><span class="s1">&#39;任务提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;任务即将到期&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;task_reminder_001&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">delay</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="notificationsendtitle-body-options"><code>notification.send(title, body, options?)</code><a class="headerlink" href="#notificationsendtitle-body-options" title="Permanent link">&para;</a></h4>
+<p>发送通知（<code>schedule</code> 的别名）。</p>
+<p><strong>参数:</strong> 同 <code>notification.schedule()</code></p>
+<p><strong>返回:</strong> 同 <code>notification.schedule()</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 等同于 notification.schedule()</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;标题&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;内容&#39;</span><span class="p">);</span>
+
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;延迟通知&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">delay</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="notificationcancelid"><code>notification.cancel(id)</code><a class="headerlink" href="#notificationcancelid" title="Permanent link">&para;</a></h4>
+<p>取消指定的通知。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>通知 ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>boolean</code> — 是否成功</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 发送通知并保存 ID</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;测试&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;这是一条测试通知&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">delay</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span>
+<span class="p">});</span>
+
+<span class="c1">// 取消通知</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">cancel</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;通知已取消&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h4 id="notificationcancelall"><code>notification.cancelAll()</code><a class="headerlink" href="#notificationcancelall" title="Permanent link">&para;</a></h4>
+<p>取消所有待发送和已发送的通知。</p>
+<p><strong>返回:</strong> <code>boolean</code> — 是否成功</p>
+<div class="highlight"><pre><span></span><code><span class="nx">notification</span><span class="p">.</span><span class="nx">cancelAll</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;所有通知已清除&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_5">查询<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="notificationgetpending"><code>notification.getPending()</code><a class="headerlink" href="#notificationgetpending" title="Permanent link">&para;</a></h4>
+<p>获取所有待发送的通知列表。</p>
+<p><strong>返回:</strong> <code>array</code> — 待发送通知数组</p>
+<p>每个通知对象包含：
+- <code>id</code> - 通知 ID
+- <code>title</code> - 标题
+- <code>body</code> - 内容
+- <code>subtitle</code> - 副标题
+- <code>delay</code> - 延迟时间（如果有）
+- <code>date</code> - 发送时间戳（如果有）</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">pending</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">getPending</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`有 </span><span class="si">${</span><span class="nx">pending</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条待发送通知`</span><span class="p">);</span>
+
+<span class="nx">pending</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">notif</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`- </span><span class="si">${</span><span class="nx">notif</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">notif</span><span class="p">.</span><span class="nx">body</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="notificationgetdelivered"><code>notification.getDelivered()</code><a class="headerlink" href="#notificationgetdelivered" title="Permanent link">&para;</a></h4>
+<p>获取所有已发送的通知列表。</p>
+<p><strong>返回:</strong> <code>array</code> — 已发送通知数组</p>
+<p>每个通知对象包含：
+- <code>id</code> - 通知 ID
+- <code>title</code> - 标题
+- <code>body</code> - 内容
+- <code>subtitle</code> - 副标题
+- <code>date</code> - 发送时间戳</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">delivered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">getDelivered</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`有 </span><span class="si">${</span><span class="nx">delivered</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条已发送通知`</span><span class="p">);</span>
+
+<span class="nx">delivered</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">notif</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="nx">notif</span><span class="p">.</span><span class="nx">date</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`- </span><span class="si">${</span><span class="nx">notif</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb"> (</span><span class="si">${</span><span class="nx">date</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">()</span><span class="si">}</span><span class="sb">)`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h3 id="_6">角标管理<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="notificationsetbadgecount"><code>notification.setBadge(count)</code><a class="headerlink" href="#notificationsetbadgecount" title="Permanent link">&para;</a></h4>
+<p>设置应用图标角标数字。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>count</code></td>
+<td><code>number</code></td>
+<td>是</td>
+<td>角标数字（0 表示清除）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>boolean</code> — 是否成功</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 设置角标为 5</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">setBadge</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span>
+
+<span class="c1">// 清除角标</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">setBadge</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h4 id="notificationclearbadge"><code>notification.clearBadge()</code><a class="headerlink" href="#notificationclearbadge" title="Permanent link">&para;</a></h4>
+<p>清除应用图标角标。</p>
+<p><strong>返回:</strong> <code>boolean</code> — 是否成功</p>
+<div class="highlight"><pre><span></span><code><span class="nx">notification</span><span class="p">.</span><span class="nx">clearBadge</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;角标已清除&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_7">完整示例<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="1">示例 1: 简单提醒<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 检查权限</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">notification</span><span class="p">.</span><span class="nx">isAuthorized</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">requestAccess</span><span class="p">();</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">result</span><span class="p">.</span><span class="nx">granted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;无法发送通知：权限被拒绝&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 发送提醒</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;喝水提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;该喝水了！&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">delay</span><span class="o">:</span><span class="w"> </span><span class="mf">3600</span><span class="w">  </span><span class="c1">// 1小时后</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;提醒已设置&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="2">示例 2: 定时任务提醒<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 设置每日提醒</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">setDailyReminder</span><span class="p">(</span><span class="nx">hour</span><span class="p">,</span><span class="w"> </span><span class="nx">minute</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reminderTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">reminderTime</span><span class="p">.</span><span class="nx">setHours</span><span class="p">(</span><span class="nx">hour</span><span class="p">,</span><span class="w"> </span><span class="nx">minute</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 如果今天的时间已过，设置为明天</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">reminderTime</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">now</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">reminderTime</span><span class="p">.</span><span class="nx">setDate</span><span class="p">(</span><span class="nx">reminderTime</span><span class="p">.</span><span class="nx">getDate</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">delay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">reminderTime</span><span class="p">.</span><span class="nx">getTime</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">now</span><span class="p">.</span><span class="nx">getTime</span><span class="p">())</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">delay</span><span class="o">:</span><span class="w"> </span><span class="nx">delay</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="sb">`daily_</span><span class="si">${</span><span class="nx">hour</span><span class="si">}</span><span class="sb">_</span><span class="si">${</span><span class="nx">minute</span><span class="si">}</span><span class="sb">`</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`提醒已设置: </span><span class="si">${</span><span class="nx">reminderTime</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 每天早上 8:00 提醒</span>
+<span class="nx">setDailyReminder</span><span class="p">(</span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;早安&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;新的一天开始了！&#39;</span><span class="p">);</span>
+
+<span class="c1">// 每天晚上 22:00 提醒</span>
+<span class="nx">setDailyReminder</span><span class="p">(</span><span class="mf">22</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;晚安&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;该休息了&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="3">示例 3: 倒计时通知<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 倒计时通知</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">countdownNotification</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">seconds</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">intervals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">60</span><span class="p">,</span><span class="w"> </span><span class="mf">30</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">];</span>
+
+<span class="w">  </span><span class="nx">intervals</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">sec</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sec</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">seconds</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="sb">`还剩 </span><span class="si">${</span><span class="nx">sec</span><span class="si">}</span><span class="sb"> 秒`</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">delay</span><span class="o">:</span><span class="w"> </span><span class="nx">seconds</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">sec</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// 最后的通知</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;时间到！&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">delay</span><span class="o">:</span><span class="w"> </span><span class="nx">seconds</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">badge</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`倒计时已开始: </span><span class="si">${</span><span class="nx">seconds</span><span class="si">}</span><span class="sb"> 秒`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 5分钟倒计时</span>
+<span class="nx">countdownNotification</span><span class="p">(</span><span class="s1">&#39;番茄钟&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="4">示例 4: 通知管理器<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 通知管理器</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">NotificationManager</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">ensurePermission</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">ensurePermission</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">notification</span><span class="p">.</span><span class="nx">isAuthorized</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">requestAccess</span><span class="p">();</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">result</span><span class="p">.</span><span class="nx">granted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;通知权限未授予&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">send</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`通知已发送: </span><span class="si">${</span><span class="nx">title</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">id</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">sendWithCopy</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">copyOnTap</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">schedule</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="nx">delaySeconds</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">delay</span><span class="o">:</span><span class="w"> </span><span class="nx">delaySeconds</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">scheduleAt</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="nx">timestamp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">date</span><span class="o">:</span><span class="w"> </span><span class="nx">timestamp</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">cancelAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">notification</span><span class="p">.</span><span class="nx">cancelAll</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">notification</span><span class="p">.</span><span class="nx">clearBadge</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;所有通知已清除&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">listPending</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">pending</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">getPending</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`=== 待发送通知 (</span><span class="si">${</span><span class="nx">pending</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb">) ===`</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">pending</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">notif</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="si">}</span><span class="sb">. </span><span class="si">${</span><span class="nx">notif</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">notif</span><span class="p">.</span><span class="nx">body</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">pending</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">listDelivered</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">delivered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">getDelivered</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`=== 已发送通知 (</span><span class="si">${</span><span class="nx">delivered</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb">) ===`</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">delivered</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">notif</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="nx">notif</span><span class="p">.</span><span class="nx">date</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="si">}</span><span class="sb">. </span><span class="si">${</span><span class="nx">notif</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb"> - </span><span class="si">${</span><span class="nx">date</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">delivered</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">updateBadge</span><span class="p">(</span><span class="nx">count</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">notification</span><span class="p">.</span><span class="nx">setBadge</span><span class="p">(</span><span class="nx">count</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">nm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">NotificationManager</span><span class="p">();</span>
+
+<span class="nx">nm</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;测试&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;这是一条测试通知&#39;</span><span class="p">);</span>
+<span class="nx">nm</span><span class="p">.</span><span class="nx">schedule</span><span class="p">(</span><span class="s1">&#39;提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;5秒后的提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">);</span>
+<span class="nx">nm</span><span class="p">.</span><span class="nx">sendWithCopy</span><span class="p">(</span><span class="s1">&#39;验证码&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;123456&#39;</span><span class="p">);</span>
+
+<span class="nx">nm</span><span class="p">.</span><span class="nx">listPending</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h3 id="5">示例 5: 任务提醒系统<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 任务提醒系统</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">TaskReminder</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">tasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;tasks&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">addTask</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">description</span><span class="p">,</span><span class="w"> </span><span class="nx">dueTime</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">util</span><span class="p">.</span><span class="nx">uuid</span><span class="p">(),</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="nx">description</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">dueTime</span><span class="o">:</span><span class="w"> </span><span class="nx">dueTime</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">created</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">tasks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">task</span><span class="p">);</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">saveTasks</span><span class="p">();</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">scheduleReminder</span><span class="p">(</span><span class="nx">task</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;任务已添加:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">task</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">scheduleReminder</span><span class="p">(</span><span class="nx">task</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">timeUntilDue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">task</span><span class="p">.</span><span class="nx">dueTime</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">now</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">timeUntilDue</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;任务已过期&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 提前 1 小时提醒</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">oneHourBefore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">timeUntilDue</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">oneHourBefore</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;任务提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">task</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb"> 将在 1 小时后到期`</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">delay</span><span class="o">:</span><span class="w"> </span><span class="nx">oneHourBefore</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">task</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">_1h`</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 到期提醒</span>
+<span class="w">    </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;任务到期&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">task</span><span class="p">.</span><span class="nx">description</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">delay</span><span class="o">:</span><span class="w"> </span><span class="nx">timeUntilDue</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">task</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">badge</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">tasks</span><span class="p">.</span><span class="nx">length</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;提醒已设置&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">completeTask</span><span class="p">(</span><span class="nx">taskId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">tasks</span><span class="p">.</span><span class="nx">findIndex</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">t</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">taskId</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">index</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">tasks</span><span class="p">[</span><span class="nx">index</span><span class="p">];</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">tasks</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">saveTasks</span><span class="p">();</span>
+
+<span class="w">      </span><span class="c1">// 取消提醒</span>
+<span class="w">      </span><span class="nx">notification</span><span class="p">.</span><span class="nx">cancel</span><span class="p">(</span><span class="nx">taskId</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">notification</span><span class="p">.</span><span class="nx">cancel</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">taskId</span><span class="si">}</span><span class="sb">_1h`</span><span class="p">);</span>
+
+<span class="w">      </span><span class="c1">// 更新角标</span>
+<span class="w">      </span><span class="nx">notification</span><span class="p">.</span><span class="nx">setBadge</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tasks</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;任务已完成:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">task</span><span class="p">.</span><span class="nx">title</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">listTasks</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`=== 任务列表 (</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">tasks</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb">) ===`</span><span class="p">);</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">tasks</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">task</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">dueDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="nx">task</span><span class="p">.</span><span class="nx">dueTime</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="si">}</span><span class="sb">. </span><span class="si">${</span><span class="nx">task</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb"> - </span><span class="si">${</span><span class="nx">dueDate</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">saveTasks</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;tasks&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">tasks</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">reminder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TaskReminder</span><span class="p">();</span>
+
+<span class="c1">// 添加任务</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">tomorrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
+<span class="nx">reminder</span><span class="p">.</span><span class="nx">addTask</span><span class="p">(</span><span class="s1">&#39;完成报告&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;提交月度报告&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">tomorrow</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">nextWeek</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">7</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
+<span class="nx">reminder</span><span class="p">.</span><span class="nx">addTask</span><span class="p">(</span><span class="s1">&#39;项目会议&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;参加项目评审会议&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">nextWeek</span><span class="p">);</span>
+
+<span class="nx">reminder</span><span class="p">.</span><span class="nx">listTasks</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h3 id="6">示例 6: 验证码通知<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 验证码通知（点击复制）</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">sendVerificationCode</span><span class="p">(</span><span class="nx">code</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;验证码&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">subtitle</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;点击复制&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">copyOnTap</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">badge</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;验证码已发送:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 5分钟后清除角标</span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">notification</span><span class="p">.</span><span class="nx">clearBadge</span><span class="p">();</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="mf">100000</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">900000</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>
+<span class="nx">sendVerificationCode</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="7">示例 7: 批量通知管理<a class="headerlink" href="#7" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 批量发送通知</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">sendBatchNotifications</span><span class="p">(</span><span class="nx">notifications</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">  </span><span class="nx">notifications</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">notif</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">notif</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">notif</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">delay</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w">  </span><span class="c1">// 每隔2秒发送一条</span>
+<span class="w">      </span><span class="p">...</span><span class="nx">notif</span><span class="p">.</span><span class="nx">options</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">ids</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`已调度 </span><span class="si">${</span><span class="nx">ids</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条通知`</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">ids</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">notifications</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;通知 1&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;第一条通知&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;通知 2&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;第二条通知&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;通知 3&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;第三条通知&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">];</span>
+
+<span class="nx">sendBatchNotifications</span><span class="p">(</span><span class="nx">notifications</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="8">示例 8: 通知历史记录<a class="headerlink" href="#8" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 通知历史记录</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">saveNotificationHistory</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">history</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;notification_history&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">  </span><span class="nx">history</span><span class="p">.</span><span class="nx">unshift</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">body</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// 只保留最近 100 条</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">history</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">history</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;notification_history&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">history</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">getNotificationHistory</span><span class="p">(</span><span class="nx">limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">history</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">storage</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;notification_history&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">history</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">limit</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 发送通知并记录</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">sendAndLog</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">saveNotificationHistory</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">id</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 查看历史</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">showHistory</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">history</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getNotificationHistory</span><span class="p">(</span><span class="mf">20</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`=== 通知历史 (最近 </span><span class="si">${</span><span class="nx">history</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条) ===`</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">history</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">timestamp</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="si">}</span><span class="sb">. </span><span class="si">${</span><span class="nx">item</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb"> - </span><span class="si">${</span><span class="nx">date</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="nx">sendAndLog</span><span class="p">(</span><span class="s1">&#39;测试&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;这是一条测试通知&#39;</span><span class="p">);</span>
+<span class="nx">showHistory</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="_8">最佳实践<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 始终检查权限<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p>在发送通知前检查权限：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">notification</span><span class="p">.</span><span class="nx">isAuthorized</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">requestAccess</span><span class="p">();</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">result</span><span class="p">.</span><span class="nx">granted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;无法发送通知&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;标题&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;内容&#39;</span><span class="p">);</span>
+
+<span class="c1">// ❌ 错误 - 没有检查权限</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;标题&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;内容&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// 可能失败</span>
+</code></pre></div>
+<h3 id="2-id">2. 使用有意义的通知 ID<a class="headerlink" href="#2-id" title="Permanent link">&para;</a></h3>
+<p>为重要通知设置自定义 ID：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 使用有意义的 ID</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;任务提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;任务即将到期&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;task_reminder_001&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">delay</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span>
+<span class="p">});</span>
+
+<span class="c1">// 后续可以取消</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">cancel</span><span class="p">(</span><span class="s1">&#39;task_reminder_001&#39;</span><span class="p">);</span>
+
+<span class="c1">// ❌ 较差 - 使用自动生成的 ID</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;任务提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;任务即将到期&#39;</span><span class="p">);</span>
+<span class="c1">// ID 难以记住和管理</span>
+</code></pre></div>
+<h3 id="3_1">3. 合理设置角标<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>及时更新和清除角标：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 及时更新角标</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;新消息&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;你有新消息&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">badge</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span>
+<span class="p">});</span>
+
+<span class="c1">// 消息已读后清除</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">clearBadge</span><span class="p">();</span>
+
+<span class="c1">// ❌ 错误 - 不清除角标</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">setBadge</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span>
+<span class="c1">// 角标一直显示，影响用户体验</span>
+</code></pre></div>
+<h3 id="4_1">4. 避免通知轰炸<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<p>不要在短时间内发送大量通知：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 合并通知</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;新消息&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;你有 5 条新消息&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">badge</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span>
+<span class="p">});</span>
+
+<span class="c1">// ❌ 错误 - 发送多条通知</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;新消息&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`消息 </span><span class="si">${</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="5_1">5. 提供清晰的通知内容<a class="headerlink" href="#5_1" title="Permanent link">&para;</a></h3>
+<p>通知内容要简洁明了：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 清晰的内容</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;任务提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;项目报告将在 1 小时后到期&#39;</span><span class="p">);</span>
+
+<span class="c1">// ❌ 错误 - 内容不清晰</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;时间到了&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// 什么时间？</span>
+</code></pre></div>
+<h3 id="6-copyontap">6. 使用 copyOnTap 功能<a class="headerlink" href="#6-copyontap" title="Permanent link">&para;</a></h3>
+<p>对于验证码等需要复制的内容，使用 copyOnTap：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 方便用户复制</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;验证码&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;123456&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">copyOnTap</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">});</span>
+
+<span class="c1">// ❌ 较差 - 用户需要手动复制</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;验证码&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;123456&#39;</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="7_1">7. 定期清理通知<a class="headerlink" href="#7_1" title="Permanent link">&para;</a></h3>
+<p>定期清理已发送的通知：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 定期清理</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">cleanupOldNotifications</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">delivered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">notification</span><span class="p">.</span><span class="nx">getDelivered</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+
+<span class="w">  </span><span class="nx">delivered</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">notif</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">notif</span><span class="p">.</span><span class="nx">date</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 清理 24 小时前的通知</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">age</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">notification</span><span class="p">.</span><span class="nx">cancel</span><span class="p">(</span><span class="nx">notif</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// 每天清理一次</span>
+<span class="nx">setInterval</span><span class="p">(</span><span class="nx">cleanupOldNotifications</span><span class="p">,</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_9">注意事项<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>权限要求</strong>: 首次使用需要请求通知权限，用户可能拒绝</li>
+<li><strong>系统限制</strong>: iOS 对通知数量和频率有限制，避免发送过多通知</li>
+<li><strong>Daemon 模式</strong>: 在 Daemon 模式下可以正常发送通知</li>
+<li><strong>通知延迟</strong>: 使用 <code>delay</code> 参数时，最小延迟为 1 秒</li>
+<li><strong>角标限制</strong>: 角标数字最大为 999，超过会显示为 999+</li>
+<li><strong>通知声音</strong>: 默认使用系统通知声音，无法自定义</li>
+<li><strong>通知分组</strong>: iOS 会自动将同一应用的通知分组显示</li>
+<li><strong>copyOnTap</strong>: 点击通知复制功能需要应用处理，在 Daemon 模式下可能有限制</li>
+<li><strong>时间精度</strong>: 延迟通知的时间精度约为 1 秒</li>
+<li><strong>后台限制</strong>: 在某些情况下，系统可能延迟或不发送通知</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
