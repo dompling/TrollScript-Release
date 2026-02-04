@@ -1,6 +1,6 @@
 {
   "name": "@dompling/trollscript-types",
-  "version": "1.0.43",
+  "version": "1.0.44",
   "description": "TypeScript definitions for TrollScript",
   "main": "",
   "types": "index.d.ts",
