@@ -34,12 +34,6 @@ interface Console {
     debug(...args: any[]): void;
 
     /**
-     * 以表格形式输出
-     * @param data 要显示的表格数据
-     */
-    table(data: any): void;
-
-    /**
      * 清空控制台
      */
     clear(): void;
@@ -89,6 +83,12 @@ interface Clipboard {
      */
     clear(): void;
 
+    /**
+     * 检查剪贴板是否包含文本
+     * @returns 剪贴板是否有文本内容
+     */
+    hasText(): boolean;
+
 }
 
 declare const clipboard: Clipboard;
@@ -125,6 +125,12 @@ interface Storage {
      * @returns 是否存在
      */
     has(key: string): boolean;
+
+    /**
+     * 获取所有存储的键
+     * @returns 所有键名的数组
+     */
+    keys(): any;
 
 }
 
@@ -327,50 +333,50 @@ interface Http {
     /**
      * 发送 GET 请求
      * @param url 请求地址
-     * @param options 请求选项 { headers, timeout }
-     * @returns 包含状态码、响应数据、响应头的对象
+     * @param options 请求选项 { headers, timeout, insecure }
+     * @returns 包含成功状态、状态码、响应数据、响应头的对象
      */
     get(url: string, options?: Record<string, any>): any;
 
     /**
      * 发送 POST 请求
      * @param url 请求地址
-     * @param options 请求选项 { body, headers, timeout }
+     * @param options 请求选项 { body, headers, timeout, insecure }
      */
     post(url: string, options?: Record<string, any>): any;
 
     /**
      * 发送 PUT 请求
      * @param url 请求地址
-     * @param options 请求选项 { body, headers, timeout }
+     * @param options 请求选项 { body, headers, timeout, insecure }
      */
     put(url: string, options?: Record<string, any>): any;
 
     /**
      * 发送 DELETE 请求
      * @param url 请求地址
-     * @param options 请求选项 { headers, timeout }
+     * @param options 请求选项 { headers, timeout, insecure }
      */
     delete(url: string, options?: Record<string, any>): any;
 
     /**
      * 发送 PATCH 请求
      * @param url 请求地址
-     * @param options 请求选项 { body, headers, timeout }
+     * @param options 请求选项 { body, headers, timeout, insecure }
      */
     patch(url: string, options?: Record<string, any>): any;
 
     /**
      * 发送 HEAD 请求
      * @param url 请求地址
-     * @param options 请求选项 { headers, timeout }
+     * @param options 请求选项 { headers, timeout, insecure }
      */
     head(url: string, options?: Record<string, any>): any;
 
     /**
      * 发送自定义请求
      * @param url 请求地址
-     * @param options 请求选项 { method, body, headers, timeout }
+     * @param options 请求选项 { method, body, headers, timeout, insecure }
      */
     request(url: string, options: Record<string, any>): any;
 
@@ -378,9 +384,10 @@ interface Http {
      * 下载文件
      * @param url 下载地址
      * @param path 保存路径
-     * @returns 包含本地文件路径的对象
+     * @param options 请求选项 { insecure }
+     * @returns 包含成功状态和本地文件路径的对象
      */
-    download(url: string, path: string): any;
+    download(url: string, path: string, options?: Record<string, any>): any;
 
 }
 
@@ -437,7 +444,7 @@ interface Network {
     /**
      * Ping 主机
      * @param host 主机名或 IP
-     * @returns 包含延迟和成功状态的对象
+     * @returns 包含成功状态和延迟（毫秒）的对象
      */
     ping(host: string): any;
 
@@ -445,7 +452,7 @@ interface Network {
      * 下载文件
      * @param url 下载地址
      * @param filename 保存文件名
-     * @returns 包含本地文件路径的对象
+     * @returns 包含成功状态和本地文件路径的对象
      */
     download(url: string, filename?: string): any;
 
@@ -515,7 +522,7 @@ interface App {
      * @param url 要打开的 URL
      * @returns 是否成功打开
      */
-    open(url: string): any;
+    open(url: string): boolean;
 
     /**
      * 检查是否能打开
@@ -683,24 +690,27 @@ interface Display {
     /**
      * 设置屏幕亮度
      * @param value 亮度值 (0.0 - 1.0)
+     * @returns 是否设置成功
      */
-    setBrightness(value: number): void;
+    setBrightness(value: number): boolean;
 
     /**
      * 增加亮度
      * @param amount 增加量 (默认 0.1)
+     * @returns 是否设置成功
      */
-    increaseBrightness(amount?: number): void;
+    increaseBrightness(amount?: number): boolean;
 
     /**
      * 降低亮度
      * @param amount 减少量 (默认 0.1)
+     * @returns 是否设置成功
      */
-    decreaseBrightness(amount?: number): void;
+    decreaseBrightness(amount?: number): boolean;
 
     /**
      * 获取屏幕信息
-     * @returns 包含宽度、高度、缩放比例的对象
+     * @returns 包含宽度、高度、缩放比例和原生分辨率的对象
      */
     getScreenInfo(): any;
 
@@ -745,12 +755,49 @@ interface Display {
     /**
      * 保持屏幕常亮
      * @param enabled 是否保持常亮
+     * @returns 是否设置成功
      */
-    keepAwake(enabled: boolean): void;
+    keepAwake(enabled: boolean): boolean;
 
 }
 
 declare const display: Display;
+
+interface Hud {
+    /**
+     * 创建 HUD 窗口
+     * @param config 窗口配置 { id?, width?, height?, x?, y?, draggable?, dismissible?, autoClear?, style? }，style 为 { backgroundColor?, textColor?, fontSize?, fontWeight?, cornerRadius?, padding?, opacity?, shadow? }
+     * @returns 窗口对象，可用于添加元素和控制窗口
+     */
+    createWindow(config: Record<string, any>): any;
+
+    /**
+     * 根据 ID 获取已存在的窗口
+     * @param id 窗口 ID
+     * @returns 窗口对象，未找到返回 null
+     */
+    getWindow(id: string): any;
+
+    /**
+     * 获取屏幕尺寸信息
+     * @returns 包含 width, height, scale 的屏幕信息对象
+     */
+    getScreenSize(): any;
+
+    /**
+     * 清除所有 HUD 窗口
+     */
+    clearAll(): void;
+
+    /**
+     * 获取所有窗口 ID 列表
+     * @returns 窗口 ID 数组
+     */
+    getAllWindows(): any;
+
+}
+
+declare const hud: Hud;
 
 interface Util {
     /**
@@ -781,12 +828,31 @@ interface Util {
     base64Decode(string: string): string;
 
     /**
-     * 格式化日期
-     * @param date 日期对象
-     * @param format 格式字符串 (如 'yyyy-MM-dd')
+     * 计算 SHA256 哈希
+     * @param string 要计算的字符串
+     * @returns SHA256 哈希值
+     */
+    sha256(string: string): string;
+
+    /**
+     * 格式化时间戳为字符串
+     * @param timestamp 时间戳（毫秒）
+     * @param format 格式模式（如 'yyyy-MM-dd'），默认为 'yyyy-MM-dd HH:mm:ss'
      * @returns 格式化后的日期字符串
      */
-    formatDate(date: any, format: string): string;
+    formatDate(timestamp: number, format?: string): string;
+
+    /**
+     * 获取当前时间戳（毫秒）
+     * @returns 当前时间戳
+     */
+    now(): number;
+
+    /**
+     * 休眠指定时长
+     * @param ms 休眠时长（毫秒）
+     */
+    sleep(ms: number): void;
 
 }
 
@@ -812,13 +878,13 @@ interface Location {
 
     /**
      * 获取当前位置
-     * @returns 位置信息对象(包含经纬度、海拔等)
+     * @returns 位置信息对象(包含经纬度、海拔、精度等)，失败返回 null
      */
     getCurrent(): any;
 
     /**
      * 获取当前位置(别名)
-     * @returns 位置信息对象
+     * @returns 位置信息对象，失败返回 null
      */
     current(): any;
 
@@ -887,7 +953,7 @@ interface Calendar {
      * 请求日历权限
      * @returns 是否授权成功
      */
-    requestAccess(): any;
+    requestAccess(): boolean;
 
     /**
      * 获取所有日历
@@ -916,7 +982,7 @@ interface Calendar {
      * @param start 开始时间戳
      * @param end 结束时间戳
      * @param options 选项 { calendarId, notes, location, url, allDay }
-     * @returns 创建的事件 ID
+     * @returns 创建的事件 ID，失败返回 null
      */
     create(title: string, start: number, end: number, options?: Record<string, any>): any;
 
@@ -925,7 +991,7 @@ interface Calendar {
      * @param id 事件 ID
      * @returns 是否删除成功
      */
-    delete(id: string): any;
+    delete(id: string): boolean;
 
 }
 
@@ -942,7 +1008,7 @@ interface Reminder {
      * 请求提醒事项权限
      * @returns 是否授权成功
      */
-    requestAccess(): any;
+    requestAccess(): boolean;
 
     /**
      * 获取所有提醒列表
@@ -960,8 +1026,8 @@ interface Reminder {
     /**
      * 创建提醒事项
      * @param title 标题
-     * @param options 选项 { listId, notes, dueDate, priority, sortOrder, isPinned }
-     * @returns 创建的提醒 ID
+     * @param options 选项 { listId, notes, dueDate, priority, location: { latitude, longitude, radius, onArrive, name } }
+     * @returns 创建的提醒 ID，如果是位置提醒则返回详细对象
      */
     create(title: string, options?: Record<string, any>): any;
 
@@ -970,14 +1036,14 @@ interface Reminder {
      * @param id 提醒事项 ID
      * @returns 是否成功
      */
-    complete(id: string): any;
+    complete(id: string): boolean;
 
     /**
      * 删除提醒事项
      * @param id 提醒事项 ID
      * @returns 是否成功
      */
-    delete(id: string): any;
+    delete(id: string): boolean;
 
     /**
      * 获取排序后的提醒
@@ -1002,20 +1068,20 @@ interface Reminder {
     /**
      * 批量重排序
      * @param ids 按顺序排列的 ID 数组
-     * @returns { success: boolean, count: number }
+     * @returns 操作结果（注意：系统提醒不支持重排序）
      */
     reorder(ids: any): any;
 
     /**
-     * 创建系统提醒（支持位置触发）
+     * 创建系统提醒（支持位置触发等高级功能）
      * @param title 标题
      * @param options { listId, notes, dueDate, priority, location: { latitude, longitude, radius, onArrive, name } }
-     * @returns { success: boolean, id: string, title: string, isSystemReminder: true }
+     * @returns 包含成功状态和系统提醒详情的对象
      */
     createSystemReminder(title: string, options?: Record<string, any>): any;
 
     /**
-     * 获取系统提醒列表
+     * 获取系统管理的提醒列表
      * @returns 系统提醒列表数组
      */
     getSystemLists(): any;
@@ -1044,7 +1110,7 @@ interface Contacts {
     isAuthorized(): boolean;
 
     /**
-     * 获取所有联系人
+     * 获取所有联系人（支持分页）
      * @param offset 跳过的记录数，默认 0
      * @param limit 返回的最大数量，默认全部
      * @returns 联系人对象数组
@@ -1059,199 +1125,90 @@ interface Contacts {
 
     /**
      * 按名字搜索联系人
-     * @param query 搜索关键词（匹配姓名）
-     * @returns 联系人对象数组
+     * @param query 搜索关键词（匹配姓名字段）
+     * @returns 匹配的联系人对象数组
      */
     search(query: string): any;
 
     /**
-     * 按电话搜索联系人
+     * 按电话号码搜索联系人
      * @param phone 电话号码（支持模糊匹配）
-     * @returns 联系人对象数组
+     * @returns 匹配的联系人对象数组
      */
     searchByPhone(phone: string): any;
 
     /**
-     * 按邮箱搜索联系人
-     * @param email 邮箱地址（支持模糊匹配）
-     * @returns 联系人对象数组
-     */
-    searchByEmail(email: string): any;
-
-    /**
-     * 根据 ID 获取联系人
+     * 根据唯一标识符获取联系人
      * @param id 联系人唯一标识符
-     * @returns 联系人对象
+     * @returns 联系人对象，未找到返回 null
      */
     getById(id: string): any;
 
     /**
-     * 创建联系人
-     * @param data 联系人数据 { givenName, familyName, phoneNumbers?, emailAddresses?, ... }
-     * @returns 包含成功状态和 ID 的对象
+     * 创建新联系人
+     * @param data 联系人数据，包含 givenName, familyName, phoneNumbers, emailAddresses 等
+     * @returns 包含成功状态和新联系人 ID 的对象
      */
     create(data: Record<string, any>): any;
 
     /**
-     * 更新联系人
-     * @param id 联系人唯一标识符
-     * @param data 要更新的字段
-     * @returns 包含成功状态的对象
-     */
-    update(id: string, data: Record<string, any>): any;
-
-    /**
-     * 删除联系人
+     * 删除指定联系人
      * @param id 联系人唯一标识符
      * @returns 包含成功状态的对象
      */
     delete(id: string): any;
 
     /**
-     * 获取所有分组
-     * @returns 分组数组
+     * 获取所有联系人分组
+     * @returns 分组对象数组
      */
     getGroups(): any;
-
-    /**
-     * 获取分组内联系人
-     * @param groupId 分组唯一标识符
-     * @returns 联系人对象数组
-     */
-    getContactsInGroup(groupId: string): any;
 
 }
 
 declare const contacts: Contacts;
 
-interface Notification {
-    /**
-     * 发送通知
-     * @param title 通知标题
-     * @param body 通知内容
-     * @param options 选项 { url, userInfo, sound, badge }
-     * @returns 发送的通知 ID
-     */
-    send(title: string, body: string, options?: Record<string, any>): any;
-
-    /**
-     * 取消通知
-     * @param id 通知 ID
-     */
-    cancel(id: string): void;
-
-    /**
-     * 取消所有通知
-     */
-    cancelAll(): void;
-
-    /**
-     * 获取待发送通知
-     * @returns 待发送通知列表
-     */
-    getPending(): any;
-
-    /**
-     * 获取已发送通知
-     * @returns 已发送通知列表
-     */
-    getDelivered(): any;
-
-    /**
-     * 请求通知权限
-     * @returns 授权结果对象
-     */
-    requestAccess(): any;
-
-    /**
-     * 获取权限状态
-     * @returns 权限状态字符串
-     */
-    getAccessStatus(): any;
-
-    /**
-     * 检查是否已授权通知权限
-     * @returns 是否已授权
-     */
-    isAuthorized(): boolean;
-
-    /**
-     * 设置角标数字
-     * @param count 角标数
-     * @returns 是否成功
-     */
-    setBadge(count: number): boolean;
-
-    /**
-     * 清除角标
-     * @returns 是否成功
-     */
-    clearBadge(): boolean;
-
-    /**
-     * 定时通知
-     * @param title 通知标题
-     * @param body 通知内容
-     * @param date 触发时间戳
-     * @param options 选项 { url, userInfo, sound, badge, repeat: 'daily'|'weekly'|'monthly' }
-     * @returns 发送的通知 ID
-     */
-    schedule(title: string, body: string, date: number, options?: Record<string, any>): any;
-
-}
-
-declare const notification: Notification;
-
 interface Sms {
     /**
-     * 检查短信权限
-     * @returns 是否有权限
+     * 检查是否可以访问真实短信数据
+     * @returns 应用是否有权访问短信数据库
      */
-    checkAccess(): boolean;
-
-    /**
-     * 尝试直接访问短信数据库(调试用)
-     * @returns 是否访问成功
-     */
-    tryAccess(): boolean;
+    isRealDataAvailable(): boolean;
 
     /**
      * 读取最近的短信
-     * @param limit 限制条数 (默认 10)
+     * @param limit 最大返回数量（默认 50）
+     * @param offset 跳过的消息数（默认 0）
      * @returns 短信对象数组
      */
-    read(limit?: number): any;
+    read(limit?: number, offset?: number): any;
 
     /**
-     * 获取验证码
-     * @param minutes 查找最近几分钟内的验证码 (默认 5)
-     * @returns 验证码或 null
+     * 按关键词搜索短信
+     * @param keyword 搜索关键词
+     * @param limit 最大返回数量（默认 50）
+     * @returns 匹配的短信对象数组
      */
-    getVerificationCode(minutes?: number): any;
+    search(keyword: string, limit?: number): any;
 
     /**
-     * 搜索短信
-     * @param keyword 关键词
+     * 获取指定号码的短信
+     * @param address 发送者号码或地址
+     * @param limit 最大返回数量（默认 50）
      * @returns 短信对象数组
      */
-    search(keyword: string): any;
-
-    /**
-     * 按号码获取短信
-     * @param address 发送者号码
-     * @returns 短信对象数组
-     */
-    getByAddress(address: string): any;
+    getByAddress(address: string, limit?: number): any;
 
     /**
      * 获取会话列表
-     * @returns 会话列表数组
+     * @param limit 最大返回数量（默认 50）
+     * @returns 会话对象数组
      */
-    getChats(): any;
+    getChats(limit?: number): any;
 
     /**
-     * 获取短信统计
-     * @returns 统计信息对象
+     * 获取短信统计信息
+     * @returns 包含统计信息的对象
      */
     getStatistics(): any;
 
@@ -1263,9 +1220,35 @@ interface Sms {
 
     /**
      * 获取未读短信
+     * @param limit 最大返回数量（默认 50）
      * @returns 未读短信对象数组
      */
-    getUnread(): any;
+    getUnread(limit?: number): any;
+
+    /**
+     * 通过 Root Helper 检查短信数据库访问权限
+     * @returns 访问状态信息
+     */
+    helperCheck(): Record<string, any>;
+
+    /**
+     * 通过 Root Helper 复制短信数据库到临时目录
+     * @returns 复制操作结果
+     */
+    helperCopy(): any;
+
+    /**
+     * 通过 Root Helper 列出目录内容
+     * @param path 要列出的目录路径
+     * @returns 目录列表结果
+     */
+    helperList(path: string): Record<string, any>;
+
+    /**
+     * 检查 Root Helper 是否可用
+     * @returns Root Helper 是否可访问
+     */
+    helperAvailable(): boolean;
 
 }
 
@@ -1273,37 +1256,105 @@ declare const sms: Sms;
 
 interface Sql {
     /**
-     * 执行 SELECT 查询并返回结果
-     * @param dbPath 数据库路径
-     * @param sql SQL 语句
-     * @param params 参数列表
-     * @returns 查询结果数组
+     * 打开或创建 SQLite 数据库
+     * @param name 数据库名称（默认为 'default'）。文件将在 Documents 目录下创建为 {name}.sqlite
+     * @returns 数据库是否成功打开
      */
-    query(dbPath: string, sql: string, params?: any[]): any[];
+    open(name?: string): boolean;
 
     /**
-     * 执行 INSERT/UPDATE/DELETE
-     * @param dbPath 数据库路径
-     * @param sql SQL 语句
-     * @param params 参数列表
-     * @returns 执行结果对象
+     * 关闭数据库连接
+     * @param name 数据库名称（默认为 'default'）
+     * @returns 始终返回 true
      */
-    execute(dbPath: string, sql: string, params?: any[]): any;
+    close(name?: string): boolean;
+
+    /**
+     * 执行 INSERT、UPDATE、DELETE 或 DDL 语句
+     * @param name 数据库名称（默认为 'default'）
+     * @param sql 要执行的 SQL 语句
+     * @param params 预处理语句的参数（使用 ? 占位符）
+     * @returns 包含成功状态、受影响行数和最后插入行 ID 的结果对象
+     */
+    execute(name?: string, sql: string, params?: any[]): any;
+
+    /**
+     * execute() 的别名
+     * @param name 数据库名称（默认为 'default'）
+     * @param sql 要执行的 SQL 语句
+     * @param params 预处理语句的参数
+     * @returns 结果对象
+     */
+    exec(name?: string, sql: string, params?: any[]): any;
+
+    /**
+     * 执行 SELECT 查询并返回所有匹配的行
+     * @param name 数据库名称（默认为 'default'）
+     * @param sql 要执行的 SELECT 查询
+     * @param params 预处理语句的参数
+     * @returns 行对象数组（列名 -> 值）
+     */
+    query(name?: string, sql: string, params?: any[]): any;
+
+    /**
+     * 执行 SELECT 查询并返回第一行
+     * @param name 数据库名称（默认为 'default'）
+     * @param sql 要执行的 SELECT 查询
+     * @param params 预处理语句的参数
+     * @returns 第一行对象，如果没有结果则返回 null
+     */
+    queryOne(name?: string, sql: string, params?: any[]): any;
+
+    /**
+     * 检查数据库中是否存在指定表
+     * @param name 数据库名称（默认为 'default'）
+     * @param tableName 要检查的表名
+     * @returns 表是否存在
+     */
+    tableExists(name?: string, tableName: string): boolean;
 
     /**
      * 列出数据库中的所有表
-     * @param dbPath 数据库路径
+     * @param name 数据库名称（默认为 'default'）
      * @returns 表名数组
      */
-    tables(dbPath: string): any;
+    getTables(name?: string): any;
 
     /**
-     * 获取表结构
-     * @param dbPath 数据库路径
+     * 获取表的列信息
+     * @param name 数据库名称（默认为 'default'）
      * @param tableName 表名
-     * @returns 表结构 SQL
+     * @returns 列信息对象数组
      */
-    schema(dbPath: string, tableName: string): string;
+    getTableInfo(name?: string, tableName: string): any;
+
+    /**
+     * 开始数据库事务
+     * @param name 数据库名称（默认为 'default'）
+     * @returns 事务是否成功开始
+     */
+    beginTransaction(name?: string): boolean;
+
+    /**
+     * 提交当前事务
+     * @param name 数据库名称（默认为 'default'）
+     * @returns 提交是否成功
+     */
+    commit(name?: string): boolean;
+
+    /**
+     * 回滚当前事务
+     * @param name 数据库名称（默认为 'default'）
+     * @returns 回滚是否成功
+     */
+    rollback(name?: string): boolean;
+
+    /**
+     * 通过回收未使用的空间来优化数据库
+     * @param name 数据库名称（默认为 'default'）
+     * @returns vacuum 操作是否成功
+     */
+    vacuum(name?: string): boolean;
 
 }
 

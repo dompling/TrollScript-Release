@@ -27,14 +27,14 @@ The following icons indicate API compatibility when running in background trigge
 - [app](#app) ⚠️ - 应用操作与管理
 - [haptic](#haptic) ⚠️ - 触觉反馈
 - [display](#display) ⚠️ - 显示控制
+- [hud](#hud) ✅ - HUD 浮窗系统 - 创建悬浮窗口和 UI 元素
 - [util](#util) ✅ - 工具函数
 - [location](#location) ⚠️ - 定位服务
 - [calendar](#calendar) ⚠️ - 系统日历
 - [reminder](#reminder) ⚠️ - 提醒事项
 - [contacts](#contacts) ⚠️ - 通讯录操作
-- [notification](#notification) ⚠️ - 本地通知
 - [sms](#sms) ✅ - 短信操作
-- [sql](#sql) ✅ - SQL 数据库查询
+- [sql](#sql) ✅ - SQLite 数据库操作
 - [shortcuts](#shortcuts) ❌ - 快捷指令操作
 - [system](#system) ✅ - 系统设置控制
 
@@ -121,22 +121,6 @@ The following icons indicate API compatibility when running in background trigge
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `...args` | `any[]` | 要输出的内容 | No |
-
-**Returns:** `void`
-
----
-
-### `console.table`
-
-**Signature:** `table(data)`
-
-以表格形式输出
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `data` | `object \| array` | 要显示的表格数据 | No |
 
 **Returns:** `void`
 
@@ -242,6 +226,18 @@ The following icons indicate API compatibility when running in background trigge
 
 ---
 
+### `clipboard.hasText`
+
+**Signature:** `hasText()`
+
+检查剪贴板是否包含文本
+
+**Returns:** `boolean`
+
+*剪贴板是否有文本内容*
+
+---
+
 ## storage
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
@@ -324,6 +320,18 @@ The following icons indicate API compatibility when running in background trigge
 **Returns:** `boolean`
 
 *是否存在*
+
+---
+
+### `storage.keys`
+
+**Signature:** `keys()`
+
+获取所有存储的键
+
+**Returns:** `string[]`
+
+*所有键名的数组*
 
 ---
 
@@ -800,11 +808,11 @@ iCloud 文件操作
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | 请求地址 | No |
-| `options` | `object` | 请求选项 { headers, timeout } | Yes |
+| `options` | `object` | 请求选项 { headers, timeout, insecure } | Yes |
 
-**Returns:** `Promise<{ status: number, data: string, headers: object }>`
+**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
 
-*包含状态码、响应数据、响应头的对象*
+*包含成功状态、状态码、响应数据、响应头的对象*
 
 ---
 
@@ -819,9 +827,9 @@ iCloud 文件操作
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | 请求地址 | No |
-| `options` | `object` | 请求选项 { body, headers, timeout } | Yes |
+| `options` | `object` | 请求选项 { body, headers, timeout, insecure } | Yes |
 
-**Returns:** `Promise<{ status: number, data: string, headers: object }>`
+**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
 
 ---
 
@@ -836,9 +844,9 @@ iCloud 文件操作
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | 请求地址 | No |
-| `options` | `object` | 请求选项 { body, headers, timeout } | Yes |
+| `options` | `object` | 请求选项 { body, headers, timeout, insecure } | Yes |
 
-**Returns:** `Promise<{ status: number, data: string, headers: object }>`
+**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
 
 ---
 
@@ -853,9 +861,9 @@ iCloud 文件操作
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | 请求地址 | No |
-| `options` | `object` | 请求选项 { headers, timeout } | Yes |
+| `options` | `object` | 请求选项 { headers, timeout, insecure } | Yes |
 
-**Returns:** `Promise<{ status: number, data: string, headers: object }>`
+**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
 
 ---
 
@@ -870,9 +878,9 @@ iCloud 文件操作
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | 请求地址 | No |
-| `options` | `object` | 请求选项 { body, headers, timeout } | Yes |
+| `options` | `object` | 请求选项 { body, headers, timeout, insecure } | Yes |
 
-**Returns:** `Promise<{ status: number, data: string, headers: object }>`
+**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
 
 ---
 
@@ -887,9 +895,9 @@ iCloud 文件操作
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | 请求地址 | No |
-| `options` | `object` | 请求选项 { headers, timeout } | Yes |
+| `options` | `object` | 请求选项 { headers, timeout, insecure } | Yes |
 
-**Returns:** `Promise<{ status: number, data: string, headers: object }>`
+**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
 
 ---
 
@@ -904,15 +912,15 @@ iCloud 文件操作
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | 请求地址 | No |
-| `options` | `object` | 请求选项 { method, body, headers, timeout } | No |
+| `options` | `object` | 请求选项 { method, body, headers, timeout, insecure } | No |
 
-**Returns:** `Promise<{ status: number, data: string, headers: object }>`
+**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
 
 ---
 
 ### `http.download`
 
-**Signature:** `download(url, path)`
+**Signature:** `download(url, path, options?)`
 
 下载文件
 
@@ -922,10 +930,11 @@ iCloud 文件操作
 |------|------|-------------|----------|
 | `url` | `string` | 下载地址 | No |
 | `path` | `string` | 保存路径 | No |
+| `options` | `object` | 请求选项 { insecure } | Yes |
 
-**Returns:** `Promise<{ path: string }>`
+**Returns:** `{ success: boolean, path?: string, error?: string }`
 
-*包含本地文件路径的对象*
+*包含成功状态和本地文件路径的对象*
 
 ---
 
@@ -1058,9 +1067,9 @@ Ping 主机
 |------|------|-------------|----------|
 | `host` | `string` | 主机名或 IP | No |
 
-**Returns:** `Promise<{ latency: number, success: boolean }>`
+**Returns:** `{ success: boolean, latency: number }`
 
-*包含延迟和成功状态的对象*
+*包含成功状态和延迟（毫秒）的对象*
 
 ---
 
@@ -1077,9 +1086,9 @@ Ping 主机
 | `url` | `string` | 下载地址 | No |
 | `filename` | `string` | 保存文件名 | Yes |
 
-**Returns:** `Promise<{ path: string }>`
+**Returns:** `{ success: boolean, path?: string, error?: string }`
 
-*包含本地文件路径的对象*
+*包含成功状态和本地文件路径的对象*
 
 ---
 
@@ -1227,7 +1236,7 @@ Ping 主机
 |------|------|-------------|----------|
 | `url` | `string` | 要打开的 URL | No |
 
-**Returns:** `Promise<boolean>`
+**Returns:** `boolean`
 
 *是否成功打开*
 
@@ -1621,7 +1630,9 @@ Ping 主机
 |------|------|-------------|----------|
 | `value` | `number` | 亮度值 (0.0 - 1.0) | No |
 
-**Returns:** `void`
+**Returns:** `boolean`
+
+*是否设置成功*
 
 ---
 
@@ -1637,7 +1648,9 @@ Ping 主机
 |------|------|-------------|----------|
 | `amount` | `number` | 增加量 (默认 0.1) | Yes |
 
-**Returns:** `void`
+**Returns:** `boolean`
+
+*是否设置成功*
 
 ---
 
@@ -1653,7 +1666,9 @@ Ping 主机
 |------|------|-------------|----------|
 | `amount` | `number` | 减少量 (默认 0.1) | Yes |
 
-**Returns:** `void`
+**Returns:** `boolean`
+
+*是否设置成功*
 
 ---
 
@@ -1663,9 +1678,9 @@ Ping 主机
 
 获取屏幕信息
 
-**Returns:** `{ width: number, height: number, scale: number }`
+**Returns:** `{ width: number, height: number, scale: number, nativeWidth: number, nativeHeight: number }`
 
-*包含宽度、高度、缩放比例的对象*
+*包含宽度、高度、缩放比例和原生分辨率的对象*
 
 ---
 
@@ -1757,6 +1772,8 @@ Ping 主机
 
 ### `display.keepAwake`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `keepAwake(enabled)`
 
 保持屏幕常亮
@@ -1767,7 +1784,87 @@ Ping 主机
 |------|------|-------------|----------|
 | `enabled` | `boolean` | 是否保持常亮 | No |
 
+**Returns:** `boolean`
+
+*是否设置成功*
+
+---
+
+## hud
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+HUD 浮窗系统 - 创建悬浮窗口和 UI 元素
+
+> **Trigger Note:** 在触发器模式下完全支持，可创建系统级悬浮窗口
+
+### `hud.createWindow`
+
+**Signature:** `createWindow(config)`
+
+创建 HUD 窗口
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `config` | `object` | 窗口配置 { id?, width?, height?, x?, y?, draggable?, dismissible?, autoClear?, style? }，style 为 { backgroundColor?, textColor?, fontSize?, fontWeight?, cornerRadius?, padding?, opacity?, shadow? } | No |
+
+**Returns:** `Window`
+
+*窗口对象，可用于添加元素和控制窗口*
+
+---
+
+### `hud.getWindow`
+
+**Signature:** `getWindow(id)`
+
+根据 ID 获取已存在的窗口
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `id` | `string` | 窗口 ID | No |
+
+**Returns:** `Window \| null`
+
+*窗口对象，未找到返回 null*
+
+---
+
+### `hud.getScreenSize`
+
+**Signature:** `getScreenSize()`
+
+获取屏幕尺寸信息
+
+**Returns:** `{ width: number, height: number, scale: number }`
+
+*包含 width, height, scale 的屏幕信息对象*
+
+---
+
+### `hud.clearAll`
+
+**Signature:** `clearAll()`
+
+清除所有 HUD 窗口
+
 **Returns:** `void`
+
+---
+
+### `hud.getAllWindows`
+
+**Signature:** `getAllWindows()`
+
+获取所有窗口 ID 列表
+
+**Returns:** `[string]`
+
+*窗口 ID 数组*
 
 ---
 
@@ -1843,22 +1940,68 @@ Base64 解码
 
 ---
 
-### `util.formatDate`
+### `util.sha256`
 
-**Signature:** `formatDate(date, format)`
+**Signature:** `sha256(string)`
 
-格式化日期
+计算 SHA256 哈希
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `date` | `Date` | 日期对象 | No |
-| `format` | `string` | 格式字符串 (如 'yyyy-MM-dd') | No |
+| `string` | `string` | 要计算的字符串 | No |
+
+**Returns:** `string`
+
+*SHA256 哈希值*
+
+---
+
+### `util.formatDate`
+
+**Signature:** `formatDate(timestamp, format?)`
+
+格式化时间戳为字符串
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `timestamp` | `number` | 时间戳（毫秒） | No |
+| `format` | `string` | 格式模式（如 'yyyy-MM-dd'），默认为 'yyyy-MM-dd HH:mm:ss' | Yes |
 
 **Returns:** `string`
 
 *格式化后的日期字符串*
+
+---
+
+### `util.now`
+
+**Signature:** `now()`
+
+获取当前时间戳（毫秒）
+
+**Returns:** `number`
+
+*当前时间戳*
+
+---
+
+### `util.sleep`
+
+**Signature:** `sleep(ms)`
+
+休眠指定时长
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `ms` | `number` | 休眠时长（毫秒） | No |
+
+**Returns:** `void`
 
 ---
 
@@ -1912,9 +2055,9 @@ Base64 解码
 
 获取当前位置
 
-**Returns:** `Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, timestamp: number }>`
+**Returns:** `{ lat: number, lng: number, alt: number, course: number, speed: number, accuracy: number, timestamp: number } \| null`
 
-*位置信息对象(包含经纬度、海拔等)*
+*位置信息对象(包含经纬度、海拔、精度等)，失败返回 null*
 
 ---
 
@@ -1924,9 +2067,9 @@ Base64 解码
 
 获取当前位置(别名)
 
-**Returns:** `Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, timestamp: number }>`
+**Returns:** `{ lat: number, lng: number, alt: number, course: number, speed: number, accuracy: number, timestamp: number } \| null`
 
-*位置信息对象*
+*位置信息对象，失败返回 null*
 
 ---
 
@@ -1963,7 +2106,7 @@ Base64 解码
 |------|------|-------------|----------|
 | `address` | `string` | 地址字符串 | No |
 
-**Returns:** `Promise<[{ lat: number, lng: number, name: string }]>`
+**Returns:** `[{ lat: number, lng: number, name: string }]`
 
 *地理位置对象数组*
 
@@ -1983,7 +2126,7 @@ Base64 解码
 | `lng` | `number` | 经度 | No |
 | `locale` | `string` | 语言区域标识(可选，如 'zh_CN'、'en_US'，默认使用系统语言) | Yes |
 
-**Returns:** `Promise<[{ name: string, country: string, locality: string, administrativeArea: string }]>`
+**Returns:** `[{ name: string, country: string, locality: string, administrativeArea: string, subLocality: string, thoroughfare: string, postalCode: string }]`
 
 *地址信息对象数组*
 
@@ -2073,7 +2216,7 @@ Base64 解码
 
 请求日历权限
 
-**Returns:** `Promise<boolean>`
+**Returns:** `boolean`
 
 *是否授权成功*
 
@@ -2085,7 +2228,7 @@ Base64 解码
 
 获取所有日历
 
-**Returns:** `Promise<[{ id: string, title: string, color: string }]>`
+**Returns:** `[{ id: string, title: string, color: string, type: number, allowsModify: boolean }]`
 
 *日历列表数组*
 
@@ -2097,7 +2240,7 @@ Base64 解码
 
 获取今日事件
 
-**Returns:** `Promise<[{ id: string, title: string, startDate: number, endDate: number, calendar: string }]>`
+**Returns:** `[{ id: string, title: string, startDate: number, endDate: number, calendar: string, calendarId: string, isAllDay: boolean, location: string, notes: string }]`
 
 *今日事件数组*
 
@@ -2117,7 +2260,7 @@ Base64 解码
 | `end` | `number` | 结束时间戳 | No |
 | `calendarId` | `string` | 日历 ID | Yes |
 
-**Returns:** `Promise<[{ id: string, title: string, startDate: number, endDate: number, calendar: string }]>`
+**Returns:** `[{ id: string, title: string, startDate: number, endDate: number, calendar: string, calendarId: string, isAllDay: boolean, location: string, notes: string }]`
 
 *事件数组*
 
@@ -2138,9 +2281,9 @@ Base64 解码
 | `end` | `number` | 结束时间戳 | No |
 | `options` | `object` | 选项 { calendarId, notes, location, url, allDay } | Yes |
 
-**Returns:** `Promise<string>`
+**Returns:** `string \| null`
 
-*创建的事件 ID*
+*创建的事件 ID，失败返回 null*
 
 ---
 
@@ -2156,7 +2299,7 @@ Base64 解码
 |------|------|-------------|----------|
 | `id` | `string` | 事件 ID | No |
 
-**Returns:** `Promise<boolean>`
+**Returns:** `boolean`
 
 *是否删除成功*
 
@@ -2190,7 +2333,7 @@ Base64 解码
 
 请求提醒事项权限
 
-**Returns:** `Promise<boolean>`
+**Returns:** `boolean`
 
 *是否授权成功*
 
@@ -2202,7 +2345,7 @@ Base64 解码
 
 获取所有提醒列表
 
-**Returns:** `Promise<[{ id: string, title: string, color: string }]>`
+**Returns:** `[{ id: string, title: string, color: string, isSystem: boolean }]`
 
 *提醒列表数组*
 
@@ -2220,7 +2363,7 @@ Base64 解码
 |------|------|-------------|----------|
 | `listId` | `string` | 列表 ID | Yes |
 
-**Returns:** `Promise<[{ id: string, title: string, isCompleted: boolean, listId: string, dueDate?: number }]>`
+**Returns:** `[{ id: string, title: string, isCompleted: boolean, listId: string, listTitle: string, notes: string, priority: number, creationDate: number, dueDate?: number, isOverdue?: boolean }]`
 
 *提醒事项数组*
 
@@ -2237,11 +2380,11 @@ Base64 解码
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `title` | `string` | 标题 | No |
-| `options` | `object` | 选项 { listId, notes, dueDate, priority, sortOrder, isPinned } | Yes |
+| `options` | `object` | 选项 { listId, notes, dueDate, priority, location: { latitude, longitude, radius, onArrive, name } } | Yes |
 
-**Returns:** `Promise<string>`
+**Returns:** `string \| { success: boolean, id?: string, title?: string, isSystemReminder?: boolean }`
 
-*创建的提醒 ID*
+*创建的提醒 ID，如果是位置提醒则返回详细对象*
 
 ---
 
@@ -2257,7 +2400,7 @@ Base64 解码
 |------|------|-------------|----------|
 | `id` | `string` | 提醒事项 ID | No |
 
-**Returns:** `Promise<boolean>`
+**Returns:** `boolean`
 
 *是否成功*
 
@@ -2275,7 +2418,7 @@ Base64 解码
 |------|------|-------------|----------|
 | `id` | `string` | 提醒事项 ID | No |
 
-**Returns:** `Promise<boolean>`
+**Returns:** `boolean`
 
 *是否成功*
 
@@ -2283,7 +2426,7 @@ Base64 解码
 
 ### `reminder.getSorted`
 
-**Signature:** `getSorted(options)`
+**Signature:** `getSorted(options?)`
 
 获取排序后的提醒
 
@@ -2293,7 +2436,7 @@ Base64 解码
 |------|------|-------------|----------|
 | `options` | `object` | { sortBy: 'createdAt'\|'dueDate'\|'priority'\|'title', ascending: boolean, completed: boolean } | Yes |
 
-**Returns:** `Promise<[Reminder]>`
+**Returns:** `[Reminder]`
 
 *排序后的提醒列表*
 
@@ -2301,7 +2444,7 @@ Base64 解码
 
 ### `reminder.getUpcoming`
 
-**Signature:** `getUpcoming(days)`
+**Signature:** `getUpcoming(days?)`
 
 获取即将到期的提醒
 
@@ -2311,7 +2454,7 @@ Base64 解码
 |------|------|-------------|----------|
 | `days` | `number` | 未来几天，默认 7 天 | Yes |
 
-**Returns:** `Promise<[Reminder]>`
+**Returns:** `[Reminder]`
 
 *即将到期的提醒列表*
 
@@ -2323,7 +2466,7 @@ Base64 解码
 
 获取已过期的提醒
 
-**Returns:** `Promise<[Reminder]>`
+**Returns:** `[Reminder]`
 
 *已过期的提醒列表*
 
@@ -2341,9 +2484,9 @@ Base64 解码
 |------|------|-------------|----------|
 | `ids` | `string[]` | 按顺序排列的 ID 数组 | No |
 
-**Returns:** `Promise<object>`
+**Returns:** `{ success: boolean, error?: string }`
 
-*{ success: boolean, count: number }*
+*操作结果（注意：系统提醒不支持重排序）*
 
 ---
 
@@ -2351,7 +2494,7 @@ Base64 解码
 
 **Signature:** `createSystemReminder(title, options?)`
 
-创建系统提醒（支持位置触发）
+创建系统提醒（支持位置触发等高级功能）
 
 **Parameters:**
 
@@ -2360,9 +2503,9 @@ Base64 解码
 | `title` | `string` | 标题 | No |
 | `options` | `object` | { listId, notes, dueDate, priority, location: { latitude, longitude, radius, onArrive, name } } | Yes |
 
-**Returns:** `Promise<object>`
+**Returns:** `string \| { success: boolean, id?: string, title?: string, isSystemReminder?: boolean }`
 
-*{ success: boolean, id: string, title: string, isSystemReminder: true }*
+*包含成功状态和系统提醒详情的对象*
 
 ---
 
@@ -2370,9 +2513,9 @@ Base64 解码
 
 **Signature:** `getSystemLists()`
 
-获取系统提醒列表
+获取系统管理的提醒列表
 
-**Returns:** `Promise<[{ id: string, title: string, isSystem: true }]>`
+**Returns:** `[{ id: string, title: string, color: string, isSystem: boolean }]`
 
 *系统提醒列表数组*
 
@@ -2428,7 +2571,7 @@ Base64 解码
 
 **Signature:** `getAll(offset?, limit?)`
 
-获取所有联系人
+获取所有联系人（支持分页）
 
 **Parameters:**
 
@@ -2465,11 +2608,11 @@ Base64 解码
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `query` | `string` | 搜索关键词（匹配姓名） | No |
+| `query` | `string` | 搜索关键词（匹配姓名字段） | No |
 
 **Returns:** `[Contact]`
 
-*联系人对象数组*
+*匹配的联系人对象数组*
 
 ---
 
@@ -2477,7 +2620,7 @@ Base64 解码
 
 **Signature:** `searchByPhone(phone)`
 
-按电话搜索联系人
+按电话号码搜索联系人
 
 **Parameters:**
 
@@ -2487,25 +2630,7 @@ Base64 解码
 
 **Returns:** `[Contact]`
 
-*联系人对象数组*
-
----
-
-### `contacts.searchByEmail`
-
-**Signature:** `searchByEmail(email)`
-
-按邮箱搜索联系人
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `email` | `string` | 邮箱地址（支持模糊匹配） | No |
-
-**Returns:** `[Contact]`
-
-*联系人对象数组*
+*匹配的联系人对象数组*
 
 ---
 
@@ -2513,7 +2638,7 @@ Base64 解码
 
 **Signature:** `getById(id)`
 
-根据 ID 获取联系人
+根据唯一标识符获取联系人
 
 **Parameters:**
 
@@ -2523,7 +2648,7 @@ Base64 解码
 
 **Returns:** `Contact \| null`
 
-*联系人对象*
+*联系人对象，未找到返回 null*
 
 ---
 
@@ -2531,36 +2656,17 @@ Base64 解码
 
 **Signature:** `create(data)`
 
-创建联系人
+创建新联系人
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `data` | `object` | 联系人数据 { givenName, familyName, phoneNumbers?, emailAddresses?, ... } | No |
+| `data` | `object` | 联系人数据，包含 givenName, familyName, phoneNumbers, emailAddresses 等 | No |
 
 **Returns:** `{ success: boolean, id?: string, error?: string }`
 
-*包含成功状态和 ID 的对象*
-
----
-
-### `contacts.update`
-
-**Signature:** `update(id, data)`
-
-更新联系人
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `id` | `string` | 联系人唯一标识符 | No |
-| `data` | `object` | 要更新的字段 | No |
-
-**Returns:** `{ success: boolean, error?: string }`
-
-*包含成功状态的对象*
+*包含成功状态和新联系人 ID 的对象*
 
 ---
 
@@ -2568,7 +2674,7 @@ Base64 解码
 
 **Signature:** `delete(id)`
 
-删除联系人
+删除指定联系人
 
 **Parameters:**
 
@@ -2586,196 +2692,11 @@ Base64 解码
 
 **Signature:** `getGroups()`
 
-获取所有分组
+获取所有联系人分组
 
 **Returns:** `[{ id: string, name: string }]`
 
-*分组数组*
-
----
-
-### `contacts.getContactsInGroup`
-
-**Signature:** `getContactsInGroup(groupId)`
-
-获取分组内联系人
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `groupId` | `string` | 分组唯一标识符 | No |
-
-**Returns:** `[Contact]`
-
-*联系人对象数组*
-
----
-
-## notification
-
-![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
-
-本地通知
-
-> **Trigger Note:** requestPermission 需要 UI 交互，其他操作需要预先获得权限
-
-### `notification.send`
-
-**Signature:** `send(title, body, options?)`
-
-发送通知
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `title` | `string` | 通知标题 | No |
-| `body` | `string` | 通知内容 | No |
-| `options` | `object` | 选项 { url, userInfo, sound, badge } | Yes |
-
-**Returns:** `Promise<string>`
-
-*发送的通知 ID*
-
----
-
-### `notification.cancel`
-
-**Signature:** `cancel(id)`
-
-取消通知
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `id` | `string` | 通知 ID | No |
-
-**Returns:** `void`
-
----
-
-### `notification.cancelAll`
-
-**Signature:** `cancelAll()`
-
-取消所有通知
-
-**Returns:** `void`
-
----
-
-### `notification.getPending`
-
-**Signature:** `getPending()`
-
-获取待发送通知
-
-**Returns:** `Promise<[{ id: string, title: string, body: string, date: number }]>`
-
-*待发送通知列表*
-
----
-
-### `notification.getDelivered`
-
-**Signature:** `getDelivered()`
-
-获取已发送通知
-
-**Returns:** `Promise<[{ id: string, title: string, body: string, date: number }]>`
-
-*已发送通知列表*
-
----
-
-### `notification.requestAccess`
-
-![Not Supported](https://img.shields.io/badge/Trigger-None-red)
-
-**Signature:** `requestAccess()`
-
-请求通知权限
-
-**Returns:** `{ granted: boolean, error?: string }`
-
-*授权结果对象*
-
----
-
-### `notification.getAccessStatus`
-
-**Signature:** `getAccessStatus()`
-
-获取权限状态
-
-**Returns:** `'authorized' \| 'denied' \| 'notDetermined' \| 'provisional' \| 'ephemeral' \| 'unknown'`
-
-*权限状态字符串*
-
----
-
-### `notification.isAuthorized`
-
-**Signature:** `isAuthorized()`
-
-检查是否已授权通知权限
-
-**Returns:** `boolean`
-
-*是否已授权*
-
----
-
-### `notification.setBadge`
-
-**Signature:** `setBadge(count)`
-
-设置角标数字
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `count` | `number` | 角标数 | No |
-
-**Returns:** `boolean`
-
-*是否成功*
-
----
-
-### `notification.clearBadge`
-
-**Signature:** `clearBadge()`
-
-清除角标
-
-**Returns:** `boolean`
-
-*是否成功*
-
----
-
-### `notification.schedule`
-
-**Signature:** `schedule(title, body, date, options?)`
-
-定时通知
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `title` | `string` | 通知标题 | No |
-| `body` | `string` | 通知内容 | No |
-| `date` | `number` | 触发时间戳 | No |
-| `options` | `object` | 选项 { url, userInfo, sound, badge, repeat: 'daily'\|'weekly'\|'monthly' } | Yes |
-
-**Returns:** `Promise<string>`
-
-*发送的通知 ID*
+*分组对象数组*
 
 ---
 
@@ -2787,33 +2708,21 @@ Base64 解码
 
 > **Trigger Note:** 需要 TrollStore Root 权限才能访问短信数据库
 
-### `sms.checkAccess`
+### `sms.isRealDataAvailable`
 
-**Signature:** `checkAccess()`
+**Signature:** `isRealDataAvailable()`
 
-检查短信权限
-
-**Returns:** `boolean`
-
-*是否有权限*
-
----
-
-### `sms.tryAccess`
-
-**Signature:** `tryAccess()`
-
-尝试直接访问短信数据库(调试用)
+检查是否可以访问真实短信数据
 
 **Returns:** `boolean`
 
-*是否访问成功*
+*应用是否有权访问短信数据库*
 
 ---
 
 ### `sms.read`
 
-**Signature:** `read(limit?)`
+**Signature:** `read(limit?, offset?)`
 
 读取最近的短信
 
@@ -2821,63 +2730,48 @@ Base64 解码
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `limit` | `number` | 限制条数 (默认 10) | Yes |
+| `limit` | `number` | 最大返回数量（默认 50） | Yes |
+| `offset` | `number` | 跳过的消息数（默认 0） | Yes |
 
-**Returns:** `[{ id: string, content: string, sender: string, date: number }]`
+**Returns:** `[{ id: number, guid: string, address: string, text: string, date: string, isFromMe: boolean, isRead: boolean, service: string, hasAttachments: boolean }]`
 
 *短信对象数组*
-
----
-
-### `sms.getVerificationCode`
-
-**Signature:** `getVerificationCode(minutes?)`
-
-获取验证码
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `minutes` | `number` | 查找最近几分钟内的验证码 (默认 5) | Yes |
-
-**Returns:** `string \| null`
-
-*验证码或 null*
 
 ---
 
 ### `sms.search`
 
-**Signature:** `search(keyword)`
+**Signature:** `search(keyword, limit?)`
 
-搜索短信
+按关键词搜索短信
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `keyword` | `string` | 关键词 | No |
+| `keyword` | `string` | 搜索关键词 | No |
+| `limit` | `number` | 最大返回数量（默认 50） | Yes |
 
-**Returns:** `[{ id: string, content: string, sender: string, date: number }]`
+**Returns:** `[{ id: number, guid: string, address: string, text: string, date: string, isFromMe: boolean, isRead: boolean }]`
 
-*短信对象数组*
+*匹配的短信对象数组*
 
 ---
 
 ### `sms.getByAddress`
 
-**Signature:** `getByAddress(address)`
+**Signature:** `getByAddress(address, limit?)`
 
-按号码获取短信
+获取指定号码的短信
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `address` | `string` | 发送者号码 | No |
+| `address` | `string` | 发送者号码或地址 | No |
+| `limit` | `number` | 最大返回数量（默认 50） | Yes |
 
-**Returns:** `[{ id: string, content: string, sender: string, date: number }]`
+**Returns:** `[{ id: number, guid: string, address: string, text: string, date: string, isFromMe: boolean, isRead: boolean }]`
 
 *短信对象数组*
 
@@ -2885,13 +2779,19 @@ Base64 解码
 
 ### `sms.getChats`
 
-**Signature:** `getChats()`
+**Signature:** `getChats(limit?)`
 
 获取会话列表
 
-**Returns:** `[{ id: string, name: string, lastMessage: string, date: number }]`
+**Parameters:**
 
-*会话列表数组*
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `limit` | `number` | 最大返回数量（默认 50） | Yes |
+
+**Returns:** `[{ id: number, identifier: string, displayName: string, unreadCount: number, participants: [string], lastMessageDate: string }]`
+
+*会话对象数组*
 
 ---
 
@@ -2899,11 +2799,11 @@ Base64 解码
 
 **Signature:** `getStatistics()`
 
-获取短信统计
+获取短信统计信息
 
-**Returns:** `{ total: number, unread: number, senders: number }`
+**Returns:** `{ totalMessages: number, unreadCount: number, chatCount: number, contactCount: number, attachmentCount: number }`
 
-*统计信息对象*
+*包含统计信息的对象*
 
 ---
 
@@ -2913,7 +2813,7 @@ Base64 解码
 
 获取最新短信
 
-**Returns:** `{ id: string, content: string, sender: string, date: number } \| null`
+**Returns:** `{ id: number, guid: string, address: string, text: string, date: string, isFromMe: boolean, isRead: boolean } \| null`
 
 *最新短信对象或 null*
 
@@ -2921,13 +2821,73 @@ Base64 解码
 
 ### `sms.getUnread`
 
-**Signature:** `getUnread()`
+**Signature:** `getUnread(limit?)`
 
 获取未读短信
 
-**Returns:** `[{ id: string, content: string, sender: string, date: number }]`
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `limit` | `number` | 最大返回数量（默认 50） | Yes |
+
+**Returns:** `[{ id: number, guid: string, address: string, text: string, date: string, isFromMe: boolean, isRead: boolean }]`
 
 *未读短信对象数组*
+
+---
+
+### `sms.helperCheck`
+
+**Signature:** `helperCheck()`
+
+通过 Root Helper 检查短信数据库访问权限
+
+**Returns:** `object`
+
+*访问状态信息*
+
+---
+
+### `sms.helperCopy`
+
+**Signature:** `helperCopy()`
+
+通过 Root Helper 复制短信数据库到临时目录
+
+**Returns:** `{ success: boolean, path: string, error: string }`
+
+*复制操作结果*
+
+---
+
+### `sms.helperList`
+
+**Signature:** `helperList(path)`
+
+通过 Root Helper 列出目录内容
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `path` | `string` | 要列出的目录路径 | No |
+
+**Returns:** `object`
+
+*目录列表结果*
+
+---
+
+### `sms.helperAvailable`
+
+**Signature:** `helperAvailable()`
+
+检查 Root Helper 是否可用
+
+**Returns:** `boolean`
+
+*Root Helper 是否可访问*
 
 ---
 
@@ -2935,51 +2895,146 @@ Base64 解码
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
-SQL 数据库查询
+SQLite 数据库操作
 
-### `sql.query`
+### `sql.open`
 
-**Signature:** `query(dbPath, sql, params?)`
+**Signature:** `open(name?)`
 
-执行 SELECT 查询并返回结果
+打开或创建 SQLite 数据库
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `dbPath` | `string` | 数据库路径 | No |
-| `sql` | `string` | SQL 语句 | No |
-| `params` | `any[]` | 参数列表 | Yes |
+| `name` | `string` | 数据库名称（默认为 'default'）。文件将在 Documents 目录下创建为 {name}.sqlite | Yes |
 
-**Returns:** `any[]`
+**Returns:** `boolean`
 
-*查询结果数组*
+*数据库是否成功打开*
+
+---
+
+### `sql.close`
+
+**Signature:** `close(name?)`
+
+关闭数据库连接
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | 数据库名称（默认为 'default'） | Yes |
+
+**Returns:** `boolean`
+
+*始终返回 true*
 
 ---
 
 ### `sql.execute`
 
-**Signature:** `execute(dbPath, sql, params?)`
+**Signature:** `execute(name?, sql, params?)`
 
-执行 INSERT/UPDATE/DELETE
+执行 INSERT、UPDATE、DELETE 或 DDL 语句
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `dbPath` | `string` | 数据库路径 | No |
-| `sql` | `string` | SQL 语句 | No |
-| `params` | `any[]` | 参数列表 | Yes |
+| `name` | `string` | 数据库名称（默认为 'default'） | Yes |
+| `sql` | `string` | 要执行的 SQL 语句 | No |
+| `params` | `any[]` | 预处理语句的参数（使用 ? 占位符） | Yes |
 
-**Returns:** `{ changes: number, lastInsertRowId: number }`
+**Returns:** `{ success: boolean, changes?: number, lastInsertId?: number, error?: string }`
 
-*执行结果对象*
+*包含成功状态、受影响行数和最后插入行 ID 的结果对象*
 
 ---
 
-### `sql.tables`
+### `sql.exec`
 
-**Signature:** `tables(dbPath)`
+**Signature:** `exec(name?, sql, params?)`
+
+execute() 的别名
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | 数据库名称（默认为 'default'） | Yes |
+| `sql` | `string` | 要执行的 SQL 语句 | No |
+| `params` | `any[]` | 预处理语句的参数 | Yes |
+
+**Returns:** `{ success: boolean, changes?: number, lastInsertId?: number, error?: string }`
+
+*结果对象*
+
+---
+
+### `sql.query`
+
+**Signature:** `query(name?, sql, params?)`
+
+执行 SELECT 查询并返回所有匹配的行
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | 数据库名称（默认为 'default'） | Yes |
+| `sql` | `string` | 要执行的 SELECT 查询 | No |
+| `params` | `any[]` | 预处理语句的参数 | Yes |
+
+**Returns:** `[object]`
+
+*行对象数组（列名 -> 值）*
+
+---
+
+### `sql.queryOne`
+
+**Signature:** `queryOne(name?, sql, params?)`
+
+执行 SELECT 查询并返回第一行
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | 数据库名称（默认为 'default'） | Yes |
+| `sql` | `string` | 要执行的 SELECT 查询 | No |
+| `params` | `any[]` | 预处理语句的参数 | Yes |
+
+**Returns:** `object \| null`
+
+*第一行对象，如果没有结果则返回 null*
+
+---
+
+### `sql.tableExists`
+
+**Signature:** `tableExists(name?, tableName)`
+
+检查数据库中是否存在指定表
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | 数据库名称（默认为 'default'） | Yes |
+| `tableName` | `string` | 要检查的表名 | No |
+
+**Returns:** `boolean`
+
+*表是否存在*
+
+---
+
+### `sql.getTables`
+
+**Signature:** `getTables(name?)`
 
 列出数据库中的所有表
 
@@ -2987,30 +3042,102 @@ SQL 数据库查询
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `dbPath` | `string` | 数据库路径 | No |
+| `name` | `string` | 数据库名称（默认为 'default'） | Yes |
 
-**Returns:** `string[]`
+**Returns:** `[string]`
 
 *表名数组*
 
 ---
 
-### `sql.schema`
+### `sql.getTableInfo`
 
-**Signature:** `schema(dbPath, tableName)`
+**Signature:** `getTableInfo(name?, tableName)`
 
-获取表结构
+获取表的列信息
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `dbPath` | `string` | 数据库路径 | No |
+| `name` | `string` | 数据库名称（默认为 'default'） | Yes |
 | `tableName` | `string` | 表名 | No |
 
-**Returns:** `string`
+**Returns:** `[{ cid: number, name: string, type: string, notnull: boolean, pk: boolean }]`
 
-*表结构 SQL*
+*列信息对象数组*
+
+---
+
+### `sql.beginTransaction`
+
+**Signature:** `beginTransaction(name?)`
+
+开始数据库事务
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | 数据库名称（默认为 'default'） | Yes |
+
+**Returns:** `boolean`
+
+*事务是否成功开始*
+
+---
+
+### `sql.commit`
+
+**Signature:** `commit(name?)`
+
+提交当前事务
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | 数据库名称（默认为 'default'） | Yes |
+
+**Returns:** `boolean`
+
+*提交是否成功*
+
+---
+
+### `sql.rollback`
+
+**Signature:** `rollback(name?)`
+
+回滚当前事务
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | 数据库名称（默认为 'default'） | Yes |
+
+**Returns:** `boolean`
+
+*回滚是否成功*
+
+---
+
+### `sql.vacuum`
+
+**Signature:** `vacuum(name?)`
+
+通过回收未使用的空间来优化数据库
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | 数据库名称（默认为 'default'） | Yes |
+
+**Returns:** `boolean`
+
+*vacuum 操作是否成功*
 
 ---
 

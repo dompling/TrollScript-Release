@@ -27,6 +27,7 @@ The following icons indicate API compatibility when running in background trigge
 - [app](#app) ⚠️ - App operations and management
 - [haptic](#haptic) ⚠️ - Haptic feedback
 - [display](#display) ⚠️ - Display and screen control
+- [hud](#hud) ✅ - HUD System - Create floating windows and UI elements
 - [util](#util) ✅ - Utility functions
 - [location](#location) ⚠️ - Location services
 - [calendar](#calendar) ⚠️ - System calendar
@@ -34,7 +35,7 @@ The following icons indicate API compatibility when running in background trigge
 - [contacts](#contacts) ⚠️ - Contact management operations
 - [notification](#notification) ⚠️ - Local notifications
 - [sms](#sms) ✅ - SMS and messaging operations
-- [sql](#sql) ✅ - SQL database operations
+- [sql](#sql) ✅ - SQLite database operations
 - [shortcuts](#shortcuts) ❌ - Shortcuts operations
 - [system](#system) ✅ - System settings control
 
@@ -121,22 +122,6 @@ Output debug messages
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `...args` | `any[]` | Content to be logged for debugging | No |
-
-**Returns:** `void`
-
----
-
-### `console.table`
-
-**Signature:** `table(data)`
-
-Display data in tabular format
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `data` | `object \| array` | Tabular data to be displayed | No |
 
 **Returns:** `void`
 
@@ -242,6 +227,18 @@ Clear the clipboard
 
 ---
 
+### `clipboard.hasText`
+
+**Signature:** `hasText()`
+
+Check if the clipboard contains text
+
+**Returns:** `boolean`
+
+*Whether the clipboard has text content*
+
+---
+
 ## storage
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
@@ -324,6 +321,18 @@ Check if a specific key exists in storage
 **Returns:** `boolean`
 
 *Whether the key exists*
+
+---
+
+### `storage.keys`
+
+**Signature:** `keys()`
+
+Get all stored keys
+
+**Returns:** `string[]`
+
+*An array of all keys in storage*
 
 ---
 
@@ -802,9 +811,9 @@ Send a GET request
 | `url` | `string` | Target URL | No |
 | `options` | `object` | Request options { headers, timeout } | Yes |
 
-**Returns:** `Promise<{ status: number, data: string, headers: object }>`
+**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
 
-*Object containing status code, response data, and response headers*
+*Object containing success status, status code, response data, and response headers*
 
 ---
 
@@ -819,9 +828,9 @@ Send a POST request
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | Target URL | No |
-| `options` | `object` | Request options { body, headers, timeout } | Yes |
+| `options` | `object` | Request options { body, headers, timeout, insecure } | Yes |
 
-**Returns:** `Promise<{ status: number, data: string, headers: object }>`
+**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
 
 ---
 
@@ -836,9 +845,9 @@ Send a PUT request
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | Target URL | No |
-| `options` | `object` | Request options { body, headers, timeout } | Yes |
+| `options` | `object` | Request options { body, headers, timeout, insecure } | Yes |
 
-**Returns:** `Promise<{ status: number, data: string, headers: object }>`
+**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
 
 ---
 
@@ -853,9 +862,9 @@ Send a DELETE request
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | Target URL | No |
-| `options` | `object` | Request options { headers, timeout } | Yes |
+| `options` | `object` | Request options { headers, timeout, insecure } | Yes |
 
-**Returns:** `Promise<{ status: number, data: string, headers: object }>`
+**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
 
 ---
 
@@ -870,9 +879,9 @@ Send a PATCH request
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | Target URL | No |
-| `options` | `object` | Request options { body, headers, timeout } | Yes |
+| `options` | `object` | Request options { body, headers, timeout, insecure } | Yes |
 
-**Returns:** `Promise<{ status: number, data: string, headers: object }>`
+**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
 
 ---
 
@@ -887,9 +896,9 @@ Send a HEAD request
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | Target URL | No |
-| `options` | `object` | Request options { headers, timeout } | Yes |
+| `options` | `object` | Request options { headers, timeout, insecure } | Yes |
 
-**Returns:** `Promise<{ status: number, data: string, headers: object }>`
+**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
 
 ---
 
@@ -904,15 +913,15 @@ Send a custom HTTP request
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `url` | `string` | Target URL | No |
-| `options` | `object` | Request options { method, body, headers, timeout } | No |
+| `options` | `object` | Request options { method, body, headers, timeout, insecure } | No |
 
-**Returns:** `Promise<{ status: number, data: string, headers: object }>`
+**Returns:** `{ success: boolean, status?: number, data?: string, headers?: object, error?: string }`
 
 ---
 
 ### `http.download`
 
-**Signature:** `download(url, path)`
+**Signature:** `download(url, path, options?)`
 
 Download a file from a URL
 
@@ -922,10 +931,11 @@ Download a file from a URL
 |------|------|-------------|----------|
 | `url` | `string` | Download source URL | No |
 | `path` | `string` | Local destination path to save the file | No |
+| `options` | `object` | Request options { insecure } | Yes |
 
-**Returns:** `Promise<{ path: string }>`
+**Returns:** `{ success: boolean, path?: string, error?: string }`
 
-*Object containing the local file path*
+*Object containing success status and the local file path*
 
 ---
 
@@ -970,18 +980,6 @@ Get the device's IP address
 **Returns:** `string \| null`
 
 *IP address string*
-
----
-
-### `network.getWiFiInfo`
-
-**Signature:** `getWiFiInfo()`
-
-Retrieve current Wi-Fi network information
-
-**Returns:** `{ ssid: string, bssid: string } \| null`
-
-*Object containing SSID and BSSID*
 
 ---
 
@@ -1070,9 +1068,9 @@ Ping a remote host
 |------|------|-------------|----------|
 | `host` | `string` | Hostname or IP address | No |
 
-**Returns:** `Promise<{ latency: number, success: boolean }>`
+**Returns:** `{ success: boolean, latency: number }`
 
-*Object containing latency (ms) and success status*
+*Object containing success status and latency (ms)*
 
 ---
 
@@ -1089,9 +1087,9 @@ Download a file from a URL
 | `url` | `string` | Download source URL | No |
 | `filename` | `string` | Local filename to save as | Yes |
 
-**Returns:** `Promise<{ path: string }>`
+**Returns:** `{ success: boolean, path?: string, error?: string }`
 
-*Object containing the local file path*
+*Object containing success status and the local file path*
 
 ---
 
@@ -1239,7 +1237,7 @@ Open a URL or URI Scheme
 |------|------|-------------|----------|
 | `url` | `string` | The URL to open | No |
 
-**Returns:** `Promise<boolean>`
+**Returns:** `boolean`
 
 *Whether the URL was opened successfully*
 
@@ -1633,7 +1631,9 @@ Set screen brightness
 |------|------|-------------|----------|
 | `value` | `number` | Brightness value (0.0 to 1.0) | No |
 
-**Returns:** `void`
+**Returns:** `boolean`
+
+*Whether the operation was successful*
 
 ---
 
@@ -1649,7 +1649,9 @@ Increase screen brightness
 |------|------|-------------|----------|
 | `amount` | `number` | Amount to increase (defaults to 0.1) | Yes |
 
-**Returns:** `void`
+**Returns:** `boolean`
+
+*Whether the operation was successful*
 
 ---
 
@@ -1665,7 +1667,9 @@ Decrease screen brightness
 |------|------|-------------|----------|
 | `amount` | `number` | Amount to decrease (defaults to 0.1) | Yes |
 
-**Returns:** `void`
+**Returns:** `boolean`
+
+*Whether the operation was successful*
 
 ---
 
@@ -1675,9 +1679,9 @@ Decrease screen brightness
 
 Get screen dimensions and scale
 
-**Returns:** `{ width: number, height: number, scale: number }`
+**Returns:** `{ width: number, height: number, scale: number, nativeWidth: number, nativeHeight: number }`
 
-*Object containing width, height, and display scale*
+*Object containing width, height, display scale, and native dimensions*
 
 ---
 
@@ -1720,24 +1724,6 @@ Toggle Low Power Mode
 **Returns:** `boolean`
 
 *Whether the state was successfully updated*
-
----
-
-### `display.setNightShift`
-
-**Signature:** `setNightShift(enabled)`
-
-Toggle Night Shift
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `enabled` | `boolean` | Whether to enable Night Shift | No |
-
-**Returns:** `boolean`
-
-*Whether the update was successful*
 
 ---
 
@@ -1787,6 +1773,8 @@ Open system display settings
 
 ### `display.keepAwake`
 
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
 **Signature:** `keepAwake(enabled)`
 
 Keep screen awake and prevent dimming
@@ -1797,7 +1785,87 @@ Keep screen awake and prevent dimming
 |------|------|-------------|----------|
 | `enabled` | `boolean` | Whether to keep the screen on | No |
 
+**Returns:** `boolean`
+
+*Whether the operation was successful*
+
+---
+
+## hud
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+HUD System - Create floating windows and UI elements
+
+> **Trigger Note:** Fully supported in trigger mode, can create system-level floating windows
+
+### `hud.createWindow`
+
+**Signature:** `createWindow(config)`
+
+Create a HUD window
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `config` | `object` | Window config { id?, width?, height?, x?, y?, draggable?, dismissible?, autoClear?, style? }, style is { backgroundColor?, textColor?, fontSize?, fontWeight?, cornerRadius?, padding?, opacity?, shadow? } | No |
+
+**Returns:** `Window`
+
+*Window object for adding elements and controlling the window*
+
+---
+
+### `hud.getWindow`
+
+**Signature:** `getWindow(id)`
+
+Get an existing window by ID
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `id` | `string` | Window ID | No |
+
+**Returns:** `Window \| null`
+
+*Window object if found, null otherwise*
+
+---
+
+### `hud.getScreenSize`
+
+**Signature:** `getScreenSize()`
+
+Get screen size information
+
+**Returns:** `{ width: number, height: number, scale: number }`
+
+*Screen info object containing width, height, scale*
+
+---
+
+### `hud.clearAll`
+
+**Signature:** `clearAll()`
+
+Clear all HUD windows
+
 **Returns:** `void`
+
+---
+
+### `hud.getAllWindows`
+
+**Signature:** `getAllWindows()`
+
+Get all window IDs
+
+**Returns:** `[string]`
+
+*Array of window IDs*
 
 ---
 
@@ -1873,22 +1941,68 @@ Decode a Base64 encoded string
 
 ---
 
-### `util.formatDate`
+### `util.sha256`
 
-**Signature:** `formatDate(date, format)`
+**Signature:** `sha256(string)`
 
-Format a Date object into a string
+Calculate the SHA256 hash of a string
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `date` | `Date` | The Date object to format | No |
-| `format` | `string` | The format pattern (e.g., 'yyyy-MM-dd') | No |
+| `string` | `string` | The input string to hash | No |
+
+**Returns:** `string`
+
+*The resulting SHA256 hash value*
+
+---
+
+### `util.formatDate`
+
+**Signature:** `formatDate(timestamp, format?)`
+
+Format a timestamp into a string
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `timestamp` | `number` | The timestamp in milliseconds | No |
+| `format` | `string` | The format pattern (e.g., 'yyyy-MM-dd'), defaults to 'yyyy-MM-dd HH:mm:ss' | Yes |
 
 **Returns:** `string`
 
 *The formatted date string*
+
+---
+
+### `util.now`
+
+**Signature:** `now()`
+
+Get the current timestamp in milliseconds
+
+**Returns:** `number`
+
+*The current timestamp*
+
+---
+
+### `util.sleep`
+
+**Signature:** `sleep(ms)`
+
+Sleep for a specified duration
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `ms` | `number` | Duration in milliseconds | No |
+
+**Returns:** `void`
 
 ---
 
@@ -1942,9 +2056,9 @@ Check if location access is granted
 
 Retrieve current geographic location
 
-**Returns:** `Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, timestamp: number }>`
+**Returns:** `{ lat: number, lng: number, alt: number, course: number, speed: number, accuracy: number, timestamp: number } \| null`
 
-*Location data object containing coordinates, altitude, etc.*
+*Location data object containing coordinates, altitude, etc., or null if failed*
 
 ---
 
@@ -1954,9 +2068,9 @@ Retrieve current geographic location
 
 Get current location (Alias for getCurrent)
 
-**Returns:** `Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, timestamp: number }>`
+**Returns:** `{ lat: number, lng: number, alt: number, course: number, speed: number, accuracy: number, timestamp: number } \| null`
 
-*Location data object*
+*Location data object, or null if failed*
 
 ---
 
@@ -1993,7 +2107,7 @@ Geocoding: Address to coordinates
 |------|------|-------------|----------|
 | `address` | `string` | Target address string | No |
 
-**Returns:** `Promise<[{ lat: number, lng: number, name: string }]>`
+**Returns:** `[{ lat: number, lng: number, name: string }]`
 
 *An array of geographic location objects*
 
@@ -2013,7 +2127,7 @@ Reverse Geocoding: Coordinates to address
 | `lng` | `number` | Longitude | No |
 | `locale` | `string` | Locale identifier (optional, e.g., 'en_US', defaults to system language) | Yes |
 
-**Returns:** `Promise<[{ name: string, country: string, locality: string, administrativeArea: string }]>`
+**Returns:** `[{ name: string, country: string, locality: string, administrativeArea: string, subLocality: string, thoroughfare: string, postalCode: string }]`
 
 *An array of address information objects*
 
@@ -2103,7 +2217,7 @@ Check current authorization status
 
 Request calendar access permissions
 
-**Returns:** `Promise<boolean>`
+**Returns:** `boolean`
 
 *Whether authorization was granted*
 
@@ -2115,7 +2229,7 @@ Request calendar access permissions
 
 Retrieve all available calendars
 
-**Returns:** `Promise<[{ id: string, title: string, color: string }]>`
+**Returns:** `[{ id: string, title: string, color: string, type: number, allowsModify: boolean }]`
 
 *An array of calendar objects*
 
@@ -2127,7 +2241,7 @@ Retrieve all available calendars
 
 Fetch today's events
 
-**Returns:** `Promise<[{ id: string, title: string, startDate: number, endDate: number, calendar: string }]>`
+**Returns:** `[{ id: string, title: string, startDate: number, endDate: number, calendar: string, calendarId: string, isAllDay: boolean, location: string, notes: string }]`
 
 *An array of events for today*
 
@@ -2147,7 +2261,7 @@ Retrieve events within a specific time range
 | `end` | `number` | End timestamp | No |
 | `calendarId` | `string` | Specific calendar ID to filter by | Yes |
 
-**Returns:** `Promise<[{ id: string, title: string, startDate: number, endDate: number, calendar: string }]>`
+**Returns:** `[{ id: string, title: string, startDate: number, endDate: number, calendar: string, calendarId: string, isAllDay: boolean, location: string, notes: string }]`
 
 *An array of event objects*
 
@@ -2168,9 +2282,9 @@ Create a new calendar event
 | `end` | `number` | End timestamp | No |
 | `options` | `object` | Options { calendarId, notes, location, url, allDay } | Yes |
 
-**Returns:** `Promise<string>`
+**Returns:** `string \| null`
 
-*ID of the newly created event*
+*ID of the newly created event, or null if failed*
 
 ---
 
@@ -2186,7 +2300,7 @@ Delete a specific calendar event
 |------|------|-------------|----------|
 | `id` | `string` | Event ID | No |
 
-**Returns:** `Promise<boolean>`
+**Returns:** `boolean`
 
 *Whether the deletion was successful*
 
@@ -2220,7 +2334,7 @@ Check current authorization status
 
 Request reminder access permissions
 
-**Returns:** `Promise<boolean>`
+**Returns:** `boolean`
 
 *Whether authorization was granted*
 
@@ -2232,7 +2346,7 @@ Request reminder access permissions
 
 Retrieve all reminder lists
 
-**Returns:** `Promise<[{ id: string, title: string, color: string }]>`
+**Returns:** `[{ id: string, title: string, color: string, isSystem: boolean }]`
 
 *An array of reminder list objects*
 
@@ -2250,7 +2364,7 @@ Retrieve all reminder items
 |------|------|-------------|----------|
 | `listId` | `string` | Specific list ID to filter by | Yes |
 
-**Returns:** `Promise<[{ id: string, title: string, isCompleted: boolean, listId: string, dueDate?: number }]>`
+**Returns:** `[{ id: string, title: string, isCompleted: boolean, listId: string, listTitle: string, notes: string, priority: number, creationDate: number, dueDate?: number, isOverdue?: boolean }]`
 
 *An array of reminder items*
 
@@ -2267,11 +2381,11 @@ Create a new reminder
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `title` | `string` | Reminder title | No |
-| `options` | `object` | Options: { listId, notes, dueDate, priority, sortOrder, isPinned } | Yes |
+| `options` | `object` | Options: { listId, notes, dueDate, priority, location: { latitude, longitude, radius, onArrive, name } } | Yes |
 
-**Returns:** `Promise<string>`
+**Returns:** `string \| { success: boolean, id?: string, title?: string, isSystemReminder?: boolean }`
 
-*The unique ID of the created reminder*
+*The unique ID of the created reminder, or object with details if location-based*
 
 ---
 
@@ -2287,7 +2401,7 @@ Mark a reminder as completed
 |------|------|-------------|----------|
 | `id` | `string` | Reminder ID | No |
 
-**Returns:** `Promise<boolean>`
+**Returns:** `boolean`
 
 *Whether the operation was successful*
 
@@ -2305,7 +2419,7 @@ Delete a specific reminder
 |------|------|-------------|----------|
 | `id` | `string` | Reminder ID | No |
 
-**Returns:** `Promise<boolean>`
+**Returns:** `boolean`
 
 *Whether the deletion was successful*
 
@@ -2313,7 +2427,7 @@ Delete a specific reminder
 
 ### `reminder.getSorted`
 
-**Signature:** `getSorted(options)`
+**Signature:** `getSorted(options?)`
 
 Retrieve sorted reminders
 
@@ -2323,7 +2437,7 @@ Retrieve sorted reminders
 |------|------|-------------|----------|
 | `options` | `object` | { sortBy: 'createdAt'\|'dueDate'\|'priority'\|'title', ascending: boolean, completed: boolean } | Yes |
 
-**Returns:** `Promise<[Reminder]>`
+**Returns:** `[Reminder]`
 
 *A list of sorted reminder items*
 
@@ -2331,7 +2445,7 @@ Retrieve sorted reminders
 
 ### `reminder.getUpcoming`
 
-**Signature:** `getUpcoming(days)`
+**Signature:** `getUpcoming(days?)`
 
 Retrieve reminders due soon
 
@@ -2341,7 +2455,7 @@ Retrieve reminders due soon
 |------|------|-------------|----------|
 | `days` | `number` | Number of days in the future, defaults to 7 | Yes |
 
-**Returns:** `Promise<[Reminder]>`
+**Returns:** `[Reminder]`
 
 *A list of upcoming reminders*
 
@@ -2353,7 +2467,7 @@ Retrieve reminders due soon
 
 Retrieve all overdue reminders
 
-**Returns:** `Promise<[Reminder]>`
+**Returns:** `[Reminder]`
 
 *A list of reminders past their due date*
 
@@ -2371,9 +2485,9 @@ Batch reorder reminders
 |------|------|-------------|----------|
 | `ids` | `string[]` | An ordered array of reminder IDs | No |
 
-**Returns:** `Promise<object>`
+**Returns:** `{ success: boolean, error?: string }`
 
-*{ success: boolean, count: number }*
+*Result object (note: system reminders do not support reordering)*
 
 ---
 
@@ -2390,7 +2504,7 @@ Create a system reminder with advanced features (e.g., location-based triggers)
 | `title` | `string` | Reminder title | No |
 | `options` | `object` | { listId, notes, dueDate, priority, location: { latitude, longitude, radius, onArrive, name } } | Yes |
 
-**Returns:** `Promise<object>`
+**Returns:** `string \| { success: boolean, id?: string, title?: string, isSystemReminder?: boolean }`
 
 *Object containing success status and system reminder details*
 
@@ -2402,7 +2516,7 @@ Create a system reminder with advanced features (e.g., location-based triggers)
 
 Retrieve system-managed reminder lists
 
-**Returns:** `Promise<[{ id: string, title: string, isSystem: true }]>`
+**Returns:** `[{ id: string, title: string, color: string, isSystem: boolean }]`
 
 *An array of system reminder lists*
 
@@ -2521,24 +2635,6 @@ Search contacts by phone number
 
 ---
 
-### `contacts.searchByEmail`
-
-**Signature:** `searchByEmail(email)`
-
-Search contacts by email address
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `email` | `string` | Email address (supports fuzzy matching) | No |
-
-**Returns:** `[Contact]`
-
-*An array of matching contact objects*
-
----
-
 ### `contacts.getById`
 
 **Signature:** `getById(id)`
@@ -2575,25 +2671,6 @@ Create a new contact
 
 ---
 
-### `contacts.update`
-
-**Signature:** `update(id, data)`
-
-Update an existing contact
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `id` | `string` | Unique identifier of the contact | No |
-| `data` | `object` | Fields to be updated | No |
-
-**Returns:** `{ success: boolean, error?: string }`
-
-*An object containing the success status*
-
----
-
 ### `contacts.delete`
 
 **Signature:** `delete(id)`
@@ -2624,24 +2701,6 @@ Retrieve all contact groups
 
 ---
 
-### `contacts.getContactsInGroup`
-
-**Signature:** `getContactsInGroup(groupId)`
-
-Retrieve contacts within a specific group
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `groupId` | `string` | Unique identifier of the group | No |
-
-**Returns:** `[Contact]`
-
-*An array of contact objects in the specified group*
-
----
-
 ## notification
 
 ![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
@@ -2662,11 +2721,11 @@ Send an immediate notification
 |------|------|-------------|----------|
 | `title` | `string` | Notification title | No |
 | `body` | `string` | Notification body content | No |
-| `options` | `object` | Options: { url, userInfo, sound, badge } | Yes |
+| `options` | `object` | Options: { id, subtitle, badge, userInfo, copyOnTap, delay, date } | Yes |
 
-**Returns:** `Promise<string>`
+**Returns:** `string \| { success: boolean, error: string }`
 
-*The unique ID of the sent notification*
+*The unique ID of the sent notification, or error object if failed*
 
 ---
 
@@ -2682,7 +2741,9 @@ Cancel a specific notification
 |------|------|-------------|----------|
 | `id` | `string` | Notification ID | No |
 
-**Returns:** `void`
+**Returns:** `boolean`
+
+*Whether the cancellation was successful*
 
 ---
 
@@ -2692,7 +2753,9 @@ Cancel a specific notification
 
 Cancel all scheduled notifications
 
-**Returns:** `void`
+**Returns:** `boolean`
+
+*Whether the operation was successful*
 
 ---
 
@@ -2702,7 +2765,7 @@ Cancel all scheduled notifications
 
 Retrieve all pending (scheduled) notifications
 
-**Returns:** `Promise<[{ id: string, title: string, body: string, date: number }]>`
+**Returns:** `[{ id: string, title: string, body: string, subtitle: string, delay?: number, date?: number }]`
 
 *A list of notifications waiting to be triggered*
 
@@ -2714,7 +2777,7 @@ Retrieve all pending (scheduled) notifications
 
 Retrieve all delivered notifications
 
-**Returns:** `Promise<[{ id: string, title: string, body: string, date: number }]>`
+**Returns:** `[{ id: string, title: string, body: string, subtitle: string, date: number }]`
 
 *A list of notifications currently displayed in the notification center*
 
@@ -2790,9 +2853,9 @@ Clear the application badge
 
 ### `notification.schedule`
 
-**Signature:** `schedule(title, body, date, options?)`
+**Signature:** `schedule(title, body, options)`
 
-Schedule a notification for a future date
+Schedule a notification
 
 **Parameters:**
 
@@ -2800,12 +2863,11 @@ Schedule a notification for a future date
 |------|------|-------------|----------|
 | `title` | `string` | Notification title | No |
 | `body` | `string` | Notification body content | No |
-| `date` | `number` | Trigger timestamp | No |
-| `options` | `object` | Options: { url, userInfo, sound, badge, repeat: 'daily'\|'weekly'\|'monthly' } | Yes |
+| `options` | `object` | Options: { id, subtitle, badge, userInfo, copyOnTap, delay, date } | No |
 
-**Returns:** `Promise<string>`
+**Returns:** `string \| { success: boolean, error: string }`
 
-*The unique ID of the scheduled notification*
+*The unique ID of the scheduled notification, or error object if failed*
 
 ---
 
@@ -2817,33 +2879,21 @@ SMS and messaging operations
 
 > **Trigger Note:** TrollStore Root privileges are required to access the system SMS database.
 
-### `sms.checkAccess`
+### `sms.isRealDataAvailable`
 
-**Signature:** `checkAccess()`
+**Signature:** `isRealDataAvailable()`
 
-Check SMS database access permissions
-
-**Returns:** `boolean`
-
-*Whether access is granted*
-
----
-
-### `sms.tryAccess`
-
-**Signature:** `tryAccess()`
-
-Attempt direct access to the SMS database (for debugging)
+Check if real SMS data is accessible
 
 **Returns:** `boolean`
 
-*Whether the access attempt was successful*
+*Whether the app has access to the SMS database*
 
 ---
 
 ### `sms.read`
 
-**Signature:** `read(limit?)`
+**Signature:** `read(limit?, offset?)`
 
 Read recent SMS messages
 
@@ -2851,35 +2901,18 @@ Read recent SMS messages
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `limit` | `number` | Maximum number of messages to retrieve (defaults to 10) | Yes |
+| `limit` | `number` | Maximum number of messages to retrieve (defaults to 50) | Yes |
+| `offset` | `number` | Number of messages to skip (defaults to 0) | Yes |
 
-**Returns:** `[{ id: string, content: string, sender: string, date: number }]`
+**Returns:** `[{ id: number, guid: string, address: string, text: string, date: string, isFromMe: boolean, isRead: boolean, service: string, hasAttachments: boolean }]`
 
 *An array of message objects*
 
 ---
 
-### `sms.getVerificationCode`
-
-**Signature:** `getVerificationCode(minutes?)`
-
-Extract a verification code from recent messages
-
-**Parameters:**
-
-| Name | Type | Description | Optional |
-|------|------|-------------|----------|
-| `minutes` | `number` | Time window in minutes to search for a code (defaults to 5) | Yes |
-
-**Returns:** `string \| null`
-
-*The extracted code or null if not found*
-
----
-
 ### `sms.search`
 
-**Signature:** `search(keyword)`
+**Signature:** `search(keyword, limit?)`
 
 Search messages by keyword
 
@@ -2888,8 +2921,9 @@ Search messages by keyword
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `keyword` | `string` | Search keyword | No |
+| `limit` | `number` | Maximum number of results (defaults to 50) | Yes |
 
-**Returns:** `[{ id: string, content: string, sender: string, date: number }]`
+**Returns:** `[{ id: number, guid: string, address: string, text: string, date: string, isFromMe: boolean, isRead: boolean }]`
 
 *An array of matching message objects*
 
@@ -2897,7 +2931,7 @@ Search messages by keyword
 
 ### `sms.getByAddress`
 
-**Signature:** `getByAddress(address)`
+**Signature:** `getByAddress(address, limit?)`
 
 Retrieve messages from a specific phone number
 
@@ -2906,8 +2940,9 @@ Retrieve messages from a specific phone number
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
 | `address` | `string` | Sender's phone number or address | No |
+| `limit` | `number` | Maximum number of messages (defaults to 50) | Yes |
 
-**Returns:** `[{ id: string, content: string, sender: string, date: number }]`
+**Returns:** `[{ id: number, guid: string, address: string, text: string, date: string, isFromMe: boolean, isRead: boolean }]`
 
 *An array of message objects*
 
@@ -2915,11 +2950,17 @@ Retrieve messages from a specific phone number
 
 ### `sms.getChats`
 
-**Signature:** `getChats()`
+**Signature:** `getChats(limit?)`
 
 Retrieve a list of conversation threads
 
-**Returns:** `[{ id: string, name: string, lastMessage: string, date: number }]`
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `limit` | `number` | Maximum number of chats (defaults to 50) | Yes |
+
+**Returns:** `[{ id: number, identifier: string, displayName: string, unreadCount: number, participants: [string], lastMessageDate: string }]`
 
 *An array of chat session objects*
 
@@ -2931,7 +2972,7 @@ Retrieve a list of conversation threads
 
 Get SMS usage statistics
 
-**Returns:** `{ total: number, unread: number, senders: number }`
+**Returns:** `{ totalMessages: number, unreadCount: number, chatCount: number, contactCount: number, attachmentCount: number }`
 
 *An object containing summary statistics*
 
@@ -2943,7 +2984,7 @@ Get SMS usage statistics
 
 Retrieve the most recent message
 
-**Returns:** `{ id: string, content: string, sender: string, date: number } \| null`
+**Returns:** `{ id: number, guid: string, address: string, text: string, date: string, isFromMe: boolean, isRead: boolean } \| null`
 
 *The latest message object or null*
 
@@ -2951,13 +2992,73 @@ Retrieve the most recent message
 
 ### `sms.getUnread`
 
-**Signature:** `getUnread()`
+**Signature:** `getUnread(limit?)`
 
 Retrieve all unread messages
 
-**Returns:** `[{ id: string, content: string, sender: string, date: number }]`
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `limit` | `number` | Maximum number of messages (defaults to 50) | Yes |
+
+**Returns:** `[{ id: number, guid: string, address: string, text: string, date: string, isFromMe: boolean, isRead: boolean }]`
 
 *An array of unread message objects*
+
+---
+
+### `sms.helperCheck`
+
+**Signature:** `helperCheck()`
+
+Check SMS database access via Root Helper
+
+**Returns:** `object`
+
+*Access status information*
+
+---
+
+### `sms.helperCopy`
+
+**Signature:** `helperCopy()`
+
+Copy SMS database to temporary directory via Root Helper
+
+**Returns:** `{ success: boolean, path: string, error: string }`
+
+*Copy operation result*
+
+---
+
+### `sms.helperList`
+
+**Signature:** `helperList(path)`
+
+List directory contents via Root Helper
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `path` | `string` | Directory path to list | No |
+
+**Returns:** `object`
+
+*Directory listing result*
+
+---
+
+### `sms.helperAvailable`
+
+**Signature:** `helperAvailable()`
+
+Check if Root Helper is available
+
+**Returns:** `boolean`
+
+*Whether Root Helper is accessible*
 
 ---
 
@@ -2965,51 +3066,146 @@ Retrieve all unread messages
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
-SQL database operations
+SQLite database operations
 
-### `sql.query`
+### `sql.open`
 
-**Signature:** `query(dbPath, sql, params?)`
+**Signature:** `open(name?)`
 
-Execute a SELECT statement and return results
+Open or create a SQLite database
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `dbPath` | `string` | Path to the database file | No |
-| `sql` | `string` | SQL query string | No |
-| `params` | `any[]` | List of parameters for prepared statement | Yes |
+| `name` | `string` | Database name (defaults to 'default'). File will be created as {name}.sqlite in Documents directory | Yes |
 
-**Returns:** `any[]`
+**Returns:** `boolean`
 
-*An array of objects representing the query rows*
+*Whether the database was successfully opened*
+
+---
+
+### `sql.close`
+
+**Signature:** `close(name?)`
+
+Close a database connection
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | Database name (defaults to 'default') | Yes |
+
+**Returns:** `boolean`
+
+*Always returns true*
 
 ---
 
 ### `sql.execute`
 
-**Signature:** `execute(dbPath, sql, params?)`
+**Signature:** `execute(name?, sql, params?)`
 
-Execute INSERT, UPDATE, or DELETE statements
+Execute INSERT, UPDATE, DELETE, or DDL statements
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `dbPath` | `string` | Path to the database file | No |
-| `sql` | `string` | SQL execution string | No |
-| `params` | `any[]` | List of parameters for prepared statement | Yes |
+| `name` | `string` | Database name (defaults to 'default') | Yes |
+| `sql` | `string` | SQL statement to execute | No |
+| `params` | `any[]` | Parameters for prepared statement (use ? placeholders) | Yes |
 
-**Returns:** `{ changes: number, lastInsertRowId: number }`
+**Returns:** `{ success: boolean, changes?: number, lastInsertId?: number, error?: string }`
 
-*Result object containing affected rows and the last inserted ID*
+*Result object containing success status, affected rows count, and last inserted row ID*
 
 ---
 
-### `sql.tables`
+### `sql.exec`
 
-**Signature:** `tables(dbPath)`
+**Signature:** `exec(name?, sql, params?)`
+
+Alias for execute()
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | Database name (defaults to 'default') | Yes |
+| `sql` | `string` | SQL statement to execute | No |
+| `params` | `any[]` | Parameters for prepared statement | Yes |
+
+**Returns:** `{ success: boolean, changes?: number, lastInsertId?: number, error?: string }`
+
+*Result object*
+
+---
+
+### `sql.query`
+
+**Signature:** `query(name?, sql, params?)`
+
+Execute a SELECT query and return all matching rows
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | Database name (defaults to 'default') | Yes |
+| `sql` | `string` | SELECT query to execute | No |
+| `params` | `any[]` | Parameters for prepared statement | Yes |
+
+**Returns:** `[object]`
+
+*An array of row objects (column name -> value)*
+
+---
+
+### `sql.queryOne`
+
+**Signature:** `queryOne(name?, sql, params?)`
+
+Execute a SELECT query and return the first row
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | Database name (defaults to 'default') | Yes |
+| `sql` | `string` | SELECT query to execute | No |
+| `params` | `any[]` | Parameters for prepared statement | Yes |
+
+**Returns:** `object \| null`
+
+*The first row object, or null if no results*
+
+---
+
+### `sql.tableExists`
+
+**Signature:** `tableExists(name?, tableName)`
+
+Check if a table exists in the database
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | Database name (defaults to 'default') | Yes |
+| `tableName` | `string` | Name of the table to check | No |
+
+**Returns:** `boolean`
+
+*Whether the table exists*
+
+---
+
+### `sql.getTables`
+
+**Signature:** `getTables(name?)`
 
 List all tables in the database
 
@@ -3017,30 +3213,102 @@ List all tables in the database
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `dbPath` | `string` | Path to the database file | No |
+| `name` | `string` | Database name (defaults to 'default') | Yes |
 
-**Returns:** `string[]`
+**Returns:** `[string]`
 
 *An array of table names*
 
 ---
 
-### `sql.schema`
+### `sql.getTableInfo`
 
-**Signature:** `schema(dbPath, tableName)`
+**Signature:** `getTableInfo(name?, tableName)`
 
-Retrieve the schema (structure) of a specific table
+Get column information for a table
 
 **Parameters:**
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `dbPath` | `string` | Path to the database file | No |
-| `tableName` | `string` | The name of the table | No |
+| `name` | `string` | Database name (defaults to 'default') | Yes |
+| `tableName` | `string` | Name of the table | No |
 
-**Returns:** `string`
+**Returns:** `[{ cid: number, name: string, type: string, notnull: boolean, pk: boolean }]`
 
-*The SQL statement used to create the table*
+*An array of column information objects*
+
+---
+
+### `sql.beginTransaction`
+
+**Signature:** `beginTransaction(name?)`
+
+Begin a database transaction
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | Database name (defaults to 'default') | Yes |
+
+**Returns:** `boolean`
+
+*Whether the transaction was started successfully*
+
+---
+
+### `sql.commit`
+
+**Signature:** `commit(name?)`
+
+Commit the current transaction
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | Database name (defaults to 'default') | Yes |
+
+**Returns:** `boolean`
+
+*Whether the commit was successful*
+
+---
+
+### `sql.rollback`
+
+**Signature:** `rollback(name?)`
+
+Roll back the current transaction
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | Database name (defaults to 'default') | Yes |
+
+**Returns:** `boolean`
+
+*Whether the rollback was successful*
+
+---
+
+### `sql.vacuum`
+
+**Signature:** `vacuum(name?)`
+
+Optimize the database by reclaiming unused space
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | Database name (defaults to 'default') | Yes |
+
+**Returns:** `boolean`
+
+*Whether the vacuum operation was successful*
 
 ---
 
