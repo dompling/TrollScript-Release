@@ -37,6 +37,7 @@ nav:
   - 安装指南: INSTALL.md    # 二级菜单示例
   - 环境要求: requirements.md
   - 测试示例脚本: TestScripts.md
+  - 功能介绍: ARGS.md
   - API 参考:
     - App: App.md
     - 日历: Calendar.md
