@@ -1,0 +1,1 @@
+app.notifyPost("me.tomt000.copylog.showView");

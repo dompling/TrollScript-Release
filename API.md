@@ -1606,6 +1606,66 @@ Ping 主机
 
 ---
 
+### `app.notifyPost`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `notifyPost(name)`
+
+发送 Darwin Notification
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | notification 名称 | No |
+
+**Returns:** `boolean`
+
+*是否发送成功*
+
+---
+
+### `app.notifyRegister`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `notifyRegister(name)`
+
+注册监听 Darwin Notification
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | notification 名称 | No |
+
+**Returns:** `number`
+
+*监听 token*
+
+---
+
+### `app.notifyCancel`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `notifyCancel(token)`
+
+取消监听 Darwin Notification
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `token` | `number` | token 数字 | No |
+
+**Returns:** `boolean`
+
+*是否取消成功*
+
+---
+
 ## haptic
 
 ![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)

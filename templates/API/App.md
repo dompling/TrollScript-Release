@@ -313,6 +313,59 @@ app.launch('com.apple.mobilesafari');
 
 ---
 
+### Darwin Notification
+
+Darwin Notification 是 iOS 系统级的通知机制，可用于进程间通信。
+
+#### `app.notifyPost(name)`
+发送 Darwin Notification。**参数:** `name` (string) - notification 名称 **返回:** `boolean` - 是否发送成功
+
+```javascript
+// 发送通知 唤起 Copylog
+const success = app.notifyPost('me.tomt000.copylog.showView');
+if (success) {
+  console.log('通知发送成功');
+}
+```
+
+#### `app.notifyRegister(name)`
+注册监听 Darwin Notification。**参数:** `name` (string) - notification 名称 **返回:** `number` - 监听 token
+
+```javascript
+// 注册监听
+const token = app.notifyRegister('com.example.mynotification');
+console.log('注册成功，token:', token);
+```
+
+#### `app.notifyCancel(token)`
+取消监听 Darwin Notification。**参数:** `token` (number) - 监听 token **返回:** `boolean` - 是否取消成功
+
+```javascript
+// 取消监听
+const success = app.notifyCancel(token);
+if (success) {
+  console.log('取消监听成功');
+}
+```
+
+**完整示例：进程间通信**
+
+```javascript
+// 进程 A：注册监听
+const token = app.notifyRegister('com.example.data.updated');
+console.log('开始监听数据更新通知');
+
+// 进程 B：发送通知
+app.notifyPost('com.example.data.updated');
+
+// 进程 A：取消监听
+app.notifyCancel(token);
+```
+
+> **注意**: Darwin Notification 是系统级通知，适用于跨进程通信。通知名称建议使用反向域名格式（如 `com.example.notification`）以避免冲突。
+
+---
+
 ## 完整示例
 
 ### 示例 1: 应用信息显示

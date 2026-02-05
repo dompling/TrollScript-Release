@@ -1607,6 +1607,66 @@ Clear all performance records
 
 ---
 
+### `app.notifyPost`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `notifyPost(name)`
+
+Send a Darwin Notification
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | Notification name | No |
+
+**Returns:** `boolean`
+
+*Whether the notification was sent successfully*
+
+---
+
+### `app.notifyRegister`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `notifyRegister(name)`
+
+Register to listen for a Darwin Notification
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `name` | `string` | Notification name | No |
+
+**Returns:** `number`
+
+*Listener token*
+
+---
+
+### `app.notifyCancel`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `notifyCancel(token)`
+
+Cancel listening for a Darwin Notification
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `token` | `number` | Listener token | No |
+
+**Returns:** `boolean`
+
+*Whether the listener was cancelled successfully*
+
+---
+
 ## haptic
 
 ![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)

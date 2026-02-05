@@ -673,6 +673,27 @@ interface App {
      */
     clearPerformanceRecords(): void;
 
+    /**
+     * 发送 Darwin Notification
+     * @param name notification 名称
+     * @returns 是否发送成功
+     */
+    notifyPost(name: string): boolean;
+
+    /**
+     * 注册监听 Darwin Notification
+     * @param name notification 名称
+     * @returns 监听 token
+     */
+    notifyRegister(name: string): number;
+
+    /**
+     * 取消监听 Darwin Notification
+     * @param token token 数字
+     * @returns 是否取消成功
+     */
+    notifyCancel(token: number): boolean;
+
 }
 
 declare const app: App;
