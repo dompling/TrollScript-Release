@@ -2940,6 +2940,84 @@
 <p>Clear all performance records</p>
 <p><strong>Returns:</strong> <code>void</code></p>
 <hr />
+<h3 id="appnotifypost"><code>app.notifyPost</code><a class="headerlink" href="#appnotifypost" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>notifyPost(name)</code></p>
+<p>Send a Darwin Notification</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Notification name</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>boolean</code></p>
+<p><em>Whether the notification was sent successfully</em></p>
+<hr />
+<h3 id="appnotifyregister"><code>app.notifyRegister</code><a class="headerlink" href="#appnotifyregister" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>notifyRegister(name)</code></p>
+<p>Register to listen for a Darwin Notification</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Notification name</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>number</code></p>
+<p><em>Listener token</em></p>
+<hr />
+<h3 id="appnotifycancel"><code>app.notifyCancel</code><a class="headerlink" href="#appnotifycancel" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>notifyCancel(token)</code></p>
+<p>Cancel listening for a Darwin Notification</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>token</code></td>
+<td><code>number</code></td>
+<td>Listener token</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>boolean</code></p>
+<p><em>Whether the listener was cancelled successfully</em></p>
+<hr />
 <h2 id="haptic">haptic<a class="headerlink" href="#haptic" title="Permanent link">&para;</a></h2>
 <p><img alt="Limited Support" src="https://img.shields.io/badge/Trigger-Limited-orange" /></p>
 <p>Haptic feedback</p>

@@ -946,6 +946,56 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#darwin-notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Darwin Notification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Darwin Notification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appnotifypostname" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        app.notifyPost(name)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appnotifyregistername" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        app.notifyRegister(name)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appnotifycanceltoken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        app.notifyCancel(token)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1971,6 +2021,45 @@
 <p>检查应用是否已安装。<strong>参数:</strong> <code>bundleId</code> (string) <strong>返回:</strong> <code>boolean</code></p>
 <h4 id="appgetdatacontainerbundleid"><code>app.getDataContainer(bundleId)</code><a class="headerlink" href="#appgetdatacontainerbundleid" title="Permanent link">&para;</a></h4>
 <p>获取应用数据容器路径。<strong>参数:</strong> <code>bundleId</code> (string) <strong>返回:</strong> <code>string | null</code></p>
+<hr />
+<h3 id="darwin-notification">Darwin Notification<a class="headerlink" href="#darwin-notification" title="Permanent link">&para;</a></h3>
+<p>Darwin Notification 是 iOS 系统级的通知机制，可用于进程间通信。</p>
+<h4 id="appnotifypostname"><code>app.notifyPost(name)</code><a class="headerlink" href="#appnotifypostname" title="Permanent link">&para;</a></h4>
+<p>发送 Darwin Notification。<strong>参数:</strong> <code>name</code> (string) - notification 名称 <strong>返回:</strong> <code>boolean</code> - 是否发送成功</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 发送通知 唤起 Copylog</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">notifyPost</span><span class="p">(</span><span class="s1">&#39;me.tomt000.copylog.showView&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;通知发送成功&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="appnotifyregistername"><code>app.notifyRegister(name)</code><a class="headerlink" href="#appnotifyregistername" title="Permanent link">&para;</a></h4>
+<p>注册监听 Darwin Notification。<strong>参数:</strong> <code>name</code> (string) - notification 名称 <strong>返回:</strong> <code>number</code> - 监听 token</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 注册监听</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">notifyRegister</span><span class="p">(</span><span class="s1">&#39;com.example.mynotification&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;注册成功，token:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="appnotifycanceltoken"><code>app.notifyCancel(token)</code><a class="headerlink" href="#appnotifycanceltoken" title="Permanent link">&para;</a></h4>
+<p>取消监听 Darwin Notification。<strong>参数:</strong> <code>token</code> (number) - 监听 token <strong>返回:</strong> <code>boolean</code> - 是否取消成功</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 取消监听</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">notifyCancel</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;取消监听成功&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>完整示例：进程间通信</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 进程 A：注册监听</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">notifyRegister</span><span class="p">(</span><span class="s1">&#39;com.example.data.updated&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;开始监听数据更新通知&#39;</span><span class="p">);</span>
+
+<span class="c1">// 进程 B：发送通知</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">notifyPost</span><span class="p">(</span><span class="s1">&#39;com.example.data.updated&#39;</span><span class="p">);</span>
+
+<span class="c1">// 进程 A：取消监听</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">notifyCancel</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong>: Darwin Notification 是系统级通知，适用于跨进程通信。通知名称建议使用反向域名格式（如 <code>com.example.notification</code>）以避免冲突。</p>
+</blockquote>
 <hr />
 <h2 id="_8">完整示例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <h3 id="1">示例 1: 应用信息显示<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
