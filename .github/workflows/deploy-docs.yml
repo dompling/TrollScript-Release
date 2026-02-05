@@ -51,9 +51,19 @@ jobs:
             python3 TrollScript-Private/scripts/generate_api_docs.py TrollScript-Private/JSModulesAPI/en ./API.en.md
             echo "✅ Generated API.md and API.en.md"
 
-            # Generate NPM Package
+            # Generate NPM Package with auto-incrementing version
             mkdir -p npm
-            PACKAGE_VERSION="1.0.${{ github.run_number }}"
+
+            # 获取当前 NPM 包的最新版本
+            CURRENT_VERSION=$(npm view @dompling/trollscript-types version 2>/dev/null || echo "1.0.0")
+            echo "📋 Current NPM version: $CURRENT_VERSION"
+
+            # 提取 patch 版本号并递增
+            PATCH_VERSION=$(echo $CURRENT_VERSION | cut -d. -f3)
+            NEW_PATCH=$((PATCH_VERSION + 1))
+            PACKAGE_VERSION="1.0.$NEW_PATCH"
+            echo "📋 New version: $PACKAGE_VERSION"
+
             python3 TrollScript-Private/scripts/generate_npm_package.py TrollScript-Private/JSModulesAPI/zh ./npm $PACKAGE_VERSION
             echo "✅ Generated NPM package (v$PACKAGE_VERSION) in npm/"
           else
