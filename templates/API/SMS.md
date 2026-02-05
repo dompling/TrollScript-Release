@@ -176,11 +176,6 @@ if (sms.helperAvailable()) {
 
 ```javascript
 function backupMessages() {
-  if (!sms.isRealDataAvailable()) {
-    console.log('无法访问真实短信数据');
-    return;
-  }
-
   const messages = sms.read(1000);
   const backup = {
     exportDate: Date.now(),
