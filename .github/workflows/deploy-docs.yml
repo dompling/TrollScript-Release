@@ -93,6 +93,7 @@ jobs:
       # 发布 NPM 包（仅在 API 有变化时）
       - name: Publish NPM Package
         if: success() && steps.check_api.outputs.api_changed == 'true'
+        continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
@@ -108,8 +109,15 @@ jobs:
 
           cd npm
           echo "📦 Publishing to NPM..."
-          npm publish --access public
-          echo "✅ Published successfully"
+
+          # 尝试发布，捕获错误但不中断工作流
+          if npm publish --access public 2>&1; then
+            echo "✅ Published successfully"
+          else
+            echo "⚠️ NPM publish failed (version may already exist or token issue)"
+            echo "ℹ️ Continuing workflow..."
+            exit 0
+          fi
 
       # 4. 复制私有仓库的文件到当前仓库
       - name: Copy files from Private Repository
