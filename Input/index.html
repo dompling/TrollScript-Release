@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://trollscript.qzz.io/Input/">
       
       
+        <link rel="prev" href="../Clipboard/">
+      
+      
+        <link rel="next" href="../Console/">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>Input 输入模拟 - TrollScript</title>
+        <title>系统输入 - TrollScript</title>
       
     
     
@@ -110,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Input 输入模拟
+              系统输入
             
           </span>
         </div>
@@ -392,8 +396,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -404,13 +410,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -431,7 +435,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -530,10 +534,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../INPUT.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统输入
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -549,6 +580,448 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        快速开始
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API 参考
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API 参考">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        状态检查
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="状态检查">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inputisavailable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.isAvailable()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputgetscreensize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.getScreenSize()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        触摸模拟
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="触摸模拟">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inputtapx-y" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.tap(x, y)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputdoubletapx-y" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.doubleTap(x, y)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputlongpressx-y-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.longPress(x, y, duration)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputswipefromx-fromy-tox-toy-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.swipe(fromX, fromY, toX, toY, duration?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputdragfromx-fromy-tox-toy-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.drag(fromX, fromY, toX, toY, duration?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        键盘输入
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="键盘输入">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inputpresskeykeyname" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.pressKey(keyName)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputtypetexttext-delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.typeText(text, delay?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputpastetexttext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.pasteText(text)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        物理按键
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="物理按键">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inputpressbuttonbuttonname" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.pressButton(buttonName)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputpressbuttonsbuttonnames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.pressButtons(buttonNames)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按键名称速查表
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="按键名称速查表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        键盘按键
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        媒体/物理按键
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完整示例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="完整示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        示例 1: 自动化 App 操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        示例 2: 滑动浏览内容
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        示例 3: 自动调节音量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        示例 4: 手势录制回放
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-hud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        示例 5: 配合 HUD 的自动点击器
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最佳实践
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="最佳实践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 始终检查可用性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 使用相对坐标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 操作间加入延迟
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 限制循环次数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        注意事项
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
