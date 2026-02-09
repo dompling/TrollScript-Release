@@ -241,9 +241,9 @@ input.pasteText("Hello 🌍🎉");
 input.pasteText("用户名：张三 ID:12345");
 ```
 
-> 原理：将文本写入系统剪贴板 → 模拟 Cmd+V 硬件键盘粘贴快捷键 → 恢复原始剪贴板内容。
+> 原理：将文本写入系统剪贴板 → 模拟 Cmd+V 硬件键盘粘贴快捷键。
 >
-> ⚠️ 此方法会临时覆盖剪贴板内容（操作完成后自动恢复）。需要目标输入框处于焦点状态。
+> ⚠️ 此方法会覆盖当前剪贴板内容。需要目标输入框处于焦点状态。
 
 ---
 
@@ -473,7 +473,7 @@ while (true) {
 2. **坐标系**: 使用 UIKit points（逻辑坐标），左上角为原点。通过 `getScreenSize()` 获取屏幕尺寸
 3. **阻塞行为**: `longPress`、`swipe`、`drag` 会阻塞脚本执行直到手势完成
 4. **字符限制**: `typeText` 仅支持 ASCII 字符，中文/Emoji 请使用 `pasteText`
-5. **剪贴板**: `pasteText` 会临时使用系统剪贴板，操作完成后自动恢复原内容
+5. **剪贴板**: `pasteText` 会覆盖当前剪贴板内容
 6. **设备兼容**: `IOHIDEventSystemClientCreate` 在某些设备上可能返回 NULL，请始终用 `isAvailable()` 检查
 7. **线程安全**: HID 事件通过 IOKit 系统级管道派发，不需要主线程
 8. **系统限制**: 模拟触摸无法绕过 Face ID / Touch ID 等生物识别
