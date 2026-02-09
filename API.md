@@ -18,7 +18,7 @@ The following icons indicate API compatibility when running in background trigge
 
 - [console](#console) ✅ - 控制台输出
 - [device](#device) ✅ - 设备信息
-- [clipboard](#clipboard) ⚠️ - 剪贴板操作
+- [clipboard](#clipboard) ✅ - 剪贴板操作 & 输入框文本写入
 - [storage](#storage) ✅ - 本地存储
 - [icloud](#icloud) ✅ - iCloud 文件操作
 - [file](#file) ✅ - 文件操作
@@ -180,9 +180,9 @@ The following icons indicate API compatibility when running in background trigge
 
 ## clipboard
 
-![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
-剪贴板操作
+剪贴板操作 & 输入框文本写入
 
 ### `clipboard.getText`
 
@@ -197,8 +197,6 @@ The following icons indicate API compatibility when running in background trigge
 ---
 
 ### `clipboard.setText`
-
-![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `setText(text)`
 
@@ -215,8 +213,6 @@ The following icons indicate API compatibility when running in background trigge
 ---
 
 ### `clipboard.clear`
-
-![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `clear()`
 
@@ -235,6 +231,84 @@ The following icons indicate API compatibility when running in background trigge
 **Returns:** `boolean`
 
 *剪贴板是否有文本内容*
+
+---
+
+### `clipboard.insertText`
+
+**Signature:** `insertText(text)`
+
+向当前聚焦的输入框光标位置插入文本（需键盘已弹出）
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `text` | `string` | 要插入的文本内容 | No |
+
+**Returns:** `boolean`
+
+*是否成功插入（无聚焦输入框时返回 false）*
+
+---
+
+### `clipboard.deleteBackward`
+
+**Signature:** `deleteBackward(count)`
+
+删除聚焦输入框中光标前的字符
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `count` | `number` | 要删除的字符数量，默认 1 | No |
+
+**Returns:** `boolean`
+
+*是否成功删除*
+
+---
+
+### `clipboard.getInputText`
+
+**Signature:** `getInputText()`
+
+获取当前聚焦输入框的全部文本内容
+
+**Returns:** `string \| null`
+
+*输入框文本内容，无聚焦输入框时返回 null*
+
+---
+
+### `clipboard.setInputText`
+
+**Signature:** `setInputText(text)`
+
+替换当前聚焦输入框的全部文本（全选后替换）
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `text` | `string` | 替换后的文本内容 | No |
+
+**Returns:** `boolean`
+
+*是否成功替换*
+
+---
+
+### `clipboard.hasInputFocus`
+
+**Signature:** `hasInputFocus()`
+
+检查当前是否有输入框处于聚焦状态（键盘是否已弹出）
+
+**Returns:** `boolean`
+
+*是否有输入框聚焦*
 
 ---
 

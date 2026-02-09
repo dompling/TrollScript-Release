@@ -1,8 +1,8 @@
 # Clipboard 剪贴板
 
-Clipboard 模块提供了剪贴板操作功能。你可以使用它来读取、写入和清空系统剪贴板内容。
+Clipboard 模块提供了剪贴板操作和输入框文本写入功能。你可以使用它来读取、写入和清空系统剪贴板内容，以及在键盘聚焦时直接操作输入框。
 
-> **守护进程支持**: 有限支持。getText() 和 hasText() 在 Daemon 模式下可用，setText() 和 clear() 需要 UI 交互。
+> **守护进程支持**: 完全支持。利用 `com.apple.TextInput` 和 `com.apple.TextInput.accessibility` 权限，所有方法在 Daemon 模式下均可用。
 
 ---
 
@@ -10,10 +10,17 @@ Clipboard 模块提供了剪贴板操作功能。你可以使用它来读取、�
 
 - [快速开始](#快速开始)
 - [API 参考](#api-参考)
-  - [clipboard.getText()](#clipboardgettext)
-  - [clipboard.setText()](#clipboardsettext)
-  - [clipboard.clear()](#clipboardclear)
-  - [clipboard.hasText()](#clipboardhastext)
+  - [剪贴板操作](#剪贴板操作)
+    - [clipboard.getText()](#clipboardgettext)
+    - [clipboard.setText()](#clipboardsettext)
+    - [clipboard.clear()](#clipboardclear)
+    - [clipboard.hasText()](#clipboardhastext)
+  - [输入框操作](#输入框操作)
+    - [clipboard.insertText()](#clipboardinserttext)
+    - [clipboard.deleteBackward()](#clipboarddeletebackward)
+    - [clipboard.getInputText()](#clipboardgetinputtext)
+    - [clipboard.setInputText()](#clipboardsetinputtext)
+    - [clipboard.hasInputFocus()](#clipboardhasinputfocus)
 - [完整示例](#完整示例)
 - [最佳实践](#最佳实践)
 
@@ -21,7 +28,7 @@ Clipboard 模块提供了剪贴板操作功能。你可以使用它来读取、�
 
 ## 快速开始
 
-使用剪贴板非常简单：
+### 剪贴板基础操作
 
 ```javascript
 // 读取剪贴板内容
@@ -40,9 +47,31 @@ if (clipboard.hasText()) {
 clipboard.clear();
 ```
 
+### 输入框写入（键盘聚焦时）
+
+```javascript
+// 检查是否有输入框聚焦
+if (clipboard.hasInputFocus()) {
+  // 在光标位置插入文本
+  clipboard.insertText('Hello!');
+
+  // 读取输入框全部内容
+  const inputText = clipboard.getInputText();
+  console.log('输入框内容:', inputText);
+
+  // 替换输入框全部内容
+  clipboard.setInputText('新的内容');
+
+  // 删除光标前 3 个字符
+  clipboard.deleteBackward(3);
+}
+```
+
 ---
 
 ## API 参考
+
+## 剪贴板操作
 
 ### `clipboard.getText()`
 
@@ -59,7 +88,7 @@ console.log('剪贴板内容:', text);
 
 **注意事项:**
 - 在 App 模式下，直接使用 `UIPasteboard` 读取
-- 在 Daemon 模式下，使用特殊的缓存机制读取，以避免权限问题
+- 在 Daemon 模式下，优先尝试直接读取（利用 `com.apple.Pasteboard.paste-unchecked` 权限），如果失败则回退到缓存机制
 - 只能读取纯文本内容，不支持图片、文件等其他类型
 
 ---
@@ -83,7 +112,7 @@ console.log('文本已写入剪贴板');
 
 **注意事项:**
 - 会覆盖剪贴板中的现有内容
-- **Daemon 模式不可用** - 此方法需要 UI 交互
+- Daemon 模式下使用 `com.apple.Pasteboard.paste-unchecked` 权限直接写入
 - 写入后，其他应用可以立即读取到新内容
 
 ---
@@ -101,7 +130,6 @@ console.log('剪贴板已清空');
 
 **注意事项:**
 - 清空后，`clipboard.getText()` 将返回空字符串
-- **Daemon 模式不可用** - 此方法需要 UI 交互
 
 ---
 
@@ -119,6 +147,146 @@ if (clipboard.hasText()) {
   console.log('剪贴板为空');
 }
 ```
+
+---
+
+## 输入框操作
+
+> 以下方法利用 `com.apple.TextInput` 和 `com.apple.TextInput.accessibility` 权限，可以在键盘聚焦时直接操作输入框内容。支持 `UITextField`、`UITextView` 以及 `WKWebView` 内部输入框。
+
+### `clipboard.insertText(text)`
+
+向当前聚焦的输入框光标位置插入文本。需要键盘已弹出（有输入框处于聚焦状态）。
+
+**参数:**
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `text` | `string` | 是 | 要插入的文本内容 |
+
+**返回:** `boolean` — 是否成功插入（无聚焦输入框时返回 `false`）
+
+```javascript
+// 在聚焦的输入框光标位置插入文本
+const success = clipboard.insertText('Hello World');
+
+if (success) {
+  console.log('文本已插入到输入框');
+} else {
+  console.log('没有聚焦的输入框');
+}
+```
+
+**注意事项:**
+- 通过 `UIKeyInput` 协议实现，兼容所有标准输入控件
+- 在 WKWebView 的 `<input>` 和 `<textarea>` 中同样有效
+- 文本会插入到光标当前位置，不会覆盖已有内容
+- 支持插入换行符 `\n`
+
+---
+
+### `clipboard.deleteBackward(count)`
+
+删除聚焦输入框中光标前的字符。
+
+**参数:**
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `count` | `number` | 否 | 要删除的字符数量，默认 `1` |
+
+**返回:** `boolean` — 是否成功删除
+
+```javascript
+// 删除光标前 1 个字符（等同于按一次退格键）
+clipboard.deleteBackward();
+
+// 删除光标前 5 个字符
+clipboard.deleteBackward(5);
+```
+
+**注意事项:**
+- 等同于按退格键的效果
+- 如果输入框已无文本可删，会自动停止
+- 配合 `insertText` 可实现替换光标前文本的效果
+
+---
+
+### `clipboard.getInputText()`
+
+获取当前聚焦输入框的全部文本内容。
+
+**返回:** `string | null` — 输入框文本内容，无聚焦输入框时返回 `null`
+
+```javascript
+const inputText = clipboard.getInputText();
+
+if (inputText !== null) {
+  console.log('输入框内容:', inputText);
+  console.log('内容长度:', inputText.length);
+} else {
+  console.log('没有聚焦的输入框');
+}
+```
+
+**注意事项:**
+- 对 `UITextField` 和 `UITextView` 直接读取 `text` 属性
+- 对 WKWebView 内部输入框通过 `UITextInput` 协议获取全量文本
+- 返回的是输入框中的完整文本，不仅仅是选中部分
+
+---
+
+### `clipboard.setInputText(text)`
+
+替换当前聚焦输入框的全部文本内容。
+
+**参数:**
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `text` | `string` | 是 | 替换后的文本内容 |
+
+**返回:** `boolean` — 是否成功替换
+
+```javascript
+// 替换输入框全部内容
+const success = clipboard.setInputText('新的文本内容');
+
+if (success) {
+  console.log('输入框内容已替换');
+} else {
+  console.log('没有聚焦的输入框');
+}
+```
+
+**注意事项:**
+- 会清除输入框中所有已有文本，然后写入新文本
+- 对 `UITextField` 会触发 `editingChanged` 事件
+- 对 `UITextView` 会通知 `textViewDidChange` 代理方法
+- 对 WKWebView 内部输入框，通过全选 + 替换实现
+- 如果要在光标位置追加而非替换全部，请使用 `insertText`
+
+---
+
+### `clipboard.hasInputFocus()`
+
+检查当前是否有输入框处于聚焦状态（键盘是否已弹出）。
+
+**返回:** `boolean` — 是否有输入框聚焦
+
+```javascript
+if (clipboard.hasInputFocus()) {
+  console.log('有输入框正在聚焦，可以操作');
+  // 安全地操作输入框
+  clipboard.insertText('自动填充');
+} else {
+  console.log('没有聚焦的输入框');
+}
+```
+
+**注意事项:**
+- 在调用 `insertText`、`setInputText` 等方法前，建议先检查
+- 返回 `true` 表示当前第一响应者是一个符合 `UIKeyInput` 协议的控件
 
 ---
 
@@ -377,6 +545,107 @@ translateClipboard();
 
 ---
 
+### 示例 8: 自动填充输入框
+
+```javascript
+// 从剪贴板读取内容，自动填入聚焦的输入框
+function autoFillFromClipboard() {
+  // 检查是否有输入框聚焦
+  if (!clipboard.hasInputFocus()) {
+    console.log('请先点击一个输入框');
+    return;
+  }
+
+  // 读取剪贴板内容
+  const text = clipboard.getText();
+  if (!text) {
+    console.log('剪贴板为空');
+    return;
+  }
+
+  // 替换输入框内容为剪贴板文本
+  clipboard.setInputText(text);
+  console.log('已将剪贴板内容填入输入框');
+  haptic.success();
+}
+
+autoFillFromClipboard();
+```
+
+---
+
+### 示例 9: 输入框内容处理
+
+```javascript
+// 读取输入框内容并进行处理（如去除空格、格式化手机号等）
+function formatInputField() {
+  if (!clipboard.hasInputFocus()) {
+    console.log('请先聚焦到一个输入框');
+    return;
+  }
+
+  const text = clipboard.getInputText();
+  if (!text) {
+    console.log('输入框为空');
+    return;
+  }
+
+  // 去除首尾空格
+  let formatted = text.trim();
+
+  // 如果是手机号，格式化为 xxx-xxxx-xxxx
+  if (/^\d{11}$/.test(formatted)) {
+    formatted = formatted.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+  }
+
+  // 写回输入框
+  clipboard.setInputText(formatted);
+  console.log('输入框内容已格式化:', formatted);
+}
+
+formatInputField();
+```
+
+---
+
+### 示例 10: 智能文本补全
+
+```javascript
+// 在输入框光标位置智能补全内容
+function smartComplete() {
+  if (!clipboard.hasInputFocus()) {
+    console.log('请先聚焦到一个输入框');
+    return;
+  }
+
+  const text = clipboard.getInputText();
+  if (!text) return;
+
+  // 根据输入内容智能补全
+  const completions = {
+    'http': 's://',
+    'www': '.example.com',
+    'hello': ' world!',
+    '你好': '世界！'
+  };
+
+  for (const [prefix, suffix] of Object.entries(completions)) {
+    if (text.endsWith(prefix)) {
+      clipboard.insertText(suffix);
+      console.log('已补全:', prefix + suffix);
+      haptic.light();
+      return;
+    }
+  }
+
+  console.log('没有匹配的补全');
+}
+
+smartComplete();
+```
+
+---
+
 ## 最佳实践
 
 ### 1. 检查剪贴板是否为空
@@ -397,9 +666,21 @@ const text = clipboard.getText();
 const upper = text.toUpperCase();  // 如果为空会出错
 ```
 
-### 2. 避免频繁读写
+### 2. 操作输入框前先检查聚焦状态
 
-剪贴板操作有一定开销，避免在循环中频繁调用：
+```javascript
+// ✅ 正确 - 先检查再操作
+if (clipboard.hasInputFocus()) {
+  clipboard.insertText('安全插入');
+}
+
+// ❌ 错误 - 不检查直接操作
+clipboard.insertText('可能失败');  // 无聚焦时返回 false 但无反馈
+```
+
+### 3. 避免频繁读写
+
+剪贴板和输入框操作有一定开销，避免在循环中频繁调用：
 
 ```javascript
 // ✅ 正确
@@ -416,7 +697,7 @@ for (let i = 0; i < 1000; i++) {
 }
 ```
 
-### 3. 在 Daemon 模式下避免死循环
+### 4. 在 Daemon 模式下避免死循环
 
 在剪贴板触发器中修改剪贴板时要小心：
 
@@ -428,7 +709,7 @@ clipboard.setText('processed: ' + text);
 // 模块已经内置了防死循环机制，但仍需谨慎使用
 ```
 
-### 4. 处理特殊字符
+### 5. 处理特殊字符
 
 剪贴板内容可能包含特殊字符，需要适当处理：
 
@@ -447,7 +728,7 @@ const escaped = text.replace(/[<>&"']/g, (char) => {
 });
 ```
 
-### 5. 保护用户隐私
+### 6. 保护用户隐私
 
 不要记录敏感的剪贴板内容：
 
@@ -470,9 +751,9 @@ const text = clipboard.getText();
 console.log('剪贴板:', text);  // 可能泄露密码等敏感信息
 ```
 
-### 6. 提供用户反馈
+### 7. 提供用户反馈
 
-剪贴板操作后给用户明确的反馈：
+剪贴板和输入框操作后给用户明确的反馈：
 
 ```javascript
 // ✅ 正确
@@ -480,18 +761,41 @@ clipboard.setText('处理后的文本');
 notification.send('操作成功', '内容已复制到剪贴板');
 haptic.success();
 
+// ✅ 正确 - 输入框操作也要反馈
+if (clipboard.insertText('已填入')) {
+  haptic.light();
+} else {
+  notification.send('操作失败', '请先点击输入框');
+}
+
 // ❌ 错误 - 没有反馈
 clipboard.setText('处理后的文本');
 // 用户不知道操作是否成功
+```
+
+### 8. insertText vs setInputText 的选择
+
+```javascript
+// ✅ 追加/插入内容 → 使用 insertText
+clipboard.insertText('追加的文字');  // 在光标位置插入，保留其他内容
+
+// ✅ 替换全部内容 → 使用 setInputText
+clipboard.setInputText('全新的内容');  // 清空并重写
+
+// ✅ 先删后插 → 使用 deleteBackward + insertText
+clipboard.deleteBackward(3);        // 删除光标前 3 个字符
+clipboard.insertText('替换文字');     // 插入新文字
 ```
 
 ---
 
 ## 注意事项
 
-1. **权限要求**: 读写剪贴板不需要特殊权限
-2. **Daemon 模式**: 在 Daemon 模式下，读取剪贴板使用特殊的缓存机制，可能有轻微延迟
-3. **内容类型**: 目前只支持纯文本，不支持图片、文件等其他类型
+1. **权限要求**: 剪贴板读写利用 `com.apple.Pasteboard.paste-unchecked` 和 `com.apple.Pasteboard.background-access` 权限；输入框操作利用 `com.apple.TextInput` 和 `com.apple.TextInput.accessibility` 权限
+2. **Daemon 模式**: 完全支持。剪贴板读取优先尝试直接访问，回退到缓存机制
+3. **内容类型**: 剪贴板操作只支持纯文本，不支持图片、文件等其他类型
 4. **死循环防护**: 在剪贴板触发器中修改剪贴板时，模块会自动标记避免死循环
-5. **性能影响**: 剪贴板操作开销较小，但仍应避免过于频繁的调用
+5. **性能影响**: 操作开销较小，但仍应避免过于频繁的调用
 6. **跨应用**: 剪贴板内容在所有应用间共享，修改后其他应用可以立即看到
+7. **输入框兼容性**: `insertText` / `setInputText` 等方法支持 UITextField、UITextView 以及 WKWebView 内部的 `<input>` 和 `<textarea>` 元素
+8. **线程安全**: 输入框操作会自动调度到主线程执行，在 Daemon 模式下使用 `MainThreadHelper` 防止死锁

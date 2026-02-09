@@ -18,7 +18,7 @@ The following icons indicate API compatibility when running in background trigge
 
 - [console](#console) ✅ - Console output
 - [device](#device) ✅ - Device information
-- [clipboard](#clipboard) ⚠️ - Clipboard operations
+- [clipboard](#clipboard) ✅ - Clipboard operations & text input field writing
 - [storage](#storage) ✅ - Local key-value storage
 - [icloud](#icloud) ✅ - iCloud file operations
 - [file](#file) ✅ - File system operations
@@ -181,9 +181,9 @@ Retrieve screen and display metrics
 
 ## clipboard
 
-![Limited Support](https://img.shields.io/badge/Trigger-Limited-orange)
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
 
-Clipboard operations
+Clipboard operations & text input field writing
 
 ### `clipboard.getText`
 
@@ -198,8 +198,6 @@ Get text from the clipboard
 ---
 
 ### `clipboard.setText`
-
-![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `setText(text)`
 
@@ -216,8 +214,6 @@ Set text to the clipboard
 ---
 
 ### `clipboard.clear`
-
-![Not Supported](https://img.shields.io/badge/Trigger-None-red)
 
 **Signature:** `clear()`
 
@@ -236,6 +232,84 @@ Check if the clipboard contains text
 **Returns:** `boolean`
 
 *Whether the clipboard has text content*
+
+---
+
+### `clipboard.insertText`
+
+**Signature:** `insertText(text)`
+
+Insert text at cursor position in the currently focused input field (keyboard must be active)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `text` | `string` | The text to insert | No |
+
+**Returns:** `boolean`
+
+*Whether the insertion was successful (returns false if no input field is focused)*
+
+---
+
+### `clipboard.deleteBackward`
+
+**Signature:** `deleteBackward(count)`
+
+Delete characters before the cursor in the focused input field
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `count` | `number` | Number of characters to delete, defaults to 1 | No |
+
+**Returns:** `boolean`
+
+*Whether the deletion was successful*
+
+---
+
+### `clipboard.getInputText`
+
+**Signature:** `getInputText()`
+
+Get the full text content of the currently focused input field
+
+**Returns:** `string \| null`
+
+*The input field text content, or null if no input is focused*
+
+---
+
+### `clipboard.setInputText`
+
+**Signature:** `setInputText(text)`
+
+Replace all text in the currently focused input field (select all then replace)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `text` | `string` | The replacement text | No |
+
+**Returns:** `boolean`
+
+*Whether the replacement was successful*
+
+---
+
+### `clipboard.hasInputFocus`
+
+**Signature:** `hasInputFocus()`
+
+Check if any input field is currently focused (whether the keyboard is active)
+
+**Returns:** `boolean`
+
+*Whether an input field is focused*
 
 ---
 

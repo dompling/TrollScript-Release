@@ -20,6 +20,7 @@ HUD（Heads-Up Display）模块提供了创建系统级悬浮窗口的能力。�
   - [Loading 加载指示器](#loading-加载指示器)
   - [ScrollView 滚动视图](#scrollview-滚动视图)
   - [List 列表视图](#list-列表视图)
+  - [WebView 网页视图](#webview-网页视图)
 - [样式配置](#样式配置)
 - [完整示例](#完整示例)
 - [最佳实践](#最佳实践)
@@ -1051,6 +1052,602 @@ list.onSelect((item, index) => {
 #### `list.remove()`
 
 从父容器中移除该列表视图。
+
+---
+
+### WebView 网页视图
+
+`WebView` 对象由 `addWebView()` 返回，用于在 HUD 中显示网页内容。支持本地 HTML、远程 URL，以及 JS ↔ Native 双向通信。
+
+#### `win.addWebView(config?)`
+
+向窗口添加网页视图。
+
+| 字段 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `config.url` | `string` | - | 要加载的远程 URL |
+| `config.html` | `string` | - | 要加载的本地 HTML 内容 |
+| `config.baseURL` | `string` | - | HTML 内容的基础 URL（用于相对路径资源） |
+| `config.width` | `number` | - | 视图宽度 |
+| `config.height` | `number` | - | 视图高度 |
+| `config.javaScriptEnabled` | `boolean` | `true` | 是否启用 JavaScript |
+| `config.allowsInlineMediaPlayback` | `boolean` | `true` | 是否允许内联媒体播放 |
+| `config.scrollEnabled` | `boolean` | `true` | 是否允许滚动 |
+| `config.style` | `object` | - | 视图样式 |
+
+> **注意**: `url` 和 `html` 二选一，如果都提供则优先使用 `url`。
+
+**返回:** `WebView` — 网页视图对象
+
+```javascript
+// 加载远程 URL
+const webview = win.addWebView({
+    url: 'https://example.com',
+    width: 300,
+    height: 400,
+    style: { cornerRadius: 8 }
+});
+
+// 加载本地 HTML
+const webview2 = win.addWebView({
+    html: '<h1>Hello World</h1><p>This is local HTML content.</p>',
+    width: 280,
+    height: 200,
+    javaScriptEnabled: true
+});
+```
+
+---
+
+#### `webview.loadURL(url)`
+
+加载远程 URL。
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `url` | `string` | 要加载的 URL |
+
+```javascript
+webview.loadURL('https://example.com/page');
+```
+
+---
+
+#### `webview.loadHTML(html, baseURL?)`
+
+加载本地 HTML 内容。
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `html` | `string` | 是 | HTML 内容 |
+| `baseURL` | `string` | 否 | 基础 URL（用于解析相对路径） |
+
+```javascript
+webview.loadHTML('<h1>Hello</h1><img src="image.png">',  'https://example.com/');
+```
+
+---
+
+#### `webview.goBack()`
+
+导航后退（如果可以）。
+
+```javascript
+if (webview.canGoBack()) {
+    webview.goBack();
+}
+```
+
+---
+
+#### `webview.goForward()`
+
+导航前进（如果可以）。
+
+```javascript
+if (webview.canGoForward()) {
+    webview.goForward();
+}
+```
+
+---
+
+#### `webview.reload()`
+
+重新加载当前页面。
+
+```javascript
+webview.reload();
+```
+
+---
+
+#### `webview.stopLoading()`
+
+停止加载当前页面。
+
+```javascript
+webview.stopLoading();
+```
+
+---
+
+#### `webview.getURL()`
+
+获取当前加载的 URL。
+
+**返回:** `string | null` — 当前 URL 或 null
+
+```javascript
+const currentURL = webview.getURL();
+console.log('当前页面:', currentURL);
+```
+
+---
+
+#### `webview.canGoBack()`
+
+检查是否可以后退。
+
+**返回:** `boolean`
+
+```javascript
+if (webview.canGoBack()) {
+    console.log('可以后退');
+}
+```
+
+---
+
+#### `webview.canGoForward()`
+
+检查是否可以前进。
+
+**返回:** `boolean`
+
+```javascript
+if (webview.canGoForward()) {
+    console.log('可以前进');
+}
+```
+
+---
+
+#### `webview.isLoading()`
+
+检查是否正在加载。
+
+**返回:** `boolean`
+
+```javascript
+if (webview.isLoading()) {
+    console.log('页面加载中...');
+}
+```
+
+---
+
+#### `webview.evaluateJS(script, callback?)`
+
+在网页中执行 JavaScript 代码。
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `script` | `string` | 是 | 要执行的 JavaScript 代码 |
+| `callback` | `function` | 否 | 执行完成的回调，参数为 `(result, error)` |
+
+```javascript
+// 获取页面标题
+webview.evaluateJS('document.title', (result, error) => {
+    if (error) {
+        console.error('执行失败:', error);
+    } else {
+        console.log('页面标题:', result);
+    }
+});
+
+// 修改页面内容
+webview.evaluateJS('document.body.style.backgroundColor = "#f0f0f0"');
+```
+
+---
+
+#### `webview.setScrollEnabled(enabled)`
+
+设置是否允许滚动。
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `enabled` | `boolean` | 是否允许滚动 |
+
+```javascript
+webview.setScrollEnabled(false); // 禁用滚动
+```
+
+---
+
+#### `webview.setSize(width, height)`
+
+设置 WebView 尺寸。
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `width` | `number` | 宽度 |
+| `height` | `number` | 高度 |
+
+```javascript
+webview.setSize(320, 480);
+```
+
+---
+
+#### `webview.setStyle(style)`
+
+更新 WebView 样式。
+
+```javascript
+webview.setStyle({
+    cornerRadius: 12,
+    backgroundColor: '#FFFFFF'
+});
+```
+
+---
+
+#### `webview.onMessage(callback)`
+
+监听来自网页的消息。网页通过 `window.webkit.messageHandlers.trollscript.postMessage(data)` 发送消息。
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `callback` | `function` | 消息回调，参数为消息内容 |
+
+```javascript
+webview.onMessage((message) => {
+    console.log('收到网页消息:', message);
+
+    // 处理不同类型的消息
+    if (typeof message === 'object') {
+        switch (message.type) {
+            case 'click':
+                console.log('用户点击了:', message.target);
+                break;
+            case 'data':
+                console.log('收到数据:', message.payload);
+                break;
+        }
+    }
+});
+```
+
+**网页端发送消息示例:**
+
+```html
+<script>
+// 发送简单消息
+window.webkit.messageHandlers.trollscript.postMessage('Hello from web!');
+
+// 发送对象消息
+window.webkit.messageHandlers.trollscript.postMessage({
+    type: 'click',
+    target: 'button1',
+    timestamp: Date.now()
+});
+</script>
+```
+
+---
+
+#### `webview.onLoadStart(callback)`
+
+监听页面开始加载事件。
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `callback` | `function` | 回调函数，参数为 URL |
+
+```javascript
+webview.onLoadStart((url) => {
+    console.log('开始加载:', url);
+});
+```
+
+---
+
+#### `webview.onLoadFinish(callback)`
+
+监听页面加载完成事件。
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `callback` | `function` | 回调函数，参数为 URL |
+
+```javascript
+webview.onLoadFinish((url) => {
+    console.log('加载完成:', url);
+    // 页面加载完成后执行操作
+    webview.evaluateJS('document.title', (title) => {
+        console.log('页面标题:', title);
+    });
+});
+```
+
+---
+
+#### `webview.onLoadError(callback)`
+
+监听页面加载错误事件。
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `callback` | `function` | 回调函数，参数为错误对象 `{ code, message }` |
+
+```javascript
+webview.onLoadError((error) => {
+    console.error('加载失败:', error.message, '错误码:', error.code);
+});
+```
+
+---
+
+#### `webview.update(config)`
+
+更新 WebView 配置。
+
+| 字段 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `config.url` | `string` | 否 | 新的 URL |
+| `config.html` | `string` | 否 | 新的 HTML 内容 |
+| `config.width` | `number` | 否 | 新的宽度 |
+| `config.height` | `number` | 否 | 新的高度 |
+| `config.style` | `object` | 否 | 新的样式 |
+
+```javascript
+webview.update({
+    width: 350,
+    height: 500,
+    style: { cornerRadius: 16 }
+});
+```
+
+---
+
+#### `webview.remove()`
+
+从父容器中移除该 WebView。
+
+```javascript
+webview.remove();
+```
+
+---
+
+#### WebView 完整示例
+
+**示例 1: 简单网页浏览器**
+
+```javascript
+const win = hud.createWindow({
+    width: 320,
+    height: 500,
+    draggable: true,
+    style: { backgroundColor: '#1C1C1EF0', cornerRadius: 16 }
+});
+
+// 标题栏
+const header = win.addStack({ axis: 'horizontal', spacing: 8, alignment: 'center' });
+header.addImage({ systemName: 'globe', width: 20, height: 20 });
+const titleText = header.addText({
+    text: 'Loading...',
+    style: { textColor: '#FFFFFF', fontSize: 14 }
+});
+
+win.addSpacer({ height: 8 });
+
+// WebView
+const webview = win.addWebView({
+    url: 'https://example.com',
+    width: 300,
+    height: 380,
+    style: { cornerRadius: 8 }
+});
+
+// 更新标题
+webview.onLoadFinish((url) => {
+    webview.evaluateJS('document.title', (title) => {
+        titleText.setText(title || 'Untitled');
+    });
+});
+
+webview.onLoadError((error) => {
+    titleText.setText('Error: ' + error.message);
+});
+
+win.addSpacer({ height: 8 });
+
+// 导航按钮
+const navStack = win.addStack({ axis: 'horizontal', spacing: 12 });
+navStack.addButton({
+    title: '←',
+    style: { backgroundColor: '#3A3A3C', cornerRadius: 6 },
+    onClick: () => webview.goBack()
+});
+navStack.addButton({
+    title: '→',
+    style: { backgroundColor: '#3A3A3C', cornerRadius: 6 },
+    onClick: () => webview.goForward()
+});
+navStack.addButton({
+    title: '↻',
+    style: { backgroundColor: '#3A3A3C', cornerRadius: 6 },
+    onClick: () => webview.reload()
+});
+
+win.show();
+```
+
+---
+
+**示例 2: JS ↔ Native 双向通信**
+
+```javascript
+const win = hud.createWindow({
+    width: 300,
+    height: 350,
+    draggable: true,
+    style: { backgroundColor: '#1C1C1EF0', cornerRadius: 16 }
+});
+
+win.addText({
+    text: 'JS ↔ Native 通信演示',
+    style: { textColor: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }
+});
+win.addSpacer({ height: 8 });
+
+const statusText = win.addText({
+    text: '等待消息...',
+    style: { textColor: '#8E8E93', fontSize: 12 }
+});
+win.addSpacer({ height: 8 });
+
+// 带交互的 HTML
+const htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: -apple-system; padding: 16px; background: #f5f5f5; }
+        button {
+            width: 100%; padding: 12px; margin: 8px 0;
+            border: none; border-radius: 8px; font-size: 16px;
+            cursor: pointer;
+        }
+        .primary { background: #007AFF; color: white; }
+        .danger { background: #FF3B30; color: white; }
+        #output {
+            padding: 12px; margin-top: 16px;
+            background: white; border-radius: 8px;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h3>网页端控件</h3>
+    <button class="primary" onclick="sendMessage('hello')">发送 Hello</button>
+    <button class="primary" onclick="sendData()">发送数据</button>
+    <button class="danger" onclick="sendMessage('close')">关闭窗口</button>
+    <div id="output">Native 消息会显示在这里</div>
+
+    <script>
+        function sendMessage(msg) {
+            window.webkit.messageHandlers.trollscript.postMessage(msg);
+        }
+
+        function sendData() {
+            window.webkit.messageHandlers.trollscript.postMessage({
+                type: 'data',
+                value: Math.random().toFixed(4),
+                timestamp: Date.now()
+            });
+        }
+
+        // 接收来自 Native 的消息（通过 evaluateJS 注入）
+        function receiveFromNative(msg) {
+            document.getElementById('output').innerHTML =
+                '<strong>收到:</strong> ' + msg;
+        }
+    </script>
+</body>
+</html>
+`;
+
+const webview = win.addWebView({
+    html: htmlContent,
+    width: 280,
+    height: 250,
+    javaScriptEnabled: true,
+    style: { cornerRadius: 8 }
+});
+
+// 监听来自网页的消息
+webview.onMessage((message) => {
+    console.log('收到网页消息:', message);
+
+    if (message === 'hello') {
+        statusText.setText('收到: Hello!');
+        statusText.setStyle({ textColor: '#34C759' });
+        // 向网页发送响应
+        webview.evaluateJS('receiveFromNative("Hello from Native!")');
+    } else if (message === 'close') {
+        win.remove();
+    } else if (typeof message === 'object' && message.type === 'data') {
+        statusText.setText(`数据: ${message.value}`);
+        statusText.setStyle({ textColor: '#007AFF' });
+        webview.evaluateJS(`receiveFromNative("已收到数据: ${message.value}")`);
+    }
+});
+
+win.show();
+```
+
+---
+
+**示例 3: 加载状态指示器**
+
+```javascript
+const win = hud.createWindow({
+    width: 320,
+    height: 420,
+    draggable: true,
+    style: { backgroundColor: '#1C1C1EF0', cornerRadius: 16 }
+});
+
+const titleText = win.addText({
+    text: 'WebView Demo',
+    style: { textColor: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }
+});
+
+const loadingRow = win.addStack({ axis: 'horizontal', spacing: 8, alignment: 'center' });
+const loading = loadingRow.addLoading({ style: 'small', color: '#007AFF' });
+loading.stop(); // 初始隐藏
+const statusText = loadingRow.addText({
+    text: '',
+    style: { textColor: '#8E8E93', fontSize: 12 }
+});
+
+win.addSpacer({ height: 8 });
+
+const webview = win.addWebView({
+    url: 'https://example.com',
+    width: 300,
+    height: 350,
+    style: { cornerRadius: 8 }
+});
+
+webview.onLoadStart((url) => {
+    loading.start();
+    statusText.setText('加载中...');
+});
+
+webview.onLoadFinish((url) => {
+    loading.stop();
+    statusText.setText('加载完成');
+
+    // 2秒后隐藏状态
+    setTimeout(() => {
+        statusText.setText('');
+    }, 2000);
+});
+
+webview.onLoadError((error) => {
+    loading.stop();
+    statusText.setText('加载失败');
+    statusText.setStyle({ textColor: '#FF3B30' });
+});
+
+win.show();
+```
 
 ---
 
