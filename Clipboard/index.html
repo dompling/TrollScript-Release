@@ -694,78 +694,6 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        输入框操作
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="输入框操作">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clipboardinserttexttext" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        clipboard.insertText(text)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clipboarddeletebackwardcount" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        clipboard.deleteBackward(count)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clipboardgetinputtext" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        clipboard.getInputText()
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clipboardsetinputtexttext" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        clipboard.setInputText(text)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clipboardhasinputfocus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        clipboard.hasInputFocus()
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         完整示例
       
     </span>
@@ -851,46 +779,13 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        示例 8: 自动填充输入框
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        示例 9: 输入框内容处理
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        示例 10: 智能文本补全
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         最佳实践
@@ -967,35 +862,13 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#7_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. 提供用户反馈
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#8-inserttext-vs-setinputtext" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. insertText vs setInputText 的选择
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         注意事项
@@ -1009,6 +882,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INPUT.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统输入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1729,151 +1630,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <hr />
-<h2 id="_6">输入框操作<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>以下方法利用 <code>com.apple.TextInput</code> 和 <code>com.apple.TextInput.accessibility</code> 权限，可以在键盘聚焦时直接操作输入框内容。支持 <code>UITextField</code>、<code>UITextView</code> 以及 <code>WKWebView</code> 内部输入框。</p>
-</blockquote>
-<h3 id="clipboardinserttexttext"><code>clipboard.insertText(text)</code><a class="headerlink" href="#clipboardinserttexttext" title="Permanent link">&para;</a></h3>
-<p>向当前聚焦的输入框光标位置插入文本。需要键盘已弹出（有输入框处于聚焦状态）。</p>
-<p><strong>参数:</strong></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>类型</th>
-<th>必填</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>text</code></td>
-<td><code>string</code></td>
-<td>是</td>
-<td>要插入的文本内容</td>
-</tr>
-</tbody>
-</table>
-<p><strong>返回:</strong> <code>boolean</code> — 是否成功插入（无聚焦输入框时返回 <code>false</code>）</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 在聚焦的输入框光标位置插入文本</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">insertText</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">);</span>
-
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;文本已插入到输入框&#39;</span><span class="p">);</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;没有聚焦的输入框&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>注意事项:</strong>
-- 通过 <code>UIKeyInput</code> 协议实现，兼容所有标准输入控件
-- 在 WKWebView 的 <code>&lt;input&gt;</code> 和 <code>&lt;textarea&gt;</code> 中同样有效
-- 文本会插入到光标当前位置，不会覆盖已有内容
-- 支持插入换行符 <code>\n</code></p>
-<hr />
-<h3 id="clipboarddeletebackwardcount"><code>clipboard.deleteBackward(count)</code><a class="headerlink" href="#clipboarddeletebackwardcount" title="Permanent link">&para;</a></h3>
-<p>删除聚焦输入框中光标前的字符。</p>
-<p><strong>参数:</strong></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>类型</th>
-<th>必填</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>count</code></td>
-<td><code>number</code></td>
-<td>否</td>
-<td>要删除的字符数量，默认 <code>1</code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>返回:</strong> <code>boolean</code> — 是否成功删除</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 删除光标前 1 个字符（等同于按一次退格键）</span>
-<span class="nx">clipboard</span><span class="p">.</span><span class="nx">deleteBackward</span><span class="p">();</span>
-
-<span class="c1">// 删除光标前 5 个字符</span>
-<span class="nx">clipboard</span><span class="p">.</span><span class="nx">deleteBackward</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span>
-</code></pre></div>
-<p><strong>注意事项:</strong>
-- 等同于按退格键的效果
-- 如果输入框已无文本可删，会自动停止
-- 配合 <code>insertText</code> 可实现替换光标前文本的效果</p>
-<hr />
-<h3 id="clipboardgetinputtext"><code>clipboard.getInputText()</code><a class="headerlink" href="#clipboardgetinputtext" title="Permanent link">&para;</a></h3>
-<p>获取当前聚焦输入框的全部文本内容。</p>
-<p><strong>返回:</strong> <code>string | null</code> — 输入框文本内容，无聚焦输入框时返回 <code>null</code></p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">inputText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getInputText</span><span class="p">();</span>
-
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">inputText</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;输入框内容:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">inputText</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;内容长度:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">inputText</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;没有聚焦的输入框&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>注意事项:</strong>
-- 对 <code>UITextField</code> 和 <code>UITextView</code> 直接读取 <code>text</code> 属性
-- 对 WKWebView 内部输入框通过 <code>UITextInput</code> 协议获取全量文本
-- 返回的是输入框中的完整文本，不仅仅是选中部分</p>
-<hr />
-<h3 id="clipboardsetinputtexttext"><code>clipboard.setInputText(text)</code><a class="headerlink" href="#clipboardsetinputtexttext" title="Permanent link">&para;</a></h3>
-<p>替换当前聚焦输入框的全部文本内容。</p>
-<p><strong>参数:</strong></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>类型</th>
-<th>必填</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>text</code></td>
-<td><code>string</code></td>
-<td>是</td>
-<td>替换后的文本内容</td>
-</tr>
-</tbody>
-</table>
-<p><strong>返回:</strong> <code>boolean</code> — 是否成功替换</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 替换输入框全部内容</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">setInputText</span><span class="p">(</span><span class="s1">&#39;新的文本内容&#39;</span><span class="p">);</span>
-
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;输入框内容已替换&#39;</span><span class="p">);</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;没有聚焦的输入框&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>注意事项:</strong>
-- 会清除输入框中所有已有文本，然后写入新文本
-- 对 <code>UITextField</code> 会触发 <code>editingChanged</code> 事件
-- 对 <code>UITextView</code> 会通知 <code>textViewDidChange</code> 代理方法
-- 对 WKWebView 内部输入框，通过全选 + 替换实现
-- 如果要在光标位置追加而非替换全部，请使用 <code>insertText</code></p>
-<hr />
-<h3 id="clipboardhasinputfocus"><code>clipboard.hasInputFocus()</code><a class="headerlink" href="#clipboardhasinputfocus" title="Permanent link">&para;</a></h3>
-<p>检查当前是否有输入框处于聚焦状态（键盘是否已弹出）。</p>
-<p><strong>返回:</strong> <code>boolean</code> — 是否有输入框聚焦</p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">hasInputFocus</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;有输入框正在聚焦，可以操作&#39;</span><span class="p">);</span>
-<span class="w">  </span><span class="c1">// 安全地操作输入框</span>
-<span class="w">  </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">insertText</span><span class="p">(</span><span class="s1">&#39;自动填充&#39;</span><span class="p">);</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;没有聚焦的输入框&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>注意事项:</strong>
-- 在调用 <code>insertText</code>、<code>setInputText</code> 等方法前，建议先检查
-- 返回 <code>true</code> 表示当前第一响应者是一个符合 <code>UIKeyInput</code> 协议的控件</p>
-<hr />
-<h2 id="_7">完整示例<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_6">完整示例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <h3 id="1">示例 1: 剪贴板内容转换<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// 读取剪贴板内容并转换为大写</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
@@ -2099,96 +1856,8 @@
 <span class="nx">translateClipboard</span><span class="p">();</span>
 </code></pre></div>
 <hr />
-<h3 id="8">示例 8: 自动填充输入框<a class="headerlink" href="#8" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// 从剪贴板读取内容，自动填入聚焦的输入框</span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">autoFillFromClipboard</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 检查是否有输入框聚焦</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">hasInputFocus</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;请先点击一个输入框&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="c1">// 读取剪贴板内容</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板为空&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="c1">// 替换输入框内容为剪贴板文本</span>
-<span class="w">  </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">setInputText</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已将剪贴板内容填入输入框&#39;</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">haptic</span><span class="p">.</span><span class="nx">success</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="nx">autoFillFromClipboard</span><span class="p">();</span>
-</code></pre></div>
 <hr />
-<h3 id="9">示例 9: 输入框内容处理<a class="headerlink" href="#9" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// 读取输入框内容并进行处理（如去除空格、格式化手机号等）</span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">formatInputField</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">hasInputFocus</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;请先聚焦到一个输入框&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getInputText</span><span class="p">();</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;输入框为空&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="c1">// 去除首尾空格</span>
-<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">formatted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">text</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
-
-<span class="w">  </span><span class="c1">// 如果是手机号，格式化为 xxx-xxxx-xxxx</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="sr">/^\d{11}$/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">formatted</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">formatted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">formatted</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/(\d{3})(\d{4})(\d{4})/</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;$1-$2-$3&#39;</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="c1">// 写回输入框</span>
-<span class="w">  </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">setInputText</span><span class="p">(</span><span class="nx">formatted</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;输入框内容已格式化:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">formatted</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nx">formatInputField</span><span class="p">();</span>
-</code></pre></div>
-<hr />
-<h3 id="10">示例 10: 智能文本补全<a class="headerlink" href="#10" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// 在输入框光标位置智能补全内容</span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">smartComplete</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">hasInputFocus</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;请先聚焦到一个输入框&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getInputText</span><span class="p">();</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
-
-<span class="w">  </span><span class="c1">// 根据输入内容智能补全</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">completions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="s1">&#39;http&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;s://&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;www&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;.example.com&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;hello&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39; world!&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;你好&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;世界！&#39;</span>
-<span class="w">  </span><span class="p">};</span>
-
-<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">prefix</span><span class="p">,</span><span class="w"> </span><span class="nx">suffix</span><span class="p">]</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">completions</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">text</span><span class="p">.</span><span class="nx">endsWith</span><span class="p">(</span><span class="nx">prefix</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">insertText</span><span class="p">(</span><span class="nx">suffix</span><span class="p">);</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已补全:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">prefix</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">suffix</span><span class="p">);</span>
-<span class="w">      </span><span class="nx">haptic</span><span class="p">.</span><span class="nx">light</span><span class="p">();</span>
-<span class="w">      </span><span class="k">return</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;没有匹配的补全&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nx">smartComplete</span><span class="p">();</span>
-</code></pre></div>
-<hr />
-<h2 id="_8">最佳实践<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_7">最佳实践<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <h3 id="1_1">1. 检查剪贴板是否为空<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
 <p>在处理剪贴板内容前，先检查是否有内容：</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
@@ -2269,46 +1938,15 @@
 <span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;剪贴板:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">);</span><span class="w">  </span><span class="c1">// 可能泄露密码等敏感信息</span>
 </code></pre></div>
-<h3 id="7_1">7. 提供用户反馈<a class="headerlink" href="#7_1" title="Permanent link">&para;</a></h3>
-<p>剪贴板和输入框操作后给用户明确的反馈：</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
-<span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;处理后的文本&#39;</span><span class="p">);</span>
-<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;操作成功&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;内容已复制到剪贴板&#39;</span><span class="p">);</span>
-<span class="nx">haptic</span><span class="p">.</span><span class="nx">success</span><span class="p">();</span>
-
-<span class="c1">// ✅ 正确 - 输入框操作也要反馈</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">insertText</span><span class="p">(</span><span class="s1">&#39;已填入&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">haptic</span><span class="p">.</span><span class="nx">light</span><span class="p">();</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">&#39;操作失败&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;请先点击输入框&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="c1">// ❌ 错误 - 没有反馈</span>
-<span class="nx">clipboard</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;处理后的文本&#39;</span><span class="p">);</span>
-<span class="c1">// 用户不知道操作是否成功</span>
-</code></pre></div>
-<h3 id="8-inserttext-vs-setinputtext">8. insertText vs setInputText 的选择<a class="headerlink" href="#8-inserttext-vs-setinputtext" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 追加/插入内容 → 使用 insertText</span>
-<span class="nx">clipboard</span><span class="p">.</span><span class="nx">insertText</span><span class="p">(</span><span class="s1">&#39;追加的文字&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// 在光标位置插入，保留其他内容</span>
-
-<span class="c1">// ✅ 替换全部内容 → 使用 setInputText</span>
-<span class="nx">clipboard</span><span class="p">.</span><span class="nx">setInputText</span><span class="p">(</span><span class="s1">&#39;全新的内容&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// 清空并重写</span>
-
-<span class="c1">// ✅ 先删后插 → 使用 deleteBackward + insertText</span>
-<span class="nx">clipboard</span><span class="p">.</span><span class="nx">deleteBackward</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span><span class="w">        </span><span class="c1">// 删除光标前 3 个字符</span>
-<span class="nx">clipboard</span><span class="p">.</span><span class="nx">insertText</span><span class="p">(</span><span class="s1">&#39;替换文字&#39;</span><span class="p">);</span><span class="w">     </span><span class="c1">// 插入新文字</span>
-</code></pre></div>
-<hr />
-<h2 id="_9">注意事项<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_8">注意事项<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>权限要求</strong>: 剪贴板读写利用 <code>com.apple.Pasteboard.paste-unchecked</code> 和 <code>com.apple.Pasteboard.background-access</code> 权限；输入框操作利用 <code>com.apple.TextInput</code> 和 <code>com.apple.TextInput.accessibility</code> 权限</li>
 <li><strong>Daemon 模式</strong>: 完全支持。剪贴板读取优先尝试直接访问，回退到缓存机制</li>
 <li><strong>内容类型</strong>: 剪贴板操作只支持纯文本，不支持图片、文件等其他类型</li>
 <li><strong>死循环防护</strong>: 在剪贴板触发器中修改剪贴板时，模块会自动标记避免死循环</li>
 <li><strong>性能影响</strong>: 操作开销较小，但仍应避免过于频繁的调用</li>
-<li><strong>跨应用</strong>: 剪贴板内容在所有应用间共享，修改后其他应用可以立即看到</li>
-<li><strong>输入框兼容性</strong>: <code>insertText</code> / <code>setInputText</code> 等方法支持 UITextField、UITextView 以及 WKWebView 内部的 <code>&lt;input&gt;</code> 和 <code>&lt;textarea&gt;</code> 元素</li>
-<li><strong>线程安全</strong>: 输入框操作会自动调度到主线程执行，在 Daemon 模式下使用 <code>MainThreadHelper</code> 防止死锁</li>
+<li><strong>跨应用</strong>: 剪贴板内容在所有应用间共享，修改后其他应用可以立即看到
+7<strong>线程安全</strong>: 输入框操作会自动调度到主线程执行，在 Daemon 模式下使用 <code>MainThreadHelper</code> 防止死锁</li>
 </ol>
 
 

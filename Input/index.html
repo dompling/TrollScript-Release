@@ -1,0 +1,1762 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TrollScript 官方文档与 API 参考">
+      
+      
+      
+        <link rel="canonical" href="https://trollscript.qzz.io/Input/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Input 输入模拟 - TrollScript</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#input" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="TrollScript" class="md-header__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TrollScript
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Input 输入模拟
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dompling/TrollScript-Release" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TrollScript" class="md-nav__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TrollScript
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dompling/TrollScript-Release" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TestScripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试示例脚本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ARGS.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    功能介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 参考
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API 参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../App/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Calendar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    日历
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Clipboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    剪切板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INPUT.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统输入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Console
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Contacts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    联系人
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    设备
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Display/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    显示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../File/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTTP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HUD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HUD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Haptic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    触觉反馈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Location/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网络信息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Notification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通知
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reminder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    提醒
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SMS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    短信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快捷指令
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    本地存储
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Util/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Util
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iCloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    iCloud
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="input">Input 输入模拟<a class="headerlink" href="#input" title="Permanent link">&para;</a></h1>
+<p>Input 模块提供了 HID (Human Interface Device) 输入模拟功能，可以模拟触摸手势、键盘输入和物理按键。基于 IOKit 私有 API 实现，需要 TrollStore 权限。</p>
+<blockquote>
+<p><strong>守护进程支持</strong>: 完全支持。所有 API 均可在 Daemon 模式下使用。</p>
+<p><strong>权限要求</strong>: <code>com.apple.private.hid.client.event-dispatch</code> 权限（TrollStore 签名自带）。</p>
+</blockquote>
+<hr />
+<h2 id="_1">目录<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#快速开始">快速开始</a></li>
+<li><a href="#api-参考">API 参考</a></li>
+<li><a href="#状态检查">状态检查</a></li>
+<li><a href="#触摸模拟">触摸模拟</a></li>
+<li><a href="#键盘输入">键盘输入</a></li>
+<li><a href="#物理按键">物理按键</a></li>
+<li><a href="#按键名称速查表">按键名称速查表</a></li>
+<li><a href="#完整示例">完整示例</a></li>
+<li><a href="#最佳实践">最佳实践</a></li>
+<li><a href="#注意事项">注意事项</a></li>
+</ul>
+<hr />
+<h2 id="_2">快速开始<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1">// 检查是否可用</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">input</span><span class="p">.</span><span class="nx">isAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;HID 输入不可用&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 获取屏幕尺寸</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">screen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">getScreenSize</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">cx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">cy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+
+<span class="c1">// 点击屏幕中心</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="nx">cx</span><span class="p">,</span><span class="w"> </span><span class="nx">cy</span><span class="p">);</span>
+
+<span class="c1">// 从下往上滑动</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">swipe</span><span class="p">(</span><span class="nx">cx</span><span class="p">,</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="nx">cx</span><span class="p">,</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">);</span>
+
+<span class="c1">// 输入文本</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">typeText</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="_3">状态检查<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="inputisavailable"><code>input.isAvailable()</code><a class="headerlink" href="#inputisavailable" title="Permanent link">&para;</a></h4>
+<p>检查 HID 输入模拟是否可用。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;HID 输入可用&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;HID 输入不可用，请检查权限&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>首次调用时会初始化 IOHIDEventSystemClient。如果设备不支持或权限不足，返回 <code>false</code>。</p>
+</blockquote>
+<h4 id="inputgetscreensize"><code>input.getScreenSize()</code><a class="headerlink" href="#inputgetscreensize" title="Permanent link">&para;</a></h4>
+<p>获取当前屏幕尺寸和缩放比例。<strong>返回:</strong> <code>object</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">screen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">getScreenSize</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">screen</span><span class="p">);</span>
+<span class="c1">// { width: 393, height: 852, scale: 3 }  // iPhone 14 Pro</span>
+</code></pre></div>
+<p>返回对象结构：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">393</span><span class="p">,</span><span class="w">    </span><span class="c1">// 屏幕宽度（UIKit points）</span>
+<span class="w">  </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">852</span><span class="p">,</span><span class="w">   </span><span class="c1">// 屏幕高度（UIKit points）</span>
+<span class="w">  </span><span class="nx">scale</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="w">       </span><span class="c1">// 缩放比例（Retina 倍数）</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>坐标系与 UIKit 一致：左上角为原点 (0, 0)，X 轴向右，Y 轴向下。</p>
+</blockquote>
+<hr />
+<h3 id="_4">触摸模拟<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>所有触摸坐标使用 <strong>UIKit points</strong>（逻辑坐标），与屏幕显示一致。</p>
+<h4 id="inputtapx-y"><code>input.tap(x, y)</code><a class="headerlink" href="#inputtapx-y" title="Permanent link">&para;</a></h4>
+<p>在指定坐标处模拟单击。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 点击坐标 (200, 400)</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">);</span>
+
+<span class="c1">// 点击屏幕中心</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">getScreenSize</span><span class="p">();</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="inputdoubletapx-y"><code>input.doubleTap(x, y)</code><a class="headerlink" href="#inputdoubletapx-y" title="Permanent link">&para;</a></h4>
+<p>在指定坐标处模拟双击。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 双击缩放</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">doubleTap</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="inputlongpressx-y-duration"><code>input.longPress(x, y, duration)</code><a class="headerlink" href="#inputlongpressx-y-duration" title="Permanent link">&para;</a></h4>
+<p>在指定坐标处模拟长按。<strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td>number</td>
+<td>X 坐标</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>number</td>
+<td>Y 坐标</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td>number</td>
+<td>持续时间（秒），范围 0.1 ~ 30.0，默认 1.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 长按 1.5 秒弹出菜单</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">longPress</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>⚠️ 此方法会阻塞脚本执行直到长按结束。</p>
+</blockquote>
+<h4 id="inputswipefromx-fromy-tox-toy-duration"><code>input.swipe(fromX, fromY, toX, toY, duration?)</code><a class="headerlink" href="#inputswipefromx-fromy-tox-toy-duration" title="Permanent link">&para;</a></h4>
+<p>从起点滑动到终点。<strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fromX</code></td>
+<td>number</td>
+<td>起点 X</td>
+</tr>
+<tr>
+<td><code>fromY</code></td>
+<td>number</td>
+<td>起点 Y</td>
+</tr>
+<tr>
+<td><code>toX</code></td>
+<td>number</td>
+<td>终点 X</td>
+</tr>
+<tr>
+<td><code>toY</code></td>
+<td>number</td>
+<td>终点 Y</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td>number?</td>
+<td>持续时间（秒），范围 0.05 ~ 10.0，默认 0.3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">getScreenSize</span><span class="p">();</span>
+
+<span class="c1">// 向上滑动（下拉刷新反向）</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">swipe</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">);</span>
+
+<span class="c1">// 向左滑动</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">swipe</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">);</span>
+
+<span class="c1">// 快速滑动</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">swipe</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">600</span><span class="p">,</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>内部以 60fps（16ms 间隔）生成连续触摸点，确保手势流畅。</p>
+</blockquote>
+<h4 id="inputdragfromx-fromy-tox-toy-duration"><code>input.drag(fromX, fromY, toX, toY, duration?)</code><a class="headerlink" href="#inputdragfromx-fromy-tox-toy-duration" title="Permanent link">&para;</a></h4>
+<p>从起点拖拽到终点（先按住 100ms 再移动）。<strong>参数:</strong> 同 <code>swipe</code>。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 拖拽排序列表项</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">drag</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p><code>drag</code> 与 <code>swipe</code> 的区别：<code>drag</code> 在起点会先按住 100ms 再开始移动，模拟真实的拖拽操作。</p>
+</blockquote>
+<hr />
+<h3 id="_5">键盘输入<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="inputpresskeykeyname"><code>input.pressKey(keyName)</code><a class="headerlink" href="#inputpresskeykeyname" title="Permanent link">&para;</a></h4>
+<p>模拟按下键盘按键（key down + key up）。<strong>参数:</strong> <code>keyName</code> (string) <strong>返回:</strong> <code>boolean | object</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">input</span><span class="p">.</span><span class="nx">pressKey</span><span class="p">(</span><span class="s2">&quot;return&quot;</span><span class="p">);</span><span class="w">   </span><span class="c1">// 回车</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">pressKey</span><span class="p">(</span><span class="s2">&quot;space&quot;</span><span class="p">);</span><span class="w">    </span><span class="c1">// 空格</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">pressKey</span><span class="p">(</span><span class="s2">&quot;delete&quot;</span><span class="p">);</span><span class="w">   </span><span class="c1">// 删除</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">pressKey</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span><span class="w">        </span><span class="c1">// 字母 a</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">pressKey</span><span class="p">(</span><span class="s2">&quot;up&quot;</span><span class="p">);</span><span class="w">       </span><span class="c1">// 方向上</span>
+
+<span class="c1">// 未知按键返回错误</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">pressKey</span><span class="p">(</span><span class="s2">&quot;unknown&quot;</span><span class="p">);</span>
+<span class="c1">// { error: &quot;Unknown key: unknown&quot; }</span>
+</code></pre></div>
+<h4 id="inputtypetexttext-delay"><code>input.typeText(text, delay?)</code><a class="headerlink" href="#inputtypetexttext-delay" title="Permanent link">&para;</a></h4>
+<p>模拟键盘逐字输入文本。<strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td>string</td>
+<td>要输入的文本</td>
+</tr>
+<tr>
+<td><code>delay</code></td>
+<td>number?</td>
+<td>每字符间隔（秒），默认 0.05，最小 0.01</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 正常速度输入</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">typeText</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">);</span>
+
+<span class="c1">// 快速输入</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">typeText</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.02</span><span class="p">);</span>
+
+<span class="c1">// 慢速输入（模拟真人）</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">typeText</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.15</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>⚠️ 仅支持 ASCII 字符（a-z, 0-9, 空格, 常见符号）。中文、Emoji 等非 ASCII 字符会被静默跳过。如需输入中文/Emoji，请使用 <code>pasteText()</code>。</p>
+</blockquote>
+<h4 id="inputpastetexttext"><code>input.pasteText(text)</code><a class="headerlink" href="#inputpastetexttext" title="Permanent link">&para;</a></h4>
+<p>通过剪贴板粘贴文本，<strong>支持中文、Emoji 等所有 Unicode 字符</strong>。<strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td>string</td>
+<td>要粘贴的文本（支持任意 Unicode 字符）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 粘贴中文</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">pasteText</span><span class="p">(</span><span class="s2">&quot;你好世界&quot;</span><span class="p">);</span>
+
+<span class="c1">// 粘贴 Emoji</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">pasteText</span><span class="p">(</span><span class="s2">&quot;Hello 🌍🎉&quot;</span><span class="p">);</span>
+
+<span class="c1">// 粘贴混合文本</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">pasteText</span><span class="p">(</span><span class="s2">&quot;用户名：张三 ID:12345&quot;</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>原理：将文本写入系统剪贴板 → 模拟 Cmd+V 硬件键盘粘贴快捷键 → 恢复原始剪贴板内容。</p>
+<p>⚠️ 此方法会临时覆盖剪贴板内容（操作完成后自动恢复）。需要目标输入框处于焦点状态。</p>
+</blockquote>
+<hr />
+<h3 id="_6">物理按键<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="inputpressbuttonbuttonname"><code>input.pressButton(buttonName)</code><a class="headerlink" href="#inputpressbuttonbuttonname" title="Permanent link">&para;</a></h4>
+<p>模拟按下物理设备按键。<strong>参数:</strong> <code>buttonName</code> (string) <strong>返回:</strong> <code>boolean | object</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">input</span><span class="p">.</span><span class="nx">pressButton</span><span class="p">(</span><span class="s2">&quot;volumeUp&quot;</span><span class="p">);</span><span class="w">     </span><span class="c1">// 音量+</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">pressButton</span><span class="p">(</span><span class="s2">&quot;volumeDown&quot;</span><span class="p">);</span><span class="w">   </span><span class="c1">// 音量-</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">pressButton</span><span class="p">(</span><span class="s2">&quot;mute&quot;</span><span class="p">);</span><span class="w">         </span><span class="c1">// 静音</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">pressButton</span><span class="p">(</span><span class="s2">&quot;power&quot;</span><span class="p">);</span><span class="w">        </span><span class="c1">// 电源键</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">pressButton</span><span class="p">(</span><span class="s2">&quot;play&quot;</span><span class="p">);</span><span class="w">         </span><span class="c1">// 播放/暂停</span>
+</code></pre></div>
+<h4 id="inputpressbuttonsbuttonnames"><code>input.pressButtons(buttonNames)</code><a class="headerlink" href="#inputpressbuttonsbuttonnames" title="Permanent link">&para;</a></h4>
+<p>同时按下多个物理按键（组合键）。<strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>buttonNames</code></td>
+<td>string[]</td>
+<td>按键名称数组</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>boolean | object</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 模拟截屏（电源键 + 音量上同时按下）</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">pressButtons</span><span class="p">([</span><span class="s2">&quot;power&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;volumeUp&quot;</span><span class="p">]);</span>
+
+<span class="c1">// 也可以组合其他按键</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">pressButtons</span><span class="p">([</span><span class="s2">&quot;volumeUp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;volumeDown&quot;</span><span class="p">]);</span>
+</code></pre></div>
+<blockquote>
+<p>内部实现：按序发送所有 key down 事件 → 保持 150ms → 反序发送所有 key up 事件。</p>
+</blockquote>
+<hr />
+<h2 id="_7">按键名称速查表<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="_8">键盘按键<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>keyName</th>
+<th>说明</th>
+<th>HID Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a</code> - <code>z</code></td>
+<td>字母键</td>
+<td>0x04 - 0x1D</td>
+</tr>
+<tr>
+<td><code>0</code> - <code>9</code></td>
+<td>数字键</td>
+<td>0x1E - 0x27</td>
+</tr>
+<tr>
+<td><code>return</code> / <code>enter</code></td>
+<td>回车键</td>
+<td>0x28</td>
+</tr>
+<tr>
+<td><code>escape</code> / <code>esc</code></td>
+<td>ESC 键</td>
+<td>0x29</td>
+</tr>
+<tr>
+<td><code>delete</code> / <code>backspace</code></td>
+<td>删除键</td>
+<td>0x2A</td>
+</tr>
+<tr>
+<td><code>tab</code></td>
+<td>Tab 键</td>
+<td>0x2B</td>
+</tr>
+<tr>
+<td><code>space</code></td>
+<td>空格键</td>
+<td>0x2C</td>
+</tr>
+<tr>
+<td><code>minus</code> / <code>-</code></td>
+<td>减号</td>
+<td>0x2D</td>
+</tr>
+<tr>
+<td><code>equal</code> / <code>=</code></td>
+<td>等号</td>
+<td>0x2E</td>
+</tr>
+<tr>
+<td><code>up</code></td>
+<td>方向上</td>
+<td>0x52</td>
+</tr>
+<tr>
+<td><code>down</code></td>
+<td>方向下</td>
+<td>0x51</td>
+</tr>
+<tr>
+<td><code>left</code></td>
+<td>方向左</td>
+<td>0x50</td>
+</tr>
+<tr>
+<td><code>right</code></td>
+<td>方向右</td>
+<td>0x4F</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">媒体/物理按键<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>buttonName</th>
+<th>说明</th>
+<th>HID Usage Page</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>volumeUp</code></td>
+<td>音量+</td>
+<td>Consumer (0x0C)</td>
+</tr>
+<tr>
+<td><code>volumeDown</code></td>
+<td>音量-</td>
+<td>Consumer (0x0C)</td>
+</tr>
+<tr>
+<td><code>mute</code></td>
+<td>静音</td>
+<td>Consumer (0x0C)</td>
+</tr>
+<tr>
+<td><code>play</code> / <code>playpause</code></td>
+<td>播放/暂停</td>
+<td>Consumer (0x0C)</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>下一曲</td>
+<td>Consumer (0x0C)</td>
+</tr>
+<tr>
+<td><code>previous</code> / <code>prev</code></td>
+<td>上一曲</td>
+<td>Consumer (0x0C)</td>
+</tr>
+<tr>
+<td><code>power</code> / <code>lock</code></td>
+<td>电源/锁屏</td>
+<td>Consumer (0x0C)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_10">完整示例<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h3 id="1-app">示例 1: 自动化 App 操作<a class="headerlink" href="#1-app" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 打开 Safari → 输入网址 → 访问</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">launch</span><span class="p">(</span><span class="s2">&quot;com.apple.mobilesafari&quot;</span><span class="p">);</span>
+<span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">2000</span><span class="p">);</span>
+
+<span class="c1">// 点击地址栏（大约位置）</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">getScreenSize</span><span class="p">();</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">);</span>
+<span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">500</span><span class="p">);</span>
+
+<span class="c1">// 输入网址</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">typeText</span><span class="p">(</span><span class="s2">&quot;example.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.03</span><span class="p">);</span>
+<span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">300</span><span class="p">);</span>
+
+<span class="c1">// 按回车访问</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">pressKey</span><span class="p">(</span><span class="s2">&quot;return&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="2">示例 2: 滑动浏览内容<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">getScreenSize</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">cx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+
+<span class="c1">// 连续向上滑动 5 次</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">input</span><span class="p">.</span><span class="nx">swipe</span><span class="p">(</span><span class="nx">cx</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w"> </span><span class="nx">cx</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.4</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// 等待加载</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="3">示例 3: 自动调节音量<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 音量调到最低</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">16</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">input</span><span class="p">.</span><span class="nx">pressButton</span><span class="p">(</span><span class="s2">&quot;volumeDown&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">100</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 再调高 5 格</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">input</span><span class="p">.</span><span class="nx">pressButton</span><span class="p">(</span><span class="s2">&quot;volumeUp&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">100</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="4">示例 4: 手势录制回放<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 预定义手势序列</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">gesture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">600</span><span class="p">,</span><span class="w"> </span><span class="nx">phase</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;began&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">550</span><span class="p">,</span><span class="w"> </span><span class="nx">phase</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;moved&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span><span class="w"> </span><span class="nx">phase</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;moved&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">210</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">450</span><span class="p">,</span><span class="w"> </span><span class="nx">phase</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;moved&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">220</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="nx">phase</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;moved&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">220</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="nx">phase</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ended&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">];</span>
+
+<span class="c1">// 简单回放（使用 swipe 代替逐帧控制）</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">gesture</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">gesture</span><span class="p">[</span><span class="nx">gesture</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">2</span><span class="p">];</span><span class="w"> </span><span class="c1">// ended 前一帧</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">swipe</span><span class="p">(</span><span class="nx">first</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">first</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">last</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">last</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="5-hud">示例 5: 配合 HUD 的自动点击器<a class="headerlink" href="#5-hud" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">input</span><span class="p">.</span><span class="nx">isAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;错误&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;HID 输入不可用&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">getScreenSize</span><span class="p">();</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">running</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="c1">// 在屏幕中心自动点击</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">running</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">input</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">500</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;完成&quot;</span><span class="p">,</span><span class="w"> </span><span class="sb">`共点击 </span><span class="si">${</span><span class="nx">count</span><span class="si">}</span><span class="sb"> 次`</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_11">最佳实践<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h3 id="1">1. 始终检查可用性<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">input</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 直接调用可能失败</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="2_1">2. 使用相对坐标<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 适配不同屏幕尺寸</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">getScreenSize</span><span class="p">();</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.1</span><span class="p">);</span><span class="w"> </span><span class="c1">// 屏幕顶部 10%</span>
+
+<span class="c1">// ❌ 错误 - 硬编码坐标不通用</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="mf">196</span><span class="p">,</span><span class="w"> </span><span class="mf">85</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="3_1">3. 操作间加入延迟<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 等待 UI 响应</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">);</span>
+<span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">300</span><span class="p">);</span><span class="w">  </span><span class="c1">// 等待动画完成</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">);</span>
+
+<span class="c1">// ❌ 错误 - 连续操作太快可能丢失</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">);</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="4_1">4. 限制循环次数<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 有上限的循环</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">maxTaps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">maxTaps</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">input</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 无限循环会阻塞</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">input</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="_12">注意事项<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>权限要求</strong>: 需要 <code>com.apple.private.hid.client.event-dispatch</code> 权限，仅 TrollStore 签名可用</li>
+<li><strong>坐标系</strong>: 使用 UIKit points（逻辑坐标），左上角为原点。通过 <code>getScreenSize()</code> 获取屏幕尺寸</li>
+<li><strong>阻塞行为</strong>: <code>longPress</code>、<code>swipe</code>、<code>drag</code> 会阻塞脚本执行直到手势完成</li>
+<li><strong>字符限制</strong>: <code>typeText</code> 仅支持 ASCII 字符，中文/Emoji 请使用 <code>pasteText</code></li>
+<li><strong>剪贴板</strong>: <code>pasteText</code> 会临时使用系统剪贴板，操作完成后自动恢复原内容</li>
+<li><strong>设备兼容</strong>: <code>IOHIDEventSystemClientCreate</code> 在某些设备上可能返回 NULL，请始终用 <code>isAvailable()</code> 检查</li>
+<li><strong>线程安全</strong>: HID 事件通过 IOKit 系统级管道派发，不需要主线程</li>
+<li><strong>系统限制</strong>: 模拟触摸无法绕过 Face ID / Touch ID 等生物识别</li>
+<li><strong>性能</strong>: swipe/drag 以 60fps 生成触摸点，高频操作时注意 CPU 消耗</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
