@@ -89,39 +89,6 @@ interface Clipboard {
      */
     hasText(): boolean;
 
-    /**
-     * 向当前聚焦的输入框光标位置插入文本（需键盘已弹出）
-     * @param text 要插入的文本内容
-     * @returns 是否成功插入（无聚焦输入框时返回 false）
-     */
-    insertText(text: string): boolean;
-
-    /**
-     * 删除聚焦输入框中光标前的字符
-     * @param count 要删除的字符数量，默认 1
-     * @returns 是否成功删除
-     */
-    deleteBackward(count?: number): boolean;
-
-    /**
-     * 获取当前聚焦输入框的全部文本内容
-     * @returns 输入框文本内容，无聚焦输入框时返回 null
-     */
-    getInputText(): any;
-
-    /**
-     * 替换当前聚焦输入框的全部文本（全选后替换）
-     * @param text 替换后的文本内容
-     * @returns 是否成功替换
-     */
-    setInputText(text: string): boolean;
-
-    /**
-     * 检查当前是否有输入框处于聚焦状态（键盘是否已弹出）
-     * @returns 是否有输入框聚焦
-     */
-    hasInputFocus(): boolean;
-
 }
 
 declare const clipboard: Clipboard;
