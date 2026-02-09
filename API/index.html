@@ -1147,7 +1147,7 @@
 <ul>
 <li><a href="#console">console</a> ✅ - 控制台输出</li>
 <li><a href="#device">device</a> ✅ - 设备信息</li>
-<li><a href="#clipboard">clipboard</a> ⚠️ - 剪贴板操作</li>
+<li><a href="#clipboard">clipboard</a> ✅ - 剪贴板操作 &amp; 输入框文本写入</li>
 <li><a href="#storage">storage</a> ✅ - 本地存储</li>
 <li><a href="#icloud">icloud</a> ✅ - iCloud 文件操作</li>
 <li><a href="#file">file</a> ✅ - 文件操作</li>
@@ -1318,8 +1318,8 @@
 <p><em>包含屏幕尺寸、缩放比例、亮度等信息的对象</em></p>
 <hr />
 <h2 id="clipboard">clipboard<a class="headerlink" href="#clipboard" title="Permanent link">&para;</a></h2>
-<p><img alt="Limited Support" src="https://img.shields.io/badge/Trigger-Limited-orange" /></p>
-<p>剪贴板操作</p>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p>剪贴板操作 &amp; 输入框文本写入</p>
 <h3 id="clipboardgettext"><code>clipboard.getText</code><a class="headerlink" href="#clipboardgettext" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>getText()</code></p>
 <p>获取剪贴板文本</p>
@@ -1327,7 +1327,6 @@
 <p><em>剪贴板中的文本内容</em></p>
 <hr />
 <h3 id="clipboardsettext"><code>clipboard.setText</code><a class="headerlink" href="#clipboardsettext" title="Permanent link">&para;</a></h3>
-<p><img alt="Not Supported" src="https://img.shields.io/badge/Trigger-None-red" /></p>
 <p><strong>Signature:</strong> <code>setText(text)</code></p>
 <p>设置剪贴板文本</p>
 <p><strong>Parameters:</strong></p>
@@ -1352,7 +1351,6 @@
 <p><strong>Returns:</strong> <code>void</code></p>
 <hr />
 <h3 id="clipboardclear"><code>clipboard.clear</code><a class="headerlink" href="#clipboardclear" title="Permanent link">&para;</a></h3>
-<p><img alt="Not Supported" src="https://img.shields.io/badge/Trigger-None-red" /></p>
 <p><strong>Signature:</strong> <code>clear()</code></p>
 <p>清空剪贴板</p>
 <p><strong>Returns:</strong> <code>void</code></p>
@@ -1362,6 +1360,93 @@
 <p>检查剪贴板是否包含文本</p>
 <p><strong>Returns:</strong> <code>boolean</code></p>
 <p><em>剪贴板是否有文本内容</em></p>
+<hr />
+<h3 id="clipboardinserttext"><code>clipboard.insertText</code><a class="headerlink" href="#clipboardinserttext" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>insertText(text)</code></p>
+<p>向当前聚焦的输入框光标位置插入文本（需键盘已弹出）</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td><code>string</code></td>
+<td>要插入的文本内容</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>boolean</code></p>
+<p><em>是否成功插入（无聚焦输入框时返回 false）</em></p>
+<hr />
+<h3 id="clipboarddeletebackward"><code>clipboard.deleteBackward</code><a class="headerlink" href="#clipboarddeletebackward" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>deleteBackward(count)</code></p>
+<p>删除聚焦输入框中光标前的字符</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>count</code></td>
+<td><code>number</code></td>
+<td>要删除的字符数量，默认 1</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>boolean</code></p>
+<p><em>是否成功删除</em></p>
+<hr />
+<h3 id="clipboardgetinputtext"><code>clipboard.getInputText</code><a class="headerlink" href="#clipboardgetinputtext" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>getInputText()</code></p>
+<p>获取当前聚焦输入框的全部文本内容</p>
+<p><strong>Returns:</strong> <code>string \| null</code></p>
+<p><em>输入框文本内容，无聚焦输入框时返回 null</em></p>
+<hr />
+<h3 id="clipboardsetinputtext"><code>clipboard.setInputText</code><a class="headerlink" href="#clipboardsetinputtext" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>setInputText(text)</code></p>
+<p>替换当前聚焦输入框的全部文本（全选后替换）</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td><code>string</code></td>
+<td>替换后的文本内容</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>boolean</code></p>
+<p><em>是否成功替换</em></p>
+<hr />
+<h3 id="clipboardhasinputfocus"><code>clipboard.hasInputFocus</code><a class="headerlink" href="#clipboardhasinputfocus" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>hasInputFocus()</code></p>
+<p>检查当前是否有输入框处于聚焦状态（键盘是否已弹出）</p>
+<p><strong>Returns:</strong> <code>boolean</code></p>
+<p><em>是否有输入框聚焦</em></p>
 <hr />
 <h2 id="storage">storage<a class="headerlink" href="#storage" title="Permanent link">&para;</a></h2>
 <p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
