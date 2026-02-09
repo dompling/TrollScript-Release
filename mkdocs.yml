@@ -42,6 +42,7 @@ nav:
     - App: App.md
     - 日历: Calendar.md
     - 剪切板: Clipboard.md
+    - 系统输入: INPUT.md
     - Console: Console.md
     - 联系人: Contacts.md
     - 设备: Device.md
