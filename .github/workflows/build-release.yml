@@ -202,15 +202,25 @@ jobs:
             git clean -fdx || true
           fi
 
-          # 确认有要提交的 release 目录
-          if [ ! -d release ]; then
-            echo "❌ release 目录不存在，无法提交" >&2
-            exit 1
+          # 查找非 latest 的 TIPA 文件，并更新 latest 复制
+          TIPA_FILE=$(find ./release -name "*.tipa" ! -name "*_latest.tipa" 2>/dev/null | head -1 || echo "")
+          LATEST_FILE=./release/TrollScript_latest.tipa
+
+          if [ -n "$TIPA_FILE" ]; then
+            echo "📦 Found tipa: $TIPA_FILE — updating $LATEST_FILE"
+            cp -f "$TIPA_FILE" "$LATEST_FILE"
+          else
+            if [ -f "$LATEST_FILE" ]; then
+              echo "ℹ️ No new tipa found, using existing $LATEST_FILE"
+            else
+              echo "❌ No tipa file found to mark as latest" >&2
+              exit 1
+            fi
           fi
 
-          # 强制添加并提交 release 目录（覆盖模式）
-          git add -f release
-          git commit -m "chore(release): add build artifacts" || echo "No changes to commit"
+          # 强制添加并提交 latest TIPA（覆盖模式）
+          git add -f "$LATEST_FILE"
+          git commit -m "chore(release): update TrollScript_latest.tipa" || echo "No changes to commit"
 
           # 强制推送覆盖远程 release 分支
           git push -f origin release
