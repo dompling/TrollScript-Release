@@ -177,6 +177,43 @@ jobs:
           name: TrollScript-${{ steps.version.outputs.release_tag }}
           path: release/*.tipa
           retention-days: 30
+
+      # 7.5 将构建产物提交到 release 分支（覆盖模式）
+      - name: Commit Build Artifacts to release Branch
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ steps.version.outputs.release_tag }}
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # 使用 token 更新 origin URL 以便推送
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
+          git fetch origin --prune
+
+          # 若远程已有 release 分支则基于远程分支检出并替换为本地 HEAD，否则创建孤儿分支
+          if git ls-remote --heads origin release | grep -q refs/heads/release; then
+            git checkout -B release origin/release
+          else
+            git checkout --orphan release
+            git rm -rf . || true
+            git clean -fdx || true
+          fi
+
+          # 确认有要提交的 release 目录
+          if [ ! -d release ]; then
+            echo "❌ release 目录不存在，无法提交" >&2
+            exit 1
+          fi
+
+          # 强制添加并提交 release 目录（覆盖模式）
+          git add -f release
+          git commit -m "chore(release): add build artifacts ${RELEASE_TAG}" || echo "No changes to commit"
+
+          # 强制推送覆盖远程 release 分支
+          git push -f origin release
       
       # 8. 在本项目创建 Tag 并提交到 Release
       - name: Create GitHub Release
