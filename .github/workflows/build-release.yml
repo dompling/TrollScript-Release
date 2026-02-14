@@ -217,6 +217,7 @@ jobs:
       
       # 8. 在本项目创建 Tag 并提交到 Release
       - name: Create GitHub Release
+        if: ${{ steps.version.outputs.release_tag != '' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
