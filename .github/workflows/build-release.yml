@@ -103,13 +103,41 @@ jobs:
           chmod +x scripts/build-tipa.sh
           ./scripts/build-tipa.sh
       
-      # 5. 复制 release 文件夹到本项目
-      - name: Copy Build Artifacts to Release Repository
+      # 5. 复制 release 文件夹到本项目 + 提交 latest.tipa 到当前分支
+      - name: Copy Build Artifacts and Commit latest.tipa
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}  # 参考步骤8的环境变量配置
         run: |
+          # 第一步：复制构建产物到本项目
           mkdir -p release
           cp -r TrollScript-Private/release/* release/
           
           echo "📦 Build artifacts:"
+          ls -la release/
+          
+          # 第二步：检查 latest.tipa 文件是否存在
+          LATEST_TIPA_FILE="./release/TrollScript_latest.tipa"
+          if [ ! -f "$LATEST_TIPA_FILE" ]; then
+            echo "❌ Error: $LATEST_TIPA_FILE not found!"
+            exit 1
+          fi
+          
+          # 第三步：配置git（极简配置，仅为提交需要）
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # 第四步：添加并提交 latest.tipa（仅提交该文件）
+          git add "$LATEST_TIPA_FILE"
+          # 检查是否有变更，避免空提交
+          if git diff --staged --quiet; then
+            echo "ℹ️ No changes to latest.tipa, skip commit"
+          else
+            git commit -m "Update latest.tipa - $(date +'%Y-%m-%d %H:%M:%S CST')"
+            # 第五步：推送到当前分支（使用GH_TOKEN认证）
+            git push origin HEAD:${{ github.ref }}
+            echo "✅ Successfully committed and pushed latest.tipa to current branch!"
+          fi
+
           ls -la release/
       
       # 6. 获取私有仓库最后 tag 的 commit 信息
@@ -177,53 +205,6 @@ jobs:
           name: TrollScript-${{ steps.version.outputs.release_tag }}
           path: release/*.tipa
           retention-days: 30
-
-      # 7.5 将构建产物提交到 release 分支（覆盖模式）
-      - name: Commit Build Artifacts to release Branch
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          REPO: ${{ github.repository }}
-          RELEASE_TAG: ${{ steps.version.outputs.release_tag }}
-        run: |
-          set -e
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          # 使用 token 更新 origin URL 以便推送
-          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
-          git fetch origin --prune
-
-          # 若远程已有 release 分支则基于远程分支检出并替换为本地 HEAD，否则创建孤儿分支
-          if git ls-remote --heads origin release | grep -q refs/heads/release; then
-            git checkout -B release origin/release
-          else
-            git checkout --orphan release
-            git rm -rf . || true
-            git clean -fdx || true
-          fi
-
-          # 查找非 latest 的 TIPA 文件，并更新 latest 复制
-          TIPA_FILE=$(find ./release -name "*.tipa" ! -name "*_latest.tipa" 2>/dev/null | head -1 || echo "")
-          LATEST_FILE=./TrollScript_latest.tipa
-
-          if [ -n "$TIPA_FILE" ]; then
-            echo "📦 Found tipa: $TIPA_FILE — updating $LATEST_FILE"
-            cp -f "$TIPA_FILE" "$LATEST_FILE"
-          else
-            if [ -f "$LATEST_FILE" ]; then
-              echo "ℹ️ No new tipa found, using existing $LATEST_FILE"
-            else
-              echo "❌ No tipa file found to mark as latest" >&2
-              exit 1
-            fi
-          fi
-
-          # 强制添加并提交 latest TIPA（覆盖模式）
-          git add -f "$LATEST_FILE"
-          git commit -m "chore(release): update TrollScript_latest.tipa" || echo "No changes to commit"
-
-          # 强制推送覆盖远程 release 分支
-          git push -f origin release
       
       # 8. 在本项目创建 Tag 并提交到 Release
       - name: Create GitHub Release
