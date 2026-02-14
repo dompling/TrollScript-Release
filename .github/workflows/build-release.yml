@@ -210,7 +210,7 @@ jobs:
 
           # 强制添加并提交 release 目录（覆盖模式）
           git add -f release
-          git commit -m "chore(release): add build artifacts ${RELEASE_TAG}" || echo "No changes to commit"
+          git commit -m "chore(release): add build artifacts" || echo "No changes to commit"
 
           # 强制推送覆盖远程 release 分支
           git push -f origin release
