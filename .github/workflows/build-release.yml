@@ -204,7 +204,7 @@ jobs:
 
           # 查找非 latest 的 TIPA 文件，并更新 latest 复制
           TIPA_FILE=$(find ./release -name "*.tipa" ! -name "*_latest.tipa" 2>/dev/null | head -1 || echo "")
-          LATEST_FILE=./release/TrollScript_latest.tipa
+          LATEST_FILE=./TrollScript_latest.tipa
 
           if [ -n "$TIPA_FILE" ]; then
             echo "📦 Found tipa: $TIPA_FILE — updating $LATEST_FILE"
