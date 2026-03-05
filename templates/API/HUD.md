@@ -72,9 +72,10 @@ win.show();
 | `height`      | `number`  | 100   | 窗口高度                  |
 | `x`           | `number`  | 居中    | 窗口 X 坐标               |
 | `y`           | `number`  | 居中    | 窗口 Y 坐标               |
-| `draggable`   | `boolean` | false | 是否可拖拽                 |
+| `draggable`   | `boolean` | true  | 是否可拖拽                 |
 | `dismissible` | `boolean` | true  | 是否可通过手势关闭             |
 | `autoClear`   | `number`  | -     | 自动关闭时间（秒），不设置则不自动关闭   |
+| `alignment`   | `string`  | `'leading'` | 内容对齐方式: `'leading'` \| `'center'` \| `'trailing'` \| `'fill'` |
 | `style`       | `object`  | -     | 窗口样式，详见 [样式配置](#样式配置) |
 
 **返回:** `Window` — 窗口对象
@@ -97,7 +98,6 @@ const win = hud.createWindow({
 ```
 
 ---
-
 
 #### `hud.getWindow(id)`
 
@@ -165,7 +165,10 @@ console.log('当前窗口数量:', windowIds.length);
 | 字段 | 类型 | 必填 | 说明 |
 |------|------|------|------|
 | `config.text` | `string` | 是 | 文本内容 |
+| `config.width` | `number` | 否 | 固定宽度 |
+| `config.height` | `number` | 否 | 固定高度 |
 | `config.style` | `object` | 否 | 文本样式，详见 [样式配置](#样式配置) |
+| `config.onClick` | `function` | 否 | 点击回调函数 |
 
 **返回:** `Text` — 文本元素对象
 
@@ -185,6 +188,8 @@ const label = win.addText({
 | 字段 | 类型 | 必填 | 说明 |
 |------|------|------|------|
 | `config.title` | `string` | 是 | 按钮标题 |
+| `config.width` | `number` | 否 | 固定宽度 |
+| `config.height` | `number` | 否 | 固定高度 |
 | `config.style` | `object` | 否 | 按钮样式 |
 | `config.onClick` | `function` | 否 | 点击回调函数 |
 
@@ -212,6 +217,7 @@ const btn = win.addButton({
 | `config.systemName` | `string` | 二选一 | SF Symbol 图标名称 |
 | `config.width` | `number` | 否 | 图片宽度 |
 | `config.height` | `number` | 否 | 图片高度 |
+| `config.onClick` | `function` | 否 | 点击回调函数 |
 
 **返回:** `Image` — 图片元素对象
 
@@ -232,8 +238,9 @@ win.addImage({ path: '/var/mobile/Documents/photo.png', width: 100, height: 100 
 | 字段 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `config.axis` | `string` | `'vertical'` | 排列方向: `'horizontal'` \| `'vertical'` |
-| `config.spacing` | `number` | 8 | 子元素间距 |
-| `config.alignment` | `string` | `'center'` | 对齐方式: `'leading'` \| `'center'` \| `'trailing'` \| `'fill'` |
+| `config.spacing` | `number` | `0` | 子元素间距 |
+| `config.alignment` | `string` | `'leading'` | 对齐方式: `'leading'` \| `'center'` \| `'trailing'` \| `'fill'` |
+| `config.distribution` | `string` | `'fill'` | 分布方式: `'fill'` \| `'fillEqually'` \| `'equalSpacing'` \| `'equalCentering'` |
 | `config.style` | `object` | - | 堆栈样式 |
 
 **返回:** `Stack` — 堆栈容器对象
@@ -350,6 +357,24 @@ win.setStyle({
 
 ---
 
+#### `win.setAlignment(alignment)`
+
+设置窗口内容的对齐方式。控制窗口内所有子元素的水平对齐行为。
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `alignment` | `string` | 对齐方式: `'leading'` \| `'center'` \| `'trailing'` \| `'fill'` |
+
+```javascript
+// 让所有子元素撑满窗口宽度
+win.setAlignment('fill');
+
+// 让所有子元素居中
+win.setAlignment('center');
+```
+
+---
+
 #### `win.getBounds()`
 
 获取窗口的当前位置和大小。
@@ -373,6 +398,22 @@ console.log(`窗口位置: (${bounds.x}, ${bounds.y}), 大小: ${bounds.width}x$
 if (win.isVisible()) {
   console.log('窗口正在显示');
 }
+```
+
+---
+
+#### `win.onDismiss(callback)`
+
+设置窗口关闭时的回调函数。当窗口通过 `dismiss()` 或点击外部区域关闭时触发。
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `callback` | `function` | 关闭回调函数 |
+
+```javascript
+win.onDismiss(() => {
+  console.log('窗口已关闭');
+});
 ```
 
 ---
@@ -452,6 +493,62 @@ if (win.isVisible()) {
 
 ---
 
+#### `stack.addStack(config?)`
+
+向堆栈添加嵌套堆栈容器。参数同 `win.addStack()`。
+
+**返回:** `Stack`
+
+---
+
+#### `stack.addLoading(config?)`
+
+向堆栈添加加载指示器。参数同 `win.addLoading()`。
+
+**返回:** `Loading`
+
+---
+
+#### `stack.addScrollView(config?)`
+
+向堆栈添加滚动视图。参数同 `win.addScrollView()`。
+
+**返回:** `ScrollView`
+
+---
+
+#### `stack.addList(config?)`
+
+向堆栈添加列表视图。参数同 `win.addList()`。
+
+**返回:** `List`
+
+---
+
+#### `stack.addWebView(config?)`
+
+向堆栈添加网页视图。参数同 `win.addWebView()`。
+
+**返回:** `WebView`
+
+---
+
+#### `stack.onClick(callback)`
+
+设置堆栈的点击回调函数。当子元素有自己的回调时，堆栈的点击不会触发。
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `callback` | `function` | 点击回调函数 |
+
+```javascript
+stack.onClick(() => {
+  console.log('堆栈被点击');
+});
+```
+
+---
+
 ### Text 文本元素
 
 `Text` 对象由 `addText()` 返回，用于显示和控制文本内容。
@@ -470,6 +567,34 @@ label.setText('更新后的文本');
 
 ---
 
+#### `text.setColor(color)`
+
+设置文本颜色。
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `color` | `string` | 颜色值（十六进制） |
+
+```javascript
+label.setColor('#FF3B30');
+```
+
+---
+
+#### `text.setFontSize(size)`
+
+设置字体大小。
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `size` | `number` | 字体大小 |
+
+```javascript
+label.setFontSize(20);
+```
+
+---
+
 #### `text.setStyle(style)`
 
 更新文本样式。
@@ -482,6 +607,8 @@ label.setText('更新后的文本');
 | `backgroundColor` | `string` | 背景颜色 |
 | `cornerRadius` | `number` | 圆角半径 |
 | `padding` | `number` | 内边距 |
+| `width` | `number` | 固定宽度 |
+| `height` | `number` | 固定高度 |
 
 ---
 
@@ -498,6 +625,22 @@ label.setText('更新后的文本');
 label.update({
   text: '状态: 在线',
   style: { textColor: '#00FF00' }
+});
+```
+
+---
+
+#### `text.onClick(callback)`
+
+设置文本的点击回调函数。
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `callback` | `function` | 点击回调函数 |
+
+```javascript
+label.onClick(() => {
+  console.log('文本被点击');
 });
 ```
 
@@ -534,6 +677,8 @@ label.update({
 | `fontSize` | `number` | 字体大小 |
 | `cornerRadius` | `number` | 圆角半径 |
 | `padding` | `number` | 内边距 |
+| `width` | `number` | 固定宽度 |
+| `height` | `number` | 固定高度 |
 
 ---
 
@@ -608,6 +753,22 @@ btn.onClick(() => {
 
 ```javascript
 img.update({ path: '/new/path.png', width: 64, height: 64 });
+```
+
+---
+
+#### `img.onClick(callback)`
+
+设置图片的点击回调函数。
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `callback` | `function` | 点击回调函数 |
+
+```javascript
+img.onClick(() => {
+  console.log('图片被点击');
+});
 ```
 
 ---
@@ -1667,6 +1828,8 @@ win.show();
 | `padding` | `number` | 内边距 | `16` |
 | `opacity` | `number` | 不透明度 (0-1) | `0.9` |
 | `shadow` | `boolean` | 是否显示阴影 | `true` |
+| `width` | `number` | 固定宽度 | `80` |
+| `height` | `number` | 固定高度 | `40` |
 
 ### 颜色格式
 

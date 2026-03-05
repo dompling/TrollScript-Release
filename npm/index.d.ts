@@ -841,7 +841,7 @@ declare const display: Display;
 interface Hud {
     /**
      * 创建 HUD 窗口
-     * @param config 窗口配置 { id?, width?, height?, x?, y?, draggable?, dismissible?, autoClear?, style? }，style 为 { backgroundColor?, textColor?, fontSize?, fontWeight?, cornerRadius?, padding?, opacity?, shadow? }
+     * @param config 窗口配置 { id?, width?, height?, x?, y?, alignment?, draggable?, dismissible?, autoClear?, style? }，alignment: 'leading'|'center'|'trailing'|'fill'（默认 leading），style 为 { backgroundColor?, textColor?, fontSize?, fontWeight?, cornerRadius?, padding?, opacity?, shadow? }
      * @returns 窗口对象，可用于添加元素和控制窗口
      */
     createWindow(config: Record<string, any>): any;

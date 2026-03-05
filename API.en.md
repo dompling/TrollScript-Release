@@ -1993,7 +1993,7 @@ Create a HUD window
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `config` | `object` | Window config { id?, width?, height?, x?, y?, draggable?, dismissible?, autoClear?, style? }, style is { backgroundColor?, textColor?, fontSize?, fontWeight?, cornerRadius?, padding?, opacity?, shadow? } | No |
+| `config` | `object` | Window config { id?, width?, height?, x?, y?, alignment?, draggable?, dismissible?, autoClear?, style? }, alignment: 'leading'\|'center'\|'trailing'\|'fill' (default leading), style is { backgroundColor?, textColor?, fontSize?, fontWeight?, cornerRadius?, padding?, opacity?, shadow? } | No |
 
 **Returns:** `Window`
 

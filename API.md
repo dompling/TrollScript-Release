@@ -1992,7 +1992,7 @@ HUD 浮窗系统 - 创建悬浮窗口和 UI 元素
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `config` | `object` | 窗口配置 { id?, width?, height?, x?, y?, draggable?, dismissible?, autoClear?, style? }，style 为 { backgroundColor?, textColor?, fontSize?, fontWeight?, cornerRadius?, padding?, opacity?, shadow? } | No |
+| `config` | `object` | 窗口配置 { id?, width?, height?, x?, y?, alignment?, draggable?, dismissible?, autoClear?, style? }，alignment: 'leading'\|'center'\|'trailing'\|'fill'（默认 leading），style 为 { backgroundColor?, textColor?, fontSize?, fontWeight?, cornerRadius?, padding?, opacity?, shadow? } | No |
 
 **Returns:** `Window`
 
