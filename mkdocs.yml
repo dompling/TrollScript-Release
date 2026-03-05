@@ -71,7 +71,6 @@ plugins:
       lang:
         - zh
         - en
-  - sitemap
 
 extra:
   seo:
