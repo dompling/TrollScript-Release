@@ -243,6 +243,10 @@ win.addImage({ path: '/var/mobile/Documents/photo.png', width: 100, height: 100 
 | `config.distribution` | `string` | `'fill'` | 分布方式: `'fill'` \| `'fillEqually'` \| `'equalSpacing'` \| `'equalCentering'` |
 | `config.style` | `object` | - | 堆栈样式 |
 
+枚举值说明：
+- `alignment: 'leading'` 左对齐；`'center'` 居中对齐；`'trailing'` 右对齐；`'fill'` 拉伸填充可用空间。
+- `distribution: 'fill'` 按内容自然尺寸分布；`'fillEqually'` 子元素等宽/等高；`'equalSpacing'` 子元素之间间距相等；`'equalCentering'` 子元素中心点间距相等。
+
 **返回:** `Stack` — 堆栈容器对象
 
 ```javascript
