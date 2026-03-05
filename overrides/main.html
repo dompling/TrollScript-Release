@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+
+  {% set seo_title = config.site_name %}
+  {% if page and page.title %}
+    {% set seo_title = page.title ~ " - " ~ config.site_name %}
+  {% endif %}
+
+  {% set seo_description = config.site_description %}
+  {% if page and page.meta and page.meta.description %}
+    {% set seo_description = page.meta.description %}
+  {% endif %}
+
+  {% set seo_url = config.site_url %}
+  {% if page and page.canonical_url %}
+    {% set seo_url = page.canonical_url %}
+  {% endif %}
+
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="{{ config.site_author }}" />
+  <meta name="keywords" content="{{ config.extra.seo.keywords }}" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="{{ config.site_name }}" />
+  <meta property="og:title" content="{{ seo_title }}" />
+  <meta property="og:description" content="{{ seo_description }}" />
+  <meta property="og:url" content="{{ seo_url }}" />
+  <meta property="og:image" content="{{ config.extra.seo.og_image }}" />
+
+  <meta name="twitter:card" content="{{ config.extra.seo.twitter_card }}" />
+  <meta name="twitter:title" content="{{ seo_title }}" />
+  <meta name="twitter:description" content="{{ seo_description }}" />
+  <meta name="twitter:image" content="{{ config.extra.seo.og_image }}" />
+{% endblock %}

@@ -1,10 +1,12 @@
 site_name: TrollScript
 site_url: https://trollscript.qzz.io
 site_description: TrollScript 官方文档与 API 参考
+site_author: TrollScript Team
 repo_url: https://github.com/dompling/TrollScript-Release
 
 theme:
   name: material
+  custom_dir: overrides
   language: zh
   palette:
     # 自动切换深色/浅色模式
@@ -64,8 +66,22 @@ nav:
     - iCloud: iCloud.md
   - 常见问题: FAQ.md
 
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+  - sitemap
+
+extra:
+  seo:
+    keywords: TrollScript, iOS automation, TrollStore, JavaScript API, iOS scripting, iOS docs
+    og_image: https://trollscript.qzz.io/AppIcon.png
+    twitter_card: summary_large_image
+
 
 markdown_extensions:
+  - meta
   - toc:
       permalink: true
   - admonition                # 警告/提示框
