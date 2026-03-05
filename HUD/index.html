@@ -1043,6 +1043,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#winsetalignmentalignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        win.setAlignment(alignment)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#wingetbounds" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1058,6 +1069,17 @@
     <span class="md-ellipsis">
       
         win.isVisible()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#winondismisscallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        win.onDismiss(callback)
       
     </span>
   </a>
@@ -1169,6 +1191,72 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#stackaddstackconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        stack.addStack(config?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stackaddloadingconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        stack.addLoading(config?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stackaddscrollviewconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        stack.addScrollView(config?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stackaddlistconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        stack.addList(config?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stackaddwebviewconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        stack.addWebView(config?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stackonclickcallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        stack.onClick(callback)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1198,6 +1286,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#textsetcolorcolor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        text.setColor(color)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#textsetfontsizesize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        text.setFontSize(size)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#textsetstylestyle" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1213,6 +1323,17 @@
     <span class="md-ellipsis">
       
         text.update(config)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#textonclickcallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        text.onClick(callback)
       
     </span>
   </a>
@@ -1346,6 +1467,17 @@
     <span class="md-ellipsis">
       
         img.update(config)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imgonclickcallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        img.onClick(callback)
       
     </span>
   </a>
@@ -2799,7 +2931,7 @@
 <tr>
 <td><code>draggable</code></td>
 <td><code>boolean</code></td>
-<td>false</td>
+<td>true</td>
 <td>是否可拖拽</td>
 </tr>
 <tr>
@@ -2813,6 +2945,12 @@
 <td><code>number</code></td>
 <td>-</td>
 <td>自动关闭时间（秒），不设置则不自动关闭</td>
+</tr>
+<tr>
+<td><code>alignment</code></td>
+<td><code>string</code></td>
+<td><code>'leading'</code></td>
+<td>内容对齐方式: <code>'leading'</code> | <code>'center'</code> | <code>'trailing'</code> | <code>'fill'</code></td>
 </tr>
 <tr>
 <td><code>style</code></td>
@@ -2913,10 +3051,28 @@
 <td>文本内容</td>
 </tr>
 <tr>
+<td><code>config.width</code></td>
+<td><code>number</code></td>
+<td>否</td>
+<td>固定宽度</td>
+</tr>
+<tr>
+<td><code>config.height</code></td>
+<td><code>number</code></td>
+<td>否</td>
+<td>固定高度</td>
+</tr>
+<tr>
 <td><code>config.style</code></td>
 <td><code>object</code></td>
 <td>否</td>
 <td>文本样式，详见 <a href="#样式配置">样式配置</a></td>
+</tr>
+<tr>
+<td><code>config.onClick</code></td>
+<td><code>function</code></td>
+<td>否</td>
+<td>点击回调函数</td>
 </tr>
 </tbody>
 </table>
@@ -2944,6 +3100,18 @@
 <td><code>string</code></td>
 <td>是</td>
 <td>按钮标题</td>
+</tr>
+<tr>
+<td><code>config.width</code></td>
+<td><code>number</code></td>
+<td>否</td>
+<td>固定宽度</td>
+</tr>
+<tr>
+<td><code>config.height</code></td>
+<td><code>number</code></td>
+<td>否</td>
+<td>固定高度</td>
 </tr>
 <tr>
 <td><code>config.style</code></td>
@@ -3005,6 +3173,12 @@
 <td>否</td>
 <td>图片高度</td>
 </tr>
+<tr>
+<td><code>config.onClick</code></td>
+<td><code>function</code></td>
+<td>否</td>
+<td>点击回调函数</td>
+</tr>
 </tbody>
 </table>
 <p><strong>返回:</strong> <code>Image</code> — 图片元素对象</p>
@@ -3036,14 +3210,20 @@
 <tr>
 <td><code>config.spacing</code></td>
 <td><code>number</code></td>
-<td>8</td>
+<td><code>0</code></td>
 <td>子元素间距</td>
 </tr>
 <tr>
 <td><code>config.alignment</code></td>
 <td><code>string</code></td>
-<td><code>'center'</code></td>
+<td><code>'leading'</code></td>
 <td>对齐方式: <code>'leading'</code> | <code>'center'</code> | <code>'trailing'</code> | <code>'fill'</code></td>
+</tr>
+<tr>
+<td><code>config.distribution</code></td>
+<td><code>string</code></td>
+<td><code>'fill'</code></td>
+<td>分布方式: <code>'fill'</code> | <code>'fillEqually'</code> | <code>'equalSpacing'</code> | <code>'equalCentering'</code></td>
 </tr>
 <tr>
 <td><code>config.style</code></td>
@@ -3168,6 +3348,31 @@
 <span class="p">});</span>
 </code></pre></div>
 <hr />
+<h4 id="winsetalignmentalignment"><code>win.setAlignment(alignment)</code><a class="headerlink" href="#winsetalignmentalignment" title="Permanent link">&para;</a></h4>
+<p>设置窗口内容的对齐方式。控制窗口内所有子元素的水平对齐行为。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alignment</code></td>
+<td><code>string</code></td>
+<td>对齐方式: <code>'leading'</code> | <code>'center'</code> | <code>'trailing'</code> | <code>'fill'</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1">// 让所有子元素撑满窗口宽度</span>
+<span class="nx">win</span><span class="p">.</span><span class="nx">setAlignment</span><span class="p">(</span><span class="s1">&#39;fill&#39;</span><span class="p">);</span>
+
+<span class="c1">// 让所有子元素居中</span>
+<span class="nx">win</span><span class="p">.</span><span class="nx">setAlignment</span><span class="p">(</span><span class="s1">&#39;center&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
 <h4 id="wingetbounds"><code>win.getBounds()</code><a class="headerlink" href="#wingetbounds" title="Permanent link">&para;</a></h4>
 <p>获取窗口的当前位置和大小。</p>
 <p><strong>返回:</strong> <code>{ x: number, y: number, width: number, height: number }</code></p>
@@ -3181,6 +3386,29 @@
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">win</span><span class="p">.</span><span class="nx">isVisible</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;窗口正在显示&#39;</span><span class="p">);</span>
 <span class="p">}</span>
+</code></pre></div>
+<hr />
+<h4 id="winondismisscallback"><code>win.onDismiss(callback)</code><a class="headerlink" href="#winondismisscallback" title="Permanent link">&para;</a></h4>
+<p>设置窗口关闭时的回调函数。当窗口通过 <code>dismiss()</code> 或点击外部区域关闭时触发。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>callback</code></td>
+<td><code>function</code></td>
+<td>关闭回调函数</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nx">win</span><span class="p">.</span><span class="nx">onDismiss</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;窗口已关闭&#39;</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre></div>
 <hr />
 <h3 id="stack">Stack 堆栈容器<a class="headerlink" href="#stack" title="Permanent link">&para;</a></h3>
@@ -3276,6 +3504,49 @@
 <h4 id="stackremove"><code>stack.remove()</code><a class="headerlink" href="#stackremove" title="Permanent link">&para;</a></h4>
 <p>从父容器中移除该堆栈。</p>
 <hr />
+<h4 id="stackaddstackconfig"><code>stack.addStack(config?)</code><a class="headerlink" href="#stackaddstackconfig" title="Permanent link">&para;</a></h4>
+<p>向堆栈添加嵌套堆栈容器。参数同 <code>win.addStack()</code>。</p>
+<p><strong>返回:</strong> <code>Stack</code></p>
+<hr />
+<h4 id="stackaddloadingconfig"><code>stack.addLoading(config?)</code><a class="headerlink" href="#stackaddloadingconfig" title="Permanent link">&para;</a></h4>
+<p>向堆栈添加加载指示器。参数同 <code>win.addLoading()</code>。</p>
+<p><strong>返回:</strong> <code>Loading</code></p>
+<hr />
+<h4 id="stackaddscrollviewconfig"><code>stack.addScrollView(config?)</code><a class="headerlink" href="#stackaddscrollviewconfig" title="Permanent link">&para;</a></h4>
+<p>向堆栈添加滚动视图。参数同 <code>win.addScrollView()</code>。</p>
+<p><strong>返回:</strong> <code>ScrollView</code></p>
+<hr />
+<h4 id="stackaddlistconfig"><code>stack.addList(config?)</code><a class="headerlink" href="#stackaddlistconfig" title="Permanent link">&para;</a></h4>
+<p>向堆栈添加列表视图。参数同 <code>win.addList()</code>。</p>
+<p><strong>返回:</strong> <code>List</code></p>
+<hr />
+<h4 id="stackaddwebviewconfig"><code>stack.addWebView(config?)</code><a class="headerlink" href="#stackaddwebviewconfig" title="Permanent link">&para;</a></h4>
+<p>向堆栈添加网页视图。参数同 <code>win.addWebView()</code>。</p>
+<p><strong>返回:</strong> <code>WebView</code></p>
+<hr />
+<h4 id="stackonclickcallback"><code>stack.onClick(callback)</code><a class="headerlink" href="#stackonclickcallback" title="Permanent link">&para;</a></h4>
+<p>设置堆栈的点击回调函数。当子元素有自己的回调时，堆栈的点击不会触发。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>callback</code></td>
+<td><code>function</code></td>
+<td>点击回调函数</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nx">stack</span><span class="p">.</span><span class="nx">onClick</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;堆栈被点击&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
 <h3 id="text">Text 文本元素<a class="headerlink" href="#text" title="Permanent link">&para;</a></h3>
 <p><code>Text</code> 对象由 <code>addText()</code> 返回，用于显示和控制文本内容。</p>
 <h4 id="textsettexttext"><code>text.setText(text)</code><a class="headerlink" href="#textsettexttext" title="Permanent link">&para;</a></h4>
@@ -3297,6 +3568,48 @@
 </tbody>
 </table>
 <div class="highlight"><pre><span></span><code><span class="nx">label</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;更新后的文本&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h4 id="textsetcolorcolor"><code>text.setColor(color)</code><a class="headerlink" href="#textsetcolorcolor" title="Permanent link">&para;</a></h4>
+<p>设置文本颜色。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><code>string</code></td>
+<td>颜色值（十六进制）</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nx">label</span><span class="p">.</span><span class="nx">setColor</span><span class="p">(</span><span class="s1">&#39;#FF3B30&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h4 id="textsetfontsizesize"><code>text.setFontSize(size)</code><a class="headerlink" href="#textsetfontsizesize" title="Permanent link">&para;</a></h4>
+<p>设置字体大小。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>size</code></td>
+<td><code>number</code></td>
+<td>字体大小</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nx">label</span><span class="p">.</span><span class="nx">setFontSize</span><span class="p">(</span><span class="mf">20</span><span class="p">);</span>
 </code></pre></div>
 <hr />
 <h4 id="textsetstylestyle"><code>text.setStyle(style)</code><a class="headerlink" href="#textsetstylestyle" title="Permanent link">&para;</a></h4>
@@ -3340,6 +3653,16 @@
 <td><code>number</code></td>
 <td>内边距</td>
 </tr>
+<tr>
+<td><code>width</code></td>
+<td><code>number</code></td>
+<td>固定宽度</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><code>number</code></td>
+<td>固定高度</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -3372,6 +3695,29 @@
 <div class="highlight"><pre><span></span><code><span class="nx">label</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;状态: 在线&#39;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#00FF00&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="textonclickcallback"><code>text.onClick(callback)</code><a class="headerlink" href="#textonclickcallback" title="Permanent link">&para;</a></h4>
+<p>设置文本的点击回调函数。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>callback</code></td>
+<td><code>function</code></td>
+<td>点击回调函数</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nx">label</span><span class="p">.</span><span class="nx">onClick</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;文本被点击&#39;</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
 <hr />
@@ -3434,6 +3780,16 @@
 <td><code>padding</code></td>
 <td><code>number</code></td>
 <td>内边距</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><code>number</code></td>
+<td>固定宽度</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><code>number</code></td>
+<td>固定高度</td>
 </tr>
 </tbody>
 </table>
@@ -3570,6 +3926,29 @@
 </tbody>
 </table>
 <div class="highlight"><pre><span></span><code><span class="nx">img</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/new/path.png&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">64</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">64</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="imgonclickcallback"><code>img.onClick(callback)</code><a class="headerlink" href="#imgonclickcallback" title="Permanent link">&para;</a></h4>
+<p>设置图片的点击回调函数。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>callback</code></td>
+<td><code>function</code></td>
+<td>点击回调函数</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nx">img</span><span class="p">.</span><span class="nx">onClick</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;图片被点击&#39;</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre></div>
 <hr />
 <h4 id="imgremove"><code>img.remove()</code><a class="headerlink" href="#imgremove" title="Permanent link">&para;</a></h4>
@@ -4996,6 +5375,18 @@
 <td><code>boolean</code></td>
 <td>是否显示阴影</td>
 <td><code>true</code></td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td><code>number</code></td>
+<td>固定宽度</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><code>number</code></td>
+<td>固定高度</td>
+<td><code>40</code></td>
 </tr>
 </tbody>
 </table>

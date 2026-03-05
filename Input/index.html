@@ -830,13 +830,63 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        触摸录制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="触摸录制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inputstartrecording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.startRecording()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputstoprecording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.stopRecording()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputisrecording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.isRecording()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         按键名称速查表
@@ -848,7 +898,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         键盘按键
@@ -859,7 +909,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         媒体/物理按键
@@ -875,7 +925,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         完整示例
@@ -923,7 +973,7 @@
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        示例 4: 手势录制回放
+        示例 4: 触摸录制与回放
       
     </span>
   </a>
@@ -931,10 +981,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-hud" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        示例 5: 配合 HUD 的自动点击器
+        示例 5: 录制到文件保存
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-hud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        示例 6: 配合 HUD 的自动点击器
       
     </span>
   </a>
@@ -947,7 +1008,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         最佳实践
@@ -1008,7 +1069,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         注意事项
@@ -1628,6 +1689,7 @@
 <li><a href="#触摸模拟">触摸模拟</a></li>
 <li><a href="#键盘输入">键盘输入</a></li>
 <li><a href="#物理按键">物理按键</a></li>
+<li><a href="#触摸录制">触摸录制</a></li>
 <li><a href="#按键名称速查表">按键名称速查表</a></li>
 <li><a href="#完整示例">完整示例</a></li>
 <li><a href="#最佳实践">最佳实践</a></li>
@@ -1919,8 +1981,114 @@
 <p>内部实现：按序发送所有 key down 事件 → 保持 150ms → 反序发送所有 key up 事件。</p>
 </blockquote>
 <hr />
-<h2 id="_7">按键名称速查表<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<h3 id="_8">键盘按键<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="_7">触摸录制<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>录制真实触摸事件并生成可回放的 JS 脚本。录制期间，所有真实的触摸事件（down/move/up/cancel）会被捕获并记录坐标、时间戳等信息。模拟事件（如 <code>input.tap()</code> 产生的触摸）会被自动过滤，不会被录制。</p>
+<h4 id="inputstartrecording"><code>input.startRecording()</code><a class="headerlink" href="#inputstartrecording" title="Permanent link">&para;</a></h4>
+<p>开始录制触摸事件。清空之前的录制数据，开始捕获新的触摸事件。</p>
+<p><strong>返回:</strong> <code>boolean</code> - 始终返回 <code>true</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">input</span><span class="p">.</span><span class="nx">startRecording</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;开始录制，请在屏幕上操作...&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="inputstoprecording"><code>input.stopRecording()</code><a class="headerlink" href="#inputstoprecording" title="Permanent link">&para;</a></h4>
+<p>停止录制并返回录制结果。<strong>返回:</strong> <code>object</code></p>
+<p>返回对象结构：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">events</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;down&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">pointerId</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;move&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">105</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">210</span><span class="p">,</span><span class="w"> </span><span class="nx">pointerId</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;up&quot;</span><span class="p">,</span><span class="w">   </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">110</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">220</span><span class="p">,</span><span class="w"> </span><span class="nx">pointerId</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="mf">150</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nx">script</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;input.tap(100, 200);\n...&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>events 字段说明:</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>事件类型: <code>"down"</code>, <code>"move"</code>, <code>"up"</code>, <code>"cancel"</code></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>number</td>
+<td>X 坐标（UIKit points）</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>number</td>
+<td>Y 坐标（UIKit points）</td>
+</tr>
+<tr>
+<td><code>pointerId</code></td>
+<td>number</td>
+<td>触摸点 ID（多指触控时用于区分手指）</td>
+</tr>
+<tr>
+<td><code>timestamp</code></td>
+<td>number</td>
+<td>相对录制开始时间的毫秒数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>script 字段说明:</strong></p>
+<p>自动分析录制的事件，识别手势模式并生成对应的 JS 回放脚本：</p>
+<table>
+<thead>
+<tr>
+<th>手势条件</th>
+<th>生成代码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>位移 &lt; 10pt 且时间 &lt; 300ms</td>
+<td><code>input.tap(x, y)</code></td>
+</tr>
+<tr>
+<td>位移 &lt; 10pt 且时间 &gt;= 500ms</td>
+<td><code>input.longPress(x, y, duration)</code></td>
+</tr>
+<tr>
+<td>位移 &gt;= 10pt</td>
+<td><code>input.swipe(fromX, fromY, toX, toY, duration)</code></td>
+</tr>
+<tr>
+<td>手势间隔 &gt; 50ms</td>
+<td>插入 <code>util.sleep(interval)</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1">// 录制并回放示例</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">startRecording</span><span class="p">();</span>
+<span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">5000</span><span class="p">);</span><span class="w"> </span><span class="c1">// 录制 5 秒</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">stopRecording</span><span class="p">();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`录制了 </span><span class="si">${</span><span class="nx">result</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 个事件`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;生成的脚本:&quot;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">script</span><span class="p">);</span>
+
+<span class="c1">// 回放录制的操作</span>
+<span class="nb">eval</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">script</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="inputisrecording"><code>input.isRecording()</code><a class="headerlink" href="#inputisrecording" title="Permanent link">&para;</a></h4>
+<p>查询当前是否正在录制。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isRecording</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;正在录制中...&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;未在录制&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="_8">按键名称速查表<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="_9">键盘按键<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1997,7 +2165,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="_9">媒体/物理按键<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="_10">媒体/物理按键<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2045,7 +2213,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="_10">完整示例<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h2 id="_11">完整示例<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <h3 id="1-app">示例 1: 自动化 App 操作<a class="headerlink" href="#1-app" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// 打开 Safari → 输入网址 → 访问</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">launch</span><span class="p">(</span><span class="s2">&quot;com.apple.mobilesafari&quot;</span><span class="p">);</span>
@@ -2086,23 +2254,48 @@
 <span class="w">  </span><span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">100</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="4">示例 4: 手势录制回放<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1">// 预定义手势序列</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">gesture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">600</span><span class="p">,</span><span class="w"> </span><span class="nx">phase</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;began&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">550</span><span class="p">,</span><span class="w"> </span><span class="nx">phase</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;moved&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span><span class="w"> </span><span class="nx">phase</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;moved&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">210</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">450</span><span class="p">,</span><span class="w"> </span><span class="nx">phase</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;moved&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">220</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="nx">phase</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;moved&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">220</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="nx">phase</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ended&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">];</span>
+<h3 id="4">示例 4: 触摸录制与回放<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">input</span><span class="p">.</span><span class="nx">isAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;HID 输入不可用&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="c1">// 简单回放（使用 swipe 代替逐帧控制）</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">gesture</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">gesture</span><span class="p">[</span><span class="nx">gesture</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">2</span><span class="p">];</span><span class="w"> </span><span class="c1">// ended 前一帧</span>
-<span class="nx">input</span><span class="p">.</span><span class="nx">swipe</span><span class="p">(</span><span class="nx">first</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">first</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">last</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">last</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">);</span>
+<span class="c1">// 开始录制</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">startRecording</span><span class="p">();</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;录制&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;开始录制触摸操作，5秒后自动停止&quot;</span><span class="p">);</span>
+
+<span class="c1">// 等待用户操作</span>
+<span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">5000</span><span class="p">);</span>
+
+<span class="c1">// 停止录制</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">stopRecording</span><span class="p">();</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;录制完成&quot;</span><span class="p">,</span><span class="w"> </span><span class="sb">`共录制 </span><span class="si">${</span><span class="nx">result</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 个事件`</span><span class="p">);</span>
+
+<span class="c1">// 查看生成的脚本</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;=== 生成的回放脚本 ===&quot;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">script</span><span class="p">);</span>
+
+<span class="c1">// 等待 2 秒后回放</span>
+<span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">2000</span><span class="p">);</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;回放&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;开始回放录制的操作&quot;</span><span class="p">);</span>
+<span class="nb">eval</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">script</span><span class="p">);</span>
+<span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;完成&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;回放结束&quot;</span><span class="p">);</span>
 </code></pre></div>
-<h3 id="5-hud">示例 5: 配合 HUD 的自动点击器<a class="headerlink" href="#5-hud" title="Permanent link">&para;</a></h3>
+<h3 id="5">示例 5: 录制到文件保存<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 录制操作</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">startRecording</span><span class="p">();</span>
+<span class="nx">util</span><span class="p">.</span><span class="nx">sleep</span><span class="p">(</span><span class="mf">10000</span><span class="p">);</span><span class="w"> </span><span class="c1">// 录制 10 秒</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">stopRecording</span><span class="p">();</span>
+
+<span class="c1">// 保存原始事件数据</span>
+<span class="nx">file</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;recordings/events.json&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">events</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">));</span>
+
+<span class="c1">// 保存回放脚本</span>
+<span class="nx">file</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;recordings/replay.js&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">script</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;录制数据已保存到 recordings/ 目录&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="6-hud">示例 6: 配合 HUD 的自动点击器<a class="headerlink" href="#6-hud" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">input</span><span class="p">.</span><span class="nx">isAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;错误&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;HID 输入不可用&quot;</span><span class="p">);</span>
 <span class="w">  </span><span class="k">return</span><span class="p">;</span>
@@ -2122,7 +2315,7 @@
 <span class="nx">notification</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;完成&quot;</span><span class="p">,</span><span class="w"> </span><span class="sb">`共点击 </span><span class="si">${</span><span class="nx">count</span><span class="si">}</span><span class="sb"> 次`</span><span class="p">);</span>
 </code></pre></div>
 <hr />
-<h2 id="_11">最佳实践<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h2 id="_12">最佳实践<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <h3 id="1">1. 始终检查可用性<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">isAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
@@ -2164,7 +2357,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <hr />
-<h2 id="_12">注意事项<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h2 id="_13">注意事项<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>权限要求</strong>: 需要 <code>com.apple.private.hid.client.event-dispatch</code> 权限，仅 TrollStore 签名可用</li>
 <li><strong>坐标系</strong>: 使用 UIKit points（逻辑坐标），左上角为原点。通过 <code>getScreenSize()</code> 获取屏幕尺寸</li>
@@ -2175,6 +2368,8 @@
 <li><strong>线程安全</strong>: HID 事件通过 IOKit 系统级管道派发，不需要主线程</li>
 <li><strong>系统限制</strong>: 模拟触摸无法绕过 Face ID / Touch ID 等生物识别</li>
 <li><strong>性能</strong>: swipe/drag 以 60fps 生成触摸点，高频操作时注意 CPU 消耗</li>
+<li><strong>录制过滤</strong>: <code>startRecording</code> 只录制真实触摸事件，<code>input.tap()</code> 等模拟触摸不会被录制</li>
+<li><strong>多指手势</strong>: 录制支持多指触摸（通过 pointerId 区分），但脚本生成暂不合并多指手势</li>
 </ol>
 
 
