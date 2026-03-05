@@ -3233,6 +3233,9 @@
 </tr>
 </tbody>
 </table>
+<p>枚举值说明：
+- <code>alignment: 'leading'</code> 左对齐；<code>'center'</code> 居中对齐；<code>'trailing'</code> 右对齐；<code>'fill'</code> 拉伸填充可用空间。
+- <code>distribution: 'fill'</code> 按内容自然尺寸分布；<code>'fillEqually'</code> 子元素等宽/等高；<code>'equalSpacing'</code> 子元素之间间距相等；<code>'equalCentering'</code> 子元素中心点间距相等。</p>
 <p><strong>返回:</strong> <code>Stack</code> — 堆栈容器对象</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 水平排列的按钮组</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">buttonRow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">win</span><span class="p">.</span><span class="nx">addStack</span><span class="p">({</span><span class="w"> </span><span class="nx">axis</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">spacing</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="p">});</span>
