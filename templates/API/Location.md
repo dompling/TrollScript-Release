@@ -36,6 +36,9 @@ console.log(results[0]);
 #### `location.requestAccess()`
 请求定位权限。**返回:** `void`
 
+#### `location.requestAccessAsync()`
+异步请求定位权限。**返回:** `Promise<void>`
+
 #### `location.getAccessStatus()`
 获取权限状态。**返回:** `'authorized'` | `'denied'` | `'restricted'` | `'notDetermined'` | `'unknown'`
 
@@ -57,10 +60,16 @@ console.log(results[0]);
 
 **注意:** 需要 TrollStore 权限
 
+#### `location.setLocationServicesEnabledAsync(enabled)`
+异步开关系统定位服务。**参数:** `enabled` (boolean) **返回:** `Promise<{ success, enabled?, message? }>`
+
 #### `location.toggleLocationServices()`
 切换定位服务状态。**返回:** `{ success, enabled?, message? }`
 
 **注意:** 需要 TrollStore 权限
+
+#### `location.toggleLocationServicesAsync()`
+异步切换定位服务状态。**返回:** `Promise<{ success, enabled?, message? }>`
 
 ---
 
@@ -68,6 +77,9 @@ console.log(results[0]);
 
 #### `location.getCurrent()`
 获取当前位置。**返回:** `{ lat, lng, alt, course, speed, accuracy, timestamp } | null`
+
+#### `location.getCurrentAsync()`
+异步获取当前位置。**返回:** `Promise<{ lat, lng, alt, course, speed, accuracy, timestamp } | null>`
 
 **返回值字段:**
 - `lat` - 纬度
@@ -107,6 +119,9 @@ if (results.length > 0) {
 }
 ```
 
+#### `location.geocodeAsync(address)`
+异步地址转坐标。**参数:** `address` (string) **返回:** `Promise<[{ lat, lng, name }]>`
+
 #### `location.reverseGeocode(lat, lng, locale?)`
 坐标转地址。**参数:** `lat` (number), `lng` (number), `locale` (string, 可选) **返回:** `[{ name, country, locality, ... }]`
 
@@ -132,6 +147,9 @@ if (results.length > 0) {
 const enResults = location.reverseGeocode(39.9, 116.4, 'en_US');
 const zhResults = location.reverseGeocode(39.9, 116.4, 'zh_CN');
 ```
+
+#### `location.reverseGeocodeAsync(lat, lng, locale?)`
+异步坐标转地址。**参数:** `lat` (number), `lng` (number), `locale` (string, 可选) **返回:** `Promise<[{ name, country, locality, ... }]>`
 
 ---
 

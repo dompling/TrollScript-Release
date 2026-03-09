@@ -1373,6 +1373,20 @@ Open app settings page
 
 ---
 
+### `app.restartDaemon`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
+**Signature:** `restartDaemon()`
+
+Restart the TrollScript HUD daemon process
+
+**Returns:** `boolean`
+
+*Whether the restart request was issued successfully*
+
+---
+
 ### `app.list`
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)

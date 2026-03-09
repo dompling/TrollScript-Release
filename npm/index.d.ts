@@ -585,6 +585,12 @@ interface App {
     openSettings(): boolean;
 
     /**
+     * 重启 TrollScript HUD Daemon 进程
+     * @returns 是否成功发起重启请求
+     */
+    restartDaemon(): boolean;
+
+    /**
      * 获取所有已安装应用列表 (TrollStore 权限)
      * @returns 应用信息数组，包含 bundleIdentifier, name, version, type 等字段
      */

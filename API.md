@@ -1372,6 +1372,20 @@ Ping 主机
 
 ---
 
+### `app.restartDaemon`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
+**Signature:** `restartDaemon()`
+
+重启 TrollScript HUD Daemon 进程
+
+**Returns:** `boolean`
+
+*是否成功发起重启请求*
+
+---
+
 ### `app.list`
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
