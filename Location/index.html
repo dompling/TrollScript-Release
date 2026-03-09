@@ -928,6 +928,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#locationrequestaccessasync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        location.requestAccessAsync()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#locationgetaccessstatus" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1000,10 +1011,32 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#locationsetlocationservicesenabledasyncenabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        location.setLocationServicesEnabledAsync(enabled)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#locationtogglelocationservices" class="md-nav__link">
     <span class="md-ellipsis">
       
         location.toggleLocationServices()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locationtogglelocationservicesasync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        location.toggleLocationServicesAsync()
       
     </span>
   </a>
@@ -1032,6 +1065,17 @@
     <span class="md-ellipsis">
       
         location.getCurrent()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locationgetcurrentasync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        location.getCurrentAsync()
       
     </span>
   </a>
@@ -1106,10 +1150,32 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#locationgeocodeasyncaddress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        location.geocodeAsync(address)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#locationreversegeocodelat-lng-locale" class="md-nav__link">
     <span class="md-ellipsis">
       
         location.reverseGeocode(lat, lng, locale?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locationreversegeocodeasynclat-lng-locale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        location.reverseGeocodeAsync(lat, lng, locale?)
       
     </span>
   </a>
@@ -1653,6 +1719,8 @@
 <h3 id="_2">权限管理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="locationrequestaccess"><code>location.requestAccess()</code><a class="headerlink" href="#locationrequestaccess" title="Permanent link">&para;</a></h4>
 <p>请求定位权限。<strong>返回:</strong> <code>void</code></p>
+<h4 id="locationrequestaccessasync"><code>location.requestAccessAsync()</code><a class="headerlink" href="#locationrequestaccessasync" title="Permanent link">&para;</a></h4>
+<p>异步请求定位权限。<strong>返回:</strong> <code>Promise&lt;void&gt;</code></p>
 <h4 id="locationgetaccessstatus"><code>location.getAccessStatus()</code><a class="headerlink" href="#locationgetaccessstatus" title="Permanent link">&para;</a></h4>
 <p>获取权限状态。<strong>返回:</strong> <code>'authorized'</code> | <code>'denied'</code> | <code>'restricted'</code> | <code>'notDetermined'</code> | <code>'unknown'</code></p>
 <h4 id="locationisauthorized"><code>location.isAuthorized()</code><a class="headerlink" href="#locationisauthorized" title="Permanent link">&para;</a></h4>
@@ -1666,13 +1734,19 @@
 <h4 id="locationsetlocationservicesenabledenabled"><code>location.setLocationServicesEnabled(enabled)</code><a class="headerlink" href="#locationsetlocationservicesenabledenabled" title="Permanent link">&para;</a></h4>
 <p>开关系统定位服务。<strong>参数:</strong> <code>enabled</code> (boolean) <strong>返回:</strong> <code>{ success, enabled?, message? }</code></p>
 <p><strong>注意:</strong> 需要 TrollStore 权限</p>
+<h4 id="locationsetlocationservicesenabledasyncenabled"><code>location.setLocationServicesEnabledAsync(enabled)</code><a class="headerlink" href="#locationsetlocationservicesenabledasyncenabled" title="Permanent link">&para;</a></h4>
+<p>异步开关系统定位服务。<strong>参数:</strong> <code>enabled</code> (boolean) <strong>返回:</strong> <code>Promise&lt;{ success, enabled?, message? }&gt;</code></p>
 <h4 id="locationtogglelocationservices"><code>location.toggleLocationServices()</code><a class="headerlink" href="#locationtogglelocationservices" title="Permanent link">&para;</a></h4>
 <p>切换定位服务状态。<strong>返回:</strong> <code>{ success, enabled?, message? }</code></p>
 <p><strong>注意:</strong> 需要 TrollStore 权限</p>
+<h4 id="locationtogglelocationservicesasync"><code>location.toggleLocationServicesAsync()</code><a class="headerlink" href="#locationtogglelocationservicesasync" title="Permanent link">&para;</a></h4>
+<p>异步切换定位服务状态。<strong>返回:</strong> <code>Promise&lt;{ success, enabled?, message? }&gt;</code></p>
 <hr />
 <h3 id="_3">位置获取<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="locationgetcurrent"><code>location.getCurrent()</code><a class="headerlink" href="#locationgetcurrent" title="Permanent link">&para;</a></h4>
 <p>获取当前位置。<strong>返回:</strong> <code>{ lat, lng, alt, course, speed, accuracy, timestamp } | null</code></p>
+<h4 id="locationgetcurrentasync"><code>location.getCurrentAsync()</code><a class="headerlink" href="#locationgetcurrentasync" title="Permanent link">&para;</a></h4>
+<p>异步获取当前位置。<strong>返回:</strong> <code>Promise&lt;{ lat, lng, alt, course, speed, accuracy, timestamp } | null&gt;</code></p>
 <p><strong>返回值字段:</strong>
 - <code>lat</code> - 纬度
 - <code>lng</code> - 经度
@@ -1699,6 +1773,8 @@
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`坐标: </span><span class="si">${</span><span class="nx">results</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">lat</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="nx">results</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">lng</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
+<h4 id="locationgeocodeasyncaddress"><code>location.geocodeAsync(address)</code><a class="headerlink" href="#locationgeocodeasyncaddress" title="Permanent link">&para;</a></h4>
+<p>异步地址转坐标。<strong>参数:</strong> <code>address</code> (string) <strong>返回:</strong> <code>Promise&lt;[{ lat, lng, name }]&gt;</code></p>
 <h4 id="locationreversegeocodelat-lng-locale"><code>location.reverseGeocode(lat, lng, locale?)</code><a class="headerlink" href="#locationreversegeocodelat-lng-locale" title="Permanent link">&para;</a></h4>
 <p>坐标转地址。<strong>参数:</strong> <code>lat</code> (number), <code>lng</code> (number), <code>locale</code> (string, 可选) <strong>返回:</strong> <code>[{ name, country, locality, ... }]</code></p>
 <p><strong>locale 参数:</strong> 可选，指定语言（如 <code>'zh_CN'</code>, <code>'en_US'</code>），默认使用系统语言</p>
@@ -1720,6 +1796,8 @@
 <span class="kd">const</span><span class="w"> </span><span class="nx">enResults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">location</span><span class="p">.</span><span class="nx">reverseGeocode</span><span class="p">(</span><span class="mf">39.9</span><span class="p">,</span><span class="w"> </span><span class="mf">116.4</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;en_US&#39;</span><span class="p">);</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">zhResults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">location</span><span class="p">.</span><span class="nx">reverseGeocode</span><span class="p">(</span><span class="mf">39.9</span><span class="p">,</span><span class="w"> </span><span class="mf">116.4</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;zh_CN&#39;</span><span class="p">);</span>
 </code></pre></div>
+<h4 id="locationreversegeocodeasynclat-lng-locale"><code>location.reverseGeocodeAsync(lat, lng, locale?)</code><a class="headerlink" href="#locationreversegeocodeasynclat-lng-locale" title="Permanent link">&para;</a></h4>
+<p>异步坐标转地址。<strong>参数:</strong> <code>lat</code> (number), <code>lng</code> (number), <code>locale</code> (string, 可选) <strong>返回:</strong> <code>Promise&lt;[{ name, country, locality, ... }]&gt;</code></p>
 <hr />
 <h2 id="_6">完整示例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <h3 id="1">示例 1: 获取当前位置<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>

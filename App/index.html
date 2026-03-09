@@ -691,6 +691,34 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#daemon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Daemon 控制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Daemon 控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apprestartdaemon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        app.restartDaemon()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1896,6 +1924,7 @@
 <li><a href="#api-参考">API 参考</a></li>
 <li><a href="#应用信息">应用信息</a></li>
 <li><a href="#url-操作">URL 操作</a></li>
+<li><a href="#daemon-控制">Daemon 控制</a></li>
 <li><a href="#日志管理">日志管理</a></li>
 <li><a href="#崩溃报告">崩溃报告</a></li>
 <li><a href="#性能监控">性能监控</a></li>
@@ -1945,6 +1974,41 @@
 <p>检查是否能打开指定 URL。<strong>参数:</strong> <code>url</code> (string) <strong>返回:</strong> <code>boolean</code></p>
 <h4 id="appopensettings"><code>app.openSettings()</code><a class="headerlink" href="#appopensettings" title="Permanent link">&para;</a></h4>
 <p>打开应用设置页面。<strong>返回:</strong> <code>boolean</code> (Daemon 模式下返回 false)</p>
+<hr />
+<h3 id="daemon">Daemon 控制<a class="headerlink" href="#daemon" title="Permanent link">&para;</a></h3>
+<h4 id="apprestartdaemon"><code>app.restartDaemon()</code><a class="headerlink" href="#apprestartdaemon" title="Permanent link">&para;</a></h4>
+<p>重启 TrollScript HUD Daemon 进程。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">restartDaemon</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`重启请求: </span><span class="si">${</span><span class="nx">ok</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;已发送&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;失败&#39;</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>说明:
+- 这是一个 <strong>App 侧能力</strong>，用于请求重启 TrollScript 的 HUD/Daemon 进程。
+- 该方法会确保 <code>schedulerEnabled = true</code> 后再发起重启流程。
+- 适合在脚本里做“自恢复”或更新后重启守护进程。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1">// 示例：重启 Daemon 后等待恢复</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">restartDaemonAndWait</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;准备重启 Daemon...&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">requested</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">restartDaemon</span><span class="p">();</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">requested</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;重启请求发送失败&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;重启请求已发送，等待守护进程恢复...&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 简单等待 watchdog / daemon 拉起</span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Daemon 应该已经开始恢复，可继续后续逻辑&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">2000</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">restartDaemonAndWait</span><span class="p">();</span>
+</code></pre></div>
 <hr />
 <h3 id="_4">用户交互<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="appvibrate"><code>app.vibrate()</code><a class="headerlink" href="#appvibrate" title="Permanent link">&para;</a></h4>
