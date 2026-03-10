@@ -1247,7 +1247,7 @@ list.onSelect((item, index) => {
 ```javascript
 // 加载远程 URL
 const webview = win.addWebView({
-    url: 'https://example.com',
+    url: 'https://google.com',
     width: 300,
     height: 400,
     style: { cornerRadius: 8 }
