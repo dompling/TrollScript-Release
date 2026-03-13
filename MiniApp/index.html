@@ -1,0 +1,2125 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TrollScript 官方文档与 API 参考">
+      
+      
+        <meta name="author" content="TrollScript Team">
+      
+      
+        <link rel="canonical" href="https://trollscript.qzz.io/MiniApp/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>MiniApp 迷你应用 - TrollScript</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+    
+  
+
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="TrollScript Team" />
+  <meta name="keywords" content="TrollScript, iOS automation, TrollStore, JavaScript API, iOS scripting, iOS docs" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="TrollScript" />
+  <meta property="og:title" content="MiniApp 迷你应用 - TrollScript" />
+  <meta property="og:description" content="TrollScript 官方文档与 API 参考" />
+  <meta property="og:url" content="https://trollscript.qzz.io/MiniApp/" />
+  <meta property="og:image" content="https://trollscript.qzz.io/AppIcon.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MiniApp 迷你应用 - TrollScript" />
+  <meta name="twitter:description" content="TrollScript 官方文档与 API 参考" />
+  <meta name="twitter:image" content="https://trollscript.qzz.io/AppIcon.png" />
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#miniapp" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="TrollScript" class="md-header__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TrollScript
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MiniApp 迷你应用
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dompling/TrollScript-Release" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TrollScript" class="md-nav__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TrollScript
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dompling/TrollScript-Release" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TestScripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试示例脚本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ARGS.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    功能介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 参考
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API 参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../App/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Calendar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    日历
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Clipboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    剪切板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统输入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Console
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Contacts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    联系人
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    设备
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Display/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    显示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../File/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTTP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HUD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HUD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Haptic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    触觉反馈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Location/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网络信息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Notification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通知
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reminder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    提醒
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SMS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    短信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快捷指令
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    本地存储
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Util/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Util
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iCloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    iCloud
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="miniapp">MiniApp 迷你应用<a class="headerlink" href="#miniapp" title="Permanent link">&para;</a></h1>
+<p>MiniApp 模块提供了创建全屏交互式应用的能力。基于现有 HUD 元素系统，你可以使用它来构建多页面应用，支持导航、文本输入、生命周期钩子等完整的应用体验。</p>
+<blockquote>
+<p><strong>守护进程支持</strong>: 完全支持。MiniApp 在脚本运行期间以 fullScreenCover 方式呈现，JS 引擎通过 ActiveBridgeManager 保持存活。</p>
+</blockquote>
+<hr />
+<h2 id="_1">目录<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#快速开始">快速开始</a></li>
+<li><a href="#api-参考">API 参考</a></li>
+<li><a href="#miniapp-应用对象">MiniApp 应用对象</a></li>
+<li><a href="#miniapppage-页面对象">MiniAppPage 页面对象</a></li>
+<li><a href="#页面元素方法">页面元素方法</a></li>
+<li><a href="#生命周期钩子">生命周期钩子</a></li>
+<li><a href="#提示与对话框">提示与对话框</a></li>
+<li><a href="#元素类型">元素类型</a></li>
+<li><a href="#完整示例">完整示例</a></li>
+<li><a href="#最佳实践">最佳实践</a></li>
+<li><a href="#注意事项">注意事项</a></li>
+</ul>
+<hr />
+<h2 id="_2">快速开始<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>创建一个简单的 MiniApp 只需要四步：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1. 创建应用（自动包含根页面）</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniApp</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;我的应用&#39;</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// 2. 在根页面上添加内容</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">rootPage</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Hello MiniApp!&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">24</span><span class="p">,</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#333333&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">textAlign</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;center&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">rootPage</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;点击我&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#007AFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;按钮被点击了！&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// 3. 注册生命周期</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">onReady</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;MiniApp 已就绪&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// 4. 呈现应用</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">present</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="miniapp_1">MiniApp 应用对象<a class="headerlink" href="#miniapp_1" title="Permanent link">&para;</a></h3>
+<h4 id="new-miniappconfig"><code>new MiniApp(config)</code><a class="headerlink" href="#new-miniappconfig" title="Permanent link">&para;</a></h4>
+<p>创建一个 MiniApp 实例。自动创建根页面并初始化导航栈。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config</code></td>
+<td><code>object</code></td>
+<td>否</td>
+<td>应用配置对象</td>
+</tr>
+</tbody>
+</table>
+<p><strong>config 配置项:</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td><code>''</code></td>
+<td>根页面导航栏标题</td>
+</tr>
+<tr>
+<td><code>backgroundColor</code></td>
+<td><code>string</code></td>
+<td>系统默认</td>
+<td>根页面背景色（hex 格式）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>MiniApp</code> 实例</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 基础创建</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniApp</span><span class="p">();</span>
+
+<span class="c1">// 带配置创建</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniApp</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;设置&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#F2F2F7&#39;</span>
+<span class="p">});</span>
+
+<span class="c1">// 根页面可直接使用</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">rootPage</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;欢迎&#39;</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<p><strong>实例属性:</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rootPage</code></td>
+<td><code>MiniAppPage</code></td>
+<td>根页面对象，创建时自动生成</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="apppresent"><code>app.present()</code><a class="headerlink" href="#apppresent" title="Permanent link">&para;</a></h4>
+<p>呈现 MiniApp（以 fullScreenCover 方式覆盖当前界面）。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniApp</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;我的应用&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="c1">// ... 添加内容 ...</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">present</span><span class="p">();</span>
+</code></pre></div>
+<blockquote>
+<p>调用 <code>present()</code> 后 MiniApp 会以全屏覆盖方式显示。用户可通过根页面左上角的关闭按钮退出。</p>
+</blockquote>
+<hr />
+<h4 id="apppushpagepage"><code>app.pushPage(page)</code><a class="headerlink" href="#apppushpagepage" title="Permanent link">&para;</a></h4>
+<p>将新页面推入导航栈（带动画）。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page</code></td>
+<td><code>MiniAppPage</code></td>
+<td>要推入的页面实例</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">detailPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniAppPage</span><span class="p">(</span><span class="s1">&#39;详情&#39;</span><span class="p">);</span>
+<span class="nx">detailPage</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;这是详情页&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">pushPage</span><span class="p">(</span><span class="nx">detailPage</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>推入的子页面自动显示返回按钮（标准 iOS 导航样式）。</p>
+</blockquote>
+<hr />
+<h4 id="apppoppage"><code>app.popPage()</code><a class="headerlink" href="#apppoppage" title="Permanent link">&para;</a></h4>
+<p>弹出当前页面，返回上一页。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">popPage</span><span class="p">();</span>
+</code></pre></div>
+<blockquote>
+<p>如果当前已经是根页面，则不会执行任何操作。弹出的页面资源会被自动清理。</p>
+</blockquote>
+<hr />
+<h4 id="apppoptoroot"><code>app.popToRoot()</code><a class="headerlink" href="#apppoptoroot" title="Permanent link">&para;</a></h4>
+<p>弹出所有子页面，返回根页面。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">popToRoot</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h4 id="appclose"><code>app.close()</code><a class="headerlink" href="#appclose" title="Permanent link">&para;</a></h4>
+<p>关闭并销毁 MiniApp。触发 <code>onDestroy</code> 回调后清理所有资源。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+</code></pre></div>
+<blockquote>
+<p>关闭后所有页面元素、回调、注册表记录均被清理。JS 引擎在无活跃 MiniApp 时也会被释放。</p>
+</blockquote>
+<hr />
+<h3 id="_3">生命周期钩子<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>MiniApp 提供四个生命周期钩子，回调通过 JSCallbackManager 在 JSExecutionQueue 上安全执行。</p>
+<h4 id="apponreadycallback"><code>app.onReady(callback)</code><a class="headerlink" href="#apponreadycallback" title="Permanent link">&para;</a></h4>
+<p>MiniApp 首次显示时触发（仅触发一次）。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">onReady</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;应用已准备就绪&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// 适合做初始数据加载</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="apponshowcallback"><code>app.onShow(callback)</code><a class="headerlink" href="#apponshowcallback" title="Permanent link">&para;</a></h4>
+<p>MiniApp 每次变为可见时触发（包括首次显示）。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">onShow</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;应用进入前台&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// 适合刷新数据</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="apponhidecallback"><code>app.onHide(callback)</code><a class="headerlink" href="#apponhidecallback" title="Permanent link">&para;</a></h4>
+<p>MiniApp 每次被隐藏时触发。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">onHide</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;应用进入后台&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// 适合暂停定时器等</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="appondestroycallback"><code>app.onDestroy(callback)</code><a class="headerlink" href="#appondestroycallback" title="Permanent link">&para;</a></h4>
+<p>MiniApp 关闭时触发（在资源清理之前）。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">onDestroy</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;应用即将销毁&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// 适合保存数据、释放资源</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h3 id="_4">提示与对话框<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>MiniApp 内置了提示/确认/Toast，便于在页面内直接反馈。</p>
+<h4 id="appalerttitle-message-onok"><code>app.alert(title, message, onOk?)</code><a class="headerlink" href="#appalerttitle-message-onok" title="Permanent link">&para;</a></h4>
+<p>显示提示对话框（单按钮）。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;提示&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;操作完成&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;用户点击了确定&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="c1">// 也可省略 title: app.alert(&#39;操作完成&#39;, callback)</span>
+</code></pre></div>
+<hr />
+<h4 id="appconfirmtitle-message-onconfirm-oncancel"><code>app.confirm(title, message, onConfirm?, onCancel?)</code><a class="headerlink" href="#appconfirmtitle-message-onconfirm-oncancel" title="Permanent link">&para;</a></h4>
+<p>显示确认对话框（确认/取消）。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s1">&#39;删除&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;确认删除该条记录？&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已确认&#39;</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已取消&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="appdialogtitle-message-onconfirm-oncancel"><code>app.dialog(title, message, onConfirm?, onCancel?)</code><a class="headerlink" href="#appdialogtitle-message-onconfirm-oncancel" title="Permanent link">&para;</a></h4>
+<p><code>confirm</code> 的别名，便于语义化调用。</p>
+<hr />
+<h4 id="apptoastmessage-duration"><code>app.toast(message, duration?)</code><a class="headerlink" href="#apptoastmessage-duration" title="Permanent link">&para;</a></h4>
+<p>显示 Toast 提示。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">toast</span><span class="p">(</span><span class="s1">&#39;保存成功&#39;</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">toast</span><span class="p">(</span><span class="s1">&#39;网络较慢，请稍候…&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="miniapppage">MiniAppPage 页面对象<a class="headerlink" href="#miniapppage" title="Permanent link">&para;</a></h3>
+<h4 id="new-miniapppagetitle"><code>new MiniAppPage(title)</code><a class="headerlink" href="#new-miniapppagetitle" title="Permanent link">&para;</a></h4>
+<p>创建一个新的页面实例。页面创建后需通过 <code>app.pushPage()</code> 添加到导航栈。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>否</td>
+<td>页面导航栏标题</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniAppPage</span><span class="p">(</span><span class="s1">&#39;设置页&#39;</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>页面在被 <code>pushPage</code> 之前处于未挂载状态，此时调用 <code>addXxx</code> 方法不会生效。</p>
+</blockquote>
+<hr />
+<h4 id="pagesettitletitle"><code>page.setTitle(title)</code><a class="headerlink" href="#pagesettitletitle" title="Permanent link">&para;</a></h4>
+<p>动态设置页面标题。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">page</span><span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="s1">&#39;新标题&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h4 id="pagesetbackgroundcolorcolor"><code>page.setBackgroundColor(color)</code><a class="headerlink" href="#pagesetbackgroundcolorcolor" title="Permanent link">&para;</a></h4>
+<p>设置页面背景颜色。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color</code></td>
+<td><code>string</code></td>
+<td>hex 颜色字符串（如 <code>'#F2F2F7'</code>、<code>'#FF0000CC'</code>）</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nx">page</span><span class="p">.</span><span class="nx">setBackgroundColor</span><span class="p">(</span><span class="s1">&#39;#F2F2F7&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="_5">页面元素方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>MiniApp 页面复用 HUD 元素系统。所有 <code>addXxx</code> 方法返回对应的 HUD 元素对象，可直接调用 HUD 元素的方法（如 <code>setText</code>、<code>setColor</code>、<code>onClick</code> 等）。</p>
+<h4 id="pageaddtextconfig"><code>page.addText(config)</code><a class="headerlink" href="#pageaddtextconfig" title="Permanent link">&para;</a></h4>
+<p>添加文本元素。<strong>返回:</strong> HUD Text 元素对象</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;标题文字&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#000000&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">textAlign</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">bottom</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// 后续可修改</span>
+<span class="nx">label</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;新文字&#39;</span><span class="p">);</span>
+<span class="nx">label</span><span class="p">.</span><span class="nx">setColor</span><span class="p">(</span><span class="s1">&#39;#FF0000&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h4 id="pageaddbuttonconfig"><code>page.addButton(config)</code><a class="headerlink" href="#pageaddbuttonconfig" title="Permanent link">&para;</a></h4>
+<p>添加按钮元素。<strong>返回:</strong> HUD Button 元素对象</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;提交&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#007AFF&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">17</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;按钮点击&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// 后续修改</span>
+<span class="nx">btn</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;已提交&#39;</span><span class="p">);</span>
+<span class="nx">btn</span><span class="p">.</span><span class="nx">setEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h4 id="pageaddtextfieldconfig"><code>page.addTextField(config)</code><a class="headerlink" href="#pageaddtextfieldconfig" title="Permanent link">&para;</a></h4>
+<p>添加文本输入框。<strong>返回:</strong> HUD TextField 元素对象</p>
+<p><strong>config 配置项:</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>placeholder</code></td>
+<td><code>string</code></td>
+<td><code>''</code></td>
+<td>占位符文本</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><code>string</code></td>
+<td><code>''</code></td>
+<td>初始文本</td>
+</tr>
+<tr>
+<td><code>keyboardType</code></td>
+<td><code>string</code></td>
+<td><code>'default'</code></td>
+<td>键盘类型: <code>default</code> / <code>numberPad</code> / <code>emailAddress</code> / <code>URL</code> / <code>phonePad</code></td>
+</tr>
+<tr>
+<td><code>isSecure</code></td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>是否密码输入（显示圆点）</td>
+</tr>
+<tr>
+<td><code>returnKeyType</code></td>
+<td><code>string</code></td>
+<td><code>'done'</code></td>
+<td>回车键类型: <code>done</code> / <code>search</code> / <code>next</code> / <code>go</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">nameField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">addTextField</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">placeholder</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;请输入用户名&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">keyboardType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;default&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">returnKeyType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;next&#39;</span>
+<span class="p">});</span>
+
+<span class="c1">// 监听文本变化</span>
+<span class="nx">nameField</span><span class="p">.</span><span class="nx">onChange</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;输入: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">text</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// 监听回车</span>
+<span class="nx">nameField</span><span class="p">.</span><span class="nx">onSubmit</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;提交: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">text</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// 获取/设置文本</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nameField</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+<span class="nx">nameField</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;预填文字&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h4 id="pageaddimageconfig"><code>page.addImage(config)</code><a class="headerlink" href="#pageaddimageconfig" title="Permanent link">&para;</a></h4>
+<p>添加图片元素。<strong>返回:</strong> HUD Image 元素对象</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">addImage</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://example.com/avatar.png&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">80</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">80</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">40</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="pageaddstackconfig"><code>page.addStack(config)</code><a class="headerlink" href="#pageaddstackconfig" title="Permanent link">&para;</a></h4>
+<p>添加堆栈容器（可嵌套其他元素）。<strong>返回:</strong> HUD Stack 元素对象</p>
+<p><strong>config 配置项:</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>axis</code></td>
+<td><code>string</code></td>
+<td><code>'vertical'</code></td>
+<td>排列方向: <code>vertical</code> / <code>horizontal</code></td>
+</tr>
+<tr>
+<td><code>spacing</code></td>
+<td><code>number</code></td>
+<td><code>0</code></td>
+<td>子元素间距</td>
+</tr>
+<tr>
+<td><code>alignment</code></td>
+<td><code>string</code></td>
+<td><code>'fill'</code></td>
+<td>对齐方式: <code>fill</code> / <code>leading</code> / <code>center</code> / <code>trailing</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1">// 创建水平布局</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">addStack</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">axis</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">spacing</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// 在容器内添加子元素</span>
+<span class="nx">row</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;标签:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">row</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;值&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#888888&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>容器元素（Stack、ScrollView、List）的 <code>addXxx</code> 方法会将子元素添加到容器内部，而非页面根层级。</p>
+</blockquote>
+<hr />
+<h4 id="pageaddspacerconfig"><code>page.addSpacer(config)</code><a class="headerlink" href="#pageaddspacerconfig" title="Permanent link">&para;</a></h4>
+<p>添加间距元素。<strong>返回:</strong> HUD Spacer 元素对象</p>
+<div class="highlight"><pre><span></span><code><span class="nx">page</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">({</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="pageaddscrollviewconfig"><code>page.addScrollView(config)</code><a class="headerlink" href="#pageaddscrollviewconfig" title="Permanent link">&para;</a></h4>
+<p>添加滚动视图容器。<strong>返回:</strong> HUD ScrollView 元素对象</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">scroll</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">addScrollView</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">300</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// 在滚动视图内添加大量内容</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">scroll</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;第 &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; 行&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h4 id="pageaddlistconfig"><code>page.addList(config)</code><a class="headerlink" href="#pageaddlistconfig" title="Permanent link">&para;</a></h4>
+<p>添加列表容器。<strong>返回:</strong> HUD List 元素对象</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">addList</span><span class="p">();</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;列表项 1&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;列表项 2&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;列表项 3&#39;</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<hr />
+<h2 id="_6">元素类型<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>MiniApp 支持以下元素类型（与 HUD 系统完全一致）：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>元素类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>addText</code></td>
+<td>Text</td>
+<td>文本标签</td>
+</tr>
+<tr>
+<td><code>addButton</code></td>
+<td>Button</td>
+<td>可点击按钮</td>
+</tr>
+<tr>
+<td><code>addTextField</code></td>
+<td>TextField</td>
+<td>文本输入框</td>
+</tr>
+<tr>
+<td><code>addImage</code></td>
+<td>Image</td>
+<td>图片</td>
+</tr>
+<tr>
+<td><code>addStack</code></td>
+<td>Stack</td>
+<td>堆栈容器（可嵌套）</td>
+</tr>
+<tr>
+<td><code>addSpacer</code></td>
+<td>Spacer</td>
+<td>间距</td>
+</tr>
+<tr>
+<td><code>addScrollView</code></td>
+<td>ScrollView</td>
+<td>滚动视图容器（可嵌套）</td>
+</tr>
+<tr>
+<td><code>addList</code></td>
+<td>List</td>
+<td>列表容器（可嵌套）</td>
+</tr>
+<tr>
+<td><code>addLoading</code></td>
+<td>Loading</td>
+<td>加载指示器</td>
+</tr>
+<tr>
+<td><code>addWebView</code></td>
+<td>WebView</td>
+<td>内嵌网页视图</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>所有元素返回的对象均继承对应 HUD 元素的原型方法。详细方法列表请参考 <a href="../HUD/">HUD 文档</a>。</p>
+</blockquote>
+<hr />
+<h2 id="_7">完整示例<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="1">示例 1: 登录表单<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniApp</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;登录&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">rootPage</span><span class="p">;</span>
+
+<span class="nx">page</span><span class="p">.</span><span class="nx">setBackgroundColor</span><span class="p">(</span><span class="s1">&#39;#F2F2F7&#39;</span><span class="p">);</span>
+
+<span class="c1">// 标题</span>
+<span class="nx">page</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">({</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">60</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">page</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;TrollScript&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">32</span><span class="p">,</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#007AFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">textAlign</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;center&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">page</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">({</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">40</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// 输入框容器</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">formStack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">addStack</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">axis</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">spacing</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">bottom</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">usernameField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">formStack</span><span class="p">.</span><span class="nx">addTextField</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">placeholder</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;用户名&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">returnKeyType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;next&#39;</span>
+<span class="p">});</span>
+
+<span class="nx">formStack</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">({</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#E5E5EA&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">passwordField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">formStack</span><span class="p">.</span><span class="nx">addTextField</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">placeholder</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;密码&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">isSecure</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">returnKeyType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;done&#39;</span>
+<span class="p">});</span>
+
+<span class="nx">page</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">({</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// 登录按钮</span>
+<span class="nx">page</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;登录&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#007AFF&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">17</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">usernameField</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">passwordField</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s1">&#39;登录确认&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;确认登录用户 &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">username</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; ?&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">app</span><span class="p">.</span><span class="nx">toast</span><span class="p">(</span><span class="s1">&#39;正在登录...&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;登录: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">username</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; / &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">password</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;***&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">));</span>
+<span class="w">      </span><span class="nx">app</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;已提交&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;请稍候&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">app</span><span class="p">.</span><span class="nx">toast</span><span class="p">(</span><span class="s1">&#39;已取消&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">present</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="2-toast">示例 2: 对话框与 Toast<a class="headerlink" href="#2-toast" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniApp</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;提示演示&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">rootPage</span><span class="p">;</span>
+
+<span class="nx">page</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;点击按钮体验提示&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">18</span><span class="p">,</span><span class="w"> </span><span class="nx">textAlign</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">page</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;显示 Alert&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">44</span><span class="p">,</span><span class="w"> </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;提示&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;操作完成&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">page</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;显示 Confirm&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">44</span><span class="p">,</span><span class="w"> </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s1">&#39;删除&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;确认删除该条记录？&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">app</span><span class="p">.</span><span class="nx">toast</span><span class="p">(</span><span class="s1">&#39;已删除&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">app</span><span class="p">.</span><span class="nx">toast</span><span class="p">(</span><span class="s1">&#39;已取消&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">page</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;显示 Toast&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">44</span><span class="p">,</span><span class="w"> </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">toast</span><span class="p">(</span><span class="s1">&#39;保存成功&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">present</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="3">示例 3: 多页面导航<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniApp</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;设置&#39;</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// 根页面 - 设置列表</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">rootPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">rootPage</span><span class="p">;</span>
+<span class="nx">rootPage</span><span class="p">.</span><span class="nx">setBackgroundColor</span><span class="p">(</span><span class="s1">&#39;#F2F2F7&#39;</span><span class="p">);</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">addSettingRow</span><span class="p">(</span><span class="nx">parentPage</span><span class="p">,</span><span class="w"> </span><span class="nx">label</span><span class="p">,</span><span class="w"> </span><span class="nx">detail</span><span class="p">,</span><span class="w"> </span><span class="nx">onTap</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">parentPage</span><span class="p">.</span><span class="nx">addStack</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">axis</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="nx">onTap</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">row</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">label</span><span class="p">,</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">17</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">row</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">({});</span>
+<span class="w">  </span><span class="nx">row</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">detail</span><span class="p">,</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">17</span><span class="p">,</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#8E8E93&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="nx">addSettingRow</span><span class="p">(</span><span class="nx">rootPage</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;通知&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;已开启&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 推入通知设置页</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">notifPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniAppPage</span><span class="p">(</span><span class="s1">&#39;通知设置&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">notifPage</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;通知偏好设置&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">notifPage</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;在这里管理通知&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="p">,</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#888&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">app</span><span class="p">.</span><span class="nx">pushPage</span><span class="p">(</span><span class="nx">notifPage</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">addSettingRow</span><span class="p">(</span><span class="nx">rootPage</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;主题&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;跟随系统&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">themePage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniAppPage</span><span class="p">(</span><span class="s1">&#39;主题设置&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">themePage</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;浅色模式&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;选择浅色&#39;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">themePage</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;深色模式&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;选择深色&#39;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">app</span><span class="p">.</span><span class="nx">pushPage</span><span class="p">(</span><span class="nx">themePage</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">addSettingRow</span><span class="p">(</span><span class="nx">rootPage</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;关于&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;v1.0.0&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">aboutPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniAppPage</span><span class="p">(</span><span class="s1">&#39;关于&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">aboutPage</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;TrollScript MiniApp\nVersion 1.0.0&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#666666&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">textAlign</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">40</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">app</span><span class="p">.</span><span class="nx">pushPage</span><span class="p">(</span><span class="nx">aboutPage</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">present</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="3_1">示例 3: 生命周期管理<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniApp</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;生命周期演示&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">statusLabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">rootPage</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;等待中...&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">18</span><span class="p">,</span><span class="w"> </span><span class="nx">textAlign</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">40</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="nx">showCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">onReady</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">statusLabel</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;应用已就绪&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[Lifecycle] onReady&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">onShow</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">showCount</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">statusLabel</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="s1">&#39;显示次数: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">showCount</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[Lifecycle] onShow #&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">showCount</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">onHide</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[Lifecycle] onHide&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">onDestroy</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[Lifecycle] onDestroy - 清理资源&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">rootPage</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;关闭应用&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FF3B30&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">44</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">onClick</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">app</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">present</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="4">示例 4: 嵌套容器布局<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniApp</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;布局演示&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">rootPage</span><span class="p">;</span>
+
+<span class="c1">// 卡片容器</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">card</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">addStack</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">axis</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">spacing</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">bottom</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// 头部行（水平布局）</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">card</span><span class="p">.</span><span class="nx">addStack</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">axis</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">spacing</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span>
+<span class="p">});</span>
+<span class="nx">header</span><span class="p">.</span><span class="nx">addImage</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://example.com/avatar.png&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">48</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">48</span><span class="p">,</span><span class="w"> </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">24</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">headerText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">header</span><span class="p">.</span><span class="nx">addStack</span><span class="p">({</span><span class="w"> </span><span class="nx">axis</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">spacing</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">headerText</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;用户名&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">17</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">headerText</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;这是一段简介&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">14</span><span class="p">,</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#8E8E93&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// 分割线</span>
+<span class="nx">card</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">({</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#E5E5EA&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// 内容</span>
+<span class="nx">card</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;这是一个使用嵌套 Stack 构建的卡片布局示例。Stack 可以嵌套使用，通过 horizontal 和 vertical 方向组合实现复杂布局。&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="p">,</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#333333&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">present</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="5">示例 5: 圆角 + 透明 + 阴影样式<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniApp</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;样式演示&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">.</span><span class="nx">rootPage</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">addStack</span><span class="p">({</span><span class="w"> </span><span class="nx">axis</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">spacing</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">alignment</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;center&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">header</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#1C1C1EF0&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">shadow</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">icon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">header</span><span class="p">.</span><span class="nx">addImage</span><span class="p">({</span><span class="w"> </span><span class="nx">systemName</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;sparkles&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">26</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">26</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">icon</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">({</span><span class="w"> </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">shadow</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
+
+<span class="nx">header</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;MiniApp Header&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">fontWeight</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bold&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">present</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="_8">最佳实践<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="1-present">1. 在 present 之前构建页面<a class="headerlink" href="#1-present" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 正确 - 先构建，再呈现</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniApp</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;我的应用&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">rootPage</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;内容&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">present</span><span class="p">();</span>
+
+<span class="c1">// 不推荐 - present 后再添加元素可能导致布局闪烁</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">app2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniApp</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;我的应用&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">app2</span><span class="p">.</span><span class="nx">present</span><span class="p">();</span>
+<span class="nx">app2</span><span class="p">.</span><span class="nx">rootPage</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;内容&#39;</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// 会闪烁</span>
+</code></pre></div>
+<h3 id="2-onready">2. 使用 onReady 做初始化<a class="headerlink" href="#2-onready" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 正确 - 在 onReady 中加载数据</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">onReady</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://api.example.com/data&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">label</span><span class="p">.</span><span class="nx">setText</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="3-ondestroy">3. 在 onDestroy 中保存状态<a class="headerlink" href="#3-ondestroy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">onDestroy</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">storage</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;lastInput&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">textField</span><span class="p">.</span><span class="nx">getText</span><span class="p">());</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="4_1">4. 页面推入后再添加内容<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 正确 - pushPage 后 page 才有 _pageId</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniAppPage</span><span class="p">(</span><span class="s1">&#39;详情&#39;</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">pushPage</span><span class="p">(</span><span class="nx">page</span><span class="p">);</span>
+<span class="nx">page</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;内容&#39;</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// 此时 page 已挂载</span>
+
+<span class="c1">// 错误 - pushPage 之前 addXxx 不会生效</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">page2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MiniAppPage</span><span class="p">(</span><span class="s1">&#39;详情&#39;</span><span class="p">);</span>
+<span class="nx">page2</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;内容&#39;</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// _pageId 为 null，不生效</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">pushPage</span><span class="p">(</span><span class="nx">page2</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="5_1">5. 使用容器组织布局<a class="headerlink" href="#5_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 推荐 - 用 Stack 组织元素</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">addStack</span><span class="p">({</span><span class="w"> </span><span class="nx">axis</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">spacing</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">row</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;标签&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">row</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;操作&#39;</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// 不推荐 - 所有元素堆在页面根级别</span>
+<span class="nx">page</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;标签&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">page</span><span class="p">.</span><span class="nx">addButton</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;操作&#39;</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// 无法水平排列</span>
+</code></pre></div>
+<hr />
+<h2 id="_9">注意事项<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>实例限制</strong>: 最多同时存在 3 个 MiniApp 实例。超出时最旧的实例会被自动清理（LRU 策略）</li>
+<li><strong>页面挂载</strong>: <code>new MiniAppPage()</code> 创建的页面必须通过 <code>pushPage()</code> 挂载后才能添加元素</li>
+<li><strong>根页面</strong>: <code>app.rootPage</code> 在创建时自动挂载，可以立即使用 <code>addXxx</code></li>
+<li><strong>关闭按钮</strong>: 根页面左上角自动显示关闭按钮，子页面自动显示返回按钮</li>
+<li><strong>资源清理</strong>: 页面弹出或 MiniApp 关闭时，所有元素和回调会自动清理，无需手动释放</li>
+<li><strong>回调线程</strong>: 所有回调（onClick、onChange、onSubmit、生命周期）在 JSExecutionQueue 上执行，线程安全</li>
+<li><strong>键盘适配</strong>: TextField 获取焦点时页面自动调整滚动位置，不会被键盘遮挡</li>
+<li><strong>元素方法</strong>: 所有 <code>addXxx</code> 返回的对象可调用对应 HUD 元素的全部方法，参考 <a href="../HUD/">HUD 文档</a></li>
+<li><strong>容器嵌套</strong>: Stack、ScrollView、List 可以任意嵌套，子元素通过容器的 <code>addXxx</code> 方法添加</li>
+<li><strong>导航栈</strong>: <code>popPage()</code> 在根页面时不会执行任何操作。<code>popToRoot()</code> 会清理所有中间页面</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

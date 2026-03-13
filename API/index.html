@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -1227,6 +1227,8 @@
 <li><a href="#sql">sql</a> ✅ - SQLite 数据库操作</li>
 <li><a href="#shortcuts">shortcuts</a> ❌ - 快捷指令操作</li>
 <li><a href="#system">system</a> ✅ - 系统设置控制</li>
+<li><a href="#miniapp">miniapp</a> ✅ - 迷你应用 - 全屏交互式多页面应用</li>
+<li><a href="#widget">widget</a> ✅ - 小组件 - Scriptable 兼容的 iOS 主屏幕小组件</li>
 </ul>
 <hr />
 <h2 id="console">console<a class="headerlink" href="#console" title="Permanent link">&para;</a></h2>
@@ -3471,6 +3473,156 @@
 <p><strong>Returns:</strong> <code>[string]</code></p>
 <p><em>窗口 ID 数组</em></p>
 <hr />
+<h3 id="hudalert"><code>hud.alert</code><a class="headerlink" href="#hudalert" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>alert(title, message, onOk?)</code></p>
+<p>显示提示对话框（HUD 快捷弹窗）</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>标题（可为空）</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>提示内容</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>onOk</code></td>
+<td><code>function</code></td>
+<td>点击确定回调</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Window</code></p>
+<hr />
+<h3 id="hudconfirm"><code>hud.confirm</code><a class="headerlink" href="#hudconfirm" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>confirm(title, message, onConfirm?, onCancel?)</code></p>
+<p>显示确认对话框（确认/取消）</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>标题（可为空）</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>提示内容</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>onConfirm</code></td>
+<td><code>function</code></td>
+<td>点击确认回调</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>onCancel</code></td>
+<td><code>function</code></td>
+<td>点击取消回调</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Window</code></p>
+<hr />
+<h3 id="huddialog"><code>hud.dialog</code><a class="headerlink" href="#huddialog" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>dialog(title, message, onConfirm?, onCancel?)</code></p>
+<p>对话框（confirm 的别名）</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>标题（可为空）</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>提示内容</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>onConfirm</code></td>
+<td><code>function</code></td>
+<td>点击确认回调</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>onCancel</code></td>
+<td><code>function</code></td>
+<td>点击取消回调</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Window</code></p>
+<hr />
+<h3 id="hudtoast"><code>hud.toast</code><a class="headerlink" href="#hudtoast" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>toast(message, duration?)</code></p>
+<p>显示 Toast 提示</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>提示内容</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><code>number</code></td>
+<td>显示时长（秒），默认 2.0</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Window \| null</code></p>
+<hr />
 <h2 id="util">util<a class="headerlink" href="#util" title="Permanent link">&para;</a></h2>
 <p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
 <p>工具函数</p>
@@ -5578,6 +5730,78 @@
 </table>
 <p><strong>Returns:</strong> <code>boolean</code></p>
 <p><em>是否成功打开</em></p>
+<hr />
+<h2 id="miniapp">miniapp<a class="headerlink" href="#miniapp" title="Permanent link">&para;</a></h2>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p>迷你应用 - 全屏交互式多页面应用</p>
+<blockquote>
+<p><strong>Trigger Note:</strong> MiniApp 在脚本运行期间以 fullScreenCover 方式呈现，JS 引擎通过 ActiveBridgeManager 保持存活</p>
+</blockquote>
+<p><em>No methods available.</em></p>
+<h2 id="widget">widget<a class="headerlink" href="#widget" title="Permanent link">&para;</a></h2>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p>小组件 - Scriptable 兼容的 iOS 主屏幕小组件</p>
+<blockquote>
+<p><strong>Trigger Note:</strong> Widget 树序列化保存到 App Group，由 Widget Extension 渲染</p>
+</blockquote>
+<h3 id="widgetsetwidget"><code>widget.setWidget</code><a class="headerlink" href="#widgetsetwidget" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>Script.setWidget(widget)</code></p>
+<p>将 Widget 树保存为小组件数据</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>widget</code></td>
+<td><code>ListWidget</code></td>
+<td>Widget 根容器实例</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>void</code></p>
+<hr />
+<h3 id="widgetcomplete"><code>widget.complete</code><a class="headerlink" href="#widgetcomplete" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>Script.complete()</code></p>
+<p>通知脚本执行完毕（兼容 Scriptable）</p>
+<p><strong>Returns:</strong> <code>void</code></p>
+<hr />
+<h3 id="widgetpreview"><code>widget.preview</code><a class="headerlink" href="#widgetpreview" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>Widget.preview(widget, family?)</code></p>
+<p>在 MiniApp 界面预览小组件，不保存到 App Group。弹出预览 Sheet 并支持切换尺寸。</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>widget</code></td>
+<td><code>ListWidget</code></td>
+<td>要预览的 Widget 根容器实例</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>family</code></td>
+<td><code>string</code></td>
+<td>初始预览尺寸: 'small'、'medium'（默认）或 'large'</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>void</code></p>
 <hr />
 
 

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -932,6 +932,67 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        快捷弹窗
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="快捷弹窗">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hudalerttitle-message-onok" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hud.alert(title, message, onOk?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hudconfirmtitle-message-onconfirm-oncancel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hud.confirm(title, message, onConfirm?, onCancel?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#huddialogtitle-message-onconfirm-oncancel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hud.dialog(title, message, onConfirm?, onCancel?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hudtoastmessage-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        hud.toast(message, duration?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#window" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1489,6 +1550,17 @@
     <span class="md-ellipsis">
       
         img.setSize(width, height)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imgsetstylestyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        img.setStyle(style)
       
     </span>
   </a>
@@ -2251,7 +2323,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         样式配置
@@ -2274,7 +2346,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         颜色格式
@@ -2285,7 +2357,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         常用透明度参考
@@ -2301,7 +2373,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         完整示例
@@ -2373,7 +2445,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         最佳实践
@@ -2865,6 +2937,7 @@
 <li><a href="#快速开始">快速开始</a></li>
 <li><a href="#api-参考">API 参考</a></li>
 <li><a href="#hud-模块方法">hud 模块方法</a></li>
+<li><a href="#快捷弹窗">快捷弹窗</a></li>
 <li><a href="#window-窗口对象">Window 窗口对象</a></li>
 <li><a href="#stack-堆栈容器">Stack 堆栈容器</a></li>
 <li><a href="#text-文本元素">Text 文本元素</a></li>
@@ -3062,6 +3135,37 @@
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">windowIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">getAllWindows</span><span class="p">();</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;当前窗口数量:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">windowIds</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
 </code></pre></div>
+<hr />
+<h3 id="_3">快捷弹窗<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>HUD 内置 <code>alert/confirm/toast</code> 快捷弹窗，适用于简单提示与确认。</p>
+<h4 id="hudalerttitle-message-onok"><code>hud.alert(title, message, onOk?)</code><a class="headerlink" href="#hudalerttitle-message-onok" title="Permanent link">&para;</a></h4>
+<p>显示提示对话框（单按钮）。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">hud</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;提示&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;操作完成&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;用户点击了确定&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="c1">// 也可省略 title: hud.alert(&#39;操作完成&#39;, callback)</span>
+</code></pre></div>
+<hr />
+<h4 id="hudconfirmtitle-message-onconfirm-oncancel"><code>hud.confirm(title, message, onConfirm?, onCancel?)</code><a class="headerlink" href="#hudconfirmtitle-message-onconfirm-oncancel" title="Permanent link">&para;</a></h4>
+<p>显示确认对话框（确认/取消）。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">hud</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s1">&#39;删除&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;确认删除该条记录？&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已确认&#39;</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;已取消&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h4 id="huddialogtitle-message-onconfirm-oncancel"><code>hud.dialog(title, message, onConfirm?, onCancel?)</code><a class="headerlink" href="#huddialogtitle-message-onconfirm-oncancel" title="Permanent link">&para;</a></h4>
+<p><code>confirm</code> 的别名。</p>
+<hr />
+<h4 id="hudtoastmessage-duration"><code>hud.toast(message, duration?)</code><a class="headerlink" href="#hudtoastmessage-duration" title="Permanent link">&para;</a></h4>
+<p>显示 Toast 提示。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">hud</span><span class="p">.</span><span class="nx">toast</span><span class="p">(</span><span class="s1">&#39;保存成功&#39;</span><span class="p">);</span>
+<span class="nx">hud</span><span class="p">.</span><span class="nx">toast</span><span class="p">(</span><span class="s1">&#39;网络较慢，请稍候…&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>提示：Toast 会自动销毁，若需要自定义样式或复杂布局，请使用 <code>createWindow</code> 手动构建。</p>
+</blockquote>
 <hr />
 <h3 id="window">Window 窗口对象<a class="headerlink" href="#window" title="Permanent link">&para;</a></h3>
 <p><code>Window</code> 对象由 <code>hud.createWindow()</code> 返回，用于管理窗口内容和状态。</p>
@@ -3496,6 +3600,46 @@
 <td><code>number</code></td>
 <td>不透明度 (0-1)</td>
 </tr>
+<tr>
+<td><code>borderWidth</code></td>
+<td><code>number</code></td>
+<td>边框宽度</td>
+</tr>
+<tr>
+<td><code>borderColor</code></td>
+<td><code>string</code></td>
+<td>边框颜色（十六进制）</td>
+</tr>
+<tr>
+<td><code>shadow</code></td>
+<td><code>boolean</code></td>
+<td>是否显示默认阴影</td>
+</tr>
+<tr>
+<td><code>shadowColor</code></td>
+<td><code>string</code></td>
+<td>阴影颜色（十六进制）</td>
+</tr>
+<tr>
+<td><code>shadowOpacity</code></td>
+<td><code>number</code></td>
+<td>阴影不透明度 (0-1)</td>
+</tr>
+<tr>
+<td><code>shadowOffsetX</code></td>
+<td><code>number</code></td>
+<td>阴影 X 偏移</td>
+</tr>
+<tr>
+<td><code>shadowOffsetY</code></td>
+<td><code>number</code></td>
+<td>阴影 Y 偏移</td>
+</tr>
+<tr>
+<td><code>shadowRadius</code></td>
+<td><code>number</code></td>
+<td>阴影半径</td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -3929,6 +4073,98 @@
 </tbody>
 </table>
 <hr />
+<h4 id="imgsetstylestyle"><code>img.setStyle(style)</code><a class="headerlink" href="#imgsetstylestyle" title="Permanent link">&para;</a></h4>
+<p>更新图片样式。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>backgroundColor</code></td>
+<td><code>string</code></td>
+<td>背景颜色（十六进制）</td>
+</tr>
+<tr>
+<td><code>cornerRadius</code></td>
+<td><code>number</code></td>
+<td>圆角半径</td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><code>number</code></td>
+<td>不透明度 (0-1)</td>
+</tr>
+<tr>
+<td><code>borderWidth</code></td>
+<td><code>number</code></td>
+<td>边框宽度</td>
+</tr>
+<tr>
+<td><code>borderColor</code></td>
+<td><code>string</code></td>
+<td>边框颜色（十六进制）</td>
+</tr>
+<tr>
+<td><code>shadow</code></td>
+<td><code>boolean</code></td>
+<td>是否显示默认阴影</td>
+</tr>
+<tr>
+<td><code>shadowColor</code></td>
+<td><code>string</code></td>
+<td>阴影颜色（十六进制）</td>
+</tr>
+<tr>
+<td><code>shadowOpacity</code></td>
+<td><code>number</code></td>
+<td>阴影不透明度 (0-1)</td>
+</tr>
+<tr>
+<td><code>shadowOffsetX</code></td>
+<td><code>number</code></td>
+<td>阴影 X 偏移</td>
+</tr>
+<tr>
+<td><code>shadowOffsetY</code></td>
+<td><code>number</code></td>
+<td>阴影 Y 偏移</td>
+</tr>
+<tr>
+<td><code>shadowRadius</code></td>
+<td><code>number</code></td>
+<td>阴影半径</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">win</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">createWindow</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">280</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">160</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">draggable</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#1C1C1EF0&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="nx">shadow</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">win</span><span class="p">.</span><span class="nx">addStack</span><span class="p">({</span><span class="w"> </span><span class="nx">axis</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">spacing</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">alignment</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;center&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">row</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#2C2C2E&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">opacity</span><span class="o">:</span><span class="w"> </span><span class="mf">0.95</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">shadow</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">row</span><span class="p">.</span><span class="nx">addImage</span><span class="p">({</span><span class="w"> </span><span class="nx">systemName</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;star.fill&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">28</span><span class="p">,</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="mf">28</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">img</span><span class="p">.</span><span class="nx">setStyle</span><span class="p">({</span><span class="w"> </span><span class="nx">cornerRadius</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">shadow</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">row</span><span class="p">.</span><span class="nx">addText</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;HUD Image&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">style</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">textColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#FFFFFF&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+
+<span class="nx">win</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+</code></pre></div>
+<hr />
 <h4 id="imgupdateconfig"><code>img.update(config)</code><a class="headerlink" href="#imgupdateconfig" title="Permanent link">&para;</a></h4>
 <p>更新图片配置。</p>
 <table>
@@ -3958,6 +4194,12 @@
 <td><code>number</code></td>
 <td>否</td>
 <td>新的高度</td>
+</tr>
+<tr>
+<td><code>config.style</code></td>
+<td><code>object</code></td>
+<td>否</td>
+<td>新的样式配置</td>
 </tr>
 </tbody>
 </table>
@@ -5351,7 +5593,7 @@
 <span class="nx">win</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
 </code></pre></div>
 <hr />
-<h2 id="_3">样式配置<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_4">样式配置<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <h3 id="window-style">窗口样式 (Window Style)<a class="headerlink" href="#window-style" title="Permanent link">&para;</a></h3>
 <p>在 <code>createWindow</code> 的 <code>style</code> 参数或 <code>setStyle()</code> 中使用：</p>
 <table>
@@ -5401,7 +5643,7 @@
 <td><code>16</code></td>
 </tr>
 <tr>
-<td><code>opacity</code></td>
+<td><code>opacity</code> / <code>alpha</code></td>
 <td><code>number</code></td>
 <td>不透明度 (0-1)</td>
 <td><code>0.9</code></td>
@@ -5409,8 +5651,38 @@
 <tr>
 <td><code>shadow</code></td>
 <td><code>boolean</code></td>
-<td>是否显示阴影</td>
+<td>是否显示默认阴影</td>
 <td><code>true</code></td>
+</tr>
+<tr>
+<td><code>shadowColor</code></td>
+<td><code>string</code></td>
+<td>阴影颜色</td>
+<td><code>'#000000'</code></td>
+</tr>
+<tr>
+<td><code>shadowOpacity</code></td>
+<td><code>number</code></td>
+<td>阴影不透明度 (0-1)</td>
+<td><code>0.15</code></td>
+</tr>
+<tr>
+<td><code>shadowOffsetX</code></td>
+<td><code>number</code></td>
+<td>阴影 X 偏移</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>shadowOffsetY</code></td>
+<td><code>number</code></td>
+<td>阴影 Y 偏移</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>shadowRadius</code></td>
+<td><code>number</code></td>
+<td>阴影半径</td>
+<td><code>8</code></td>
 </tr>
 <tr>
 <td><code>width</code></td>
@@ -5426,12 +5698,12 @@
 </tr>
 </tbody>
 </table>
-<h3 id="_4">颜色格式<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">颜色格式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>支持以下十六进制颜色格式：
 - <code>#RGB</code> — 3 位简写，如 <code>#FFF</code>
 - <code>#RRGGBB</code> — 6 位标准，如 <code>#FF5733</code>
 - <code>#RRGGBBAA</code> — 8 位含透明度，如 <code>#000000CC</code>（CC = 80% 不透明）</p>
-<h3 id="_5">常用透明度参考<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_6">常用透明度参考<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -5483,7 +5755,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="_6">完整示例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_7">完整示例<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <h3 id="1">示例 1: 简单通知<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <p>创建一个自动消失的通知窗口：</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">win</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">createWindow</span><span class="p">({</span>
@@ -5641,7 +5913,7 @@
 <span class="c1">// hud.clearAll();</span>
 </code></pre></div>
 <hr />
-<h2 id="_7">最佳实践<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_8">最佳实践<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <h3 id="1-autoclear">1. 合理设置 autoClear<a class="headerlink" href="#1-autoclear" title="Permanent link">&para;</a></h3>
 <p>对于通知类窗口，建议设置 <code>autoClear</code> 让窗口自动消失，避免长时间遮挡屏幕：</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">win</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hud</span><span class="p">.</span><span class="nx">createWindow</span><span class="p">({</span>

@@ -1,0 +1,2351 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TrollScript 官方文档与 API 参考">
+      
+      
+        <meta name="author" content="TrollScript Team">
+      
+      
+        <link rel="canonical" href="https://trollscript.qzz.io/Widget/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Widget 小组件 - TrollScript</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+    
+  
+
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="TrollScript Team" />
+  <meta name="keywords" content="TrollScript, iOS automation, TrollStore, JavaScript API, iOS scripting, iOS docs" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="TrollScript" />
+  <meta property="og:title" content="Widget 小组件 - TrollScript" />
+  <meta property="og:description" content="TrollScript 官方文档与 API 参考" />
+  <meta property="og:url" content="https://trollscript.qzz.io/Widget/" />
+  <meta property="og:image" content="https://trollscript.qzz.io/AppIcon.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Widget 小组件 - TrollScript" />
+  <meta name="twitter:description" content="TrollScript 官方文档与 API 参考" />
+  <meta name="twitter:image" content="https://trollscript.qzz.io/AppIcon.png" />
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#widget" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="TrollScript" class="md-header__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TrollScript
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Widget 小组件
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dompling/TrollScript-Release" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TrollScript" class="md-nav__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TrollScript
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dompling/TrollScript-Release" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TestScripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试示例脚本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ARGS.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    功能介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 参考
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API 参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../App/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Calendar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    日历
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Clipboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    剪切板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统输入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Console
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Contacts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    联系人
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    设备
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Display/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    显示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../File/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTTP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HUD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HUD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Haptic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    触觉反馈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Location/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网络信息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Notification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通知
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reminder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    提醒
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SMS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    短信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快捷指令
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    本地存储
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Util/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Util
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iCloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    iCloud
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="widget">Widget 小组件<a class="headerlink" href="#widget" title="Permanent link">&para;</a></h1>
+<p>Widget 模块提供了 Scriptable 兼容的小组件构建能力。你可以使用 JavaScript 构建 iOS 主屏幕小组件的界面，支持文本、图片、日期、堆栈布局、渐变背景等丰富的 UI 元素。</p>
+<blockquote>
+<p><strong>Scriptable 兼容</strong>: API 与 Scriptable 保持一致，已有的 Scriptable Widget 脚本可直接运行。</p>
+<p><strong>守护进程支持</strong>: 完全支持。脚本构建的 Widget 树会序列化并保存到 App Group，由 Widget Extension 渲染。</p>
+</blockquote>
+<hr />
+<h2 id="_1">目录<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#快速开始">快速开始</a></li>
+<li><a href="#工作原理">工作原理</a></li>
+<li><a href="#api-参考">API 参考</a></li>
+<li><a href="#listwidget-根容器">ListWidget 根容器</a></li>
+<li><a href="#widgetstack-堆栈容器">WidgetStack 堆栈容器</a></li>
+<li><a href="#widgettext-文本元素">WidgetText 文本元素</a></li>
+<li><a href="#widgetimage-图片元素">WidgetImage 图片元素</a></li>
+<li><a href="#widgetdate-日期元素">WidgetDate 日期元素</a></li>
+<li><a href="#widgetspacer-间距元素">WidgetSpacer 间距元素</a></li>
+<li><a href="#script-脚本工具">Script 脚本工具</a></li>
+<li><a href="#样式类">样式类</a></li>
+<li><a href="#color-颜色">Color 颜色</a></li>
+<li><a href="#font-字体">Font 字体</a></li>
+<li><a href="#lineargradient-渐变">LinearGradient 渐变</a></li>
+<li><a href="#size-尺寸">Size 尺寸</a></li>
+<li><a href="#point-坐标">Point 坐标</a></li>
+<li><a href="#sfsymbol-系统图标">SFSymbol 系统图标</a></li>
+<li><a href="#完整示例">完整示例</a></li>
+<li><a href="#最佳实践">最佳实践</a></li>
+<li><a href="#注意事项">注意事项</a></li>
+</ul>
+<hr />
+<h2 id="_2">快速开始<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>创建一个简单的 Widget 只需要三步：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1. 创建 Widget</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ListWidget</span><span class="p">();</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">blue</span><span class="p">();</span>
+
+<span class="c1">// 2. 添加内容</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;Hello Widget!&#39;</span><span class="p">);</span>
+<span class="nx">title</span><span class="p">.</span><span class="nx">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">white</span><span class="p">();</span>
+<span class="nx">title</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">boldSystemFont</span><span class="p">(</span><span class="mf">20</span><span class="p">);</span>
+
+<span class="c1">// 3. 设置为小组件</span>
+<span class="nx">Script</span><span class="p">.</span><span class="nx">setWidget</span><span class="p">(</span><span class="nx">widget</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_3">工作原理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>JS 脚本 → new ListWidget() → 构建节点树 → Script.setWidget()
+→ 序列化为 JSON → 保存到 App Group → Widget Extension 读取并渲染
+</code></pre></div>
+<ol>
+<li>JS 脚本通过 <code>new ListWidget()</code> 创建根节点</li>
+<li>通过 <code>addText()</code>、<code>addImage()</code>、<code>addStack()</code> 等方法构建节点树</li>
+<li>调用 <code>Script.setWidget(widget)</code> 将节点树序列化并保存</li>
+<li>iOS Widget Extension 从 App Group 读取数据并用 SwiftUI 渲染</li>
+</ol>
+<hr />
+<h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="listwidget">ListWidget 根容器<a class="headerlink" href="#listwidget" title="Permanent link">&para;</a></h3>
+<h4 id="new-listwidget"><code>new ListWidget()</code><a class="headerlink" href="#new-listwidget" title="Permanent link">&para;</a></h4>
+<p>创建一个 Widget 根容器。所有小组件都以 <code>ListWidget</code> 作为根节点。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ListWidget</span><span class="p">();</span>
+</code></pre></div>
+<p><strong>属性:</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>backgroundColor</code></td>
+<td><code>Color</code></td>
+<td>背景颜色</td>
+</tr>
+<tr>
+<td><code>backgroundImagePath</code></td>
+<td><code>string</code></td>
+<td>背景图片路径（本地文件路径）</td>
+</tr>
+<tr>
+<td><code>backgroundGradient</code></td>
+<td><code>LinearGradient</code></td>
+<td>背景渐变</td>
+</tr>
+<tr>
+<td><code>spacing</code></td>
+<td><code>number</code></td>
+<td>子元素间距（points）</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><code>string</code></td>
+<td>点击 Widget 时打开的 URL</td>
+</tr>
+<tr>
+<td><code>refreshAfterDate</code></td>
+<td><code>number</code></td>
+<td>下次刷新时间戳（Unix timestamp，秒）</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ListWidget</span><span class="p">();</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">black</span><span class="p">();</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">spacing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8</span><span class="p">;</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;https://example.com&#39;</span><span class="p">;</span>
+
+<span class="c1">// 30 分钟后刷新</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">refreshAfterDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1800</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>方法:</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>返回</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>addText(text)</code></td>
+<td><code>WidgetText</code></td>
+<td>添加文本</td>
+</tr>
+<tr>
+<td><code>addImage(img)</code></td>
+<td><code>WidgetImage</code></td>
+<td>添加图片</td>
+</tr>
+<tr>
+<td><code>addDate(date)</code></td>
+<td><code>WidgetDate</code></td>
+<td>添加日期</td>
+</tr>
+<tr>
+<td><code>addSpacer(length?)</code></td>
+<td><code>WidgetSpacer</code></td>
+<td>添加间距</td>
+</tr>
+<tr>
+<td><code>addStack()</code></td>
+<td><code>WidgetStack</code></td>
+<td>添加堆栈容器</td>
+</tr>
+<tr>
+<td><code>setPadding(top, leading, bottom, trailing)</code></td>
+<td>-</td>
+<td>设置内边距</td>
+</tr>
+<tr>
+<td><code>useDefaultPadding()</code></td>
+<td>-</td>
+<td>恢复默认内边距</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="widgetstack">WidgetStack 堆栈容器<a class="headerlink" href="#widgetstack" title="Permanent link">&para;</a></h3>
+<p>堆栈容器用于组织子元素的布局方向（水平或垂直）。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">stack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addStack</span><span class="p">();</span>
+<span class="nx">stack</span><span class="p">.</span><span class="nx">layoutHorizontally</span><span class="p">();</span>
+<span class="nx">stack</span><span class="p">.</span><span class="nx">spacing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>属性:</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>backgroundColor</code></td>
+<td><code>Color</code></td>
+<td>背景颜色</td>
+</tr>
+<tr>
+<td><code>backgroundImagePath</code></td>
+<td><code>string</code></td>
+<td>背景图片路径</td>
+</tr>
+<tr>
+<td><code>backgroundGradient</code></td>
+<td><code>LinearGradient</code></td>
+<td>背景渐变</td>
+</tr>
+<tr>
+<td><code>spacing</code></td>
+<td><code>number</code></td>
+<td>子元素间距</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td><code>Size</code></td>
+<td>堆栈尺寸</td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><code>number</code></td>
+<td>透明度（0.0 ~ 1.0）</td>
+</tr>
+<tr>
+<td><code>cornerRadius</code></td>
+<td><code>number</code></td>
+<td>圆角半径</td>
+</tr>
+<tr>
+<td><code>borderWidth</code></td>
+<td><code>number</code></td>
+<td>边框宽度</td>
+</tr>
+<tr>
+<td><code>borderColor</code></td>
+<td><code>Color</code></td>
+<td>边框颜色</td>
+</tr>
+<tr>
+<td><code>shadowColor</code></td>
+<td><code>Color</code></td>
+<td>阴影颜色</td>
+</tr>
+<tr>
+<td><code>shadowRadius</code></td>
+<td><code>number</code></td>
+<td>阴影半径</td>
+</tr>
+<tr>
+<td><code>shadowOffset</code></td>
+<td><code>Point</code></td>
+<td>阴影偏移</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><code>string</code></td>
+<td>点击时打开的 URL</td>
+</tr>
+</tbody>
+</table>
+<p><strong>布局方法:</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>layoutHorizontally()</code></td>
+<td>水平排列子元素</td>
+</tr>
+<tr>
+<td><code>layoutVertically()</code></td>
+<td>垂直排列子元素（默认）</td>
+</tr>
+<tr>
+<td><code>topAlignContent()</code></td>
+<td>子元素顶部对齐</td>
+</tr>
+<tr>
+<td><code>centerAlignContent()</code></td>
+<td>子元素居中对齐</td>
+</tr>
+<tr>
+<td><code>bottomAlignContent()</code></td>
+<td>子元素底部对齐</td>
+</tr>
+</tbody>
+</table>
+<p><strong>子元素方法:</strong> 同 ListWidget（<code>addText</code>、<code>addImage</code>、<code>addDate</code>、<code>addSpacer</code>、<code>addStack</code>、<code>setPadding</code>、<code>useDefaultPadding</code>）。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 水平布局示例</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addStack</span><span class="p">();</span>
+<span class="nx">row</span><span class="p">.</span><span class="nx">layoutHorizontally</span><span class="p">();</span>
+<span class="nx">row</span><span class="p">.</span><span class="nx">centerAlignContent</span><span class="p">();</span>
+<span class="nx">row</span><span class="p">.</span><span class="nx">spacing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">12</span><span class="p">;</span>
+
+<span class="nx">row</span><span class="p">.</span><span class="nx">addImage</span><span class="p">(</span><span class="nx">SFSymbol</span><span class="p">.</span><span class="nx">named</span><span class="p">(</span><span class="s1">&#39;sun.max.fill&#39;</span><span class="p">));</span>
+<span class="nx">row</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;晴天&#39;</span><span class="p">);</span>
+<span class="nx">row</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">();</span>
+<span class="nx">row</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;28°C&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="widgettext">WidgetText 文本元素<a class="headerlink" href="#widgettext" title="Permanent link">&para;</a></h3>
+<p>由 <code>addText()</code> 返回的文本元素对象。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">);</span>
+<span class="nx">text</span><span class="p">.</span><span class="nx">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">white</span><span class="p">();</span>
+<span class="nx">text</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">boldSystemFont</span><span class="p">(</span><span class="mf">18</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>属性:</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td><code>string</code></td>
+<td>文本内容</td>
+</tr>
+<tr>
+<td><code>textColor</code></td>
+<td><code>Color</code></td>
+<td>文本颜色</td>
+</tr>
+<tr>
+<td><code>font</code></td>
+<td><code>Font</code></td>
+<td>字体</td>
+</tr>
+<tr>
+<td><code>textOpacity</code></td>
+<td><code>number</code></td>
+<td>透明度（0.0 ~ 1.0）</td>
+</tr>
+<tr>
+<td><code>lineLimit</code></td>
+<td><code>number</code></td>
+<td>最大行数（0 = 不限）</td>
+</tr>
+<tr>
+<td><code>minimumScaleFactor</code></td>
+<td><code>number</code></td>
+<td>最小缩放比例（0.0 ~ 1.0）</td>
+</tr>
+<tr>
+<td><code>shadowColor</code></td>
+<td><code>Color</code></td>
+<td>阴影颜色</td>
+</tr>
+<tr>
+<td><code>shadowRadius</code></td>
+<td><code>number</code></td>
+<td>阴影半径</td>
+</tr>
+<tr>
+<td><code>shadowOffset</code></td>
+<td><code>Point</code></td>
+<td>阴影偏移</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><code>string</code></td>
+<td>点击时打开的 URL</td>
+</tr>
+</tbody>
+</table>
+<p><strong>对齐方法:</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>leftAlignText()</code></td>
+<td>左对齐</td>
+</tr>
+<tr>
+<td><code>centerAlignText()</code></td>
+<td>居中对齐</td>
+</tr>
+<tr>
+<td><code>rightAlignText()</code></td>
+<td>右对齐</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="widgetimage">WidgetImage 图片元素<a class="headerlink" href="#widgetimage" title="Permanent link">&para;</a></h3>
+<p>由 <code>addImage()</code> 返回的图片元素对象。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// SF Symbol 图标</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">icon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addImage</span><span class="p">(</span><span class="nx">SFSymbol</span><span class="p">.</span><span class="nx">named</span><span class="p">(</span><span class="s1">&#39;star.fill&#39;</span><span class="p">));</span>
+<span class="nx">icon</span><span class="p">.</span><span class="nx">tintColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">yellow</span><span class="p">();</span>
+<span class="nx">icon</span><span class="p">.</span><span class="nx">imageSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Size</span><span class="p">(</span><span class="mf">24</span><span class="p">,</span><span class="w"> </span><span class="mf">24</span><span class="p">);</span>
+
+<span class="c1">// 本地文件</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">photo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addImage</span><span class="p">({</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/path/to/image.png&#39;</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// Base64</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">avatar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addImage</span><span class="p">({</span><span class="w"> </span><span class="nx">base64</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;iVBORw0KGgo...&#39;</span><span class="w"> </span><span class="p">});</span>
+</code></pre></div>
+<p><strong><code>addImage</code> 参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>string</code></td>
+<td>SF Symbol 名称</td>
+</tr>
+<tr>
+<td><code>SFSymbol</code></td>
+<td>SF Symbol 对象</td>
+</tr>
+<tr>
+<td><code>{ path }</code></td>
+<td>本地文件路径</td>
+</tr>
+<tr>
+<td><code>{ base64 }</code></td>
+<td>Base64 编码图片</td>
+</tr>
+<tr>
+<td><code>{ sfSymbolName }</code></td>
+<td>SF Symbol 名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>属性:</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>image</code></td>
+<td><code>object</code></td>
+<td>图片数据</td>
+</tr>
+<tr>
+<td><code>resizable</code></td>
+<td><code>boolean</code></td>
+<td>是否可缩放</td>
+</tr>
+<tr>
+<td><code>imageSize</code></td>
+<td><code>Size</code></td>
+<td>图片尺寸</td>
+</tr>
+<tr>
+<td><code>imageOpacity</code></td>
+<td><code>number</code></td>
+<td>透明度（0.0 ~ 1.0）</td>
+</tr>
+<tr>
+<td><code>cornerRadius</code></td>
+<td><code>number</code></td>
+<td>圆角半径</td>
+</tr>
+<tr>
+<td><code>borderWidth</code></td>
+<td><code>number</code></td>
+<td>边框宽度</td>
+</tr>
+<tr>
+<td><code>borderColor</code></td>
+<td><code>Color</code></td>
+<td>边框颜色</td>
+</tr>
+<tr>
+<td><code>shadowColor</code></td>
+<td><code>Color</code></td>
+<td>阴影颜色</td>
+</tr>
+<tr>
+<td><code>shadowRadius</code></td>
+<td><code>number</code></td>
+<td>阴影半径</td>
+</tr>
+<tr>
+<td><code>shadowOffset</code></td>
+<td><code>Point</code></td>
+<td>阴影偏移</td>
+</tr>
+<tr>
+<td><code>containerRelativeShape</code></td>
+<td><code>boolean</code></td>
+<td>是否跟随容器形状</td>
+</tr>
+<tr>
+<td><code>tintColor</code></td>
+<td><code>Color</code></td>
+<td>着色（适用于 SF Symbol）</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><code>string</code></td>
+<td>点击时打开的 URL</td>
+</tr>
+</tbody>
+</table>
+<p><strong>方法:</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>leftAlignImage()</code></td>
+<td>左对齐</td>
+</tr>
+<tr>
+<td><code>centerAlignImage()</code></td>
+<td>居中对齐</td>
+</tr>
+<tr>
+<td><code>rightAlignImage()</code></td>
+<td>右对齐</td>
+</tr>
+<tr>
+<td><code>applyFittingContentMode()</code></td>
+<td>适应模式（保持比例）</td>
+</tr>
+<tr>
+<td><code>applyFillingContentMode()</code></td>
+<td>填充模式</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="widgetdate">WidgetDate 日期元素<a class="headerlink" href="#widgetdate" title="Permanent link">&para;</a></h3>
+<p>显示日期/时间，支持多种格式样式。由 <code>addDate()</code> 返回。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">dateEl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addDate</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">());</span>
+<span class="nx">dateEl</span><span class="p">.</span><span class="nx">applyTimeStyle</span><span class="p">();</span>
+<span class="nx">dateEl</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">mediumSystemFont</span><span class="p">(</span><span class="mf">14</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>属性:</strong> 同 WidgetText（<code>textColor</code>、<code>font</code>、<code>textOpacity</code>、<code>lineLimit</code>、<code>minimumScaleFactor</code>、<code>shadowColor</code>、<code>shadowRadius</code>、<code>shadowOffset</code>、<code>url</code>）。</p>
+<p><strong>日期样式方法:</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>显示效果示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>applyTimeStyle()</code></td>
+<td><code>3:45 PM</code></td>
+</tr>
+<tr>
+<td><code>applyDateStyle()</code></td>
+<td><code>March 10, 2026</code></td>
+</tr>
+<tr>
+<td><code>applyRelativeStyle()</code></td>
+<td><code>2 hours ago</code></td>
+</tr>
+<tr>
+<td><code>applyOffsetStyle()</code></td>
+<td><code>+2 hours</code></td>
+</tr>
+<tr>
+<td><code>applyTimerStyle()</code></td>
+<td><code>2:30:00</code>（倒计时）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>对齐方法:</strong> <code>leftAlignText()</code>、<code>centerAlignText()</code>、<code>rightAlignText()</code></p>
+<hr />
+<h3 id="widgetspacer">WidgetSpacer 间距元素<a class="headerlink" href="#widgetspacer" title="Permanent link">&para;</a></h3>
+<p>在容器中添加弹性或固定间距。由 <code>addSpacer()</code> 返回。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 弹性间距（自动填充剩余空间）</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">();</span>
+
+<span class="c1">// 固定间距</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">(</span><span class="mf">20</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>属性:</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>length</code></td>
+<td><code>number</code></td>
+<td>间距长度（不设则为弹性间距）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="script">Script 脚本工具<a class="headerlink" href="#script" title="Permanent link">&para;</a></h3>
+<h4 id="scriptsetwidgetwidget"><code>Script.setWidget(widget)</code><a class="headerlink" href="#scriptsetwidgetwidget" title="Permanent link">&para;</a></h4>
+<p>将构建好的 Widget 树保存为小组件数据。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ListWidget</span><span class="p">();</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;Done!&#39;</span><span class="p">);</span>
+<span class="nx">Script</span><span class="p">.</span><span class="nx">setWidget</span><span class="p">(</span><span class="nx">widget</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>调用后 Widget 节点树被序列化为 JSON 并保存到 App Group，Widget Extension 会在下次刷新时读取并渲染。</p>
+</blockquote>
+<h4 id="scriptcomplete"><code>Script.complete()</code><a class="headerlink" href="#scriptcomplete" title="Permanent link">&para;</a></h4>
+<p>通知脚本执行完毕（兼容 Scriptable，在 TrollScript 中为空操作）。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">Script</span><span class="p">.</span><span class="nx">setWidget</span><span class="p">(</span><span class="nx">widget</span><span class="p">);</span>
+<span class="nx">Script</span><span class="p">.</span><span class="nx">complete</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="_4">样式类<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="color">Color 颜色<a class="headerlink" href="#color" title="Permanent link">&para;</a></h3>
+<h4 id="new-colorhex-alpha"><code>new Color(hex, alpha)</code><a class="headerlink" href="#new-colorhex-alpha" title="Permanent link">&para;</a></h4>
+<p>创建自定义颜色。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hex</code></td>
+<td><code>string</code></td>
+<td>颜色值（如 <code>'#FF0000'</code>、<code>'FF0000'</code>、<code>'F00'</code>）</td>
+</tr>
+<tr>
+<td><code>alpha</code></td>
+<td><code>number</code></td>
+<td>透明度 0.0 ~ 1.0，默认 1.0</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">red</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#FF0000&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">semiBlue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#0000FF&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>只读属性:</strong> <code>hex</code>、<code>red</code>、<code>green</code>、<code>blue</code>、<code>alpha</code></p>
+<p><strong>静态方法（预设颜色）:</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>颜色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Color.black()</code></td>
+<td>黑色</td>
+</tr>
+<tr>
+<td><code>Color.white()</code></td>
+<td>白色</td>
+</tr>
+<tr>
+<td><code>Color.red()</code></td>
+<td>红色</td>
+</tr>
+<tr>
+<td><code>Color.green()</code></td>
+<td>绿色</td>
+</tr>
+<tr>
+<td><code>Color.blue()</code></td>
+<td>蓝色</td>
+</tr>
+<tr>
+<td><code>Color.yellow()</code></td>
+<td>黄色</td>
+</tr>
+<tr>
+<td><code>Color.orange()</code></td>
+<td>橙色</td>
+</tr>
+<tr>
+<td><code>Color.purple()</code></td>
+<td>紫色</td>
+</tr>
+<tr>
+<td><code>Color.cyan()</code></td>
+<td>青色</td>
+</tr>
+<tr>
+<td><code>Color.magenta()</code></td>
+<td>洋红</td>
+</tr>
+<tr>
+<td><code>Color.brown()</code></td>
+<td>棕色</td>
+</tr>
+<tr>
+<td><code>Color.gray()</code></td>
+<td>灰色</td>
+</tr>
+<tr>
+<td><code>Color.darkGray()</code></td>
+<td>深灰</td>
+</tr>
+<tr>
+<td><code>Color.lightGray()</code></td>
+<td>浅灰</td>
+</tr>
+<tr>
+<td><code>Color.clear()</code></td>
+<td>透明</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1">// 动态颜色（浅色/深色模式）</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">dynamic</span><span class="p">(</span><span class="nx">Color</span><span class="p">.</span><span class="nx">black</span><span class="p">(),</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">white</span><span class="p">());</span>
+</code></pre></div>
+<hr />
+<h3 id="font">Font 字体<a class="headerlink" href="#font" title="Permanent link">&para;</a></h3>
+<p><strong>语义字体（自动适配系统设置）:</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Font.largeTitle()</code></td>
+<td>大标题</td>
+</tr>
+<tr>
+<td><code>Font.title1()</code></td>
+<td>标题 1</td>
+</tr>
+<tr>
+<td><code>Font.title2()</code></td>
+<td>标题 2</td>
+</tr>
+<tr>
+<td><code>Font.title3()</code></td>
+<td>标题 3</td>
+</tr>
+<tr>
+<td><code>Font.headline()</code></td>
+<td>标题行</td>
+</tr>
+<tr>
+<td><code>Font.subheadline()</code></td>
+<td>副标题行</td>
+</tr>
+<tr>
+<td><code>Font.body()</code></td>
+<td>正文</td>
+</tr>
+<tr>
+<td><code>Font.callout()</code></td>
+<td>标注</td>
+</tr>
+<tr>
+<td><code>Font.footnote()</code></td>
+<td>脚注</td>
+</tr>
+<tr>
+<td><code>Font.caption1()</code></td>
+<td>说明 1</td>
+</tr>
+<tr>
+<td><code>Font.caption2()</code></td>
+<td>说明 2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>系统字体（指定大小和粗细）:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">Font</span><span class="p">.</span><span class="nx">regularSystemFont</span><span class="p">(</span><span class="mf">16</span><span class="p">)</span><span class="w">    </span><span class="c1">// 常规</span>
+<span class="nx">Font</span><span class="p">.</span><span class="nx">mediumSystemFont</span><span class="p">(</span><span class="mf">16</span><span class="p">)</span><span class="w">     </span><span class="c1">// 中等</span>
+<span class="nx">Font</span><span class="p">.</span><span class="nx">semiboldSystemFont</span><span class="p">(</span><span class="mf">16</span><span class="p">)</span><span class="w">   </span><span class="c1">// 半粗</span>
+<span class="nx">Font</span><span class="p">.</span><span class="nx">boldSystemFont</span><span class="p">(</span><span class="mf">16</span><span class="p">)</span><span class="w">       </span><span class="c1">// 粗体</span>
+<span class="nx">Font</span><span class="p">.</span><span class="nx">heavySystemFont</span><span class="p">(</span><span class="mf">16</span><span class="p">)</span><span class="w">      </span><span class="c1">// 重型</span>
+<span class="nx">Font</span><span class="p">.</span><span class="nx">blackSystemFont</span><span class="p">(</span><span class="mf">16</span><span class="p">)</span><span class="w">      </span><span class="c1">// 极粗</span>
+<span class="nx">Font</span><span class="p">.</span><span class="nx">lightSystemFont</span><span class="p">(</span><span class="mf">16</span><span class="p">)</span><span class="w">      </span><span class="c1">// 轻型</span>
+<span class="nx">Font</span><span class="p">.</span><span class="nx">thinSystemFont</span><span class="p">(</span><span class="mf">16</span><span class="p">)</span><span class="w">       </span><span class="c1">// 纤细</span>
+<span class="nx">Font</span><span class="p">.</span><span class="nx">ultraLightSystemFont</span><span class="p">(</span><span class="mf">16</span><span class="p">)</span><span class="w"> </span><span class="c1">// 极细</span>
+<span class="nx">Font</span><span class="p">.</span><span class="nx">italicSystemFont</span><span class="p">(</span><span class="mf">16</span><span class="p">)</span><span class="w">     </span><span class="c1">// 斜体</span>
+</code></pre></div>
+<p><strong>圆角系统字体:</strong> 将 <code>SystemFont</code> 替换为 <code>RoundedSystemFont</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">Font</span><span class="p">.</span><span class="nx">boldRoundedSystemFont</span><span class="p">(</span><span class="mf">20</span><span class="p">)</span><span class="w"> </span><span class="c1">// 粗体圆角</span>
+</code></pre></div>
+<p><strong>等宽系统字体:</strong> 将 <code>SystemFont</code> 替换为 <code>MonospacedSystemFont</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">Font</span><span class="p">.</span><span class="nx">regularMonospacedSystemFont</span><span class="p">(</span><span class="mf">14</span><span class="p">)</span><span class="w"> </span><span class="c1">// 等宽常规</span>
+</code></pre></div>
+<p><strong>自定义字体:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">customFont</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Font</span><span class="p">(</span><span class="s1">&#39;Helvetica-Bold&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">18</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="lineargradient">LinearGradient 渐变<a class="headerlink" href="#lineargradient" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">gradient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">LinearGradient</span><span class="p">();</span>
+<span class="nx">gradient</span><span class="p">.</span><span class="nx">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nx">Color</span><span class="p">.</span><span class="nx">blue</span><span class="p">(),</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">purple</span><span class="p">()];</span>
+<span class="nx">gradient</span><span class="p">.</span><span class="nx">locations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">];</span>
+<span class="nx">gradient</span><span class="p">.</span><span class="nx">startPoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Point</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span><span class="w">  </span><span class="c1">// 左上</span>
+<span class="nx">gradient</span><span class="p">.</span><span class="nx">endPoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Point</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span><span class="w">    </span><span class="c1">// 右下</span>
+
+<span class="nx">widget</span><span class="p">.</span><span class="nx">backgroundGradient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">gradient</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>属性:</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>colors</code></td>
+<td><code>Color[]</code></td>
+<td>渐变颜色数组</td>
+</tr>
+<tr>
+<td><code>locations</code></td>
+<td><code>number[]</code></td>
+<td>每个颜色的位置（0.0 ~ 1.0）</td>
+</tr>
+<tr>
+<td><code>startPoint</code></td>
+<td><code>Point</code></td>
+<td>渐变起点</td>
+</tr>
+<tr>
+<td><code>endPoint</code></td>
+<td><code>Point</code></td>
+<td>渐变终点</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="size">Size 尺寸<a class="headerlink" href="#size" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Size</span><span class="p">(</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">);</span>
+<span class="nx">image</span><span class="p">.</span><span class="nx">imageSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">size</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>属性:</strong> <code>width</code>、<code>height</code></p>
+<hr />
+<h3 id="point">Point 坐标<a class="headerlink" href="#point" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Point</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span>
+<span class="nx">text</span><span class="p">.</span><span class="nx">shadowOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">point</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>属性:</strong> <code>x</code>、<code>y</code></p>
+<hr />
+<h3 id="sfsymbol">SFSymbol 系统图标<a class="headerlink" href="#sfsymbol" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">SFSymbol</span><span class="p">.</span><span class="nx">named</span><span class="p">(</span><span class="s1">&#39;heart.fill&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addImage</span><span class="p">(</span><span class="nx">symbol</span><span class="p">);</span>
+<span class="nx">img</span><span class="p">.</span><span class="nx">tintColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">red</span><span class="p">();</span>
+</code></pre></div>
+<h4 id="sfsymbolnamedname"><code>SFSymbol.named(name)</code><a class="headerlink" href="#sfsymbolnamedname" title="Permanent link">&para;</a></h4>
+<p>创建系统图标引用。<code>name</code> 为 SF Symbols 图标名称。</p>
+<blockquote>
+<p>图标名称参考：<a href="https://developer.apple.com/sf-symbols/">SF Symbols</a></p>
+</blockquote>
+<hr />
+<h2 id="_5">完整示例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="1">示例 1: 天气小组件<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ListWidget</span><span class="p">();</span>
+
+<span class="c1">// 渐变背景</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">gradient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">LinearGradient</span><span class="p">();</span>
+<span class="nx">gradient</span><span class="p">.</span><span class="nx">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#4A90D9&#39;</span><span class="p">),</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#357ABD&#39;</span><span class="p">)];</span>
+<span class="nx">gradient</span><span class="p">.</span><span class="nx">locations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">];</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">backgroundGradient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">gradient</span><span class="p">;</span>
+
+<span class="c1">// 城市</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">city</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;北京&#39;</span><span class="p">);</span>
+<span class="nx">city</span><span class="p">.</span><span class="nx">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">white</span><span class="p">();</span>
+<span class="nx">city</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">mediumSystemFont</span><span class="p">(</span><span class="mf">14</span><span class="p">);</span>
+
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">();</span>
+
+<span class="c1">// 温度</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;28°&#39;</span><span class="p">);</span>
+<span class="nx">temp</span><span class="p">.</span><span class="nx">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">white</span><span class="p">();</span>
+<span class="nx">temp</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">lightSystemFont</span><span class="p">(</span><span class="mf">42</span><span class="p">);</span>
+
+<span class="c1">// 天气描述</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">desc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;晴 · 体感温度 30°&#39;</span><span class="p">);</span>
+<span class="nx">desc</span><span class="p">.</span><span class="nx">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">);</span>
+<span class="nx">desc</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">regularSystemFont</span><span class="p">(</span><span class="mf">13</span><span class="p">);</span>
+
+<span class="nx">Script</span><span class="p">.</span><span class="nx">setWidget</span><span class="p">(</span><span class="nx">widget</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="2">示例 2: 待办事项<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ListWidget</span><span class="p">();</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">white</span><span class="p">();</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">setPadding</span><span class="p">(</span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="mf">16</span><span class="p">);</span>
+
+<span class="c1">// 标题行</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addStack</span><span class="p">();</span>
+<span class="nx">header</span><span class="p">.</span><span class="nx">layoutHorizontally</span><span class="p">();</span>
+<span class="nx">header</span><span class="p">.</span><span class="nx">centerAlignContent</span><span class="p">();</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">icon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">header</span><span class="p">.</span><span class="nx">addImage</span><span class="p">(</span><span class="nx">SFSymbol</span><span class="p">.</span><span class="nx">named</span><span class="p">(</span><span class="s1">&#39;checklist&#39;</span><span class="p">));</span>
+<span class="nx">icon</span><span class="p">.</span><span class="nx">tintColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">blue</span><span class="p">();</span>
+<span class="nx">icon</span><span class="p">.</span><span class="nx">imageSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Size</span><span class="p">(</span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="mf">16</span><span class="p">);</span>
+<span class="nx">header</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">(</span><span class="mf">6</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">header</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;今日待办&#39;</span><span class="p">);</span>
+<span class="nx">title</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">boldSystemFont</span><span class="p">(</span><span class="mf">15</span><span class="p">);</span>
+<span class="nx">title</span><span class="p">.</span><span class="nx">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">blue</span><span class="p">();</span>
+<span class="nx">header</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">();</span>
+<span class="nx">header</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">);</span>
+
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">(</span><span class="mf">8</span><span class="p">);</span>
+
+<span class="c1">// 待办列表</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">todos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;完成项目报告&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;回复邮件&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;预约会议&#39;</span><span class="p">];</span>
+<span class="nx">todos</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addStack</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">row</span><span class="p">.</span><span class="nx">layoutHorizontally</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">row</span><span class="p">.</span><span class="nx">centerAlignContent</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">row</span><span class="p">.</span><span class="nx">spacing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">dot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">row</span><span class="p">.</span><span class="nx">addImage</span><span class="p">(</span><span class="nx">SFSymbol</span><span class="p">.</span><span class="nx">named</span><span class="p">(</span><span class="s1">&#39;circle&#39;</span><span class="p">));</span>
+<span class="w">  </span><span class="nx">dot</span><span class="p">.</span><span class="nx">tintColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">gray</span><span class="p">();</span>
+<span class="w">  </span><span class="nx">dot</span><span class="p">.</span><span class="nx">imageSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Size</span><span class="p">(</span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="mf">12</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">row</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">label</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">regularSystemFont</span><span class="p">(</span><span class="mf">13</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">label</span><span class="p">.</span><span class="nx">lineLimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">();</span>
+
+<span class="nx">Script</span><span class="p">.</span><span class="nx">setWidget</span><span class="p">(</span><span class="nx">widget</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="3">示例 3: 倒计时<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ListWidget</span><span class="p">();</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#1C1C1E&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;距离新年&#39;</span><span class="p">);</span>
+<span class="nx">label</span><span class="p">.</span><span class="nx">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">lightGray</span><span class="p">();</span>
+<span class="nx">label</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">caption1</span><span class="p">();</span>
+
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">(</span><span class="mf">4</span><span class="p">);</span>
+
+<span class="c1">// 目标日期</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;2027-01-01T00:00:00&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">dateEl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addDate</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+<span class="nx">dateEl</span><span class="p">.</span><span class="nx">applyTimerStyle</span><span class="p">();</span>
+<span class="nx">dateEl</span><span class="p">.</span><span class="nx">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">orange</span><span class="p">();</span>
+<span class="nx">dateEl</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">boldSystemFont</span><span class="p">(</span><span class="mf">28</span><span class="p">);</span>
+
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">();</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">footer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;2027&#39;</span><span class="p">);</span>
+<span class="nx">footer</span><span class="p">.</span><span class="nx">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">gray</span><span class="p">();</span>
+<span class="nx">footer</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">footnote</span><span class="p">();</span>
+<span class="nx">footer</span><span class="p">.</span><span class="nx">rightAlignText</span><span class="p">();</span>
+
+<span class="c1">// 每小时刷新</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">refreshAfterDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">3600</span><span class="p">;</span>
+
+<span class="nx">Script</span><span class="p">.</span><span class="nx">setWidget</span><span class="p">(</span><span class="nx">widget</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="4">示例 4: 数据卡片<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ListWidget</span><span class="p">();</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">setPadding</span><span class="p">(</span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="mf">16</span><span class="p">);</span>
+
+<span class="c1">// 渐变背景</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">bg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">LinearGradient</span><span class="p">();</span>
+<span class="nx">bg</span><span class="p">.</span><span class="nx">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#667eea&#39;</span><span class="p">),</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#764ba2&#39;</span><span class="p">)];</span>
+<span class="nx">bg</span><span class="p">.</span><span class="nx">locations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">];</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">backgroundGradient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">bg</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;步数统计&#39;</span><span class="p">);</span>
+<span class="nx">title</span><span class="p">.</span><span class="nx">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">white</span><span class="p">();</span>
+<span class="nx">title</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">caption1</span><span class="p">();</span>
+
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">();</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;12,580&#39;</span><span class="p">);</span>
+<span class="nx">count</span><span class="p">.</span><span class="nx">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">white</span><span class="p">();</span>
+<span class="nx">count</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">boldSystemFont</span><span class="p">(</span><span class="mf">28</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;步 · 目标 85%&#39;</span><span class="p">);</span>
+<span class="nx">unit</span><span class="p">.</span><span class="nx">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.7</span><span class="p">);</span>
+<span class="nx">unit</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">regularSystemFont</span><span class="p">(</span><span class="mf">12</span><span class="p">);</span>
+
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">(</span><span class="mf">4</span><span class="p">);</span>
+
+<span class="c1">// 进度条（用 Stack 模拟）</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">barBg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addStack</span><span class="p">();</span>
+<span class="nx">barBg</span><span class="p">.</span><span class="nx">layoutHorizontally</span><span class="p">();</span>
+<span class="nx">barBg</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">);</span>
+<span class="nx">barBg</span><span class="p">.</span><span class="nx">cornerRadius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+<span class="nx">barBg</span><span class="p">.</span><span class="nx">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Size</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">barFill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">barBg</span><span class="p">.</span><span class="nx">addStack</span><span class="p">();</span>
+<span class="nx">barFill</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">white</span><span class="p">();</span>
+<span class="nx">barFill</span><span class="p">.</span><span class="nx">cornerRadius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+<span class="nx">barFill</span><span class="p">.</span><span class="nx">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Size</span><span class="p">(</span><span class="mf">120</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">);</span>
+
+<span class="nx">Script</span><span class="p">.</span><span class="nx">setWidget</span><span class="p">(</span><span class="nx">widget</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="5-widget">示例 5: 网络数据 Widget<a class="headerlink" href="#5-widget" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 从 API 获取数据</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">resp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://api.example.com/quote&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ListWidget</span><span class="p">();</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#FAFAFA&#39;</span><span class="p">);</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">setPadding</span><span class="p">(</span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="mf">16</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">quoteIcon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addImage</span><span class="p">(</span><span class="nx">SFSymbol</span><span class="p">.</span><span class="nx">named</span><span class="p">(</span><span class="s1">&#39;quote.opening&#39;</span><span class="p">));</span>
+<span class="nx">quoteIcon</span><span class="p">.</span><span class="nx">tintColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">gray</span><span class="p">();</span>
+<span class="nx">quoteIcon</span><span class="p">.</span><span class="nx">imageSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Size</span><span class="p">(</span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">16</span><span class="p">);</span>
+
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">(</span><span class="mf">8</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">quote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">content</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;生活就是不断前行&#39;</span><span class="p">);</span>
+<span class="nx">quote</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">regularSystemFont</span><span class="p">(</span><span class="mf">15</span><span class="p">);</span>
+<span class="nx">quote</span><span class="p">.</span><span class="nx">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#333333&#39;</span><span class="p">);</span>
+
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">();</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;— &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">author</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;佚名&#39;</span><span class="p">));</span>
+<span class="nx">author</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">italicSystemFont</span><span class="p">(</span><span class="mf">13</span><span class="p">);</span>
+<span class="nx">author</span><span class="p">.</span><span class="nx">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">gray</span><span class="p">();</span>
+<span class="nx">author</span><span class="p">.</span><span class="nx">rightAlignText</span><span class="p">();</span>
+
+<span class="c1">// 每 6 小时刷新</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">refreshAfterDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">21600</span><span class="p">;</span>
+
+<span class="nx">Script</span><span class="p">.</span><span class="nx">setWidget</span><span class="p">(</span><span class="nx">widget</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="6">示例 6: 圆角 + 透明 + 阴影卡片<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ListWidget</span><span class="p">();</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#101014&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">card</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addStack</span><span class="p">();</span>
+<span class="nx">card</span><span class="p">.</span><span class="nx">setPadding</span><span class="p">(</span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="mf">12</span><span class="p">);</span>
+<span class="nx">card</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#1C1C1E&#39;</span><span class="p">);</span>
+<span class="nx">card</span><span class="p">.</span><span class="nx">opacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.92</span><span class="p">;</span>
+<span class="nx">card</span><span class="p">.</span><span class="nx">cornerRadius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">12</span><span class="p">;</span>
+<span class="nx">card</span><span class="p">.</span><span class="nx">shadowColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#000000&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">);</span>
+<span class="nx">card</span><span class="p">.</span><span class="nx">shadowRadius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8</span><span class="p">;</span>
+<span class="nx">card</span><span class="p">.</span><span class="nx">shadowOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Point</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">icon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">card</span><span class="p">.</span><span class="nx">addImage</span><span class="p">(</span><span class="nx">SFSymbol</span><span class="p">.</span><span class="nx">named</span><span class="p">(</span><span class="s1">&#39;star.fill&#39;</span><span class="p">));</span>
+<span class="nx">icon</span><span class="p">.</span><span class="nx">imageSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Size</span><span class="p">(</span><span class="mf">32</span><span class="p">,</span><span class="w"> </span><span class="mf">32</span><span class="p">);</span>
+<span class="nx">icon</span><span class="p">.</span><span class="nx">tintColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#FFD60A&#39;</span><span class="p">);</span>
+<span class="nx">icon</span><span class="p">.</span><span class="nx">cornerRadius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8</span><span class="p">;</span>
+<span class="nx">icon</span><span class="p">.</span><span class="nx">shadowColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Color</span><span class="p">(</span><span class="s1">&#39;#000000&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">);</span>
+<span class="nx">icon</span><span class="p">.</span><span class="nx">shadowRadius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6</span><span class="p">;</span>
+<span class="nx">icon</span><span class="p">.</span><span class="nx">shadowOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Point</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+
+<span class="nx">card</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">(</span><span class="mf">8</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">card</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;Hello Widget&#39;</span><span class="p">);</span>
+<span class="nx">title</span><span class="p">.</span><span class="nx">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Color</span><span class="p">.</span><span class="nx">white</span><span class="p">();</span>
+
+<span class="nx">Script</span><span class="p">.</span><span class="nx">setWidget</span><span class="p">(</span><span class="nx">widget</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_6">最佳实践<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="1-scriptsetwidget">1. 始终调用 Script.setWidget<a class="headerlink" href="#1-scriptsetwidget" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 正确 - 保存 Widget 数据</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ListWidget</span><span class="p">();</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">);</span>
+<span class="nx">Script</span><span class="p">.</span><span class="nx">setWidget</span><span class="p">(</span><span class="nx">widget</span><span class="p">);</span>
+
+<span class="c1">// 错误 - Widget 不会显示</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">widget2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ListWidget</span><span class="p">();</span>
+<span class="nx">widget2</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">);</span>
+<span class="c1">// 忘记调用 Script.setWidget</span>
+</code></pre></div>
+<h3 id="2-spacer">2. 使用弹性 Spacer 布局<a class="headerlink" href="#2-spacer" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 推荐 - 自适应布局</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;顶部&#39;</span><span class="p">);</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">();</span><span class="w">  </span><span class="c1">// 弹性空间</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;底部&#39;</span><span class="p">);</span>
+
+<span class="c1">// 不推荐 - 固定间距在不同尺寸 Widget 上可能溢出</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;顶部&#39;</span><span class="p">);</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addSpacer</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;底部&#39;</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="3_1">3. 限制文本行数<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 推荐 - 避免文本过长导致布局溢出</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="nx">longContent</span><span class="p">);</span>
+<span class="nx">text</span><span class="p">.</span><span class="nx">lineLimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<span class="nx">text</span><span class="p">.</span><span class="nx">minimumScaleFactor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.8</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="4_1">4. 设置合理的刷新时间<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 推荐 - 根据数据更新频率设置</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">refreshAfterDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1800</span><span class="p">;</span><span class="w"> </span><span class="c1">// 30 分钟</span>
+
+<span class="c1">// 不推荐 - 过于频繁会消耗电量</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">refreshAfterDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">60</span><span class="p">;</span><span class="w"> </span><span class="c1">// 1 分钟（iOS 可能会忽略）</span>
+</code></pre></div>
+<h3 id="5">5. 使用语义字体<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 推荐 - 自动适配用户的字体大小偏好</span>
+<span class="nx">title</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">headline</span><span class="p">();</span>
+<span class="nx">body</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">body</span><span class="p">();</span>
+
+<span class="c1">// 也可以 - 需要精确控制大小时</span>
+<span class="nx">title</span><span class="p">.</span><span class="nx">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Font</span><span class="p">.</span><span class="nx">boldSystemFont</span><span class="p">(</span><span class="mf">20</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_7">注意事项<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Widget 尺寸</strong>: iOS 提供 Small、Medium、Large 三种尺寸，你的布局需要适配所有尺寸</li>
+<li><strong>刷新限制</strong>: iOS 限制 Widget 刷新频率，<code>refreshAfterDate</code> 只是建议值，系统可能延迟刷新</li>
+<li><strong>无交互</strong>: Widget 不支持按钮等交互，<code>url</code> 属性用于打开链接（整个 Widget 或单个元素）</li>
+<li><strong>图片限制</strong>: 建议使用 SF Symbol 或小尺寸本地图片，网络图片需要先下载到本地</li>
+<li><strong>深色模式</strong>: 使用 <code>Color.dynamic(lightColor, darkColor)</code> 适配深色模式</li>
+<li><strong>内存限制</strong>: Widget Extension 内存有限（约 30MB），避免加载大量图片</li>
+<li><strong>序列化</strong>: Widget 树通过 JSON 序列化传递，不支持函数/闭包属性</li>
+<li><strong>Scriptable 兼容</strong>: API 与 Scriptable 保持一致，<code>presentSmall()</code> 等预览方法为兼容保留</li>
+<li><strong>脚本元数据</strong>: <code>Script._widgetSlot</code>、<code>Script._widgetScriptName</code>、<code>Script._widgetScriptId</code> 由系统自动注入</li>
+<li><strong>App Group</strong>: Widget 数据存储在 App Group 共享容器中，确保 App 和 Extension 使用相同的 Group ID</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

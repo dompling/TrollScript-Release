@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -1228,6 +1228,8 @@
 <li><a href="#sql">sql</a> ✅ - SQLite database operations</li>
 <li><a href="#shortcuts">shortcuts</a> ❌ - Shortcuts operations</li>
 <li><a href="#system">system</a> ✅ - System settings control</li>
+<li><a href="#miniapp">miniapp</a> ✅ - MiniApp - Full-screen interactive multi-page application</li>
+<li><a href="#widget">widget</a> ✅ - Widget - Scriptable-compatible iOS Home Screen widgets</li>
 </ul>
 <hr />
 <h2 id="console">console<a class="headerlink" href="#console" title="Permanent link">&para;</a></h2>
@@ -3471,6 +3473,156 @@
 <p>Get all window IDs</p>
 <p><strong>Returns:</strong> <code>[string]</code></p>
 <p><em>Array of window IDs</em></p>
+<hr />
+<h3 id="hudalert"><code>hud.alert</code><a class="headerlink" href="#hudalert" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>alert(title, message, onOk?)</code></p>
+<p>Show an alert dialog (HUD convenience popup)</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>Title (optional)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Message</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>onOk</code></td>
+<td><code>function</code></td>
+<td>OK callback</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Window</code></p>
+<hr />
+<h3 id="hudconfirm"><code>hud.confirm</code><a class="headerlink" href="#hudconfirm" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>confirm(title, message, onConfirm?, onCancel?)</code></p>
+<p>Show a confirm dialog (confirm/cancel)</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>Title (optional)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Message</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>onConfirm</code></td>
+<td><code>function</code></td>
+<td>Confirm callback</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>onCancel</code></td>
+<td><code>function</code></td>
+<td>Cancel callback</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Window</code></p>
+<hr />
+<h3 id="huddialog"><code>hud.dialog</code><a class="headerlink" href="#huddialog" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>dialog(title, message, onConfirm?, onCancel?)</code></p>
+<p>Dialog (alias of confirm)</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>Title (optional)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Message</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>onConfirm</code></td>
+<td><code>function</code></td>
+<td>Confirm callback</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>onCancel</code></td>
+<td><code>function</code></td>
+<td>Cancel callback</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Window</code></p>
+<hr />
+<h3 id="hudtoast"><code>hud.toast</code><a class="headerlink" href="#hudtoast" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>toast(message, duration?)</code></p>
+<p>Show a toast message</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Message</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><code>number</code></td>
+<td>Duration in seconds, default 2.0</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Window \| null</code></p>
 <hr />
 <h2 id="util">util<a class="headerlink" href="#util" title="Permanent link">&para;</a></h2>
 <p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
@@ -5752,6 +5904,78 @@
 </table>
 <p><strong>Returns:</strong> <code>boolean</code></p>
 <p><em>Whether settings was opened successfully</em></p>
+<hr />
+<h2 id="miniapp">miniapp<a class="headerlink" href="#miniapp" title="Permanent link">&para;</a></h2>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p>MiniApp - Full-screen interactive multi-page application</p>
+<blockquote>
+<p><strong>Trigger Note:</strong> MiniApp is presented as fullScreenCover during script execution, JS engine stays alive via ActiveBridgeManager</p>
+</blockquote>
+<p><em>No methods available.</em></p>
+<h2 id="widget">widget<a class="headerlink" href="#widget" title="Permanent link">&para;</a></h2>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p>Widget - Scriptable-compatible iOS Home Screen widgets</p>
+<blockquote>
+<p><strong>Trigger Note:</strong> Widget tree is serialized and saved to App Group, rendered by Widget Extension</p>
+</blockquote>
+<h3 id="widgetsetwidget"><code>widget.setWidget</code><a class="headerlink" href="#widgetsetwidget" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>Script.setWidget(widget)</code></p>
+<p>Save the Widget tree as widget data</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>widget</code></td>
+<td><code>ListWidget</code></td>
+<td>Widget root container instance</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>void</code></p>
+<hr />
+<h3 id="widgetcomplete"><code>widget.complete</code><a class="headerlink" href="#widgetcomplete" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>Script.complete()</code></p>
+<p>Notify script execution is complete (Scriptable compatible)</p>
+<p><strong>Returns:</strong> <code>void</code></p>
+<hr />
+<h3 id="widgetpreview"><code>widget.preview</code><a class="headerlink" href="#widgetpreview" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>Widget.preview(widget, family?)</code></p>
+<p>Preview a Widget in MiniApp interface without saving to App Group. Shows a preview sheet overlay with size selector.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>widget</code></td>
+<td><code>ListWidget</code></td>
+<td>Widget root container instance to preview</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>family</code></td>
+<td><code>string</code></td>
+<td>Initial preview size: 'small', 'medium' (default), or 'large'</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>void</code></p>
 <hr />
 
 
