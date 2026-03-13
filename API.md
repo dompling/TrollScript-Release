@@ -37,6 +37,8 @@ The following icons indicate API compatibility when running in background trigge
 - [sql](#sql) ✅ - SQLite 数据库操作
 - [shortcuts](#shortcuts) ❌ - 快捷指令操作
 - [system](#system) ✅ - 系统设置控制
+- [miniapp](#miniapp) ✅ - 迷你应用 - 全屏交互式多页面应用
+- [widget](#widget) ✅ - 小组件 - Scriptable 兼容的 iOS 主屏幕小组件
 
 ---
 
@@ -2066,6 +2068,79 @@ HUD 浮窗系统 - 创建悬浮窗口和 UI 元素
 
 ---
 
+### `hud.alert`
+
+**Signature:** `alert(title, message, onOk?)`
+
+显示提示对话框（HUD 快捷弹窗）
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `title` | `string` | 标题（可为空） | No |
+| `message` | `string` | 提示内容 | No |
+| `onOk` | `function` | 点击确定回调 | Yes |
+
+**Returns:** `Window`
+
+---
+
+### `hud.confirm`
+
+**Signature:** `confirm(title, message, onConfirm?, onCancel?)`
+
+显示确认对话框（确认/取消）
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `title` | `string` | 标题（可为空） | No |
+| `message` | `string` | 提示内容 | No |
+| `onConfirm` | `function` | 点击确认回调 | Yes |
+| `onCancel` | `function` | 点击取消回调 | Yes |
+
+**Returns:** `Window`
+
+---
+
+### `hud.dialog`
+
+**Signature:** `dialog(title, message, onConfirm?, onCancel?)`
+
+对话框（confirm 的别名）
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `title` | `string` | 标题（可为空） | No |
+| `message` | `string` | 提示内容 | No |
+| `onConfirm` | `function` | 点击确认回调 | Yes |
+| `onCancel` | `function` | 点击取消回调 | Yes |
+
+**Returns:** `Window`
+
+---
+
+### `hud.toast`
+
+**Signature:** `toast(message, duration?)`
+
+显示 Toast 提示
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `message` | `string` | 提示内容 | No |
+| `duration` | `number` | 显示时长（秒），默认 2.0 | Yes |
+
+**Returns:** `Window \| null`
+
+---
+
 ## util
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
@@ -3851,6 +3926,67 @@ execute() 的别名
 **Returns:** `boolean`
 
 *是否成功打开*
+
+---
+
+## miniapp
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+迷你应用 - 全屏交互式多页面应用
+
+> **Trigger Note:** MiniApp 在脚本运行期间以 fullScreenCover 方式呈现，JS 引擎通过 ActiveBridgeManager 保持存活
+
+*No methods available.*
+
+## widget
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+小组件 - Scriptable 兼容的 iOS 主屏幕小组件
+
+> **Trigger Note:** Widget 树序列化保存到 App Group，由 Widget Extension 渲染
+
+### `widget.setWidget`
+
+**Signature:** `Script.setWidget(widget)`
+
+将 Widget 树保存为小组件数据
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `widget` | `ListWidget` | Widget 根容器实例 | No |
+
+**Returns:** `void`
+
+---
+
+### `widget.complete`
+
+**Signature:** `Script.complete()`
+
+通知脚本执行完毕（兼容 Scriptable）
+
+**Returns:** `void`
+
+---
+
+### `widget.preview`
+
+**Signature:** `Widget.preview(widget, family?)`
+
+在 MiniApp 界面预览小组件，不保存到 App Group。弹出预览 Sheet 并支持切换尺寸。
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `widget` | `ListWidget` | 要预览的 Widget 根容器实例 | No |
+| `family` | `string` | 初始预览尺寸: 'small'、'medium'（默认）或 'large' | Yes |
+
+**Returns:** `void`
 
 ---
 

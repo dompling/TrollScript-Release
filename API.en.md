@@ -38,6 +38,8 @@ The following icons indicate API compatibility when running in background trigge
 - [sql](#sql) ✅ - SQLite database operations
 - [shortcuts](#shortcuts) ❌ - Shortcuts operations
 - [system](#system) ✅ - System settings control
+- [miniapp](#miniapp) ✅ - MiniApp - Full-screen interactive multi-page application
+- [widget](#widget) ✅ - Widget - Scriptable-compatible iOS Home Screen widgets
 
 ---
 
@@ -2067,6 +2069,79 @@ Get all window IDs
 
 ---
 
+### `hud.alert`
+
+**Signature:** `alert(title, message, onOk?)`
+
+Show an alert dialog (HUD convenience popup)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `title` | `string` | Title (optional) | No |
+| `message` | `string` | Message | No |
+| `onOk` | `function` | OK callback | Yes |
+
+**Returns:** `Window`
+
+---
+
+### `hud.confirm`
+
+**Signature:** `confirm(title, message, onConfirm?, onCancel?)`
+
+Show a confirm dialog (confirm/cancel)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `title` | `string` | Title (optional) | No |
+| `message` | `string` | Message | No |
+| `onConfirm` | `function` | Confirm callback | Yes |
+| `onCancel` | `function` | Cancel callback | Yes |
+
+**Returns:** `Window`
+
+---
+
+### `hud.dialog`
+
+**Signature:** `dialog(title, message, onConfirm?, onCancel?)`
+
+Dialog (alias of confirm)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `title` | `string` | Title (optional) | No |
+| `message` | `string` | Message | No |
+| `onConfirm` | `function` | Confirm callback | Yes |
+| `onCancel` | `function` | Cancel callback | Yes |
+
+**Returns:** `Window`
+
+---
+
+### `hud.toast`
+
+**Signature:** `toast(message, duration?)`
+
+Show a toast message
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `message` | `string` | Message | No |
+| `duration` | `number` | Duration in seconds, default 2.0 | Yes |
+
+**Returns:** `Window \| null`
+
+---
+
 ## util
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
@@ -4022,6 +4097,67 @@ Open system settings
 **Returns:** `boolean`
 
 *Whether settings was opened successfully*
+
+---
+
+## miniapp
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+MiniApp - Full-screen interactive multi-page application
+
+> **Trigger Note:** MiniApp is presented as fullScreenCover during script execution, JS engine stays alive via ActiveBridgeManager
+
+*No methods available.*
+
+## widget
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+Widget - Scriptable-compatible iOS Home Screen widgets
+
+> **Trigger Note:** Widget tree is serialized and saved to App Group, rendered by Widget Extension
+
+### `widget.setWidget`
+
+**Signature:** `Script.setWidget(widget)`
+
+Save the Widget tree as widget data
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `widget` | `ListWidget` | Widget root container instance | No |
+
+**Returns:** `void`
+
+---
+
+### `widget.complete`
+
+**Signature:** `Script.complete()`
+
+Notify script execution is complete (Scriptable compatible)
+
+**Returns:** `void`
+
+---
+
+### `widget.preview`
+
+**Signature:** `Widget.preview(widget, family?)`
+
+Preview a Widget in MiniApp interface without saving to App Group. Shows a preview sheet overlay with size selector.
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `widget` | `ListWidget` | Widget root container instance to preview | No |
+| `family` | `string` | Initial preview size: 'small', 'medium' (default), or 'large' | Yes |
+
+**Returns:** `void`
 
 ---
 

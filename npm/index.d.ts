@@ -876,6 +876,39 @@ interface Hud {
      */
     getAllWindows(): any;
 
+    /**
+     * 显示提示对话框（HUD 快捷弹窗）
+     * @param title 标题（可为空）
+     * @param message 提示内容
+     * @param onOk 点击确定回调
+     */
+    alert(title: string, message: string, onOk?: any): any;
+
+    /**
+     * 显示确认对话框（确认/取消）
+     * @param title 标题（可为空）
+     * @param message 提示内容
+     * @param onConfirm 点击确认回调
+     * @param onCancel 点击取消回调
+     */
+    confirm(title: string, message: string, onConfirm?: any, onCancel?: any): any;
+
+    /**
+     * 对话框（confirm 的别名）
+     * @param title 标题（可为空）
+     * @param message 提示内容
+     * @param onConfirm 点击确认回调
+     * @param onCancel 点击取消回调
+     */
+    dialog(title: string, message: string, onConfirm?: any, onCancel?: any): any;
+
+    /**
+     * 显示 Toast 提示
+     * @param message 提示内容
+     * @param duration 显示时长（秒），默认 2.0
+     */
+    toast(message: string, duration?: number): any;
+
 }
 
 declare const hud: Hud;
@@ -1665,3 +1698,31 @@ interface System {
 }
 
 declare const system: System;
+
+interface Miniapp {
+}
+
+declare const miniapp: Miniapp;
+
+interface Widget {
+    /**
+     * 将 Widget 树保存为小组件数据
+     * @param widget Widget 根容器实例
+     */
+    setWidget(widget: any): void;
+
+    /**
+     * 通知脚本执行完毕（兼容 Scriptable）
+     */
+    complete(): void;
+
+    /**
+     * 在 MiniApp 界面预览小组件，不保存到 App Group。弹出预览 Sheet 并支持切换尺寸。
+     * @param widget 要预览的 Widget 根容器实例
+     * @param family 初始预览尺寸: 'small'、'medium'（默认）或 'large'
+     */
+    preview(widget: any, family?: string): void;
+
+}
+
+declare const widget: Widget;
