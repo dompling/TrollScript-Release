@@ -1,0 +1,1730 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="TrollScript 官方文档与 API 参考">
+      
+      
+        <meta name="author" content="TrollScript Team">
+      
+      
+        <link rel="canonical" href="https://trollscript.qzz.io/AI/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>ai 智能助手 - TrollScript</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+    
+  
+
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="TrollScript Team" />
+  <meta name="keywords" content="TrollScript, iOS automation, TrollStore, JavaScript API, iOS scripting, iOS docs" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="TrollScript" />
+  <meta property="og:title" content="ai 智能助手 - TrollScript" />
+  <meta property="og:description" content="TrollScript 官方文档与 API 参考" />
+  <meta property="og:url" content="https://trollscript.qzz.io/AI/" />
+  <meta property="og:image" content="https://trollscript.qzz.io/AppIcon.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ai 智能助手 - TrollScript" />
+  <meta name="twitter:description" content="TrollScript 官方文档与 API 参考" />
+  <meta name="twitter:image" content="https://trollscript.qzz.io/AppIcon.png" />
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ai" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="TrollScript" class="md-header__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TrollScript
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ai 智能助手
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="cyan"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dompling/TrollScript-Release" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="TrollScript" class="md-nav__button md-logo" aria-label="TrollScript" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    TrollScript
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dompling/TrollScript-Release" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../INSTALL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    环境要求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TestScripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    测试示例脚本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ARGS.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    功能介绍
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 参考
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API 参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../App/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Calendar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    日历
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Clipboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    剪切板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统输入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Console
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Contacts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    联系人
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    设备
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Display/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    显示
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../File/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HTTP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HUD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HUD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Haptic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    触觉反馈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Location/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Network/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网络信息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Notification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通知
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Reminder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    提醒
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SMS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    短信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Shortcuts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快捷指令
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    本地存储
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../System/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Util/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Util
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iCloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    iCloud
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ai">ai 智能助手<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h1>
+<p>ai 模块提供了强大的人工智能能力，包括对话交互、自主任务执行和代码生成。你可以使用它来构建智能化的脚本，让 ai 帮助你完成复杂的任务。</p>
+<blockquote>
+<p><strong>守护进程支持</strong>: 完全支持。在触发器模式下可正常运行，ai 调用会在后台执行。</p>
+</blockquote>
+<hr />
+<h2 id="_1">目录<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#快速开始">快速开始</a></li>
+<li><a href="#api-参考">API 参考</a></li>
+<li><a href="#aichat">ai.chat()</a></li>
+<li><a href="#airun">ai.run()</a></li>
+<li><a href="#aigenerate">ai.generate()</a></li>
+<li><a href="#完整示例">完整示例</a></li>
+<li><a href="#最佳实践">最佳实践</a></li>
+</ul>
+<hr />
+<h2 id="_2">快速开始<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>使用 ai 模块非常简单：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 简单对话</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">chat</span><span class="p">(</span><span class="s1">&#39;你好，请介绍一下自己&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+
+<span class="c1">// 让 ai 自主完成任务</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;帮我发送一条通知，内容是&quot;任务完成&quot;&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">summary</span><span class="p">);</span>
+
+<span class="c1">// 生成代码</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">generate</span><span class="p">(</span><span class="s1">&#39;创建一个脚本，每天早上8点发送天气通知&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="aichatprompt-options"><code>ai.chat(prompt, options?)</code><a class="headerlink" href="#aichatprompt-options" title="Permanent link">&para;</a></h3>
+<p>向 ai 发送对话消息并获取文本回复。适合用于简单的问答、文本生成等场景。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prompt</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>要发送的消息</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><code>object</code></td>
+<td>否</td>
+<td>配置选项</td>
+</tr>
+<tr>
+<td><code>options.messages</code></td>
+<td><code>array</code></td>
+<td>否</td>
+<td>对话历史记录，格式: <code>[{role: 'user'/'assistant', content: '...'}]</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>Promise&lt;string&gt;</code> - ai 的文本回复</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 基础对话</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">reply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">chat</span><span class="p">(</span><span class="s1">&#39;什么是 TrollScript?&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">reply</span><span class="p">);</span>
+
+<span class="c1">// 带上下文的多轮对话</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;我想学习编程&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;assistant&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;很好！你想学习哪种编程语言？&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;JavaScript&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">];</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">chat</span><span class="p">(</span><span class="s1">&#39;从哪里开始？&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="airunprompt-options"><code>ai.run(prompt, options?)</code><a class="headerlink" href="#airunprompt-options" title="Permanent link">&para;</a></h3>
+<p>运行 ai 智能体，让 ai 自主调用设备 API 完成任务。这是最强大的功能，ai 会分析任务、制定计划、调用相应的 API 并执行。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prompt</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>任务描述</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><code>object</code></td>
+<td>否</td>
+<td>配置选项</td>
+</tr>
+<tr>
+<td><code>options.input</code></td>
+<td><code>any</code></td>
+<td>否</td>
+<td>提供给 ai 的额外输入数据</td>
+</tr>
+<tr>
+<td><code>options.maxSteps</code></td>
+<td><code>number</code></td>
+<td>否</td>
+<td>最大执行步骤数，默认 10</td>
+</tr>
+<tr>
+<td><code>options.confirmEach</code></td>
+<td><code>boolean</code></td>
+<td>否</td>
+<td>是否每步都需要确认，默认 true</td>
+</tr>
+<tr>
+<td><code>options.timeout</code></td>
+<td><code>number</code></td>
+<td>否</td>
+<td>超时时间（秒），默认 60</td>
+</tr>
+<tr>
+<td><code>options.modules</code></td>
+<td><code>string[]</code></td>
+<td>否</td>
+<td>限制 ai 只能使用指定的 API 模块</td>
+</tr>
+</tbody>
+</table>
+<p><strong>确认说明:</strong>
+当 <code>confirmEach: true</code> 时，涉及写入或执行的操作会弹出确认对话框，支持以下选项：
+1. <strong>本次会话信任</strong>：本次运行中后续操作将自动放行
+2. <strong>允许并记住</strong>：记住该 tool 的允许决策（持久化）
+3. <strong>拒绝并记住</strong>：记住该 tool 的拒绝决策（持久化）</p>
+<p><strong>返回:</strong> <code>Promise&lt;object&gt;</code> - 执行结果</p>
+<p>返回对象结构：
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span><span class="p">,</span><span class="w">      </span><span class="c1">// 是否成功完成任务</span>
+<span class="w">  </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">        </span><span class="c1">// 任务执行结果描述</span>
+<span class="w">  </span><span class="nx">steps</span><span class="o">:</span><span class="w"> </span><span class="nx">array</span><span class="p">,</span><span class="w">          </span><span class="c1">// 执行的步骤列表</span>
+<span class="w">  </span><span class="nx">summary</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="w">        </span><span class="c1">// 任务总结</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 简单任务</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;发送一条通知，内容是&quot;Hello World&quot;&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;任务完成:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">summary</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 复杂任务</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;查询今天的天气，如果会下雨就发送提醒通知&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;执行步骤:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">steps</span><span class="p">);</span>
+
+<span class="c1">// 限制使用的 API（模块名使用小写）</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;帮我整理文件&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">modules</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;storage&#39;</span><span class="p">],</span><span class="w">  </span><span class="c1">// 只允许使用文件和存储相关 API</span>
+<span class="w">  </span><span class="nx">maxSteps</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span>
+<span class="p">});</span>
+
+<span class="c1">// 需要确认的任务（会弹出确认对话框）</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;删除所有临时文件&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">confirmEach</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c1">// 每一步都会弹窗确认</span>
+<span class="p">});</span>
+
+<span class="c1">// 自动执行（不弹窗）</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;发送一条通知，内容是&quot;Hello World&quot;&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">confirmEach</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">});</span>
+</code></pre></div>
+<hr />
+<h3 id="aigenerateprompt-options"><code>ai.generate(prompt, options?)</code><a class="headerlink" href="#aigenerateprompt-options" title="Permanent link">&para;</a></h3>
+<p>根据自然语言描述生成 TrollScript 代码。适合用于快速原型开发、学习示例生成等场景。</p>
+<p><strong>参数:</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prompt</code></td>
+<td><code>string</code></td>
+<td>是</td>
+<td>代码应该实现的功能描述</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><code>object</code></td>
+<td>否</td>
+<td>配置选项</td>
+</tr>
+<tr>
+<td><code>options.modules</code></td>
+<td><code>string[]</code></td>
+<td>否</td>
+<td>限制使用特定的 API 模块</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回:</strong> <code>Promise&lt;string&gt;</code> - 生成的 TrollScript 代码</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 生成简单脚本</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">generate</span><span class="p">(</span><span class="s1">&#39;创建一个脚本，每次运行时显示当前时间&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span>
+
+<span class="c1">// 生成特定功能的代码</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">generate</span><span class="p">(</span><span class="s1">&#39;实现一个函数，输入文本并返回反转后的结果&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span>
+
+<span class="c1">// 限制使用的 API</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">generate</span><span class="p">(</span><span class="s1">&#39;创建一个天气查询脚本&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">modules</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;http&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;notification&#39;</span><span class="p">]</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_3">完整示例<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1">示例 1: 智能助手对话<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 创建一个简单的对话助手</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">conversationHistory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">chat</span><span class="p">(</span><span class="nx">userMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 添加用户消息到历史</span>
+<span class="w">  </span><span class="nx">conversationHistory</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="nx">userMessage</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// 获取 ai 回复</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">chat</span><span class="p">(</span><span class="nx">userMessage</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="nx">conversationHistory</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// 添加 ai 回复到历史</span>
+<span class="w">  </span><span class="nx">conversationHistory</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;assistant&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="nx">reply</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">reply</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">reply1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">chat</span><span class="p">(</span><span class="s1">&#39;你好&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ai:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">reply1</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">reply2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">chat</span><span class="p">(</span><span class="s1">&#39;我想学习 TrollScript&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ai:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">reply2</span><span class="p">);</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">reply3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">chat</span><span class="p">(</span><span class="s1">&#39;从哪里开始？&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ai:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">reply3</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="2">示例 2: 自动化任务执行<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 让 ai 自动完成复杂任务</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">automate</span><span class="p">(</span><span class="nx">task</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;开始执行任务:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">task</span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="nx">task</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">maxSteps</span><span class="o">:</span><span class="w"> </span><span class="mf">15</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">timeout</span><span class="o">:</span><span class="w"> </span><span class="mf">600</span><span class="w">  </span><span class="c1">// 10 分钟超时</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;✅ 任务完成&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;总结:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">summary</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;执行步骤:&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">result</span><span class="p">.</span><span class="nx">steps</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">step</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`  </span><span class="si">${</span><span class="nx">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="si">}</span><span class="sb">. </span><span class="si">${</span><span class="nx">step</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;❌ 任务失败:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用示例</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">automate</span><span class="p">(</span><span class="s1">&#39;查询今天的天气，如果温度低于10度就发送提醒&#39;</span><span class="p">);</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">automate</span><span class="p">(</span><span class="s1">&#39;整理下载文件夹，将图片移动到图片文件夹&#39;</span><span class="p">);</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">automate</span><span class="p">(</span><span class="s1">&#39;检查日历，如果今天有会议就提前30分钟发送提醒&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="3">示例 3: 代码生成助手<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 使用 ai 生成代码模板</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">generateScript</span><span class="p">(</span><span class="nx">description</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;正在生成代码:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">description</span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">generate</span><span class="p">(</span><span class="nx">description</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 保存生成的代码</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`generated_</span><span class="si">${</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="si">}</span><span class="sb">.js`</span><span class="p">;</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">File</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;代码已生成并保存到:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">filename</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;--- 生成的代码 ---&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;--- 代码结束 ---&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">code</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用示例</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">generateScript</span><span class="p">(</span><span class="s1">&#39;创建一个定时脚本，每天早上8点发送天气通知&#39;</span><span class="p">);</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">generateScript</span><span class="p">(</span><span class="s1">&#39;实现一个函数，输入URL并下载文件&#39;</span><span class="p">);</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">generateScript</span><span class="p">(</span><span class="s1">&#39;创建一个脚本，监控剪贴板变化并记录历史&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h3 id="4">示例 4: 智能工作流<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 结合多个 ai 功能创建智能工作流</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">smartWorkflow</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 1. 询问 ai 今天应该做什么</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">plan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">chat</span><span class="p">(</span><span class="s1">&#39;根据当前时间和日期，建议我今天应该完成哪些任务？&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;今日计划:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">plan</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 2. 让 ai 生成执行这些任务的代码</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">generate</span><span class="p">(</span><span class="sb">`创建一个脚本来执行以下任务: </span><span class="si">${</span><span class="nx">plan</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;生成的代码:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 3. 询问用户是否执行</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">shouldExecute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">UI</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s1">&#39;是否执行生成的任务？&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">shouldExecute</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 4. 让 ai 执行任务</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;执行今日计划中的任务&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">plan</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">confirmEach</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;执行结果:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">summary</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 运行智能工作流</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">smartWorkflow</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h3 id="5-ai">示例 5: ai 驱动的脚本调试<a class="headerlink" href="#5-ai" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 使用 ai 帮助调试代码</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">debugWithai</span><span class="p">(</span><span class="nx">code</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">prompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">我的代码出现了错误，请帮我分析并修复：</span>
+
+<span class="sb">代码:</span>
+<span class="si">${</span><span class="nx">code</span><span class="si">}</span>
+
+<span class="sb">错误信息:</span>
+<span class="si">${</span><span class="nx">error</span><span class="si">}</span>
+
+<span class="sb">请提供修复后的代码。</span>
+<span class="sb">  `</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fixedCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">chat</span><span class="p">(</span><span class="nx">prompt</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ai 建议的修复:&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fixedCode</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">fixedCode</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用示例</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">buggyCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">function divide(a, b) {</span>
+<span class="sb">  return a / b;  // 没有检查除零错误</span>
+<span class="sb">}</span>
+<span class="sb">`</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Division by zero error&#39;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">fixed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">debugWithai</span><span class="p">(</span><span class="nx">buggyCode</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_4">最佳实践<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 清晰的任务描述<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p>ai 的执行效果取决于任务描述的清晰度：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 清晰具体</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;查询北京今天的天气，如果温度低于10度就发送通知提醒我穿厚衣服&#39;</span><span class="p">);</span>
+
+<span class="c1">// ❌ 错误 - 模糊不清</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;天气&#39;</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="2_1">2. 合理使用对话历史<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p>保持对话历史可以让 ai 更好地理解上下文：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 维护对话历史</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">history</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="nx">history</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;我想学习编程&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">reply1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">chat</span><span class="p">(</span><span class="s1">&#39;我想学习编程&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="nx">history</span><span class="w"> </span><span class="p">});</span>
+<span class="nx">history</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;assistant&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="nx">reply1</span><span class="w"> </span><span class="p">});</span>
+
+<span class="nx">history</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;从哪里开始？&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">reply2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">chat</span><span class="p">(</span><span class="s1">&#39;从哪里开始？&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="nx">history</span><span class="w"> </span><span class="p">});</span>
+
+<span class="c1">// ❌ 错误 - 没有上下文</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">chat</span><span class="p">(</span><span class="s1">&#39;从哪里开始？&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// ai 不知道你在问什么</span>
+</code></pre></div>
+<h3 id="3_1">3. 设置合理的限制<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>使用 <code>maxSteps</code> 和 <code>timeout</code> 防止任务失控：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 设置限制</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;整理文件&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">maxSteps</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w">      </span><span class="c1">// 最多执行 10 步</span>
+<span class="w">  </span><span class="nx">timeout</span><span class="o">:</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w">      </span><span class="c1">// 5 分钟超时</span>
+<span class="w">  </span><span class="nx">modules</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span><span class="w">  </span><span class="c1">// 只允许使用文件 API</span>
+<span class="p">});</span>
+
+<span class="c1">// ❌ 危险 - 没有限制</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;整理文件&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// 可能执行很长时间</span>
+</code></pre></div>
+<h3 id="4_1">4. 处理错误<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<p>始终检查执行结果并处理错误：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 完整的错误处理</span>
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;发送通知&#39;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;成功:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">summary</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;失败:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 尝试其他方案</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;执行出错:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 错误 - 没有错误处理</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;发送通知&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">summary</span><span class="p">);</span><span class="w">  </span><span class="c1">// 如果失败会出错</span>
+</code></pre></div>
+<h3 id="5">5. 安全的任务执行<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>对于可能有风险的操作，使用 <code>confirmEach</code> 选项：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 需要确认的危险操作</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;删除所有临时文件&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">confirmEach</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c1">// 每一步都会询问</span>
+<span class="p">});</span>
+
+<span class="c1">// ❌ 危险 - 自动执行删除操作</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;删除所有临时文件&#39;</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="6">6. 优化生成的代码<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<p>生成代码后进行审查和测试：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 审查生成的代码</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">generate</span><span class="p">(</span><span class="s1">&#39;创建一个定时脚本&#39;</span><span class="p">);</span>
+
+<span class="c1">// 先检查代码</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;生成的代码:&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span>
+
+<span class="c1">// 询问用户是否使用</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">shouldUse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">UI</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s1">&#39;是否使用这段代码？&#39;</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">shouldUse</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 保存并使用</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">File</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;script.js&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ 危险 - 直接使用生成的代码</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">generate</span><span class="p">(</span><span class="s1">&#39;创建一个定时脚本&#39;</span><span class="p">);</span>
+<span class="nb">eval</span><span class="p">(</span><span class="nx">code</span><span class="p">);</span><span class="w">  </span><span class="c1">// 危险！</span>
+</code></pre></div>
+<h3 id="7">7. 提供足够的上下文<a class="headerlink" href="#7" title="Permanent link">&para;</a></h3>
+<p>给 ai 提供足够的信息以做出更好的决策：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 提供详细上下文</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">currentTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toLocaleString</span><span class="p">();</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">weather</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">HTTP</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://api.weather.com/...&#39;</span><span class="p">);</span>
+
+<span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;根据当前情况决定是否发送提醒&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">time</span><span class="o">:</span><span class="w"> </span><span class="nx">currentTime</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">weather</span><span class="o">:</span><span class="w"> </span><span class="nx">weather</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">userPreferences</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">temperature_threshold</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// ❌ 错误 - 缺少上下文</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;决定是否发送提醒&#39;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="_5">注意事项<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>API 密钥</strong>: 使用 ai 功能需要在设置中配置 API 密钥</li>
+<li><strong>网络连接</strong>: ai 调用需要网络连接，请确保设备联网</li>
+<li><strong>执行时间</strong>: 复杂任务可能需要较长时间，建议设置合理的 <code>timeout</code></li>
+<li><strong>成本控制</strong>: ai 调用可能产生费用，请注意控制使用频率</li>
+<li><strong>隐私安全</strong>: 不要将敏感信息（密码、密钥等）发送给 ai</li>
+<li><strong>结果验证</strong>: ai 生成的代码和执行结果应该经过验证后再使用</li>
+<li><strong>守护进程模式</strong>: 在 Daemon 模式下，ai 调用会在后台执行，不会阻塞其他操作</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.copy", "search.suggest", "search.highlight", "navigation.sections", "navigation.expand", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

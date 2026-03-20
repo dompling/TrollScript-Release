@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -1230,6 +1230,7 @@
 <li><a href="#system">system</a> ✅ - System settings control</li>
 <li><a href="#miniapp">miniapp</a> ✅ - MiniApp - Full-screen interactive multi-page application</li>
 <li><a href="#widget">widget</a> ✅ - Widget - Scriptable-compatible iOS Home Screen widgets</li>
+<li><a href="#ai">ai</a> ✅ - AI Agent module - chat, run autonomous tasks, generate code</li>
 </ul>
 <hr />
 <h2 id="console">console<a class="headerlink" href="#console" title="Permanent link">&para;</a></h2>
@@ -5905,6 +5906,86 @@
 <p><strong>Returns:</strong> <code>boolean</code></p>
 <p><em>Whether settings was opened successfully</em></p>
 <hr />
+<h3 id="systemalert"><code>system.alert</code><a class="headerlink" href="#systemalert" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>alert(title, message, okTitle?)</code></p>
+<p>Show a system-level alert dialog</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>Title text</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Message text</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>okTitle</code></td>
+<td><code>string</code></td>
+<td>OK button title</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Promise&lt;void&gt;</code></p>
+<p><em>Resolves when user dismisses the alert</em></p>
+<hr />
+<h3 id="systemconfirm"><code>system.confirm</code><a class="headerlink" href="#systemconfirm" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>confirm(title, message, confirmTitle?, cancelTitle?)</code></p>
+<p>Show a system-level confirm dialog</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>Title text</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Message text</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>confirmTitle</code></td>
+<td><code>string</code></td>
+<td>Confirm button title</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>cancelTitle</code></td>
+<td><code>string</code></td>
+<td>Cancel button title</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Promise&lt;boolean&gt;</code></p>
+<p><em>Resolves true if confirmed, false otherwise</em></p>
+<hr />
 <h2 id="miniapp">miniapp<a class="headerlink" href="#miniapp" title="Permanent link">&para;</a></h2>
 <p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
 <p>MiniApp - Full-screen interactive multi-page application</p>
@@ -5976,6 +6057,102 @@
 </tbody>
 </table>
 <p><strong>Returns:</strong> <code>void</code></p>
+<hr />
+<h2 id="ai">ai<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h2>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p>AI Agent module - chat, run autonomous tasks, generate code</p>
+<h3 id="aichat"><code>ai.chat</code><a class="headerlink" href="#aichat" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>chat(prompt, options?)</code></p>
+<p>Send a chat message to AI and get a text response</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prompt</code></td>
+<td><code>string</code></td>
+<td>The message to send</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><code>object</code></td>
+<td>{ messages?: array } - conversation history</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Promise&lt;string&gt;</code></p>
+<p><em>AI's text response</em></p>
+<hr />
+<h3 id="airun"><code>ai.run</code><a class="headerlink" href="#airun" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>run(prompt, options?)</code></p>
+<p>Run AI agent to autonomously complete a task using device APIs</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prompt</code></td>
+<td><code>string</code></td>
+<td>Task description</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><code>object</code></td>
+<td>{ input?, maxSteps?, confirmEach?, timeout?, modules? }</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Promise&lt;object&gt;</code></p>
+<p><em>{ success: boolean, result: string, steps: array, summary: string }</em></p>
+<hr />
+<h3 id="aigenerate"><code>ai.generate</code><a class="headerlink" href="#aigenerate" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>generate(prompt, options?)</code></p>
+<p>Generate TrollScript code from natural language description</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prompt</code></td>
+<td><code>string</code></td>
+<td>What the code should do</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><code>object</code></td>
+<td>{ modules?: string[] } - limit to specific API modules</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Promise&lt;string&gt;</code></p>
+<p><em>Generated TrollScript code</em></p>
 <hr />
 
 

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -1557,13 +1557,52 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统弹窗
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="系统弹窗">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#systemalerttitle-message-oktitle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        system.alert(title, message, okTitle?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemconfirmtitle-message-confirmtitle-canceltitle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        system.confirm(title, message, confirmTitle?, cancelTitle?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         完整示例
@@ -1646,7 +1685,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         最佳实践
@@ -1707,7 +1746,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         注意事项
@@ -1841,6 +1880,7 @@
 <blockquote>
 <p><strong>守护进程支持</strong>: 完全支持。在触发器模式下可正常运行。</p>
 <p><strong>重要提示</strong>: 大部分功能需要 <strong>TrollStore 权限</strong>才能使用。</p>
+<p><strong>系统弹窗</strong>: <code>system.alert/confirm</code> 需要前台 UI，后台/触发器模式下可能无法显示。</p>
 </blockquote>
 <hr />
 <h2 id="_1">快速开始<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
@@ -1861,6 +1901,11 @@
 
 <span class="c1">// 打开系统设置</span>
 <span class="nx">system</span><span class="p">.</span><span class="nx">openSettings</span><span class="p">(</span><span class="s1">&#39;WIFI&#39;</span><span class="p">);</span><span class="w">  </span><span class="c1">// 打开 WiFi 设置页面</span>
+
+<span class="c1">// 系统弹窗</span>
+<span class="k">await</span><span class="w"> </span><span class="nx">system</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;提示&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;系统弹窗已打开&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">system</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s1">&#39;确认&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;是否继续？&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;confirm:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="p">);</span>
 </code></pre></div>
 <hr />
 <h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
@@ -2085,7 +2130,25 @@
 <span class="nx">system</span><span class="p">.</span><span class="nx">openSettings</span><span class="p">(</span><span class="s1">&#39;PRIVACY&#39;</span><span class="p">);</span>
 </code></pre></div>
 <hr />
-<h2 id="_12">完整示例<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h3 id="_12">系统弹窗<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h4 id="systemalerttitle-message-oktitle"><code>system.alert(title, message, okTitle?)</code><a class="headerlink" href="#systemalerttitle-message-oktitle" title="Permanent link">&para;</a></h4>
+<p>显示系统级提示弹窗（优先使用系统提示，失败则回退到 App 内弹窗）。<strong>返回:</strong> <code>Promise&lt;void&gt;</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">system</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;提示&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;系统弹窗已打开&#39;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="systemconfirmtitle-message-confirmtitle-canceltitle"><code>system.confirm(title, message, confirmTitle?, cancelTitle?)</code><a class="headerlink" href="#systemconfirmtitle-message-confirmtitle-canceltitle" title="Permanent link">&para;</a></h4>
+<p>显示系统级确认弹窗（优先使用系统提示，失败则回退到 App 内弹窗）。<strong>返回:</strong> <code>Promise&lt;boolean&gt;</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">system</span><span class="p">.</span><span class="nx">confirm</span><span class="p">(</span><span class="s1">&#39;确认&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;是否继续？&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;用户确认&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;用户取消&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong>: 系统弹窗需要前台 UI 环境，后台/触发器模式下可能无法显示。</p>
+</blockquote>
+<hr />
+<h2 id="_13">完整示例<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <h3 id="1">示例 1: 智能场景切换<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">switchToSleepMode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;切换到睡眠模式...&#39;</span><span class="p">);</span>
@@ -2321,7 +2384,7 @@
 <span class="nx">monitorSystemStatus</span><span class="p">();</span>
 </code></pre></div>
 <hr />
-<h2 id="_13">最佳实践<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h2 id="_14">最佳实践<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
 <h3 id="1_1">1. 检查当前状态<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// ✅ 正确 - 先检查再切换</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">system</span><span class="p">.</span><span class="nx">isWiFiEnabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
@@ -2354,7 +2417,7 @@
 <span class="nx">system</span><span class="p">.</span><span class="nx">setWiFi</span><span class="p">(</span><span class="nx">originalWiFi</span><span class="p">);</span><span class="w">  </span><span class="c1">// 恢复原状态</span>
 </code></pre></div>
 <hr />
-<h2 id="_14">注意事项<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<h2 id="_15">注意事项<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>TrollStore 权限</strong>: 大部分功能需要 TrollStore 环境才能使用</li>
 <li><strong>私有 API</strong>: 使用 TSSystemSettings 私有 API，可能在未来 iOS 版本中失效</li>

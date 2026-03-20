@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -1229,6 +1229,7 @@
 <li><a href="#system">system</a> ✅ - 系统设置控制</li>
 <li><a href="#miniapp">miniapp</a> ✅ - 迷你应用 - 全屏交互式多页面应用</li>
 <li><a href="#widget">widget</a> ✅ - 小组件 - Scriptable 兼容的 iOS 主屏幕小组件</li>
+<li><a href="#ai">ai</a> ✅ - AI 智能助手模块 - 对话、自主执行任务、生成代码</li>
 </ul>
 <hr />
 <h2 id="console">console<a class="headerlink" href="#console" title="Permanent link">&para;</a></h2>
@@ -5731,6 +5732,86 @@
 <p><strong>Returns:</strong> <code>boolean</code></p>
 <p><em>是否成功打开</em></p>
 <hr />
+<h3 id="systemalert"><code>system.alert</code><a class="headerlink" href="#systemalert" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>alert(title, message, okTitle?)</code></p>
+<p>显示系统级提示弹窗</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>标题</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>内容</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>okTitle</code></td>
+<td><code>string</code></td>
+<td>确定按钮标题</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Promise&lt;void&gt;</code></p>
+<p><em>用户关闭弹窗后完成</em></p>
+<hr />
+<h3 id="systemconfirm"><code>system.confirm</code><a class="headerlink" href="#systemconfirm" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>confirm(title, message, confirmTitle?, cancelTitle?)</code></p>
+<p>显示系统级确认弹窗</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>标题</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>内容</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>confirmTitle</code></td>
+<td><code>string</code></td>
+<td>确认按钮标题</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>cancelTitle</code></td>
+<td><code>string</code></td>
+<td>取消按钮标题</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Promise&lt;boolean&gt;</code></p>
+<p><em>确认返回 true，取消返回 false</em></p>
+<hr />
 <h2 id="miniapp">miniapp<a class="headerlink" href="#miniapp" title="Permanent link">&para;</a></h2>
 <p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
 <p>迷你应用 - 全屏交互式多页面应用</p>
@@ -5802,6 +5883,102 @@
 </tbody>
 </table>
 <p><strong>Returns:</strong> <code>void</code></p>
+<hr />
+<h2 id="ai">ai<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h2>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p>AI 智能助手模块 - 对话、自主执行任务、生成代码</p>
+<h3 id="aichat"><code>ai.chat</code><a class="headerlink" href="#aichat" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>chat(prompt, options?)</code></p>
+<p>向 AI 发送对话消息并获取文本回复</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prompt</code></td>
+<td><code>string</code></td>
+<td>要发送的消息</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><code>object</code></td>
+<td>{ messages?: array } - 对话历史记录</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Promise&lt;string&gt;</code></p>
+<p><em>AI 的文本回复</em></p>
+<hr />
+<h3 id="airun"><code>ai.run</code><a class="headerlink" href="#airun" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>run(prompt, options?)</code></p>
+<p>运行 AI 智能体，自主调用设备 API 完成任务</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prompt</code></td>
+<td><code>string</code></td>
+<td>任务描述</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><code>object</code></td>
+<td>{ input?, maxSteps?, confirmEach?, timeout?, modules? }</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Promise&lt;object&gt;</code></p>
+<p><em>{ success: boolean, result: string, steps: array, summary: string }</em></p>
+<hr />
+<h3 id="aigenerate"><code>ai.generate</code><a class="headerlink" href="#aigenerate" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>generate(prompt, options?)</code></p>
+<p>根据自然语言描述生成 TrollScript 代码</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prompt</code></td>
+<td><code>string</code></td>
+<td>代码应该实现的功能</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><code>object</code></td>
+<td>{ modules?: string[] } - 限制使用特定的 API 模块</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Promise&lt;string&gt;</code></p>
+<p><em>生成的 TrollScript 代码</em></p>
 <hr />
 
 
