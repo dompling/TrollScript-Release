@@ -39,6 +39,7 @@ The following icons indicate API compatibility when running in background trigge
 - [system](#system) ✅ - 系统设置控制
 - [miniapp](#miniapp) ✅ - 迷你应用 - 全屏交互式多页面应用
 - [widget](#widget) ✅ - 小组件 - Scriptable 兼容的 iOS 主屏幕小组件
+- [ai](#ai) ✅ - AI 智能助手模块 - 对话、自主执行任务、生成代码
 
 ---
 
@@ -3929,6 +3930,47 @@ execute() 的别名
 
 ---
 
+### `system.alert`
+
+**Signature:** `alert(title, message, okTitle?)`
+
+显示系统级提示弹窗
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `title` | `string` | 标题 | No |
+| `message` | `string` | 内容 | No |
+| `okTitle` | `string` | 确定按钮标题 | Yes |
+
+**Returns:** `Promise<void>`
+
+*用户关闭弹窗后完成*
+
+---
+
+### `system.confirm`
+
+**Signature:** `confirm(title, message, confirmTitle?, cancelTitle?)`
+
+显示系统级确认弹窗
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `title` | `string` | 标题 | No |
+| `message` | `string` | 内容 | No |
+| `confirmTitle` | `string` | 确认按钮标题 | Yes |
+| `cancelTitle` | `string` | 取消按钮标题 | Yes |
+
+**Returns:** `Promise<boolean>`
+
+*确认返回 true，取消返回 false*
+
+---
+
 ## miniapp
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
@@ -3987,6 +4029,69 @@ execute() 的别名
 | `family` | `string` | 初始预览尺寸: 'small'、'medium'（默认）或 'large' | Yes |
 
 **Returns:** `void`
+
+---
+
+## ai
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+AI 智能助手模块 - 对话、自主执行任务、生成代码
+
+### `ai.chat`
+
+**Signature:** `chat(prompt, options?)`
+
+向 AI 发送对话消息并获取文本回复
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `prompt` | `string` | 要发送的消息 | No |
+| `options` | `object` | { messages?: array } - 对话历史记录 | Yes |
+
+**Returns:** `Promise<string>`
+
+*AI 的文本回复*
+
+---
+
+### `ai.run`
+
+**Signature:** `run(prompt, options?)`
+
+运行 AI 智能体，自主调用设备 API 完成任务
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `prompt` | `string` | 任务描述 | No |
+| `options` | `object` | { input?, maxSteps?, confirmEach?, timeout?, modules? } | Yes |
+
+**Returns:** `Promise<object>`
+
+*{ success: boolean, result: string, steps: array, summary: string }*
+
+---
+
+### `ai.generate`
+
+**Signature:** `generate(prompt, options?)`
+
+根据自然语言描述生成 TrollScript 代码
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `prompt` | `string` | 代码应该实现的功能 | No |
+| `options` | `object` | { modules?: string[] } - 限制使用特定的 API 模块 | Yes |
+
+**Returns:** `Promise<string>`
+
+*生成的 TrollScript 代码*
 
 ---
 

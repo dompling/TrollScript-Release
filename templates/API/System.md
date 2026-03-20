@@ -5,6 +5,8 @@ System 模块提供了系统设置控制功能。你可以使用它来控制 WiF
 > **守护进程支持**: 完全支持。在触发器模式下可正常运行。
 >
 > **重要提示**: 大部分功能需要 **TrollStore 权限**才能使用。
+>
+> **系统弹窗**: `system.alert/confirm` 需要前台 UI，后台/触发器模式下可能无法显示。
 
 ---
 
@@ -28,6 +30,11 @@ system.setFlashlight(true, 1.0);  // 最大亮度
 
 // 打开系统设置
 system.openSettings('WIFI');  // 打开 WiFi 设置页面
+
+// 系统弹窗
+await system.alert('提示', '系统弹窗已打开');
+const ok = await system.confirm('确认', '是否继续？');
+console.log('confirm:', ok);
 ```
 
 ---
@@ -343,6 +350,31 @@ system.openSettings('BLUETOOTH');
 // 打开隐私设置
 system.openSettings('PRIVACY');
 ```
+
+---
+
+### 系统弹窗
+
+#### `system.alert(title, message, okTitle?)`
+显示系统级提示弹窗（优先使用系统提示，失败则回退到 App 内弹窗）。**返回:** `Promise<void>`
+
+```javascript
+await system.alert('提示', '系统弹窗已打开');
+```
+
+#### `system.confirm(title, message, confirmTitle?, cancelTitle?)`
+显示系统级确认弹窗（优先使用系统提示，失败则回退到 App 内弹窗）。**返回:** `Promise<boolean>`
+
+```javascript
+const ok = await system.confirm('确认', '是否继续？');
+if (ok) {
+  console.log('用户确认');
+} else {
+  console.log('用户取消');
+}
+```
+
+> **注意**: 系统弹窗需要前台 UI 环境，后台/触发器模式下可能无法显示。
 
 ---
 

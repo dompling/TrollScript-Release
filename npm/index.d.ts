@@ -1695,6 +1695,25 @@ interface System {
      */
     openSettings(section?: string): boolean;
 
+    /**
+     * 显示系统级提示弹窗
+     * @param title 标题
+     * @param message 内容
+     * @param okTitle 确定按钮标题
+     * @returns 用户关闭弹窗后完成
+     */
+    alert(title: string, message: string, okTitle?: string): any;
+
+    /**
+     * 显示系统级确认弹窗
+     * @param title 标题
+     * @param message 内容
+     * @param confirmTitle 确认按钮标题
+     * @param cancelTitle 取消按钮标题
+     * @returns 确认返回 true，取消返回 false
+     */
+    confirm(title: string, message: string, confirmTitle?: string, cancelTitle?: string): any;
+
 }
 
 declare const system: System;
@@ -1726,3 +1745,32 @@ interface Widget {
 }
 
 declare const widget: Widget;
+
+interface Ai {
+    /**
+     * 向 AI 发送对话消息并获取文本回复
+     * @param prompt 要发送的消息
+     * @param options { messages?: array } - 对话历史记录
+     * @returns AI 的文本回复
+     */
+    chat(prompt: string, options?: Record<string, any>): any;
+
+    /**
+     * 运行 AI 智能体，自主调用设备 API 完成任务
+     * @param prompt 任务描述
+     * @param options { input?, maxSteps?, confirmEach?, timeout?, modules? }
+     * @returns { success: boolean, result: string, steps: array, summary: string }
+     */
+    run(prompt: string, options?: Record<string, any>): any;
+
+    /**
+     * 根据自然语言描述生成 TrollScript 代码
+     * @param prompt 代码应该实现的功能
+     * @param options { modules?: string[] } - 限制使用特定的 API 模块
+     * @returns 生成的 TrollScript 代码
+     */
+    generate(prompt: string, options?: Record<string, any>): any;
+
+}
+
+declare const ai: Ai;

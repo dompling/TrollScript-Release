@@ -40,6 +40,7 @@ The following icons indicate API compatibility when running in background trigge
 - [system](#system) ✅ - System settings control
 - [miniapp](#miniapp) ✅ - MiniApp - Full-screen interactive multi-page application
 - [widget](#widget) ✅ - Widget - Scriptable-compatible iOS Home Screen widgets
+- [ai](#ai) ✅ - AI Agent module - chat, run autonomous tasks, generate code
 
 ---
 
@@ -4100,6 +4101,47 @@ Open system settings
 
 ---
 
+### `system.alert`
+
+**Signature:** `alert(title, message, okTitle?)`
+
+Show a system-level alert dialog
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `title` | `string` | Title text | No |
+| `message` | `string` | Message text | No |
+| `okTitle` | `string` | OK button title | Yes |
+
+**Returns:** `Promise<void>`
+
+*Resolves when user dismisses the alert*
+
+---
+
+### `system.confirm`
+
+**Signature:** `confirm(title, message, confirmTitle?, cancelTitle?)`
+
+Show a system-level confirm dialog
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `title` | `string` | Title text | No |
+| `message` | `string` | Message text | No |
+| `confirmTitle` | `string` | Confirm button title | Yes |
+| `cancelTitle` | `string` | Cancel button title | Yes |
+
+**Returns:** `Promise<boolean>`
+
+*Resolves true if confirmed, false otherwise*
+
+---
+
 ## miniapp
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
@@ -4158,6 +4200,69 @@ Preview a Widget in MiniApp interface without saving to App Group. Shows a previ
 | `family` | `string` | Initial preview size: 'small', 'medium' (default), or 'large' | Yes |
 
 **Returns:** `void`
+
+---
+
+## ai
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+AI Agent module - chat, run autonomous tasks, generate code
+
+### `ai.chat`
+
+**Signature:** `chat(prompt, options?)`
+
+Send a chat message to AI and get a text response
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `prompt` | `string` | The message to send | No |
+| `options` | `object` | { messages?: array } - conversation history | Yes |
+
+**Returns:** `Promise<string>`
+
+*AI's text response*
+
+---
+
+### `ai.run`
+
+**Signature:** `run(prompt, options?)`
+
+Run AI agent to autonomously complete a task using device APIs
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `prompt` | `string` | Task description | No |
+| `options` | `object` | { input?, maxSteps?, confirmEach?, timeout?, modules? } | Yes |
+
+**Returns:** `Promise<object>`
+
+*{ success: boolean, result: string, steps: array, summary: string }*
+
+---
+
+### `ai.generate`
+
+**Signature:** `generate(prompt, options?)`
+
+Generate TrollScript code from natural language description
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `prompt` | `string` | What the code should do | No |
+| `options` | `object` | { modules?: string[] } - limit to specific API modules | Yes |
+
+**Returns:** `Promise<string>`
+
+*Generated TrollScript code*
 
 ---
 
