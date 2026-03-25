@@ -33,25 +33,25 @@ const download = http.download(
 ### HTTP 请求方法
 
 #### `http.get(url, options?)`
-发送 GET 请求。**参数:** `url` (string), `options` (object) **返回:** `{ success, status?, data?, headers?, error? }`
+发送 GET 请求。**参数:** `url` (string), `options` (object) **返回:** `{ success, status?, body?, data?, bodyBytes?, headers?, error? }`
 
 #### `http.post(url, options?)`
-发送 POST 请求。**参数:** `url` (string), `options` (object) **返回:** `{ success, status?, data?, headers?, error? }`
+发送 POST 请求。**参数:** `url` (string), `options` (object) **返回:** `{ success, status?, body?, data?, bodyBytes?, headers?, error? }`
 
 #### `http.put(url, options?)`
-发送 PUT 请求。**参数:** `url` (string), `options` (object) **返回:** `{ success, status?, data?, headers?, error? }`
+发送 PUT 请求。**参数:** `url` (string), `options` (object) **返回:** `{ success, status?, body?, data?, bodyBytes?, headers?, error? }`
 
 #### `http.delete(url, options?)`
-发送 DELETE 请求。**参数:** `url` (string), `options` (object) **返回:** `{ success, status?, data?, headers?, error? }`
+发送 DELETE 请求。**参数:** `url` (string), `options` (object) **返回:** `{ success, status?, body?, data?, bodyBytes?, headers?, error? }`
 
 #### `http.patch(url, options?)`
-发送 PATCH 请求。**参数:** `url` (string), `options` (object) **返回:** `{ success, status?, data?, headers?, error? }`
+发送 PATCH 请求。**参数:** `url` (string), `options` (object) **返回:** `{ success, status?, body?, data?, bodyBytes?, headers?, error? }`
 
 #### `http.head(url, options?)`
-发送 HEAD 请求。**参数:** `url` (string), `options` (object) **返回:** `{ success, status?, data?, headers?, error? }`
+发送 HEAD 请求。**参数:** `url` (string), `options` (object) **返回:** `{ success, status?, body?, data?, bodyBytes?, headers?, error? }`
 
 #### `http.request(url, options)`
-发送自定义请求。**参数:** `url` (string), `options` (object) **返回:** `{ success, status?, data?, headers?, error? }`
+发送自定义请求。**参数:** `url` (string), `options` (object) **返回:** `{ success, status?, body?, data?, bodyBytes?, headers?, error? }`
 
 **options 配置项:**
 - `method` - HTTP 方法（GET、POST 等）
@@ -59,11 +59,17 @@ const download = http.download(
 - `body` - 请求体（字符串）
 - `timeout` - 超时时间（秒，默认 30）
 - `insecure` - 忽略 SSL 证书验证（默认 false）
+- `encoding` - 响应体编码方式，支持 `utf8`（默认）和 `base64`
+- `includeBodyBytes` - 是否额外返回 `bodyBytes` 字节数组；二进制 `base64` 场景默认会返回
 
 **返回值:**
 - `success` - 请求是否成功
 - `status` - HTTP 状态码
-- `data` - 响应内容（字符串）
+- `body` - 响应内容字符串
+- `data` - `body` 的兼容别名
+- `bodyBytes` - 原始响应字节数组；在 `encoding: 'base64'` 或 `includeBodyBytes: true` 时返回
+- `byteLength` - 原始响应体字节长度
+- `encoding` - 实际使用的响应编码
 - `headers` - 响应头对象
 - `error` - 错误信息（如果失败）
 
@@ -163,7 +169,20 @@ if (response.success) {
 }
 ```
 
-### 示例 6: API 封装
+### 示例 6: 获取图片 Base64
+
+```javascript
+const response = await http.get('https://httpbin.org/image/png', {
+  encoding: 'base64'
+});
+
+if (response.success) {
+  console.log('图片 Base64 长度:', response.body.length);
+  console.log('前 16 个字节:', response.bodyBytes.slice(0, 16));
+}
+```
+
+### 示例 7: API 封装
 
 ```javascript
 class ApiClient {
@@ -211,7 +230,7 @@ const api = new ApiClient('https://api.example.com', 'token123');
 const response = api.get('/users/1');
 ```
 
-### 示例 7: 重试机制
+### 示例 8: 重试机制
 
 ```javascript
 function requestWithRetry(url, options, maxRetries = 3) {

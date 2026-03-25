@@ -42,6 +42,19 @@ async function run() {
         assert(false, "POST request failed");
     }
 
+    console.log("Testing binary/base64 response...");
+    try {
+        const res = await http.get("https://httpbin.org/image/png", {
+            encoding: "base64"
+        });
+        assert(typeof res.body === "string" && res.body.length > 0, "Base64 body returned");
+        assert(Array.isArray(res.bodyBytes) && res.bodyBytes.length > 0, "bodyBytes returned");
+        assert(res.data === res.body, "data alias matches body");
+    } catch (e) {
+        console.error("Binary Error:", e);
+        assert(false, "Binary request failed");
+    }
+
     console.log("--- HTTP Module Test Finished ---");
 }
 
