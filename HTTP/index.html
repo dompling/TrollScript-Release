@@ -1015,10 +1015,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-api" class="md-nav__link">
+  <a href="#6-base64" class="md-nav__link">
     <span class="md-ellipsis">
       
-        示例 6: API 封装
+        示例 6: 获取图片 Base64
       
     </span>
   </a>
@@ -1026,10 +1026,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
+  <a href="#7-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        示例 7: 重试机制
+        示例 7: API 封装
       
     </span>
   </a>
@@ -1038,6 +1038,17 @@
         
           <li class="md-nav__item">
   <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        示例 8: 重试机制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         示例 8: 批量请求
@@ -1589,29 +1600,35 @@
 <h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
 <h3 id="http_1">HTTP 请求方法<a class="headerlink" href="#http_1" title="Permanent link">&para;</a></h3>
 <h4 id="httpgeturl-options"><code>http.get(url, options?)</code><a class="headerlink" href="#httpgeturl-options" title="Permanent link">&para;</a></h4>
-<p>发送 GET 请求。<strong>参数:</strong> <code>url</code> (string), <code>options</code> (object) <strong>返回:</strong> <code>{ success, status?, data?, headers?, error? }</code></p>
+<p>发送 GET 请求。<strong>参数:</strong> <code>url</code> (string), <code>options</code> (object) <strong>返回:</strong> <code>{ success, status?, body?, data?, bodyBytes?, headers?, error? }</code></p>
 <h4 id="httpposturl-options"><code>http.post(url, options?)</code><a class="headerlink" href="#httpposturl-options" title="Permanent link">&para;</a></h4>
-<p>发送 POST 请求。<strong>参数:</strong> <code>url</code> (string), <code>options</code> (object) <strong>返回:</strong> <code>{ success, status?, data?, headers?, error? }</code></p>
+<p>发送 POST 请求。<strong>参数:</strong> <code>url</code> (string), <code>options</code> (object) <strong>返回:</strong> <code>{ success, status?, body?, data?, bodyBytes?, headers?, error? }</code></p>
 <h4 id="httpputurl-options"><code>http.put(url, options?)</code><a class="headerlink" href="#httpputurl-options" title="Permanent link">&para;</a></h4>
-<p>发送 PUT 请求。<strong>参数:</strong> <code>url</code> (string), <code>options</code> (object) <strong>返回:</strong> <code>{ success, status?, data?, headers?, error? }</code></p>
+<p>发送 PUT 请求。<strong>参数:</strong> <code>url</code> (string), <code>options</code> (object) <strong>返回:</strong> <code>{ success, status?, body?, data?, bodyBytes?, headers?, error? }</code></p>
 <h4 id="httpdeleteurl-options"><code>http.delete(url, options?)</code><a class="headerlink" href="#httpdeleteurl-options" title="Permanent link">&para;</a></h4>
-<p>发送 DELETE 请求。<strong>参数:</strong> <code>url</code> (string), <code>options</code> (object) <strong>返回:</strong> <code>{ success, status?, data?, headers?, error? }</code></p>
+<p>发送 DELETE 请求。<strong>参数:</strong> <code>url</code> (string), <code>options</code> (object) <strong>返回:</strong> <code>{ success, status?, body?, data?, bodyBytes?, headers?, error? }</code></p>
 <h4 id="httppatchurl-options"><code>http.patch(url, options?)</code><a class="headerlink" href="#httppatchurl-options" title="Permanent link">&para;</a></h4>
-<p>发送 PATCH 请求。<strong>参数:</strong> <code>url</code> (string), <code>options</code> (object) <strong>返回:</strong> <code>{ success, status?, data?, headers?, error? }</code></p>
+<p>发送 PATCH 请求。<strong>参数:</strong> <code>url</code> (string), <code>options</code> (object) <strong>返回:</strong> <code>{ success, status?, body?, data?, bodyBytes?, headers?, error? }</code></p>
 <h4 id="httpheadurl-options"><code>http.head(url, options?)</code><a class="headerlink" href="#httpheadurl-options" title="Permanent link">&para;</a></h4>
-<p>发送 HEAD 请求。<strong>参数:</strong> <code>url</code> (string), <code>options</code> (object) <strong>返回:</strong> <code>{ success, status?, data?, headers?, error? }</code></p>
+<p>发送 HEAD 请求。<strong>参数:</strong> <code>url</code> (string), <code>options</code> (object) <strong>返回:</strong> <code>{ success, status?, body?, data?, bodyBytes?, headers?, error? }</code></p>
 <h4 id="httprequesturl-options"><code>http.request(url, options)</code><a class="headerlink" href="#httprequesturl-options" title="Permanent link">&para;</a></h4>
-<p>发送自定义请求。<strong>参数:</strong> <code>url</code> (string), <code>options</code> (object) <strong>返回:</strong> <code>{ success, status?, data?, headers?, error? }</code></p>
+<p>发送自定义请求。<strong>参数:</strong> <code>url</code> (string), <code>options</code> (object) <strong>返回:</strong> <code>{ success, status?, body?, data?, bodyBytes?, headers?, error? }</code></p>
 <p><strong>options 配置项:</strong>
 - <code>method</code> - HTTP 方法（GET、POST 等）
 - <code>headers</code> - 请求头对象
 - <code>body</code> - 请求体（字符串）
 - <code>timeout</code> - 超时时间（秒，默认 30）
-- <code>insecure</code> - 忽略 SSL 证书验证（默认 false）</p>
+- <code>insecure</code> - 忽略 SSL 证书验证（默认 false）
+- <code>encoding</code> - 响应体编码方式，支持 <code>utf8</code>（默认）和 <code>base64</code>
+- <code>includeBodyBytes</code> - 是否额外返回 <code>bodyBytes</code> 字节数组；二进制 <code>base64</code> 场景默认会返回</p>
 <p><strong>返回值:</strong>
 - <code>success</code> - 请求是否成功
 - <code>status</code> - HTTP 状态码
-- <code>data</code> - 响应内容（字符串）
+- <code>body</code> - 响应内容字符串
+- <code>data</code> - <code>body</code> 的兼容别名
+- <code>bodyBytes</code> - 原始响应字节数组；在 <code>encoding: 'base64'</code> 或 <code>includeBodyBytes: true</code> 时返回
+- <code>byteLength</code> - 原始响应体字节长度
+- <code>encoding</code> - 实际使用的响应编码
 - <code>headers</code> - 响应头对象
 - <code>error</code> - 错误信息（如果失败）</p>
 <hr />
@@ -1689,7 +1706,17 @@
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;数据:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="6-api">示例 6: API 封装<a class="headerlink" href="#6-api" title="Permanent link">&para;</a></h3>
+<h3 id="6-base64">示例 6: 获取图片 Base64<a class="headerlink" href="#6-base64" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://httpbin.org/image/png&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">encoding</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;base64&#39;</span>
+<span class="p">});</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;图片 Base64 长度:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;前 16 个字节:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">bodyBytes</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">16</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="7-api">示例 7: API 封装<a class="headerlink" href="#7-api" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">ApiClient</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">baseUrl</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">baseUrl</span><span class="p">;</span>
@@ -1734,7 +1761,7 @@
 <span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ApiClient</span><span class="p">(</span><span class="s1">&#39;https://api.example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;token123&#39;</span><span class="p">);</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/users/1&#39;</span><span class="p">);</span>
 </code></pre></div>
-<h3 id="7">示例 7: 重试机制<a class="headerlink" href="#7" title="Permanent link">&para;</a></h3>
+<h3 id="8">示例 8: 重试机制<a class="headerlink" href="#8" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">requestWithRetry</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">,</span><span class="w"> </span><span class="nx">maxRetries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">maxRetries</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">);</span>
@@ -1752,7 +1779,7 @@
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">requestWithRetry</span><span class="p">(</span><span class="s1">&#39;https://api.example.com/data&#39;</span><span class="p">);</span>
 </code></pre></div>
-<h3 id="8">示例 8: 批量请求<a class="headerlink" href="#8" title="Permanent link">&para;</a></h3>
+<h3 id="8_1">示例 8: 批量请求<a class="headerlink" href="#8_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">batchRequest</span><span class="p">(</span><span class="nx">urls</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
 
