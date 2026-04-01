@@ -65,6 +65,16 @@ JS 脚本 → new ListWidget() → 构建节点树 → Script.setWidget()
 3. 调用 `Script.setWidget(widget)` 将节点树序列化并保存
 4. iOS Widget Extension 从 App Group 读取数据并用 SwiftUI 渲染
 
+#### `Widget.preview(widget, family?)`
+
+在 MiniApp / App 调试界面中预览 Widget，而不是直接保存到 Widget 槽位。`family` 支持 `small`、`medium`、`large`。
+
+```javascript
+const widget = new ListWidget();
+widget.addText('Preview');
+Widget.preview(widget, 'medium');
+```
+
 ---
 
 ## API 参考

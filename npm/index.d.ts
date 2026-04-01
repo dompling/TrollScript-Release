@@ -179,14 +179,14 @@ declare const icloud: Icloud;
 interface File {
     /**
      * 读取文件内容
-     * @param path 文件绝对路径
+     * @param path 绝对路径，或自动解析到 Documents 下的相对路径
      * @returns 文件内容
      */
     read(path: string): string;
 
     /**
      * 写入文件内容
-     * @param path 文件绝对路径
+     * @param path 绝对路径，或自动解析到 Documents 下的相对路径
      * @param content 要写入的内容
      * @returns 是否写入成功
      */
@@ -194,7 +194,7 @@ interface File {
 
     /**
      * 追加文件内容
-     * @param path 文件绝对路径
+     * @param path 绝对路径，或自动解析到 Documents 下的相对路径
      * @param content 要追加的内容
      * @returns 是否追加成功
      */
@@ -202,14 +202,14 @@ interface File {
 
     /**
      * 检查文件是否存在
-     * @param path 文件绝对路径
+     * @param path 绝对路径，或自动解析到 Documents 下的相对路径
      * @returns 文件是否存在
      */
     exists(path: string): boolean;
 
     /**
      * 删除文件
-     * @param path 文件绝对路径
+     * @param path 绝对路径，或自动解析到 Documents 下的相对路径
      * @returns 是否删除成功
      */
     delete(path: string): boolean;
@@ -391,7 +391,7 @@ interface Http {
      * @param url 下载地址
      * @param path 保存路径
      * @param options 请求选项 { insecure, sync }
-     * @returns 返回 Promise，resolve 时包含成功状态和本地文件路径
+     * @returns 返回 Promise，resolve 时包含成功状态和本地文件路径。设置 sync: true 可使用同步模式
      */
     download(url: string, path: string, options?: Record<string, any>): any;
 
@@ -979,6 +979,12 @@ interface Location {
     requestAccess(): void;
 
     /**
+     * 异步请求定位权限
+     * @returns 权限流程完成后 resolve
+     */
+    requestAccessAsync(): any;
+
+    /**
      * 获取权限状态
      * @returns 权限状态
      */
@@ -995,6 +1001,12 @@ interface Location {
      * @returns 位置信息对象(包含经纬度、海拔、精度等)，失败返回 null
      */
     getCurrent(): any;
+
+    /**
+     * 异步获取当前位置
+     * @returns resolve 时返回位置信息对象，失败返回 null
+     */
+    getCurrentAsync(): any;
 
     /**
      * 获取当前位置(别名)
@@ -1020,6 +1032,13 @@ interface Location {
     geocode(address: string): any;
 
     /**
+     * 异步地址转坐标
+     * @param address 地址字符串
+     * @returns resolve 时返回地理位置对象数组
+     */
+    geocodeAsync(address: string): any;
+
+    /**
      * 坐标转地址
      * @param lat 纬度
      * @param lng 经度
@@ -1027,6 +1046,15 @@ interface Location {
      * @returns 地址信息对象数组
      */
     reverseGeocode(lat: number, lng: number, locale?: string): any;
+
+    /**
+     * 异步坐标转地址
+     * @param lat 纬度
+     * @param lng 经度
+     * @param locale 语言区域标识(可选，如 'zh_CN'、'en_US'，默认使用系统语言)
+     * @returns resolve 时返回地址信息对象数组
+     */
+    reverseGeocodeAsync(lat: number, lng: number, locale?: string): any;
 
     /**
      * 定位服务是否开启
@@ -1048,10 +1076,23 @@ interface Location {
     setLocationServicesEnabled(enabled: boolean): any;
 
     /**
+     * 异步开关系统定位服务(需要 TrollStore 权限)
+     * @param enabled true 开启，false 关闭
+     * @returns resolve 时返回操作结果
+     */
+    setLocationServicesEnabledAsync(enabled: boolean): any;
+
+    /**
      * 切换定位服务状态(需要 TrollStore 权限)
      * @returns 操作结果(success 表示是否成功，enabled 为切换后状态)
      */
     toggleLocationServices(): any;
+
+    /**
+     * 异步切换定位服务状态(需要 TrollStore 权限)
+     * @returns resolve 时返回操作结果
+     */
+    toggleLocationServicesAsync(): any;
 
 }
 

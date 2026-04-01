@@ -10,17 +10,17 @@ HTTP 模块提供了 HTTP/HTTPS 请求功能。你可以使用它来发送各种
 
 ```javascript
 // GET 请求
-const response = http.get('https://api.example.com/data');
+const response = await http.get('https://api.example.com/data');
 console.log(response.data);
 
 // POST 请求
-const result = http.post('https://api.example.com/users', {
+const result = await http.post('https://api.example.com/users', {
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ name: 'Alice', age: 25 })
 });
 
 // 下载文件
-const download = http.download(
+const download = await http.download(
   'https://example.com/file.zip',
   file.documentsPath() + '/file.zip'
 );
@@ -59,6 +59,7 @@ const download = http.download(
 - `body` - 请求体（字符串）
 - `timeout` - 超时时间（秒，默认 30）
 - `insecure` - 忽略 SSL 证书验证（默认 false）
+- `sync` - 是否切换到同步兼容模式（默认 false）
 - `encoding` - 响应体编码方式，支持 `utf8`（默认）和 `base64`
 - `includeBodyBytes` - 是否额外返回 `bodyBytes` 字节数组；二进制 `base64` 场景默认会返回
 
@@ -82,6 +83,7 @@ const download = http.download(
 
 **options 配置项:**
 - `insecure` - 忽略 SSL 证书验证（默认 false）
+- `sync` - 是否切换到同步兼容模式（默认 false）
 
 ---
 
@@ -90,7 +92,7 @@ const download = http.download(
 ### 示例 1: GET 请求
 
 ```javascript
-const response = http.get('https://api.github.com/users/octocat');
+const response = await http.get('https://api.github.com/users/octocat');
 
 if (response.success) {
   const user = JSON.parse(response.data);
@@ -110,7 +112,7 @@ const data = {
   author: 'Alice'
 };
 
-const response = http.post('https://api.example.com/posts', {
+const response = await http.post('https://api.example.com/posts', {
   headers: {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer token123'
@@ -128,7 +130,7 @@ if (response.success) {
 ### 示例 3: 自定义请求
 
 ```javascript
-const response = http.request('https://api.example.com/data', {
+const response = await http.request('https://api.example.com/data', {
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
@@ -145,7 +147,7 @@ const response = http.request('https://api.example.com/data', {
 const url = 'https://example.com/file.zip';
 const path = file.documentsPath() + '/download.zip';
 
-const result = http.download(url, path);
+const result = await http.download(url, path);
 
 if (result.success) {
   console.log('下载成功:', result.path);
@@ -160,7 +162,7 @@ if (result.success) {
 
 ```javascript
 // 用于自签名证书或测试环境
-const response = http.get('https://self-signed.example.com/api', {
+const response = await http.get('https://self-signed.example.com/api', {
   insecure: true
 });
 
@@ -227,15 +229,15 @@ class ApiClient {
 
 // 使用
 const api = new ApiClient('https://api.example.com', 'token123');
-const response = api.get('/users/1');
+const response = await api.get('/users/1');
 ```
 
 ### 示例 8: 重试机制
 
 ```javascript
-function requestWithRetry(url, options, maxRetries = 3) {
+async function requestWithRetry(url, options, maxRetries = 3) {
   for (let i = 0; i < maxRetries; i++) {
-    const response = http.get(url, options);
+    const response = await http.get(url, options);
 
     if (response.success) {
       return response;
@@ -248,25 +250,28 @@ function requestWithRetry(url, options, maxRetries = 3) {
   return { success: false, error: '达到最大重试次数' };
 }
 
-const response = requestWithRetry('https://api.example.com/data');
+const response = await requestWithRetry('https://api.example.com/data');
 ```
 
-### 示例 8: 批量请求
+### 示例 9: 批量请求
 
 ```javascript
-function batchRequest(urls) {
+async function batchRequest(urls) {
   const results = [];
 
   urls.forEach((url, index) => {
     console.log(`请求 ${index + 1}/${urls.length}: ${url}`);
-    const response = http.get(url);
+  });
+
+  for (const url of urls) {
+    const response = await http.get(url);
     results.push({
       url: url,
       success: response.success,
       data: response.success ? response.data : null,
       error: response.error
     });
-  });
+  }
 
   return results;
 }
@@ -277,7 +282,7 @@ const urls = [
   'https://api.example.com/users/3'
 ];
 
-const results = batchRequest(urls);
+const results = await batchRequest(urls);
 console.log(`成功: ${results.filter(r => r.success).length}/${results.length}`);
 ```
 
@@ -289,13 +294,13 @@ console.log(`成功: ${results.filter(r => r.success).length}/${results.length}`
 
 ```javascript
 // ✅ 正确
-const response = http.get(url);
+const response = await http.get(url);
 if (response.success && response.status === 200) {
   processData(response.data);
 }
 
 // ❌ 错误 - 不检查状态
-const response = http.get(url);
+const response = await http.get(url);
 const data = JSON.parse(response.data);  // 可能失败
 ```
 
@@ -303,12 +308,12 @@ const data = JSON.parse(response.data);  // 可能失败
 
 ```javascript
 // ✅ 正确 - 根据需求设置超时
-const response = http.get(url, {
+const response = await http.get(url, {
   timeout: 60  // 大文件或慢速 API
 });
 
 // ❌ 错误 - 使用默认超时可能不够
-const response = http.get(slowApiUrl);
+const response = await http.get(slowApiUrl);
 ```
 
 ### 3. 处理 JSON 数据
@@ -327,13 +332,13 @@ try {
 
 ```javascript
 // ✅ 正确 - 明确指定
-const response = http.post(url, {
+const response = await http.post(url, {
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(data)
 });
 
 // ✅ 正确 - 表单数据
-const response = http.post(url, {
+const response = await http.post(url, {
   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
   body: 'key1=value1&key2=value2'
 });
@@ -344,12 +349,12 @@ const response = http.post(url, {
 ```javascript
 // ✅ 正确 - 仅在必要时使用
 const isDev = storage.get('environment') === 'development';
-const response = http.get(url, {
+const response = await http.get(url, {
   insecure: isDev
 });
 
 // ❌ 错误 - 生产环境使用
-const response = http.get(url, {
+const response = await http.get(url, {
   insecure: true  // 不安全！
 });
 ```
@@ -358,11 +363,12 @@ const response = http.get(url, {
 
 ## 注意事项
 
-1. **同步执行**: 所有请求都是同步的，会阻塞执行
-2. **超时设置**: 默认超时 30 秒，下载超时 300 秒
-3. **SSL 验证**: 默认验证 SSL 证书，使用 `insecure: true` 可绕过
-4. **请求头**: 支持自定义请求头，会覆盖系统默认值
-5. **响应大小**: 响应内容作为字符串返回，大文件建议使用 download
-6. **错误处理**: 网络错误、超时等会在返回值中包含 error 字段
-7. **线程安全**: 所有操作都是线程安全的
-8. **守护进程**: 在 Daemon 模式下可正常使用
+1. **默认异步**: 所有请求默认返回 Promise，需使用 `await` 或 `.then()`
+2. **同步兼容模式**: 仅在需要兼容旧代码时使用 `sync: true`
+3. **超时设置**: 默认超时 30 秒，下载超时 300 秒
+4. **SSL 验证**: 默认验证 SSL 证书，使用 `insecure: true` 可绕过
+5. **请求头**: 支持自定义请求头，会覆盖系统默认值
+6. **响应大小**: 响应内容作为字符串返回，大文件建议使用 download
+7. **错误处理**: 网络错误、超时等会在返回值中包含 error 字段
+8. **线程安全**: 所有操作都是线程安全的
+9. **守护进程**: 在 Daemon 模式下可正常使用

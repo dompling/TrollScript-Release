@@ -441,7 +441,7 @@ iCloud 文件操作
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `path` | `string` | 文件绝对路径 | No |
+| `path` | `string` | 绝对路径，或自动解析到 Documents 下的相对路径 | No |
 
 **Returns:** `string`
 
@@ -459,7 +459,7 @@ iCloud 文件操作
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `path` | `string` | 文件绝对路径 | No |
+| `path` | `string` | 绝对路径，或自动解析到 Documents 下的相对路径 | No |
 | `content` | `string` | 要写入的内容 | No |
 
 **Returns:** `boolean`
@@ -478,7 +478,7 @@ iCloud 文件操作
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `path` | `string` | 文件绝对路径 | No |
+| `path` | `string` | 绝对路径，或自动解析到 Documents 下的相对路径 | No |
 | `content` | `string` | 要追加的内容 | No |
 
 **Returns:** `boolean`
@@ -497,7 +497,7 @@ iCloud 文件操作
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `path` | `string` | 文件绝对路径 | No |
+| `path` | `string` | 绝对路径，或自动解析到 Documents 下的相对路径 | No |
 
 **Returns:** `boolean`
 
@@ -515,7 +515,7 @@ iCloud 文件操作
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `path` | `string` | 文件绝对路径 | No |
+| `path` | `string` | 绝对路径，或自动解析到 Documents 下的相对路径 | No |
 
 **Returns:** `boolean`
 
@@ -945,7 +945,7 @@ iCloud 文件操作
 
 **Returns:** `Promise<{ success: boolean, path?: string, error?: string }>`
 
-*返回 Promise，resolve 时包含成功状态和本地文件路径*
+*返回 Promise，resolve 时包含成功状态和本地文件路径。设置 sync: true 可使用同步模式*
 
 ---
 
@@ -2299,6 +2299,20 @@ Base64 解码
 
 ---
 
+### `location.requestAccessAsync`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
+**Signature:** `requestAccessAsync()`
+
+异步请求定位权限
+
+**Returns:** `Promise<void>`
+
+*权限流程完成后 resolve*
+
+---
+
 ### `location.getAccessStatus`
 
 **Signature:** `getAccessStatus()`
@@ -2332,6 +2346,18 @@ Base64 解码
 **Returns:** `{ lat: number, lng: number, alt: number, course: number, speed: number, accuracy: number, timestamp: number } \| null`
 
 *位置信息对象(包含经纬度、海拔、精度等)，失败返回 null*
+
+---
+
+### `location.getCurrentAsync`
+
+**Signature:** `getCurrentAsync()`
+
+异步获取当前位置
+
+**Returns:** `Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, accuracy: number, timestamp: number } \| null>`
+
+*resolve 时返回位置信息对象，失败返回 null*
 
 ---
 
@@ -2386,6 +2412,24 @@ Base64 解码
 
 ---
 
+### `location.geocodeAsync`
+
+**Signature:** `geocodeAsync(address)`
+
+异步地址转坐标
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `address` | `string` | 地址字符串 | No |
+
+**Returns:** `Promise<[{ lat: number, lng: number, name: string }]>`
+
+*resolve 时返回地理位置对象数组*
+
+---
+
 ### `location.reverseGeocode`
 
 **Signature:** `reverseGeocode(lat, lng, locale?)`
@@ -2403,6 +2447,26 @@ Base64 解码
 **Returns:** `[{ name: string, country: string, locality: string, administrativeArea: string, subLocality: string, thoroughfare: string, postalCode: string }]`
 
 *地址信息对象数组*
+
+---
+
+### `location.reverseGeocodeAsync`
+
+**Signature:** `reverseGeocodeAsync(lat, lng, locale?)`
+
+异步坐标转地址
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `lat` | `number` | 纬度 | No |
+| `lng` | `number` | 经度 | No |
+| `locale` | `string` | 语言区域标识(可选，如 'zh_CN'、'en_US'，默认使用系统语言) | Yes |
+
+**Returns:** `Promise<[{ name: string, country: string, locality: string, administrativeArea: string, subLocality: string, thoroughfare: string, postalCode: string }]>`
+
+*resolve 时返回地址信息对象数组*
 
 ---
 
@@ -2450,6 +2514,26 @@ Base64 解码
 
 ---
 
+### `location.setLocationServicesEnabledAsync`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `setLocationServicesEnabledAsync(enabled)`
+
+异步开关系统定位服务(需要 TrollStore 权限)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | true 开启，false 关闭 | No |
+
+**Returns:** `Promise<{ success: boolean, enabled?: boolean, message?: string }>`
+
+*resolve 时返回操作结果*
+
+---
+
 ### `location.toggleLocationServices`
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
@@ -2461,6 +2545,20 @@ Base64 解码
 **Returns:** `{ success: boolean, enabled?: boolean, message?: string }`
 
 *操作结果(success 表示是否成功，enabled 为切换后状态)*
+
+---
+
+### `location.toggleLocationServicesAsync`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `toggleLocationServicesAsync()`
+
+异步切换定位服务状态(需要 TrollStore 权限)
+
+**Returns:** `Promise<{ success: boolean, enabled?: boolean, message?: string }>`
+
+*resolve 时返回操作结果*
 
 ---
 

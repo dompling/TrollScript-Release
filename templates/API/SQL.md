@@ -42,8 +42,8 @@ sql.close('mydb');
 
 ### 数据库管理
 
-#### `sql.open(name)`
-打开或创建数据库。**参数:** `name` (string) **返回:** `boolean`
+#### `sql.open(name?)`
+打开或创建数据库。**参数:** `name` (string, 可选，默认 `default`) **返回:** `boolean`
 
 数据库文件存储在 Documents 目录，扩展名为 `.sqlite`。
 
@@ -54,8 +54,8 @@ if (success) {
 }
 ```
 
-#### `sql.close(name)`
-关闭数据库连接。**参数:** `name` (string) **返回:** `boolean`
+#### `sql.close(name?)`
+关闭数据库连接。**参数:** `name` (string, 可选，默认 `default`) **返回:** `boolean`
 
 ```javascript
 sql.close('mydb');
@@ -65,14 +65,14 @@ sql.close('mydb');
 
 ### 执行操作
 
-#### `sql.execute(name, sql, params?)`
-执行 SQL 语句（INSERT、UPDATE、DELETE、CREATE 等）。**参数:** `name` (string), `sql` (string), `params` (array, 可选) **返回:** `boolean`
+#### `sql.execute(name?, sql, params?)`
+执行 SQL 语句（INSERT、UPDATE、DELETE、CREATE 等）。**参数:** `name` (string, 可选，默认 `default`), `sql` (string), `params` (array, 可选) **返回:** `{ success, changes?, lastInsertId?, error? }`
 
 **支持参数化查询**，使用 `?` 占位符防止 SQL 注入。
 
 ```javascript
 // 创建表
-sql.execute('mydb', `
+let result = sql.execute('mydb', `
   CREATE TABLE IF NOT EXISTS products (
     id INTEGER PRIMARY KEY,
     name TEXT,
@@ -81,10 +81,11 @@ sql.execute('mydb', `
 `);
 
 // 插入数据（参数化）
-sql.execute('mydb',
+result = sql.execute('mydb',
   'INSERT INTO products (name, price) VALUES (?, ?)',
   ['iPhone', 5999.00]
 );
+console.log(result.lastInsertId);
 
 // 更新数据
 sql.execute('mydb',
@@ -98,6 +99,9 @@ sql.execute('mydb',
   [1000]
 );
 ```
+
+#### `sql.exec(name?, sql, params?)`
+`execute()` 的别名。参数和返回值完全一致，适合兼容旧脚本。
 
 #### `sql.query(name, sql, params?)`
 查询数据，返回所有结果。**参数:** `name` (string), `sql` (string), `params` (array, 可选) **返回:** `array`

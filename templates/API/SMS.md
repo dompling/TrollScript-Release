@@ -22,10 +22,21 @@ messages.forEach(msg => {
 
 ## API 参考
 
+### 权限与数据源
+
+#### `sms.isRealDataAvailable()`
+检查当前是否可访问真实短信数据库。**返回:** `boolean`
+
+```javascript
+if (!sms.isRealDataAvailable()) {
+  console.log('当前将回退到模拟短信数据');
+}
+```
+
 ### 读取短信
 
-#### `sms.read(limit?)`
-读取短信列表。**参数:** `limit` (number, 可选，默认 100) **返回:** `Message[]`
+#### `sms.read(limit?, offset?)`
+读取短信列表。**参数:** `limit` (number, 可选，默认 50), `offset` (number, 可选，默认 0) **返回:** `Message[]`
 
 **Message 对象结构:**
 ```javascript
@@ -56,12 +67,12 @@ messages.forEach(msg => {
 });
 ```
 
-#### `sms.getLatest(count?)`
-获取最新的短信。**参数:** `count` (number, 可选，默认 10) **返回:** `Message[]`
+#### `sms.getLatest()`
+获取最新的一条短信。**返回:** `Message | null`
 
 ```javascript
-const latest = sms.getLatest(5);
-console.log('最新 5 条短信:', latest);
+const latest = sms.getLatest();
+console.log('最新短信:', latest);
 ```
 
 #### `sms.getUnread(limit?)`
@@ -146,13 +157,13 @@ console.log(`数据类型: ${stats.isMockData ? '模拟' : '真实'}`);
 检查 Root Helper 是否可用。**返回:** `boolean`
 
 #### `sms.helperCheck()`
-检查短信数据库文件是否存在。**返回:** `boolean`
+检查短信数据库访问状态。**返回:** `object`
 
 #### `sms.helperCopy()`
-使用 Root Helper 复制短信数据库。**返回:** `boolean`
+使用 Root Helper 复制短信数据库。**返回:** `{ success, path, error }`
 
-#### `sms.helperList()`
-列出短信数据库目录内容。**返回:** `string[]`
+#### `sms.helperList(path)`
+列出指定目录内容。**参数:** `path` (string) **返回:** `object`
 
 ```javascript
 if (sms.helperAvailable()) {

@@ -65,6 +65,9 @@ if (granted) {
 #### `reminder.getLists()`
 获取所有提醒列表。**返回:** `List[]`
 
+#### `reminder.getSystemLists()`
+获取系统提醒列表。当前实现与 `getLists()` 一致，作为兼容别名保留。**返回:** `List[]`
+
 **List 对象结构:**
 ```javascript
 {
@@ -114,25 +117,26 @@ console.log(`共有 ${all.length} 个提醒`);
 const listReminders = reminder.getAll('list-id-123');
 ```
 
-#### `reminder.getSorted(by, listId?)`
-获取排序后的提醒。**参数:** `by` (string), `listId` (string, 可选) **返回:** `Reminder[]`
+#### `reminder.getSorted(options?)`
+获取排序后的提醒。**参数:** `options` (object, 可选) **返回:** `Reminder[]`
 
-**排序方式:**
-- `'title'` - 按标题排序
-- `'priority'` - 按优先级排序
-- `'dueDate'` - 按到期时间排序
-- `'createdAt'` - 按创建时间排序
+**options 参数结构:**
+```javascript
+{
+  sortBy?: 'createdAt' | 'dueDate' | 'priority' | 'title',
+  ascending?: boolean,    // 默认 true
+  completed?: boolean     // 是否包含已完成提醒，默认 false
+}
+```
 
 ```javascript
 // 按优先级排序
-const byPriority = reminder.getSorted('priority');
-
-// 按到期时间排序（指定列表）
-const byDueDate = reminder.getSorted('dueDate', 'list-id-123');
+const byPriority = reminder.getSorted({ sortBy: 'priority' });
+const byDueDateDesc = reminder.getSorted({ sortBy: 'dueDate', ascending: false });
 ```
 
-#### `reminder.getUpcoming(days?, listId?)`
-获取即将到期的提醒。**参数:** `days` (number, 可选，默认 7), `listId` (string, 可选) **返回:** `Reminder[]`
+#### `reminder.getUpcoming(days?)`
+获取即将到期的提醒。**参数:** `days` (number, 可选，默认 7) **返回:** `Reminder[]`
 
 ```javascript
 // 获取未来7天的提醒
@@ -141,8 +145,6 @@ const upcoming = reminder.getUpcoming();
 // 获取未来3天的提醒
 const soon = reminder.getUpcoming(3);
 
-// 获取指定列表未来7天的提醒
-const listUpcoming = reminder.getUpcoming(7, 'list-id-123');
 ```
 
 #### `reminder.getOverdue(listId?)`
@@ -162,6 +164,9 @@ if (overdue.length > 0) {
 
 #### `reminder.create(title, options?)`
 创建新提醒。**参数:** `title` (string), `options` (object, 可选) **返回:** `string | object` - 返回提醒 ID，位置提醒返回详细对象
+
+#### `reminder.createSystemReminder(title, options?)`
+创建系统提醒事项。当前实现与 `create()` 共用逻辑，作为兼容入口保留。**参数:** 同 `create`。**返回:** 同 `create`
 
 **options 参数结构:**
 ```javascript
@@ -226,13 +231,17 @@ if (success) {
 }
 ```
 
-#### `reminder.reorder(id, newIndex)`
-重新排序提醒。**参数:** `id` (string), `newIndex` (number) **返回:** `boolean`
+#### `reminder.reorder(ids)`
+批量重排提醒。**参数:** `ids` (string[]) **返回:** `{ success, error? }`
 
 ```javascript
-// 将提醒移动到第一位
-reminder.reorder('reminder-id-123', 0);
+const result = reminder.reorder(['id-1', 'id-2', 'id-3']);
+if (!result.success) {
+  console.log(result.error);
+}
 ```
+
+> 当前系统 Reminder API 不支持通过该接口真正批量重排，通常会返回失败对象作为明确反馈。
 
 ---
 

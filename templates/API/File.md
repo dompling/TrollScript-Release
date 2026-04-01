@@ -79,6 +79,11 @@ if (file.rootAvailable()) {
 #### `file.tempPath()`
 获取临时目录路径。**返回:** `string`
 
+#### `file.debug(path)`
+返回路径调试信息。**参数:** `path` (string) **返回:** `string`
+
+用于查看安全路径解析结果、文件是否存在、是否可读/可写，适合排查脚本里的路径问题。
+
 ---
 
 ### Root 权限操作
@@ -97,6 +102,9 @@ if (file.rootAvailable()) {
 
 #### `file.rootExists(path)`
 使用 Root 权限检查文件是否存在。**参数:** `path` (string) **返回:** `boolean`
+
+#### `file.rootCheck(path)`
+使用 Root 权限检查路径信息。**参数:** `path` (string) **返回:** `{ readable, writable, exists, isDirectory }`
 
 ---
 

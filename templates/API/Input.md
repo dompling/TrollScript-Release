@@ -109,6 +109,30 @@ const s = input.getScreenSize();
 input.tap(s.width / 2, s.height / 2);
 ```
 
+#### `input.touchDown(x, y, fingerID?, displayId?)`
+
+模拟触摸按下。兼容 AutoGo 风格签名，但当前仅支持 `fingerID = 0` 与 `displayId = 0`。**返回:** `boolean`
+
+```javascript
+input.touchDown(500, 600, 0, 0);
+```
+
+#### `input.touchMove(x, y, fingerID?, displayId?)`
+
+模拟触摸移动。兼容 AutoGo 风格签名，但当前仅支持 `fingerID = 0` 与 `displayId = 0`。**返回:** `boolean`
+
+```javascript
+input.touchMove(550, 650, 0, 0);
+```
+
+#### `input.touchUp(x, y, fingerID?, displayId?)`
+
+模拟触摸抬起。兼容 AutoGo 风格签名，但当前仅支持 `fingerID = 0` 与 `displayId = 0`。**返回:** `boolean`
+
+```javascript
+input.touchUp(550, 650, 0, 0);
+```
+
 #### `input.doubleTap(x, y)`
 
 在指定坐标处模拟双击。**返回:** `boolean`
@@ -176,6 +200,14 @@ input.drag(200, 300, 200, 500, 0.5);
 ```
 
 > `drag` 与 `swipe` 的区别：`drag` 在起点会先按住 100ms 再开始移动，模拟真实的拖拽操作。
+
+#### `input.swipe2(fromX, fromY, toX, toY, duration?)`
+
+AutoGo 兼容别名。当前实现仍然复用 `swipe` 的线性轨迹，不是贝塞尔曲线。**返回:** `boolean`
+
+```javascript
+input.swipe2(300, 800, 300, 200, 0.5);
+```
 
 ---
 
@@ -282,6 +314,52 @@ input.pressButtons(["volumeUp", "volumeDown"]);
 
 > 内部实现：按序发送所有 key down 事件 → 保持 150ms → 反序发送所有 key up 事件。
 
+### AutoGo 风格系统动作
+
+#### `input.home(displayId?)`
+
+使用 iOS 上滑手势近似返回主屏。当前仅支持 `displayId = 0`。**返回:** `boolean`
+
+#### `input.back(displayId?)`
+
+使用 iOS 左缘返回手势近似执行返回动作。当前仅支持 `displayId = 0`。**返回:** `boolean`
+
+#### `input.recents(displayId?)`
+
+使用 iOS 上滑并停留手势近似打开多任务界面。当前仅支持 `displayId = 0`。**返回:** `boolean`
+
+#### `input.notifications()`
+
+下拉通知中心。**返回:** `boolean`
+
+#### `input.quickSettings()`
+
+下拉控制中心。**返回:** `boolean`
+
+#### `input.powerDialog()`
+
+尝试通过长按电源键唤起电源菜单。**返回:** `boolean`
+
+#### `input.camera()`
+
+启动系统相机 App。**返回:** `boolean`
+
+#### `input.keyAction(code, displayId?)`
+
+按 AutoGo/Android 风格 keycode 执行对应动作。当前只支持部分常见按键，且仅支持 `displayId = 0`。**返回:** `boolean | object`
+
+常用常量：
+
+```javascript
+input.KEYCODE_HOME
+input.KEYCODE_BACK
+input.KEYCODE_ENTER
+input.KEYCODE_VOLUME_UP
+input.KEYCODE_VOLUME_DOWN
+input.KEYCODE_NOTIFICATION
+input.KEYCODE_APP_SWITCH
+```
+
 ---
 
 ### 触摸录制
@@ -292,10 +370,13 @@ input.pressButtons(["volumeUp", "volumeDown"]);
 
 开始录制触摸事件。清空之前的录制数据，开始捕获新的触摸事件。
 
-**返回:** `boolean` - 始终返回 `true`
+**返回:** `object`
 
 ```javascript
-input.startRecording();
+const result = input.startRecording();
+console.log(result);
+// { success: true, alreadyRecording: false }
+
 console.log("开始录制，请在屏幕上操作...");
 ```
 
@@ -307,12 +388,16 @@ console.log("开始录制，请在屏幕上操作...");
 
 ```javascript
 {
+  success: true,
+  wasRecording: true,
   events: [
     { type: "down", x: 100, y: 200, pointerId: 1, timestamp: 0 },
     { type: "move", x: 105, y: 210, pointerId: 1, timestamp: 16 },
     { type: "up",   x: 110, y: 220, pointerId: 1, timestamp: 150 }
   ],
-  script: "input.tap(100, 200);\n..."
+  script: "input.tap(100, 200);\n...",
+  gestureCount: 1,
+  recordingDurationMs: 150
 }
 ```
 
@@ -335,6 +420,7 @@ console.log("开始录制，请在屏幕上操作...");
 | 位移 < 10pt 且时间 < 300ms | `input.tap(x, y)` |
 | 位移 < 10pt 且时间 >= 500ms | `input.longPress(x, y, duration)` |
 | 位移 >= 10pt | `input.swipe(fromX, fromY, toX, toY, duration)` |
+| 多指/复杂轨迹/长时轨迹 | `input.touchDown/move/up(...)` 原始回放 |
 | 手势间隔 > 50ms | 插入 `util.sleep(interval)` |
 
 ```javascript

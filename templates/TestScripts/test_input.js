@@ -89,6 +89,9 @@ async function run() {
     const typeResult = input.typeText("hello", 0.05);
     assert(typeResult === true, "typeText() returns true");
 
+    const unsupportedType = input.typeText("你好", 0.05);
+    assert(unsupportedType && unsupportedType.success === false, "typeText() returns error object for unsupported characters");
+
     util.sleep(300);
 
     // 12. pasteText - 中文/Unicode 支持
@@ -124,6 +127,23 @@ async function run() {
     // 17. pressButtons - 参数校验
     const badButtons = input.pressButtons(["power", "nonexistent"]);
     assert(badButtons && badButtons.error, "pressButtons() with unknown button returns error");
+
+    // 18. recording APIs
+    const recordingStart = input.startRecording();
+    assert(recordingStart && recordingStart.success === true, "startRecording() returns success object");
+    assert(typeof recordingStart.alreadyRecording === "boolean", "startRecording() returns alreadyRecording");
+    assert(input.isRecording() === true, "isRecording() returns true after startRecording()");
+
+    util.sleep(120);
+
+    const recordingStop = input.stopRecording();
+    assert(recordingStop && recordingStop.success === true, "stopRecording() returns success object");
+    assert(typeof recordingStop.wasRecording === "boolean", "stopRecording() returns wasRecording");
+    assert(Array.isArray(recordingStop.events), "stopRecording() returns events array");
+    assert(typeof recordingStop.script === "string", "stopRecording() returns replay script");
+    assert(typeof recordingStop.gestureCount === "number", "stopRecording() returns gestureCount");
+    assert(typeof recordingStop.recordingDurationMs === "number", "stopRecording() returns recordingDurationMs");
+    assert(input.isRecording() === false, "isRecording() returns false after stopRecording()");
 
     console.log("--- Input Module Test Finished ---");
 }

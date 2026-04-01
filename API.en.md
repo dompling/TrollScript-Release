@@ -442,7 +442,7 @@ Read file content
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `path` | `string` | Absolute file path | No |
+| `path` | `string` | Absolute path, or relative path resolved under Documents | No |
 
 **Returns:** `string`
 
@@ -460,7 +460,7 @@ Write content to a file
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `path` | `string` | Absolute file path | No |
+| `path` | `string` | Absolute path, or relative path resolved under Documents | No |
 | `content` | `string` | The content to be written | No |
 
 **Returns:** `boolean`
@@ -479,7 +479,7 @@ Append content to a file
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `path` | `string` | Absolute file path | No |
+| `path` | `string` | Absolute path, or relative path resolved under Documents | No |
 | `content` | `string` | The content to be appended | No |
 
 **Returns:** `boolean`
@@ -498,7 +498,7 @@ Check if a file exists
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `path` | `string` | Absolute file path | No |
+| `path` | `string` | Absolute path, or relative path resolved under Documents | No |
 
 **Returns:** `boolean`
 
@@ -516,7 +516,7 @@ Delete a file
 
 | Name | Type | Description | Optional |
 |------|------|-------------|----------|
-| `path` | `string` | Absolute file path | No |
+| `path` | `string` | Absolute path, or relative path resolved under Documents | No |
 
 **Returns:** `boolean`
 
@@ -946,7 +946,7 @@ Download a file (async, returns Promise)
 
 **Returns:** `Promise<{ success: boolean, path?: string, error?: string }>`
 
-*Returns a Promise that resolves with success status and local file path*
+*Returns a Promise that resolves with success status and local file path. Set sync: true for synchronous mode*
 
 ---
 
@@ -2300,6 +2300,20 @@ Request location access permissions
 
 ---
 
+### `location.requestAccessAsync`
+
+![Not Supported](https://img.shields.io/badge/Trigger-None-red)
+
+**Signature:** `requestAccessAsync()`
+
+Request location access permissions asynchronously
+
+**Returns:** `Promise<void>`
+
+*Promise resolved after the permission flow finishes*
+
+---
+
 ### `location.getAccessStatus`
 
 **Signature:** `getAccessStatus()`
@@ -2333,6 +2347,18 @@ Retrieve current geographic location
 **Returns:** `{ lat: number, lng: number, alt: number, course: number, speed: number, accuracy: number, timestamp: number } \| null`
 
 *Location data object containing coordinates, altitude, etc., or null if failed*
+
+---
+
+### `location.getCurrentAsync`
+
+**Signature:** `getCurrentAsync()`
+
+Retrieve current geographic location asynchronously
+
+**Returns:** `Promise<{ lat: number, lng: number, alt: number, course: number, speed: number, accuracy: number, timestamp: number } \| null>`
+
+*Promise resolved with location data object, or null if failed*
 
 ---
 
@@ -2387,6 +2413,24 @@ Geocoding: Address to coordinates
 
 ---
 
+### `location.geocodeAsync`
+
+**Signature:** `geocodeAsync(address)`
+
+Geocoding asynchronously: Address to coordinates
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `address` | `string` | Target address string | No |
+
+**Returns:** `Promise<[{ lat: number, lng: number, name: string }]>`
+
+*Promise resolved with an array of geographic location objects*
+
+---
+
 ### `location.reverseGeocode`
 
 **Signature:** `reverseGeocode(lat, lng, locale?)`
@@ -2404,6 +2448,26 @@ Reverse Geocoding: Coordinates to address
 **Returns:** `[{ name: string, country: string, locality: string, administrativeArea: string, subLocality: string, thoroughfare: string, postalCode: string }]`
 
 *An array of address information objects*
+
+---
+
+### `location.reverseGeocodeAsync`
+
+**Signature:** `reverseGeocodeAsync(lat, lng, locale?)`
+
+Reverse Geocoding asynchronously: Coordinates to address
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `lat` | `number` | Latitude | No |
+| `lng` | `number` | Longitude | No |
+| `locale` | `string` | Locale identifier (optional, e.g., 'en_US', defaults to system language) | Yes |
+
+**Returns:** `Promise<[{ name: string, country: string, locality: string, administrativeArea: string, subLocality: string, thoroughfare: string, postalCode: string }]>`
+
+*Promise resolved with an array of address information objects*
 
 ---
 
@@ -2451,6 +2515,26 @@ Toggle system location services (Requires TrollStore)
 
 ---
 
+### `location.setLocationServicesEnabledAsync`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `setLocationServicesEnabledAsync(enabled)`
+
+Toggle system location services asynchronously (Requires TrollStore)
+
+**Parameters:**
+
+| Name | Type | Description | Optional |
+|------|------|-------------|----------|
+| `enabled` | `boolean` | True to enable, false to disable | No |
+
+**Returns:** `Promise<{ success: boolean, enabled?: boolean, message?: string }>`
+
+*Promise resolved with operation result*
+
+---
+
 ### `location.toggleLocationServices`
 
 ![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
@@ -2462,6 +2546,20 @@ Switch location services state (Requires TrollStore)
 **Returns:** `{ success: boolean, enabled?: boolean, message?: string }`
 
 *Operation result (success status and new state)*
+
+---
+
+### `location.toggleLocationServicesAsync`
+
+![Full Support](https://img.shields.io/badge/Trigger-Full-brightgreen)
+
+**Signature:** `toggleLocationServicesAsync()`
+
+Switch location services state asynchronously (Requires TrollStore)
+
+**Returns:** `Promise<{ success: boolean, enabled?: boolean, message?: string }>`
+
+*Promise resolved with operation result*
 
 ---
 
