@@ -1060,7 +1060,7 @@
   <a href="#sqlopenname" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sql.open(name)
+        sql.open(name?)
       
     </span>
   </a>
@@ -1071,7 +1071,7 @@
   <a href="#sqlclosename" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sql.close(name)
+        sql.close(name?)
       
     </span>
   </a>
@@ -1099,7 +1099,18 @@
   <a href="#sqlexecutename-sql-params" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sql.execute(name, sql, params?)
+        sql.execute(name?, sql, params?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqlexecname-sql-params" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sql.exec(name?, sql, params?)
       
     </span>
   </a>
@@ -1660,25 +1671,25 @@
 <hr />
 <h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
 <h3 id="_2">数据库管理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="sqlopenname"><code>sql.open(name)</code><a class="headerlink" href="#sqlopenname" title="Permanent link">&para;</a></h4>
-<p>打开或创建数据库。<strong>参数:</strong> <code>name</code> (string) <strong>返回:</strong> <code>boolean</code></p>
+<h4 id="sqlopenname"><code>sql.open(name?)</code><a class="headerlink" href="#sqlopenname" title="Permanent link">&para;</a></h4>
+<p>打开或创建数据库。<strong>参数:</strong> <code>name</code> (string, 可选，默认 <code>default</code>) <strong>返回:</strong> <code>boolean</code></p>
 <p>数据库文件存储在 Documents 目录，扩展名为 <code>.sqlite</code>。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;数据库已打开&#39;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="sqlclosename"><code>sql.close(name)</code><a class="headerlink" href="#sqlclosename" title="Permanent link">&para;</a></h4>
-<p>关闭数据库连接。<strong>参数:</strong> <code>name</code> (string) <strong>返回:</strong> <code>boolean</code></p>
+<h4 id="sqlclosename"><code>sql.close(name?)</code><a class="headerlink" href="#sqlclosename" title="Permanent link">&para;</a></h4>
+<p>关闭数据库连接。<strong>参数:</strong> <code>name</code> (string, 可选，默认 <code>default</code>) <strong>返回:</strong> <code>boolean</code></p>
 <div class="highlight"><pre><span></span><code><span class="nx">sql</span><span class="p">.</span><span class="nx">close</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">);</span>
 </code></pre></div>
 <hr />
 <h3 id="_3">执行操作<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="sqlexecutename-sql-params"><code>sql.execute(name, sql, params?)</code><a class="headerlink" href="#sqlexecutename-sql-params" title="Permanent link">&para;</a></h4>
-<p>执行 SQL 语句（INSERT、UPDATE、DELETE、CREATE 等）。<strong>参数:</strong> <code>name</code> (string), <code>sql</code> (string), <code>params</code> (array, 可选) <strong>返回:</strong> <code>boolean</code></p>
+<h4 id="sqlexecutename-sql-params"><code>sql.execute(name?, sql, params?)</code><a class="headerlink" href="#sqlexecutename-sql-params" title="Permanent link">&para;</a></h4>
+<p>执行 SQL 语句（INSERT、UPDATE、DELETE、CREATE 等）。<strong>参数:</strong> <code>name</code> (string, 可选，默认 <code>default</code>), <code>sql</code> (string), <code>params</code> (array, 可选) <strong>返回:</strong> <code>{ success, changes?, lastInsertId?, error? }</code></p>
 <p><strong>支持参数化查询</strong>，使用 <code>?</code> 占位符防止 SQL 注入。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 创建表</span>
-<span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span><span class="w"> </span><span class="sb">`</span>
 <span class="sb">  CREATE TABLE IF NOT EXISTS products (</span>
 <span class="sb">    id INTEGER PRIMARY KEY,</span>
 <span class="sb">    name TEXT,</span>
@@ -1687,10 +1698,11 @@
 <span class="sb">`</span><span class="p">);</span>
 
 <span class="c1">// 插入数据（参数化）</span>
-<span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
+<span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
 <span class="w">  </span><span class="s1">&#39;INSERT INTO products (name, price) VALUES (?, ?)&#39;</span><span class="p">,</span>
 <span class="w">  </span><span class="p">[</span><span class="s1">&#39;iPhone&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">5999.00</span><span class="p">]</span>
 <span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">lastInsertId</span><span class="p">);</span>
 
 <span class="c1">// 更新数据</span>
 <span class="nx">sql</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span>
@@ -1704,6 +1716,8 @@
 <span class="w">  </span><span class="p">[</span><span class="mf">1000</span><span class="p">]</span>
 <span class="p">);</span>
 </code></pre></div>
+<h4 id="sqlexecname-sql-params"><code>sql.exec(name?, sql, params?)</code><a class="headerlink" href="#sqlexecname-sql-params" title="Permanent link">&para;</a></h4>
+<p><code>execute()</code> 的别名。参数和返回值完全一致，适合兼容旧脚本。</p>
 <h4 id="sqlqueryname-sql-params"><code>sql.query(name, sql, params?)</code><a class="headerlink" href="#sqlqueryname-sql-params" title="Permanent link">&para;</a></h4>
 <p>查询数据，返回所有结果。<strong>参数:</strong> <code>name</code> (string), <code>sql</code> (string), <code>params</code> (array, 可选) <strong>返回:</strong> <code>array</code></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 查询所有</span>

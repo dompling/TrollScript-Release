@@ -1050,6 +1050,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#remindergetsystemlists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reminder.getSystemLists()
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1079,10 +1090,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#remindergetsortedby-listid" class="md-nav__link">
+  <a href="#remindergetsortedoptions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        reminder.getSorted(by, listId?)
+        reminder.getSorted(options?)
       
     </span>
   </a>
@@ -1090,10 +1101,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#remindergetupcomingdays-listid" class="md-nav__link">
+  <a href="#remindergetupcomingdays" class="md-nav__link">
     <span class="md-ellipsis">
       
-        reminder.getUpcoming(days?, listId?)
+        reminder.getUpcoming(days?)
       
     </span>
   </a>
@@ -1140,6 +1151,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#remindercreatesystemremindertitle-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        reminder.createSystemReminder(title, options?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#remindercompleteid" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1162,10 +1184,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#reminderreorderid-newindex" class="md-nav__link">
+  <a href="#reminderreorderids" class="md-nav__link">
     <span class="md-ellipsis">
       
-        reminder.reorder(id, newIndex)
+        reminder.reorder(ids)
       
     </span>
   </a>
@@ -1646,6 +1668,8 @@
 <h3 id="_3">提醒列表管理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="remindergetlists"><code>reminder.getLists()</code><a class="headerlink" href="#remindergetlists" title="Permanent link">&para;</a></h4>
 <p>获取所有提醒列表。<strong>返回:</strong> <code>List[]</code></p>
+<h4 id="remindergetsystemlists"><code>reminder.getSystemLists()</code><a class="headerlink" href="#remindergetsystemlists" title="Permanent link">&para;</a></h4>
+<p>获取系统提醒列表。当前实现与 <code>getLists()</code> 一致，作为兼容别名保留。<strong>返回:</strong> <code>List[]</code></p>
 <p><strong>List 对象结构:</strong>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">              </span><span class="c1">// 列表 ID</span>
@@ -1684,29 +1708,26 @@
 <span class="c1">// 获取指定列表的提醒</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">listReminders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getAll</span><span class="p">(</span><span class="s1">&#39;list-id-123&#39;</span><span class="p">);</span>
 </code></pre></div>
-<h4 id="remindergetsortedby-listid"><code>reminder.getSorted(by, listId?)</code><a class="headerlink" href="#remindergetsortedby-listid" title="Permanent link">&para;</a></h4>
-<p>获取排序后的提醒。<strong>参数:</strong> <code>by</code> (string), <code>listId</code> (string, 可选) <strong>返回:</strong> <code>Reminder[]</code></p>
-<p><strong>排序方式:</strong>
-- <code>'title'</code> - 按标题排序
-- <code>'priority'</code> - 按优先级排序
-- <code>'dueDate'</code> - 按到期时间排序
-- <code>'createdAt'</code> - 按创建时间排序</p>
+<h4 id="remindergetsortedoptions"><code>reminder.getSorted(options?)</code><a class="headerlink" href="#remindergetsortedoptions" title="Permanent link">&para;</a></h4>
+<p>获取排序后的提醒。<strong>参数:</strong> <code>options</code> (object, 可选) <strong>返回:</strong> <code>Reminder[]</code></p>
+<p><strong>options 参数结构:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">sortBy</span><span class="o">?:</span><span class="w"> </span><span class="s1">&#39;createdAt&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;dueDate&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;priority&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;title&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">ascending</span><span class="o">?:</span><span class="w"> </span><span class="kr">boolean</span><span class="p">,</span><span class="w">    </span><span class="c1">// 默认 true</span>
+<span class="w">  </span><span class="nx">completed</span><span class="o">?:</span><span class="w"> </span><span class="kr">boolean</span><span class="w">     </span><span class="c1">// 是否包含已完成提醒，默认 false</span>
+<span class="p">}</span>
+</code></pre></div></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 按优先级排序</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">byPriority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getSorted</span><span class="p">(</span><span class="s1">&#39;priority&#39;</span><span class="p">);</span>
-
-<span class="c1">// 按到期时间排序（指定列表）</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">byDueDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getSorted</span><span class="p">(</span><span class="s1">&#39;dueDate&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;list-id-123&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">byPriority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getSorted</span><span class="p">({</span><span class="w"> </span><span class="nx">sortBy</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;priority&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">byDueDateDesc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getSorted</span><span class="p">({</span><span class="w"> </span><span class="nx">sortBy</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;dueDate&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">ascending</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">});</span>
 </code></pre></div>
-<h4 id="remindergetupcomingdays-listid"><code>reminder.getUpcoming(days?, listId?)</code><a class="headerlink" href="#remindergetupcomingdays-listid" title="Permanent link">&para;</a></h4>
-<p>获取即将到期的提醒。<strong>参数:</strong> <code>days</code> (number, 可选，默认 7), <code>listId</code> (string, 可选) <strong>返回:</strong> <code>Reminder[]</code></p>
+<h4 id="remindergetupcomingdays"><code>reminder.getUpcoming(days?)</code><a class="headerlink" href="#remindergetupcomingdays" title="Permanent link">&para;</a></h4>
+<p>获取即将到期的提醒。<strong>参数:</strong> <code>days</code> (number, 可选，默认 7) <strong>返回:</strong> <code>Reminder[]</code></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 获取未来7天的提醒</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">upcoming</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getUpcoming</span><span class="p">();</span>
 
 <span class="c1">// 获取未来3天的提醒</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">soon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getUpcoming</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span>
-
-<span class="c1">// 获取指定列表未来7天的提醒</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">listUpcoming</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">getUpcoming</span><span class="p">(</span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;list-id-123&#39;</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="remindergetoverduelistid"><code>reminder.getOverdue(listId?)</code><a class="headerlink" href="#remindergetoverduelistid" title="Permanent link">&para;</a></h4>
 <p>获取已过期的提醒。<strong>参数:</strong> <code>listId</code> (string, 可选) <strong>返回:</strong> <code>Reminder[]</code></p>
@@ -1720,6 +1741,8 @@
 <h3 id="_5">创建和管理<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="remindercreatetitle-options"><code>reminder.create(title, options?)</code><a class="headerlink" href="#remindercreatetitle-options" title="Permanent link">&para;</a></h4>
 <p>创建新提醒。<strong>参数:</strong> <code>title</code> (string), <code>options</code> (object, 可选) <strong>返回:</strong> <code>string | object</code> - 返回提醒 ID，位置提醒返回详细对象</p>
+<h4 id="remindercreatesystemremindertitle-options"><code>reminder.createSystemReminder(title, options?)</code><a class="headerlink" href="#remindercreatesystemremindertitle-options" title="Permanent link">&para;</a></h4>
+<p>创建系统提醒事项。当前实现与 <code>create()</code> 共用逻辑，作为兼容入口保留。<strong>参数:</strong> 同 <code>create</code>。<strong>返回:</strong> 同 <code>create</code></p>
 <p><strong>options 参数结构:</strong>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nx">listId</span><span class="o">?:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">         </span><span class="c1">// 列表 ID（默认为默认列表）</span>
@@ -1773,11 +1796,16 @@
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;提醒已删除&#39;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="reminderreorderid-newindex"><code>reminder.reorder(id, newIndex)</code><a class="headerlink" href="#reminderreorderid-newindex" title="Permanent link">&para;</a></h4>
-<p>重新排序提醒。<strong>参数:</strong> <code>id</code> (string), <code>newIndex</code> (number) <strong>返回:</strong> <code>boolean</code></p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 将提醒移动到第一位</span>
-<span class="nx">reminder</span><span class="p">.</span><span class="nx">reorder</span><span class="p">(</span><span class="s1">&#39;reminder-id-123&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<h4 id="reminderreorderids"><code>reminder.reorder(ids)</code><a class="headerlink" href="#reminderreorderids" title="Permanent link">&para;</a></h4>
+<p>批量重排提醒。<strong>参数:</strong> <code>ids</code> (string[]) <strong>返回:</strong> <code>{ success, error? }</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">reminder</span><span class="p">.</span><span class="nx">reorder</span><span class="p">([</span><span class="s1">&#39;id-1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;id-2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;id-3&#39;</span><span class="p">]);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">result</span><span class="p">.</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<p>当前系统 Reminder API 不支持通过该接口真正批量重排，通常会返回失败对象作为明确反馈。</p>
+</blockquote>
 <hr />
 <h2 id="_6">完整示例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <h3 id="1">示例 1: 待办事项管理<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>

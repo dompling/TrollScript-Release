@@ -726,6 +726,39 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#inputtouchdownx-y-fingerid-displayid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.touchDown(x, y, fingerID?, displayId?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputtouchmovex-y-fingerid-displayid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.touchMove(x, y, fingerID?, displayId?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputtouchupx-y-fingerid-displayid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.touchUp(x, y, fingerID?, displayId?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#inputdoubletapx-y" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -763,6 +796,17 @@
     <span class="md-ellipsis">
       
         input.drag(fromX, fromY, toX, toY, duration?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputswipe2fromx-fromy-tox-toy-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.swipe2(fromX, fromY, toX, toY, duration?)
       
     </span>
   </a>
@@ -852,6 +896,111 @@
     <span class="md-ellipsis">
       
         input.pressButtons(buttonNames)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autogo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AutoGo 风格系统动作
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AutoGo 风格系统动作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inputhomedisplayid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.home(displayId?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputbackdisplayid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.back(displayId?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputrecentsdisplayid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.recents(displayId?)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputnotifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.notifications()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputquicksettings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.quickSettings()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputpowerdialog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.powerDialog()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputcamera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.camera()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputkeyactioncode-displayid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        input.keyAction(code, displayId?)
       
     </span>
   </a>
@@ -1792,6 +1941,18 @@
 <span class="kd">const</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">getScreenSize</span><span class="p">();</span>
 <span class="nx">input</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
 </code></pre></div>
+<h4 id="inputtouchdownx-y-fingerid-displayid"><code>input.touchDown(x, y, fingerID?, displayId?)</code><a class="headerlink" href="#inputtouchdownx-y-fingerid-displayid" title="Permanent link">&para;</a></h4>
+<p>模拟触摸按下。兼容 AutoGo 风格签名，但当前仅支持 <code>fingerID = 0</code> 与 <code>displayId = 0</code>。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">input</span><span class="p">.</span><span class="nx">touchDown</span><span class="p">(</span><span class="mf">500</span><span class="p">,</span><span class="w"> </span><span class="mf">600</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="inputtouchmovex-y-fingerid-displayid"><code>input.touchMove(x, y, fingerID?, displayId?)</code><a class="headerlink" href="#inputtouchmovex-y-fingerid-displayid" title="Permanent link">&para;</a></h4>
+<p>模拟触摸移动。兼容 AutoGo 风格签名，但当前仅支持 <code>fingerID = 0</code> 与 <code>displayId = 0</code>。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">input</span><span class="p">.</span><span class="nx">touchMove</span><span class="p">(</span><span class="mf">550</span><span class="p">,</span><span class="w"> </span><span class="mf">650</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="inputtouchupx-y-fingerid-displayid"><code>input.touchUp(x, y, fingerID?, displayId?)</code><a class="headerlink" href="#inputtouchupx-y-fingerid-displayid" title="Permanent link">&para;</a></h4>
+<p>模拟触摸抬起。兼容 AutoGo 风格签名，但当前仅支持 <code>fingerID = 0</code> 与 <code>displayId = 0</code>。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">input</span><span class="p">.</span><span class="nx">touchUp</span><span class="p">(</span><span class="mf">550</span><span class="p">,</span><span class="w"> </span><span class="mf">650</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+</code></pre></div>
 <h4 id="inputdoubletapx-y"><code>input.doubleTap(x, y)</code><a class="headerlink" href="#inputdoubletapx-y" title="Permanent link">&para;</a></h4>
 <p>在指定坐标处模拟双击。<strong>返回:</strong> <code>boolean</code></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 双击缩放</span>
@@ -1893,6 +2054,10 @@
 <blockquote>
 <p><code>drag</code> 与 <code>swipe</code> 的区别：<code>drag</code> 在起点会先按住 100ms 再开始移动，模拟真实的拖拽操作。</p>
 </blockquote>
+<h4 id="inputswipe2fromx-fromy-tox-toy-duration"><code>input.swipe2(fromX, fromY, toX, toY, duration?)</code><a class="headerlink" href="#inputswipe2fromx-fromy-tox-toy-duration" title="Permanent link">&para;</a></h4>
+<p>AutoGo 兼容别名。当前实现仍然复用 <code>swipe</code> 的线性轨迹，不是贝塞尔曲线。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="nx">input</span><span class="p">.</span><span class="nx">swipe2</span><span class="p">(</span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="mf">800</span><span class="p">,</span><span class="w"> </span><span class="mf">300</span><span class="p">,</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h3 id="_5">键盘输入<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="inputpresskeykeyname"><code>input.pressKey(keyName)</code><a class="headerlink" href="#inputpresskeykeyname" title="Permanent link">&para;</a></h4>
@@ -2013,25 +2178,58 @@
 <blockquote>
 <p>内部实现：按序发送所有 key down 事件 → 保持 150ms → 反序发送所有 key up 事件。</p>
 </blockquote>
+<h3 id="autogo">AutoGo 风格系统动作<a class="headerlink" href="#autogo" title="Permanent link">&para;</a></h3>
+<h4 id="inputhomedisplayid"><code>input.home(displayId?)</code><a class="headerlink" href="#inputhomedisplayid" title="Permanent link">&para;</a></h4>
+<p>使用 iOS 上滑手势近似返回主屏。当前仅支持 <code>displayId = 0</code>。<strong>返回:</strong> <code>boolean</code></p>
+<h4 id="inputbackdisplayid"><code>input.back(displayId?)</code><a class="headerlink" href="#inputbackdisplayid" title="Permanent link">&para;</a></h4>
+<p>使用 iOS 左缘返回手势近似执行返回动作。当前仅支持 <code>displayId = 0</code>。<strong>返回:</strong> <code>boolean</code></p>
+<h4 id="inputrecentsdisplayid"><code>input.recents(displayId?)</code><a class="headerlink" href="#inputrecentsdisplayid" title="Permanent link">&para;</a></h4>
+<p>使用 iOS 上滑并停留手势近似打开多任务界面。当前仅支持 <code>displayId = 0</code>。<strong>返回:</strong> <code>boolean</code></p>
+<h4 id="inputnotifications"><code>input.notifications()</code><a class="headerlink" href="#inputnotifications" title="Permanent link">&para;</a></h4>
+<p>下拉通知中心。<strong>返回:</strong> <code>boolean</code></p>
+<h4 id="inputquicksettings"><code>input.quickSettings()</code><a class="headerlink" href="#inputquicksettings" title="Permanent link">&para;</a></h4>
+<p>下拉控制中心。<strong>返回:</strong> <code>boolean</code></p>
+<h4 id="inputpowerdialog"><code>input.powerDialog()</code><a class="headerlink" href="#inputpowerdialog" title="Permanent link">&para;</a></h4>
+<p>尝试通过长按电源键唤起电源菜单。<strong>返回:</strong> <code>boolean</code></p>
+<h4 id="inputcamera"><code>input.camera()</code><a class="headerlink" href="#inputcamera" title="Permanent link">&para;</a></h4>
+<p>启动系统相机 App。<strong>返回:</strong> <code>boolean</code></p>
+<h4 id="inputkeyactioncode-displayid"><code>input.keyAction(code, displayId?)</code><a class="headerlink" href="#inputkeyactioncode-displayid" title="Permanent link">&para;</a></h4>
+<p>按 AutoGo/Android 风格 keycode 执行对应动作。当前只支持部分常见按键，且仅支持 <code>displayId = 0</code>。<strong>返回:</strong> <code>boolean | object</code></p>
+<p>常用常量：</p>
+<div class="highlight"><pre><span></span><code><span class="nx">input</span><span class="p">.</span><span class="nx">KEYCODE_HOME</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">KEYCODE_BACK</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">KEYCODE_ENTER</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">KEYCODE_VOLUME_UP</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">KEYCODE_VOLUME_DOWN</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">KEYCODE_NOTIFICATION</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">KEYCODE_APP_SWITCH</span>
+</code></pre></div>
 <hr />
 <h3 id="_7">触摸录制<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>录制真实触摸事件并生成可回放的 JS 脚本。录制期间，所有真实的触摸事件（down/move/up/cancel）会被捕获并记录坐标、时间戳等信息。模拟事件（如 <code>input.tap()</code> 产生的触摸）会被自动过滤，不会被录制。</p>
 <h4 id="inputstartrecording"><code>input.startRecording()</code><a class="headerlink" href="#inputstartrecording" title="Permanent link">&para;</a></h4>
 <p>开始录制触摸事件。清空之前的录制数据，开始捕获新的触摸事件。</p>
-<p><strong>返回:</strong> <code>boolean</code> - 始终返回 <code>true</code></p>
-<div class="highlight"><pre><span></span><code><span class="nx">input</span><span class="p">.</span><span class="nx">startRecording</span><span class="p">();</span>
+<p><strong>返回:</strong> <code>object</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">startRecording</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="c1">// { success: true, alreadyRecording: false }</span>
+
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;开始录制，请在屏幕上操作...&quot;</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="inputstoprecording"><code>input.stopRecording()</code><a class="headerlink" href="#inputstoprecording" title="Permanent link">&para;</a></h4>
 <p>停止录制并返回录制结果。<strong>返回:</strong> <code>object</code></p>
 <p>返回对象结构：</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">wasRecording</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">events</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;down&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="nx">pointerId</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;move&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">105</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">210</span><span class="p">,</span><span class="w"> </span><span class="nx">pointerId</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;up&quot;</span><span class="p">,</span><span class="w">   </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">110</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">220</span><span class="p">,</span><span class="w"> </span><span class="nx">pointerId</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="mf">150</span><span class="w"> </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nx">script</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;input.tap(100, 200);\n...&quot;</span>
+<span class="w">  </span><span class="nx">script</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;input.tap(100, 200);\n...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">gestureCount</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">recordingDurationMs</span><span class="o">:</span><span class="w"> </span><span class="mf">150</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>events 字段说明:</strong></p>
@@ -2092,6 +2290,10 @@
 <tr>
 <td>位移 &gt;= 10pt</td>
 <td><code>input.swipe(fromX, fromY, toX, toY, duration)</code></td>
+</tr>
+<tr>
+<td>多指/复杂轨迹/长时轨迹</td>
+<td><code>input.touchDown/move/up(...)</code> 原始回放</td>
 </tr>
 <tr>
 <td>手势间隔 &gt; 50ms</td>

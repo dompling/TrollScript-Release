@@ -1678,7 +1678,7 @@
 <tr>
 <td><code>path</code></td>
 <td><code>string</code></td>
-<td>文件绝对路径</td>
+<td>绝对路径，或自动解析到 Documents 下的相对路径</td>
 <td>No</td>
 </tr>
 </tbody>
@@ -1703,7 +1703,7 @@
 <tr>
 <td><code>path</code></td>
 <td><code>string</code></td>
-<td>文件绝对路径</td>
+<td>绝对路径，或自动解析到 Documents 下的相对路径</td>
 <td>No</td>
 </tr>
 <tr>
@@ -1734,7 +1734,7 @@
 <tr>
 <td><code>path</code></td>
 <td><code>string</code></td>
-<td>文件绝对路径</td>
+<td>绝对路径，或自动解析到 Documents 下的相对路径</td>
 <td>No</td>
 </tr>
 <tr>
@@ -1765,7 +1765,7 @@
 <tr>
 <td><code>path</code></td>
 <td><code>string</code></td>
-<td>文件绝对路径</td>
+<td>绝对路径，或自动解析到 Documents 下的相对路径</td>
 <td>No</td>
 </tr>
 </tbody>
@@ -1790,7 +1790,7 @@
 <tr>
 <td><code>path</code></td>
 <td><code>string</code></td>
-<td>文件绝对路径</td>
+<td>绝对路径，或自动解析到 Documents 下的相对路径</td>
 <td>No</td>
 </tr>
 </tbody>
@@ -2395,7 +2395,7 @@
 </tbody>
 </table>
 <p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, path?: string, error?: string }&gt;</code></p>
-<p><em>返回 Promise，resolve 时包含成功状态和本地文件路径</em></p>
+<p><em>返回 Promise，resolve 时包含成功状态和本地文件路径。设置 sync: true 可使用同步模式</em></p>
 <hr />
 <h2 id="network">network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h2>
 <p><img alt="Limited Support" src="https://img.shields.io/badge/Trigger-Limited-orange" /></p>
@@ -3806,6 +3806,13 @@
 <p>请求定位权限</p>
 <p><strong>Returns:</strong> <code>void</code></p>
 <hr />
+<h3 id="locationrequestaccessasync"><code>location.requestAccessAsync</code><a class="headerlink" href="#locationrequestaccessasync" title="Permanent link">&para;</a></h3>
+<p><img alt="Not Supported" src="https://img.shields.io/badge/Trigger-None-red" /></p>
+<p><strong>Signature:</strong> <code>requestAccessAsync()</code></p>
+<p>异步请求定位权限</p>
+<p><strong>Returns:</strong> <code>Promise&lt;void&gt;</code></p>
+<p><em>权限流程完成后 resolve</em></p>
+<hr />
 <h3 id="locationgetaccessstatus"><code>location.getAccessStatus</code><a class="headerlink" href="#locationgetaccessstatus" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>getAccessStatus()</code></p>
 <p>获取权限状态</p>
@@ -3823,6 +3830,12 @@
 <p>获取当前位置</p>
 <p><strong>Returns:</strong> <code>{ lat: number, lng: number, alt: number, course: number, speed: number, accuracy: number, timestamp: number } \| null</code></p>
 <p><em>位置信息对象(包含经纬度、海拔、精度等)，失败返回 null</em></p>
+<hr />
+<h3 id="locationgetcurrentasync"><code>location.getCurrentAsync</code><a class="headerlink" href="#locationgetcurrentasync" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>getCurrentAsync()</code></p>
+<p>异步获取当前位置</p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ lat: number, lng: number, alt: number, course: number, speed: number, accuracy: number, timestamp: number } \| null&gt;</code></p>
+<p><em>resolve 时返回位置信息对象，失败返回 null</em></p>
 <hr />
 <h3 id="locationcurrent"><code>location.current</code><a class="headerlink" href="#locationcurrent" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>current()</code></p>
@@ -3898,6 +3911,31 @@
 <p><strong>Returns:</strong> <code>[{ lat: number, lng: number, name: string }]</code></p>
 <p><em>地理位置对象数组</em></p>
 <hr />
+<h3 id="locationgeocodeasync"><code>location.geocodeAsync</code><a class="headerlink" href="#locationgeocodeasync" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>geocodeAsync(address)</code></p>
+<p>异步地址转坐标</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>address</code></td>
+<td><code>string</code></td>
+<td>地址字符串</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Promise&lt;[{ lat: number, lng: number, name: string }]&gt;</code></p>
+<p><em>resolve 时返回地理位置对象数组</em></p>
+<hr />
 <h3 id="locationreversegeocode"><code>location.reverseGeocode</code><a class="headerlink" href="#locationreversegeocode" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>reverseGeocode(lat, lng, locale?)</code></p>
 <p>坐标转地址</p>
@@ -3934,6 +3972,43 @@
 </table>
 <p><strong>Returns:</strong> <code>[{ name: string, country: string, locality: string, administrativeArea: string, subLocality: string, thoroughfare: string, postalCode: string }]</code></p>
 <p><em>地址信息对象数组</em></p>
+<hr />
+<h3 id="locationreversegeocodeasync"><code>location.reverseGeocodeAsync</code><a class="headerlink" href="#locationreversegeocodeasync" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>reverseGeocodeAsync(lat, lng, locale?)</code></p>
+<p>异步坐标转地址</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lat</code></td>
+<td><code>number</code></td>
+<td>纬度</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>lng</code></td>
+<td><code>number</code></td>
+<td>经度</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>locale</code></td>
+<td><code>string</code></td>
+<td>语言区域标识(可选，如 'zh_CN'、'en_US'，默认使用系统语言)</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Promise&lt;[{ name: string, country: string, locality: string, administrativeArea: string, subLocality: string, thoroughfare: string, postalCode: string }]&gt;</code></p>
+<p><em>resolve 时返回地址信息对象数组</em></p>
 <hr />
 <h3 id="locationislocationservicesenabled"><code>location.isLocationServicesEnabled</code><a class="headerlink" href="#locationislocationservicesenabled" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>isLocationServicesEnabled()</code></p>
@@ -3973,12 +4048,45 @@
 <p><strong>Returns:</strong> <code>{ success: boolean, enabled?: boolean, message?: string }</code></p>
 <p><em>操作结果(success 表示是否成功，enabled 为当前状态)</em></p>
 <hr />
+<h3 id="locationsetlocationservicesenabledasync"><code>location.setLocationServicesEnabledAsync</code><a class="headerlink" href="#locationsetlocationservicesenabledasync" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>setLocationServicesEnabledAsync(enabled)</code></p>
+<p>异步开关系统定位服务(需要 TrollStore 权限)</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enabled</code></td>
+<td><code>boolean</code></td>
+<td>true 开启，false 关闭</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, enabled?: boolean, message?: string }&gt;</code></p>
+<p><em>resolve 时返回操作结果</em></p>
+<hr />
 <h3 id="locationtogglelocationservices"><code>location.toggleLocationServices</code><a class="headerlink" href="#locationtogglelocationservices" title="Permanent link">&para;</a></h3>
 <p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
 <p><strong>Signature:</strong> <code>toggleLocationServices()</code></p>
 <p>切换定位服务状态(需要 TrollStore 权限)</p>
 <p><strong>Returns:</strong> <code>{ success: boolean, enabled?: boolean, message?: string }</code></p>
 <p><em>操作结果(success 表示是否成功，enabled 为切换后状态)</em></p>
+<hr />
+<h3 id="locationtogglelocationservicesasync"><code>location.toggleLocationServicesAsync</code><a class="headerlink" href="#locationtogglelocationservicesasync" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>toggleLocationServicesAsync()</code></p>
+<p>异步切换定位服务状态(需要 TrollStore 权限)</p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, enabled?: boolean, message?: string }&gt;</code></p>
+<p><em>resolve 时返回操作结果</em></p>
 <hr />
 <h2 id="calendar">calendar<a class="headerlink" href="#calendar" title="Permanent link">&para;</a></h2>
 <p><img alt="Limited Support" src="https://img.shields.io/badge/Trigger-Limited-orange" /></p>

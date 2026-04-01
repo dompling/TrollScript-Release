@@ -1229,6 +1229,12 @@
 <li>调用 <code>Script.setWidget(widget)</code> 将节点树序列化并保存</li>
 <li>iOS Widget Extension 从 App Group 读取数据并用 SwiftUI 渲染</li>
 </ol>
+<h4 id="widgetpreviewwidget-family"><code>Widget.preview(widget, family?)</code><a class="headerlink" href="#widgetpreviewwidget-family" title="Permanent link">&para;</a></h4>
+<p>在 MiniApp / App 调试界面中预览 Widget，而不是直接保存到 Widget 槽位。<code>family</code> 支持 <code>small</code>、<code>medium</code>、<code>large</code>。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">widget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ListWidget</span><span class="p">();</span>
+<span class="nx">widget</span><span class="p">.</span><span class="nx">addText</span><span class="p">(</span><span class="s1">&#39;Preview&#39;</span><span class="p">);</span>
+<span class="nx">Widget</span><span class="p">.</span><span class="nx">preview</span><span class="p">(</span><span class="nx">widget</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;medium&#39;</span><span class="p">);</span>
+</code></pre></div>
 <hr />
 <h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
 <h3 id="listwidget">ListWidget 根容器<a class="headerlink" href="#listwidget" title="Permanent link">&para;</a></h3>

@@ -975,6 +975,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#filedebugpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file.debug(path)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1041,6 +1052,17 @@
     <span class="md-ellipsis">
       
         file.rootExists(path)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filerootcheckpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file.rootCheck(path)
       
     </span>
   </a>
@@ -1713,6 +1735,9 @@
 <p>获取缓存目录路径。<strong>返回:</strong> <code>string</code></p>
 <h4 id="filetemppath"><code>file.tempPath()</code><a class="headerlink" href="#filetemppath" title="Permanent link">&para;</a></h4>
 <p>获取临时目录路径。<strong>返回:</strong> <code>string</code></p>
+<h4 id="filedebugpath"><code>file.debug(path)</code><a class="headerlink" href="#filedebugpath" title="Permanent link">&para;</a></h4>
+<p>返回路径调试信息。<strong>参数:</strong> <code>path</code> (string) <strong>返回:</strong> <code>string</code></p>
+<p>用于查看安全路径解析结果、文件是否存在、是否可读/可写，适合排查脚本里的路径问题。</p>
 <hr />
 <h3 id="root">Root 权限操作<a class="headerlink" href="#root" title="Permanent link">&para;</a></h3>
 <h4 id="filerootavailable"><code>file.rootAvailable()</code><a class="headerlink" href="#filerootavailable" title="Permanent link">&para;</a></h4>
@@ -1725,6 +1750,8 @@
 <p>使用 Root 权限复制文件。<strong>参数:</strong> <code>src</code> (string), <code>dest</code> (string) <strong>返回:</strong> <code>boolean</code></p>
 <h4 id="filerootexistspath"><code>file.rootExists(path)</code><a class="headerlink" href="#filerootexistspath" title="Permanent link">&para;</a></h4>
 <p>使用 Root 权限检查文件是否存在。<strong>参数:</strong> <code>path</code> (string) <strong>返回:</strong> <code>boolean</code></p>
+<h4 id="filerootcheckpath"><code>file.rootCheck(path)</code><a class="headerlink" href="#filerootcheckpath" title="Permanent link">&para;</a></h4>
+<p>使用 Root 权限检查路径信息。<strong>参数:</strong> <code>path</code> (string) <strong>返回:</strong> <code>{ readable, writable, exists, isDirectory }</code></p>
 <hr />
 <h2 id="_4">完整示例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <h3 id="1">示例 1: 日志文件管理<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>

@@ -1679,7 +1679,7 @@
 <tr>
 <td><code>path</code></td>
 <td><code>string</code></td>
-<td>Absolute file path</td>
+<td>Absolute path, or relative path resolved under Documents</td>
 <td>No</td>
 </tr>
 </tbody>
@@ -1704,7 +1704,7 @@
 <tr>
 <td><code>path</code></td>
 <td><code>string</code></td>
-<td>Absolute file path</td>
+<td>Absolute path, or relative path resolved under Documents</td>
 <td>No</td>
 </tr>
 <tr>
@@ -1735,7 +1735,7 @@
 <tr>
 <td><code>path</code></td>
 <td><code>string</code></td>
-<td>Absolute file path</td>
+<td>Absolute path, or relative path resolved under Documents</td>
 <td>No</td>
 </tr>
 <tr>
@@ -1766,7 +1766,7 @@
 <tr>
 <td><code>path</code></td>
 <td><code>string</code></td>
-<td>Absolute file path</td>
+<td>Absolute path, or relative path resolved under Documents</td>
 <td>No</td>
 </tr>
 </tbody>
@@ -1791,7 +1791,7 @@
 <tr>
 <td><code>path</code></td>
 <td><code>string</code></td>
-<td>Absolute file path</td>
+<td>Absolute path, or relative path resolved under Documents</td>
 <td>No</td>
 </tr>
 </tbody>
@@ -2396,7 +2396,7 @@
 </tbody>
 </table>
 <p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, path?: string, error?: string }&gt;</code></p>
-<p><em>Returns a Promise that resolves with success status and local file path</em></p>
+<p><em>Returns a Promise that resolves with success status and local file path. Set sync: true for synchronous mode</em></p>
 <hr />
 <h2 id="network">network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h2>
 <p><img alt="Limited Support" src="https://img.shields.io/badge/Trigger-Limited-orange" /></p>
@@ -3807,6 +3807,13 @@
 <p>Request location access permissions</p>
 <p><strong>Returns:</strong> <code>void</code></p>
 <hr />
+<h3 id="locationrequestaccessasync"><code>location.requestAccessAsync</code><a class="headerlink" href="#locationrequestaccessasync" title="Permanent link">&para;</a></h3>
+<p><img alt="Not Supported" src="https://img.shields.io/badge/Trigger-None-red" /></p>
+<p><strong>Signature:</strong> <code>requestAccessAsync()</code></p>
+<p>Request location access permissions asynchronously</p>
+<p><strong>Returns:</strong> <code>Promise&lt;void&gt;</code></p>
+<p><em>Promise resolved after the permission flow finishes</em></p>
+<hr />
 <h3 id="locationgetaccessstatus"><code>location.getAccessStatus</code><a class="headerlink" href="#locationgetaccessstatus" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>getAccessStatus()</code></p>
 <p>Get current authorization status</p>
@@ -3824,6 +3831,12 @@
 <p>Retrieve current geographic location</p>
 <p><strong>Returns:</strong> <code>{ lat: number, lng: number, alt: number, course: number, speed: number, accuracy: number, timestamp: number } \| null</code></p>
 <p><em>Location data object containing coordinates, altitude, etc., or null if failed</em></p>
+<hr />
+<h3 id="locationgetcurrentasync"><code>location.getCurrentAsync</code><a class="headerlink" href="#locationgetcurrentasync" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>getCurrentAsync()</code></p>
+<p>Retrieve current geographic location asynchronously</p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ lat: number, lng: number, alt: number, course: number, speed: number, accuracy: number, timestamp: number } \| null&gt;</code></p>
+<p><em>Promise resolved with location data object, or null if failed</em></p>
 <hr />
 <h3 id="locationcurrent"><code>location.current</code><a class="headerlink" href="#locationcurrent" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>current()</code></p>
@@ -3899,6 +3912,31 @@
 <p><strong>Returns:</strong> <code>[{ lat: number, lng: number, name: string }]</code></p>
 <p><em>An array of geographic location objects</em></p>
 <hr />
+<h3 id="locationgeocodeasync"><code>location.geocodeAsync</code><a class="headerlink" href="#locationgeocodeasync" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>geocodeAsync(address)</code></p>
+<p>Geocoding asynchronously: Address to coordinates</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>address</code></td>
+<td><code>string</code></td>
+<td>Target address string</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Promise&lt;[{ lat: number, lng: number, name: string }]&gt;</code></p>
+<p><em>Promise resolved with an array of geographic location objects</em></p>
+<hr />
 <h3 id="locationreversegeocode"><code>location.reverseGeocode</code><a class="headerlink" href="#locationreversegeocode" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>reverseGeocode(lat, lng, locale?)</code></p>
 <p>Reverse Geocoding: Coordinates to address</p>
@@ -3935,6 +3973,43 @@
 </table>
 <p><strong>Returns:</strong> <code>[{ name: string, country: string, locality: string, administrativeArea: string, subLocality: string, thoroughfare: string, postalCode: string }]</code></p>
 <p><em>An array of address information objects</em></p>
+<hr />
+<h3 id="locationreversegeocodeasync"><code>location.reverseGeocodeAsync</code><a class="headerlink" href="#locationreversegeocodeasync" title="Permanent link">&para;</a></h3>
+<p><strong>Signature:</strong> <code>reverseGeocodeAsync(lat, lng, locale?)</code></p>
+<p>Reverse Geocoding asynchronously: Coordinates to address</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lat</code></td>
+<td><code>number</code></td>
+<td>Latitude</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>lng</code></td>
+<td><code>number</code></td>
+<td>Longitude</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>locale</code></td>
+<td><code>string</code></td>
+<td>Locale identifier (optional, e.g., 'en_US', defaults to system language)</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Promise&lt;[{ name: string, country: string, locality: string, administrativeArea: string, subLocality: string, thoroughfare: string, postalCode: string }]&gt;</code></p>
+<p><em>Promise resolved with an array of address information objects</em></p>
 <hr />
 <h3 id="locationislocationservicesenabled"><code>location.isLocationServicesEnabled</code><a class="headerlink" href="#locationislocationservicesenabled" title="Permanent link">&para;</a></h3>
 <p><strong>Signature:</strong> <code>isLocationServicesEnabled()</code></p>
@@ -3974,12 +4049,45 @@
 <p><strong>Returns:</strong> <code>{ success: boolean, enabled?: boolean, message?: string }</code></p>
 <p><em>Operation result (success status and current state)</em></p>
 <hr />
+<h3 id="locationsetlocationservicesenabledasync"><code>location.setLocationServicesEnabledAsync</code><a class="headerlink" href="#locationsetlocationservicesenabledasync" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>setLocationServicesEnabledAsync(enabled)</code></p>
+<p>Toggle system location services asynchronously (Requires TrollStore)</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enabled</code></td>
+<td><code>boolean</code></td>
+<td>True to enable, false to disable</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, enabled?: boolean, message?: string }&gt;</code></p>
+<p><em>Promise resolved with operation result</em></p>
+<hr />
 <h3 id="locationtogglelocationservices"><code>location.toggleLocationServices</code><a class="headerlink" href="#locationtogglelocationservices" title="Permanent link">&para;</a></h3>
 <p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
 <p><strong>Signature:</strong> <code>toggleLocationServices()</code></p>
 <p>Switch location services state (Requires TrollStore)</p>
 <p><strong>Returns:</strong> <code>{ success: boolean, enabled?: boolean, message?: string }</code></p>
 <p><em>Operation result (success status and new state)</em></p>
+<hr />
+<h3 id="locationtogglelocationservicesasync"><code>location.toggleLocationServicesAsync</code><a class="headerlink" href="#locationtogglelocationservicesasync" title="Permanent link">&para;</a></h3>
+<p><img alt="Full Support" src="https://img.shields.io/badge/Trigger-Full-brightgreen" /></p>
+<p><strong>Signature:</strong> <code>toggleLocationServicesAsync()</code></p>
+<p>Switch location services state asynchronously (Requires TrollStore)</p>
+<p><strong>Returns:</strong> <code>Promise&lt;{ success: boolean, enabled?: boolean, message?: string }&gt;</code></p>
+<p><em>Promise resolved with operation result</em></p>
 <hr />
 <h2 id="calendar">calendar<a class="headerlink" href="#calendar" title="Permanent link">&para;</a></h2>
 <p><img alt="Limited Support" src="https://img.shields.io/badge/Trigger-Limited-orange" /></p>

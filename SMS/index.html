@@ -1020,6 +1020,34 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
+        权限与数据源
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="权限与数据源">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#smsisrealdataavailable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sms.isRealDataAvailable()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         读取短信
       
     </span>
@@ -1029,10 +1057,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#smsreadlimit" class="md-nav__link">
+  <a href="#smsreadlimit-offset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sms.read(limit?)
+        sms.read(limit?, offset?)
       
     </span>
   </a>
@@ -1040,10 +1068,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#smsgetlatestcount" class="md-nav__link">
+  <a href="#smsgetlatest" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sms.getLatest(count?)
+        sms.getLatest()
       
     </span>
   </a>
@@ -1067,7 +1095,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         搜索短信
@@ -1106,7 +1134,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         聊天管理
@@ -1134,7 +1162,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         统计信息
@@ -1207,10 +1235,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#smshelperlist" class="md-nav__link">
+  <a href="#smshelperlistpath" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sms.helperList()
+        sms.helperList(path)
       
     </span>
   </a>
@@ -1228,7 +1256,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         完整示例
@@ -1300,7 +1328,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         注意事项
@@ -1557,9 +1585,16 @@
 </code></pre></div>
 <hr />
 <h2 id="api">API 参考<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
-<h3 id="_2">读取短信<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="smsreadlimit"><code>sms.read(limit?)</code><a class="headerlink" href="#smsreadlimit" title="Permanent link">&para;</a></h4>
-<p>读取短信列表。<strong>参数:</strong> <code>limit</code> (number, 可选，默认 100) <strong>返回:</strong> <code>Message[]</code></p>
+<h3 id="_2">权限与数据源<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="smsisrealdataavailable"><code>sms.isRealDataAvailable()</code><a class="headerlink" href="#smsisrealdataavailable" title="Permanent link">&para;</a></h4>
+<p>检查当前是否可访问真实短信数据库。<strong>返回:</strong> <code>boolean</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">sms</span><span class="p">.</span><span class="nx">isRealDataAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;当前将回退到模拟短信数据&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_3">读取短信<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="smsreadlimit-offset"><code>sms.read(limit?, offset?)</code><a class="headerlink" href="#smsreadlimit-offset" title="Permanent link">&para;</a></h4>
+<p>读取短信列表。<strong>参数:</strong> <code>limit</code> (number, 可选，默认 50), <code>offset</code> (number, 可选，默认 0) <strong>返回:</strong> <code>Message[]</code></p>
 <p><strong>Message 对象结构:</strong>
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w">              </span><span class="c1">// 短信 ID</span>
@@ -1585,10 +1620,10 @@
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`[</span><span class="si">${</span><span class="nx">time</span><span class="si">}</span><span class="sb">] </span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">address</span><span class="si">}</span><span class="sb">: </span><span class="si">${</span><span class="nx">msg</span><span class="p">.</span><span class="nx">text</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
-<h4 id="smsgetlatestcount"><code>sms.getLatest(count?)</code><a class="headerlink" href="#smsgetlatestcount" title="Permanent link">&para;</a></h4>
-<p>获取最新的短信。<strong>参数:</strong> <code>count</code> (number, 可选，默认 10) <strong>返回:</strong> <code>Message[]</code></p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">latest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getLatest</span><span class="p">(</span><span class="mf">5</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;最新 5 条短信:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">latest</span><span class="p">);</span>
+<h4 id="smsgetlatest"><code>sms.getLatest()</code><a class="headerlink" href="#smsgetlatest" title="Permanent link">&para;</a></h4>
+<p>获取最新的一条短信。<strong>返回:</strong> <code>Message | null</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">latest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getLatest</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;最新短信:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">latest</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="smsgetunreadlimit"><code>sms.getUnread(limit?)</code><a class="headerlink" href="#smsgetunreadlimit" title="Permanent link">&para;</a></h4>
 <p>获取未读短信。<strong>参数:</strong> <code>limit</code> (number, 可选，默认 100) <strong>返回:</strong> <code>Message[]</code></p>
@@ -1599,7 +1634,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <hr />
-<h3 id="_3">搜索短信<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_4">搜索短信<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="smssearchkeyword-limit"><code>sms.search(keyword, limit?)</code><a class="headerlink" href="#smssearchkeyword-limit" title="Permanent link">&para;</a></h4>
 <p>搜索包含关键词的短信。<strong>参数:</strong> <code>keyword</code> (string), <code>limit</code> (number, 可选，默认 100) <strong>返回:</strong> <code>Message[]</code></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 搜索包含&quot;验证码&quot;的短信</span>
@@ -1613,7 +1648,7 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`与 10086 的短信记录: </span><span class="si">${</span><span class="nx">messages</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> 条`</span><span class="p">);</span>
 </code></pre></div>
 <hr />
-<h3 id="_4">聊天管理<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">聊天管理<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="smsgetchats"><code>sms.getChats()</code><a class="headerlink" href="#smsgetchats" title="Permanent link">&para;</a></h4>
 <p>获取短信聊天列表。<strong>返回:</strong> <code>Chat[]</code></p>
 <p><strong>Chat 对象结构:</strong>
@@ -1631,7 +1666,7 @@
 <span class="p">});</span>
 </code></pre></div>
 <hr />
-<h3 id="_5">统计信息<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_6">统计信息<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="smsgetstatistics"><code>sms.getStatistics()</code><a class="headerlink" href="#smsgetstatistics" title="Permanent link">&para;</a></h4>
 <p>获取短信统计信息。<strong>返回:</strong> <code>{ totalMessages, unreadCount, chatCount, isMockData }</code></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">stats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">getStatistics</span><span class="p">();</span>
@@ -1646,11 +1681,11 @@
 <h4 id="smshelperavailable"><code>sms.helperAvailable()</code><a class="headerlink" href="#smshelperavailable" title="Permanent link">&para;</a></h4>
 <p>检查 Root Helper 是否可用。<strong>返回:</strong> <code>boolean</code></p>
 <h4 id="smshelpercheck"><code>sms.helperCheck()</code><a class="headerlink" href="#smshelpercheck" title="Permanent link">&para;</a></h4>
-<p>检查短信数据库文件是否存在。<strong>返回:</strong> <code>boolean</code></p>
+<p>检查短信数据库访问状态。<strong>返回:</strong> <code>object</code></p>
 <h4 id="smshelpercopy"><code>sms.helperCopy()</code><a class="headerlink" href="#smshelpercopy" title="Permanent link">&para;</a></h4>
-<p>使用 Root Helper 复制短信数据库。<strong>返回:</strong> <code>boolean</code></p>
-<h4 id="smshelperlist"><code>sms.helperList()</code><a class="headerlink" href="#smshelperlist" title="Permanent link">&para;</a></h4>
-<p>列出短信数据库目录内容。<strong>返回:</strong> <code>string[]</code></p>
+<p>使用 Root Helper 复制短信数据库。<strong>返回:</strong> <code>{ success, path, error }</code></p>
+<h4 id="smshelperlistpath"><code>sms.helperList(path)</code><a class="headerlink" href="#smshelperlistpath" title="Permanent link">&para;</a></h4>
+<p>列出指定目录内容。<strong>参数:</strong> <code>path</code> (string) <strong>返回:</strong> <code>object</code></p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sms</span><span class="p">.</span><span class="nx">helperAvailable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Root Helper 可用&#39;</span><span class="p">);</span>
 
@@ -1664,7 +1699,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <hr />
-<h2 id="_6">完整示例<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_7">完整示例<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <h3 id="1">示例 1: 短信备份<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">backupMessages</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sms</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mf">1000</span><span class="p">);</span>
@@ -1822,7 +1857,7 @@
 <span class="nx">exportChat</span><span class="p">(</span><span class="s1">&#39;10086&#39;</span><span class="p">);</span>
 </code></pre></div>
 <hr />
-<h2 id="_7">注意事项<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_8">注意事项<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Root 权限</strong>: 读取真实短信需要 TrollStore 环境和 Root Helper</li>
 <li><strong>模拟数据</strong>: 无权限时自动使用模拟数据，<code>isMockData</code> 字段标识数据来源</li>
