@@ -111,7 +111,7 @@ input.tap(s.width / 2, s.height / 2);
 
 #### `input.touchDown(x, y, fingerID?, displayId?)`
 
-模拟触摸按下。兼容 AutoGo 风格签名，但当前仅支持 `fingerID = 0` 与 `displayId = 0`。**返回:** `boolean`
+模拟触摸按下。兼容常见脚本签名，但当前仅支持 `fingerID = 0` 与 `displayId = 0`。**返回:** `boolean`
 
 ```javascript
 input.touchDown(500, 600, 0, 0);
@@ -119,7 +119,7 @@ input.touchDown(500, 600, 0, 0);
 
 #### `input.touchMove(x, y, fingerID?, displayId?)`
 
-模拟触摸移动。兼容 AutoGo 风格签名，但当前仅支持 `fingerID = 0` 与 `displayId = 0`。**返回:** `boolean`
+模拟触摸移动。兼容常见脚本签名，但当前仅支持 `fingerID = 0` 与 `displayId = 0`。**返回:** `boolean`
 
 ```javascript
 input.touchMove(550, 650, 0, 0);
@@ -127,7 +127,7 @@ input.touchMove(550, 650, 0, 0);
 
 #### `input.touchUp(x, y, fingerID?, displayId?)`
 
-模拟触摸抬起。兼容 AutoGo 风格签名，但当前仅支持 `fingerID = 0` 与 `displayId = 0`。**返回:** `boolean`
+模拟触摸抬起。兼容常见脚本签名，但当前仅支持 `fingerID = 0` 与 `displayId = 0`。**返回:** `boolean`
 
 ```javascript
 input.touchUp(550, 650, 0, 0);
@@ -203,7 +203,7 @@ input.drag(200, 300, 200, 500, 0.5);
 
 #### `input.swipe2(fromX, fromY, toX, toY, duration?)`
 
-AutoGo 兼容别名。当前实现仍然复用 `swipe` 的线性轨迹，不是贝塞尔曲线。**返回:** `boolean`
+兼容别名。当前实现仍然复用 `swipe` 的线性轨迹，不是贝塞尔曲线。**返回:** `boolean`
 
 ```javascript
 input.swipe2(300, 800, 300, 200, 0.5);
@@ -314,11 +314,16 @@ input.pressButtons(["volumeUp", "volumeDown"]);
 
 > 内部实现：按序发送所有 key down 事件 → 保持 150ms → 反序发送所有 key up 事件。
 
-### AutoGo 风格系统动作
+### 系统动作
+已恢复映射:
+`home`、`recents` 以及 `keyAction()` 中的部分 keycode 采用文档 [ios-hid-input-analysis.md](/Users/dompling/Desktop/GIT/TrollScript/docs/ios-hid-input-analysis.md) 中已恢复出的 iOS 映射。
+
+平台扩展:
+`back`、`notifications`、`quickSettings`、`camera`、`powerDialog` 属于当前工程的 iOS 平台扩展动作，不代表已恢复出的参考实现一定使用同一路径。
 
 #### `input.home(displayId?)`
 
-使用 iOS 上滑手势近似返回主屏。当前仅支持 `displayId = 0`。**返回:** `boolean`
+当前实现使用 Home 键仿真方式返回主屏。当前仅支持 `displayId = 0`。**返回:** `boolean`
 
 #### `input.back(displayId?)`
 
@@ -326,7 +331,7 @@ input.pressButtons(["volumeUp", "volumeDown"]);
 
 #### `input.recents(displayId?)`
 
-使用 iOS 上滑并停留手势近似打开多任务界面。当前仅支持 `displayId = 0`。**返回:** `boolean`
+当前实现使用「双击 Home」近似打开多任务界面。当前仅支持 `displayId = 0`。**返回:** `boolean`
 
 #### `input.notifications()`
 
@@ -346,14 +351,17 @@ input.pressButtons(["volumeUp", "volumeDown"]);
 
 #### `input.keyAction(code, displayId?)`
 
-按 AutoGo/Android 风格 keycode 执行对应动作。当前只支持部分常见按键，且仅支持 `displayId = 0`。**返回:** `boolean | object`
+按兼容 keycode 执行对应动作。当前只支持部分常见按键，且仅支持 `displayId = 0`。**返回:** `boolean | object`
 
 常用常量：
 
 ```javascript
 input.KEYCODE_HOME
 input.KEYCODE_BACK
+input.KEYCODE_SEARCH
 input.KEYCODE_ENTER
+input.KEYCODE_ESCAPE
+input.KEYCODE_FORWARD_DEL
 input.KEYCODE_VOLUME_UP
 input.KEYCODE_VOLUME_DOWN
 input.KEYCODE_NOTIFICATION
@@ -420,7 +428,8 @@ console.log("开始录制，请在屏幕上操作...");
 | 位移 < 10pt 且时间 < 300ms | `input.tap(x, y)` |
 | 位移 < 10pt 且时间 >= 500ms | `input.longPress(x, y, duration)` |
 | 位移 >= 10pt | `input.swipe(fromX, fromY, toX, toY, duration)` |
-| 多指/复杂轨迹/长时轨迹 | `input.touchDown/move/up(...)` 原始回放 |
+| 单指复杂轨迹/长时轨迹 | `input.touchDown/move/up(...)` 原始回放 |
+| 多指轨迹 | 仅返回 warning，脚本中写入省略注释，不自动生成多指回放 |
 | 手势间隔 > 50ms | 插入 `util.sleep(interval)` |
 
 ```javascript
